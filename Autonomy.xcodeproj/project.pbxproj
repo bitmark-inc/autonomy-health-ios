@@ -13,6 +13,7 @@
 		5B9542C4242AF8010072D933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C2242AF8010072D933 /* Main.storyboard */; };
 		5B9542C6242AF8040072D933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C5242AF8040072D933 /* Assets.xcassets */; };
 		5B9542C9242AF8040072D933 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
+		AEEB286E0D5A750E78445D10 /* Pods_Autonomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EA6BBCCFDCDA612204A87A /* Pods_Autonomy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		5B9542C5242AF8040072D933 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B9542C8242AF8040072D933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B9542CA242AF8040072D933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.release.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.release.xcconfig"; sourceTree = "<group>"; };
+		A0EA6BBCCFDCDA612204A87A /* Pods_Autonomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEEB286E0D5A750E78445D10 /* Pods_Autonomy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				5B9542BB242AF8010072D933 /* Autonomy */,
 				5B9542BA242AF8010072D933 /* Products */,
+				722BEEB10D21C3DD9BBC092C /* Pods */,
+				880D136B6C2301145AFB10A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +63,64 @@
 		5B9542BB242AF8010072D933 /* Autonomy */ = {
 			isa = PBXGroup;
 			children = (
-				5B9542BC242AF8010072D933 /* AppDelegate.swift */,
-				5B9542BE242AF8010072D933 /* SceneDelegate.swift */,
-				5B9542C0242AF8010072D933 /* ViewController.swift */,
-				5B9542C2242AF8010072D933 /* Main.storyboard */,
-				5B9542C5242AF8040072D933 /* Assets.xcassets */,
-				5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */,
-				5B9542CA242AF8040072D933 /* Info.plist */,
+				5B9542D0242AF92A0072D933 /* Application */,
+				5B9542D1242AF9380072D933 /* Modules */,
+				5B9542D2242AF94F0072D933 /* Resources */,
 			);
 			path = Autonomy;
+			sourceTree = "<group>";
+		};
+		5B9542D0242AF92A0072D933 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				5B9542BC242AF8010072D933 /* AppDelegate.swift */,
+				5B9542BE242AF8010072D933 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		5B9542D1242AF9380072D933 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5B9542C0242AF8010072D933 /* ViewController.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5B9542D2242AF94F0072D933 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5B9542D3242AF96B0072D933 /* InfoPlist */,
+				5B9542C5242AF8040072D933 /* Assets.xcassets */,
+				5B9542C2242AF8010072D933 /* Main.storyboard */,
+				5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5B9542D3242AF96B0072D933 /* InfoPlist */ = {
+			isa = PBXGroup;
+			children = (
+				5B9542CA242AF8040072D933 /* Info.plist */,
+			);
+			path = InfoPlist;
+			sourceTree = "<group>";
+		};
+		722BEEB10D21C3DD9BBC092C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */,
+				845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		880D136B6C2301145AFB10A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0EA6BBCCFDCDA612204A87A /* Pods_Autonomy.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +130,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B9542CD242AF8040072D933 /* Build configuration list for PBXNativeTarget "Autonomy" */;
 			buildPhases = (
+				01CD2184D526C2B387E5956C /* [CP] Check Pods Manifest.lock */,
 				5B9542B5242AF8010072D933 /* Sources */,
 				5B9542B6242AF8010072D933 /* Frameworks */,
 				5B9542B7242AF8010072D933 /* Resources */,
@@ -132,6 +189,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01CD2184D526C2B387E5956C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Autonomy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B9542B5242AF8010072D933 /* Sources */ = {
@@ -282,11 +364,12 @@
 		};
 		5B9542CE242AF8040072D933 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
-				INFOPLIST_FILE = Autonomy/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/Resources/InfoPlist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +383,12 @@
 		};
 		5B9542CF242AF8040072D933 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
-				INFOPLIST_FILE = Autonomy/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/Resources/InfoPlist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
