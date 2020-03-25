@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B577851242B330E0028D3E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542C0242AF8010072D933 /* ViewController.swift */; };
+		5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
+		5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
+		5B577855242B330E0028D3E3 /* Pods_Autonomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EA6BBCCFDCDA612204A87A /* Pods_Autonomy.framework */; };
+		5B577857242B330E0028D3E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
+		5B577858242B330E0028D3E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C5242AF8040072D933 /* Assets.xcassets */; };
+		5B577859242B330E0028D3E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C2242AF8010072D933 /* Main.storyboard */; };
+		5B577860242B3FC10028D3E3 /* Dev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B57785F242B3FC10028D3E3 /* Dev-Info.plist */; };
 		5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
 		5B9542C1242AF8010072D933 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542C0242AF8010072D933 /* ViewController.swift */; };
@@ -17,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B57785D242B330E0028D3E3 /* Autonomy Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Autonomy Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B57785F242B3FC10028D3E3 /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
 		5B9542B9242AF8010072D933 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9542BC242AF8010072D933 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9542BE242AF8010072D933 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +41,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B577854242B330E0028D3E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B577855242B330E0028D3E3 /* Pods_Autonomy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B9542B6242AF8010072D933 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9542B9242AF8010072D933 /* Autonomy.app */,
+				5B57785D242B330E0028D3E3 /* Autonomy Dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9542CA242AF8040072D933 /* Info.plist */,
+				5B57785F242B3FC10028D3E3 /* Dev-Info.plist */,
 			);
 			path = InfoPlist;
 			sourceTree = "<group>";
@@ -126,6 +146,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B57784E242B330E0028D3E3 /* Autonomy Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B57785A242B330E0028D3E3 /* Build configuration list for PBXNativeTarget "Autonomy Dev" */;
+			buildPhases = (
+				5B57784F242B330E0028D3E3 /* [CP] Check Pods Manifest.lock */,
+				5B577850242B330E0028D3E3 /* Sources */,
+				5B577854242B330E0028D3E3 /* Frameworks */,
+				5B577856242B330E0028D3E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Autonomy Dev";
+			productName = Autonomy;
+			productReference = 5B57785D242B330E0028D3E3 /* Autonomy Dev.app */;
+			productType = "com.apple.product-type.application";
+		};
 		5B9542B8242AF8010072D933 /* Autonomy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5B9542CD242AF8040072D933 /* Build configuration list for PBXNativeTarget "Autonomy" */;
@@ -173,15 +211,27 @@
 			projectRoot = "";
 			targets = (
 				5B9542B8242AF8010072D933 /* Autonomy */,
+				5B57784E242B330E0028D3E3 /* Autonomy Dev */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B577856242B330E0028D3E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B577857242B330E0028D3E3 /* LaunchScreen.storyboard in Resources */,
+				5B577858242B330E0028D3E3 /* Assets.xcassets in Resources */,
+				5B577859242B330E0028D3E3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B9542B7242AF8010072D933 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B577860242B3FC10028D3E3 /* Dev-Info.plist in Resources */,
 				5B9542C9242AF8040072D933 /* LaunchScreen.storyboard in Resources */,
 				5B9542C6242AF8040072D933 /* Assets.xcassets in Resources */,
 				5B9542C4242AF8010072D933 /* Main.storyboard in Resources */,
@@ -213,9 +263,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5B57784F242B330E0028D3E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Autonomy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B577850242B330E0028D3E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B577851242B330E0028D3E3 /* ViewController.swift in Sources */,
+				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
+				5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B9542B5242AF8010072D933 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,6 +330,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5B57785B242B330E0028D3E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Z5CE7A3A7N;
+				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/Resources/InfoPlist/Dev-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev Development";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5B57785C242B330E0028D3E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = Z5CE7A3A7N;
+				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/Resources/InfoPlist/Dev-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Adhoc";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		5B9542CB242AF8040072D933 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -367,15 +491,17 @@
 			baseConfigurationReference = B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/Resources/InfoPlist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.Autonomy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -386,15 +512,17 @@
 			baseConfigurationReference = 845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/Resources/InfoPlist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.Autonomy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Autonomy AppStore";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -403,6 +531,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B57785A242B330E0028D3E3 /* Build configuration list for PBXNativeTarget "Autonomy Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B57785B242B330E0028D3E3 /* Debug */,
+				5B57785C242B330E0028D3E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5B9542B4242AF8010072D933 /* Build configuration list for PBXProject "Autonomy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
