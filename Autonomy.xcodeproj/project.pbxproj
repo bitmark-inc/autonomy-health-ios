@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D8B6DF360D1CCC1F900410E /* Pods_Autonomy_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */; };
 		5B577851242B330E0028D3E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542C0242AF8010072D933 /* ViewController.swift */; };
 		5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
-		5B577855242B330E0028D3E3 /* Pods_Autonomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EA6BBCCFDCDA612204A87A /* Pods_Autonomy.framework */; };
 		5B577857242B330E0028D3E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
 		5B577858242B330E0028D3E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C5242AF8040072D933 /* Assets.xcassets */; };
 		5B577859242B330E0028D3E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C2242AF8010072D933 /* Main.storyboard */; };
@@ -25,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		5B57785D242B330E0028D3E3 /* Autonomy Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Autonomy Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B57785F242B3FC10028D3E3 /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
 		5B9542B9242AF8010072D933 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,8 +38,8 @@
 		5B9542C8242AF8040072D933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B9542CA242AF8040072D933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.release.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.release.xcconfig"; sourceTree = "<group>"; };
-		A0EA6BBCCFDCDA612204A87A /* Pods_Autonomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.debug.xcconfig"; sourceTree = "<group>"; };
+		DD9BD59551A78DBE3656D222 /* Pods-Autonomy Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.release.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B577855242B330E0028D3E3 /* Pods_Autonomy.framework in Frameworks */,
+				0D8B6DF360D1CCC1F900410E /* Pods_Autonomy_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +133,8 @@
 			children = (
 				B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */,
 				845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */,
+				5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */,
+				DD9BD59551A78DBE3656D222 /* Pods-Autonomy Dev.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -138,7 +142,7 @@
 		880D136B6C2301145AFB10A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A0EA6BBCCFDCDA612204A87A /* Pods_Autonomy.framework */,
+				245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,6 +158,7 @@
 				5B577850242B330E0028D3E3 /* Sources */,
 				5B577854242B330E0028D3E3 /* Frameworks */,
 				5B577856242B330E0028D3E3 /* Resources */,
+				C48EF1A8EA2480BE18381BB4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,6 +177,7 @@
 				5B9542B5242AF8010072D933 /* Sources */,
 				5B9542B6242AF8010072D933 /* Frameworks */,
 				5B9542B7242AF8010072D933 /* Resources */,
+				0A5B5DB74C2F696058EC98E2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -263,6 +269,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0A5B5DB74C2F696058EC98E2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autonomy/Pods-Autonomy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autonomy/Pods-Autonomy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Autonomy/Pods-Autonomy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5B57784F242B330E0028D3E3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,11 +301,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Autonomy-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Autonomy Dev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C48EF1A8EA2480BE18381BB4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -332,7 +372,7 @@
 /* Begin XCBuildConfiguration section */
 		5B57785B242B330E0028D3E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */;
+			baseConfigurationReference = 5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -353,7 +393,7 @@
 		};
 		5B57785C242B330E0028D3E3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */;
+			baseConfigurationReference = DD9BD59551A78DBE3656D222 /* Pods-Autonomy Dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
