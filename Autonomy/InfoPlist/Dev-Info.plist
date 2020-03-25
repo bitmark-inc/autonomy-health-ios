@@ -7,7 +7,7 @@
 		<key>API_FBM_SERVER_URL</key>
 		<string>https://autonomy.test.bitmark.com</string>
 		<key>API_SERVER_URL</key>
-		<string>https://autonomy.bitmark.com</string>
+		<string>https://autonomy.test.bitmark.com</string>
 		<key>ENVIRONMENT</key>
 		<string>production</string>
 		<key>INTERCOM_APP_ID</key>

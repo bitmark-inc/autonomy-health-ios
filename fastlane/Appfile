@@ -1,0 +1,6 @@
+apple_id("quynhthuyentruong@gmail.com") # Your Apple email address
+
+for_lane :dev do
+	app_identifier "com.bitmark.autonomy.test"
+	team_id "Z5CE7A3A7N"
+end

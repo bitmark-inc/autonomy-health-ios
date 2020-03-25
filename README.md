@@ -1,0 +1,26 @@
+# Autonomy app
+---
+
+## Building and Running
+You'll need a few things before we get started. 
+Make sure you have Xcode installed from the App Store. 
+Then run the following command to install Xcode's command line tools, if you don't have that yet
+```sh
+xcode-select --install
+```
+
+Install [`Cocoapods`](https://cocoapods.org) for managing dependencies.  
+Using the default Ruby install can require you to use `sudo` when installing gems.
+```sh
+sudo gem install cocoapods
+```
+
+After that, Cocoapods will help you install all of dependencies.
+```sh
+pod install
+```
+
+Alrighty! We're ready to go! Open `Autonomy.xcworkspace` to start.
+
+## Design
+- [Wireframe](https://www.figma.com/file/RGEwFvGIMikk0CTvVk5hIK/Autonomy_app)
