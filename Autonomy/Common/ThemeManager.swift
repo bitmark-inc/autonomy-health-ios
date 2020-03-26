@@ -15,107 +15,70 @@ let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 var themeService = ThemeType.currentThemeService(for: .unspecified)
 
 struct OurTheme {
+    static var paddingInset: UIEdgeInsets = {
+        switch UIScreen.main.bounds.size.height {
+        case let x where x <= 800:
+            return UIEdgeInsets(top: 14, left: 15, bottom: 13, right: 15)
+        default:
+            return UIEdgeInsets(top: 14, left: 15, bottom: 20, right: 15)
+        }
+    }()
+}
+
+enum ThemeStyle {
+    case headerLineColor
+    case headerColor
+    case blackTextColor
+    case silverTextColor
+    case lightTextColor
+    case separateTextColor
+    case background
+    case silverChaliceColor
 }
 
 protocol Theme {
-    var blackTextColor: UIColor { get }
-    var tundoraTextColor: UIColor { get }
-    var lightTextColor: UIColor { get }
-    var highlightTextBackgroundColor: UIColor { get }
-    var background: UIColor { get }
-    var buttonBackground: UIColor { get }
-    var lightButtonTextColor: UIColor { get }
-    var blackButtonTextColor: UIColor { get }
-    var separateLineColor: UIColor { get }
-    var textFieldTextColor: UIColor { get }
-    var textFieldPlaceholderColor: UIColor { get }
-    var textFieldBackgroundColor: UIColor { get }
-    var borderColor: UIColor { get }
-    var textViewBackgroundColor: UIColor { get }
-    var textViewTextColor: UIColor { get }
-    var indicatorColor: UIColor { get }
-    var themeColor: UIColor { get }
-    var themeBlueColor: UIColor { get }
-    var themeIndianKhakiColor: UIColor { get }
-    var themeGreenColor: UIColor { get }
-    var themeMercuryColor: UIColor { get }
-    var controlBackgroundColor: UIColor { get }
-    var postCellBackgroundColor: UIColor { get }
-    var reactionCellBackgroundColor: UIColor { get }
-    var sectionBackgroundColor: UIColor { get }
-    var blurCoverColor: UIColor { get }
+    var headerLineColor:    UIColor { get }
+    var headerColor:        UIColor { get }
+    var blackTextColor:     UIColor { get }
+    var silverTextColor:    UIColor { get }
+    var lightTextColor:     UIColor { get }
+    var separateTextColor:  UIColor { get }
+    var background:         UIColor { get }
+    var silverChaliceColor: UIColor { get }
 
     init(colorTheme: ColorTheme)
 }
 
 struct LightTheme: Theme {
-    let blackTextColor = UIColor.Material.black
-    let tundoraTextColor = UIColor(hexString: "#444")!
-    let lightTextColor = UIColor.Material.white
-    let highlightTextBackgroundColor = UIColor(hexString: "#000", transparency: 0.4)!
-    let background = UIColor(hexString: "#FFFFFF")!
-    let buttonBackground = UIColor(hexString: "#932C19")!
-    let lightButtonTextColor = UIColor.Material.white
-    let blackButtonTextColor = UIColor(hexString: "#404040")!
-    let separateLineColor = UIColor.Material.white
-    let textFieldTextColor = ColorTheme.internationalKleinBlue.color
-    let textFieldPlaceholderColor = ColorTheme.concord.color
-    let textFieldBackgroundColor = UIColor.Material.white
-    let borderColor = UIColor.Material.white
-    let textViewBackgroundColor = UIColor.Material.white
-    let textViewTextColor = UIColor(hexString: "#2B47FD")!
-    let indicatorColor = UIColor.Material.grey
-    let themeColor = UIColor(hexString: "#932C19")!
-    let themeBlueColor = UIColor(hexString: "#0011AF")!
-    let themeIndianKhakiColor = ColorTheme.indianKhaki.color
-    let themeGreenColor = UIColor(hexString: "#5F6D07")!
-    let themeMercuryColor = UIColor(hexString: "#E7E7E7")!
-    let controlBackgroundColor = UIColor(hexString: "#EDF0F4")!
-    let postCellBackgroundColor = UIColor.clear
-    let reactionCellBackgroundColor = UIColor.clear
-    let sectionBackgroundColor = UIColor(hexString: "#EDF0F4")!
-    let blurCoverColor = UIColor(hexString: "#FFF", transparency: 0.7)!
+    let headerLineColor     = UIColor(hexString: "#828180")!
+    let headerColor         = UIColor(hexString: "#BFBFBF")!
+    let blackTextColor      = UIColor.Material.black
+    let silverTextColor     = UIColor(hexString: "#BFBFBF")!
+    let lightTextColor      = UIColor.Material.white
+    let separateTextColor   = UIColor(hexString: "#828180")!
+    let background          = UIColor(hexString: "#1B1B1B")!
+    let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
 
-    init(colorTheme: ColorTheme) {
-    }
+    init(colorTheme: ColorTheme) {}
 }
 
 struct DarkTheme: Theme {
-    let blackTextColor = UIColor.Material.black
-    let tundoraTextColor = UIColor(hexString: "#444")!
-    let lightTextColor = UIColor.Material.white
-    let highlightTextBackgroundColor = UIColor(hexString: "#000", transparency: 0.4)!
-    let background = UIColor(hexString: "#FFFFFF")!
-    let buttonBackground = UIColor(hexString: "#000", transparency: 0.4)!
-    let lightButtonTextColor = UIColor.Material.white
-    let blackButtonTextColor = UIColor(hexString: "#404040")!
-    let separateLineColor = UIColor.Material.white
-    let textFieldTextColor = ColorTheme.internationalKleinBlue.color
-    let textFieldPlaceholderColor = ColorTheme.concord.color
-    let textFieldBackgroundColor = UIColor.Material.white
-    let borderColor = UIColor.Material.white
-    let textViewBackgroundColor = UIColor.Material.white
-    let textViewTextColor = UIColor(hexString: "#2B47FD")!
-    let indicatorColor = UIColor.Material.grey
-    let themeColor = UIColor(hexString: "#932C19")!
-    let themeBlueColor = UIColor(hexString: "#0011AF")!
-    let themeIndianKhakiColor = ColorTheme.indianKhaki.color
-    let themeGreenColor = UIColor(hexString: "#5F6D07")!
-    let themeMercuryColor = UIColor(hexString: "#E7E7E7")!
-    let controlBackgroundColor = UIColor(hexString: "#EDF0F4")!
-    let postCellBackgroundColor = UIColor.clear
-    let reactionCellBackgroundColor = UIColor.clear
-    let sectionBackgroundColor = UIColor(hexString: "#EDF0F4")!
-    let blurCoverColor = UIColor(hexString: "#FFF", transparency: 0.7)!
+    let headerLineColor     = UIColor(hexString: "#828180")!
+    let headerColor         = UIColor(hexString: "#BFBFBF")!
+    let blackTextColor      = UIColor.Material.black
+    let silverTextColor     = UIColor(hexString: "#BFBFBF")!
+    let lightTextColor      = UIColor.Material.white
+    let separateTextColor   = UIColor(hexString: "#828180")!
+    let background          = UIColor(hexString: "#1B1B1B")!
+    let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
 
-    init(colorTheme: ColorTheme) {
-    }
+    init(colorTheme: ColorTheme) {}
 }
 
 enum ColorTheme: Int, CaseIterable {
-    case red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, gray, blueGray, internationalKleinBlue, concord, silver, yukonGold
+    case red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, gray, blueGray, black, white
 
-    case white, cognac, black, tundora, mercury, indianKhaki, wildSand, cornFlowerBlue
+    case silver
 
     var color: UIColor {
         switch self {
@@ -138,18 +101,9 @@ enum ColorTheme: Int, CaseIterable {
         case .brown:      return UIColor.Material.brown
         case .gray:       return UIColor.Material.grey
         case .blueGray:   return UIColor.Material.blueGrey
-        case .internationalKleinBlue: return UIColor(hexString: "#0011AF")!
-        case .cornFlowerBlue: return UIColor(hexString: "#060FAF")!
-        case .concord:    return UIColor(hexString: "#828180")!
-        case .silver:        return UIColor(hexString: "#C1C1C1")!
         case .white:        return UIColor.white
-        case .cognac:       return UIColor(hexString: "#932C19")!
-        case .yukonGold:    return UIColor(hexString: "#5F6D07")!
         case .black:        return UIColor.black
-        case .tundora:      return UIColor(hexString: "#444")!
-        case .mercury:      return UIColor(hexString: "#E7E7E7")!
-        case .indianKhaki:      return UIColor(hexString: "#BBAB8C")!
-        case .wildSand:     return UIColor(hexString: "#F6F6F6")!
+        case .silver:      return UIColor(hexString: "#BFBFBF")!
         }
     }
 
@@ -174,18 +128,9 @@ enum ColorTheme: Int, CaseIterable {
         case .brown:      return UIColor.Material.brown900
         case .gray:       return UIColor.Material.grey900
         case .blueGray:   return UIColor.Material.blueGrey900
-        case .internationalKleinBlue: return UIColor(hexString: "#0011AF")!
-        case .cornFlowerBlue: return UIColor(hexString: "#060FAF")!
-        case .concord:    return UIColor(hexString: "#828180")!
-        case .silver:    return UIColor(hexString: "#C1C1C1")!
-        case .white:        return UIColor.white
-        case .cognac:       return UIColor(hexString: "#932C19")!
-        case .yukonGold:    return UIColor(hexString: "#5F6D07")!
-        case .black:        return UIColor.black
-        case .tundora:      return UIColor(hexString: "#444")!
-        case .mercury:      return UIColor(hexString: "#E7E7E7")!
-        case .indianKhaki:      return UIColor(hexString: "#BBAB8C")!
-        case .wildSand:     return UIColor(hexString: "#F6F6F6")!
+        case .white:      return UIColor.white
+        case .black:      return UIColor.black
+        case .silver:     return UIColor(hexString: "#BFBFBF")!
         }
     }
 
@@ -210,18 +155,9 @@ enum ColorTheme: Int, CaseIterable {
         case .brown:      return "Brown"
         case .gray:       return "Gray"
         case .blueGray:   return "Blue Gray"
-        case .internationalKleinBlue: return "international klein blue"
-        case .cornFlowerBlue: return "corn flower blue"
-        case .concord:    return "concord"
-        case .silver:        return ""
         case .white:        return "White"
-        case .cognac:       return "Cognac"
-        case .yukonGold:    return "Yokon Gold"
         case .black:        return "Black"
-        case .tundora:      return "Tundora"
-        case .mercury:      return "Mercury"
-        case .indianKhaki:      return "Cornflower Blue"
-        case .wildSand:     return "WildSand"
+        case .silver:       return "Silver"
         }
     }
 }

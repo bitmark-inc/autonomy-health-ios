@@ -7,4 +7,30 @@
 */
 
 "launch.name" = "Autonomy";
-"launch.description" = "";
+"launch.description" = "Get better.\nTogether.";
+
+"onboarding.1.description" = "We’ll use community data to calculate a health score for your current location.";
+"onboarding.2.description" = "We’ll send you actionable,\nscience-based updates from local institutions.";
+"onboarding.3.description" = "We’ll help you and your community better manage resources.";
+
+"workFromHome" = "Work from home";
+"workFromHome.description" = "Based on your current location, environmental factors, and and the latest COVID-19 outbreak data, you shouldwork from home today if possible.";
+"helpDeliverFood" = "Help deliver food";
+"helpDeliverFood.description" = "Safely deliver food to others in your area.";
+
+"permission.description" = "Autonomy can help you most if you turn on the following:";
+"permission.notification.description" = "We’ll send you timely surveys about your current conditions and important health recommendations.";
+"permission.location.description" = "We’ll use your location data to give you the latest COVID-19 outbreak information for your local current area and tell how to help your local community.";
+
+"riskLevel.description" = "Are you at higher risk for severe illness from COVID-19?";
+"riskLevel.yes" = "Yes, I’m at higher risk";
+"riskLevel.yes.description" = "Higher risk individuals currently include:\n• People over age 65 And anyone with any of the following pre-existing medical conditions:\n• High blood pressure (hypertension)\n• Cardiovascular disease • Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer";
+"riskLevel.no" = "No, I’m not at higher risk";
+
+"signIn.title" = "Sign In";
+"signIn.submitButton" = "Submit »";
+
+"eula" = "EULA";
+"privacyPolicy" = "Privacy Policy";
+"termsAndPolicyPhrase" = "%@ and %@.";
+"termAndPolicyPhrase.prefix.inSignInWall" = "By continuing, you agree to our";

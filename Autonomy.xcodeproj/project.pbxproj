@@ -130,11 +130,41 @@
 		5B577937242B503E0028D3E3 /* UIViewController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577935242B503E0028D3E3 /* UIViewController+Error.swift */; };
 		5B57793A242B50E30028D3E3 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577939242B50E30028D3E3 /* ImageView.swift */; };
 		5B57793B242B50E30028D3E3 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577939242B50E30028D3E3 /* ImageView.swift */; };
+		5B577940242B62160028D3E3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57793F242B62160028D3E3 /* HeaderView.swift */; };
+		5B577941242B62160028D3E3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57793F242B62160028D3E3 /* HeaderView.swift */; };
+		5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A5242C45F500480A15 /* SignInWallViewController.swift */; };
+		5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A5242C45F500480A15 /* SignInWallViewController.swift */; };
+		5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A8242C47CF00480A15 /* AppLink.swift */; };
+		5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A8242C47CF00480A15 /* AppLink.swift */; };
+		5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
+		5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
+		5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F073242C92DA0084B4F6 /* LinearView.swift */; };
+		5B87F075242C92DA0084B4F6 /* LinearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F073242C92DA0084B4F6 /* LinearView.swift */; };
+		5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */; };
+		5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */; };
+		5B87F081242CA2D80084B4F6 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F080242CA2D80084B4F6 /* CenterView.swift */; };
+		5B87F082242CA2D80084B4F6 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F080242CA2D80084B4F6 /* CenterView.swift */; };
 		5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
 		5B9542C4242AF8010072D933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C2242AF8010072D933 /* Main.storyboard */; };
 		5B9542C6242AF8040072D933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C5242AF8040072D933 /* Assets.xcassets */; };
 		5B9542C9242AF8040072D933 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
+		5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
+		5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
+		5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
+		5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
+		5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */; };
+		5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */; };
+		5BB1409C242C6087009EFC59 /* OnboardingStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1409B242C6087009EFC59 /* OnboardingStep1ViewController.swift */; };
+		5BB1409D242C6087009EFC59 /* OnboardingStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1409B242C6087009EFC59 /* OnboardingStep1ViewController.swift */; };
+		5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1409E242C6138009EFC59 /* BackNavigator.swift */; };
+		5BB140A0242C6138009EFC59 /* BackNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1409E242C6138009EFC59 /* BackNavigator.swift */; };
+		5BB140A2242C6296009EFC59 /* ButtonGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */; };
+		5BB140A3242C6296009EFC59 /* ButtonGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */; };
+		5BB140A5242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */; };
+		5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */; };
+		5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */; };
+		5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */; };
 		9274E41DFA60457D6330C994 /* Pods_Autonomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FED53A2F08C29F4D0A12ABC /* Pods_Autonomy.framework */; };
 		AEEB286E0D5A750E78445D10 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
@@ -143,7 +173,7 @@
 		0FED53A2F08C29F4D0A12ABC /* Pods_Autonomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.debug.xcconfig"; sourceTree = "<group>"; };
-		5B57785D242B330E0028D3E3 /* Autonomy Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Autonomy Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B57785D242B330E0028D3E3 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B57785F242B3FC10028D3E3 /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
 		5B577862242B421B0028D3E3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5B577865242B42310028D3E3 /* Global+Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Global+Log.swift"; sourceTree = "<group>"; };
@@ -203,6 +233,13 @@
 		5B577932242B50180028D3E3 /* SVProgressHUD+rxState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+rxState.swift"; sourceTree = "<group>"; };
 		5B577935242B503E0028D3E3 /* UIViewController+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Error.swift"; sourceTree = "<group>"; };
 		5B577939242B50E30028D3E3 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		5B57793F242B62160028D3E3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		5B62A3A5242C45F500480A15 /* SignInWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWallViewController.swift; sourceTree = "<group>"; };
+		5B62A3A8242C47CF00480A15 /* AppLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLink.swift; sourceTree = "<group>"; };
+		5B87F070242C85B90084B4F6 /* SeparateLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateLine.swift; sourceTree = "<group>"; };
+		5B87F073242C92DA0084B4F6 /* LinearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearView.swift; sourceTree = "<group>"; };
+		5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep3ViewController.swift; sourceTree = "<group>"; };
+		5B87F080242CA2D80084B4F6 /* CenterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
 		5B9542B9242AF8010072D933 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9542BC242AF8010072D933 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9542BE242AF8010072D933 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +247,14 @@
 		5B9542C5242AF8040072D933 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B9542C8242AF8040072D933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B9542CA242AF8040072D933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BB14091242C4A57009EFC59 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
+		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
+		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
+		5BB1409B242C6087009EFC59 /* OnboardingStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep1ViewController.swift; sourceTree = "<group>"; };
+		5BB1409E242C6138009EFC59 /* BackNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigator.swift; sourceTree = "<group>"; };
+		5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGroupView.swift; sourceTree = "<group>"; };
+		5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewLayout.swift; sourceTree = "<group>"; };
+		5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
 		845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.release.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.release.xcconfig"; sourceTree = "<group>"; };
 		B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.debug.xcconfig"; sourceTree = "<group>"; };
 		DD9BD59551A78DBE3656D222 /* Pods-Autonomy Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.release.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -286,6 +331,14 @@
 				5B577881242B43DC0028D3E3 /* NoInternetBanner.swift */,
 				5B57791B242B4E290028D3E3 /* Label.swift */,
 				5B577939242B50E30028D3E3 /* ImageView.swift */,
+				5B87F070242C85B90084B4F6 /* SeparateLine.swift */,
+				5B57793F242B62160028D3E3 /* HeaderView.swift */,
+				5B87F080242CA2D80084B4F6 /* CenterView.swift */,
+				5BB14091242C4A57009EFC59 /* SubmitButton.swift */,
+				5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */,
+				5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */,
+				5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */,
+				5B87F073242C92DA0084B4F6 /* LinearView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				5B577898242B47670028D3E3 /* ServerAPIError.swift */,
+				5B62A3A8242C47CF00480A15 /* AppLink.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -373,9 +427,9 @@
 		5B5778E4242B49140028D3E3 /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
-				5B5778E5242B49140028D3E3 /* Error.strings */,
-				5B5778E7242B49140028D3E3 /* Phrase.strings */,
 				5B5778E9242B49140028D3E3 /* Localizable.strings */,
+				5B5778E7242B49140028D3E3 /* Phrase.strings */,
+				5B5778E5242B49140028D3E3 /* Error.strings */,
 				5B5778EB242B49140028D3E3 /* InfoPlist.strings */,
 			);
 			path = Localizable;
@@ -388,6 +442,7 @@
 				5B57790A242B4CB20028D3E3 /* ThemedViewController.swift */,
 				5B577908242B4CB20028D3E3 /* ViewController.swift */,
 				5B577925242B4EA20028D3E3 /* ViewModel.swift */,
+				5BB1409E242C6138009EFC59 /* BackNavigator.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -426,6 +481,31 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		5B62A3A3242C44CB00480A15 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				5B62A3A4242C44DA00480A15 /* Sign In Wall */,
+				5BB1409A242C606A009EFC59 /* Onboarding Steps */,
+				5B87F079242CA00E0084B4F6 /* Permission */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		5B62A3A4242C44DA00480A15 /* Sign In Wall */ = {
+			isa = PBXGroup;
+			children = (
+				5B62A3A5242C45F500480A15 /* SignInWallViewController.swift */,
+			);
+			path = "Sign In Wall";
+			sourceTree = "<group>";
+		};
+		5B87F079242CA00E0084B4F6 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Permission;
+			sourceTree = "<group>";
+		};
 		5B9542B0242AF8010072D933 = {
 			isa = PBXGroup;
 			children = (
@@ -440,7 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9542B9242AF8010072D933 /* Autonomy.app */,
-				5B57785D242B330E0028D3E3 /* Autonomy Dev.app */,
+				5B57785D242B330E0028D3E3 /* Autonomy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -477,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				5B577911242B4D5A0028D3E3 /* Launching */,
+				5B62A3A3242C44CB00480A15 /* Onboarding */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -501,6 +582,17 @@
 				5B57785F242B3FC10028D3E3 /* Dev-Info.plist */,
 			);
 			path = InfoPlist;
+			sourceTree = "<group>";
+		};
+		5BB1409A242C606A009EFC59 /* Onboarding Steps */ = {
+			isa = PBXGroup;
+			children = (
+				5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */,
+				5BB1409B242C6087009EFC59 /* OnboardingStep1ViewController.swift */,
+				5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */,
+				5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */,
+			);
+			path = "Onboarding Steps";
 			sourceTree = "<group>";
 		};
 		722BEEB10D21C3DD9BBC092C /* Pods */ = {
@@ -544,7 +636,7 @@
 			);
 			name = "Autonomy Dev";
 			productName = Autonomy;
-			productReference = 5B57785D242B330E0028D3E3 /* Autonomy Dev.app */;
+			productReference = 5B57785D242B330E0028D3E3 /* Autonomy.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5B9542B8242AF8010072D933 /* Autonomy */ = {
@@ -837,16 +929,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B577910242B4CB30028D3E3 /* ThemedViewController.swift in Sources */,
+				5B87F075242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790E242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577922242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
 				5B577901242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B57789A242B47770028D3E3 /* ServerAPIError.swift in Sources */,
+				5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B577894242B47060028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B577895242B470A0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
+				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B57786E242B43140028D3E3 /* Credential.swift in Sources */,
 				5B577931242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
+				5B577941242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B57790C242B4CB30028D3E3 /* ViewController.swift in Sources */,
+				5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */,
 				5B577934242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
 				5B577927242B4EA20028D3E3 /* ViewModel.swift in Sources */,
 				5B5778E3242B48AA0028D3E3 /* R.generated.swift in Sources */,
@@ -855,21 +952,31 @@
 				5B57787F242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577878242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
+				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B57786A242B424C0028D3E3 /* Global.swift in Sources */,
+				5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
 				5B57793B242B50E30028D3E3 /* ImageView.swift in Sources */,
+				5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */,
+				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
+				5BB140A3242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577924242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
+				5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
 				5B577864242B421B0028D3E3 /* Constant.swift in Sources */,
 				5B577867242B42310028D3E3 /* Global+Log.swift in Sources */,
+				5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577889242B45830028D3E3 /* Auth.swift in Sources */,
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791D242B4E290028D3E3 /* Label.swift in Sources */,
+				5BB140A0242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577916242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B577937242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5B577918242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5B577907242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
+				5B87F082242CA2D80084B4F6 /* CenterView.swift in Sources */,
+				5BB1409D242C6087009EFC59 /* OnboardingStep1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,16 +985,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B57790F242B4CB30028D3E3 /* ThemedViewController.swift in Sources */,
+				5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790D242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577921242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
 				5B577900242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B577899242B47670028D3E3 /* ServerAPIError.swift in Sources */,
+				5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B57786D242B43140028D3E3 /* Credential.swift in Sources */,
 				5B577890242B460E0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
+				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B577893242B46230028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
+				5B577940242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B57790B242B4CB30028D3E3 /* ViewController.swift in Sources */,
+				5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */,
 				5B577933242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
 				5B577926242B4EA20028D3E3 /* ViewModel.swift in Sources */,
 				5B5778E2242B48AA0028D3E3 /* R.generated.swift in Sources */,
@@ -896,21 +1008,31 @@
 				5B57787E242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577877242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
+				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B577869242B424C0028D3E3 /* Global.swift in Sources */,
+				5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
 				5B57793A242B50E30028D3E3 /* ImageView.swift in Sources */,
+				5BB140A5242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */,
+				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
+				5BB140A2242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577923242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
+				5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
 				5B577863242B421B0028D3E3 /* Constant.swift in Sources */,
 				5B577866242B42310028D3E3 /* Global+Log.swift in Sources */,
+				5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577888242B45830028D3E3 /* Auth.swift in Sources */,
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791C242B4E290028D3E3 /* Label.swift in Sources */,
+				5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577915242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B577936242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5B577917242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5B577906242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
+				5B87F081242CA2D80084B4F6 /* CenterView.swift in Sources */,
+				5BB1409C242C6087009EFC59 /* OnboardingStep1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,7 +1104,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Autonomy;
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1003,7 +1125,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Autonomy;
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Adhoc";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

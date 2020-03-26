@@ -40,10 +40,6 @@ class ViewController: ThemedViewController, Navigatable {
             make.bottom.equalToSuperview()
         }
     }
-
-    deinit {
-        print("deinit \(self)")
-    }
 }
 
 extension ViewController {

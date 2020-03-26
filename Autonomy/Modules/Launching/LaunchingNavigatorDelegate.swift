@@ -60,6 +60,7 @@ extension LaunchingNavigatorDelegate {
 // MARK: - Navigator
 extension LaunchingNavigatorDelegate {
     fileprivate func gotoSignInWallScreen() {
+        navigator.show(segue: .signInWall, sender: self, transition: .replace(type: .none))
     }
 
     fileprivate func gotoMainScreen() {

@@ -50,88 +50,33 @@ extension Label {
         }
     }
 
-    func applyTitleTheme(
-        text: String? = nil, colorTheme: ColorTheme,
-        font: UIFont = R.font.domaineSansTextLight(size: Size.ds(36))!,
-        lineHeight: CGFloat = 1.1) {
-
+    func apply(text: String? = nil, font: UIFont?, themeStyle: ThemeStyle, lineHeight: CGFloat? = nil) {
         self.text = text
         self.font = font
 
-        switch colorTheme {
-        case .white:
+        switch themeStyle {
+        case .lightTextColor:
             themeService.rx
                 .bind({ $0.lightTextColor }, to: rx.textColor)
                 .disposed(by: disposeBag)
 
-        case .black:
+        case .blackTextColor:
             themeService.rx
                 .bind({ $0.blackTextColor }, to: rx.textColor)
                 .disposed(by: disposeBag)
 
-        case .cognac:
+        case .silverTextColor:
             themeService.rx
-                .bind({ $0.themeColor }, to: rx.textColor)
+                .bind({ $0.silverTextColor }, to: rx.textColor)
                 .disposed(by: disposeBag)
 
-        case .internationalKleinBlue:
+        case .silverChaliceColor:
             themeService.rx
-                .bind({ $0.themeBlueColor }, to: rx.textColor)
-                .disposed(by: disposeBag)
-
-        case .yukonGold:
-            themeService.rx
-                .bind({ $0.themeGreenColor }, to: rx.textColor)
+                .bind({ $0.silverChaliceColor }, to: rx.textColor)
                 .disposed(by: disposeBag)
 
         default:
-            themeService.rx
-                .bind({ $0.themeColor }, to: rx.textColor)
-                .disposed(by: disposeBag)
-        }
-
-        lineHeightMultiple(lineHeight)
-    }
-
-    func apply(text: String? = nil, font: UIFont?, colorTheme: ColorTheme, lineHeight: CGFloat? = nil) {
-        self.text = text
-        self.font = font
-
-        switch colorTheme {
-        case .black:
-            themeService.rx
-                .bind({ $0.blackTextColor }, to: rx.textColor)
-                .disposed(by: disposeBag)
-
-        case .white:
-            themeService.rx
-                .bind({ $0.lightTextColor }, to: rx.textColor)
-                .disposed(by: disposeBag)
-
-        case .tundora:
-            themeService.rx
-                .bind({ $0.tundoraTextColor }, to: rx.textColor)
-                .disposed(by: disposeBag)
-
-        case .cognac:
-            themeService.rx
-                .bind({ $0.themeColor }, to: rx.textColor)
-                .disposed(by: disposeBag)
-
-        case .yukonGold:
-            themeService.rx
-                .bind({ $0.themeGreenColor }, to: rx.textColor)
-                .disposed(by: disposeBag)
-
-        case .internationalKleinBlue:
-            themeService.rx
-                .bind({ $0.themeBlueColor }, to: rx.textColor)
-                .disposed(by: disposeBag)
-
-        default:
-            themeService.rx
-                .bind({ $0.blackTextColor }, to: rx.textColor)
-                .disposed(by: disposeBag)
+            return
         }
 
         if let lineHeight = lineHeight {

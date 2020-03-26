@@ -6,8 +6,18 @@
   Copyright © 2019 Bitmark Inc. All rights reserved.
 */
 
+"Back" = "Back";
 "Success" = "Success";
 "ok" = "OK";
+"Start" = "Start";
+"Next" = "Next";
+"Today" = "Today";
+
+"Permission" = "Permission";
+"Notifications" = "Notifications";
+"Location_data" = "Location data";
+
+"RiskLevel" = "Risk Level";
 
 "supportMessage" = "\n%@\n\nWould you like to contact with support team?";
 "Contact" = "Contact";

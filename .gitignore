@@ -40,7 +40,6 @@ xcuserdata/
 # CocoaPods
 Pods/
 Podfile.lock
-.DS_Store
 
 # fastlane
 #
@@ -60,3 +59,6 @@ fastlane/.env.*
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+# R.swift
+*.generated.swift

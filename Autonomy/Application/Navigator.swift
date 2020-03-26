@@ -23,7 +23,12 @@ class Navigator {
     // MARK: - segues list, all app scenes
     enum Scene {
         case launchingNavigation
+        case signInWall
+        case onboardingStep1
+        case onboardingStep2
+        case onboardingStep3
         case main
+        case safariController(URL)
     }
 
     enum Transition {
@@ -43,8 +48,19 @@ class Navigator {
         case .launchingNavigation:
             let launchVC = LaunchingViewController()
             return NavigationController(rootViewController: launchVC)
+
+        case .signInWall:       return SignInWallViewController()
+        case .onboardingStep1:  return OnboardingStep1ViewController()
+        case .onboardingStep2:  return OnboardingStep2ViewController()
+        case .onboardingStep3:  return OnboardingStep3ViewController()
         case .main:
             return nil
+
+
+        case .safariController(let url):
+            let vc = SFSafariViewController(url: url)
+            vc.hidesBottomBarWhenPushed = true
+            return vc
         }
     }
 
@@ -87,6 +103,7 @@ class Navigator {
                 rootViewController.setViewControllers([target], animated: true)
             }
             return
+
         case .custom: return
         default: break
         }
@@ -151,5 +168,7 @@ class Navigator {
 enum ButtonItemType {
     case `continue`
     case back
+    case next
+    case done
     case none
 }
