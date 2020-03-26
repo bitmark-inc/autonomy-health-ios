@@ -6,6 +6,7 @@ inhibit_all_warnings!
 
 def sharedPods
   pod 'BitmarkSDK/RxSwift', git: 'https://github.com/bitmark-inc/bitmark-sdk-swift.git', branch: 'master'
+  pod 'Intercom'
   pod 'Sentry'
 
   pod 'RxSwift', '~> 5'
@@ -28,6 +29,7 @@ def sharedPods
   pod 'XCGLogger', '~> 7.0.0'
 
   pod 'SwiftRichString'
+  pod 'SwiftDate'
 end
 
 
@@ -43,7 +45,7 @@ target 'Autonomy Dev' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Spring Dev
+  # Pods for Autonomy Dev
   sharedPods
   pod 'SwiftLint'
 end

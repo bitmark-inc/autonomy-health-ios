@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Autonomy
+
+  Created by thuyentruong on 11/19/19.
+  Copyright © 2019 Bitmark Inc. All rights reserved.
+*/
+
+"Success" = "Success";
+"ok" = "OK";
+
+"supportMessage" = "\n%@\n\nWould you like to contact with support team?";
+"Contact" = "Contact";
+"Cancel" = "Cancel";
+"TryAgain" = "Try Again";
+"Contact_us" = "Contact us";
+"YourAuthorizationIsRequired" = "Your authorization is required.";

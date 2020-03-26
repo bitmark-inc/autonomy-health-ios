@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+import Intercom
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +17,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+
+        // init BitmarkSDK environment & api_token
+        BitmarkSDKService.setupConfig()
+
+        // SVProgressHUD
+        SVProgressHUD.setContainerView(window)
+        SVProgressHUD.setMinimumDismissTimeInterval(0.5)
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setHapticsEnabled(true)
+
+        // setup Intercom
+        Intercom.setApiKey(Constant.intercomAppKey, forAppId: Constant.intercomAppID)
+
+        // IQKeyboardManager
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+
+        if #available(iOS 13, *) {
+            // already execute app flow in SceneDelegate
+        } else {
+            Application.shared.presentInitialScreen(
+                in: window!,
+                fromDeeplink: (launchOptions ?? [:]).count > 0)
+        }
+
         // Override point for customization after application launch.
         return true
     }

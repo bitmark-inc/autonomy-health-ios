@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Autonomy
+
+  Created by Thuyen Truong on 12/11/19.
+  Copyright © 2019 Bitmark Inc. All rights reserved.
+
+ NSPhotoLibraryUsageDescription = "Autonomy will use photos from your library.";
+ NSFaceIDUsageDescription = "Autonomy will use Face ID to secure your account and data.";
+*/
