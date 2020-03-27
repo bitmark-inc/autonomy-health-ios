@@ -10,6 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import Intercom
 import SVProgressHUD
+import OneSignal
 import CoreLocation
 
 @UIApplicationMain
@@ -38,6 +39,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = false
 
+        // OneSignal
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+
+        OneSignal.initWithLaunchOptions(
+            launchOptions,
+            appId: Constant.oneSignalAppID,
+            handleNotificationAction: nil,
+            settings: onesignalInitSettings
+        )
+
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
+        OneSignal.setLocationShared(false)
+
+        // Location permission
+        let locationManager = Global.default.locationManager
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+
         if #available(iOS 13, *) {
             // already execute app flow in SceneDelegate
         } else {
@@ -45,11 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 in: window!,
                 fromDeeplink: (launchOptions ?? [:]).count > 0)
         }
-
-        // Location permission
-        let locationManager = Global.default.locationManager
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
 
         // Override point for customization after application launch.
         return true

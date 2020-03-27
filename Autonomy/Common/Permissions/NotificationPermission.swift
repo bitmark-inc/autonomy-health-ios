@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import OneSignal
 import UserNotifications
 
 class NotificationPermission {
@@ -41,6 +42,21 @@ class NotificationPermission {
 
             return Disposables.create()
         }
+    }
+
+    static func registerOneSignal() {
+        guard let accountNumber = Global.current.account?.getAccountNumber() else {
+            Global.log.error(AppError.emptyCurrentAccount)
+            return
+        }
+
+        Global.log.info("[process] registerOneSignal: \(accountNumber)")
+        OneSignal.promptForPushNotifications(userResponse: { _ in
+            OneSignal.sendTags([
+                Constant.OneSignalTag.key: accountNumber
+            ])
+            OneSignal.setSubscription(true)
+        })
     }
 
     fileprivate static func askEnableNotificationAlert() {

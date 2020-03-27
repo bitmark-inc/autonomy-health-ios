@@ -51,3 +51,15 @@ target 'Autonomy Dev' do
   sharedPods
   pod 'SwiftLint'
 end
+
+target 'OneSignalNotificationServiceExtension' do
+  use_frameworks!
+
+  pod 'OneSignal'
+end
+
+target 'OneSignalNotificationServiceDevExtension' do
+  use_frameworks!
+
+  pod 'OneSignal'
+end
