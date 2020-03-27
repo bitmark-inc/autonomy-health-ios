@@ -8,6 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		0D8B6DF360D1CCC1F900410E /* Pods_Autonomy_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */; };
+		5B2C856D242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
+		5B2C856E242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
+		5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
+		5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
+		5B2C8576242DD42B002CC53B /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* ProfileAPI.swift */; };
+		5B2C8577242DD42B002CC53B /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* ProfileAPI.swift */; };
+		5B2C8578242DD42B002CC53B /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* ProfileService.swift */; };
+		5B2C8579242DD42B002CC53B /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* ProfileService.swift */; };
+		5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
+		5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
+		5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */; };
+		5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */; };
+		5B2C8583242DDBFB002CC53B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8582242DDBFB002CC53B /* MainViewController.swift */; };
+		5B2C8584242DDBFB002CC53B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8582242DDBFB002CC53B /* MainViewController.swift */; };
+		5B2C8586242DDC1E002CC53B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8585242DDC1E002CC53B /* MainViewModel.swift */; };
+		5B2C8587242DDC1E002CC53B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8585242DDC1E002CC53B /* MainViewModel.swift */; };
+		5B2C8589242DDDE1002CC53B /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8588242DDDE1002CC53B /* AppVersion.swift */; };
+		5B2C858A242DDDE1002CC53B /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8588242DDDE1002CC53B /* AppVersion.swift */; };
+		5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C858C242DDDFB002CC53B /* ServerAssetsAPI.swift */; };
+		5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C858C242DDDFB002CC53B /* ServerAssetsAPI.swift */; };
+		5B2C8590242DDDFB002CC53B /* ServerAssetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C858D242DDDFB002CC53B /* ServerAssetsService.swift */; };
+		5B2C8591242DDDFB002CC53B /* ServerAssetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C858D242DDDFB002CC53B /* ServerAssetsService.swift */; };
+		5B2C8593242DDE51002CC53B /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8592242DDE51002CC53B /* AppInfo.swift */; };
+		5B2C8594242DDE51002CC53B /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8592242DDE51002CC53B /* AppInfo.swift */; };
 		5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
 		5B577857242B330E0028D3E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
@@ -144,6 +168,14 @@
 		5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */; };
 		5B87F081242CA2D80084B4F6 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F080242CA2D80084B4F6 /* CenterView.swift */; };
 		5B87F082242CA2D80084B4F6 /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F080242CA2D80084B4F6 /* CenterView.swift */; };
+		5B87F084242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F083242CAE9E0084B4F6 /* PermissionViewController.swift */; };
+		5B87F085242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F083242CAE9E0084B4F6 /* PermissionViewController.swift */; };
+		5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F086242CB7C40084B4F6 /* OptionBoxView.swift */; };
+		5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F086242CB7C40084B4F6 /* OptionBoxView.swift */; };
+		5B87F08A242CC01C0084B4F6 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F089242CC01C0084B4F6 /* CheckboxView.swift */; };
+		5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F089242CC01C0084B4F6 /* CheckboxView.swift */; };
+		5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */; };
+		5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */; };
 		5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
 		5B9542C4242AF8010072D933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C2242AF8010072D933 /* Main.storyboard */; };
@@ -165,6 +197,8 @@
 		5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */; };
 		5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */; };
 		5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */; };
+		5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */; };
+		5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */; };
 		9274E41DFA60457D6330C994 /* Pods_Autonomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FED53A2F08C29F4D0A12ABC /* Pods_Autonomy.framework */; };
 		AEEB286E0D5A750E78445D10 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
@@ -173,6 +207,18 @@
 		0FED53A2F08C29F4D0A12ABC /* Pods_Autonomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.debug.xcconfig"; sourceTree = "<group>"; };
+		5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
+		5B2C8570242DB786002CC53B /* LocationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermission.swift; sourceTree = "<group>"; };
+		5B2C8574242DD42B002CC53B /* ProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
+		5B2C8575242DD42B002CC53B /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		5B2C857A242DD4CB002CC53B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataEngine.swift; sourceTree = "<group>"; };
+		5B2C8582242DDBFB002CC53B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		5B2C8585242DDC1E002CC53B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		5B2C8588242DDDE1002CC53B /* AppVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
+		5B2C858C242DDDFB002CC53B /* ServerAssetsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAssetsAPI.swift; sourceTree = "<group>"; };
+		5B2C858D242DDDFB002CC53B /* ServerAssetsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAssetsService.swift; sourceTree = "<group>"; };
+		5B2C8592242DDE51002CC53B /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		5B57785D242B330E0028D3E3 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B57785F242B3FC10028D3E3 /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
 		5B577862242B421B0028D3E3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -240,6 +286,10 @@
 		5B87F073242C92DA0084B4F6 /* LinearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearView.swift; sourceTree = "<group>"; };
 		5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep3ViewController.swift; sourceTree = "<group>"; };
 		5B87F080242CA2D80084B4F6 /* CenterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterView.swift; sourceTree = "<group>"; };
+		5B87F083242CAE9E0084B4F6 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PermissionViewController.swift; path = Autonomy/Common/Views/PermissionViewController.swift; sourceTree = SOURCE_ROOT; };
+		5B87F086242CB7C40084B4F6 /* OptionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionBoxView.swift; sourceTree = "<group>"; };
+		5B87F089242CC01C0084B4F6 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewController.swift; sourceTree = "<group>"; };
 		5B9542B9242AF8010072D933 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9542BC242AF8010072D933 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9542BE242AF8010072D933 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -255,6 +305,7 @@
 		5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGroupView.swift; sourceTree = "<group>"; };
 		5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewLayout.swift; sourceTree = "<group>"; };
 		5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
+		5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewModel.swift; sourceTree = "<group>"; };
 		845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.release.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.release.xcconfig"; sourceTree = "<group>"; };
 		B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.debug.xcconfig"; sourceTree = "<group>"; };
 		DD9BD59551A78DBE3656D222 /* Pods-Autonomy Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.release.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -281,6 +332,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B2C856F242DB774002CC53B /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */,
+				5B2C8570242DB786002CC53B /* LocationPermission.swift */,
+				5B2C8588242DDDE1002CC53B /* AppVersion.swift */,
+			);
+			path = Permissions;
+			sourceTree = "<group>";
+		};
+		5B2C8573242DD42B002CC53B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C8574242DD42B002CC53B /* ProfileAPI.swift */,
+				5B2C8575242DD42B002CC53B /* ProfileService.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		5B2C857D242DD869002CC53B /* Data Engine */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */,
+			);
+			path = "Data Engine";
+			sourceTree = "<group>";
+		};
+		5B2C8581242DDBE7002CC53B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C8582242DDBFB002CC53B /* MainViewController.swift */,
+				5B2C8585242DDC1E002CC53B /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5B2C858B242DDDFB002CC53B /* Server Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C858C242DDDFB002CC53B /* ServerAssetsAPI.swift */,
+				5B2C858D242DDDFB002CC53B /* ServerAssetsService.swift */,
+			);
+			path = "Server Assets";
+			sourceTree = "<group>";
+		};
 		5B577861242B41F70028D3E3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +384,7 @@
 				5B577868242B424C0028D3E3 /* Global.swift */,
 				5B577865242B42310028D3E3 /* Global+Log.swift */,
 				5B577905242B4C6C0028D3E3 /* ThemeManager.swift */,
+				5B2C856F242DB774002CC53B /* Permissions */,
 				5B577904242B4C540028D3E3 /* Controllers */,
 				5B577880242B43CB0028D3E3 /* Views */,
 				5B57791E242B4E830028D3E3 /* Bitmark */,
@@ -311,6 +408,8 @@
 				5B577873242B439D0028D3E3 /* MoyaAuthPlugin.swift */,
 				5B577876242B43A30028D3E3 /* NetworkConnectionManager.swift */,
 				5B577879242B43B70028D3E3 /* Auth */,
+				5B2C858B242DDDFB002CC53B /* Server Assets */,
+				5B2C8573242DD42B002CC53B /* Profile */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -339,6 +438,8 @@
 				5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */,
 				5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */,
 				5B87F073242C92DA0084B4F6 /* LinearView.swift */,
+				5B87F086242CB7C40084B4F6 /* OptionBoxView.swift */,
+				5B87F089242CC01C0084B4F6 /* CheckboxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,6 +448,8 @@
 			isa = PBXGroup;
 			children = (
 				5B577887242B45820028D3E3 /* Auth.swift */,
+				5B2C857A242DD4CB002CC53B /* Profile.swift */,
+				5B2C8592242DDE51002CC53B /* AppInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -487,6 +590,7 @@
 				5B62A3A4242C44DA00480A15 /* Sign In Wall */,
 				5BB1409A242C606A009EFC59 /* Onboarding Steps */,
 				5B87F079242CA00E0084B4F6 /* Permission */,
+				5B87F08C242CC1780084B4F6 /* Risk Level */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -502,8 +606,18 @@
 		5B87F079242CA00E0084B4F6 /* Permission */ = {
 			isa = PBXGroup;
 			children = (
+				5B87F083242CAE9E0084B4F6 /* PermissionViewController.swift */,
 			);
 			path = Permission;
+			sourceTree = "<group>";
+		};
+		5B87F08C242CC1780084B4F6 /* Risk Level */ = {
+			isa = PBXGroup;
+			children = (
+				5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */,
+				5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */,
+			);
+			path = "Risk Level";
 			sourceTree = "<group>";
 		};
 		5B9542B0242AF8010072D933 = {
@@ -532,6 +646,7 @@
 				5B577861242B41F70028D3E3 /* Common */,
 				5B9542D1242AF9380072D933 /* Modules */,
 				5B577886242B45550028D3E3 /* Models */,
+				5B2C857D242DD869002CC53B /* Data Engine */,
 				5B577872242B43860028D3E3 /* Services */,
 				5B57786B242B42FE0028D3E3 /* ConfCore */,
 				5B57788A242B45EA0028D3E3 /* Extensions */,
@@ -558,6 +673,7 @@
 			children = (
 				5B577911242B4D5A0028D3E3 /* Launching */,
 				5B62A3A3242C44CB00480A15 /* Onboarding */,
+				5B2C8581242DDBE7002CC53B /* Main */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -929,6 +1045,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B577910242B4CB30028D3E3 /* ThemedViewController.swift in Sources */,
+				5B2C856E242DAFC6002CC53B /* NotificationPermission.swift in Sources */,
+				5B2C8584242DDBFB002CC53B /* MainViewController.swift in Sources */,
 				5B87F075242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790E242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577922242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
@@ -937,11 +1055,14 @@
 				5B57789A242B47770028D3E3 /* ServerAPIError.swift in Sources */,
 				5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B577894242B47060028D3E3 /* MoyaProviderType+Request.swift in Sources */,
+				5B87F085242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577895242B470A0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
+				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5B57786E242B43140028D3E3 /* Credential.swift in Sources */,
 				5B577931242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577941242B62160028D3E3 /* HeaderView.swift in Sources */,
+				5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
 				5B57790C242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */,
 				5B577934242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
@@ -953,23 +1074,34 @@
 				5B577878242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
 				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
+				5B2C8591242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
+				5B2C8579242DD42B002CC53B /* ProfileService.swift in Sources */,
 				5B57786A242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
 				5B57793B242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */,
+				5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
+				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
+				5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
 				5BB140A3242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577924242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
 				5B577864242B421B0028D3E3 /* Constant.swift in Sources */,
 				5B577867242B42310028D3E3 /* Global+Log.swift in Sources */,
+				5B2C8594242DDE51002CC53B /* AppInfo.swift in Sources */,
 				5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577889242B45830028D3E3 /* Auth.swift in Sources */,
+				5B2C858A242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791D242B4E290028D3E3 /* Label.swift in Sources */,
+				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
+				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
+				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
+				5B2C8577242DD42B002CC53B /* ProfileAPI.swift in Sources */,
 				5BB140A0242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577916242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B577937242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
@@ -977,6 +1109,7 @@
 				5B577907242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
 				5B87F082242CA2D80084B4F6 /* CenterView.swift in Sources */,
 				5BB1409D242C6087009EFC59 /* OnboardingStep1ViewController.swift in Sources */,
+				5B2C8587242DDC1E002CC53B /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +1118,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B57790F242B4CB30028D3E3 /* ThemedViewController.swift in Sources */,
+				5B2C856D242DAFC6002CC53B /* NotificationPermission.swift in Sources */,
+				5B2C8583242DDBFB002CC53B /* MainViewController.swift in Sources */,
 				5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790D242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577921242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
@@ -993,11 +1128,14 @@
 				5B577899242B47670028D3E3 /* ServerAPIError.swift in Sources */,
 				5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B57786D242B43140028D3E3 /* Credential.swift in Sources */,
+				5B87F084242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577890242B460E0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
+				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5B577893242B46230028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577940242B62160028D3E3 /* HeaderView.swift in Sources */,
+				5B87F08A242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
 				5B57790B242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */,
 				5B577933242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
@@ -1009,23 +1147,34 @@
 				5B577877242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
 				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,
+				5B2C8590242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
+				5B2C8578242DD42B002CC53B /* ProfileService.swift in Sources */,
 				5B577869242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
 				5B57793A242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5BB140A5242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */,
+				5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
+				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
+				5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
 				5BB140A2242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577923242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
 				5B577863242B421B0028D3E3 /* Constant.swift in Sources */,
 				5B577866242B42310028D3E3 /* Global+Log.swift in Sources */,
+				5B2C8593242DDE51002CC53B /* AppInfo.swift in Sources */,
 				5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577888242B45830028D3E3 /* Auth.swift in Sources */,
+				5B2C8589242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791C242B4E290028D3E3 /* Label.swift in Sources */,
+				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
+				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
+				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
+				5B2C8576242DD42B002CC53B /* ProfileAPI.swift in Sources */,
 				5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577915242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B577936242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
@@ -1033,6 +1182,7 @@
 				5B577906242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
 				5B87F081242CA2D80084B4F6 /* CenterView.swift in Sources */,
 				5BB1409C242C6087009EFC59 /* OnboardingStep1ViewController.swift in Sources */,
+				5B2C8586242DDC1E002CC53B /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -55,7 +55,7 @@ class OnboardingStep3ViewController: ViewController, BackNavigator, OnboardingVi
 // MARK: - Navigator
 extension OnboardingStep3ViewController {
     fileprivate func gotoPermissionScreen() {
-
+        navigator.show(segue: .permission, sender: self)
     }
 }
 
@@ -75,7 +75,7 @@ extension OnboardingStep3ViewController {
         helpFoodDescLabel.numberOfLines = 0
 
         let leftView = LinearView(
-            (helpFoodLabel, 15),
+            (helpFoodLabel, 10),
             (helpFoodDescLabel, 8))
 
         let view = UIView()

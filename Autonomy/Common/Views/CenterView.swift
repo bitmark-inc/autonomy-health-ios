@@ -14,12 +14,21 @@ class CenterView: UIView {
     // MARK: - Properties
     let disposeBag = DisposeBag()
 
-    init(contentView: UIView) {
+    init(contentView: UIView, spacing: CGFloat? = nil) {
         super.init(frame: CGRect.zero)
 
         addSubview(contentView)
-        contentView.snp.makeConstraints { (make) in
-            make.width.centerX.centerY.equalToSuperview()
+
+        if let spacing = spacing {
+            contentView.snp.makeConstraints { (make) in
+                make.width.centerX.equalToSuperview()
+                make.top.bottom.equalToSuperview()
+                    .inset(UIEdgeInsets(top: spacing, left: 0, bottom: spacing, right: 0))
+            }
+        } else {
+            contentView.snp.makeConstraints { (make) in
+                make.width.centerX.centerY.equalToSuperview()
+            }
         }
     }
 

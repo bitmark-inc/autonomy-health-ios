@@ -54,6 +54,7 @@ extension LaunchingNavigatorDelegate {
         }
 
         // *** user logged in
+        gotoMainScreen()
     }
 }
 
@@ -64,5 +65,7 @@ extension LaunchingNavigatorDelegate {
     }
 
     fileprivate func gotoMainScreen() {
+        let viewModel = MainViewModel()
+        navigator.show(segue: .main(viewModel: viewModel), sender: self, transition: .replace(type: .none))
     }
 }

@@ -2,19 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>AppCredentials</key>
-    <dict>
-        <key>API_SERVER_URL</key>
-        <string>https://autonomy.bitmark.com</string>
-        <key>ENVIRONMENT</key>
-        <string>production</string>
-        <key>INTERCOM_APP_ID</key>
-        <string>ejkeunzw</string>
-        <key>INTERCOM_APP_KEY</key>
-        <string>ios_sdk-73c4808d20211944196736d561a405f6ffcdaded</string>
-        <key>SENTRY_DSN</key>
-        <string>https://0ee9c8b5a9f940ff89151a7c438d9588@sentry.io/5174296</string>
-    </dict>
+	<key>AppCredentials</key>
+	<dict>
+		<key>API_SERVER_URL</key>
+		<string>https://autonomy.bitmark.com</string>
+		<key>ENVIRONMENT</key>
+		<string>production</string>
+		<key>INTERCOM_APP_ID</key>
+		<string>ejkeunzw</string>
+		<key>INTERCOM_APP_KEY</key>
+		<string>ios_sdk-73c4808d20211944196736d561a405f6ffcdaded</string>
+		<key>SENTRY_DSN</key>
+		<string>https://0ee9c8b5a9f940ff89151a7c438d9588@sentry.io/5174296</string>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -71,44 +71,48 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>UIAppFonts</key>
-    <array>
-        <string>AtlasGrotesk-Black.otf</string>
-        <string>AtlasGrotesk-BlackItalic.otf</string>
-        <string>AtlasGrotesk-Bold.otf</string>
-        <string>AtlasGrotesk-BoldItalic.otf</string>
-        <string>AtlasGrotesk-Light.otf</string>
-        <string>AtlasGrotesk-LightItalic.otf</string>
-        <string>AtlasGrotesk-Medium.otf</string>
-        <string>AtlasGrotesk-MediumItalic.otf</string>
-        <string>AtlasGrotesk-Regular.otf</string>
-        <string>AtlasGrotesk-RegularItalic.otf</string>
-        <string>AtlasGrotesk-Thin.otf</string>
-        <string>AtlasGrotesk-ThinItalic.otf</string>
-        <string>DomaineSansText-Black.otf</string>
-        <string>DomaineSansText-BlackItalic.otf</string>
-        <string>DomaineSansText-Bold.otf</string>
-        <string>DomaineSansText-BoldItalic.otf</string>
-        <string>DomaineSansText-Light.otf</string>
-        <string>DomaineSansText-LightItalic.otf</string>
-        <string>DomaineSansText-Medium.otf</string>
-        <string>DomaineSansText-MediumItalic.otf</string>
-        <string>DomaineSansText-Regular.otf</string>
-        <string>DomaineSansText-RegularItalic.otf</string>
-        <string>IBMPlexMono-Bold.ttf</string>
-        <string>IBMPlexMono-BoldItalic.ttf</string>
-        <string>IBMPlexMono-ExtraLight.ttf</string>
-        <string>IBMPlexMono-ExtraLightItalic.ttf</string>
-        <string>IBMPlexMono-Italic.ttf</string>
-        <string>IBMPlexMono-Light.ttf</string>
-        <string>IBMPlexMono-LightItalic.ttf</string>
-        <string>IBMPlexMono-Medium.ttf</string>
-        <string>IBMPlexMono-MediumItalic.ttf</string>
-        <string>IBMPlexMono-Regular.ttf</string>
-        <string>IBMPlexMono-SemiBold.ttf</string>
-        <string>IBMPlexMono-SemiBoldItalic.ttf</string>
-        <string>IBMPlexMono-Thin.ttf</string>
-        <string>IBMPlexMono-ThinItalic.ttf</string>
-    </array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We’ll use your location data to give you the latest COVID-19 outbreak information for your local current area and tell how to help your local community.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We’ll use your location data to give you the latest COVID-19 outbreak information for your local current area and tell how to help your local community.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AtlasGrotesk-Black.otf</string>
+		<string>AtlasGrotesk-BlackItalic.otf</string>
+		<string>AtlasGrotesk-Bold.otf</string>
+		<string>AtlasGrotesk-BoldItalic.otf</string>
+		<string>AtlasGrotesk-Light.otf</string>
+		<string>AtlasGrotesk-LightItalic.otf</string>
+		<string>AtlasGrotesk-Medium.otf</string>
+		<string>AtlasGrotesk-MediumItalic.otf</string>
+		<string>AtlasGrotesk-Regular.otf</string>
+		<string>AtlasGrotesk-RegularItalic.otf</string>
+		<string>AtlasGrotesk-Thin.otf</string>
+		<string>AtlasGrotesk-ThinItalic.otf</string>
+		<string>DomaineSansText-Black.otf</string>
+		<string>DomaineSansText-BlackItalic.otf</string>
+		<string>DomaineSansText-Bold.otf</string>
+		<string>DomaineSansText-BoldItalic.otf</string>
+		<string>DomaineSansText-Light.otf</string>
+		<string>DomaineSansText-LightItalic.otf</string>
+		<string>DomaineSansText-Medium.otf</string>
+		<string>DomaineSansText-MediumItalic.otf</string>
+		<string>DomaineSansText-Regular.otf</string>
+		<string>DomaineSansText-RegularItalic.otf</string>
+		<string>IBMPlexMono-Bold.ttf</string>
+		<string>IBMPlexMono-BoldItalic.ttf</string>
+		<string>IBMPlexMono-ExtraLight.ttf</string>
+		<string>IBMPlexMono-ExtraLightItalic.ttf</string>
+		<string>IBMPlexMono-Italic.ttf</string>
+		<string>IBMPlexMono-Light.ttf</string>
+		<string>IBMPlexMono-LightItalic.ttf</string>
+		<string>IBMPlexMono-Medium.ttf</string>
+		<string>IBMPlexMono-MediumItalic.ttf</string>
+		<string>IBMPlexMono-Regular.ttf</string>
+		<string>IBMPlexMono-SemiBold.ttf</string>
+		<string>IBMPlexMono-SemiBoldItalic.ttf</string>
+		<string>IBMPlexMono-Thin.ttf</string>
+		<string>IBMPlexMono-ThinItalic.ttf</string>
+	</array>
 </dict>
 </plist>

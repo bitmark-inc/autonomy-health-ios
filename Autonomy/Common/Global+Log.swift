@@ -156,10 +156,10 @@ struct ErrorReporting {
     // Set current bitmark account number to sentry error report to be informative to debug
     // Set nil to remove user from current session
     public static func setUser(bitmarkAccountNumber: String?, alias: String? = nil) {
-        var user: User?
+        var user: Sentry.User?
 
         if let userId = bitmarkAccountNumber {
-            user = User(userId: userId)
+            user = Sentry.User(userId: userId)
             user!.username = alias
         }
 

@@ -10,6 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import Intercom
 import SVProgressHUD
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -45,6 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fromDeeplink: (launchOptions ?? [:]).count > 0)
         }
 
+        // Location permission
+        let locationManager = Global.default.locationManager
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+
         // Override point for customization after application launch.
         return true
     }
@@ -68,3 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        Global.current.locationCoordinate = locValue
+    }
+}

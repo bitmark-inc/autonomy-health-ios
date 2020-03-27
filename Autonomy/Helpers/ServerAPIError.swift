@@ -14,6 +14,7 @@ import SwifterSwift
 let errorKeyPath = "error"
 
 enum APIErrorCode: Int, Codable {
+    case AccountHasTaken            = 1003
     case RequireUpdateVersion       = 1007
     case UnexpectedResponseFormat   = 500
 }

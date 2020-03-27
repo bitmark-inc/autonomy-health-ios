@@ -11,6 +11,7 @@ import BitmarkSDK
 import Moya
 import RxSwift
 import RxCocoa
+import CoreLocation
 
 class Global {
     static var current = Global()
@@ -18,6 +19,10 @@ class Global {
 
     var account: Account?
     static let backgroundErrorSubject = PublishSubject<Error>()
+    lazy var locationManager: CLLocationManager = {
+        return CLLocationManager()
+    }()
+    var locationCoordinate: CLLocationCoordinate2D?
 
     lazy var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
@@ -64,7 +69,8 @@ class Global {
         MoyaAuthPlugin(tokenClosure: {
             return AuthService.shared.auth?.jwtToken
         }),
-        MoyaVersionPlugin()
+        MoyaVersionPlugin(),
+        MoyaLocationPlugin()
     ]
 }
 
@@ -74,6 +80,7 @@ enum AppError: Error {
     case emptyUserDefaults
     case emptyJWT
     case noInternetConnection
+    case requireAppUpdate(updateURL: URL)
 
     static func errorByNetworkConnection(_ error: Error) -> Bool {
         guard let error = error as? Self else { return false }

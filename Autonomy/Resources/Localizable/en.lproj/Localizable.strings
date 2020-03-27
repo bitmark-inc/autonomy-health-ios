@@ -7,11 +7,13 @@
 */
 
 "Back" = "Back";
+"Done" = "Done";
 "Success" = "Success";
 "ok" = "OK";
 "Start" = "Start";
 "Next" = "Next";
 "Today" = "Today";
+"Enable" = "Enable";
 
 "Permission" = "Permission";
 "Notifications" = "Notifications";

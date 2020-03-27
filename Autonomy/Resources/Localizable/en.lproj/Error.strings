@@ -7,4 +7,15 @@
 */
 
 "generalTitle" = "Error";
+"system" = "There was an system error. We will update to fix it soon. Please try later.";
 "NoInternetConnection" = "No Internet Connection";
+
+"notification.title" = "Enable Push Notifications";
+"notification.message" = "We’ll send you timely surveys about your current conditions and important health recommendations.";
+
+"location.title" = "Enable Location";
+"location.message" = "We’ll use your location data to give you the latest COVID-19 outbreak information for your local current area and tell how to help your local community.";
+
+"requireAppUpdate.title" = "Update Required";
+"requireAppUpdate.message" = "The Autonomy app on your device is out of date. Please update Autonomy to continue using it.";
+"requireAppUpdate.action" = "Update now";

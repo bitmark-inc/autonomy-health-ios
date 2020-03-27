@@ -12,6 +12,7 @@ import Moya
 
 protocol AuthorizedTargetType: TargetType { }
 protocol VersionTargetType: TargetType {}
+protocol LocationTargetType: TargetType {}
 
 struct MoyaAuthPlugin: PluginType {
     let tokenClosure: () -> String?
@@ -42,6 +43,21 @@ struct MoyaVersionPlugin: PluginType {
         var request = request
         request.addValue("ios", forHTTPHeaderField: "Client-Type")
         request.addValue(bundleVersion, forHTTPHeaderField: "Client-Version")
+        return request
+    }
+}
+
+struct MoyaLocationPlugin: PluginType {
+    func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
+        guard
+            let _ = target as? LocationTargetType,
+            let locationCoordinate = Global.current.locationCoordinate
+            else {
+                return request
+        }
+
+        var request = request
+        request.addValue("\(locationCoordinate.latitude);\(locationCoordinate.longitude)", forHTTPHeaderField: "Geo-Position")
         return request
     }
 }

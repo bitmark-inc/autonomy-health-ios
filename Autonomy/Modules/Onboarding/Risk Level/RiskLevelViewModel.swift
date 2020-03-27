@@ -1,0 +1,35 @@
+//
+//  RiskLevelViewModel.swift
+//  Autonomy
+//
+//  Created by Thuyen Truong on 3/27/20.
+//  Copyright © 2020 Bitmark Inc. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+
+class RiskLevelViewModel: ViewModel {
+
+    // MARK: - Input
+    var riskLevelSelectionRelay = BehaviorRelay<RiskLevel?>(value: nil)
+
+    // MARK: - Output
+    let signUpResultSubject = PublishSubject<Event<Never>>()
+
+    override init() {
+        super.init()
+
+    }
+
+    func signUp() {
+        guard let riskLevel = riskLevelSelectionRelay.value else { return }
+
+        ProfileDataEngine.create(riskLevel: riskLevel)
+            .asObservable()
+            .materialize().bind { [weak self] in
+                self?.signUpResultSubject.onNext($0)
+            }
+            .disposed(by: disposeBag)
+    }
+}

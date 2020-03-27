@@ -8,12 +8,16 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class SubmitButton: UIView {
 
     lazy var nextButton = makeNextButton()
     lazy var backButton = makeBackButton()
     lazy var titleLabel = makeTitleLabel()
+
+    fileprivate lazy var tapGestureRecognizer = makeTapGestureRecognizer()
+    fileprivate let disposeBag = DisposeBag()
 
     var item: UIButton!
 
@@ -41,6 +45,14 @@ class SubmitButton: UIView {
             item1 = titleLabel
             item2 = nextButton
             item = nextButton
+
+        case .done:
+            titleLabel.setText(R.string.localizable.done().localizedUppercase)
+            nextButton.setImage(R.image.doneCicleArrow(), for: .normal)
+            item1 = titleLabel
+            item2 = nextButton
+            item = nextButton
+
         default:
             return
         }
@@ -49,6 +61,7 @@ class SubmitButton: UIView {
             titleLabel.setText(title)
         }
 
+        addGestureRecognizer(tapGestureRecognizer)
         addSubview(item1)
         addSubview(item2)
 
@@ -71,6 +84,16 @@ class SubmitButton: UIView {
     }
 }
 
+extension Reactive where Base: SubmitButton {
+    /// Bindable sink for `isEnabled` property.
+    var isEnabled: Binder<Bool> {
+        return Binder(self.base) { submitButton, isEnabled in
+            submitButton.item.isEnabled = isEnabled
+            submitButton.alpha = isEnabled ? 1 : 0.3
+        }
+    }
+}
+
 extension SubmitButton {
     fileprivate func makeNextButton() -> UIButton {
         let button = UIButton()
@@ -89,5 +112,14 @@ extension SubmitButton {
         let button = UIButton()
         button.setImage(R.image.backCircleArrow()!, for: .normal)
         return button
+    }
+
+    fileprivate func makeTapGestureRecognizer() -> UITapGestureRecognizer {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        isUserInteractionEnabled = true
+        tapGestureRecognizer.rx.event.bind { [weak self] (t) in
+            self?.item.sendActions(for: .touchUpInside)
+        }.disposed(by: disposeBag)
+        return tapGestureRecognizer
     }
 }
