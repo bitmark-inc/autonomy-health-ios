@@ -21,9 +21,10 @@ class OnboardingStep1ViewController: ViewController, BackNavigator, OnboardingVi
     lazy var titleScreen = makeTitleScreen(title: R.string.phrase.onboarding1Description())
     lazy var talkingImageView = makeTalkingImageView()
     lazy var backButton = makeLightBackItem()
-    lazy var nextButton = SubmitButton(buttonItem: .next)
+    lazy var nextButton = SubmitButton(title: R.string.localizable.next().localizedUppercase,
+                     icon: R.image.nextCircleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nextButton)
+        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
     }()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -34,7 +35,7 @@ class OnboardingStep1ViewController: ViewController, BackNavigator, OnboardingVi
     override func bindViewModel() {
         super.bindViewModel()
 
-        nextButton.item.rx.tap.bind { [weak self] in
+        nextButton.rxTap.bind { [weak self] in
             self?.gotoOnboardingStep2Screen()
         }.disposed(by: disposeBag)
     }

@@ -21,9 +21,10 @@ class OnboardingStep3ViewController: ViewController, BackNavigator, OnboardingVi
     lazy var titleScreen = makeTitleScreen(title: R.string.phrase.onboarding3Description())
     lazy var talkingImageView = makeTalkingImageView()
     lazy var backButton = makeLightBackItem()
-    lazy var nextButton = SubmitButton(buttonItem: .next)
+    lazy var nextButton = SubmitButton(title: R.string.localizable.next().localizedUppercase,
+                     icon: R.image.nextCircleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nextButton)
+        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
     }()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -34,7 +35,7 @@ class OnboardingStep3ViewController: ViewController, BackNavigator, OnboardingVi
     override func bindViewModel() {
         super.bindViewModel()
 
-        nextButton.item.rx.tap.bind { [weak self] in
+        nextButton.rxTap.bind { [weak self] in
             self?.gotoPermissionScreen()
         }.disposed(by: disposeBag)
     }
@@ -75,8 +76,10 @@ extension OnboardingStep3ViewController {
         helpFoodDescLabel.numberOfLines = 0
 
         let leftView = LinearView(
-            (helpFoodLabel, 10),
-            (helpFoodDescLabel, 8))
+            items: [
+                (helpFoodLabel, 10),
+                (helpFoodDescLabel, 8)
+            ])
 
         let view = UIView()
         view.addSubview(leftView)

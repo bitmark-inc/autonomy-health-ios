@@ -29,7 +29,7 @@ class SignInWallViewController: ViewController {
     override func bindViewModel() {
         super.bindViewModel()
 
-        getStartedButton.item.rx.tap.bind { [weak self] in
+        getStartedButton.rxTap.bind { [weak self] in
             self?.gotoOnboardingScreen()
         }.disposed(by: disposeBag)
     }
@@ -105,8 +105,8 @@ extension SignInWallViewController {
 extension SignInWallViewController {
     fileprivate func makeGetStartedButton() -> SubmitButton {
         return SubmitButton(
-            buttonItem: .next,
-            title: R.string.localizable.start().localizedUppercase)
+            title: R.string.localizable.start().localizedUppercase,
+            icon: R.image.nextCircleArrow()!)
     }
 
     fileprivate func makeTitleScreen() -> CenterView {

@@ -25,6 +25,8 @@ def sharedPods
   pod 'R.swift'
   pod 'SnapKit'
   pod 'BEMCheckBox'
+  pod 'KMPlaceholderTextView'
+  pod 'SkeletonView'
 
   pod 'SwifterSwift'
 

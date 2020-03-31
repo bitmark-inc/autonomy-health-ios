@@ -20,12 +20,25 @@ class RiskLevelViewController: ViewController, BackNavigator {
         HeaderView(header: R.string.localizable.riskLevel().localizedUppercase)
     }()
     lazy var titleScreen = makeTitleScreen()
+    lazy var scrollView = makeScrollView()
     lazy var yesRiskCheckboxBox = makeYesRiskCheckboxView()
     lazy var noRiskSelectionBox = makeNoRiskCheckboxView()
+    lazy var checkBoxTop: CGFloat = {
+        switch UIScreen.main.bounds.size.height {
+        case let x where x <= 800: return 15
+        default: return 29
+        }
+    }()
+
     lazy var backButton = makeLightBackItem()
-    lazy var doneButton = SubmitButton(buttonItem: .done)
+    lazy var doneButton = SubmitButton(title: R.string.localizable.done().localizedUppercase,
+                     icon: R.image.doneCicleArrow()!)
     lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: doneButton)
+    }()
+    lazy var bemCheckBoxGroup: BEMCheckBoxGroup = {
+        return BEMCheckBoxGroup(checkBoxes: [yesRiskCheckboxBox.checkBox,
+                                      noRiskSelectionBox.checkBox])
     }()
 
     lazy var thisViewModel: RiskLevelViewModel = {
@@ -45,7 +58,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
             .bind(to: doneButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
-        doneButton.item.rx.tap.bind { [weak self] in
+        doneButton.rxTap.bind { [weak self] in
             self?.thisViewModel.signUp()
         }.disposed(by: disposeBag)
 
@@ -81,26 +94,36 @@ class RiskLevelViewController: ViewController, BackNavigator {
 
         // *** Setup subviews ***
         let paddingContentView = LinearView(
-            (headerScreen, 0),
-            (titleScreen, 0),
-            (SeparateLine(height: 1), 3),
-            (makeYesRiskCheckboxViewWithDesc(), 29),
-            (SeparateLine(height: 1), 15),
-            (noRiskSelectionBox, 29)
-        )
+            items: [
+                (headerScreen, 0),
+                (titleScreen, 0),
+                (SeparateLine(height: 1), 3),
+                (makeYesRiskCheckboxViewWithDesc(), checkBoxTop),
+                (SeparateLine(height: 1), 15),
+                (noRiskSelectionBox, checkBoxTop)
+            ], bottomConstraint: true)
 
-        paddingContentView.addSubview(groupsButton)
+        scrollView.addSubview(paddingContentView)
+
+        contentView.addSubview(scrollView)
+        contentView.addSubview(groupsButton)
+
+        paddingContentView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview().offset(-30)
+        }
+
         groupsButton.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
+                .inset(OurTheme.paddingInset)
         }
 
-        contentView.addSubview(paddingContentView)
-        paddingContentView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(OurTheme.paddingInset)
+        scrollView.snp.makeConstraints { (make) in
+            make.top.leading.trailing.width.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview().offset(-60)
         }
 
-        _ = BEMCheckBoxGroup(checkBoxes: [yesRiskCheckboxBox.checkBox,
-                                          noRiskSelectionBox.checkBox])
+        _ = bemCheckBoxGroup
     }
 }
 
@@ -129,6 +152,12 @@ extension RiskLevelViewController {
 
 // MARK: - Setup views
 extension RiskLevelViewController {
+    fileprivate func makeScrollView() -> UIScrollView {
+        let scrollView = UIScrollView()
+        scrollView.contentInset = OurTheme.paddingInset
+        return scrollView
+    }
+
     fileprivate func makeTitleScreen() -> CenterView {
         let label = Label()
         label.numberOfLines = 0
@@ -136,7 +165,7 @@ extension RiskLevelViewController {
                     font: R.font.atlasGroteskLight(size: 36),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
-        return CenterView(contentView: label, spacing: 26)
+        return CenterView(contentView: label, spacing: 25)
     }
 
     fileprivate func makeYesRiskCheckboxView() -> CheckboxView {
@@ -168,7 +197,7 @@ extension RiskLevelViewController {
         }
 
         descriptionLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(yesRiskCheckboxBox.snp.bottom).offset(12)
+            make.top.equalTo(yesRiskCheckboxBox.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(60)
             make.trailing.bottom.equalToSuperview()
         }

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Bitmark Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public struct Constant {
 
@@ -19,5 +19,15 @@ public struct Constant {
 
     public struct OneSignalTag {
         public static let key = "account_number"
+    }
+
+    public struct NotificationIdentifier {
+        public static let checkInSurvey = "check-in-survey"
+    }
+
+    public struct HeathColor {
+        public static let red = UIColor(hexString: "#CC3232")!
+        public static let yellow = UIColor(hexString: "#E7B416")!
+        public static let green = UIColor(hexString: "#2DC937")!
     }
 }

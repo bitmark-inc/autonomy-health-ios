@@ -15,14 +15,29 @@ let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
 var themeService = ThemeType.currentThemeService(for: .unspecified)
 
 struct OurTheme {
+    static let horizontalPadding: CGFloat = 15
     static var paddingInset: UIEdgeInsets = {
         switch UIScreen.main.bounds.size.height {
         case let x where x <= 800:
             return UIEdgeInsets(top: 14, left: 15, bottom: 13, right: 15)
         default:
-            return UIEdgeInsets(top: 14, left: 15, bottom: 20, right: 15)
+            return UIEdgeInsets(top: 14, left: 15, bottom: 23, right: 15)
         }
     }()
+
+    static var submittedRequestHeight: CGFloat = {
+        switch UIScreen.main.bounds.size.width {
+        case let x where x <= 375:
+            return 250
+        default:
+            return 230
+        }
+    }()
+
+
+    static var paddingOverBottomInset = UIEdgeInsets(top: 14, left: 15, bottom: 0, right: 15)
+
+    static let titleHeight: CGFloat = 0.23
 }
 
 enum ThemeStyle {
@@ -34,6 +49,7 @@ enum ThemeStyle {
     case separateTextColor
     case background
     case silverChaliceColor
+    case textViewTextColor
 }
 
 protocol Theme {
@@ -45,6 +61,7 @@ protocol Theme {
     var separateTextColor:  UIColor { get }
     var background:         UIColor { get }
     var silverChaliceColor: UIColor { get }
+    var textViewTextColor:  UIColor { get }
 
     init(colorTheme: ColorTheme)
 }
@@ -58,6 +75,7 @@ struct LightTheme: Theme {
     let separateTextColor   = UIColor(hexString: "#828180")!
     let background          = UIColor(hexString: "#1B1B1B")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
+    let textViewTextColor   = UIColor(hexString: "#FFF")!
 
     init(colorTheme: ColorTheme) {}
 }
@@ -71,6 +89,7 @@ struct DarkTheme: Theme {
     let separateTextColor   = UIColor(hexString: "#828180")!
     let background          = UIColor(hexString: "#1B1B1B")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
+    let textViewTextColor   = UIColor(hexString: "#FFF")!
 
     init(colorTheme: ColorTheme) {}
 }

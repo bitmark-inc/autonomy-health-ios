@@ -14,7 +14,7 @@
 "onboarding.3.description" = "We’ll help you and your community better manage resources.";
 
 "workFromHome" = "Work from home";
-"workFromHome.description" = "Based on your current location, environmental factors, and and the latest COVID-19 outbreak data, you shouldwork from home today if possible.";
+"workFromHome.description" = "Based on your current location, environmental factors, and and the latest COVID-19 outbreak data, you should work from home today if possible.";
 "helpDeliverFood" = "Help deliver food";
 "helpDeliverFood.description" = "Safely deliver food to others in your area.";
 
@@ -24,7 +24,7 @@
 
 "riskLevel.description" = "Are you at higher risk for severe illness from COVID-19?";
 "riskLevel.yes" = "Yes, I’m at higher risk";
-"riskLevel.yes.description" = "Higher risk individuals currently include:\n• People over age 65 And anyone with any of the following pre-existing medical conditions:\n• High blood pressure (hypertension)\n• Cardiovascular disease\n• Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer";
+"riskLevel.yes.description" = "Higher risk individuals currently include:\n• People over age 65\n\nAnd anyone with any of the following\npre-existing medical conditions:\n• High blood pressure (hypertension)\n• Cardiovascular disease\n• Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer";
 "riskLevel.no" = "No, I’m not at higher risk";
 
 "signIn.title" = "Sign In";

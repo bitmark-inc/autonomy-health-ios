@@ -9,17 +9,31 @@
 import UIKit
 import SnapKit
 import BEMCheckBox
+import RxSwift
 
 class CheckboxView: UIView {
 
     // MARK: - Properties
     lazy var checkBox = makeCheckBox()
     lazy var titleLabel = makeTitleLabel()
+    lazy var descLabel = makeDescLabel()
+    var title: String! {
+        didSet {
+            titleLabel.setText(title)
+        }
+    }
+    var desc: String? {
+        didSet {
+            descLabel.setText(desc)
+        }
+    }
 
-    let title: String!
+    fileprivate lazy var tapGestureRecognizer = makeTapGestureRecognizer()
+    let disposeBag = DisposeBag()
 
-    init(title: String) {
+    init(title: String?, description: String? = nil) {
         self.title = title
+        self.desc = description
 
         super.init(frame: CGRect.zero)
 
@@ -27,18 +41,36 @@ class CheckboxView: UIView {
     }
 
     fileprivate func setupViews() {
+        isSkeletonable = true
+
+        let textView: UIView!
+        if desc != nil {
+            textView = LinearView(items: [(titleLabel, 0), (descLabel, 3)])
+            titleLabel.isSkeletonable = true
+            descLabel.isSkeletonable = true
+        } else {
+            textView = titleLabel
+        }
+
+        titleLabel.isUserInteractionEnabled = true
+        titleLabel.addGestureRecognizer(tapGestureRecognizer)
         addSubview(checkBox)
-        addSubview(titleLabel)
+        addSubview(textView)
 
         checkBox.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
             make.width.height.equalTo(45)
         }
 
-        titleLabel.snp.makeConstraints { (make) in
+        textView.snp.makeConstraints { (make) in
             make.leading.equalTo(checkBox.snp.trailing).offset(15)
             make.top.trailing.bottom.equalToSuperview()
         }
+
+        // setup isSkeletonable
+        isSkeletonable = true
+        checkBox.isSkeletonable = true
+        textView.isSkeletonable = true
     }
 
     required init?(coder: NSCoder) {
@@ -65,5 +97,27 @@ extension CheckboxView {
                     font: R.font.atlasGroteskLight(size: 24),
                     themeStyle: .lightTextColor)
         return label
+    }
+
+    fileprivate func makeDescLabel() -> Label {
+        let label = Label()
+        label.numberOfLines = 0
+        label.apply(text: desc,
+                    font: R.font.atlasGroteskLight(size: 14),
+                    themeStyle: .silverTextColor,
+                    lineHeight: 1.2)
+        return label
+    }
+
+    fileprivate func makeTapGestureRecognizer() -> UITapGestureRecognizer {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak checkBox] (_) in
+            guard let checkBox = checkBox else { return }
+            checkBox.on = !checkBox.on
+            checkBox.setOn(checkBox.on, animated: true)
+            checkBox.delegate?.didTap?(checkBox)
+
+        }.disposed(by: disposeBag)
+        return tapGestureRecognizer
     }
 }

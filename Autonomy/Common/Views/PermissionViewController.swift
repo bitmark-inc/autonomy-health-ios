@@ -23,7 +23,8 @@ class PermissionViewController: ViewController, BackNavigator {
     lazy var notificationOptionBox = makeNotificationOptionBox()
     lazy var locationOptionBox = makeLocationOptionBox()
     lazy var backButton = makeLightBackItem()
-    lazy var nextButton = SubmitButton(buttonItem: .next)
+    lazy var nextButton = SubmitButton(title: R.string.localizable.next().localizedUppercase,
+                     icon: R.image.nextCircleArrow()!)
     lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: nextButton)
     }()
@@ -57,7 +58,8 @@ class PermissionViewController: ViewController, BackNavigator {
             }
         }.disposed(by: disposeBag)
 
-        nextButton.item.rx.tap.bind { [weak self] in
+        nextButton.rxTap.bind { [weak self] in
+            Global.current.userDefault?.donePermission = true
             self?.gotoRiskLevelScreen()
         }.disposed(by: disposeBag)
     }
@@ -82,6 +84,7 @@ class PermissionViewController: ViewController, BackNavigator {
 
         let isLocationEnabled = LocationPermission.isEnabled() == true
         locationOptionBox.button.isHidden = isLocationEnabled
+        nextButton.isEnabled = isLocationEnabled
     }
 
     // MARK: - Setup views
@@ -90,13 +93,15 @@ class PermissionViewController: ViewController, BackNavigator {
 
         // *** Setup subviews ***
         let paddingContentView = LinearView(
-            (headerScreen, 0),
-            (titleScreen, 0),
-            (SeparateLine(height: 1), 3),
-            (notificationOptionBox, 29),
-            (SeparateLine(height: 1), 15),
-            (locationOptionBox, 29),
-            (SeparateLine(height: 1), 15)
+            items: [
+                (headerScreen, 0),
+                (titleScreen, 0),
+                (SeparateLine(height: 1), 3),
+                (notificationOptionBox, 29),
+                (SeparateLine(height: 1), 15),
+                (locationOptionBox, 29),
+                (SeparateLine(height: 1), 15)
+            ]
         )
 
         paddingContentView.addSubview(groupsButton)
@@ -109,6 +114,7 @@ class PermissionViewController: ViewController, BackNavigator {
             make.edges.equalToSuperview().inset(OurTheme.paddingInset)
         }
 
+        nextButton.isEnabled = false
         reloadState()
     }
 }
@@ -135,13 +141,17 @@ extension PermissionViewController {
 
     fileprivate func makeNotificationOptionBox() -> OptionBoxView {
         return OptionBoxView(title: R.string.localizable.notifications(),
+                             titleTop: 10,
                              description: R.string.phrase.permissionNotificationDescription(),
+                             descTop: 8,
                              btnImage: R.image.plusCircle()!)
     }
 
     fileprivate func makeLocationOptionBox() -> OptionBoxView {
         return OptionBoxView(title: R.string.localizable.location_data(),
+                             titleTop: 10,
                              description: R.string.phrase.permissionLocationDescription(),
+                             descTop: 8,
                              btnImage: R.image.plusCircle()!)
     }
 }

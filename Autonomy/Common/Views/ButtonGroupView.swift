@@ -11,15 +11,22 @@ import UIKit
 class ButtonGroupView: UIView {
 
     fileprivate lazy var gradientLayerView = makeGradientLayerView()
-    let viewHeight: CGFloat = 92
+    let viewHeight: CGFloat = 50
+    let viewHeightWithGradient: CGFloat = 92
 
-    init(button1: UIView, button2: UIView) {
+    init(button1: UIView, button2: UIView, hasGradient: Bool = false) {
         super.init(frame: CGRect.zero)
 
-        addSubview(gradientLayerView)
+        if hasGradient {
+            addSubview(gradientLayerView)
+
+            gradientLayerView.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
+        }
+
         addSubview(button1)
         addSubview(button2)
-
 
         button1.snp.makeConstraints { (make) in
             make.leading.bottom.equalToSuperview()
@@ -29,12 +36,8 @@ class ButtonGroupView: UIView {
             make.bottom.trailing.equalToSuperview()
         }
 
-        gradientLayerView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-
         snp.makeConstraints { (make) in
-            make.height.equalTo(viewHeight)
+            make.height.equalTo(hasGradient ? viewHeightWithGradient : viewHeight)
         }
     }
 

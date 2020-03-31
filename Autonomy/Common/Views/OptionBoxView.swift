@@ -18,11 +18,17 @@ class OptionBoxView: UIView {
 
     let title: String!
     let descriptionText: String!
+    let titleTop: CGFloat!
+    let descTop: CGFloat!
     let btnImage: UIImage!
 
-    init(title: String, description: String, btnImage: UIImage) {
+    var attachedValue: Any?
+
+    init(title: String, titleTop: CGFloat = 0, description: String, descTop: CGFloat = 4, btnImage: UIImage) {
         self.title = title
+        self.titleTop = titleTop
         self.descriptionText = description
+        self.descTop = descTop
         self.btnImage = btnImage
 
         super.init(frame: CGRect.zero)
@@ -33,8 +39,9 @@ class OptionBoxView: UIView {
     fileprivate func setupViews() {
 
         let leftView = LinearView(
-            (titleLabel, 10),
-            (descriptionLabel, 8),
+            items: [
+                (titleLabel, titleTop),
+                (descriptionLabel, descTop)],
             bottomConstraint: true)
 
         addSubview(leftView)

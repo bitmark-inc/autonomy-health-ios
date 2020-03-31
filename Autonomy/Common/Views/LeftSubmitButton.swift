@@ -1,8 +1,8 @@
 //
-//  SubmitButton.swift
+//  LeftSubmitButton.swift
 //  Autonomy
 //
-//  Created by Thuyen Truong on 3/26/20.
+//  Created by Thuyen Truong on 3/30/20.
 //  Copyright © 2020 Bitmark Inc. All rights reserved.
 //
 
@@ -10,21 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SubmitButton: UIView {
+class LeftSubmitButton: UIView {
 
     // MARK: - Properties
     lazy var titleLabel = makeTitleLabel()
     lazy var button = UIButton()
-
     fileprivate lazy var tapGestureRecognizer = makeTapGestureRecognizer()
     fileprivate let disposeBag = DisposeBag()
-
-    var isEnabled: Bool = true {
-        didSet {
-            button.isEnabled = isEnabled
-            alpha = isEnabled ? 1 : 0.3
-        }
-    }
 
     init(title: String, icon: UIImage) {
         super.init(frame: CGRect.zero)
@@ -33,15 +25,15 @@ class SubmitButton: UIView {
         button.setImage(icon, for: .normal)
 
         addGestureRecognizer(tapGestureRecognizer)
-        addSubview(titleLabel)
         addSubview(button)
+        addSubview(titleLabel)
 
-        titleLabel.snp.makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.leading.centerY.equalToSuperview()
         }
 
-        button.snp.makeConstraints { (make) in
-            make.leading.equalTo(titleLabel.snp.trailing).offset(10)
+        titleLabel.snp.makeConstraints { (make) in
+            make.leading.equalTo(button.snp.trailing).offset(10)
             make.centerY.trailing.equalToSuperview()
         }
 
@@ -59,7 +51,7 @@ class SubmitButton: UIView {
     }
 }
 
-extension Reactive where Base: SubmitButton {
+extension Reactive where Base: LeftSubmitButton {
     /// Bindable sink for `isEnabled` property.
     var isEnabled: Binder<Bool> {
         return Binder(self.base) { submitButton, isEnabled in
@@ -69,7 +61,7 @@ extension Reactive where Base: SubmitButton {
     }
 }
 
-extension SubmitButton {
+extension LeftSubmitButton {
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
         label.apply(font: R.font.domaineSansTextLight(size: 24),

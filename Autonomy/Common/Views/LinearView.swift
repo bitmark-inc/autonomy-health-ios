@@ -11,7 +11,7 @@ import SnapKit
 
 class LinearView: UIView {
 
-    init(_ items: (UIView, CGFloat)..., bottomConstraint: Bool = false) {
+    init(items: [(UIView, CGFloat)], bottomConstraint: Bool = false) {
         super.init(frame: CGRect.zero)
 
         for item in items {
@@ -32,10 +32,9 @@ class LinearView: UIView {
                     make.top.equalTo(previousItem.snp.bottom).offset(spacing)
                     make.leading.trailing.equalToSuperview()
                 }
-                fallthrough
 
-            case items.count - 1:
-                if bottomConstraint {
+                // add bottom constraint if needed
+                if bottomConstraint && index == items.count - 1 {
                     item.snp.makeConstraints { (make) in
                         make.bottom.equalToSuperview()
                     }

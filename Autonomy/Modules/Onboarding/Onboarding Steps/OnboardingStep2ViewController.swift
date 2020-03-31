@@ -21,9 +21,10 @@ class OnboardingStep2ViewController: ViewController, BackNavigator, OnboardingVi
     lazy var titleScreen = makeTitleScreen(title: R.string.phrase.onboarding2Description())
     lazy var talkingImageView = makeTalkingImageView()
     lazy var backButton = makeLightBackItem()
-    lazy var nextButton = SubmitButton(buttonItem: .next)
+    lazy var nextButton = SubmitButton(title: R.string.localizable.next().localizedUppercase,
+                     icon: R.image.nextCircleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nextButton)
+        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
     }()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -34,7 +35,7 @@ class OnboardingStep2ViewController: ViewController, BackNavigator, OnboardingVi
     override func bindViewModel() {
         super.bindViewModel()
 
-        nextButton.item.rx.tap.bind { [weak self] in
+        nextButton.rxTap.bind { [weak self] in
             self?.gotoOnboardingStep3Screen()
         }.disposed(by: disposeBag)
     }
@@ -74,8 +75,11 @@ extension OnboardingStep2ViewController {
             themeStyle: .lightTextColor)
 
         let rightView = LinearView(
-            (todayLabel, 0),
-            (workFromHomeLabel, 4))
+            items: [
+                (todayLabel, 0),
+                (workFromHomeLabel, 4)
+            ])
+
 
         let part1View = UIView()
         part1View.addSubview(image)
@@ -86,7 +90,7 @@ extension OnboardingStep2ViewController {
         }
 
         rightView.snp.makeConstraints { (make) in
-            make.leading.equalTo(image.snp.trailing).offset(15)
+            make.leading.equalTo(image.snp.trailing).offset(10)
             make.top.trailing.bottom.equalToSuperview()
         }
 
@@ -98,10 +102,11 @@ extension OnboardingStep2ViewController {
         textPart2Label.numberOfLines = 0
 
         return LinearView(
-            (part1View              , 0),
-            (SeparateLine(height: 1), 30),
-            (textPart2Label         , 15)
-        )
+            items: [
+                (part1View              , 0),
+                (SeparateLine(height: 1), 30),
+                (textPart2Label         , 15)
+            ])
 
     }
 }

@@ -13,10 +13,10 @@
 		5B2C856E242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
 		5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
 		5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
-		5B2C8576242DD42B002CC53B /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* ProfileAPI.swift */; };
-		5B2C8577242DD42B002CC53B /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* ProfileAPI.swift */; };
-		5B2C8578242DD42B002CC53B /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* ProfileService.swift */; };
-		5B2C8579242DD42B002CC53B /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* ProfileService.swift */; };
+		5B2C8576242DD42B002CC53B /* HelpRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* HelpRequestAPI.swift */; };
+		5B2C8577242DD42B002CC53B /* HelpRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* HelpRequestAPI.swift */; };
+		5B2C8578242DD42B002CC53B /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* HelpRequestService.swift */; };
+		5B2C8579242DD42B002CC53B /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* HelpRequestService.swift */; };
 		5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
 		5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
 		5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */; };
@@ -37,6 +37,24 @@
 		5B2C85A0242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B2C8599242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B2C85B0242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B2C85B5242DEE92002CC53B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C859B242DEDBB002CC53B /* NotificationService.swift */; };
+		5B51BF4B2431A58A00AD998B /* AssistanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF4A2431A58A00AD998B /* AssistanceViewModel.swift */; };
+		5B51BF4C2431A58A00AD998B /* AssistanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF4A2431A58A00AD998B /* AssistanceViewModel.swift */; };
+		5B51BF4E2431A59400AD998B /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF4D2431A59400AD998B /* AssistanceViewController.swift */; };
+		5B51BF4F2431A59400AD998B /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF4D2431A59400AD998B /* AssistanceViewController.swift */; };
+		5B51BF532431C99D00AD998B /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF522431C99D00AD998B /* AssistanceAskInfoViewController.swift */; };
+		5B51BF542431C99D00AD998B /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF522431C99D00AD998B /* AssistanceAskInfoViewController.swift */; };
+		5B51BF562431CA8B00AD998B /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */; };
+		5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */; };
+		5B51BF5C2431D5B700AD998B /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5B2431D5B700AD998B /* AssistanceAskInfoViewModel.swift */; };
+		5B51BF5D2431D5B700AD998B /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5B2431D5B700AD998B /* AssistanceAskInfoViewModel.swift */; };
+		5B51BF5F2431D63C00AD998B /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
+		5B51BF602431D63C00AD998B /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
+		5B51BF632431DE5E00AD998B /* ReviewHelpRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF622431DE5E00AD998B /* ReviewHelpRequestViewController.swift */; };
+		5B51BF642431DE5E00AD998B /* ReviewHelpRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF622431DE5E00AD998B /* ReviewHelpRequestViewController.swift */; };
+		5B51BF662431DE6E00AD998B /* ReviewHelpRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF652431DE6E00AD998B /* ReviewHelpRequestViewModel.swift */; };
+		5B51BF672431DE6E00AD998B /* ReviewHelpRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF652431DE6E00AD998B /* ReviewHelpRequestViewModel.swift */; };
+		5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
+		5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
 		5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
 		5B577857242B330E0028D3E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
@@ -165,6 +183,22 @@
 		5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A5242C45F500480A15 /* SignInWallViewController.swift */; };
 		5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A8242C47CF00480A15 /* AppLink.swift */; };
 		5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A8242C47CF00480A15 /* AppLink.swift */; };
+		5B7CE0B92430A458002CD923 /* HealthSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */; };
+		5B7CE0BA2430A458002CD923 /* HealthSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */; };
+		5B7CE0BD2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */; };
+		5B7CE0BE2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */; };
+		5B7CE0C12430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C02430ADD8002CD923 /* SurveySymptomsViewController.swift */; };
+		5B7CE0C22430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C02430ADD8002CD923 /* SurveySymptomsViewController.swift */; };
+		5B7CE0C42430ADE2002CD923 /* SurveySymptomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C32430ADE2002CD923 /* SurveySymptomsViewModel.swift */; };
+		5B7CE0C52430ADE2002CD923 /* SurveySymptomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C32430ADE2002CD923 /* SurveySymptomsViewModel.swift */; };
+		5B7CE0C92430BE91002CD923 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C72430BE91002CD923 /* ProfileAPI.swift */; };
+		5B7CE0CA2430BE91002CD923 /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C72430BE91002CD923 /* ProfileAPI.swift */; };
+		5B7CE0CB2430BE91002CD923 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C82430BE91002CD923 /* ProfileService.swift */; };
+		5B7CE0CC2430BE91002CD923 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C82430BE91002CD923 /* ProfileService.swift */; };
+		5B7CE0D12430C72E002CD923 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D02430C72E002CD923 /* TableView.swift */; };
+		5B7CE0D22430C72F002CD923 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D02430C72E002CD923 /* TableView.swift */; };
+		5B7CE0D42430CB6C002CD923 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D32430CB6C002CD923 /* TableViewCell.swift */; };
+		5B7CE0D52430CB6C002CD923 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D32430CB6C002CD923 /* TableViewCell.swift */; };
 		5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
 		5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
 		5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F073242C92DA0084B4F6 /* LinearView.swift */; };
@@ -204,6 +238,18 @@
 		5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */; };
 		5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */; };
 		5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */; };
+		5BFC8DC02433081400815828 /* SymptomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* SymptomService.swift */; };
+		5BFC8DC12433081400815828 /* SymptomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* SymptomService.swift */; };
+		5BFC8DC22433081400815828 /* SymptomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* SymptomAPI.swift */; };
+		5BFC8DC32433081400815828 /* SymptomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* SymptomAPI.swift */; };
+		5BFC8DC5243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DC4243312E700815828 /* SuccessRequestHelpViewController.swift */; };
+		5BFC8DC6243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DC4243312E700815828 /* SuccessRequestHelpViewController.swift */; };
+		5BFC8DCC2433264A00815828 /* FeedTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCB2433264A00815828 /* FeedTableCell.swift */; };
+		5BFC8DCD2433264A00815828 /* FeedTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCB2433264A00815828 /* FeedTableCell.swift */; };
+		5BFC8DD0243327E000815828 /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCF243327E000815828 /* Date+Formatter.swift */; };
+		5BFC8DD1243327E000815828 /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCF243327E000815828 /* Date+Formatter.swift */; };
+		5BFC8DD324333E5700815828 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DD224333E5700815828 /* Symptom.swift */; };
+		5BFC8DD424333E5700815828 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DD224333E5700815828 /* Symptom.swift */; };
 		8C760E6E844F96C8D6CF45F3 /* Pods_OneSignalNotificationServiceDevExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BDEC92F058C9C5F88DDF72 /* Pods_OneSignalNotificationServiceDevExtension.framework */; };
 		9274E41DFA60457D6330C994 /* Pods_Autonomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FED53A2F08C29F4D0A12ABC /* Pods_Autonomy.framework */; };
 		AEEB286E0D5A750E78445D10 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -260,8 +306,8 @@
 		5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		5B2C8570242DB786002CC53B /* LocationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermission.swift; sourceTree = "<group>"; };
-		5B2C8574242DD42B002CC53B /* ProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
-		5B2C8575242DD42B002CC53B /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		5B2C8574242DD42B002CC53B /* HelpRequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestAPI.swift; sourceTree = "<group>"; };
+		5B2C8575242DD42B002CC53B /* HelpRequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestService.swift; sourceTree = "<group>"; };
 		5B2C857A242DD4CB002CC53B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataEngine.swift; sourceTree = "<group>"; };
 		5B2C8582242DDBFB002CC53B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +322,15 @@
 		5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceDevExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2C85B8242DFC78002CC53B /* Autonomy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Autonomy.entitlements; sourceTree = "<group>"; };
 		5B2C85B9242DFC78002CC53B /* Autonomy Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Autonomy Dev.entitlements"; sourceTree = "<group>"; };
+		5B51BF4A2431A58A00AD998B /* AssistanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceViewModel.swift; sourceTree = "<group>"; };
+		5B51BF4D2431A59400AD998B /* AssistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceViewController.swift; sourceTree = "<group>"; };
+		5B51BF522431C99D00AD998B /* AssistanceAskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewController.swift; sourceTree = "<group>"; };
+		5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		5B51BF5B2431D5B700AD998B /* AssistanceAskInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewModel.swift; sourceTree = "<group>"; };
+		5B51BF5E2431D63C00AD998B /* HelpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
+		5B51BF622431DE5E00AD998B /* ReviewHelpRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelpRequestViewController.swift; sourceTree = "<group>"; };
+		5B51BF652431DE6E00AD998B /* ReviewHelpRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelpRequestViewModel.swift; sourceTree = "<group>"; };
+		5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSubmitButton.swift; sourceTree = "<group>"; };
 		5B57785D242B330E0028D3E3 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B57785F242B3FC10028D3E3 /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
 		5B577862242B421B0028D3E3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -339,6 +394,14 @@
 		5B57793F242B62160028D3E3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		5B62A3A5242C45F500480A15 /* SignInWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWallViewController.swift; sourceTree = "<group>"; };
 		5B62A3A8242C47CF00480A15 /* AppLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLink.swift; sourceTree = "<group>"; };
+		5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthSurveyViewController.swift; sourceTree = "<group>"; };
+		5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyHelpViewController.swift; sourceTree = "<group>"; };
+		5B7CE0C02430ADD8002CD923 /* SurveySymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveySymptomsViewController.swift; sourceTree = "<group>"; };
+		5B7CE0C32430ADE2002CD923 /* SurveySymptomsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveySymptomsViewModel.swift; sourceTree = "<group>"; };
+		5B7CE0C72430BE91002CD923 /* ProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
+		5B7CE0C82430BE91002CD923 /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		5B7CE0D02430C72E002CD923 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		5B7CE0D32430CB6C002CD923 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5B87F070242C85B90084B4F6 /* SeparateLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateLine.swift; sourceTree = "<group>"; };
 		5B87F073242C92DA0084B4F6 /* LinearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearView.swift; sourceTree = "<group>"; };
 		5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep3ViewController.swift; sourceTree = "<group>"; };
@@ -363,6 +426,12 @@
 		5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewLayout.swift; sourceTree = "<group>"; };
 		5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
 		5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewModel.swift; sourceTree = "<group>"; };
+		5BFC8DBE2433081400815828 /* SymptomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomService.swift; sourceTree = "<group>"; };
+		5BFC8DBF2433081400815828 /* SymptomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomAPI.swift; sourceTree = "<group>"; };
+		5BFC8DC4243312E700815828 /* SuccessRequestHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRequestHelpViewController.swift; sourceTree = "<group>"; };
+		5BFC8DCB2433264A00815828 /* FeedTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableCell.swift; sourceTree = "<group>"; };
+		5BFC8DCF243327E000815828 /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
+		5BFC8DD224333E5700815828 /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		6C8A4CB005CE65E66132FA92 /* Pods-OneSignalNotificationServiceDevExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceDevExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceDevExtension/Pods-OneSignalNotificationServiceDevExtension.release.xcconfig"; sourceTree = "<group>"; };
 		8184CB398EDA72463146FE2E /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.release.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.release.xcconfig"; sourceTree = "<group>"; };
@@ -421,8 +490,8 @@
 		5B2C8573242DD42B002CC53B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				5B2C8574242DD42B002CC53B /* ProfileAPI.swift */,
-				5B2C8575242DD42B002CC53B /* ProfileService.swift */,
+				5B7CE0C72430BE91002CD923 /* ProfileAPI.swift */,
+				5B7CE0C82430BE91002CD923 /* ProfileService.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -440,6 +509,7 @@
 			children = (
 				5B2C8582242DDBFB002CC53B /* MainViewController.swift */,
 				5B2C8585242DDC1E002CC53B /* MainViewModel.swift */,
+				5BFC8DCB2433264A00815828 /* FeedTableCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -469,6 +539,43 @@
 				5B2C85B8242DFC78002CC53B /* Autonomy.entitlements */,
 			);
 			path = Entitlements;
+			sourceTree = "<group>";
+		};
+		5B51BF492431A1F600AD998B /* Assistance */ = {
+			isa = PBXGroup;
+			children = (
+				5B51BF502431A60100AD998B /* What kind */,
+				5B51BF512431A60D00AD998B /* Ask Info */,
+				5B51BF612431DE3D00AD998B /* Review and Submit */,
+			);
+			path = Assistance;
+			sourceTree = "<group>";
+		};
+		5B51BF502431A60100AD998B /* What kind */ = {
+			isa = PBXGroup;
+			children = (
+				5B51BF4A2431A58A00AD998B /* AssistanceViewModel.swift */,
+				5B51BF4D2431A59400AD998B /* AssistanceViewController.swift */,
+			);
+			path = "What kind";
+			sourceTree = "<group>";
+		};
+		5B51BF512431A60D00AD998B /* Ask Info */ = {
+			isa = PBXGroup;
+			children = (
+				5B51BF5B2431D5B700AD998B /* AssistanceAskInfoViewModel.swift */,
+				5B51BF522431C99D00AD998B /* AssistanceAskInfoViewController.swift */,
+			);
+			path = "Ask Info";
+			sourceTree = "<group>";
+		};
+		5B51BF612431DE3D00AD998B /* Review and Submit */ = {
+			isa = PBXGroup;
+			children = (
+				5B51BF652431DE6E00AD998B /* ReviewHelpRequestViewModel.swift */,
+				5B51BF622431DE5E00AD998B /* ReviewHelpRequestViewController.swift */,
+			);
+			path = "Review and Submit";
 			sourceTree = "<group>";
 		};
 		5B577861242B41F70028D3E3 /* Common */ = {
@@ -504,6 +611,8 @@
 				5B577879242B43B70028D3E3 /* Auth */,
 				5B2C858B242DDDFB002CC53B /* Server Assets */,
 				5B2C8573242DD42B002CC53B /* Profile */,
+				5B7CE0C62430BD2E002CD923 /* Symptom */,
+				5BFC8DBD243307BE00815828 /* Help Request */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -528,12 +637,16 @@
 				5B57793F242B62160028D3E3 /* HeaderView.swift */,
 				5B87F080242CA2D80084B4F6 /* CenterView.swift */,
 				5BB14091242C4A57009EFC59 /* SubmitButton.swift */,
+				5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */,
 				5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */,
 				5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */,
 				5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */,
 				5B87F073242C92DA0084B4F6 /* LinearView.swift */,
 				5B87F086242CB7C40084B4F6 /* OptionBoxView.swift */,
 				5B87F089242CC01C0084B4F6 /* CheckboxView.swift */,
+				5B7CE0D02430C72E002CD923 /* TableView.swift */,
+				5B7CE0D32430CB6C002CD923 /* TableViewCell.swift */,
+				5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -544,6 +657,8 @@
 				5B577887242B45820028D3E3 /* Auth.swift */,
 				5B2C857A242DD4CB002CC53B /* Profile.swift */,
 				5B2C8592242DDE51002CC53B /* AppInfo.swift */,
+				5B51BF5E2431D63C00AD998B /* HelpRequest.swift */,
+				5BFC8DD224333E5700815828 /* Symptom.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -554,6 +669,7 @@
 				5B577892242B46230028D3E3 /* MoyaProviderType+Request.swift */,
 				5B577938242B50420028D3E3 /* Controllers */,
 				5B57788B242B460E0028D3E3 /* RxSwift */,
+				5BFC8DCE243327AF00815828 /* Foundation */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -697,6 +813,42 @@
 			path = "Sign In Wall";
 			sourceTree = "<group>";
 		};
+		5B7CE0B72430A458002CD923 /* Health Survey */ = {
+			isa = PBXGroup;
+			children = (
+				5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */,
+				5B7CE0BB2430A974002CD923 /* Help */,
+				5B7CE0BF2430AD7B002CD923 /* Symptoms */,
+			);
+			path = "Health Survey";
+			sourceTree = "<group>";
+		};
+		5B7CE0BB2430A974002CD923 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		5B7CE0BF2430AD7B002CD923 /* Symptoms */ = {
+			isa = PBXGroup;
+			children = (
+				5B7CE0C02430ADD8002CD923 /* SurveySymptomsViewController.swift */,
+				5B7CE0C32430ADE2002CD923 /* SurveySymptomsViewModel.swift */,
+			);
+			path = Symptoms;
+			sourceTree = "<group>";
+		};
+		5B7CE0C62430BD2E002CD923 /* Symptom */ = {
+			isa = PBXGroup;
+			children = (
+				5BFC8DBF2433081400815828 /* SymptomAPI.swift */,
+				5BFC8DBE2433081400815828 /* SymptomService.swift */,
+			);
+			path = Symptom;
+			sourceTree = "<group>";
+		};
 		5B87F079242CA00E0084B4F6 /* Permission */ = {
 			isa = PBXGroup;
 			children = (
@@ -772,6 +924,8 @@
 				5B577911242B4D5A0028D3E3 /* Launching */,
 				5B62A3A3242C44CB00480A15 /* Onboarding */,
 				5B2C8581242DDBE7002CC53B /* Main */,
+				5B7CE0B72430A458002CD923 /* Health Survey */,
+				5B51BF492431A1F600AD998B /* Assistance */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -807,6 +961,32 @@
 				5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */,
 			);
 			path = "Onboarding Steps";
+			sourceTree = "<group>";
+		};
+		5BFC8DBD243307BE00815828 /* Help Request */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C8574242DD42B002CC53B /* HelpRequestAPI.swift */,
+				5B2C8575242DD42B002CC53B /* HelpRequestService.swift */,
+				5BFC8DC724331AC900815828 /* Pan Modals */,
+			);
+			path = "Help Request";
+			sourceTree = "<group>";
+		};
+		5BFC8DC724331AC900815828 /* Pan Modals */ = {
+			isa = PBXGroup;
+			children = (
+				5BFC8DC4243312E700815828 /* SuccessRequestHelpViewController.swift */,
+			);
+			path = "Pan Modals";
+			sourceTree = "<group>";
+		};
+		5BFC8DCE243327AF00815828 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				5BFC8DCF243327E000815828 /* Date+Formatter.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		722BEEB10D21C3DD9BBC092C /* Pods */ = {
@@ -1272,20 +1452,28 @@
 			files = (
 				5B577910242B4CB30028D3E3 /* ThemedViewController.swift in Sources */,
 				5B2C856E242DAFC6002CC53B /* NotificationPermission.swift in Sources */,
+				5B51BF602431D63C00AD998B /* HelpRequest.swift in Sources */,
 				5B2C8584242DDBFB002CC53B /* MainViewController.swift in Sources */,
+				5B7CE0D22430C72F002CD923 /* TableView.swift in Sources */,
 				5B87F075242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790E242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577922242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
 				5B577901242B4C010028D3E3 /* Navigator.swift in Sources */,
+				5BFC8DC6243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */,
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B57789A242B47770028D3E3 /* ServerAPIError.swift in Sources */,
+				5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B577894242B47060028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B87F085242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577895242B470A0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
+				5B51BF542431C99D00AD998B /* AssistanceAskInfoViewController.swift in Sources */,
+				5B7CE0C22430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */,
 				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
+				5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B57786E242B43140028D3E3 /* Credential.swift in Sources */,
+				5B51BF4C2431A58A00AD998B /* AssistanceViewModel.swift in Sources */,
 				5B577931242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577941242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
@@ -1298,20 +1486,27 @@
 				5B577883242B43DC0028D3E3 /* NoInternetBanner.swift in Sources */,
 				5B57787F242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577878242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
+				5B7CE0CA2430BE91002CD923 /* ProfileAPI.swift in Sources */,
+				5BFC8DC32433081400815828 /* SymptomAPI.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
 				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B2C8591242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
-				5B2C8579242DD42B002CC53B /* ProfileService.swift in Sources */,
+				5B2C8579242DD42B002CC53B /* HelpRequestService.swift in Sources */,
 				5B57786A242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
 				5B57793B242B50E30028D3E3 /* ImageView.swift in Sources */,
+				5B7CE0BE2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
 				5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */,
 				5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
+				5BFC8DCD2433264A00815828 /* FeedTableCell.swift in Sources */,
+				5B51BF5D2431D5B700AD998B /* AssistanceAskInfoViewModel.swift in Sources */,
+				5B7CE0D52430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
+				5B51BF672431DE6E00AD998B /* ReviewHelpRequestViewModel.swift in Sources */,
 				5BB140A3242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577924242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
@@ -1321,15 +1516,23 @@
 				5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577889242B45830028D3E3 /* Auth.swift in Sources */,
 				5B2C858A242DDDE1002CC53B /* AppVersion.swift in Sources */,
+				5B7CE0BA2430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
+				5BFC8DD424333E5700815828 /* Symptom.swift in Sources */,
+				5B7CE0C52430ADE2002CD923 /* SurveySymptomsViewModel.swift in Sources */,
+				5B51BF642431DE5E00AD998B /* ReviewHelpRequestViewController.swift in Sources */,
+				5BFC8DD1243327E000815828 /* Date+Formatter.swift in Sources */,
+				5BFC8DC12433081400815828 /* SymptomService.swift in Sources */,
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791D242B4E290028D3E3 /* Label.swift in Sources */,
+				5B51BF4F2431A59400AD998B /* AssistanceViewController.swift in Sources */,
 				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
-				5B2C8577242DD42B002CC53B /* ProfileAPI.swift in Sources */,
+				5B2C8577242DD42B002CC53B /* HelpRequestAPI.swift in Sources */,
 				5BB140A0242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577916242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
+				5B7CE0CC2430BE91002CD923 /* ProfileService.swift in Sources */,
 				5B577937242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5B577918242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5B577907242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
@@ -1345,20 +1548,28 @@
 			files = (
 				5B57790F242B4CB30028D3E3 /* ThemedViewController.swift in Sources */,
 				5B2C856D242DAFC6002CC53B /* NotificationPermission.swift in Sources */,
+				5B51BF5F2431D63C00AD998B /* HelpRequest.swift in Sources */,
 				5B2C8583242DDBFB002CC53B /* MainViewController.swift in Sources */,
+				5B7CE0D12430C72E002CD923 /* TableView.swift in Sources */,
 				5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790D242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577921242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
 				5B577900242B4C010028D3E3 /* Navigator.swift in Sources */,
+				5BFC8DC5243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */,
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B577899242B47670028D3E3 /* ServerAPIError.swift in Sources */,
+				5B51BF562431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B57786D242B43140028D3E3 /* Credential.swift in Sources */,
 				5B87F084242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577890242B460E0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
+				5B51BF532431C99D00AD998B /* AssistanceAskInfoViewController.swift in Sources */,
+				5B7CE0C12430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */,
 				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
+				5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B577893242B46230028D3E3 /* MoyaProviderType+Request.swift in Sources */,
+				5B51BF4B2431A58A00AD998B /* AssistanceViewModel.swift in Sources */,
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577940242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08A242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
@@ -1371,20 +1582,27 @@
 				5B577882242B43DC0028D3E3 /* NoInternetBanner.swift in Sources */,
 				5B57787E242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577877242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
+				5B7CE0C92430BE91002CD923 /* ProfileAPI.swift in Sources */,
+				5BFC8DC22433081400815828 /* SymptomAPI.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
 				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B2C8590242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
-				5B2C8578242DD42B002CC53B /* ProfileService.swift in Sources */,
+				5B2C8578242DD42B002CC53B /* HelpRequestService.swift in Sources */,
 				5B577869242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
 				5B57793A242B50E30028D3E3 /* ImageView.swift in Sources */,
+				5B7CE0BD2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
 				5BB140A5242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */,
 				5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
+				5BFC8DCC2433264A00815828 /* FeedTableCell.swift in Sources */,
+				5B51BF5C2431D5B700AD998B /* AssistanceAskInfoViewModel.swift in Sources */,
+				5B7CE0D42430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
+				5B51BF662431DE6E00AD998B /* ReviewHelpRequestViewModel.swift in Sources */,
 				5BB140A2242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577923242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
@@ -1394,15 +1612,23 @@
 				5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577888242B45830028D3E3 /* Auth.swift in Sources */,
 				5B2C8589242DDDE1002CC53B /* AppVersion.swift in Sources */,
+				5B7CE0B92430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
+				5BFC8DD324333E5700815828 /* Symptom.swift in Sources */,
+				5B7CE0C42430ADE2002CD923 /* SurveySymptomsViewModel.swift in Sources */,
+				5B51BF632431DE5E00AD998B /* ReviewHelpRequestViewController.swift in Sources */,
+				5BFC8DD0243327E000815828 /* Date+Formatter.swift in Sources */,
+				5BFC8DC02433081400815828 /* SymptomService.swift in Sources */,
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791C242B4E290028D3E3 /* Label.swift in Sources */,
+				5B51BF4E2431A59400AD998B /* AssistanceViewController.swift in Sources */,
 				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
-				5B2C8576242DD42B002CC53B /* ProfileAPI.swift in Sources */,
+				5B2C8576242DD42B002CC53B /* HelpRequestAPI.swift in Sources */,
 				5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577915242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
+				5B7CE0CB2430BE91002CD923 /* ProfileService.swift in Sources */,
 				5B577936242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5B577917242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5B577906242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
@@ -1493,6 +1719,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.onesignal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy OneSignal";
@@ -1516,6 +1743,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.onesignal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy OneSignal";
@@ -1539,8 +1767,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test.onesignal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OneSignalNotificationServiceDevExtension;
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev OneSignal";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1562,8 +1791,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test.onesignal;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OneSignalNotificationServiceDevExtension;
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev OneSignal";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1576,7 +1806,7 @@
 			baseConfigurationReference = 5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Dev-AppIcon";
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1586,6 +1816,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test;
 				PRODUCT_NAME = Autonomy;
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev Development";
@@ -1599,7 +1830,7 @@
 			baseConfigurationReference = DD9BD59551A78DBE3656D222 /* Pods-Autonomy Dev.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Dev-AppIcon";
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -1609,6 +1840,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test;
 				PRODUCT_NAME = Autonomy;
 				PROVISIONING_PROFILE_SPECIFIER = "com.bitmark.autonomy.test AdHoc";
@@ -1746,6 +1978,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Development";
@@ -1769,6 +2002,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy AppStore";
