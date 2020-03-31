@@ -32,6 +32,7 @@ class Navigator {
         case main(viewModel: MainViewModel)
         case healthSurvey
         case surveyHelp
+        case surveySymptoms(viewModel: SurveySymptomsViewModel)
         case assistance(viewModel: AssistanceViewModel)
         case assistanceAskInfo(viewModel: AssistanceAskInfoViewModel)
         case reviewHelpRequest(viewModel: ReviewHelpRequestViewModel)
@@ -65,6 +66,7 @@ class Navigator {
         case .main(let viewModel):              return MainViewController(viewModel: viewModel)
         case .healthSurvey:                     return HealthSurveyViewController()
         case .surveyHelp:                       return SurveyHelpViewController()
+        case .surveySymptoms(let viewModel):    return SurveySymptomsViewController(viewModel: viewModel)
         case .assistance(let viewModel):        return AssistanceViewController(viewModel: viewModel)
         case .assistanceAskInfo(let viewModel): return AssistanceAskInfoViewController(viewModel: viewModel)
         case .reviewHelpRequest(let viewModel): return ReviewHelpRequestViewController(viewModel: viewModel)
