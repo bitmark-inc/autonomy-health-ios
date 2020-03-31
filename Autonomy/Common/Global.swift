@@ -12,12 +12,19 @@ import Moya
 import RxSwift
 import RxCocoa
 import CoreLocation
+import SwiftDate
 
 class Global {
     static var current = Global()
     static let `default` = current
 
     var account: Account?
+    var userDefault: UserDefaults? {
+        guard let accountNumber = account?.getAccountNumber()
+            else { return nil }
+        return UserDefaults.userStandard(for: accountNumber)
+    }
+
     static let backgroundErrorSubject = PublishSubject<Error>()
     lazy var locationManager: CLLocationManager = {
         return CLLocationManager()
@@ -72,6 +79,32 @@ class Global {
         MoyaVersionPlugin(),
         MoyaLocationPlugin()
     ]
+
+    static let customDayGradation: RelativeFormatter.Style = {
+        let customGradation = RelativeFormatter.Gradation([
+            .init(.day, threshold: .value(0)),
+            .init(.week, threshold: .value(6.5 * RelativeFormatter.Unit.day.factor)),
+            .init(.month, threshold: .value(3.5 * 7 * RelativeFormatter.Unit.day.factor)),
+            .init(.year, threshold: .value(1.5 * RelativeFormatter.Unit.month.factor))
+        ])
+
+        return RelativeFormatter.Style(
+                flavours: [.long],
+                gradation: customGradation,
+                allowedUnits: [.day, .week, .month, .year])
+    }()
+}
+
+extension UserDefaults {
+    static func userStandard(for number: String) -> UserDefaults? {
+        return UserDefaults(suiteName: number)
+    }
+
+    // Per Account
+    var donePermission: Bool {
+        get { return bool(forKey: #function) }
+        set { set(newValue, forKey: #function) }
+    }
 }
 
 enum AppError: Error {

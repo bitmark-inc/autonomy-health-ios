@@ -54,7 +54,9 @@ extension LaunchingNavigatorDelegate {
         }
 
         // *** user logged in
-        gotoMainScreen()
+        Global.current.userDefault?.donePermission ?? false ?
+            gotoHealthSurveyScreen() :
+            gotoPermissionScreen()
     }
 }
 
@@ -64,8 +66,11 @@ extension LaunchingNavigatorDelegate {
         navigator.show(segue: .signInWall, sender: self, transition: .replace(type: .none))
     }
 
-    fileprivate func gotoMainScreen() {
-        let viewModel = MainViewModel()
-        navigator.show(segue: .main(viewModel: viewModel), sender: self, transition: .replace(type: .none))
+    fileprivate func gotoHealthSurveyScreen() {
+        navigator.show(segue: .healthSurvey, sender: self, transition: .replace(type: .none))
+    }
+
+    fileprivate func gotoPermissionScreen() {
+        navigator.show(segue: .permission, sender: self, transition: .replace(type: .none) )
     }
 }

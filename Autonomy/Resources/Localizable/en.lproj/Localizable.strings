@@ -21,6 +21,15 @@
 
 "RiskLevel" = "Risk Level";
 
+"Survey" = "Survey";
+"Symptoms" = "Symptoms";
+"Assistance" = "Assistance";
+"Request" = "Request";
+"Review" = "Review";
+"GotIt" = "Got It";
+"Submit" = "Submit";
+"Submitted" = "Submitted";
+
 "supportMessage" = "\n%@\n\nWould you like to contact with support team?";
 "Contact" = "Contact";
 "Cancel" = "Cancel";

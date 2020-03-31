@@ -30,6 +30,11 @@ class Navigator {
         case permission
         case riskLevel(viewModel: RiskLevelViewModel)
         case main(viewModel: MainViewModel)
+        case healthSurvey
+        case surveyHelp
+        case assistance(viewModel: AssistanceViewModel)
+        case assistanceAskInfo(viewModel: AssistanceAskInfoViewModel)
+        case reviewHelpRequest(viewModel: ReviewHelpRequestViewModel)
         case safariController(URL)
     }
 
@@ -51,13 +56,18 @@ class Navigator {
             let launchVC = LaunchingViewController()
             return NavigationController(rootViewController: launchVC)
 
-        case .signInWall:               return SignInWallViewController()
-        case .onboardingStep1:          return OnboardingStep1ViewController()
-        case .onboardingStep2:          return OnboardingStep2ViewController()
-        case .onboardingStep3:          return OnboardingStep3ViewController()
-        case .permission:               return PermissionViewController()
-        case .riskLevel(let viewModel): return RiskLevelViewController(viewModel: viewModel)
-        case .main(let viewModel):      return MainViewController(viewModel: viewModel)
+        case .signInWall:                       return SignInWallViewController()
+        case .onboardingStep1:                  return OnboardingStep1ViewController()
+        case .onboardingStep2:                  return OnboardingStep2ViewController()
+        case .onboardingStep3:                  return OnboardingStep3ViewController()
+        case .permission:                       return PermissionViewController()
+        case .riskLevel(let viewModel):         return RiskLevelViewController(viewModel: viewModel)
+        case .main(let viewModel):              return MainViewController(viewModel: viewModel)
+        case .healthSurvey:                     return HealthSurveyViewController()
+        case .surveyHelp:                       return SurveyHelpViewController()
+        case .assistance(let viewModel):        return AssistanceViewController(viewModel: viewModel)
+        case .assistanceAskInfo(let viewModel): return AssistanceAskInfoViewController(viewModel: viewModel)
+        case .reviewHelpRequest(let viewModel): return ReviewHelpRequestViewController(viewModel: viewModel)
 
         case .safariController(let url):
             let vc = SFSafariViewController(url: url)
@@ -167,11 +177,18 @@ class Navigator {
     }
 }
 
+extension Navigator {
+    static func gotoHealthSurveyScreen() {
+        Navigator.default.show(segue: .healthSurvey, sender: nil, transition: .replace(type: .none))
+    }
+}
+
 enum ButtonItemType {
     case `continue`
     case back
     case next
     case done
     case plus
+    case review
     case none
 }

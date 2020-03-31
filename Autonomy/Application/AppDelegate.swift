@@ -52,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification
         OneSignal.setLocationShared(false)
 
+        UNUserNotificationCenter.current().delegate = self
+
         // Location permission
         let locationManager = Global.default.locationManager
         locationManager.delegate = self
@@ -70,6 +72,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: UISceneSession Lifecycle
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        guard Global.current.account != nil else { return }
+        Navigator.gotoHealthSurveyScreen()
+    }
 
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -84,13 +90,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
+// MARK: - CLLocationManagerDelegate
 extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         Global.current.locationCoordinate = locValue
+    }
+}
+
+// MARK: - UNUserNotificationCenterDelegate
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
     }
 }

@@ -27,6 +27,52 @@
 "riskLevel.yes.description" = "Higher risk individuals currently include:\n• People over age 65\n\nAnd anyone with any of the following\npre-existing medical conditions:\n• High blood pressure (hypertension)\n• Cardiovascular disease\n• Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer";
 "riskLevel.no" = "No, I’m not at higher risk";
 
+"survey.title" = "How are you right now?";
+"survey.help.title" = "How can we help?";
+"survey.help.symptoms" = "I have symptoms";
+"survey.help.symptoms.description" = "Let us if you are currently experiencing any of common COVID-19 symptoms.";
+"survey.help.assistance" = "I need assistance";
+"survey.help.assistance.description" = "Let people in your local community know that you need help.";
+
+"survey.symptoms.title" = "Do you have any of the following symptoms?";
+
+"assistance.title" = "What kind of assistance do you need?";
+"assistance.foodAndWater" = "Access to food or water";
+"assistance.foodAndWater.desc" = "I need help getting food and water.";
+"assistance.foodAndWater.requestTitle" = "Need access to food or water";
+"assistance.medicine" = "Access to medicine";
+"assistance.medicine.desc" = "I need help getting essential medications.";
+"assistance.medicine.requestTitle" = "Need access to medicine";
+"assistance.transport" = "Transport to healthcare";
+"assistance.transport.desc" = "I need help traveling to get medical care.";
+"assistance.transport.requestTitle" = "Need transport to healthcare";
+"assistance.unsafeHome" = "My home is unsafe";
+"assistance.unsafeHome.desc" = "I need help traveling to a safe location.";
+"assistance.unsafeHome.requestTitle" = "Need transport from an unsafe home";
+
+"assistance.needItems.title" = "What exactly do you need?";
+"assistance.needItems.placeholder" = "Enter description of desired items or destination here";
+
+"assistance.place.title" = "Where is a safe place to meet your helper?";
+"assistance.place.placeholder" = "Enter a physical address other safe location description here";
+
+"assistance.contact.title" = "How should your helper contact you?";
+"assistance.contact.placeholder" = "Enter contact info here. For example, a Line ID, WhatsApp ID, or phone number.";
+
+"review.title" = "Please review your request for assistance:";
+"assistance.info.exactNeeds" = "Exact Needs";
+"assistance.info.meetingLocation" = "Meeting Location";
+"assistance.info.contactInfo" = "Contact Info";
+
+"requestHelp.submitted.title" = "Your request for assistance has been broadcast to your LOCAL community";
+"requestHelp.submitted.desc" = "You will receive a notification when someone has volunteered to help.";
+"requestHelp.generalTitle" = "Community request for assistance";
+
+"giveHelp.signUp.title" = "Thank You For Signing Up To Fulfill This Community Request";
+"giveHelp.signUp.desc" = "The community member in need has been notified of your response. Please write down or take a screenshot of the request details now then contact the community member.";
+
+"giveHelp.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
+
 "signIn.title" = "Sign In";
 "signIn.submitButton" = "Submit »";
 
@@ -34,3 +80,6 @@
 "privacyPolicy" = "Privacy Policy";
 "termsAndPolicyPhrase" = "%@ and %@.";
 "termAndPolicyPhrase.prefix.inSignInWall" = "By continuing, you agree to our";
+
+"notification.survey.title" = "Check-in survey";
+"notification.survey.desc" = "How are you right now? Tap to check in.";

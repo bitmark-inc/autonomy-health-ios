@@ -30,7 +30,7 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -39,6 +39,8 @@
 	<string>We’ll use your location data to give you the latest COVID-19 outbreak information for your local current area and tell how to help your local community.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We’ll use your location data to give you the latest COVID-19 outbreak information for your local current area and tell how to help your local community.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) will use photos from your library.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AtlasGrotesk-Black.otf</string>
