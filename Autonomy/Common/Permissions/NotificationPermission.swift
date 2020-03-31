@@ -59,6 +59,70 @@ class NotificationPermission {
         })
     }
 
+    static func scheduleReminderNotificationIfNeeded() {
+        let notificationCenter = UNUserNotificationCenter.current()
+
+        notificationCenter.getPendingNotificationRequests { (requests) in
+            guard requests.isEmpty else { return } // only one kind of notification; don't need to clear which identifier
+
+            let requests = makeScheduledCheckInSurveyRequest()
+            requests.forEach { notificationCenter.add($0) }
+        }
+    }
+
+    static func restartScheduleReminderNotification() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.removeAllPendingNotificationRequests()
+
+        let requests = makeScheduledCheckInSurveyRequest()
+        requests.forEach { notificationCenter.add($0) }
+    }
+
+    fileprivate static func makeScheduledCheckInSurveyRequest() -> [UNNotificationRequest] {
+        return random2NotificationTimes().enumerated().map { (index, notificationTime) -> UNNotificationRequest in
+            #if targetEnvironment(simulator)
+            var triggerDate = DateComponents()
+            triggerDate.second = Int.random(in: 0...59)
+
+            #else
+            var triggerDate = DateComponents()
+            triggerDate.hour = notificationTime
+            triggerDate.minute = Int.random(in: 0...59)
+
+            #endif
+
+            Global.log.debug("[setup checkInSurvey] in \(triggerDate)")
+
+            let content = makeCheckInSurveyNotification()
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
+
+            let identifier = index == 0 ?
+                Constant.NotificationIdentifier.checkInSurvey1 :
+                Constant.NotificationIdentifier.checkInSurvey2
+            return UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        }
+    }
+
+    static func random2NotificationTimes() -> [Int] {
+        let number1 = Int.random(in: 9...20) // random from 9am - 9pm; 8pm (20) cause we have minutes later
+        var number2: Int!
+
+        repeat {
+            number2 = Int.random(in: 9...20)
+        } while abs(number2 - number1) < 3
+
+        return [number1, number2].sorted()
+    }
+
+    fileprivate static func makeCheckInSurveyNotification() -> UNMutableNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = R.string.phrase.notificationSurveyTitle()
+        content.body = R.string.phrase.notificationSurveyDesc()
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+        return content
+    }
+
     fileprivate static func askEnableNotificationAlert() {
         DispatchQueue.main.async {
             let alertController = UIAlertController(

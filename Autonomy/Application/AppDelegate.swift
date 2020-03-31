@@ -103,6 +103,12 @@ extension AppDelegate: CLLocationManagerDelegate {
 // MARK: - UNUserNotificationCenterDelegate
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        if response.notification.request.identifier == Constant.NotificationIdentifier.checkInSurvey2 {
+            NotificationPermission.restartScheduleReminderNotification()
+        }
+
+        Navigator.gotoHealthSurveyScreen()
         completionHandler()
     }
 }

@@ -24,6 +24,7 @@ class MainViewController: ViewController {
 
             DispatchQueue.main.async {
                 NotificationPermission.registerOneSignal()
+                NotificationPermission.scheduleReminderNotificationIfNeeded()
             }
         }
     }

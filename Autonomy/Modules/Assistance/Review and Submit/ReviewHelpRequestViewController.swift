@@ -136,8 +136,7 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
     }
 }
 
-// MARK: - Navigator
-extension ReviewHelpRequestViewController: PanModalActionDelegate {
+extension ReviewHelpRequestViewController {
     func gotItForRequestHelpSubmitted() {
         let viewModel = MainViewModel()
         navigator.show(segue: .main(viewModel: viewModel), sender: self, transition: .replace(type: .none))

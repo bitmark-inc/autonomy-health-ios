@@ -22,7 +22,8 @@ public struct Constant {
     }
 
     public struct NotificationIdentifier {
-        public static let checkInSurvey = "check-in-survey"
+        public static let checkInSurvey1 = "check-in-survey-1"
+        public static let checkInSurvey2 = "check-in-survey-2"
     }
 
     public struct HeathColor {

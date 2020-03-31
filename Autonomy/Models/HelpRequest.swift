@@ -50,10 +50,20 @@ struct HelpRequest: Codable {
     }
 }
 
+enum HelpRequestState: String {
+    case pending = "PENDING"
+    case responded = "RESPONDED"
+}
+
 extension HelpRequest {
     var assistanceKind: AssistanceKind? {
         guard let subject = subject else { return nil }
         return AssistanceKind(rawValue: subject)
+    }
+
+    var caseState: HelpRequestState? {
+        guard let state = state else { return nil }
+        return HelpRequestState(rawValue: state)
     }
 
     var formattedCreatedAt: String? {
