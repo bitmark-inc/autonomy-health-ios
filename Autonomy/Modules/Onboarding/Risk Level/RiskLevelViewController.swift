@@ -65,6 +65,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
         thisViewModel.signUpResultSubject
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (event) in
+                loadingState.onNext(.hide)
                 guard let self = self else { return }
                 switch event {
                 case .completed:
@@ -145,7 +146,7 @@ extension RiskLevelViewController: BEMCheckBoxDelegate {
 extension RiskLevelViewController {
     fileprivate func gotoMainScreen() {
         let viewModel = MainViewModel()
-        navigator.show(segue: .main(viewModel: viewModel), sender: self, transition: .replace(type: .none))
+        navigator.show(segue: .main(viewModel: viewModel), sender: self, transition: .replace(type: .slide(direction: .up)))
     }
 }
 

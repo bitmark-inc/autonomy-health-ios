@@ -139,7 +139,7 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
 extension ReviewHelpRequestViewController {
     func gotItForRequestHelpSubmitted() {
         let viewModel = MainViewModel()
-        navigator.show(segue: .main(viewModel: viewModel), sender: self, transition: .replace(type: .none))
+        navigator.show(segue: .main(viewModel: viewModel), sender: self, transition: .replace(type: .slide(direction: .down)))
     }
 }
 

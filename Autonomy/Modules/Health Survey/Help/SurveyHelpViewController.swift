@@ -93,7 +93,7 @@ extension SurveyHelpViewController {
                              titleTop: 10,
                              description: R.string.phrase.surveyHelpSymptomsDescription(),
                              descTop: 8,
-                             btnImage: R.image.plusCircle()!)
+                             btnImage: R.image.nextCircleArrow()!)
     }
 
     fileprivate func makeAssistanceOptionBox() -> OptionBoxView {
@@ -101,6 +101,6 @@ extension SurveyHelpViewController {
                              titleTop: 10,
                              description: R.string.phrase.surveyHelpAssistanceDescription(),
                              descTop: 8,
-                             btnImage: R.image.plusCircle()!)
+                             btnImage: R.image.nextCircleArrow()!)
     }
 }

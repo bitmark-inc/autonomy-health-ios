@@ -66,11 +66,9 @@ class SurveySymptomsViewController: ViewController {
                 switch event {
                 case .error(let error):
                     // TODO: self.errorWhenFetchingData(error: error)
-                    loadingState.onNext(.success)
                     self.gotoMainScreen()
 
                 case .completed:
-                    loadingState.onNext(.success)
                     Global.log.info("[symptoms] report successfully")
                     self.gotoMainScreen()
                 default:
@@ -178,7 +176,7 @@ extension SurveySymptomsViewController {
     fileprivate func gotoMainScreen() {
         let viewModel = MainViewModel()
         navigator.show(segue: .main(viewModel: viewModel), sender: self,
-                       transition: .replace(type: .push(direction: .down)))
+                       transition: .replace(type: .slide(direction: .down)))
     }
 }
 

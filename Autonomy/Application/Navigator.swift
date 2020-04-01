@@ -55,7 +55,9 @@ class Navigator {
         switch segue {
         case .launchingNavigation:
             let launchVC = LaunchingViewController()
-            return NavigationController(rootViewController: launchVC)
+            let navigationController = NavigationController(rootViewController: launchVC)
+            navigationController.isHeroEnabled = true
+            return navigationController
 
         case .signInWall:                       return SignInWallViewController()
         case .onboardingStep1:                  return OnboardingStep1ViewController()

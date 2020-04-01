@@ -17,14 +17,10 @@ class RiskLevelViewModel: ViewModel {
     // MARK: - Output
     let signUpResultSubject = PublishSubject<Event<Never>>()
 
-    override init() {
-        super.init()
-
-    }
-
     func signUp() {
         guard let riskLevel = riskLevelSelectionRelay.value else { return }
 
+        loadingState.onNext(.loading)
         ProfileDataEngine.create(riskLevel: riskLevel)
             .asObservable()
             .materialize().bind { [weak self] in

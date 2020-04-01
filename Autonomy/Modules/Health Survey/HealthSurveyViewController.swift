@@ -84,7 +84,8 @@ extension HealthSurveyViewController {
 
     fileprivate func gotoMainScreen() {
         let viewModel = MainViewModel()
-        navigator.show(segue: .main(viewModel: viewModel), sender: self, transition: .replace(type: .push(direction: .left)))
+        navigator.show(segue: .main(viewModel: viewModel), sender: self,
+                       transition: .replace(type: .slide(direction: .down)))
     }
 
 }
