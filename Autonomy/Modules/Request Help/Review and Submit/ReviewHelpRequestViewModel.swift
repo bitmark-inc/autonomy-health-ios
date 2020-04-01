@@ -25,7 +25,6 @@ class ReviewHelpRequestViewModel: ViewModel {
     func submit() {
         loadingState.onNext(.loading)
         HelpRequestService.create(helpRequest: helpRequest)
-            .asCompletable()
             .asObservable()
             .materialize().bind { [weak self] in
                 self?.submitResultSubject.onNext($0)

@@ -20,11 +20,11 @@ class SuccessRequestHelpViewController: ViewController, PanModalPresentable {
     }
 
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(OurTheme.submittedRequestHeight)
+        return .contentHeight(OurTheme.submittedHelpHeight)
     }
 
     var longFormHeight: PanModalHeight {
-        return .contentHeight(OurTheme.submittedRequestHeight)
+        return .contentHeight(OurTheme.submittedHelpHeight)
     }
 
     var cornerRadius: CGFloat = 0.0
@@ -40,14 +40,18 @@ class SuccessRequestHelpViewController: ViewController, PanModalPresentable {
         title: R.string.localizable.gotIt().localizedUppercase,
         icon: R.image.tickCircleArrow()!)
 
-    var completableSubject = PublishSubject<Void>()
+    var delegate: PandModalDelegate?
 
     override func bindViewModel() {
         super.bindViewModel()
 
         gotItButton.rxTap.bind { [weak self] in
-            self?.completableSubject.onCompleted()
+            self?.dismiss(animated: true)
         }.disposed(by: disposeBag)
+    }
+
+    deinit {
+        delegate?.donePanModel()
     }
 
     override func setupViews() {

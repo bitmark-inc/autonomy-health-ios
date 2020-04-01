@@ -25,10 +25,13 @@
 "Symptoms" = "Symptoms";
 "Assistance" = "Assistance";
 "Request" = "Request";
+"Requests" = "Requests";
 "Review" = "Review";
 "GotIt" = "Got It";
 "Submit" = "Submit";
+"SignUp" = "Sign Up";
 "Submitted" = "Submitted";
+"SignedUp" = "Signed Up";
 
 "supportMessage" = "\n%@\n\nWould you like to contact with support team?";
 "Contact" = "Contact";

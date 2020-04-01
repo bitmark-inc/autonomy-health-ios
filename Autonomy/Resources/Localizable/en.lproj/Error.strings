@@ -19,3 +19,6 @@
 "requireAppUpdate.title" = "Update Required";
 "requireAppUpdate.message" = "The Autonomy app on your device is out of date. Please update Autonomy to continue using it.";
 "requireAppUpdate.action" = "Update now";
+
+"requestHelp.duplicate.message" = "Sorry, making multiple help requests is not allowed.";
+"giveHelp.responded" = "This request's already signed up by other.";

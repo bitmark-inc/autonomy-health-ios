@@ -72,6 +72,9 @@
 "giveHelp.signUp.desc" = "The community member in need has been notified of your response. Please write down or take a screenshot of the request details now then contact the community member.";
 
 "giveHelp.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
+"giveHelp.helper.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
+"giveHelp.helper.otherSubmitted" = "Someone has already signed up to fulfill this community request.";
+"giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
 
 "signIn.title" = "Sign In";
 "signIn.submitButton" = "Submit »";

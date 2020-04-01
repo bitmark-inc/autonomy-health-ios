@@ -25,12 +25,11 @@ struct OurTheme {
         }
     }()
 
-    static var submittedRequestHeight: CGFloat = {
+    static var submittedHelpHeight: CGFloat = 250
+    static var signedHelpHeight: CGFloat = {
         switch UIScreen.main.bounds.size.width {
-        case let x where x <= 375:
-            return 250
-        default:
-            return 230
+        case let x where x <= 375: return 290
+        default:                   return 275
         }
     }()
 

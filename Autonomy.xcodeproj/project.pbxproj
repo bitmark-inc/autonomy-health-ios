@@ -37,22 +37,10 @@
 		5B2C85A0242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B2C8599242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B2C85B0242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B2C85B5242DEE92002CC53B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C859B242DEDBB002CC53B /* NotificationService.swift */; };
-		5B51BF4B2431A58A00AD998B /* AssistanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF4A2431A58A00AD998B /* AssistanceViewModel.swift */; };
-		5B51BF4C2431A58A00AD998B /* AssistanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF4A2431A58A00AD998B /* AssistanceViewModel.swift */; };
-		5B51BF4E2431A59400AD998B /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF4D2431A59400AD998B /* AssistanceViewController.swift */; };
-		5B51BF4F2431A59400AD998B /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF4D2431A59400AD998B /* AssistanceViewController.swift */; };
-		5B51BF532431C99D00AD998B /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF522431C99D00AD998B /* AssistanceAskInfoViewController.swift */; };
-		5B51BF542431C99D00AD998B /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF522431C99D00AD998B /* AssistanceAskInfoViewController.swift */; };
 		5B51BF562431CA8B00AD998B /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */; };
 		5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */; };
-		5B51BF5C2431D5B700AD998B /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5B2431D5B700AD998B /* AssistanceAskInfoViewModel.swift */; };
-		5B51BF5D2431D5B700AD998B /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5B2431D5B700AD998B /* AssistanceAskInfoViewModel.swift */; };
 		5B51BF5F2431D63C00AD998B /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
 		5B51BF602431D63C00AD998B /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
-		5B51BF632431DE5E00AD998B /* ReviewHelpRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF622431DE5E00AD998B /* ReviewHelpRequestViewController.swift */; };
-		5B51BF642431DE5E00AD998B /* ReviewHelpRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF622431DE5E00AD998B /* ReviewHelpRequestViewController.swift */; };
-		5B51BF662431DE6E00AD998B /* ReviewHelpRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF652431DE6E00AD998B /* ReviewHelpRequestViewModel.swift */; };
-		5B51BF672431DE6E00AD998B /* ReviewHelpRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF652431DE6E00AD998B /* ReviewHelpRequestViewModel.swift */; };
 		5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
 		5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
 		5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
@@ -199,6 +187,26 @@
 		5B7CE0D22430C72F002CD923 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D02430C72E002CD923 /* TableView.swift */; };
 		5B7CE0D42430CB6C002CD923 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D32430CB6C002CD923 /* TableViewCell.swift */; };
 		5B7CE0D52430CB6C002CD923 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D32430CB6C002CD923 /* TableViewCell.swift */; };
+		5B7F2396243482E500F7A72E /* GiveHelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F2395243482E500F7A72E /* GiveHelpViewModel.swift */; };
+		5B7F2397243482E500F7A72E /* GiveHelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F2395243482E500F7A72E /* GiveHelpViewModel.swift */; };
+		5B7F2399243482EF00F7A72E /* GiveHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F2398243482EF00F7A72E /* GiveHelpViewController.swift */; };
+		5B7F239A243482EF00F7A72E /* GiveHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F2398243482EF00F7A72E /* GiveHelpViewController.swift */; };
+		5B7F23A52434878F00F7A72E /* ReviewHelpRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F239D2434878F00F7A72E /* ReviewHelpRequestViewController.swift */; };
+		5B7F23A62434878F00F7A72E /* ReviewHelpRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F239D2434878F00F7A72E /* ReviewHelpRequestViewController.swift */; };
+		5B7F23A72434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F239E2434878F00F7A72E /* ReviewHelpRequestViewModel.swift */; };
+		5B7F23A82434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F239E2434878F00F7A72E /* ReviewHelpRequestViewModel.swift */; };
+		5B7F23A92434878F00F7A72E /* AssistanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A02434878F00F7A72E /* AssistanceViewModel.swift */; };
+		5B7F23AA2434878F00F7A72E /* AssistanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A02434878F00F7A72E /* AssistanceViewModel.swift */; };
+		5B7F23AB2434878F00F7A72E /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */; };
+		5B7F23AC2434878F00F7A72E /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */; };
+		5B7F23AD2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */; };
+		5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */; };
+		5B7F23AF2434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */; };
+		5B7F23B02434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */; };
+		5B7F23B22434B65F00F7A72E /* SuccessGiveHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B12434B65F00F7A72E /* SuccessGiveHelpViewController.swift */; };
+		5B7F23B32434B65F00F7A72E /* SuccessGiveHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B12434B65F00F7A72E /* SuccessGiveHelpViewController.swift */; };
+		5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
+		5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
 		5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
 		5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
 		5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F073242C92DA0084B4F6 /* LinearView.swift */; };
@@ -322,14 +330,8 @@
 		5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceDevExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2C85B8242DFC78002CC53B /* Autonomy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Autonomy.entitlements; sourceTree = "<group>"; };
 		5B2C85B9242DFC78002CC53B /* Autonomy Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Autonomy Dev.entitlements"; sourceTree = "<group>"; };
-		5B51BF4A2431A58A00AD998B /* AssistanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceViewModel.swift; sourceTree = "<group>"; };
-		5B51BF4D2431A59400AD998B /* AssistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceViewController.swift; sourceTree = "<group>"; };
-		5B51BF522431C99D00AD998B /* AssistanceAskInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewController.swift; sourceTree = "<group>"; };
 		5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
-		5B51BF5B2431D5B700AD998B /* AssistanceAskInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewModel.swift; sourceTree = "<group>"; };
 		5B51BF5E2431D63C00AD998B /* HelpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
-		5B51BF622431DE5E00AD998B /* ReviewHelpRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelpRequestViewController.swift; sourceTree = "<group>"; };
-		5B51BF652431DE6E00AD998B /* ReviewHelpRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelpRequestViewModel.swift; sourceTree = "<group>"; };
 		5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSubmitButton.swift; sourceTree = "<group>"; };
 		5B57785D242B330E0028D3E3 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B57785F242B3FC10028D3E3 /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
@@ -402,6 +404,16 @@
 		5B7CE0C82430BE91002CD923 /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		5B7CE0D02430C72E002CD923 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		5B7CE0D32430CB6C002CD923 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		5B7F2395243482E500F7A72E /* GiveHelpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveHelpViewModel.swift; sourceTree = "<group>"; };
+		5B7F2398243482EF00F7A72E /* GiveHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveHelpViewController.swift; sourceTree = "<group>"; };
+		5B7F239D2434878F00F7A72E /* ReviewHelpRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelpRequestViewController.swift; sourceTree = "<group>"; };
+		5B7F239E2434878F00F7A72E /* ReviewHelpRequestViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelpRequestViewModel.swift; sourceTree = "<group>"; };
+		5B7F23A02434878F00F7A72E /* AssistanceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceViewModel.swift; sourceTree = "<group>"; };
+		5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceViewController.swift; sourceTree = "<group>"; };
+		5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewController.swift; sourceTree = "<group>"; };
+		5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewModel.swift; sourceTree = "<group>"; };
+		5B7F23B12434B65F00F7A72E /* SuccessGiveHelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessGiveHelpViewController.swift; sourceTree = "<group>"; };
+		5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalDelegate.swift; sourceTree = "<group>"; };
 		5B87F070242C85B90084B4F6 /* SeparateLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateLine.swift; sourceTree = "<group>"; };
 		5B87F073242C92DA0084B4F6 /* LinearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearView.swift; sourceTree = "<group>"; };
 		5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep3ViewController.swift; sourceTree = "<group>"; };
@@ -539,43 +551,6 @@
 				5B2C85B8242DFC78002CC53B /* Autonomy.entitlements */,
 			);
 			path = Entitlements;
-			sourceTree = "<group>";
-		};
-		5B51BF492431A1F600AD998B /* Assistance */ = {
-			isa = PBXGroup;
-			children = (
-				5B51BF502431A60100AD998B /* What kind */,
-				5B51BF512431A60D00AD998B /* Ask Info */,
-				5B51BF612431DE3D00AD998B /* Review and Submit */,
-			);
-			path = Assistance;
-			sourceTree = "<group>";
-		};
-		5B51BF502431A60100AD998B /* What kind */ = {
-			isa = PBXGroup;
-			children = (
-				5B51BF4A2431A58A00AD998B /* AssistanceViewModel.swift */,
-				5B51BF4D2431A59400AD998B /* AssistanceViewController.swift */,
-			);
-			path = "What kind";
-			sourceTree = "<group>";
-		};
-		5B51BF512431A60D00AD998B /* Ask Info */ = {
-			isa = PBXGroup;
-			children = (
-				5B51BF5B2431D5B700AD998B /* AssistanceAskInfoViewModel.swift */,
-				5B51BF522431C99D00AD998B /* AssistanceAskInfoViewController.swift */,
-			);
-			path = "Ask Info";
-			sourceTree = "<group>";
-		};
-		5B51BF612431DE3D00AD998B /* Review and Submit */ = {
-			isa = PBXGroup;
-			children = (
-				5B51BF652431DE6E00AD998B /* ReviewHelpRequestViewModel.swift */,
-				5B51BF622431DE5E00AD998B /* ReviewHelpRequestViewController.swift */,
-			);
-			path = "Review and Submit";
 			sourceTree = "<group>";
 		};
 		5B577861242B41F70028D3E3 /* Common */ = {
@@ -849,6 +824,52 @@
 			path = Symptom;
 			sourceTree = "<group>";
 		};
+		5B7F2394243482BF00F7A72E /* Give Help */ = {
+			isa = PBXGroup;
+			children = (
+				5B7F2395243482E500F7A72E /* GiveHelpViewModel.swift */,
+				5B7F2398243482EF00F7A72E /* GiveHelpViewController.swift */,
+			);
+			path = "Give Help";
+			sourceTree = "<group>";
+		};
+		5B7F239B2434878F00F7A72E /* Request Help */ = {
+			isa = PBXGroup;
+			children = (
+				5B7F239F2434878F00F7A72E /* What kind */,
+				5B7F23A22434878F00F7A72E /* Ask Info */,
+				5B7F239C2434878F00F7A72E /* Review and Submit */,
+			);
+			path = "Request Help";
+			sourceTree = "<group>";
+		};
+		5B7F239C2434878F00F7A72E /* Review and Submit */ = {
+			isa = PBXGroup;
+			children = (
+				5B7F239D2434878F00F7A72E /* ReviewHelpRequestViewController.swift */,
+				5B7F239E2434878F00F7A72E /* ReviewHelpRequestViewModel.swift */,
+			);
+			path = "Review and Submit";
+			sourceTree = "<group>";
+		};
+		5B7F239F2434878F00F7A72E /* What kind */ = {
+			isa = PBXGroup;
+			children = (
+				5B7F23A02434878F00F7A72E /* AssistanceViewModel.swift */,
+				5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */,
+			);
+			path = "What kind";
+			sourceTree = "<group>";
+		};
+		5B7F23A22434878F00F7A72E /* Ask Info */ = {
+			isa = PBXGroup;
+			children = (
+				5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */,
+				5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */,
+			);
+			path = "Ask Info";
+			sourceTree = "<group>";
+		};
 		5B87F079242CA00E0084B4F6 /* Permission */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,7 +916,6 @@
 				5B9542D0242AF92A0072D933 /* Application */,
 				5B577861242B41F70028D3E3 /* Common */,
 				5B9542D1242AF9380072D933 /* Modules */,
-				5B577886242B45550028D3E3 /* Models */,
 				5B2C857D242DD869002CC53B /* Data Engine */,
 				5B577872242B43860028D3E3 /* Services */,
 				5B57786B242B42FE0028D3E3 /* ConfCore */,
@@ -925,7 +945,9 @@
 				5B62A3A3242C44CB00480A15 /* Onboarding */,
 				5B2C8581242DDBE7002CC53B /* Main */,
 				5B7CE0B72430A458002CD923 /* Health Survey */,
-				5B51BF492431A1F600AD998B /* Assistance */,
+				5B7F239B2434878F00F7A72E /* Request Help */,
+				5B7F2394243482BF00F7A72E /* Give Help */,
+				5BFC8DC724331AC900815828 /* Pan Modals */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -968,7 +990,6 @@
 			children = (
 				5B2C8574242DD42B002CC53B /* HelpRequestAPI.swift */,
 				5B2C8575242DD42B002CC53B /* HelpRequestService.swift */,
-				5BFC8DC724331AC900815828 /* Pan Modals */,
 			);
 			path = "Help Request";
 			sourceTree = "<group>";
@@ -976,7 +997,10 @@
 		5BFC8DC724331AC900815828 /* Pan Modals */ = {
 			isa = PBXGroup;
 			children = (
+				5B577886242B45550028D3E3 /* Models */,
 				5BFC8DC4243312E700815828 /* SuccessRequestHelpViewController.swift */,
+				5B7F23B12434B65F00F7A72E /* SuccessGiveHelpViewController.swift */,
+				5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */,
 			);
 			path = "Pan Modals";
 			sourceTree = "<group>";
@@ -1458,26 +1482,27 @@
 				5B87F075242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790E242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577922242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
+				5B7F23A82434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
 				5B577901242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5BFC8DC6243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */,
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B57789A242B47770028D3E3 /* ServerAPIError.swift in Sources */,
 				5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
+				5B7F23AC2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
 				5B577894242B47060028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B87F085242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577895242B470A0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
-				5B51BF542431C99D00AD998B /* AssistanceAskInfoViewController.swift in Sources */,
 				5B7CE0C22430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */,
 				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B57786E242B43140028D3E3 /* Credential.swift in Sources */,
-				5B51BF4C2431A58A00AD998B /* AssistanceViewModel.swift in Sources */,
 				5B577931242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577941242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
 				5B57790C242B4CB30028D3E3 /* ViewController.swift in Sources */,
+				5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
 				5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */,
 				5B577934242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
 				5B577927242B4EA20028D3E3 /* ViewModel.swift in Sources */,
@@ -1487,15 +1512,20 @@
 				5B57787F242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577878242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0CA2430BE91002CD923 /* ProfileAPI.swift in Sources */,
+				5B7F23B32434B65F00F7A72E /* SuccessGiveHelpViewController.swift in Sources */,
 				5BFC8DC32433081400815828 /* SymptomAPI.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
 				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
+				5B7F239A243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
+				5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
+				5B7F2397243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5B2C8591242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
 				5B2C8579242DD42B002CC53B /* HelpRequestService.swift in Sources */,
 				5B57786A242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
 				5B57793B242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B7CE0BE2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
+				5B7F23B02434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */,
 				5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */,
 				5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
@@ -1503,10 +1533,8 @@
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5BFC8DCD2433264A00815828 /* FeedTableCell.swift in Sources */,
-				5B51BF5D2431D5B700AD998B /* AssistanceAskInfoViewModel.swift in Sources */,
 				5B7CE0D52430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
-				5B51BF672431DE6E00AD998B /* ReviewHelpRequestViewModel.swift in Sources */,
 				5BB140A3242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577924242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
@@ -1517,19 +1545,19 @@
 				5B577889242B45830028D3E3 /* Auth.swift in Sources */,
 				5B2C858A242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B7CE0BA2430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
+				5B7F23A62434878F00F7A72E /* ReviewHelpRequestViewController.swift in Sources */,
 				5BFC8DD424333E5700815828 /* Symptom.swift in Sources */,
 				5B7CE0C52430ADE2002CD923 /* SurveySymptomsViewModel.swift in Sources */,
-				5B51BF642431DE5E00AD998B /* ReviewHelpRequestViewController.swift in Sources */,
 				5BFC8DD1243327E000815828 /* Date+Formatter.swift in Sources */,
 				5BFC8DC12433081400815828 /* SymptomService.swift in Sources */,
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791D242B4E290028D3E3 /* Label.swift in Sources */,
-				5B51BF4F2431A59400AD998B /* AssistanceViewController.swift in Sources */,
 				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
 				5B2C8577242DD42B002CC53B /* HelpRequestAPI.swift in Sources */,
+				5B7F23AA2434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
 				5BB140A0242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577916242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B7CE0CC2430BE91002CD923 /* ProfileService.swift in Sources */,
@@ -1554,26 +1582,27 @@
 				5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790D242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577921242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
+				5B7F23A72434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
 				5B577900242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5BFC8DC5243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */,
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B577899242B47670028D3E3 /* ServerAPIError.swift in Sources */,
 				5B51BF562431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
+				5B7F23AB2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
 				5B57786D242B43140028D3E3 /* Credential.swift in Sources */,
 				5B87F084242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577890242B460E0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
-				5B51BF532431C99D00AD998B /* AssistanceAskInfoViewController.swift in Sources */,
 				5B7CE0C12430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */,
 				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B577893242B46230028D3E3 /* MoyaProviderType+Request.swift in Sources */,
-				5B51BF4B2431A58A00AD998B /* AssistanceViewModel.swift in Sources */,
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577940242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08A242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
 				5B57790B242B4CB30028D3E3 /* ViewController.swift in Sources */,
+				5B7F23AD2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
 				5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */,
 				5B577933242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
 				5B577926242B4EA20028D3E3 /* ViewModel.swift in Sources */,
@@ -1583,15 +1612,20 @@
 				5B57787E242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577877242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0C92430BE91002CD923 /* ProfileAPI.swift in Sources */,
+				5B7F23B22434B65F00F7A72E /* SuccessGiveHelpViewController.swift in Sources */,
 				5BFC8DC22433081400815828 /* SymptomAPI.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
 				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,
+				5B7F2399243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
+				5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
+				5B7F2396243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5B2C8590242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
 				5B2C8578242DD42B002CC53B /* HelpRequestService.swift in Sources */,
 				5B577869242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
 				5B57793A242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B7CE0BD2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
+				5B7F23AF2434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */,
 				5BB140A5242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */,
 				5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
@@ -1599,10 +1633,8 @@
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5BFC8DCC2433264A00815828 /* FeedTableCell.swift in Sources */,
-				5B51BF5C2431D5B700AD998B /* AssistanceAskInfoViewModel.swift in Sources */,
 				5B7CE0D42430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
-				5B51BF662431DE6E00AD998B /* ReviewHelpRequestViewModel.swift in Sources */,
 				5BB140A2242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577923242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
@@ -1613,19 +1645,19 @@
 				5B577888242B45830028D3E3 /* Auth.swift in Sources */,
 				5B2C8589242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B7CE0B92430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
+				5B7F23A52434878F00F7A72E /* ReviewHelpRequestViewController.swift in Sources */,
 				5BFC8DD324333E5700815828 /* Symptom.swift in Sources */,
 				5B7CE0C42430ADE2002CD923 /* SurveySymptomsViewModel.swift in Sources */,
-				5B51BF632431DE5E00AD998B /* ReviewHelpRequestViewController.swift in Sources */,
 				5BFC8DD0243327E000815828 /* Date+Formatter.swift in Sources */,
 				5BFC8DC02433081400815828 /* SymptomService.swift in Sources */,
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791C242B4E290028D3E3 /* Label.swift in Sources */,
-				5B51BF4E2431A59400AD998B /* AssistanceViewController.swift in Sources */,
 				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
 				5B2C8576242DD42B002CC53B /* HelpRequestAPI.swift in Sources */,
+				5B7F23A92434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
 				5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577915242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B7CE0CB2430BE91002CD923 /* ProfileService.swift in Sources */,

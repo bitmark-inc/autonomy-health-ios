@@ -12,6 +12,9 @@ import Moya
 
 enum HelpRequestAPI {
     case create(helpRequest: HelpRequest)
+    case list
+    case get(helpRequestID: String)
+    case give(helpRequestID: String)
 }
 
 extension HelpRequestAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -21,12 +24,19 @@ extension HelpRequestAPI: AuthorizedTargetType, VersionTargetType, LocationTarge
     }
 
     var path: String {
-        return ""
+        switch self {
+        case .create, .list:
+            return ""
+        case .get(let helpRequestID), .give(let helpRequestID):
+            return helpRequestID
+        }
     }
 
     var method: Moya.Method {
         switch self {
-        case .create:   return .post
+        case .create:           return .post
+        case .get, .list:       return .get
+        case .give:             return .patch
         }
     }
 
@@ -42,6 +52,9 @@ extension HelpRequestAPI: AuthorizedTargetType, VersionTargetType, LocationTarge
             params["exact_needs"] = helpRequest.exactNeeds
             params["meeting_location"] = helpRequest.meetingLocation
             params["contact_info"] = helpRequest.contactInfo
+
+        case .get, .list, .give:
+            return nil
         }
         return params
     }

@@ -70,14 +70,7 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
 
     fileprivate func showSubmittedPanModel() {
         let viewController = SuccessRequestHelpViewController()
-        viewController.completableSubject
-            .subscribe(onCompleted: {
-                viewController.dismiss(animated: true) { [weak self] in
-                    self?.gotItForRequestHelpSubmitted()
-                }
-            })
-            .disposed(by: disposeBag)
-
+        viewController.delegate = self
         presentPanModal(viewController)
     }
 
@@ -89,8 +82,32 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
                 return
         }
 
+        if let error = error as? ServerAPIError {
+            switch error.code {
+            case .DuplicateHelpRequest:
+                showDuplicateHelpErrorAlert()
+                return
+            default:
+                break
+            }
+        }
+
         Global.log.error(error)
         showErrorAlertWithSupport(message: R.string.error.system())
+    }
+
+    fileprivate func showDuplicateHelpErrorAlert() {
+        let alertController = UIAlertController(
+            title: R.string.error.generalTitle(),
+            message: R.string.error.requestHelpDuplicateMessage(),
+            preferredStyle: .alert)
+
+        let okButton = UIAlertAction(title: R.string.localizable.ok(), style: .default) { [weak self] (_) in
+            self?.gotoMainScreen()
+        }
+
+        alertController.addAction(okButton)
+        alertController.show()
     }
 
     // MARK: - Setup views
@@ -136,8 +153,16 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
     }
 }
 
+// MARK: - PandModelDelegate
+extension ReviewHelpRequestViewController: PandModalDelegate {
+    func donePanModel() {
+        gotoMainScreen()
+    }
+}
+
+// MARK: - Navigator
 extension ReviewHelpRequestViewController {
-    func gotItForRequestHelpSubmitted() {
+    fileprivate func gotoMainScreen() {
         let viewModel = MainViewModel()
         navigator.show(segue: .main(viewModel: viewModel), sender: self, transition: .replace(type: .slide(direction: .down)))
     }
