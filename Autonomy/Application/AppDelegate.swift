@@ -95,8 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: - CLLocationManagerDelegate
 extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        Global.current.locationCoordinate = locValue
+        Global.current.userLocationRelay.accept(locations.last)
     }
 }
 

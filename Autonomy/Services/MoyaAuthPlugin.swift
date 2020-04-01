@@ -51,7 +51,7 @@ struct MoyaLocationPlugin: PluginType {
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
         guard
             let _ = target as? LocationTargetType,
-            let locationCoordinate = Global.current.locationCoordinate
+            let locationCoordinate = Global.current.userLocationRelay.value?.coordinate
             else {
                 return request
         }

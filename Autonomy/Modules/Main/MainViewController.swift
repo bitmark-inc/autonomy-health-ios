@@ -17,6 +17,7 @@ class MainViewController: ViewController {
     // MARK: - Properties
     lazy var healthScoreTriangle = makeHealthScoreTriangle()
     lazy var locationLabel = makeLocationLabel()
+    lazy var locationInfoView = makeLocationInfoView()
     lazy var feedsTableView = makeFeedsTableView()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -39,28 +40,65 @@ class MainViewController: ViewController {
         }
     }
 
+    // MARK: - bindViewModel
+    override func bindViewModel() {
+        super.bindViewModel()
+
+        bindUserFriendlyAddress()
+    }
+
+    fileprivate func bindUserFriendlyAddress() {
+        Global.current.userLocationRelay
+            .distinctUntilChanged { (previousLocation, updatedLocation) -> Bool in
+                guard let previousLocation = previousLocation, let updatedLocation = updatedLocation else { return false }
+                return previousLocation.distance(from: updatedLocation) < 50.0 // avoid to request reserve address too much; exceeds Apple's limitation.
+            }
+            .flatMap({ (location) -> Single<String?> in
+                guard let location = location else { return Single.just(nil) }
+                return LocationPermission.lookupAddress(from: location)
+            })
+            .subscribe(onNext: { [weak self] (userFriendlyAddress) in
+                guard let self = self else { return }
+                guard let userFriendlyAddress = userFriendlyAddress else {
+                    self.locationInfoView.isHidden = true
+                    return
+                }
+
+                self.locationInfoView.isHidden = false
+                self.locationLabel.setText(userFriendlyAddress)
+            }, onError: { [weak self] (error) in
+                guard let self = self else { return }
+                Global.log.error(error)
+                self.locationInfoView.isHidden = true
+            })
+            .disposed(by: disposeBag)
+    }
+
     override func setupViews() {
         super.setupViews()
         let healthScoreView = makeHealthScoreView()
         contentView.addSubview(healthScoreView)
-        contentView.addSubview(locationLabel)
+        contentView.addSubview(locationInfoView)
         contentView.addSubview(feedsTableView)
 
         healthScoreView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(50)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().offset(-100)
+            make.width.equalToSuperview().offset(-65)
         }
 
-        locationLabel.snp.makeConstraints { (make) in
+        locationInfoView.snp.makeConstraints { (make) in
             make.top.equalTo(healthScoreTriangle.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
         }
 
         feedsTableView.snp.makeConstraints { (make) in
             make.top.equalTo(locationLabel.snp.bottom).offset(15)
             make.leading.trailing.bottom.equalToSuperview()
         }
+
+        locationInfoView.isHidden = true
     }
 }
 
@@ -80,6 +118,7 @@ extension MainViewController: SkeletonTableViewDataSource {
     }
 }
 
+// MARK: - Setup Views
 extension MainViewController {
     fileprivate func makeHealthScoreTriangle() -> ImageView {
         return ImageView(image: R.image.triangle_074())
@@ -106,8 +145,29 @@ extension MainViewController {
     fileprivate func makeLocationLabel() -> Label {
         let label = Label()
         label.apply(font: R.font.atlasGroteskLight(size: 18),
-                    themeStyle: .silverChaliceColor)
+                    themeStyle: .silverChaliceColor, lineHeight: 1.2)
+        label.numberOfLines = 0
+        label.textAlignment = .center
         return label
+    }
+
+    fileprivate func makeLocationInfoView() -> UIView {
+        let vectorImageView = ImageView(image: R.image.vector())
+
+        let view = UIView()
+        view.addSubview(vectorImageView)
+        view.addSubview(locationLabel)
+
+        vectorImageView.snp.makeConstraints { (make) in
+            make.top.leading.bottom.centerY.equalToSuperview()
+        }
+
+        locationLabel.snp.makeConstraints { (make) in
+            make.leading.equalTo(vectorImageView.snp.trailing).offset(15)
+            make.top.trailing.bottom.equalToSuperview()
+        }
+
+        return view
     }
 
     fileprivate func makeFeedsTableView() -> TableView {

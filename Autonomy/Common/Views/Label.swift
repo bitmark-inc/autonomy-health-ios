@@ -12,26 +12,13 @@ import RxSwift
 class Label: UILabel {
 
     var lineHeight: CGFloat?
-
-    var isDescription: Bool = false {
-        didSet {
-            if isDescription {
-                numberOfLines = 0
-                textAlignment = .center
-            } else {
-                numberOfLines = 1
-                textAlignment = .left
-            }
-        }
-    }
-
     let disposeBag = DisposeBag()
 
     func lineHeightMultiple(_ lineHeightMultiple: CGFloat) {
         let attributedString = NSMutableAttributedString(string: text ?? "")
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
-        paragraphStyle.alignment = isDescription ? .center : .left
+        paragraphStyle.alignment = textAlignment
 
         // *** Apply attribute to string ***
         attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedString.length))

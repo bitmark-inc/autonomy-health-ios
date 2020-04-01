@@ -29,7 +29,8 @@ class Global {
     lazy var locationManager: CLLocationManager = {
         return CLLocationManager()
     }()
-    var locationCoordinate: CLLocationCoordinate2D?
+
+    lazy var userLocationRelay = BehaviorRelay<CLLocation?>(value: locationManager.location)
 
     lazy var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
