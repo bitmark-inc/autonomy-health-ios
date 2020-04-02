@@ -66,12 +66,12 @@ extension OnboardingStep2ViewController {
 
         let todayLabel = Label()
         todayLabel.apply(text: R.string.localizable.today().localizedUppercase,
-                    font: R.font.domaineSansTextLight(size: 14),
+                         font: R.font.domaineSansTextLight(size: Size.ds(14)),
                     themeStyle: .silverChaliceColor)
 
         let workFromHomeLabel = Label()
         workFromHomeLabel.apply(text: R.string.phrase.workFromHome(),
-            font: R.font.atlasGroteskLight(size: 24),
+                                font: R.font.atlasGroteskLight(size: Size.ds(24)),
             themeStyle: .lightTextColor)
 
         let rightView = LinearView(
@@ -87,6 +87,7 @@ extension OnboardingStep2ViewController {
 
         image.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
+            make.height.width.equalTo(Size.dh(90))
         }
 
         rightView.snp.makeConstraints { (make) in
@@ -104,7 +105,7 @@ extension OnboardingStep2ViewController {
         return LinearView(
             items: [
                 (part1View              , 0),
-                (SeparateLine(height: 1), 30),
+                (SeparateLine(height: 1), Size.dh(25)),
                 (textPart2Label         , 15)
             ])
 

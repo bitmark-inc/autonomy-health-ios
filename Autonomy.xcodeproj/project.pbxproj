@@ -1875,7 +1875,7 @@
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test;
 				PRODUCT_NAME = Autonomy;
-				PROVISIONING_PROFILE_SPECIFIER = "com.bitmark.autonomy.test AdHoc";
+				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev Adhoc";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

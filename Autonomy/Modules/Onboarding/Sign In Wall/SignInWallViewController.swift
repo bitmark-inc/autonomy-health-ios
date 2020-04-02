@@ -59,6 +59,7 @@ class SignInWallViewController: ViewController {
         launchPolygonImage.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(view.height * 0.33)
             make.leading.trailing.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.32)
         }
 
         getStartedButton.snp.makeConstraints { (make) in
@@ -113,7 +114,7 @@ extension SignInWallViewController {
         let label = Label()
         label.numberOfLines = 0
         label.apply(text: R.string.phrase.launchDescription(),
-                    font: R.font.atlasGroteskLight(size: 64),
+                    font: R.font.atlasGroteskLight(size: Size.ds(64)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
         return CenterView(contentView: label)

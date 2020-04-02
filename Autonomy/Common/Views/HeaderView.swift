@@ -37,7 +37,7 @@ class HeaderView: UIView {
 
         doubleLine1.snp.makeConstraints { (make) in
             make.leading.centerY.equalToSuperview()
-            make.width.equalTo(120)
+            make.width.equalTo(Size.dw(120))
         }
 
         headerLabel.snp.makeConstraints { (make) in

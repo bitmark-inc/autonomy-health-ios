@@ -186,7 +186,7 @@ extension SurveySymptomsViewController {
         let label = Label()
         label.numberOfLines = 0
         label.apply(text: R.string.phrase.surveySymptomsTitle(),
-                    font: R.font.atlasGroteskLight(size: 36),
+                    font: R.font.atlasGroteskLight(size: Size.ds(36)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
         return CenterView(contentView: label)

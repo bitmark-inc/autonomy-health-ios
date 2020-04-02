@@ -63,7 +63,7 @@ extension LaunchingViewController {
         let label = Label()
         label.numberOfLines = 0
         label.apply(text: R.string.phrase.launchDescription(),
-                    font: R.font.atlasGroteskLight(size: 64),
+                    font: R.font.atlasGroteskLight(size: Size.ds(64)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
         return CenterView(contentView: label)

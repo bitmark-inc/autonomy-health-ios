@@ -45,26 +45,31 @@ class CheckboxView: UIView {
 
         let textView: UIView!
         if desc != nil {
-            textView = LinearView(items: [(titleLabel, 0), (descLabel, 3)])
+            textView = LinearView(items: [(titleLabel, 0), (descLabel, 3)], bottomConstraint: true)
             titleLabel.isSkeletonable = true
             descLabel.isSkeletonable = true
         } else {
             textView = titleLabel
         }
 
-        titleLabel.isUserInteractionEnabled = true
-        titleLabel.addGestureRecognizer(tapGestureRecognizer)
+        textView.isUserInteractionEnabled = true
+        textView.addGestureRecognizer(tapGestureRecognizer)
         addSubview(checkBox)
         addSubview(textView)
 
         checkBox.snp.makeConstraints { (make) in
-            make.top.leading.bottom.equalToSuperview()
+            make.top.leading.equalToSuperview()
             make.width.height.equalTo(45)
         }
 
         textView.snp.makeConstraints { (make) in
             make.leading.equalTo(checkBox.snp.trailing).offset(15)
             make.top.trailing.bottom.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+
+        snp.makeConstraints { (make) in
+            make.height.greaterThanOrEqualTo(45)
         }
 
         // setup isSkeletonable
@@ -93,8 +98,9 @@ extension CheckboxView {
 
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
+        label.numberOfLines = 0
         label.apply(text: title,
-                    font: R.font.atlasGroteskLight(size: 24),
+                    font: R.font.atlasGroteskLight(size: Size.ds(24)),
                     themeStyle: .lightTextColor)
         return label
     }

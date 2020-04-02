@@ -55,6 +55,10 @@ class OptionBoxView: UIView {
         button.snp.makeConstraints { (make) in
             make.top.trailing.equalToSuperview()
         }
+
+        snp.makeConstraints { (make) in
+            make.height.greaterThanOrEqualTo(45)
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -66,7 +70,7 @@ extension OptionBoxView {
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
         label.apply(text: title,
-                    font: R.font.atlasGroteskLight(size: 24),
+                    font: R.font.atlasGroteskLight(size: Size.ds(24)),
                     themeStyle: .lightTextColor)
         return label
     }

@@ -22,7 +22,7 @@ class HealthSurveyViewController: ViewController {
     lazy var yellowButton = makeHealthButton(color: Constant.HeathColor.yellow)
     lazy var greenButton = makeHealthButton(color: Constant.HeathColor.green)
 
-    let buttonWidth: CGFloat = 105
+    let buttonWidth: CGFloat = Size.dw(105)
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -96,7 +96,7 @@ extension HealthSurveyViewController {
         let label = Label()
         label.numberOfLines = 0
         label.apply(text: R.string.phrase.surveyTitle(),
-                    font: R.font.atlasGroteskLight(size: 36),
+                    font: R.font.atlasGroteskLight(size: Size.ds(36)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
         return CenterView(contentView: label)

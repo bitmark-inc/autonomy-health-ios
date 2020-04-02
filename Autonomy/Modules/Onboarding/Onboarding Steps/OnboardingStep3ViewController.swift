@@ -65,13 +65,15 @@ extension OnboardingStep3ViewController {
         let image = ImageView(image: R.image.nextCircleArrow())
 
         let helpFoodLabel = Label()
-        helpFoodLabel.apply(text: R.string.phrase.helpDeliverFood(),
-                    font: R.font.atlasGroteskLight(size: 24),
-                    themeStyle: .lightTextColor)
+        helpFoodLabel.apply(
+            text: R.string.phrase.helpDeliverFood(),
+            font: R.font.atlasGroteskLight(size: Size.ds(24)),
+            themeStyle: .lightTextColor)
 
         let helpFoodDescLabel = Label()
-        helpFoodDescLabel.apply(text: R.string.phrase.helpDeliverFoodDescription(),
-            font: R.font.atlasGroteskLight(size: 14),
+        helpFoodDescLabel.apply(
+            text: R.string.phrase.helpDeliverFoodDescription(),
+            font: R.font.atlasGroteskLight(size: Size.ds(14)),
             themeStyle: .silverChaliceColor, lineHeight: 1.2)
         helpFoodDescLabel.numberOfLines = 0
 

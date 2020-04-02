@@ -118,15 +118,15 @@ class MainViewController: ViewController {
         contentView.addSubview(feedsTableView)
 
         healthScoreView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(50)
+            make.top.equalToSuperview().offset(Size.dh(50))
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().offset(-65)
+            make.height.equalToSuperview().multipliedBy(0.32)
         }
 
         locationInfoView.snp.makeConstraints { (make) in
             make.top.equalTo(healthScoreTriangle.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.8)
+            make.width.equalTo(Size.dw(296))
         }
 
         feedsTableView.snp.makeConstraints { (make) in

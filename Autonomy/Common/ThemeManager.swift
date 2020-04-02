@@ -25,15 +25,6 @@ struct OurTheme {
         }
     }()
 
-    static var submittedHelpHeight: CGFloat = 250
-    static var signedHelpHeight: CGFloat = {
-        switch UIScreen.main.bounds.size.width {
-        case let x where x <= 375: return 290
-        default:                   return 275
-        }
-    }()
-
-
     static var paddingOverBottomInset = UIEdgeInsets(top: 14, left: 15, bottom: 0, right: 15)
 
     static let titleHeight: CGFloat = 0.23

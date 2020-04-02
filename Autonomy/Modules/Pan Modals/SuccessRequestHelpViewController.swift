@@ -20,17 +20,20 @@ class SuccessRequestHelpViewController: ViewController, PanModalPresentable {
     }
 
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(OurTheme.submittedHelpHeight)
+        view.layoutIfNeeded()
+        return .contentHeight(paddingContentView.frame.size.height + 85)
     }
 
     var longFormHeight: PanModalHeight {
-        return .contentHeight(OurTheme.submittedHelpHeight)
+        view.layoutIfNeeded()
+        return .contentHeight(paddingContentView.frame.size.height + 85)
     }
 
     var cornerRadius: CGFloat = 0.0
     var allowsDragToDismiss = false
 
     // MARK: - Properties
+    var paddingContentView: UIView!
     lazy var headerScreen: UIView = {
         HeaderView(header: R.string.localizable.submitted().localizedUppercase)
     }()
@@ -57,7 +60,7 @@ class SuccessRequestHelpViewController: ViewController, PanModalPresentable {
     override func setupViews() {
         super.setupViews()
 
-        let paddingContentView = LinearView(
+        paddingContentView = LinearView(
         items: [
             (headerScreen, 0),
             (titleLabel, 11),
