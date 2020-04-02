@@ -100,12 +100,6 @@ extension UserDefaults {
     static func userStandard(for number: String) -> UserDefaults? {
         return UserDefaults(suiteName: number)
     }
-
-    // Per Account
-    var donePermission: Bool {
-        get { return bool(forKey: #function) }
-        set { set(newValue, forKey: #function) }
-    }
 }
 
 enum AppError: Error {

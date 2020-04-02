@@ -10,6 +10,7 @@ import Foundation
 import BitmarkSDK
 import RxSwift
 import RxCocoa
+import CoreLocation
 
 protocol LaunchingNavigatorDelegate: ViewController {
     func loadAndNavigate()
@@ -54,9 +55,14 @@ extension LaunchingNavigatorDelegate {
         }
 
         // *** user logged in
-        Global.current.userDefault?.donePermission ?? false ?
-            gotoHealthSurveyScreen() :
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined, .restricted, .denied:
             gotoPermissionScreen()
+        case .authorizedAlways, .authorizedWhenInUse:
+            gotoHealthSurveyScreen()
+        @unknown default:
+            break
+        }
     }
 }
 

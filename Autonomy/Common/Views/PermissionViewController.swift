@@ -59,7 +59,6 @@ class PermissionViewController: ViewController, BackNavigator {
         }.disposed(by: disposeBag)
 
         nextButton.rxTap.bind { [weak self] in
-            Global.current.userDefault?.donePermission = true
             self?.gotoRiskLevelScreen()
         }.disposed(by: disposeBag)
     }
