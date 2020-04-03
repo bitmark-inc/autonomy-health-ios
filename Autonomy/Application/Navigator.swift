@@ -196,6 +196,20 @@ extension Navigator {
     static func gotoHealthSurveyScreen() {
         Navigator.default.show(segue: .healthSurvey, sender: nil, transition: .replace(type: .none))
     }
+
+    static let disposeBag = DisposeBag()
+
+    static func gotoHelpDetailsScreen(helpRequestID: String) {
+        Global.current.accountNumberRelay
+            .filterNil()
+            .subscribe(onNext: { (_) in
+                guard let currentVC = Navigator.getRootViewController()?.topViewController else { return }
+
+                let viewModel = GiveHelpViewModel(helpRequestID: helpRequestID)
+                Navigator.default.show(segue: .giveHelp(viewModel: viewModel), sender: currentVC)
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 enum ButtonItemType {

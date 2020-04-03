@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         OneSignal.initWithLaunchOptions(
             launchOptions,
             appId: Constant.oneSignalAppID,
-            handleNotificationAction: nil,
+            handleNotificationAction: notificationOpenedBlock,
             settings: onesignalInitSettings
         )
 
@@ -69,6 +69,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
         return true
+    }
+
+    let notificationOpenedBlock: OSHandleNotificationActionBlock = { result in
+        guard let payload = result?.notification.payload else {
+            return
+        }
+
+        guard let additionalData = payload.additionalData as? [String: String],
+            let helpID = additionalData["help_id"] else {
+                return
+        }
+        Navigator.gotoHelpDetailsScreen(helpRequestID: helpID)
     }
 
     // MARK: UISceneSession Lifecycle
@@ -107,11 +119,16 @@ extension AppDelegate: CLLocationManagerDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
 
-        if response.notification.request.identifier == Constant.NotificationIdentifier.checkInSurvey2 {
+        let notificationIdentifier = response.notification.request.identifier
+
+        if notificationIdentifier == Constant.NotificationIdentifier.checkInSurvey2 {
             NotificationPermission.restartScheduleReminderNotification()
         }
 
-        Navigator.gotoHealthSurveyScreen()
+        if [Constant.NotificationIdentifier.checkInSurvey1, Constant.NotificationIdentifier.checkInSurvey2].contains(notificationIdentifier) {
+            Navigator.gotoHealthSurveyScreen()
+        }
+
         completionHandler()
     }
 }

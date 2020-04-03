@@ -24,7 +24,7 @@ extension SymptomAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
     var path: String {
         switch self {
         case .list: return "symptoms"
-        case .report: return "reports"
+        case .report: return "report"
         }
     }
 

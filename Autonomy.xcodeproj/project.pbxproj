@@ -1817,6 +1817,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1841,6 +1842,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1901,7 +1903,7 @@
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.test;
 				PRODUCT_NAME = Autonomy;
-				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev Adhoc";
+				PROVISIONING_PROFILE_SPECIFIER = "com.bitmark.autonomy.test AdHoc";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -53,7 +53,7 @@ class NotificationPermission {
         Global.log.info("[process] registerOneSignal: \(accountNumber)")
         OneSignal.promptForPushNotifications(userResponse: { _ in
             OneSignal.sendTags([
-                Constant.OneSignalTag.key: accountNumber
+                Constant.OneSignal.Tags.key: accountNumber
             ])
             OneSignal.setSubscription(true)
         })

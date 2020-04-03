@@ -65,8 +65,7 @@ class SurveySymptomsViewController: ViewController {
                 loadingState.onNext(.hide)
                 switch event {
                 case .error(let error):
-                    // TODO: self.errorWhenFetchingData(error: error)
-                    self.gotoMainScreen()
+                    self.errorWhenFetchingData(error: error)
 
                 case .completed:
                     Global.log.info("[symptoms] report successfully")

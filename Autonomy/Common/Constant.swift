@@ -17,8 +17,16 @@ public struct Constant {
     static let oneSignalAppID = Credential.valueForKey(keyName: "ONESIGNAL_APP_ID")
     static let sentryDSN = Credential.valueForKey(keyName: "SENTRY_DSN")
 
-    public struct OneSignalTag {
-        public static let key = "account_number"
+    public struct OneSignal {
+        struct Tags {
+            public static let key = "account_number"
+        }
+
+        struct TypeKey {
+            public static let broadCastNewHelp = "BROADCAST_NEW_HELP"
+            public static let notifyHelpSigned = "NOTIFY_HELP_ACCEPTED"
+            public static let notifyHelpExired = "NOTIFY_HELP_EXPIRED"
+        }
     }
 
     public struct NotificationIdentifier {

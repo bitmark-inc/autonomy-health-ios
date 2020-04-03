@@ -19,6 +19,7 @@ class Global {
     static let `default` = current
 
     var account: Account?
+    lazy var accountNumberRelay = BehaviorRelay<String?>(value: account?.getAccountNumber())
     var userDefault: UserDefaults? {
         guard let accountNumber = account?.getAccountNumber()
             else { return nil }

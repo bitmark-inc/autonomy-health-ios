@@ -63,6 +63,9 @@ extension LaunchingNavigatorDelegate {
         @unknown default:
             break
         }
+
+        Global.current.accountNumberRelay.accept(
+            Global.current.account?.getAccountNumber())
     }
 }
 
