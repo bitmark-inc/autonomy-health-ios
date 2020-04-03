@@ -34,6 +34,7 @@ class GiveHelpViewController: ViewController, BackNavigator {
     lazy var submitButton = SubmitButton(title: R.string.localizable.signUp().localizedUppercase,
                                          icon: R.image.tickCircleArrow()!)
     lazy var signedUpMessageView = UIView()
+    lazy var copiedView = makeCopiedView()
     var infoViewsStack: UIStackView?
 
     lazy var groupsButton: UIView = {
@@ -123,7 +124,9 @@ class GiveHelpViewController: ViewController, BackNavigator {
             switch error.code {
             case .HelpRequestAlreadyResponsed:
                 thisViewModel.fetchHelpRequest()
-                showErrorAlert(message: R.string.error.giveHelpResponded())
+                showErrorAlert(
+                    title: R.string.error.giveHelpAlreadySigned(),
+                    message: R.string.error.giveHelpAlreadySignedMessage())
                 return
             default:
                 break
@@ -192,6 +195,22 @@ class GiveHelpViewController: ViewController, BackNavigator {
         }
     }
 
+    fileprivate func copyExactNeedsInfo() {
+        UIPasteboard.general.string = textInfoLabels.first(where: { $0.key == .exactNeeds })?.view.text
+        flashCopiedView()
+    }
+
+    fileprivate func linkMap() {
+        guard let meetingLocation = textInfoLabels.first(where: { $0.key == .meetingLocation })?.view.text,
+            let targetURL = URL(string: "https://www.google.com/maps?q=\(meetingLocation.urlEncoded)") else { return }
+        navigator.show(segue: .safariController(targetURL), sender: self, transition: .alert)
+    }
+
+    fileprivate func copyContactInfo() {
+        UIPasteboard.general.string = textInfoLabels.first(where: { $0.key == .contactInfo })?.view.text
+        flashCopiedView()
+    }
+
     // MARK: - Setup views
     override func setupViews() {
         super.setupViews()
@@ -213,6 +232,7 @@ class GiveHelpViewController: ViewController, BackNavigator {
 
         contentView.addSubview(scrollView)
         contentView.addSubview(signedUpMessageView)
+        contentView.addSubview(copiedView)
         contentView.addSubview(groupsButton)
 
         contentSrollView.snp.makeConstraints { (make) in
@@ -230,14 +250,29 @@ class GiveHelpViewController: ViewController, BackNavigator {
             make.leading.trailing.equalToSuperview()
         }
 
+        copiedView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(groupsButton.snp.top).offset(-15)
+            make.width.equalToSuperview().offset(-30)
+            make.centerX.equalToSuperview()
+        }
+
         groupsButton.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
                 .inset(OurTheme.paddingInset)
         }
     }
+
+    fileprivate func flashCopiedView() {
+        copiedView.layer.opacity = 1
+
+        UIView.animate(withDuration: 0.5, delay: 1.5, animations: {
+            self.copiedView.layer.opacity = 0
+        })
+    }
 }
 
-extension GiveHelpViewController: PandModalDelegate {
+// MARK: - PanModalDelegate
+extension GiveHelpViewController: PanModalDelegate {
     func donePanModel() {
         let messageView = makeSignedMessageView(message: R.string.phrase.giveHelpHelperSubmitted())
         signedUpMessageView.removeSubviews()
@@ -290,19 +325,26 @@ extension GiveHelpViewController {
                          themeStyle: .silverChaliceColor)
         titleLabel.textAlignment = .center
 
-        let iconImage: UIImage!
+        let iconButton = UIButton()
 
         switch assistanceInfoType {
         case .exactNeeds:
-            iconImage = R.image.copy()!
+            iconButton.setImage(R.image.copy(), for: .normal)
+            iconButton.rx.tap.bind { [weak self] in
+                self?.copyExactNeedsInfo()
+            }.disposed(by: disposeBag)
         case .meetingLocation:
-            iconImage = R.image.linkMap()!
+            iconButton.setImage(R.image.linkMap(), for: .normal)
+            iconButton.rx.tap.bind { [weak self] in
+                self?.linkMap()
+            }.disposed(by: disposeBag)
         case .contactInfo:
-            iconImage = R.image.copy()!
+            iconButton.setImage(R.image.copy(), for: .normal)
+            iconButton.rx.tap.bind { [weak self] in
+                self?.copyContactInfo()
+            }.disposed(by: disposeBag)
         }
 
-        let iconButton = UIButton()
-        iconButton.setImage(iconImage, for: .normal)
         iconButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 29, bottom: 29, right: 0)
         iconButton.isSkeletonable = true
 
@@ -383,6 +425,27 @@ extension GiveHelpViewController {
             (SeparateLine(height: 1), 13),
             (SeparateLine(height: 1), 3)
         ], bottomConstraint: true)
+
+        return view
+    }
+
+    fileprivate func makeCopiedView() -> UIView {
+        let label = Label()
+        label.textAlignment = .center
+        label.apply(text: R.string.localizable.copied().localizedUppercase,
+                    font: R.font.domaineSansTextLight(size: 14),
+                    themeStyle: .lightTextColor)
+
+        let view = UIView()
+        view.addSubview(label)
+        view.backgroundColor = .black
+        view.layer.opacity = 0
+
+        label.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+                .inset(UIEdgeInsets(top: 16, left: 0, bottom: 15, right: 0))
+            make.centerX.equalToSuperview()
+        }
 
         return view
     }

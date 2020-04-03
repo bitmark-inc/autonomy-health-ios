@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol PandModalDelegate {
+protocol PanModalDelegate {
     func donePanModel()
 }

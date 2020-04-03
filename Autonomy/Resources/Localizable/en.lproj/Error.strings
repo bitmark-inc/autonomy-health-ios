@@ -20,5 +20,7 @@
 "requireAppUpdate.message" = "The Autonomy app on your device is out of date. Please update Autonomy to continue using it.";
 "requireAppUpdate.action" = "Update now";
 
-"requestHelp.duplicate.message" = "Sorry, making multiple help requests is not allowed.";
-"giveHelp.responded" = "This request's already signed up by other.";
+"requestHelp.duplicate" = "Only One Help Request Allowed";
+"requestHelp.duplicate.message" = "Sorry, but you already have an outstanding help request to your community. Currently, our system only supports one request at a time for each community member.";
+"giveHelp.alreadySigned" = "Someone Just Signed Up";
+"giveHelp.alreadySigned.message" = "Thanks so much for your eagerness to help out, but another community member just signed up for this request!";

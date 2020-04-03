@@ -32,6 +32,7 @@
 "SignUp" = "Sign Up";
 "Submitted" = "Submitted";
 "SignedUp" = "Signed Up";
+"Copied" = "Copied";
 
 "supportMessage" = "\n%@\n\nWould you like to contact with support team?";
 "Contact" = "Contact";

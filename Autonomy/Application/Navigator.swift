@@ -184,6 +184,15 @@ class Navigator {
 }
 
 extension Navigator {
+    static func gotoHealthSurveyScreenIfNeeded() {
+        guard let enteredBackgroundTime = UserDefaults.standard.enteredBackgroundTime,
+            Date() >= enteredBackgroundTime.adding(.minute, value: 3) else {
+            return
+        }
+
+        gotoHealthSurveyScreen()
+    }
+
     static func gotoHealthSurveyScreen() {
         Navigator.default.show(segue: .healthSurvey, sender: nil, transition: .replace(type: .none))
     }

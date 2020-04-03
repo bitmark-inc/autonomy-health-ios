@@ -72,9 +72,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: UISceneSession Lifecycle
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        UserDefaults.standard.enteredBackgroundTime = Date()
+    }
+
     func applicationWillEnterForeground(_ application: UIApplication) {
         guard Global.current.account != nil else { return }
-        Navigator.gotoHealthSurveyScreen()
+        Navigator.gotoHealthSurveyScreenIfNeeded()
     }
 
     @available(iOS 13.0, *)

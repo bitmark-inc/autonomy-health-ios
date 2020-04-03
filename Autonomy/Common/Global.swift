@@ -100,6 +100,11 @@ extension UserDefaults {
     static func userStandard(for number: String) -> UserDefaults? {
         return UserDefaults(suiteName: number)
     }
+
+    var enteredBackgroundTime: Date? {
+        get { return date(forKey: #function) }
+        set { set(newValue, forKey: #function) }
+    }
 }
 
 enum AppError: Error {

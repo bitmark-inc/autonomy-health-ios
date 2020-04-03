@@ -43,7 +43,7 @@ class SuccessRequestHelpViewController: ViewController, PanModalPresentable {
         title: R.string.localizable.gotIt().localizedUppercase,
         icon: R.image.tickCircleArrow()!)
 
-    var delegate: PandModalDelegate?
+    var delegate: PanModalDelegate?
 
     override func bindViewModel() {
         super.bindViewModel()

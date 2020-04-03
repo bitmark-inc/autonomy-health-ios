@@ -586,6 +586,7 @@
 				5B577879242B43B70028D3E3 /* Auth */,
 				5B2C858B242DDDFB002CC53B /* Server Assets */,
 				5B2C8573242DD42B002CC53B /* Profile */,
+				5B92E3E32436E61700E5949A /* Health */,
 				5B7CE0C62430BD2E002CD923 /* Symptom */,
 				5BFC8DBD243307BE00815828 /* Help Request */,
 			);
@@ -885,6 +886,13 @@
 				5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */,
 			);
 			path = "Risk Level";
+			sourceTree = "<group>";
+		};
+		5B92E3E32436E61700E5949A /* Health */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Health;
 			sourceTree = "<group>";
 		};
 		5B9542B0242AF8010072D933 = {

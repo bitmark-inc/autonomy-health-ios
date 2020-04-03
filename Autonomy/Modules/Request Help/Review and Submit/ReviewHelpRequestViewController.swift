@@ -98,7 +98,7 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
 
     fileprivate func showDuplicateHelpErrorAlert() {
         let alertController = UIAlertController(
-            title: R.string.error.generalTitle(),
+            title: R.string.error.requestHelpDuplicate(),
             message: R.string.error.requestHelpDuplicateMessage(),
             preferredStyle: .alert)
 
@@ -154,7 +154,7 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
 }
 
 // MARK: - PandModelDelegate
-extension ReviewHelpRequestViewController: PandModalDelegate {
+extension ReviewHelpRequestViewController: PanModalDelegate {
     func donePanModel() {
         gotoMainScreen()
     }
