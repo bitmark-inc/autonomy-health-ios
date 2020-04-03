@@ -15,7 +15,7 @@ import SkeletonView
 class MainViewController: ViewController {
 
     // MARK: - Properties
-    lazy var healthScoreTriangle = makeHealthScoreTriangle()
+    lazy var healthView = makeHealthView()
     lazy var locationLabel = makeLocationLabel()
     lazy var locationInfoView = makeLocationInfoView()
     lazy var feedsTableView = makeFeedsTableView()
@@ -50,6 +50,7 @@ class MainViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        thisViewModel.fetchHealthScore()
         thisViewModel.fetchFeeds()
     }
 
@@ -58,6 +59,14 @@ class MainViewController: ViewController {
         super.bindViewModel()
 
         bindUserFriendlyAddress()
+
+        // Score
+        thisViewModel.healthScoreRelay
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                self?.rebuildHealthView(score: $0)
+            })
+            .disposed(by: disposeBag)
 
         // Feeds
         thisViewModel.fetchFeedStateRelay
@@ -106,25 +115,37 @@ class MainViewController: ViewController {
             .disposed(by: disposeBag)
     }
 
+    fileprivate func rebuildHealthView(score: Int?) {
+        let newHealthView = makeHealthScoreView(score: score)
+
+        healthView.removeSubviews()
+        healthView.addSubview(newHealthView)
+
+        newHealthView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+
     @objc func reloadFeedsTable() {
         thisViewModel.fetchFeeds()
     }
 
     override func setupViews() {
         super.setupViews()
-        let healthScoreView = makeHealthScoreView()
-        contentView.addSubview(healthScoreView)
+
+        contentView.addSubview(healthView)
         contentView.addSubview(locationInfoView)
         contentView.addSubview(feedsTableView)
 
-        healthScoreView.snp.makeConstraints { (make) in
+        healthView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(Size.dh(50))
             make.centerX.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.32)
+            make.width.equalTo(312)
+            make.height.equalTo(270)
         }
 
         locationInfoView.snp.makeConstraints { (make) in
-            make.top.equalTo(healthScoreTriangle.snp.bottom).offset(15)
+            make.top.equalTo(healthView.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
             make.width.equalTo(Size.dw(296))
         }
@@ -186,23 +207,54 @@ extension MainViewController {
 
 // MARK: - Setup Views
 extension MainViewController {
-    fileprivate func makeHealthScoreTriangle() -> ImageView {
-        return ImageView(image: R.image.triangle_074())
-    }
-
-    fileprivate func makeHealthScoreView() -> UIView {
-        let emptyHealthScoreTriangle = ImageView(image: R.image.emptyPolygon())
+    fileprivate func makeHealthView() -> UIView {
+        let emptyTriangle = makeHealthScoreView(score: nil)
 
         let view = UIView()
-        view.addSubview(emptyHealthScoreTriangle)
-        view.addSubview(healthScoreTriangle)
-
-        emptyHealthScoreTriangle.snp.makeConstraints { (make) in
+        view.addSubview(emptyTriangle)
+        emptyTriangle.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
 
+        return view
+    }
+
+    fileprivate func makeHealthScoreView(score: Int?) -> UIView {
+        let healthScoreTriangle = HealthScoreTriangle(score: score)
+
+        let appNameLabel = Label()
+        appNameLabel.apply(text: Constant.appName.localizedUppercase,
+                    font: R.font.domaineSansTextLight(size: 18),
+                    themeStyle: .lightTextColor)
+
+        let scoreLabel = Label()
+
+
+        let view = UIView()
+        view.addSubview(healthScoreTriangle)
+        view.addSubview(appNameLabel)
+
+
         healthScoreTriangle.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.edges.centerX.equalToSuperview()
+        }
+
+        appNameLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(healthScoreTriangle).offset(-40)
+        }
+
+        if let score = score {
+            scoreLabel.apply(
+                text: "\(score)",
+                font: R.font.domaineSansTextLight(size: 64),
+                themeStyle: .lightTextColor)
+
+            view.addSubview(scoreLabel)
+            scoreLabel.snp.makeConstraints { (make) in
+                make.bottom.equalTo(appNameLabel.snp.top).offset(10)
+                make.centerX.equalToSuperview()
+            }
         }
 
         return view
@@ -252,7 +304,7 @@ extension MainViewController {
         }
 
         feedActivityIndicator.snp.makeConstraints { (make) in
-            make.leading.equalTo(label.snp.trailing).offset(15)
+            make.leading.equalTo(label.snp.trailing).offset(10)
             make.top.bottom.equalToSuperview()
         }
 

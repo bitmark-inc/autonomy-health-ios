@@ -12,10 +12,22 @@ import RxCocoa
 class MainViewModel: ViewModel {
 
     // MARK: - Outputs
+    var healthScoreRelay = BehaviorRelay<Int?>(value: nil)
     var feedsRelay = BehaviorRelay<[HelpRequest]>(value: [])
     let fetchFeedStateRelay = BehaviorRelay<LoadState>(value: .hide)
 
     // MARK: - Handlers
+    func fetchHealthScore() {
+        HealthService.getScore()
+            .subscribe(onSuccess: { [weak self] (score) in
+                guard let self = self else { return }
+                self.healthScoreRelay.accept(Int(score))
+            }, onError: { (error) in
+                Global.log.error(error)
+            })
+            .disposed(by: disposeBag)
+    }
+
     func fetchFeeds() {
         fetchFeedStateRelay.accept(.loading)
 

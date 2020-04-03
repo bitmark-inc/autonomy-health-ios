@@ -27,6 +27,7 @@ def sharedPods
   pod 'BEMCheckBox'
   pod 'KMPlaceholderTextView'
   pod 'SkeletonView'
+  pod 'SwiftSVG'
 
   pod 'SwifterSwift'
 
