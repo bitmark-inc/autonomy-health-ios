@@ -44,6 +44,23 @@ class NotificationPermission {
         }
     }
 
+    static func isEnabled() -> Single<Bool?> {
+        return Single<Bool?>.create { (event) -> Disposable in
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                switch settings.authorizationStatus {
+                case .notDetermined:
+                    event(.success(nil))
+                case .authorized, .provisional:
+                    event(.success(true))
+                default:
+                    event(.success(false))
+                }
+            }
+
+            return Disposables.create()
+        }
+    }
+
     static func registerOneSignal() {
         guard let accountNumber = Global.current.account?.getAccountNumber() else {
             Global.log.error(AppError.emptyCurrentAccount)
@@ -65,7 +82,7 @@ class NotificationPermission {
         notificationCenter.getPendingNotificationRequests { (requests) in
             guard requests.isEmpty else { return } // only one kind of notification; don't need to clear which identifier
 
-            let requests = makeScheduledCheckInSurveyRequest()
+            let requests = makeScheduledCheckInSurveyRequest(awayFromNow: false)
             requests.forEach { notificationCenter.add($0) }
         }
     }
@@ -74,12 +91,12 @@ class NotificationPermission {
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.removeAllPendingNotificationRequests()
 
-        let requests = makeScheduledCheckInSurveyRequest()
+        let requests = makeScheduledCheckInSurveyRequest(awayFromNow: true)
         requests.forEach { notificationCenter.add($0) }
     }
 
-    fileprivate static func makeScheduledCheckInSurveyRequest() -> [UNNotificationRequest] {
-        return random2NotificationTimes().enumerated().map { (index, notificationTime) -> UNNotificationRequest in
+    fileprivate static func makeScheduledCheckInSurveyRequest(awayFromNow: Bool) -> [UNNotificationRequest] {
+        return random2NotificationTimes(awayFromNow: awayFromNow).enumerated().map { (index, notificationTime) -> UNNotificationRequest in
             #if targetEnvironment(simulator)
             var triggerDate = DateComponents()
             triggerDate.second = Int.random(in: 0...59)
@@ -103,15 +120,28 @@ class NotificationPermission {
         }
     }
 
-    static func random2NotificationTimes() -> [Int] {
-        let number1 = Int.random(in: 9...20) // random from 9am - 9pm; 8pm (20) cause we have minutes later
+    static func random2NotificationTimes(awayFromNow: Bool = false) -> [Int] {
+        let number1 = randomHour(awayFromNow: awayFromNow) // random from 9am - 9pm; 8pm (20) cause we have minutes later
         var number2: Int!
 
         repeat {
-            number2 = Int.random(in: 9...20)
-        } while abs(number2 - number1) < 3
+            number2 = randomHour(awayFromNow: awayFromNow)
+        } while abs(number2 - number1) <= 4
 
         return [number1, number2].sorted()
+    }
+
+    static func randomHour(awayFromNow: Bool) -> Int {
+        if !awayFromNow {
+            return Int.random(in: 9...20)
+        }
+
+        var number: Int!
+        let currentHour = Date().hour
+        repeat {
+            number = Int.random(in: 9...20)
+        } while number <= currentHour + 4 && number >= currentHour
+        return number
     }
 
     fileprivate static func makeCheckInSurveyNotification() -> UNMutableNotificationContent {

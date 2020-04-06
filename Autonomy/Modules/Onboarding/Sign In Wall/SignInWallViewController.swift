@@ -67,8 +67,8 @@ class SignInWallViewController: ViewController {
         }
 
         termsAndPolicyView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(getStartedButton.snp.top).offset(-65)
+            make.width.centerX.equalToSuperview()
+            make.bottom.equalTo(getStartedButton.snp.top).offset(-29)
         }
 
         contentView.addSubview(paddingContentView)
@@ -161,7 +161,7 @@ extension SignInWallViewController {
 
         textView.snp.makeConstraints { (make) in
             make.top.equalTo(prefixLabel.snp.bottom).offset(2)
-            make.centerX.equalToSuperview()
+            make.centerX.bottom.equalToSuperview()
         }
 
         return view

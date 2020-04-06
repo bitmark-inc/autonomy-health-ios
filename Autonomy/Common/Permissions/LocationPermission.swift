@@ -16,11 +16,7 @@ class LocationPermission {
             return false
         }
 
-        return isEnabled(with: CLLocationManager.authorizationStatus())
-    }
-
-    static func isEnabled(with authorizationStatus: CLAuthorizationStatus) -> Bool? {
-        switch authorizationStatus {
+        switch CLLocationManager.authorizationStatus() {
         case .notDetermined:                            return nil
         case .restricted, .denied:                      return false
         case .authorizedAlways, .authorizedWhenInUse:   return true

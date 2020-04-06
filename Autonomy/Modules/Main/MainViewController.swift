@@ -147,7 +147,7 @@ class MainViewController: ViewController {
         locationInfoView.snp.makeConstraints { (make) in
             make.top.equalTo(healthView.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
-            make.width.equalTo(Size.dw(296))
+            make.width.lessThanOrEqualTo(Size.dw(296))
         }
 
         feedsTableView.snp.makeConstraints { (make) in
@@ -265,7 +265,7 @@ extension MainViewController {
         label.apply(font: R.font.atlasGroteskLight(size: 18),
                     themeStyle: .silverChaliceColor, lineHeight: 1.2)
         label.numberOfLines = 0
-        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         return label
     }
 
@@ -282,7 +282,7 @@ extension MainViewController {
         }
 
         locationLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(vectorImageView.snp.trailing).offset(15)
+            make.leading.equalTo(vectorImageView.snp.trailing).offset(8)
             make.top.trailing.bottom.equalToSuperview()
         }
 

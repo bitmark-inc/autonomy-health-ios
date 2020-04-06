@@ -36,8 +36,8 @@ enum AppLink: String {
         let serverURL = "https://raw.githubusercontent.com/bitmark-inc/spring/master"
 
         switch self {
-        case .eula:             return URL(string: serverURL + "/eula.md")
-        case .privacyOfPolicy:  return URL(string: serverURL + "/privacy-policy.md")
+        case .eula:             return URL(string: "https://bitmark.com")
+        case .privacyOfPolicy:  return URL(string: "https://bitmark.com")
         case .faq:              return URL(string: serverURL + "/faq.md")
         case .personalAPI:      return URL(string: "https://documenter.getpostman.com/view/59304/SzRw2rJn?version=latest")
         case .sourceCode:       return URL(string: "https://github.com/bitmark-inc/spring-ios")

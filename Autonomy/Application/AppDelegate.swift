@@ -78,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         guard let additionalData = payload.additionalData as? [String: String],
             let helpID = additionalData["help_id"] else {
+                Global.log.error("[notification] missing help_id")
                 return
         }
         Navigator.gotoHelpDetailsScreen(helpRequestID: helpID)

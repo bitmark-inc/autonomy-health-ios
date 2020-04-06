@@ -55,13 +55,22 @@ extension LaunchingNavigatorDelegate {
         }
 
         // *** user logged in
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined, .restricted, .denied:
+        if LocationPermission.isEnabled() != true {
             gotoPermissionScreen()
-        case .authorizedAlways, .authorizedWhenInUse:
-            gotoHealthSurveyScreen()
-        @unknown default:
-            break
+        } else {
+            NotificationPermission.isEnabled()
+                .map { $0 == true }
+                .observeOn(MainScheduler.instance)
+                .subscribe(onSuccess: { [weak self] (isEnabled) in
+                    guard let self = self else { return }
+                    isEnabled ?
+                        self.gotoHealthSurveyScreen() :
+                        self.gotoPermissionScreen()
+
+                    Global.current.accountNumberRelay.accept(
+                        Global.current.account?.getAccountNumber())
+                })
+                .disposed(by: disposeBag)
         }
 
         Global.current.accountNumberRelay.accept(

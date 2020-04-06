@@ -185,8 +185,14 @@ class Navigator {
 
 extension Navigator {
     static func gotoHealthSurveyScreenIfNeeded() {
+        if UIApplication.shared.applicationIconBadgeNumber > 0 {
+            gotoHealthSurveyScreen()
+            UIApplication.shared.applicationIconBadgeNumber = 0
+            return
+        }
+
         guard let enteredBackgroundTime = UserDefaults.standard.enteredBackgroundTime,
-            Date() >= enteredBackgroundTime.adding(.minute, value: 3) else {
+            Date() >= enteredBackgroundTime.adding(.minute, value: 10) else {
             return
         }
 
@@ -202,6 +208,7 @@ extension Navigator {
     static func gotoHelpDetailsScreen(helpRequestID: String) {
         Global.current.accountNumberRelay
             .filterNil()
+            .take(1)
             .subscribe(onNext: { (_) in
                 guard let currentVC = Navigator.getRootViewController()?.topViewController else { return }
 
