@@ -8,6 +8,7 @@ def sharedPods
   pod 'BitmarkSDK/RxSwift', git: 'https://github.com/bitmark-inc/bitmark-sdk-swift.git', branch: 'master'
   pod 'Intercom'
   pod 'OneSignal'
+  pod 'GoogleMaps'
   pod 'Sentry'
 
   pod 'RxSwift', '~> 5'

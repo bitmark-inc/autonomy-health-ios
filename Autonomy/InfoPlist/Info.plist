@@ -8,6 +8,8 @@
 		<string>https://autonomy.bitmark.com</string>
 		<key>ENVIRONMENT</key>
 		<string>production</string>
+		<key>GOOGLE_API_KEY</key>
+		<string></string>
 		<key>INTERCOM_APP_ID</key>
 		<string>ejkeunzw</string>
 		<key>INTERCOM_APP_KEY</key>

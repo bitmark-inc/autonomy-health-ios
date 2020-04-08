@@ -16,6 +16,7 @@ public struct Constant {
     static let intercomAppKey = Credential.valueForKey(keyName: "INTERCOM_APP_KEY")
     static let oneSignalAppID = Credential.valueForKey(keyName: "ONESIGNAL_APP_ID")
     static let sentryDSN = Credential.valueForKey(keyName: "SENTRY_DSN")
+    static let googleAPIKey = Credential.valueForKey(keyName: "GOOGLE_API_KEY")
 
     public struct OneSignal {
         struct Tags {

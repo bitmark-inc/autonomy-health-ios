@@ -11,6 +11,7 @@ platform :ios do
 			block: proc do |plist|
 				appCredential = plist["AppCredentials"]
 				appCredential["API_SERVER_URL"] = ENV["TEST_SERVER_URL"]
+				appCredential["GOOGLE_API_KEY"] = ENV["GOOGLE_API_KEY"]
 			end
 			)
 

@@ -12,6 +12,7 @@ import Intercom
 import SVProgressHUD
 import OneSignal
 import CoreLocation
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -58,6 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let locationManager = Global.default.locationManager
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
+
+        GMSServices.provideAPIKey(Constant.googleAPIKey)
 
         if #available(iOS 13, *) {
             // already execute app flow in SceneDelegate
