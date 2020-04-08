@@ -83,11 +83,16 @@ class AssistanceAskInfoViewController: ViewController, BackNavigator {
                 (headerScreen, 0),
                 (titleScreen, 0),
                 (SeparateLine(height: 1), 3),
-                (infoTextView, 44)
+                (infoTextView, Size.dh(44))
             ]
         )
 
         paddingContentView.addSubview(groupsButton)
+
+        infoTextView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(groupsButton.snp.top).offset(-15)
+        }
+
         groupsButton.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
             groupBottomConstraint = make.bottom.equalToSuperview().constraint
@@ -182,9 +187,6 @@ extension AssistanceAskInfoViewController {
         }
 
         textView.apply(placeholder: placeholderText, font: R.font.atlasGroteskLight(size: 18))
-        textView.snp.makeConstraints { (make) in
-            make.height.equalTo(150)
-        }
         textView.autocorrectionType = .no
         return textView
     }

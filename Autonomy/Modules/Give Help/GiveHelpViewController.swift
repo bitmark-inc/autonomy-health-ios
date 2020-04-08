@@ -215,7 +215,7 @@ class GiveHelpViewController: ViewController, BackNavigator {
     override func setupViews() {
         super.setupViews()
 
-        infoViewsStack = UIStackView(arrangedSubviews: infoViews, axis: .vertical, spacing: 30)
+        infoViewsStack = UIStackView(arrangedSubviews: infoViews, axis: .vertical, spacing: 10)
         infoViewsStack!.isSkeletonable = true
 
         // *** Setup subviews ***
@@ -357,12 +357,14 @@ extension GiveHelpViewController {
         contentView.isSkeletonable = true
 
         textInfoLabel.snp.makeConstraints { (make) in
-            make.leading.top.bottom.equalToSuperview()
+            make.leading.top.equalToSuperview()
             make.width.equalToSuperview().offset(-25)
+            make.bottom.lessThanOrEqualToSuperview()
         }
 
         iconButton.snp.makeConstraints { (make) in
-            make.top.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(-10)
+            make.trailing.equalToSuperview()
             make.height.equalTo(70)
         }
 
@@ -372,6 +374,11 @@ extension GiveHelpViewController {
             (contentView, 15)
         ], bottomConstraint: true)
         view.isSkeletonable = true
+
+        view.snp.makeConstraints { (make) in
+            make.height.greaterThanOrEqualTo(85)
+        }
+
         return view
     }
 

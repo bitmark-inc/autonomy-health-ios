@@ -64,25 +64,19 @@ class PermissionViewController: ViewController, BackNavigator {
     }
 
     /// Reload state
-    // - hidden button when notification is enabled
-    // - hidden button when location is enabled
+    // - disable button when notification is enabled
+    // - disable button when location is enabled
     @objc func reloadState() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.getNotificationSettings { [weak self] (settings) in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch settings.authorizationStatus {
-                case .denied, .notDetermined:
-                    self.notificationOptionBox.button.isHidden = false
-
-                default:
-                    self.notificationOptionBox.button.isHidden = true
-                }
-            }
-        }
+        NotificationPermission.isEnabled()
+            .map { $0 == true }
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [weak self] (isEnabled) in
+                self?.notificationOptionBox.button.isEnabled = !isEnabled
+            })
+            .disposed(by: disposeBag)
 
         let isLocationEnabled = LocationPermission.isEnabled() == true
-        locationOptionBox.button.isHidden = isLocationEnabled
+        locationOptionBox.button.isEnabled = !isLocationEnabled
         nextButton.isEnabled = isLocationEnabled
     }
 
@@ -139,18 +133,24 @@ extension PermissionViewController {
     }
 
     fileprivate func makeNotificationOptionBox() -> OptionBoxView {
-        return OptionBoxView(title: R.string.localizable.notifications(),
-                             titleTop: 10,
-                             description: R.string.phrase.permissionNotificationDescription(),
-                             descTop: 8,
-                             btnImage: R.image.plusCircle()!)
+        let optionBoxView = OptionBoxView(
+            title: R.string.localizable.notifications(),
+            titleTop: 10,
+            description: R.string.phrase.permissionNotificationDescription(),
+            descTop: 8,
+            btnImage: R.image.plusCircle()!)
+        optionBoxView.button.setImage(R.image.checkedCircle(), for: .disabled)
+        return optionBoxView
     }
 
     fileprivate func makeLocationOptionBox() -> OptionBoxView {
-        return OptionBoxView(title: R.string.localizable.location_data(),
-                             titleTop: 10,
-                             description: R.string.phrase.permissionLocationDescription(),
-                             descTop: 8,
-                             btnImage: R.image.plusCircle()!)
+        let optionBoxView = OptionBoxView(
+            title: R.string.localizable.location_data(),
+            titleTop: 10,
+            description: R.string.phrase.permissionLocationDescription(),
+            descTop: 8,
+            btnImage: R.image.plusCircle()!)
+        optionBoxView.button.setImage(R.image.checkedCircle(), for: .disabled)
+        return optionBoxView
     }
 }
