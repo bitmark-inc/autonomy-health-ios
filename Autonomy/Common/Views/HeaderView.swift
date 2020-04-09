@@ -12,7 +12,11 @@ import RxSwift
 class HeaderView: UIView {
 
     // MARK: - Properties
-    let header: String!
+    var header: String = "" {
+        didSet {
+            headerLabel.setText(header)
+        }
+    }
     let disposeBag = DisposeBag()
     lazy var headerLabel = makeHeaderLabel()
 

@@ -203,8 +203,8 @@
 		5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */; };
 		5B7F23AF2434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */; };
 		5B7F23B02434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */; };
-		5B7F23B22434B65F00F7A72E /* SuccessGiveHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B12434B65F00F7A72E /* SuccessGiveHelpViewController.swift */; };
-		5B7F23B32434B65F00F7A72E /* SuccessGiveHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B12434B65F00F7A72E /* SuccessGiveHelpViewController.swift */; };
+		5B7F23B22434B65F00F7A72E /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B12434B65F00F7A72E /* SuccessPanViewController.swift */; };
+		5B7F23B32434B65F00F7A72E /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B12434B65F00F7A72E /* SuccessPanViewController.swift */; };
 		5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
 		5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
 		5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
@@ -288,8 +288,6 @@
 		5BFC8DC12433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
 		5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
-		5BFC8DC5243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DC4243312E700815828 /* SuccessRequestHelpViewController.swift */; };
-		5BFC8DC6243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DC4243312E700815828 /* SuccessRequestHelpViewController.swift */; };
 		5BFC8DCC2433264A00815828 /* FeedTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCB2433264A00815828 /* FeedTableCell.swift */; };
 		5BFC8DCD2433264A00815828 /* FeedTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCB2433264A00815828 /* FeedTableCell.swift */; };
 		5BFC8DD0243327E000815828 /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCF243327E000815828 /* Date+Formatter.swift */; };
@@ -450,7 +448,7 @@
 		5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceViewController.swift; sourceTree = "<group>"; };
 		5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewController.swift; sourceTree = "<group>"; };
 		5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewModel.swift; sourceTree = "<group>"; };
-		5B7F23B12434B65F00F7A72E /* SuccessGiveHelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessGiveHelpViewController.swift; sourceTree = "<group>"; };
+		5B7F23B12434B65F00F7A72E /* SuccessPanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessPanViewController.swift; sourceTree = "<group>"; };
 		5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalDelegate.swift; sourceTree = "<group>"; };
 		5B87F070242C85B90084B4F6 /* SeparateLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateLine.swift; sourceTree = "<group>"; };
 		5B87F073242C92DA0084B4F6 /* LinearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearView.swift; sourceTree = "<group>"; };
@@ -497,7 +495,6 @@
 		5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewModel.swift; sourceTree = "<group>"; };
 		5BFC8DBE2433081400815828 /* HealthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		5BFC8DBF2433081400815828 /* HealthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAPI.swift; sourceTree = "<group>"; };
-		5BFC8DC4243312E700815828 /* SuccessRequestHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRequestHelpViewController.swift; sourceTree = "<group>"; };
 		5BFC8DCB2433264A00815828 /* FeedTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableCell.swift; sourceTree = "<group>"; };
 		5BFC8DCF243327E000815828 /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
 		5BFC8DD224333E5700815828 /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
@@ -1090,8 +1087,7 @@
 			isa = PBXGroup;
 			children = (
 				5B577886242B45550028D3E3 /* Models */,
-				5BFC8DC4243312E700815828 /* SuccessRequestHelpViewController.swift */,
-				5B7F23B12434B65F00F7A72E /* SuccessGiveHelpViewController.swift */,
+				5B7F23B12434B65F00F7A72E /* SuccessPanViewController.swift */,
 				5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */,
 			);
 			path = "Pan Modals";
@@ -1605,7 +1601,6 @@
 				5B92E3E72436E6E300E5949A /* SymptomAPI.swift in Sources */,
 				5B7F23A82434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
 				5B577901242B4C010028D3E3 /* Navigator.swift in Sources */,
-				5BFC8DC6243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */,
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B97887A243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
 				5B57789A242B47770028D3E3 /* ServerAPIError.swift in Sources */,
@@ -1636,7 +1631,7 @@
 				5B57787F242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577878242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0CA2430BE91002CD923 /* ProfileAPI.swift in Sources */,
-				5B7F23B32434B65F00F7A72E /* SuccessGiveHelpViewController.swift in Sources */,
+				5B7F23B32434B65F00F7A72E /* SuccessPanViewController.swift in Sources */,
 				5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
 				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
@@ -1710,7 +1705,6 @@
 				5B92E3E62436E6E300E5949A /* SymptomAPI.swift in Sources */,
 				5B7F23A72434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
 				5B577900242B4C010028D3E3 /* Navigator.swift in Sources */,
-				5BFC8DC5243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */,
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B978879243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
 				5B577899242B47670028D3E3 /* ServerAPIError.swift in Sources */,
@@ -1741,7 +1735,7 @@
 				5B57787E242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577877242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0C92430BE91002CD923 /* ProfileAPI.swift in Sources */,
-				5B7F23B22434B65F00F7A72E /* SuccessGiveHelpViewController.swift in Sources */,
+				5B7F23B22434B65F00F7A72E /* SuccessPanViewController.swift in Sources */,
 				5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
 				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,

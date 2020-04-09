@@ -1,5 +1,5 @@
 //
-//  SuccessRequestHelpViewController.swift
+//  SuccessPanViewController.swift
 //  Autonomy
 //
 //  Created by Thuyen Truong on 3/31/20.
@@ -12,7 +12,7 @@ import UIKit
 import RxCocoa
 import PanModal
 
-class SuccessRequestHelpViewController: ViewController, PanModalPresentable {
+class SuccessPanViewController: ViewController, PanModalPresentable {
 
     // *** Override Properties in PanModal ***
     var panScrollable: UIScrollView? {
@@ -34,8 +34,8 @@ class SuccessRequestHelpViewController: ViewController, PanModalPresentable {
 
     // MARK: - Properties
     var paddingContentView: UIView!
-    lazy var headerScreen: UIView = {
-        HeaderView(header: R.string.localizable.submitted().localizedUppercase)
+    lazy var headerScreen: HeaderView = {
+        HeaderView(header: "")
     }()
     lazy var titleLabel = makeTitleLabel()
     lazy var descLabel = makeDescLabel()
@@ -82,12 +82,11 @@ class SuccessRequestHelpViewController: ViewController, PanModalPresentable {
     }
 }
 
-extension SuccessRequestHelpViewController {
+extension SuccessPanViewController {
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
         label.numberOfLines = 0
         label.apply(
-            text: R.string.phrase.requestHelpSubmittedTitle().localizedUppercase,
             font: R.font.domaineSansTextLight(size: 18),
             themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
@@ -98,7 +97,6 @@ extension SuccessRequestHelpViewController {
         let label = Label()
         label.numberOfLines = 0
         label.apply(
-            text: R.string.phrase.requestHelpSubmittedDesc(),
             font: R.font.atlasGroteskLight(size: 18),
             themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center

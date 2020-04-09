@@ -69,9 +69,6 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
     }
 
     fileprivate func showSubmittedPanModel() {
-        let viewController = SuccessRequestHelpViewController()
-        viewController.delegate = self
-        presentPanModal(viewController)
     }
 
     // MARK: - Error Handlers

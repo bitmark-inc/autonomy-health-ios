@@ -12,7 +12,7 @@ import UIKit
 import RxCocoa
 import PanModal
 
-class SuccessGiveHelpViewController: ViewController, PanModalPresentable {
+class SuccessPanViewController: ViewController, PanModalPresentable {
 
     // *** Override Properties in PanModal ***
     var panScrollable: UIScrollView? {
@@ -34,8 +34,8 @@ class SuccessGiveHelpViewController: ViewController, PanModalPresentable {
 
     // MARK: - Properties
     var paddingContentView: UIView!
-    lazy var headerScreen: UIView = {
-        HeaderView(header: R.string.localizable.signedUp().localizedUppercase)
+    lazy var headerScreen: HeaderView = {
+        HeaderView(header: "")
     }()
     lazy var titleLabel = makeTitleLabel()
     lazy var descLabel = makeDescLabel()
@@ -82,12 +82,11 @@ class SuccessGiveHelpViewController: ViewController, PanModalPresentable {
     }
 }
 
-extension SuccessGiveHelpViewController {
+extension SuccessPanViewController {
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
         label.numberOfLines = 0
         label.apply(
-            text: R.string.phrase.giveHelpSignUpTitle().localizedUppercase,
             font: R.font.domaineSansTextLight(size: 18),
             themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
@@ -98,7 +97,6 @@ extension SuccessGiveHelpViewController {
         let label = Label()
         label.numberOfLines = 0
         label.apply(
-            text: R.string.phrase.giveHelpSignUpDesc(),
             font: R.font.atlasGroteskLight(size: 18),
             themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center

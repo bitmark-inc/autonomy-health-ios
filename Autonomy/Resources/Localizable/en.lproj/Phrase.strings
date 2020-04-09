@@ -76,6 +76,9 @@
 "giveHelp.helper.otherSubmitted" = "Someone has already signed up to fulfill this community request.";
 "giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
 
+"symptoms.reported.title" = "Your Symptoms Have Been Successfully Reported To Your Community ";
+"symptoms.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your symptoms if they continue.";
+
 "signIn.title" = "Sign In";
 "signIn.submitButton" = "Submit »";
 

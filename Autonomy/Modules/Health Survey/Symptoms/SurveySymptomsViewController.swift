@@ -12,7 +12,7 @@ import RxCocoa
 import SnapKit
 import SkeletonView
 
-class SurveySymptomsViewController: ViewController {
+class SurveySymptomsViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
     lazy var headerScreen: UIView = {
@@ -20,8 +20,13 @@ class SurveySymptomsViewController: ViewController {
     }()
     lazy var titleScreen = makeTitleScreen()
     lazy var symptomsScrollView = makeSymptomsScrollView()
+
+    lazy var backButton = makeLightBackItem()
     lazy var doneButton = SubmitButton(title: R.string.localizable.done().localizedUppercase,
-                     icon: R.image.doneCicleArrow()!)
+                                       icon: R.image.doneCicleArrow()!)
+    lazy var groupsButton: UIView = {
+        ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: true)
+    }()
 
     lazy var thisViewModel: SurveySymptomsViewModel = {
         return viewModel as! SurveySymptomsViewModel
@@ -69,7 +74,7 @@ class SurveySymptomsViewController: ViewController {
 
                 case .completed:
                     Global.log.info("[symptoms] report successfully")
-                    self.gotoMainScreen()
+                    self.showSignedPanModel()
                 default:
                     break
                 }
@@ -82,6 +87,16 @@ class SurveySymptomsViewController: ViewController {
             let selectedSymptomKeys = self.getSelectedSymptomKeys()
             self.thisViewModel.report(with: selectedSymptomKeys)
         }.disposed(by: disposeBag)
+    }
+
+    fileprivate func showSignedPanModel() {
+        let viewController = SuccessPanViewController()
+        viewController.headerScreen.header = R.string.localizable.reported().localizedUppercase
+        viewController.titleLabel.setText(R.string.phrase.symptomsReportedTitle().localizedUppercase)
+        viewController.descLabel.setText(R.string.phrase.symptomsReportedDesc())
+        viewController.gotItButton.titleLabel.setText(R.string.localizable.ok().localizedUppercase)
+        viewController.delegate = self
+        presentPanModal(viewController)
     }
 
     func getSelectedSymptomKeys() -> [String] {
@@ -144,7 +159,7 @@ class SurveySymptomsViewController: ViewController {
 
         contentView.addSubview(paddingContentView)
         contentView.addSubview(symptomsScrollView)
-        contentView.addSubview(doneButton)
+        contentView.addSubview(groupsButton)
 
         titleScreen.snp.makeConstraints { (make) in
             make.height.equalTo(contentView).multipliedBy(OurTheme.titleHeight)
@@ -160,13 +175,20 @@ class SurveySymptomsViewController: ViewController {
             make.leading.trailing.equalToSuperview()
         }
 
-        doneButton.snp.makeConstraints { (make) in
+        groupsButton.snp.makeConstraints { (make) in
             make.top.equalTo(symptomsScrollView.snp.bottom).offset(3)
-            make.trailing.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
                 .inset(OurTheme.paddingInset)
         }
 
         sampleSymptomsScrollView()
+    }
+}
+
+// MARK: - PanModalDelegate
+extension SurveySymptomsViewController: PanModalDelegate {
+    func donePanModel() {
+        gotoMainScreen()
     }
 }
 

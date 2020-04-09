@@ -107,7 +107,11 @@ class GiveHelpViewController: ViewController, BackNavigator {
     }
 
     fileprivate func showSignedPanModel() {
-        let viewController = SuccessGiveHelpViewController()
+        let viewController = SuccessPanViewController()
+        viewController.headerScreen.header = R.string.localizable.signedUp().localizedUppercase
+        viewController.titleLabel.setText(R.string.phrase.giveHelpSignUpTitle().localizedUppercase)
+        viewController.descLabel.setText(R.string.phrase.giveHelpSignUpDesc())
+        viewController.gotItButton.titleLabel.setText(R.string.localizable.gotIt().localizedUppercase)
         viewController.delegate = self
         presentPanModal(viewController)
     }

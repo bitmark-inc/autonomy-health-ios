@@ -32,7 +32,7 @@ class HealthSurveyViewController: ViewController {
         super.bindViewModel()
 
         redButton.rx.tap.bind { [weak self] in
-            self?.gotoSurveyHelpScreen()
+            self?.gotoReportSymptomsScreen()
         }.disposed(by: disposeBag)
 
         yellowButton.rx.tap.bind { [weak self] in
@@ -78,8 +78,9 @@ class HealthSurveyViewController: ViewController {
 
 // MARK: - Navigator
 extension HealthSurveyViewController {
-    fileprivate func gotoSurveyHelpScreen() {
-        navigator.show(segue: .surveyHelp, sender: self)
+    fileprivate func gotoReportSymptomsScreen() {
+        let viewModel = SurveySymptomsViewModel()
+        navigator.show(segue: .surveySymptoms(viewModel: viewModel), sender: self)
     }
 
     fileprivate func gotoMainScreen() {
