@@ -91,14 +91,14 @@ enum ScoreInfoType {
 extension ScoreInfoView {
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
-        label.apply(font: R.font.atlasGroteskLight(size: 12),
+        label.apply(font: R.font.atlasGroteskLight(size: Size.ds(12)),
                     themeStyle: .lightTextColor)
         return label
     }
 
     fileprivate func makeCurrentNumberLabel() -> Label {
         let label = Label()
-        label.apply(font: R.font.ibmPlexMonoMedium(size: 30),
+        label.apply(font: R.font.ibmPlexMonoMedium(size: Size.ds(30)),
                     themeStyle: .lightTextColor)
         return label
     }

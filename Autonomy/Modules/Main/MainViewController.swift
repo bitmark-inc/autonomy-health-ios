@@ -76,12 +76,9 @@ class MainViewController: ViewController {
                     return
                 }
 
-                self.locationInfoView.isHidden = false
                 self.locationLabel.setText(userFriendlyAddress)
-            }, onError: { [weak self] (error) in
-                guard let self = self else { return }
+            }, onError: { (error) in
                 Global.log.error(error)
-                self.locationInfoView.isHidden = true
             })
             .disposed(by: disposeBag)
     }
@@ -100,7 +97,7 @@ class MainViewController: ViewController {
         locationInfoView.snp.makeConstraints { (make) in
             make.top.equalTo(mainCollectionView.snp.bottom).offset(10)
             make.leading.trailing.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-30)
+            make.bottom.equalToSuperview().offset(Size.dh(-30))
         }
     }
 }
@@ -128,11 +125,8 @@ extension MainViewController {
 extension MainViewController {
     fileprivate func makeLocationLabel() -> Label {
         let label = Label()
-        label.textAlignment = .center
-        label.lineBreakMode = .byTruncatingTail
-        label.adjustsFontSizeToFitWidth = false
         label.apply(font: R.font.atlasGroteskLight(size: 16),
-                    themeStyle: .silverChaliceColor, lineHeight: 1.2)
+                    themeStyle: .silverChaliceColor)
         return label
     }
 
@@ -167,7 +161,7 @@ extension MainViewController {
         }
 
         navButtons.snp.makeConstraints { (make) in
-            make.top.equalTo(locationLabel.snp.bottom).offset(13)
+            make.top.equalTo(locationLabel.snp.bottom).offset(Size.dh(13))
             make.centerX.bottom.equalToSuperview()
         }
 
@@ -193,7 +187,7 @@ extension MainViewController {
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.width - 30, height: view.height)
+        return collectionView.size
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

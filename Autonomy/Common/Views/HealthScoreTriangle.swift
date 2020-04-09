@@ -11,11 +11,17 @@ import SwiftSVG
 
 class HealthScoreTriangle: UIView {
 
+    static let originalSize = CGSize(width: 312, height: 270)
+    static let scale = (UIScreen.main.bounds.size.width - 30) / originalSize.width
+
     init(score: Int?) {
         super.init(frame: CGRect.zero)
 
+        let transformScale = CATransform3DMakeScale(Self.scale, Self.scale, 0)
+
         let infillLayer = CAShapeLayer(pathString: backgroundPath)
         infillLayer.fillColor = UIColor(red: 43, green: 43, blue: 43)?.cgColor
+        infillLayer.transform = transformScale
         layer.addSublayer(infillLayer)
 
         if let score = score, score > 0 {
@@ -23,6 +29,7 @@ class HealthScoreTriangle: UIView {
             let healthColor = getHealthScore(with: score)?.cgColor
             colored.fillColor = healthColor
             colored.strokeColor = healthColor
+            colored.transform = transformScale
             layer.addSublayer(colored)
         }
     }

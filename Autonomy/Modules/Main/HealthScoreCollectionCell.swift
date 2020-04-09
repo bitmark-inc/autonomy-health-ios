@@ -40,10 +40,10 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         contentView.addSubview(guideView)
 
         healthView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(Size.dh(50))
+            make.top.equalToSuperview().offset(Size.dh(70))
             make.centerX.equalToSuperview()
-            make.width.equalTo(312)
-            make.height.equalTo(270)
+            make.width.equalToSuperview()
+            make.height.equalTo(HealthScoreTriangle.originalSize.height * HealthScoreTriangle.scale)
         }
 
         guideView.snp.makeConstraints { (make) in
@@ -94,7 +94,7 @@ extension HealthScoreCollectionCell {
 
         appNameLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(healthScoreTriangle).offset(-40)
+            make.bottom.equalTo(healthScoreTriangle).offset(-40 * HealthScoreTriangle.scale)
         }
 
         if let score = score {
@@ -170,13 +170,13 @@ extension HealthScoreCollectionCell {
         let rawDataTitle = Label()
         rawDataTitle.apply(
             text: R.string.localizable.rawData().localizedUppercase,
-            font: R.font.domaineSansTextLight(size: 18),
+            font: R.font.domaineSansTextLight(size: Size.ds(18)),
             themeStyle: .lightTextColor)
 
         let fromLast24Hours = Label()
         fromLast24Hours.apply(
             text: R.string.localizable.from_last_24_hours(),
-            font: R.font.atlasGroteskLight(size: 13),
+            font: R.font.atlasGroteskLight(size: Size.ds(13)),
             themeStyle: .silverTextColor)
 
         let titleView = UIView()
@@ -208,12 +208,12 @@ extension HealthScoreCollectionCell {
         }
 
         row1.snp.makeConstraints { (make) in
-            make.top.equalTo(titleView.snp.bottom).offset(26)
+            make.top.equalTo(titleView.snp.bottom).offset(Size.dh(26))
             make.leading.trailing.equalToSuperview()
         }
 
         row2.snp.makeConstraints { (make) in
-            make.top.equalTo(row1.snp.bottom).offset(15)
+            make.top.equalTo(row1.snp.bottom).offset(Size.dh(15))
             make.leading.trailing.equalToSuperview()
         }
 
@@ -238,13 +238,13 @@ extension HealthScoreCollectionCell {
 
         view1.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.5).offset(-7.5)
+            make.width.equalToSuperview().multipliedBy(0.5).offset(Size.dw(15) / 2)
         }
 
         view2.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
-            make.leading.equalTo(view1.snp.trailing).offset(15)
-            make.width.equalToSuperview().multipliedBy(0.5).offset(-7.5)
+            make.leading.equalTo(view1.snp.trailing).offset(Size.dw(15))
+            make.width.equalTo(view1)
         }
 
         return view
