@@ -229,11 +229,43 @@
 		5B92E3E92436E6E300E5949A /* SymptomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E52436E6E300E5949A /* SymptomService.swift */; };
 		5B92E3EB2437220D00E5949A /* HealthScoreTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */; };
 		5B92E3EC2437220D00E5949A /* HealthScoreTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */; };
+		5B93F703243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */; };
+		5B93F704243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */; };
 		5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
 		5B9542C4242AF8010072D933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C2242AF8010072D933 /* Main.storyboard */; };
 		5B9542C6242AF8040072D933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C5242AF8040072D933 /* Assets.xcassets */; };
 		5B9542C9242AF8040072D933 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
+		5B97885C243EDFED005BADA9 /* IBMPlexMono-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97884E243EDFED005BADA9 /* IBMPlexMono-Thin.ttf */; };
+		5B97885D243EDFED005BADA9 /* IBMPlexMono-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97884E243EDFED005BADA9 /* IBMPlexMono-Thin.ttf */; };
+		5B97885E243EDFED005BADA9 /* IBMPlexMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97884F243EDFED005BADA9 /* IBMPlexMono-Bold.ttf */; };
+		5B97885F243EDFED005BADA9 /* IBMPlexMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97884F243EDFED005BADA9 /* IBMPlexMono-Bold.ttf */; };
+		5B978860243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978850243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf */; };
+		5B978861243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978850243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf */; };
+		5B978862243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978851243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf */; };
+		5B978863243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978851243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf */; };
+		5B978864243EDFED005BADA9 /* IBMPlexMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978852243EDFED005BADA9 /* IBMPlexMono-Medium.ttf */; };
+		5B978865243EDFED005BADA9 /* IBMPlexMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978852243EDFED005BADA9 /* IBMPlexMono-Medium.ttf */; };
+		5B978866243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978853243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf */; };
+		5B978867243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978853243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf */; };
+		5B978868243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978854243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf */; };
+		5B978869243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978854243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf */; };
+		5B97886A243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978855243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf */; };
+		5B97886B243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978855243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf */; };
+		5B97886C243EDFED005BADA9 /* IBMPlexMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978856243EDFED005BADA9 /* IBMPlexMono-Regular.ttf */; };
+		5B97886D243EDFED005BADA9 /* IBMPlexMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978856243EDFED005BADA9 /* IBMPlexMono-Regular.ttf */; };
+		5B97886E243EDFED005BADA9 /* IBMPlexMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978857243EDFED005BADA9 /* IBMPlexMono-Light.ttf */; };
+		5B97886F243EDFED005BADA9 /* IBMPlexMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978857243EDFED005BADA9 /* IBMPlexMono-Light.ttf */; };
+		5B978870243EDFED005BADA9 /* IBMPlexMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978858243EDFED005BADA9 /* IBMPlexMono-Italic.ttf */; };
+		5B978871243EDFED005BADA9 /* IBMPlexMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978858243EDFED005BADA9 /* IBMPlexMono-Italic.ttf */; };
+		5B978872243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978859243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf */; };
+		5B978873243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978859243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf */; };
+		5B978874243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885A243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf */; };
+		5B978875243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885A243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf */; };
+		5B978876243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */; };
+		5B978877243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */; };
+		5B978879243EFF71005BADA9 /* ScoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978878243EFF71005BADA9 /* ScoreInfoView.swift */; };
+		5B97887A243EFF71005BADA9 /* ScoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978878243EFF71005BADA9 /* ScoreInfoView.swift */; };
 		5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
@@ -431,6 +463,7 @@
 		5B92E3E42436E6E300E5949A /* SymptomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomAPI.swift; sourceTree = "<group>"; };
 		5B92E3E52436E6E300E5949A /* SymptomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomService.swift; sourceTree = "<group>"; };
 		5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreTriangle.swift; sourceTree = "<group>"; };
+		5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreCollectionCell.swift; sourceTree = "<group>"; };
 		5B9542B9242AF8010072D933 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9542BC242AF8010072D933 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9542BE242AF8010072D933 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -438,6 +471,21 @@
 		5B9542C5242AF8040072D933 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B9542C8242AF8040072D933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B9542CA242AF8040072D933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B97884E243EDFED005BADA9 /* IBMPlexMono-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Thin.ttf"; sourceTree = "<group>"; };
+		5B97884F243EDFED005BADA9 /* IBMPlexMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Bold.ttf"; sourceTree = "<group>"; };
+		5B978850243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-MediumItalic.ttf"; sourceTree = "<group>"; };
+		5B978851243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-BoldItalic.ttf"; sourceTree = "<group>"; };
+		5B978852243EDFED005BADA9 /* IBMPlexMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Medium.ttf"; sourceTree = "<group>"; };
+		5B978853243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-ExtraLight.ttf"; sourceTree = "<group>"; };
+		5B978854243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		5B978855243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-ThinItalic.ttf"; sourceTree = "<group>"; };
+		5B978856243EDFED005BADA9 /* IBMPlexMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Regular.ttf"; sourceTree = "<group>"; };
+		5B978857243EDFED005BADA9 /* IBMPlexMono-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Light.ttf"; sourceTree = "<group>"; };
+		5B978858243EDFED005BADA9 /* IBMPlexMono-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-Italic.ttf"; sourceTree = "<group>"; };
+		5B978859243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-SemiBold.ttf"; sourceTree = "<group>"; };
+		5B97885A243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-LightItalic.ttf"; sourceTree = "<group>"; };
+		5B978878243EFF71005BADA9 /* ScoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreInfoView.swift; sourceTree = "<group>"; };
 		5BB14091242C4A57009EFC59 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
 		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
@@ -531,6 +579,8 @@
 				5B2C8582242DDBFB002CC53B /* MainViewController.swift */,
 				5B2C8585242DDC1E002CC53B /* MainViewModel.swift */,
 				5BFC8DCB2433264A00815828 /* FeedTableCell.swift */,
+				5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */,
+				5B978878243EFF71005BADA9 /* ScoreInfoView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -719,6 +769,7 @@
 			children = (
 				5B57789B242B48220028D3E3 /* Atlas-Grotesk */,
 				5B5778A8242B48230028D3E3 /* DomaineSansText */,
+				5B97884D243EDFED005BADA9 /* IBM_Plex_Mono */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -994,6 +1045,27 @@
 			path = InfoPlist;
 			sourceTree = "<group>";
 		};
+		5B97884D243EDFED005BADA9 /* IBM_Plex_Mono */ = {
+			isa = PBXGroup;
+			children = (
+				5B97884E243EDFED005BADA9 /* IBMPlexMono-Thin.ttf */,
+				5B97884F243EDFED005BADA9 /* IBMPlexMono-Bold.ttf */,
+				5B978850243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf */,
+				5B978851243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf */,
+				5B978852243EDFED005BADA9 /* IBMPlexMono-Medium.ttf */,
+				5B978853243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf */,
+				5B978854243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf */,
+				5B978855243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf */,
+				5B978856243EDFED005BADA9 /* IBMPlexMono-Regular.ttf */,
+				5B978857243EDFED005BADA9 /* IBMPlexMono-Light.ttf */,
+				5B978858243EDFED005BADA9 /* IBMPlexMono-Italic.ttf */,
+				5B978859243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf */,
+				5B97885A243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf */,
+				5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */,
+			);
+			path = IBM_Plex_Mono;
+			sourceTree = "<group>";
+		};
 		5BB1409A242C606A009EFC59 /* Onboarding Steps */ = {
 			isa = PBXGroup;
 			children = (
@@ -1207,26 +1279,40 @@
 			files = (
 				5B5778C6242B48230028D3E3 /* AtlasGrotesk-BlackItalic.otf in Resources */,
 				5B5778DE242B48230028D3E3 /* DomaineSansText-MediumItalic.otf in Resources */,
+				5B978869243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf in Resources */,
 				5B5778CE242B48230028D3E3 /* DomaineSansText-Light.otf in Resources */,
 				5B5778F3242B49140028D3E3 /* Error.strings in Resources */,
 				5B5778B4242B48230028D3E3 /* AtlasGrotesk-MediumItalic.otf in Resources */,
 				5B5778B6242B48230028D3E3 /* AtlasGrotesk-BoldItalic.otf in Resources */,
+				5B978861243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf in Resources */,
+				5B97886F243EDFED005BADA9 /* IBMPlexMono-Light.ttf in Resources */,
 				5B5778D4242B48230028D3E3 /* DomaineSansText-LightItalic.otf in Resources */,
 				5B5778B8242B48230028D3E3 /* AtlasGrotesk-Medium.otf in Resources */,
+				5B97885D243EDFED005BADA9 /* IBMPlexMono-Thin.ttf in Resources */,
 				5B5778CA242B48230028D3E3 /* AtlasGrotesk-Thin.otf in Resources */,
 				5B5778D0242B48230028D3E3 /* DomaineSansText-BoldItalic.otf in Resources */,
 				5B5778DC242B48230028D3E3 /* DomaineSansText-Regular.otf in Resources */,
 				5B577857242B330E0028D3E3 /* LaunchScreen.storyboard in Resources */,
+				5B97886B243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf in Resources */,
 				5B5778C2242B48230028D3E3 /* AtlasGrotesk-Black.otf in Resources */,
 				5B5778F9242B49140028D3E3 /* InfoPlist.strings in Resources */,
 				5B5778C0242B48230028D3E3 /* AtlasGrotesk-LightItalic.otf in Resources */,
+				5B97885F243EDFED005BADA9 /* IBMPlexMono-Bold.ttf in Resources */,
+				5B978863243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf in Resources */,
 				5B5778D6242B48230028D3E3 /* DomaineSansText-Medium.otf in Resources */,
+				5B978871243EDFED005BADA9 /* IBMPlexMono-Italic.ttf in Resources */,
+				5B978875243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf in Resources */,
+				5B978865243EDFED005BADA9 /* IBMPlexMono-Medium.ttf in Resources */,
 				5B5778C4242B48230028D3E3 /* AtlasGrotesk-RegularItalic.otf in Resources */,
+				5B978873243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf in Resources */,
 				5B577858242B330E0028D3E3 /* Assets.xcassets in Resources */,
 				5B5778F7242B49140028D3E3 /* Localizable.strings in Resources */,
+				5B978867243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf in Resources */,
 				5B5778D2242B48230028D3E3 /* DomaineSansText-Bold.otf in Resources */,
 				5B5778D8242B48230028D3E3 /* DomaineSansText-Black.otf in Resources */,
 				5B577859242B330E0028D3E3 /* Main.storyboard in Resources */,
+				5B97886D243EDFED005BADA9 /* IBMPlexMono-Regular.ttf in Resources */,
+				5B978877243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf in Resources */,
 				5B5778BC242B48230028D3E3 /* AtlasGrotesk-Light.otf in Resources */,
 				5B5778BA242B48230028D3E3 /* AtlasGrotesk-ThinItalic.otf in Resources */,
 				5B5778DA242B48230028D3E3 /* DomaineSansText-RegularItalic.otf in Resources */,
@@ -1244,32 +1330,46 @@
 				5B5778C9242B48230028D3E3 /* AtlasGrotesk-Thin.otf in Resources */,
 				5B5778DB242B48230028D3E3 /* DomaineSansText-Regular.otf in Resources */,
 				5B5778CB242B48230028D3E3 /* DomaineSansText-BlackItalic.otf in Resources */,
+				5B97885C243EDFED005BADA9 /* IBMPlexMono-Thin.ttf in Resources */,
 				5B5778BD242B48230028D3E3 /* AtlasGrotesk-Regular.otf in Resources */,
 				5B5778BB242B48230028D3E3 /* AtlasGrotesk-Light.otf in Resources */,
+				5B978868243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf in Resources */,
+				5B978870243EDFED005BADA9 /* IBMPlexMono-Italic.ttf in Resources */,
 				5B5778F4242B49140028D3E3 /* Phrase.strings in Resources */,
 				5B5778D9242B48230028D3E3 /* DomaineSansText-RegularItalic.otf in Resources */,
+				5B97885E243EDFED005BADA9 /* IBMPlexMono-Bold.ttf in Resources */,
 				5B5778F2242B49140028D3E3 /* Error.strings in Resources */,
+				5B978864243EDFED005BADA9 /* IBMPlexMono-Medium.ttf in Resources */,
 				5B5778CD242B48230028D3E3 /* DomaineSansText-Light.otf in Resources */,
 				5B5778D3242B48230028D3E3 /* DomaineSansText-LightItalic.otf in Resources */,
 				5B577860242B3FC10028D3E3 /* Dev-Info.plist in Resources */,
 				5B5778B3242B48230028D3E3 /* AtlasGrotesk-MediumItalic.otf in Resources */,
+				5B97886A243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf in Resources */,
 				5B5778DD242B48230028D3E3 /* DomaineSansText-MediumItalic.otf in Resources */,
 				5B9542C9242AF8040072D933 /* LaunchScreen.storyboard in Resources */,
+				5B978876243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf in Resources */,
 				5B9542C6242AF8040072D933 /* Assets.xcassets in Resources */,
 				5B5778C7242B48230028D3E3 /* AtlasGrotesk-Bold.otf in Resources */,
 				5B5778B9242B48230028D3E3 /* AtlasGrotesk-ThinItalic.otf in Resources */,
+				5B97886C243EDFED005BADA9 /* IBMPlexMono-Regular.ttf in Resources */,
 				5B5778D5242B48230028D3E3 /* DomaineSansText-Medium.otf in Resources */,
+				5B978866243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf in Resources */,
 				5B5778C5242B48230028D3E3 /* AtlasGrotesk-BlackItalic.otf in Resources */,
 				5B5778F8242B49140028D3E3 /* InfoPlist.strings in Resources */,
 				5B5778B5242B48230028D3E3 /* AtlasGrotesk-BoldItalic.otf in Resources */,
 				5B9542C4242AF8010072D933 /* Main.storyboard in Resources */,
+				5B978872243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf in Resources */,
 				5B5778CF242B48230028D3E3 /* DomaineSansText-BoldItalic.otf in Resources */,
 				5B5778F6242B49140028D3E3 /* Localizable.strings in Resources */,
 				5B5778BF242B48230028D3E3 /* AtlasGrotesk-LightItalic.otf in Resources */,
+				5B97886E243EDFED005BADA9 /* IBMPlexMono-Light.ttf in Resources */,
 				5B5778D1242B48230028D3E3 /* DomaineSansText-Bold.otf in Resources */,
+				5B978874243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf in Resources */,
 				5B5778B7242B48230028D3E3 /* AtlasGrotesk-Medium.otf in Resources */,
 				5B5778C3242B48230028D3E3 /* AtlasGrotesk-RegularItalic.otf in Resources */,
+				5B978860243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf in Resources */,
 				5B5778C1242B48230028D3E3 /* AtlasGrotesk-Black.otf in Resources */,
+				5B978862243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf in Resources */,
 				5B5778D7242B48230028D3E3 /* DomaineSansText-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1507,6 +1607,7 @@
 				5B577901242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5BFC8DC6243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */,
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
+				5B97887A243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
 				5B57789A242B47770028D3E3 /* ServerAPIError.swift in Sources */,
 				5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
@@ -1518,6 +1619,7 @@
 				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B7CE0C22430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */,
 				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
+				5B93F704243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B57786E242B43140028D3E3 /* Credential.swift in Sources */,
 				5B577931242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
@@ -1610,6 +1712,7 @@
 				5B577900242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5BFC8DC5243312E700815828 /* SuccessRequestHelpViewController.swift in Sources */,
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
+				5B978879243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
 				5B577899242B47670028D3E3 /* ServerAPIError.swift in Sources */,
 				5B51BF562431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
@@ -1621,6 +1724,7 @@
 				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B7CE0C12430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */,
 				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
+				5B93F703243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B577893242B46230028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,

@@ -15,12 +15,10 @@ import SkeletonView
 class MainViewController: ViewController {
 
     // MARK: - Properties
-    lazy var healthView = makeHealthView()
     lazy var locationLabel = makeLocationLabel()
     lazy var locationInfoView = makeLocationInfoView()
-    lazy var feedsTableView = makeFeedsTableView()
-    lazy var feedActivityIndicator = makeActivityIndicator()
-    lazy var feedsRefreshControl = makeFeedsRefreshControl()
+    lazy var mainCollectionView = makeMainCollectionView()
+    lazy var navButtons = makeNavButtons()
 
     lazy var thisViewModel: MainViewModel = {
         return viewModel as! MainViewModel
@@ -59,33 +57,6 @@ class MainViewController: ViewController {
         super.bindViewModel()
 
         bindUserFriendlyAddress()
-
-        // Score
-        thisViewModel.healthScoreRelay
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-                self?.rebuildHealthView(score: $0)
-            })
-            .disposed(by: disposeBag)
-
-        // Feeds
-        thisViewModel.fetchFeedStateRelay
-            .subscribe(onNext: { [weak self] (loadState) in
-                guard let self = self else { return }
-                loadState == .loading ?
-                    self.feedActivityIndicator.startAnimating() :
-                    self.feedActivityIndicator.stopAnimating()
-            })
-            .disposed(by: disposeBag)
-
-        thisViewModel.feedsRelay
-            .subscribe(onNext: { [weak self] (helpRequests) in
-                guard let self = self else { return }
-                self.feedsRefreshControl.endRefreshing()
-                self.feeds = helpRequests
-                self.feedsTableView.reloadData()
-            })
-            .disposed(by: disposeBag)
     }
 
     fileprivate func bindUserFriendlyAddress() {
@@ -115,225 +86,117 @@ class MainViewController: ViewController {
             .disposed(by: disposeBag)
     }
 
-    fileprivate func rebuildHealthView(score: Int?) {
-        let newHealthView = makeHealthScoreView(score: score)
-
-        healthView.removeSubviews()
-        healthView.addSubview(newHealthView)
-
-        newHealthView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-    }
-
-    @objc func reloadFeedsTable() {
-        thisViewModel.fetchFeeds()
-    }
-
     override func setupViews() {
         super.setupViews()
 
-        contentView.addSubview(healthView)
+        contentView.addSubview(mainCollectionView)
         contentView.addSubview(locationInfoView)
-        contentView.addSubview(feedsTableView)
 
-        healthView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(Size.dh(50))
-            make.centerX.equalToSuperview()
-            make.width.equalTo(312)
-            make.height.equalTo(270)
+        mainCollectionView.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+                .inset(UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15))
         }
 
         locationInfoView.snp.makeConstraints { (make) in
-            make.top.equalTo(healthView.snp.bottom).offset(15)
-            make.centerX.equalToSuperview()
-            make.width.lessThanOrEqualTo(Size.dw(296))
+            make.top.equalTo(mainCollectionView.snp.bottom).offset(10)
+            make.leading.trailing.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-30)
         }
-
-        feedsTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(locationLabel.snp.bottom).offset(15)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-
-        locationInfoView.isHidden = true
     }
 }
 
-// MARK: - SkeletonTableViewDataSource
-extension MainViewController: SkeletonTableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feeds.count
+extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
     }
 
-    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return "FeedTableCell"
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let feed = feeds[indexPath.row]
-
-        let cell = tableView.dequeueReusableCell(withClass: FeedTableCell.self, for: indexPath)
-        cell.setData(with: feed)
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let feed = feeds[indexPath.row]
-
-        guard let helpRequestID = feed.id else { return }
-        gotoGiveHelpScreen(helpRequestID: helpRequestID)
-    }
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = makeFeedHeaderView()
-
-        let view = UIView()
-        view.addSubview(headerView)
-        headerView.snp.makeConstraints { (make) in
-            make.centerX.centerY.equalToSuperview()
-        }
-
-        return view
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? HealthScoreCollectionCell else { return }
+        cell.setData()
     }
 }
 
 // MARK: - Navigator
 extension MainViewController {
-    fileprivate func gotoGiveHelpScreen(helpRequestID: String) {
-        let viewModel = GiveHelpViewModel(helpRequestID: helpRequestID)
-        navigator.show(segue: .giveHelp(viewModel: viewModel), sender: self)
-    }
 }
 
 // MARK: - Setup Views
 extension MainViewController {
-    fileprivate func makeHealthView() -> UIView {
-        let emptyTriangle = makeHealthScoreView(score: nil)
-
-        let view = UIView()
-        view.addSubview(emptyTriangle)
-        emptyTriangle.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-
-        return view
-    }
-
-    fileprivate func makeHealthScoreView(score: Int?) -> UIView {
-        let healthScoreTriangle = HealthScoreTriangle(score: score)
-
-        let appNameLabel = Label()
-        appNameLabel.apply(text: Constant.appName.localizedUppercase,
-                    font: R.font.domaineSansTextLight(size: 18),
-                    themeStyle: .lightTextColor)
-
-        let scoreLabel = Label()
-
-
-        let view = UIView()
-        view.addSubview(healthScoreTriangle)
-        view.addSubview(appNameLabel)
-
-
-        healthScoreTriangle.snp.makeConstraints { (make) in
-            make.edges.centerX.equalToSuperview()
-        }
-
-        appNameLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(healthScoreTriangle).offset(-40)
-        }
-
-        if let score = score {
-            scoreLabel.apply(
-                text: "\(score)",
-                font: R.font.domaineSansTextLight(size: 64),
-                themeStyle: .lightTextColor)
-
-            view.addSubview(scoreLabel)
-            scoreLabel.snp.makeConstraints { (make) in
-                make.bottom.equalTo(appNameLabel.snp.top).offset(10)
-                make.centerX.equalToSuperview()
-            }
-        }
-
-        return view
-    }
-
     fileprivate func makeLocationLabel() -> Label {
         let label = Label()
-        label.apply(font: R.font.atlasGroteskLight(size: 18),
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingTail
+        label.adjustsFontSizeToFitWidth = false
+        label.apply(font: R.font.atlasGroteskLight(size: 16),
                     themeStyle: .silverChaliceColor, lineHeight: 1.2)
-        label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
         return label
     }
 
+    fileprivate func makeNavButtons() -> UIView {
+        let vectorNavButton = makeVectorNavButton()
+        let searchButton = makeSearchButton()
+
+        return UIStackView(arrangedSubviews: [vectorNavButton, searchButton], axis: .horizontal, spacing: 8, alignment: .fill)
+    }
+
+    fileprivate func makeVectorNavButton() -> UIButton {
+        let currentNavButton = UIButton()
+        currentNavButton.setImage(R.image.vector(), for: .disabled)
+        currentNavButton.setImage(R.image.unselected_vector(), for: .normal)
+        return currentNavButton
+    }
+
+    fileprivate func makeSearchButton() -> UIButton {
+        let searchButton = UIButton()
+        searchButton.setImage(R.image.search(), for: .normal)
+        return searchButton
+    }
+
     fileprivate func makeLocationInfoView() -> UIView {
-        let vectorImageView = ImageView(image: R.image.vector())
-
         let view = UIView()
-        view.addSubview(vectorImageView)
         view.addSubview(locationLabel)
-
-        vectorImageView.snp.makeConstraints { (make) in
-            make.top.leading.bottom.centerY.equalToSuperview()
-            make.width.equalTo(15)
-        }
+        view.addSubview(navButtons)
 
         locationLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(vectorImageView.snp.trailing).offset(8)
-            make.top.trailing.bottom.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.7)
+            make.top.centerX.equalToSuperview()
+        }
+
+        navButtons.snp.makeConstraints { (make) in
+            make.top.equalTo(locationLabel.snp.bottom).offset(13)
+            make.centerX.bottom.equalToSuperview()
         }
 
         return view
     }
 
-    fileprivate func makeFeedHeaderView() -> UIView {
-        let label = Label()
-        label.apply(text: R.string.localizable.requests().localizedUppercase,
-                    font: R.font.domaineSansTextLight(size: 14),
-                    themeStyle: .lightTextColor)
+    fileprivate func makeMainCollectionView() -> UICollectionView {
+        let flowlayout = UICollectionViewFlowLayout()
+        flowlayout.scrollDirection = .horizontal
 
-        let view = UIView()
-        view.addSubview(label)
-        view.addSubview(feedActivityIndicator)
+        let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: flowlayout)
+        collectionView.backgroundColor = .clear
+        collectionView.isPagingEnabled = true
 
-        label.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+        collectionView.register(cellWithClass: HealthScoreCollectionCell.self)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.showsHorizontalScrollIndicator = false
 
-        feedActivityIndicator.snp.makeConstraints { (make) in
-            make.leading.equalTo(label.snp.trailing).offset(10)
-            make.top.bottom.equalToSuperview()
-        }
+        return collectionView
+    }
+}
 
-        return view
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.width - 30, height: view.height)
     }
 
-    fileprivate func makeFeedsTableView() -> TableView {
-        let tableView = TableView()
-        tableView.register(cellWithClass: FeedTableCell.self)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.isSkeletonable = true
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 53.0
-        tableView.backgroundColor = UIColor(hexString: "#2B2B2B")
-        tableView.addSubview(feedsRefreshControl)
-        return tableView
-    }
-
-    fileprivate func makeActivityIndicator() -> UIActivityIndicatorView {
-        let indicator = UIActivityIndicatorView()
-        indicator.style = .white
-        return indicator
-    }
-
-    fileprivate func makeFeedsRefreshControl() -> UIRefreshControl {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(reloadFeedsTable), for: .valueChanged)
-        refreshControl.tintColor = UIColor.white
-        return refreshControl
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

@@ -34,6 +34,13 @@
 "SignedUp" = "Signed Up";
 "Copied" = "Copied";
 
+"RawData" = "Raw Data";
+"from_last_24_hours" = "from last 24 hours ";
+"ConfirmedCases" = "CONFIRMED CASES";
+"ReportedSymptoms" = "REPORTED SYMPTOMS";
+"HealthyBehaviors" = "HEALTHY BEHAVIORS";
+"PopulationDensity" = "POPULATION DENSITY";
+
 "supportMessage" = "\n%@\n\nWould you like to contact with support team?";
 "Contact" = "Contact";
 "Cancel" = "Cancel";
