@@ -34,7 +34,9 @@ enum ThemeStyle {
     case headerLineColor
     case headerColor
     case blackTextColor
+    case concordTextColor
     case silverTextColor
+    case silverC4TextColor
     case lightTextColor
     case separateTextColor
     case background
@@ -46,7 +48,9 @@ protocol Theme {
     var headerLineColor:    UIColor { get }
     var headerColor:        UIColor { get }
     var blackTextColor:     UIColor { get }
+    var concordTextColor:   UIColor { get }
     var silverTextColor:    UIColor { get }
+    var silverC4TextColor:  UIColor { get }
     var lightTextColor:     UIColor { get }
     var separateTextColor:  UIColor { get }
     var background:         UIColor { get }
@@ -60,7 +64,9 @@ struct LightTheme: Theme {
     let headerLineColor     = UIColor(hexString: "#828180")!
     let headerColor         = UIColor(hexString: "#BFBFBF")!
     let blackTextColor      = UIColor.Material.black
+    let concordTextColor    = UIColor(hexString: "#828180")!
     let silverTextColor     = UIColor(hexString: "#BFBFBF")!
+    let silverC4TextColor   = UIColor(hexString: "#C4C4C4")!
     let lightTextColor      = UIColor.Material.white
     let separateTextColor   = UIColor(hexString: "#828180")!
     let background          = UIColor(hexString: "#1B1B1B")!
@@ -74,7 +80,9 @@ struct DarkTheme: Theme {
     let headerLineColor     = UIColor(hexString: "#828180")!
     let headerColor         = UIColor(hexString: "#BFBFBF")!
     let blackTextColor      = UIColor.Material.black
+    let concordTextColor    = UIColor(hexString: "#828180")!
     let silverTextColor     = UIColor(hexString: "#BFBFBF")!
+    let silverC4TextColor   = UIColor(hexString: "#C4C4C4")!
     let lightTextColor      = UIColor.Material.white
     let separateTextColor   = UIColor(hexString: "#828180")!
     let background          = UIColor(hexString: "#1B1B1B")!

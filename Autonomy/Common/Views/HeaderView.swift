@@ -84,7 +84,6 @@ extension HeaderView {
 
     fileprivate func makeSingleLine() -> UIView {
         let view = UIView()
-        view.backgroundColor = .red
 
         view.snp.makeConstraints { (make) in
             make.height.equalTo(1)

@@ -984,6 +984,7 @@
 				5B9542D0242AF92A0072D933 /* Application */,
 				5B577861242B41F70028D3E3 /* Common */,
 				5B9542D1242AF9380072D933 /* Modules */,
+				5B577886242B45550028D3E3 /* Models */,
 				5B2C857D242DD869002CC53B /* Data Engine */,
 				5B577872242B43860028D3E3 /* Services */,
 				5B57786B242B42FE0028D3E3 /* ConfCore */,
@@ -1086,7 +1087,6 @@
 		5BFC8DC724331AC900815828 /* Pan Modals */ = {
 			isa = PBXGroup;
 			children = (
-				5B577886242B45550028D3E3 /* Models */,
 				5B7F23B12434B65F00F7A72E /* SuccessPanViewController.swift */,
 				5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */,
 			);
