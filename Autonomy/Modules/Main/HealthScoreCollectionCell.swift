@@ -26,6 +26,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     lazy var reportedSymptomsView = ScoreInfoView(scoreInfoType: .reportedSymptoms)
     lazy var healthyBehaviorsView = ScoreInfoView(scoreInfoType: .healthyBehaviors)
     lazy var populationDensityView = ScoreInfoView(scoreInfoType: .populationDensity)
+    let guideBoxInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 
     fileprivate let disposeBag = DisposeBag()
 
@@ -115,13 +116,11 @@ extension HealthScoreCollectionCell {
 
     fileprivate func makeGuideView() -> UIView {
         let view = UIView()
-        view.backgroundColor = UIColor(hexString: "#828180")
         view.addSubview(behaviorGuideView)
         view.addSubview(guideDataView)
 
         guideDataView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
         }
 
         behaviorGuideView.snp.makeConstraints { (make) in
@@ -141,16 +140,16 @@ extension HealthScoreCollectionCell {
             bottomConstraint: true)
 
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor(hexString: "#2B2B2B")
         view.addSubview(contentView)
         view.addSubview(flipButton)
 
         flipButton.snp.makeConstraints { (make) in
-            make.top.trailing.equalToSuperview()
+            make.top.trailing.equalToSuperview().inset(guideBoxInset)
         }
 
         contentView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview().inset(guideBoxInset)
         }
 
         defer {
@@ -196,12 +195,11 @@ extension HealthScoreCollectionCell {
         let row1 = makeScoreInfosRow(view1: confirmedCasesView, view2: reportedSymptomsView)
         let row2 = makeScoreInfosRow(view1: healthyBehaviorsView, view2: populationDensityView)
 
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.addSubview(titleView)
-        view.addSubview(row1)
-        view.addSubview(row2)
-        view.addSubview(flipButton)
+        let paddingView = UIView()
+        paddingView.addSubview(titleView)
+        paddingView.addSubview(row1)
+        paddingView.addSubview(row2)
+        paddingView.addSubview(flipButton)
 
         titleView.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
@@ -219,6 +217,14 @@ extension HealthScoreCollectionCell {
 
         flipButton.snp.makeConstraints { (make) in
             make.top.trailing.equalToSuperview()
+        }
+
+        let view = UIView()
+        view.backgroundColor = UIColor(hexString: "#828180")
+        view.addSubview(paddingView)
+
+        paddingView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview().inset(guideBoxInset)
         }
 
         defer {

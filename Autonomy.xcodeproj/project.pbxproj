@@ -9,14 +9,22 @@
 /* Begin PBXBuildFile section */
 		0D8B6DF360D1CCC1F900410E /* Pods_Autonomy_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */; };
 		1069FBDB37576812A95BC44E /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A710DB2805CCB5FC902C5B3A /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		5B213EFF2444133E0095BE18 /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFD2444133E0095BE18 /* HelpRequestService.swift */; };
+		5B213F002444133E0095BE18 /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFD2444133E0095BE18 /* HelpRequestService.swift */; };
+		5B213F012444133E0095BE18 /* HelpRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFE2444133E0095BE18 /* HelpRequestAPI.swift */; };
+		5B213F022444133E0095BE18 /* HelpRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFE2444133E0095BE18 /* HelpRequestAPI.swift */; };
+		5B213F04244413E90095BE18 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F03244413E90095BE18 /* PointOfInterest.swift */; };
+		5B213F05244413E90095BE18 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F03244413E90095BE18 /* PointOfInterest.swift */; };
+		5B213F07244413FC0095BE18 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F06244413FC0095BE18 /* Location.swift */; };
+		5B213F08244413FC0095BE18 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F06244413FC0095BE18 /* Location.swift */; };
 		5B2C856D242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
 		5B2C856E242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
 		5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
 		5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
-		5B2C8576242DD42B002CC53B /* HelpRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* HelpRequestAPI.swift */; };
-		5B2C8577242DD42B002CC53B /* HelpRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* HelpRequestAPI.swift */; };
-		5B2C8578242DD42B002CC53B /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* HelpRequestService.swift */; };
-		5B2C8579242DD42B002CC53B /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* HelpRequestService.swift */; };
+		5B2C8576242DD42B002CC53B /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* PointOfInterestAPI.swift */; };
+		5B2C8577242DD42B002CC53B /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* PointOfInterestAPI.swift */; };
+		5B2C8578242DD42B002CC53B /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* PointOfInterestService.swift */; };
+		5B2C8579242DD42B002CC53B /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* PointOfInterestService.swift */; };
 		5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
 		5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
 		5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */; };
@@ -37,6 +45,8 @@
 		5B2C85A0242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B2C8599242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B2C85B0242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B2C85B5242DEE92002CC53B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C859B242DEDBB002CC53B /* NotificationService.swift */; };
+		5B396E752445CEE800D14FEC /* AddLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B396E742445CEE800D14FEC /* AddLocationCell.swift */; };
+		5B396E762445CEE800D14FEC /* AddLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B396E742445CEE800D14FEC /* AddLocationCell.swift */; };
 		5B51BF562431CA8B00AD998B /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */; };
 		5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */; };
 		5B51BF5F2431D63C00AD998B /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
@@ -266,6 +276,16 @@
 		5B978877243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */; };
 		5B978879243EFF71005BADA9 /* ScoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978878243EFF71005BADA9 /* ScoreInfoView.swift */; };
 		5B97887A243EFF71005BADA9 /* ScoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978878243EFF71005BADA9 /* ScoreInfoView.swift */; };
+		5B978887243F22B4005BADA9 /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978886243F22B4005BADA9 /* LocationTableCell.swift */; };
+		5B978888243F22B4005BADA9 /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978886243F22B4005BADA9 /* LocationTableCell.swift */; };
+		5BA808B5244010E100B2733A /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* LocationSearchViewController.swift */; };
+		5BA808B6244010E100B2733A /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* LocationSearchViewController.swift */; };
+		5BA808B8244010EC00B2733A /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */; };
+		5BA808B9244010EC00B2733A /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */; };
+		5BA808BB2440226A00B2733A /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
+		5BA808BC2440226A00B2733A /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
+		5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
+		5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
 		5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
@@ -348,10 +368,14 @@
 		4F172DB240CC2DBD7AFC6524 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		57BDEC92F058C9C5F88DDF72 /* Pods_OneSignalNotificationServiceDevExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceDevExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.debug.xcconfig"; sourceTree = "<group>"; };
+		5B213EFD2444133E0095BE18 /* HelpRequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestService.swift; sourceTree = "<group>"; };
+		5B213EFE2444133E0095BE18 /* HelpRequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestAPI.swift; sourceTree = "<group>"; };
+		5B213F03244413E90095BE18 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
+		5B213F06244413FC0095BE18 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		5B2C8570242DB786002CC53B /* LocationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermission.swift; sourceTree = "<group>"; };
-		5B2C8574242DD42B002CC53B /* HelpRequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestAPI.swift; sourceTree = "<group>"; };
-		5B2C8575242DD42B002CC53B /* HelpRequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestService.swift; sourceTree = "<group>"; };
+		5B2C8574242DD42B002CC53B /* PointOfInterestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestAPI.swift; sourceTree = "<group>"; };
+		5B2C8575242DD42B002CC53B /* PointOfInterestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestService.swift; sourceTree = "<group>"; };
 		5B2C857A242DD4CB002CC53B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataEngine.swift; sourceTree = "<group>"; };
 		5B2C8582242DDBFB002CC53B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -366,6 +390,7 @@
 		5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceDevExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2C85B8242DFC78002CC53B /* Autonomy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Autonomy.entitlements; sourceTree = "<group>"; };
 		5B2C85B9242DFC78002CC53B /* Autonomy Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Autonomy Dev.entitlements"; sourceTree = "<group>"; };
+		5B396E742445CEE800D14FEC /* AddLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationCell.swift; sourceTree = "<group>"; };
 		5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		5B51BF5E2431D63C00AD998B /* HelpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
 		5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSubmitButton.swift; sourceTree = "<group>"; };
@@ -484,6 +509,11 @@
 		5B97885A243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-LightItalic.ttf"; sourceTree = "<group>"; };
 		5B978878243EFF71005BADA9 /* ScoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreInfoView.swift; sourceTree = "<group>"; };
+		5B978886243F22B4005BADA9 /* LocationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationTableCell.swift; path = ../Location/List/LocationTableCell.swift; sourceTree = "<group>"; };
+		5BA808B4244010E100B2733A /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
+		5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextTableCell.swift; sourceTree = "<group>"; };
+		5BA808C0244081E300B2733A /* LocationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListCell.swift; sourceTree = "<group>"; };
 		5BB14091242C4A57009EFC59 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
 		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
@@ -543,6 +573,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B213EFC244412EB0095BE18 /* Points Of Interest */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C8574242DD42B002CC53B /* PointOfInterestAPI.swift */,
+				5B2C8575242DD42B002CC53B /* PointOfInterestService.swift */,
+			);
+			path = "Points Of Interest";
+			sourceTree = "<group>";
+		};
 		5B2C856F242DB774002CC53B /* Permissions */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,6 +617,9 @@
 				5BFC8DCB2433264A00815828 /* FeedTableCell.swift */,
 				5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */,
 				5B978878243EFF71005BADA9 /* ScoreInfoView.swift */,
+				5BA808C0244081E300B2733A /* LocationListCell.swift */,
+				5B978886243F22B4005BADA9 /* LocationTableCell.swift */,
+				5B396E742445CEE800D14FEC /* AddLocationCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -645,6 +687,7 @@
 				5B92E3E32436E61700E5949A /* Health */,
 				5B7CE0C62430BD2E002CD923 /* Symptom */,
 				5BFC8DBD243307BE00815828 /* Help Request */,
+				5B213EFC244412EB0095BE18 /* Points Of Interest */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -692,6 +735,8 @@
 				5B2C8592242DDE51002CC53B /* AppInfo.swift */,
 				5B51BF5E2431D63C00AD998B /* HelpRequest.swift */,
 				5BFC8DD224333E5700815828 /* Symptom.swift */,
+				5B213F03244413E90095BE18 /* PointOfInterest.swift */,
+				5B213F06244413FC0095BE18 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1017,6 +1062,7 @@
 				5B7F239B2434878F00F7A72E /* Request Help */,
 				5B7F2394243482BF00F7A72E /* Give Help */,
 				5BFC8DC724331AC900815828 /* Pan Modals */,
+				5B97887E243F21A6005BADA9 /* Location */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1064,6 +1110,24 @@
 			path = IBM_Plex_Mono;
 			sourceTree = "<group>";
 		};
+		5B97887E243F21A6005BADA9 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				5BA808B3244010CE00B2733A /* Search */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		5BA808B3244010CE00B2733A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				5BA808B4244010E100B2733A /* LocationSearchViewController.swift */,
+				5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */,
+				5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		5BB1409A242C606A009EFC59 /* Onboarding Steps */ = {
 			isa = PBXGroup;
 			children = (
@@ -1078,8 +1142,8 @@
 		5BFC8DBD243307BE00815828 /* Help Request */ = {
 			isa = PBXGroup;
 			children = (
-				5B2C8574242DD42B002CC53B /* HelpRequestAPI.swift */,
-				5B2C8575242DD42B002CC53B /* HelpRequestService.swift */,
+				5B213EFE2444133E0095BE18 /* HelpRequestAPI.swift */,
+				5B213EFD2444133E0095BE18 /* HelpRequestService.swift */,
 			);
 			path = "Help Request";
 			sourceTree = "<group>";
@@ -1604,6 +1668,7 @@
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B97887A243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
 				5B57789A242B47770028D3E3 /* ServerAPIError.swift in Sources */,
+				5B978888243F22B4005BADA9 /* LocationTableCell.swift in Sources */,
 				5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B7F23AC2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
@@ -1614,17 +1679,20 @@
 				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B7CE0C22430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */,
 				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
+				5B213F002444133E0095BE18 /* HelpRequestService.swift in Sources */,
 				5B93F704243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B57786E242B43140028D3E3 /* Credential.swift in Sources */,
 				5B577931242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577941242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
+				5BA808B9244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
 				5B57790C242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
 				5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */,
 				5B577934242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
 				5B577927242B4EA20028D3E3 /* ViewModel.swift in Sources */,
+				5BA808B6244010E100B2733A /* LocationSearchViewController.swift in Sources */,
 				5B5778E3242B48AA0028D3E3 /* R.generated.swift in Sources */,
 				5B57787D242B43B70028D3E3 /* AuthAPI.swift in Sources */,
 				5B577883242B43DC0028D3E3 /* NoInternetBanner.swift in Sources */,
@@ -1635,22 +1703,27 @@
 				5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
 				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
+				5B213F08244413FC0095BE18 /* Location.swift in Sources */,
 				5B7F239A243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
 				5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
 				5B7F2397243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5B2C8591242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
-				5B2C8579242DD42B002CC53B /* HelpRequestService.swift in Sources */,
+				5B2C8579242DD42B002CC53B /* PointOfInterestService.swift in Sources */,
+				5B213F05244413E90095BE18 /* PointOfInterest.swift in Sources */,
 				5B57786A242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
+				5B213F022444133E0095BE18 /* HelpRequestAPI.swift in Sources */,
 				5B57793B242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B7CE0BE2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
 				5B7F23B02434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */,
 				5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */,
+				5B396E762445CEE800D14FEC /* AddLocationCell.swift in Sources */,
 				5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
+				5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */,
 				5BFC8DCD2433264A00815828 /* FeedTableCell.swift in Sources */,
 				5B7CE0D52430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
@@ -1659,6 +1732,7 @@
 				5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
 				5B577864242B421B0028D3E3 /* Constant.swift in Sources */,
 				5B577867242B42310028D3E3 /* Global+Log.swift in Sources */,
+				5BA808BC2440226A00B2733A /* SearchTextTableCell.swift in Sources */,
 				5B2C8594242DDE51002CC53B /* AppInfo.swift in Sources */,
 				5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577889242B45830028D3E3 /* Auth.swift in Sources */,
@@ -1675,7 +1749,7 @@
 				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
-				5B2C8577242DD42B002CC53B /* HelpRequestAPI.swift in Sources */,
+				5B2C8577242DD42B002CC53B /* PointOfInterestAPI.swift in Sources */,
 				5B7F23AA2434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
 				5BB140A0242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577916242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
@@ -1708,6 +1782,7 @@
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B978879243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
 				5B577899242B47670028D3E3 /* ServerAPIError.swift in Sources */,
+				5B978887243F22B4005BADA9 /* LocationTableCell.swift in Sources */,
 				5B51BF562431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B7F23AB2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
@@ -1718,17 +1793,20 @@
 				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B7CE0C12430ADD8002CD923 /* SurveySymptomsViewController.swift in Sources */,
 				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
+				5B213EFF2444133E0095BE18 /* HelpRequestService.swift in Sources */,
 				5B93F703243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B577893242B46230028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577940242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08A242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
+				5BA808B8244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
 				5B57790B242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5B7F23AD2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
 				5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */,
 				5B577933242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
 				5B577926242B4EA20028D3E3 /* ViewModel.swift in Sources */,
+				5BA808B5244010E100B2733A /* LocationSearchViewController.swift in Sources */,
 				5B5778E2242B48AA0028D3E3 /* R.generated.swift in Sources */,
 				5B57787C242B43B70028D3E3 /* AuthAPI.swift in Sources */,
 				5B577882242B43DC0028D3E3 /* NoInternetBanner.swift in Sources */,
@@ -1739,22 +1817,27 @@
 				5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
 				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,
+				5B213F07244413FC0095BE18 /* Location.swift in Sources */,
 				5B7F2399243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
 				5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
 				5B7F2396243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5B2C8590242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
-				5B2C8578242DD42B002CC53B /* HelpRequestService.swift in Sources */,
+				5B2C8578242DD42B002CC53B /* PointOfInterestService.swift in Sources */,
+				5B213F04244413E90095BE18 /* PointOfInterest.swift in Sources */,
 				5B577869242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
+				5B213F012444133E0095BE18 /* HelpRequestAPI.swift in Sources */,
 				5B57793A242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B7CE0BD2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
 				5B7F23AF2434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */,
 				5BB140A5242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */,
+				5B396E752445CEE800D14FEC /* AddLocationCell.swift in Sources */,
 				5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
+				5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */,
 				5BFC8DCC2433264A00815828 /* FeedTableCell.swift in Sources */,
 				5B7CE0D42430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
@@ -1763,6 +1846,7 @@
 				5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
 				5B577863242B421B0028D3E3 /* Constant.swift in Sources */,
 				5B577866242B42310028D3E3 /* Global+Log.swift in Sources */,
+				5BA808BB2440226A00B2733A /* SearchTextTableCell.swift in Sources */,
 				5B2C8593242DDE51002CC53B /* AppInfo.swift in Sources */,
 				5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577888242B45830028D3E3 /* Auth.swift in Sources */,
@@ -1779,7 +1863,7 @@
 				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
-				5B2C8576242DD42B002CC53B /* HelpRequestAPI.swift in Sources */,
+				5B2C8576242DD42B002CC53B /* PointOfInterestAPI.swift in Sources */,
 				5B7F23A92434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
 				5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577915242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,

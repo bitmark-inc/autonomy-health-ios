@@ -36,11 +36,6 @@ class TableViewCell: UITableViewCell {
         contentCell = UIView()
         contentView.addSubview(contentCell)
 
-        contentCell.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 7, left: OurTheme.horizontalPadding, bottom: 7, right: OurTheme.horizontalPadding))
-        }
-
         isSkeletonable = true
         contentCell.isSkeletonable = true
     }

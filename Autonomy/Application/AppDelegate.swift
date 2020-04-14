@@ -13,6 +13,7 @@ import SVProgressHUD
 import OneSignal
 import CoreLocation
 import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -61,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager.startUpdatingLocation()
 
         GMSServices.provideAPIKey(Constant.googleAPIKey)
+        GMSPlacesClient.provideAPIKey(Constant.googleAPIKey)
 
         if #available(iOS 13, *) {
             // already execute app flow in SceneDelegate

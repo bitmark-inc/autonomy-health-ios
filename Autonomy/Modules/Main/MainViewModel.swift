@@ -8,6 +8,7 @@
 
 import RxSwift
 import RxCocoa
+import GooglePlaces
 
 class MainViewModel: ViewModel {
 
@@ -43,5 +44,24 @@ class MainViewModel: ViewModel {
             })
             .disposed(by: disposeBag)
 
+    }
+
+    func addNewLocation(placeID: String) {
+        let gmsPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+            UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))!
+
+        let token = GMSAutocompleteSessionToken()
+
+        GMSPlacesClient.shared().fetchPlace(fromPlaceID: placeID, placeFields: gmsPlaceField, sessionToken: token) { (place, error) in
+            if let error = error {
+                Global.log.error(error)
+            }
+
+            if let place = place {
+                let pointOfInterest = PointOfInterest(alias: place.name ?? "", location: Location(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
+
+                PointOfInterestService.update(pointOfInterests: [pointOfInterest])
+            }
+        }
     }
 }

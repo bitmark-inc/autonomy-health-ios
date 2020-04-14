@@ -9,6 +9,7 @@ def sharedPods
   pod 'Intercom'
   pod 'OneSignal'
   pod 'GoogleMaps'
+  pod 'GooglePlaces'
   pod 'Sentry'
 
   pod 'RxSwift', '~> 5'
@@ -36,6 +37,7 @@ def sharedPods
 
   pod 'SwiftRichString'
   pod 'SwiftDate'
+  pod 'MGSwipeTableCell'
 end
 
 
