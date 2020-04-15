@@ -9,18 +9,25 @@
 "launch.name" = "Autonomy";
 "launch.description" = "Get better.\nTogether.";
 
-"onboarding.1.description" = "We’ll use community data to calculate a health score for your current location.";
-"onboarding.2.description" = "We’ll send you actionable,\nscience-based updates from local institutions.";
-"onboarding.3.description" = "We’ll help you and your community better manage resources.";
+"onboarding.1.description" = "We’ll use community data to calculate a risk score for your current location.";
+"onboarding.2.description" = "Of course, we’ll keep all your data private and only for you.";
+"onboarding.3.description" = "We’ll help you and your community help one another.";
 
-"workFromHome" = "Work from home";
-"workFromHome.description" = "Based on your current location, environmental factors, and and the latest COVID-19 outbreak data, you should work from home today if possible.";
-"helpDeliverFood" = "Help deliver food";
-"helpDeliverFood.description" = "Safely deliver food to others in your area.";
+"onboarding.2.title" = "Do you have any of the following symptoms?";
+"onboarding.2.item.1" = "Fever";
+"onboarding.2.item.1.desc" = "Body temperature above 100ºF (38ºC)";
+"onboarding.2.item.2" = "Dry cough";
+"onboarding.2.item.2.desc" = "Without mucous or phlegm (rattling)";
 
-"permission.description" = "Autonomy can help you most if you turn on the following:";
-"permission.notification.description" = "We’ll send you timely surveys about your current conditions and important health recommendations.";
-"permission.location.description" = "We’ll use your location data to give you the latest COVID-19 outbreak information for your local current area and tell how to help your local community.";
+"onboarding.3.title" = "Did you do any of the following behaviors today?";
+"onboarding.3.item.1" = "Frequent hand cleaning";
+"onboarding.3.item.1.desc" = "Washing hands thoroughly with soap and water for at least 20 seconds or applying an alcohol-based hand sanitizer.";
+"onboarding.3.item.2" = "Social & physical distancing";
+"onboarding.3.item.2.desc" = "Avoiding crowds, working from home, and maintaining at least 6 feet of distance from others whenever possible.";
+
+"permission.description" = "Autonomy requires access to the following:";
+"permission.notification.description" = "We’ll send you regular reminders to report symptoms and healthy behaviors and alerts when there is a health status change to one of your saved locations.";
+"permission.location.description" = "Your current location will be used to help improve your community’s data. Your location data is always private, and you cannot be personally identified by sharing your location.";
 
 "riskLevel.description" = "Are you at higher risk for severe illness from COVID-19?";
 "riskLevel.yes" = "Yes, I’m at higher risk";

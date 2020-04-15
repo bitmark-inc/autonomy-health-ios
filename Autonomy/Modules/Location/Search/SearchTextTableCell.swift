@@ -12,7 +12,7 @@ import SwiftRichString
 class SearchTextTableCell: TableViewCell {
 
     // MARK: - Properties
-    lazy var singleTextLabel = makeTextLabel()
+    lazy var singleTextLabel = Label()
     lazy var styleGroup: StyleXML = {
         let style = Style {
             $0.font = R.font.atlasGroteskLight(size: 16)
@@ -48,14 +48,5 @@ class SearchTextTableCell: TableViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Setup views
-extension SearchTextTableCell {
-    fileprivate func makeTextLabel() -> Label {
-        let label = Label()
-        label.apply(font: R.font.atlasGroteskLight(size: 16), themeStyle: .silverTextColor)
-        return label
     }
 }

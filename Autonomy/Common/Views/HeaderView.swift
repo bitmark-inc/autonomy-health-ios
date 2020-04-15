@@ -8,22 +8,35 @@
 
 import UIKit
 import RxSwift
+import SwiftRichString
 
 class HeaderView: UIView {
 
     // MARK: - Properties
     var header: String = "" {
         didSet {
-            headerLabel.setText(header)
+            headerLabel.attributedText = header.set(style: styleGroup)
         }
     }
     let disposeBag = DisposeBag()
-    lazy var headerLabel = makeHeaderLabel()
+    lazy var headerLabel = Label()
+    fileprivate lazy var styleGroup: StyleXML = {
+        let style = Style {
+            $0.font = R.font.domaineSansTextLight(size: 14)
+            $0.color = themeService.attrs.silverTextColor
+        }
+
+        let highlight = Style {
+            $0.color = themeService.attrs.lightTextColor
+        }
+
+        return StyleXML(base: style, ["b": highlight])
+    }()
 
     init(header: String) {
-        self.header = header
         super.init(frame: CGRect.zero)
 
+        headerLabel.attributedText = header.set(style: styleGroup)
         setupViews()
     }
 
@@ -94,11 +107,5 @@ extension HeaderView {
             .disposed(by: disposeBag)
 
         return view
-    }
-
-    fileprivate func makeHeaderLabel() -> Label {
-        let label = Label()
-        label.apply(text: header, font: R.font.domaineSansTextLight(size: 14), themeStyle: .silverTextColor)
-        return label
     }
 }

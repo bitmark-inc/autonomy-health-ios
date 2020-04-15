@@ -16,7 +16,7 @@ class OnboardingStep2ViewController: ViewController, BackNavigator, OnboardingVi
 
     // MARK: - Properties
     lazy var headerScreen: UIView = {
-        HeaderView(header: "2")
+        HeaderView(header: "1      <b>2</b>      3")
     }()
     lazy var titleScreen = makeTitleScreen(title: R.string.phrase.onboarding2Description())
     lazy var talkingImageView = makeTalkingImageView()
@@ -47,8 +47,14 @@ class OnboardingStep2ViewController: ViewController, BackNavigator, OnboardingVi
         let paddingContentView = makePaddingContentView()
 
         contentView.addSubview(paddingContentView)
+        contentView.addSubview(groupsButton)
+
         paddingContentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview().inset(OurTheme.paddingInset)
+        }
+
+        groupsButton.snp.makeConstraints { (make) in
+            make.leading.trailing.bottom.equalTo(contentView)
         }
     }
 }
@@ -62,52 +68,42 @@ extension OnboardingStep2ViewController {
 
 extension OnboardingStep2ViewController {
     func makeContentTalkingView() -> UIView {
-        let image = ImageView(image: R.image.circle51())
-
-        let todayLabel = Label()
-        todayLabel.apply(text: R.string.localizable.today().localizedUppercase,
-                         font: R.font.domaineSansTextLight(size: Size.ds(14)),
-                    themeStyle: .silverChaliceColor)
-
-        let workFromHomeLabel = Label()
-        workFromHomeLabel.apply(text: R.string.phrase.workFromHome(),
-                                font: R.font.atlasGroteskLight(size: Size.ds(24)),
-            themeStyle: .lightTextColor)
-
-        let rightView = LinearView(
-            items: [
-                (todayLabel, 0),
-                (workFromHomeLabel, 4)
-            ])
-
-
-        let part1View = UIView()
-        part1View.addSubview(image)
-        part1View.addSubview(rightView)
-
-        image.snp.makeConstraints { (make) in
-            make.top.leading.bottom.equalToSuperview()
-            make.height.width.equalTo(Size.dh(90))
-        }
-
-        rightView.snp.makeConstraints { (make) in
-            make.leading.equalTo(image.snp.trailing).offset(10)
-            make.top.trailing.bottom.equalToSuperview()
-        }
-
-        let textPart2Label = Label()
-        textPart2Label.apply(
-            text: R.string.phrase.workFromHomeDescription(),
-            font: R.font.atlasGroteskLight(size: 13),
+        let titleLabel = Label()
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
+        titleLabel.apply(
+            text: R.string.phrase.onboarding2Title(),
+            font: R.font.atlasGroteskLight(size: Size.ds(24)),
             themeStyle: .lightTextColor, lineHeight: 1.2)
-        textPart2Label.numberOfLines = 0
+
+        let titleLabelCover = UIView()
+        titleLabelCover.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.width.equalToSuperview().offset(-20)
+            make.top.bottom.centerX.equalToSuperview()
+        }
+
+        let sampleItem1 = makeSampleCheckBox(
+            title: R.string.phrase.onboarding2Item1(),
+            description: R.string.phrase.onboarding2Item1Desc())
+
+        let sampleItem2 = makeSampleCheckBox(
+            title: R.string.phrase.onboarding2Item2(),
+            description: R.string.phrase.onboarding2Item2Desc())
 
         return LinearView(
             items: [
-                (part1View              , 0),
-                (SeparateLine(height: 1), Size.dh(25)),
-                (textPart2Label         , 15)
+                (titleLabelCover        , 0),
+                (SeparateLine(height: 1), Size.dh(23)),
+                (sampleItem1         , Size.dh(28)),
+                (sampleItem2, 15)
             ])
+    }
 
+    fileprivate func makeSampleCheckBox(title: String, description: String) -> CheckboxView {
+        let checkBox = CheckboxView(title: title, description: description)
+        checkBox.checkBox.on = true
+        checkBox.isUserInteractionEnabled = false
+        return checkBox
     }
 }

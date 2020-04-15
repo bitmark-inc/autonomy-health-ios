@@ -20,13 +20,12 @@ protocol OnboardingViewLayout {
     func makeContentTalkingView() -> UIView
 }
 
-extension OnboardingViewLayout where Self: UIViewController {
+extension OnboardingViewLayout where Self: ViewController {
     func makePaddingContentView() -> UIView {
         let paddingContentView = UIView()
         paddingContentView.addSubview(headerScreen)
         paddingContentView.addSubview(titleScreen)
         paddingContentView.addSubview(talkingImageView)
-        paddingContentView.addSubview(groupsButton)
 
         paddingContentView.backgroundColor = .clear
 
@@ -41,13 +40,9 @@ extension OnboardingViewLayout where Self: UIViewController {
         }
 
         talkingImageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(view.height * 0.45)
+            make.height.equalToSuperview().multipliedBy(0.42)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-45)
-        }
-
-        groupsButton.snp.makeConstraints { (make) in
-            make.leading.trailing.bottom.equalToSuperview()
         }
 
         return paddingContentView
@@ -79,7 +74,7 @@ extension OnboardingViewLayout where Self: UIViewController {
 
         contentTalkingView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 60, left: 18, bottom: 0, right: 18))
+                .inset(UIEdgeInsets(top: Size.dh(91), left: 18, bottom: 0, right: 18))
         }
 
         return view

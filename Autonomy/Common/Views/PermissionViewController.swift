@@ -20,13 +20,14 @@ class PermissionViewController: ViewController, BackNavigator {
         HeaderView(header: R.string.localizable.permission().localizedUppercase)
     }()
     lazy var titleScreen = makeTitleScreen()
+    lazy var scrollView = makeScrollView()
     lazy var notificationOptionBox = makeNotificationOptionBox()
     lazy var locationOptionBox = makeLocationOptionBox()
     lazy var backButton = makeLightBackItem()
     lazy var nextButton = SubmitButton(title: R.string.localizable.next().localizedUppercase,
                      icon: R.image.nextCircleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nextButton)
+        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
     }()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -94,17 +95,24 @@ class PermissionViewController: ViewController, BackNavigator {
                 (SeparateLine(height: 1), 15),
                 (locationOptionBox, Size.dh(29)),
                 (SeparateLine(height: 1), 15)
-            ]
-        )
+            ], bottomConstraint: true)
 
-        paddingContentView.addSubview(groupsButton)
+        scrollView.addSubview(paddingContentView)
+        paddingContentView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview().offset(-30)
+        }
+
+        contentView.addSubview(scrollView)
+        contentView.addSubview(groupsButton)
+
         groupsButton.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
         }
 
-        contentView.addSubview(paddingContentView)
-        paddingContentView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(OurTheme.paddingInset)
+        scrollView.snp.makeConstraints { (make) in
+            make.top.leading.trailing.width.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview().offset(-117)
         }
 
         nextButton.isEnabled = false
@@ -122,6 +130,12 @@ extension PermissionViewController {
 
 // MARK: - Setup views
 extension PermissionViewController {
+    fileprivate func makeScrollView() -> UIScrollView {
+        let scrollView = UIScrollView()
+        scrollView.contentInset = UIEdgeInsets(top: 14, left: 15, bottom: 25, right: 15)
+        return scrollView
+    }
+
     fileprivate func makeTitleScreen() -> CenterView {
         let label = Label()
         label.numberOfLines = 0

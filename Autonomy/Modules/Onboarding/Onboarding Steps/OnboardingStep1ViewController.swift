@@ -16,7 +16,7 @@ class OnboardingStep1ViewController: ViewController, BackNavigator, OnboardingVi
 
     // MARK: - Properties
     lazy var headerScreen: UIView = {
-        HeaderView(header: "1")
+        HeaderView(header: "<b>1</b>      2      3")
     }()
     lazy var titleScreen = makeTitleScreen(title: R.string.phrase.onboarding1Description())
     lazy var talkingImageView = makeTalkingImageView()
@@ -47,8 +47,14 @@ class OnboardingStep1ViewController: ViewController, BackNavigator, OnboardingVi
         let paddingContentView = makePaddingContentView()
 
         contentView.addSubview(paddingContentView)
+        contentView.addSubview(groupsButton)
+
         paddingContentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview().inset(OurTheme.paddingInset)
+        }
+
+        groupsButton.snp.makeConstraints { (make) in
+            make.leading.trailing.bottom.equalTo(contentView)
         }
     }
 }

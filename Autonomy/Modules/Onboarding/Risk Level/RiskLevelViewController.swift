@@ -34,7 +34,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
     lazy var doneButton = SubmitButton(title: R.string.localizable.done().localizedUppercase,
                      icon: R.image.doneCicleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: doneButton)
+        ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: true)
     }()
     lazy var bemCheckBoxGroup: BEMCheckBoxGroup = {
         return BEMCheckBoxGroup(checkBoxes: [yesRiskCheckboxBox.checkBox,
@@ -105,23 +105,21 @@ class RiskLevelViewController: ViewController, BackNavigator {
             ], bottomConstraint: true)
 
         scrollView.addSubview(paddingContentView)
-
-        contentView.addSubview(scrollView)
-        contentView.addSubview(groupsButton)
-
         paddingContentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
             make.width.equalToSuperview().offset(-30)
         }
 
+        contentView.addSubview(scrollView)
+        contentView.addSubview(groupsButton)
+
         groupsButton.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
-                .inset(OurTheme.paddingInset)
         }
 
         scrollView.snp.makeConstraints { (make) in
             make.top.leading.trailing.width.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalToSuperview().offset(-60)
+            make.bottom.equalToSuperview().offset(-117)
         }
 
         _ = bemCheckBoxGroup

@@ -69,7 +69,7 @@ struct LightTheme: Theme {
     let silverC4TextColor   = UIColor(hexString: "#C4C4C4")!
     let lightTextColor      = UIColor.Material.white
     let separateTextColor   = UIColor(hexString: "#828180")!
-    let background          = UIColor(hexString: "#1B1B1B")!
+    let background          = UIColor(hexString: "#000")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
     let textViewTextColor   = UIColor(hexString: "#FFF")!
 
@@ -85,7 +85,7 @@ struct DarkTheme: Theme {
     let silverC4TextColor   = UIColor(hexString: "#C4C4C4")!
     let lightTextColor      = UIColor.Material.white
     let separateTextColor   = UIColor(hexString: "#828180")!
-    let background          = UIColor(hexString: "#1B1B1B")!
+    let background          = UIColor(hexString: "#000")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
     let textViewTextColor   = UIColor(hexString: "#FFF")!
 
