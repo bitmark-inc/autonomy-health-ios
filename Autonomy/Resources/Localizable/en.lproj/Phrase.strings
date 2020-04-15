@@ -42,6 +42,7 @@
 "survey.help.assistance.description" = "Let people in your local community know that you need help.";
 
 "survey.symptoms.title" = "Do you have any of the following symptoms?";
+"survey.behaviors.title" = "Did you do any of the following behaviors today?";
 
 "assistance.title" = "What kind of assistance do you need?";
 "assistance.foodAndWater" = "Access to food or water";
@@ -85,6 +86,9 @@
 
 "symptoms.reported.title" = "Your Symptoms Have Been Successfully Reported To Your Community ";
 "symptoms.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your symptoms if they continue.";
+
+"behaviors.reported.title" = "Your Behaviors Have Been Successfully Reported To Your Community ";
+"behaviors.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your behaviors if they continue.";
 
 "signIn.title" = "Sign In";
 "signIn.submitButton" = "Submit »";

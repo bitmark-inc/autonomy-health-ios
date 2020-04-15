@@ -1,5 +1,5 @@
 //
-//  SurveySymptomsViewController.swift
+//  SurveyBehaviorsViewController.swift
 //  Autonomy
 //
 //  Created by Thuyen Truong on 3/29/20.
@@ -12,28 +12,28 @@ import RxCocoa
 import SnapKit
 import SkeletonView
 
-class SurveySymptomsViewController: ViewController, BackNavigator {
+class SurveyBehaviorsViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
     lazy var headerScreen: UIView = {
-        HeaderView(header: R.string.localizable.symptoms().localizedUppercase)
+        HeaderView(header: R.string.localizable.behaviors().localizedUppercase)
     }()
     lazy var titleScreen = makeTitleScreen()
-    lazy var symptomsScrollView = makeSymptomsScrollView()
+    lazy var behaviorsScrollView = makeBehaviorsScrollView()
 
     lazy var backButton = makeLightBackItem()
-    lazy var doneButton = SubmitButton(title: R.string.localizable.done().localizedUppercase,
-                                       icon: R.image.doneCicleArrow()!)
+    lazy var doneButton = SubmitButton(title: R.string.localizable.submit().localizedUppercase,
+                                       icon: R.image.upCircleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: true)
+        ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: false)
     }()
 
-    lazy var thisViewModel: SurveySymptomsViewModel = {
-        return viewModel as! SurveySymptomsViewModel
+    lazy var thisViewModel: SurveyBehaviorsViewModel = {
+        return viewModel as! SurveyBehaviorsViewModel
     }()
 
-    var symptoms = [Symptom]()
-    var symptomViews = [CheckboxView]()
+    var behaviors = [Behavior]()
+    var behaviorViews = [CheckboxView]()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -55,12 +55,12 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
             })
             .disposed(by: disposeBag)
 
-        thisViewModel.symptomsRelay
+        thisViewModel.behaviorsRelay
             .filterNil()
-            .subscribe(onNext: { [weak self] (symptoms) in
+            .subscribe(onNext: { [weak self] (behaviors) in
                 guard let self = self else { return }
-                self.symptoms = symptoms
-                self.rebuildSymptomsScrollView()
+                self.behaviors = behaviors
+                self.rebuilBehaviorsScrollView()
             })
             .disposed(by: disposeBag)
 
@@ -73,7 +73,7 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
                     self.errorWhenFetchingData(error: error)
 
                 case .completed:
-                    Global.log.info("[symptoms] report successfully")
+                    Global.log.info("[behaviors] report successfully")
                     self.showSignedPanModel()
                 default:
                     break
@@ -84,39 +84,38 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
 
         doneButton.rxTap.bind { [weak self] in
             guard let self = self else { return }
-            let selectedSymptomKeys = self.getSelectedSymptomKeys()
-            self.thisViewModel.report(with: selectedSymptomKeys)
+            let selectedBehaviorKeys = self.getSelectedBehaviorKeys()
         }.disposed(by: disposeBag)
     }
 
     fileprivate func showSignedPanModel() {
         let viewController = SuccessPanViewController()
         viewController.headerScreen.header = R.string.localizable.reported().localizedUppercase
-        viewController.titleLabel.setText(R.string.phrase.symptomsReportedTitle().localizedUppercase)
-        viewController.descLabel.setText(R.string.phrase.symptomsReportedDesc())
+        viewController.titleLabel.setText(R.string.phrase.behaviorsReportedTitle().localizedUppercase)
+        viewController.descLabel.setText(R.string.phrase.behaviorsReportedDesc())
         viewController.gotItButton.titleLabel.setText(R.string.localizable.ok().localizedUppercase)
         viewController.delegate = self
         presentPanModal(viewController)
     }
 
-    func getSelectedSymptomKeys() -> [String] {
-        return symptoms.enumerated().compactMap { (index, symptom) -> String? in
-            let symptomCheckView = symptomViews[index]
-            return symptomCheckView.checkBox.on ? symptom.id : nil
+    func getSelectedBehaviorKeys() -> [String] {
+        return behaviors.enumerated().compactMap { (index, behavior) -> String? in
+            let behaviorCheckView = behaviorViews[index]
+            return behaviorCheckView.checkBox.on ? behavior.id : nil
         }
     }
 
-    fileprivate func rebuildSymptomsScrollView() {
-        symptomViews = symptoms.map { (symptom) -> CheckboxView in
-            return CheckboxView(title: symptom.name, description: symptom.desc)
+    fileprivate func rebuilBehaviorsScrollView() {
+        behaviorViews = behaviors.map { (behavior) -> CheckboxView in
+            return CheckboxView(title: behavior.name, description: behavior.desc)
         }
 
-        let symptomViewsStack = UIStackView(arrangedSubviews: symptomViews, axis: .vertical, spacing: 15)
+        let behaviorViewsStack = UIStackView(arrangedSubviews: behaviorViews, axis: .vertical, spacing: 15)
 
-        symptomsScrollView.removeSubviews()
-        symptomsScrollView.addSubview(symptomViewsStack)
+        behaviorsScrollView.removeSubviews()
+        behaviorsScrollView.addSubview(behaviorViewsStack)
 
-        symptomViewsStack.snp.makeConstraints { (make) in
+        behaviorViewsStack.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
             make.width.equalToSuperview().offset(-30)
         }
@@ -158,7 +157,7 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
             bottomConstraint: true)
 
         contentView.addSubview(paddingContentView)
-        contentView.addSubview(symptomsScrollView)
+        contentView.addSubview(behaviorsScrollView)
         contentView.addSubview(groupsButton)
 
         titleScreen.snp.makeConstraints { (make) in
@@ -170,30 +169,29 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
                 .inset(OurTheme.paddingOverBottomInset)
         }
 
-        symptomsScrollView.snp.makeConstraints { (make) in
+        behaviorsScrollView.snp.makeConstraints { (make) in
             make.top.equalTo(paddingContentView.snp.bottom).offset(13)
             make.leading.trailing.equalToSuperview()
         }
 
         groupsButton.snp.makeConstraints { (make) in
-            make.top.equalTo(symptomsScrollView.snp.bottom).offset(3)
+            make.top.equalTo(behaviorsScrollView.snp.bottom).offset(3)
             make.leading.trailing.bottom.equalToSuperview()
-                .inset(OurTheme.paddingInset)
         }
 
-        sampleSymptomsScrollView()
+        sampleBehaviorsScrollView()
     }
 }
 
 // MARK: - PanModalDelegate
-extension SurveySymptomsViewController: PanModalDelegate {
+extension SurveyBehaviorsViewController: PanModalDelegate {
     func donePanModel() {
         gotoMainScreen()
     }
 }
 
 // MARK: - Navigator
-extension SurveySymptomsViewController {
+extension SurveyBehaviorsViewController {
     fileprivate func gotoMainScreen() {
         let viewModel = MainViewModel()
         navigator.show(segue: .main(viewModel: viewModel), sender: self,
@@ -202,37 +200,37 @@ extension SurveySymptomsViewController {
 }
 
 // MARK: - Setup views
-extension SurveySymptomsViewController {
+extension SurveyBehaviorsViewController {
     fileprivate func makeTitleScreen() -> CenterView {
         let label = Label()
         label.numberOfLines = 0
-        label.apply(text: R.string.phrase.surveySymptomsTitle(),
+        label.apply(text: R.string.phrase.surveyBehaviorsTitle(),
                     font: R.font.atlasGroteskLight(size: Size.ds(36)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
-        return CenterView(contentView: label)
+        return CenterView(contentView: label, shrink: true)
     }
 
-    fileprivate func makeSymptomsScrollView() -> UIScrollView {
+    fileprivate func makeBehaviorsScrollView() -> UIScrollView {
         let scrollView = UIScrollView()
         scrollView.contentInset = OurTheme.paddingInset
         scrollView.isSkeletonable = true
         return scrollView
     }
 
-    fileprivate func sampleSymptomsScrollView() {
-        let symptomViews = (0...3).map { (_) -> CheckboxView in
+    fileprivate func sampleBehaviorsScrollView() {
+        let behaviorViews = (0...3).map { (_) -> CheckboxView in
             return CheckboxView(title: "---", description: "---")
         }
 
-        let symptomViewsStack = UIStackView(arrangedSubviews: symptomViews, axis: .vertical, spacing: 15)
-        symptomViewsStack.isSkeletonable = true
-        symptomViewsStack.showAnimatedSkeleton()
+        let behaviorViewsStack = UIStackView(arrangedSubviews: behaviorViews, axis: .vertical, spacing: 15)
+        behaviorViewsStack.isSkeletonable = true
+        behaviorViewsStack.showAnimatedSkeleton()
 
-        symptomsScrollView.removeSubviews()
-        symptomsScrollView.addSubview(symptomViewsStack)
+        behaviorsScrollView.removeSubviews()
+        behaviorsScrollView.addSubview(behaviorViewsStack)
 
-        symptomViewsStack.snp.makeConstraints { (make) in
+        behaviorViewsStack.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
             make.width.equalToSuperview().offset(-30)
         }
