@@ -81,7 +81,7 @@ class LocationSearchViewController: ViewController {
 
         resultTableView.snp.makeConstraints { (make) in
             make.top.equalTo(searchBar.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             bottomConstraint = make.bottom.equalToSuperview().constraint
         }
 

@@ -37,8 +37,7 @@ class ButtonGroupView: UIView {
         }
 
         if hasGradient {
-            addSubview(gradientLayerView)
-
+            insertSubview(gradientLayerView, belowSubview: buttonsLine)
             gradientLayerView.snp.makeConstraints { (make) in
                 make.edges.equalToSuperview()
             }

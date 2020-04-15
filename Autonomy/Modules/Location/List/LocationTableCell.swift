@@ -36,7 +36,7 @@ class LocationTableCell: MGSwipeTableCell {
 
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(15)
-                make.leading.equalToSuperview()
+            make.leading.equalToSuperview()
             make.bottom.equalToSuperview().offset(-15)
             make.height.greaterThanOrEqualTo(60)
         }
