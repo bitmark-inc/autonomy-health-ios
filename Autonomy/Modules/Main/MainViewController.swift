@@ -32,6 +32,7 @@ class MainViewController: ViewController {
     lazy var currentLocationButton = makeVectorNavButton()
     lazy var locationButton = makeLocationButton()
     lazy var navButtons = makeNavButtons()
+    lazy var poiActivityIndicator = makeActivityIndicator()
 
     lazy var thisViewModel: MainViewModel = {
         return viewModel as! MainViewModel
@@ -97,6 +98,15 @@ class MainViewController: ViewController {
     }
 
     fileprivate func bindPOIChangeEvents() {
+        thisViewModel.fetchPOIStateRelay
+            .subscribe(onNext: { [weak self] (loadState) in
+                guard let self = self else { return }
+                loadState == .loading ?
+                    self.poiActivityIndicator.startAnimating() :
+                    self.poiActivityIndicator.stopAnimating()
+            })
+            .disposed(by: disposeBag)
+
         thisViewModel.poisRelay
             .subscribe(onNext: { [weak self] (poisValue) in
                 guard let self = self else { return }
@@ -107,6 +117,7 @@ class MainViewController: ViewController {
                 }
 
                 self.mainCollectionView.reloadSections(IndexSet(integer: 1))
+                self.mainCollectionView.setContentOffset(CGPoint.zero, animated: false)
                 self.pageControl.numberOfPages = poisValue.pois.count + 2
             })
             .disposed(by: disposeBag)
@@ -143,6 +154,7 @@ class MainViewController: ViewController {
 
         contentView.addSubview(mainCollectionView)
         contentView.addSubview(locationInfoView)
+        contentView.addSubview(poiActivityIndicator)
 
         mainCollectionView.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
@@ -153,6 +165,12 @@ class MainViewController: ViewController {
             make.top.equalTo(mainCollectionView.snp.bottom).offset(15)
             make.leading.trailing.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-OurTheme.paddingInset.bottom + 10)
+        }
+
+        poiActivityIndicator.snp.makeConstraints { (make) in
+            make.trailing.equalToSuperview().offset(-30)
+            make.top.equalTo(locationInfoView).offset(10)
+            make.width.height.equalTo(10)
         }
     }
 }
@@ -317,7 +335,7 @@ extension MainViewController {
         let label = Label()
         label.textAlignment = .center
         label.apply(font: R.font.atlasGroteskLight(size: 16),
-                    themeStyle: .silverChaliceColor)
+                    themeStyle: .silverTextColor)
         return label
     }
 
@@ -432,6 +450,12 @@ extension MainViewController {
         collectionView.delaysContentTouches = true
 
         return collectionView
+    }
+
+    fileprivate func makeActivityIndicator() -> UIActivityIndicatorView {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .white
+        return indicator
     }
 }
 

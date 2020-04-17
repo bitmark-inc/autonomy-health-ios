@@ -18,10 +18,10 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     lazy var behaviorGuideView = makeBehaviorGuideView()
 
     // Behavior Guide View
-    lazy var riskLabel = makeRiskLabel()
     lazy var behaviorLabel = makeBehaviorLabel()
 
     // Data Guide View
+    lazy var riskLabel = makeRiskLabel()
     lazy var confirmedCasesView = ScoreInfoView(scoreInfoType: .confirmedCases)
     lazy var reportedSymptomsView = ScoreInfoView(scoreInfoType: .reportedSymptoms)
     lazy var healthyBehaviorsView = ScoreInfoView(scoreInfoType: .healthyBehaviors)
@@ -88,7 +88,6 @@ extension HealthScoreCollectionCell {
         view.addSubview(healthScoreTriangle)
         view.addSubview(appNameLabel)
 
-
         healthScoreTriangle.snp.makeConstraints { (make) in
             make.edges.centerX.equalToSuperview()
         }
@@ -127,86 +126,29 @@ extension HealthScoreCollectionCell {
             make.edges.equalTo(guideDataView)
         }
 
-        guideDataView.isHidden = true
+        behaviorGuideView.isHidden = true
         return view
     }
 
     fileprivate func makeBehaviorGuideView() -> UIView {
-        let flipButton = UIButton()
-        flipButton.setImage(R.image.crossArrow(), for: .normal)
-
-        let contentView = LinearView(
-            items: [(riskLabel, 0), (behaviorLabel, 15)],
-            bottomConstraint: true)
-
-        let view = UIView()
-        view.backgroundColor = UIColor(hexString: "#2B2B2B")
-        view.addSubview(contentView)
-        view.addSubview(flipButton)
-
-        flipButton.snp.makeConstraints { (make) in
-            make.top.trailing.equalToSuperview().inset(guideBoxInset)
-        }
-
-        contentView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview().inset(guideBoxInset)
-        }
-
-        defer {
-            flipButton.rx.tap.bind { [weak self] in
-                guard let self = self else { return }
-                self.flip(fromView: self.behaviorGuideView, toView: self.guideDataView)
-            }.disposed(by: disposeBag)
-        }
-
-        return view
+        return UIView()
     }
 
     fileprivate func makeGuideDataView() -> UIView {
-        let flipButton = UIButton()
-        flipButton.setImage(R.image.crossArrow(), for: .normal)
-
-        let rawDataTitle = Label()
-        rawDataTitle.apply(
-            text: R.string.localizable.rawData().localizedUppercase,
-            font: R.font.domaineSansTextLight(size: Size.ds(18)),
-            themeStyle: .lightTextColor)
-
-        let fromLast24Hours = Label()
-        fromLast24Hours.apply(
-            text: R.string.localizable.from_last_24_hours(),
-            font: R.font.atlasGroteskLight(size: Size.ds(13)),
-            themeStyle: .silverTextColor)
-
-        let titleView = UIView()
-        titleView.addSubview(rawDataTitle)
-        titleView.addSubview(fromLast24Hours)
-
-        rawDataTitle.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(-4)
-            make.leading.bottom.equalToSuperview()
-        }
-
-        fromLast24Hours.snp.makeConstraints { (make) in
-            make.leading.equalTo(rawDataTitle.snp.trailing).offset(12)
-            make.top.equalToSuperview()
-        }
-
         let row1 = makeScoreInfosRow(view1: confirmedCasesView, view2: reportedSymptomsView)
-        let row2 = makeScoreInfosRow(view1: healthyBehaviorsView, view2: populationDensityView)
+        let row2 = makeScoreInfosRow(view1: healthyBehaviorsView)
 
         let paddingView = UIView()
-        paddingView.addSubview(titleView)
+        paddingView.addSubview(riskLabel)
         paddingView.addSubview(row1)
         paddingView.addSubview(row2)
-        paddingView.addSubview(flipButton)
 
-        titleView.snp.makeConstraints { (make) in
+        riskLabel.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
         }
 
         row1.snp.makeConstraints { (make) in
-            make.top.equalTo(titleView.snp.bottom).offset(Size.dh(26))
+            make.top.equalTo(riskLabel.snp.bottom).offset(Size.dh(26))
             make.leading.trailing.equalToSuperview()
         }
 
@@ -215,44 +157,34 @@ extension HealthScoreCollectionCell {
             make.leading.trailing.equalToSuperview()
         }
 
-        flipButton.snp.makeConstraints { (make) in
-            make.top.trailing.equalToSuperview()
-        }
-
         let view = UIView()
-        view.backgroundColor = UIColor(hexString: "#828180")
+        view.backgroundColor = UIColor(hexString: "#2B2B2B")
         view.addSubview(paddingView)
 
         paddingView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview().inset(guideBoxInset)
         }
 
-        defer {
-            flipButton.rx.tap.bind { [weak self] in
-                guard let self = self else { return }
-                self.flip(fromView: self.guideDataView, toView: self.behaviorGuideView)
-            }.disposed(by: disposeBag)
-        }
-
         return view
     }
 
-    fileprivate func makeScoreInfosRow(view1: UIView, view2: UIView) -> UIView {
+    fileprivate func makeScoreInfosRow(view1: UIView, view2: UIView? = nil) -> UIView {
         let view = UIView()
         view.addSubview(view1)
-        view.addSubview(view2)
-
         view1.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.5).offset(Size.dw(15) / 2)
         }
 
-        view2.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.leading.equalTo(view1.snp.trailing).offset(Size.dw(15))
-            make.width.equalTo(view1)
-        }
+        if let view2 = view2 {
+            view.addSubview(view2)
+            view2.snp.makeConstraints { (make) in
+                make.top.equalToSuperview()
+                make.leading.equalTo(view1.snp.trailing).offset(Size.dw(15))
+                make.width.equalTo(view1)
+            }
 
+        }
         return view
     }
 

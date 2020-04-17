@@ -201,7 +201,6 @@ extension LocationListCell {
         tableView.delaysContentTouches = true
         tableView.bounces = false
         tableView.showsVerticalScrollIndicator = false
-        tableView.tableFooterView = SeparateLine(height: 1)
         themeService.rx
             .bind({ $0.lightTextColor }, to: tableView.rx.separatorColor)
             .disposed(by: disposeBag)
