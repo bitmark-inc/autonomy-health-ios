@@ -36,7 +36,7 @@ class HealthSurveyViewController: ViewController {
         }.disposed(by: disposeBag)
 
         yellowButton.rx.tap.bind { [weak self] in
-            self?.gotoMainScreen()
+            self?.gotoReportBehaviorScreen()
         }.disposed(by: disposeBag)
 
         greenButton.rx.tap.bind { [weak self] in
@@ -81,6 +81,11 @@ extension HealthSurveyViewController {
     fileprivate func gotoReportSymptomsScreen() {
         let viewModel = SurveySymptomsViewModel()
         navigator.show(segue: .surveySymptoms(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoReportBehaviorScreen() {
+        let viewModel = SurveyBehaviorsViewModel()
+        navigator.show(segue: .surveyBehaviors(viewModel: viewModel), sender: self)
     }
 
     fileprivate func gotoMainScreen() {

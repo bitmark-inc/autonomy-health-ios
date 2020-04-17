@@ -60,6 +60,10 @@ class SuccessPanViewController: ViewController, PanModalPresentable {
     override func setupViews() {
         super.setupViews()
 
+        themeService.rx
+            .bind( { $0.mineShaftBackground }, to: contentView.rx.backgroundColor)
+            .disposed(by: disposeBag)
+
         paddingContentView = LinearView(
         items: [
             (headerScreen, 0),

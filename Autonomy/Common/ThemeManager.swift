@@ -54,6 +54,7 @@ protocol Theme {
     var lightTextColor:     UIColor { get }
     var separateTextColor:  UIColor { get }
     var background:         UIColor { get }
+    var mineShaftBackground:  UIColor { get }
     var silverChaliceColor: UIColor { get }
     var textViewTextColor:  UIColor { get }
 
@@ -70,6 +71,7 @@ struct LightTheme: Theme {
     let lightTextColor      = UIColor.Material.white
     let separateTextColor   = UIColor(hexString: "#828180")!
     let background          = UIColor(hexString: "#000")!
+    let mineShaftBackground   = UIColor(hexString: "#2B2B2B")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
     let textViewTextColor   = UIColor(hexString: "#FFF")!
 
@@ -86,6 +88,7 @@ struct DarkTheme: Theme {
     let lightTextColor      = UIColor.Material.white
     let separateTextColor   = UIColor(hexString: "#828180")!
     let background          = UIColor(hexString: "#000")!
+    let mineShaftBackground   = UIColor(hexString: "#2B2B2B")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
     let textViewTextColor   = UIColor(hexString: "#FFF")!
 

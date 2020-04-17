@@ -11,7 +11,6 @@ import UIKit
 class ButtonGroupView: UIView {
 
     fileprivate lazy var gradientLayerView = makeGradientLayerView()
-    let viewHeight: CGFloat = 50
     let viewHeightWithGradient: CGFloat = 117
     fileprivate let defaultBackgroundColor = UIColor(hexString: "#1B1B1B")!
 
@@ -46,7 +45,7 @@ class ButtonGroupView: UIView {
                 make.height.equalTo(viewHeightWithGradient)
             }
         } else {
-            backgroundColor = defaultBackgroundColor
+            backgroundColor = themeService.attrs.background
             buttonsLine.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(OurTheme.paddingInset.top)
             }

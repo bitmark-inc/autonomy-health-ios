@@ -22,10 +22,10 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
     lazy var symptomsScrollView = makeSymptomsScrollView()
 
     lazy var backButton = makeLightBackItem()
-    lazy var doneButton = SubmitButton(title: R.string.localizable.done().localizedUppercase,
-                                       icon: R.image.doneCicleArrow()!)
+    lazy var doneButton = SubmitButton(title: R.string.localizable.submit().localizedUppercase,
+                                       icon: R.image.upCircleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: true)
+        ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: false)
     }()
 
     lazy var thisViewModel: SurveySymptomsViewModel = {
@@ -178,7 +178,6 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
         groupsButton.snp.makeConstraints { (make) in
             make.top.equalTo(symptomsScrollView.snp.bottom).offset(3)
             make.leading.trailing.bottom.equalToSuperview()
-                .inset(OurTheme.paddingInset)
         }
 
         sampleSymptomsScrollView()
@@ -210,7 +209,7 @@ extension SurveySymptomsViewController {
                     font: R.font.atlasGroteskLight(size: Size.ds(36)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
-        return CenterView(contentView: label)
+        return CenterView(contentView: label, shrink: true)
     }
 
     fileprivate func makeSymptomsScrollView() -> UIScrollView {

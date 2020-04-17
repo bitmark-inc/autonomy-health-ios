@@ -47,6 +47,10 @@
 		5B2C85B5242DEE92002CC53B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C859B242DEDBB002CC53B /* NotificationService.swift */; };
 		5B396E752445CEE800D14FEC /* AddLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B396E742445CEE800D14FEC /* AddLocationCell.swift */; };
 		5B396E762445CEE800D14FEC /* AddLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B396E742445CEE800D14FEC /* AddLocationCell.swift */; };
+		5B4957402449938E0012D6E1 /* SymptomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49573E2449938E0012D6E1 /* SymptomAPI.swift */; };
+		5B4957412449938E0012D6E1 /* SymptomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49573E2449938E0012D6E1 /* SymptomAPI.swift */; };
+		5B4957422449938E0012D6E1 /* SymptomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49573F2449938E0012D6E1 /* SymptomService.swift */; };
+		5B4957432449938E0012D6E1 /* SymptomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49573F2449938E0012D6E1 /* SymptomService.swift */; };
 		5B4EF6DF2446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */; };
 		5B4EF6E02446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */; };
 		5B4EF6E12446AEF600BCB323 /* SurveySymptomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */; };
@@ -239,10 +243,10 @@
 		5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F089242CC01C0084B4F6 /* CheckboxView.swift */; };
 		5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */; };
 		5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */; };
-		5B92E3E62436E6E300E5949A /* SymptomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E42436E6E300E5949A /* SymptomAPI.swift */; };
-		5B92E3E72436E6E300E5949A /* SymptomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E42436E6E300E5949A /* SymptomAPI.swift */; };
-		5B92E3E82436E6E300E5949A /* SymptomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E52436E6E300E5949A /* SymptomService.swift */; };
-		5B92E3E92436E6E300E5949A /* SymptomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E52436E6E300E5949A /* SymptomService.swift */; };
+		5B92E3E62436E6E300E5949A /* BehaviorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */; };
+		5B92E3E72436E6E300E5949A /* BehaviorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */; };
+		5B92E3E82436E6E300E5949A /* BehaviorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E52436E6E300E5949A /* BehaviorService.swift */; };
+		5B92E3E92436E6E300E5949A /* BehaviorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E52436E6E300E5949A /* BehaviorService.swift */; };
 		5B92E3EB2437220D00E5949A /* HealthScoreTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */; };
 		5B92E3EC2437220D00E5949A /* HealthScoreTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */; };
 		5B93F703243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */; };
@@ -397,6 +401,8 @@
 		5B2C85B8242DFC78002CC53B /* Autonomy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Autonomy.entitlements; sourceTree = "<group>"; };
 		5B2C85B9242DFC78002CC53B /* Autonomy Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Autonomy Dev.entitlements"; sourceTree = "<group>"; };
 		5B396E742445CEE800D14FEC /* AddLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationCell.swift; sourceTree = "<group>"; };
+		5B49573E2449938E0012D6E1 /* SymptomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomAPI.swift; sourceTree = "<group>"; };
+		5B49573F2449938E0012D6E1 /* SymptomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomService.swift; sourceTree = "<group>"; };
 		5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveySymptomsViewController.swift; sourceTree = "<group>"; };
 		5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveySymptomsViewModel.swift; sourceTree = "<group>"; };
 		5B4EF6E32446AFE800BCB323 /* SurveyBehaviorsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyBehaviorsViewModel.swift; sourceTree = "<group>"; };
@@ -492,8 +498,8 @@
 		5B87F086242CB7C40084B4F6 /* OptionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionBoxView.swift; sourceTree = "<group>"; };
 		5B87F089242CC01C0084B4F6 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewController.swift; sourceTree = "<group>"; };
-		5B92E3E42436E6E300E5949A /* SymptomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomAPI.swift; sourceTree = "<group>"; };
-		5B92E3E52436E6E300E5949A /* SymptomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomService.swift; sourceTree = "<group>"; };
+		5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorAPI.swift; sourceTree = "<group>"; };
+		5B92E3E52436E6E300E5949A /* BehaviorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorService.swift; sourceTree = "<group>"; };
 		5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreTriangle.swift; sourceTree = "<group>"; };
 		5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreCollectionCell.swift; sourceTree = "<group>"; };
 		5B9542B9242AF8010072D933 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -660,13 +666,13 @@
 			path = Entitlements;
 			sourceTree = "<group>";
 		};
-		5B4EF6DC2446AE9B00BCB323 /* Behavior */ = {
+		5B4EF6DC2446AE9B00BCB323 /* Behaviors */ = {
 			isa = PBXGroup;
 			children = (
 				5B4EF6E42446AFE800BCB323 /* SurveyBehaviorsViewController.swift */,
 				5B4EF6E32446AFE800BCB323 /* SurveyBehaviorsViewModel.swift */,
 			);
-			path = Behavior;
+			path = Behaviors;
 			sourceTree = "<group>";
 		};
 		5B577861242B41F70028D3E3 /* Common */ = {
@@ -704,6 +710,7 @@
 				5B2C8573242DD42B002CC53B /* Profile */,
 				5B92E3E32436E61700E5949A /* Health */,
 				5B7CE0C62430BD2E002CD923 /* Symptom */,
+				5BDA94E2244991BB00BE829A /* Behavior */,
 				5BFC8DBD243307BE00815828 /* Help Request */,
 				5B213EFC244412EB0095BE18 /* Points Of Interest */,
 			);
@@ -917,6 +924,7 @@
 				5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */,
 				5B7CE0BB2430A974002CD923 /* Help */,
 				5B7CE0BF2430AD7B002CD923 /* Symptoms */,
+				5B4EF6DC2446AE9B00BCB323 /* Behaviors */,
 			);
 			path = "Health Survey";
 			sourceTree = "<group>";
@@ -941,8 +949,8 @@
 		5B7CE0C62430BD2E002CD923 /* Symptom */ = {
 			isa = PBXGroup;
 			children = (
-				5B92E3E42436E6E300E5949A /* SymptomAPI.swift */,
-				5B92E3E52436E6E300E5949A /* SymptomService.swift */,
+				5B49573E2449938E0012D6E1 /* SymptomAPI.swift */,
+				5B49573F2449938E0012D6E1 /* SymptomService.swift */,
 			);
 			path = Symptom;
 			sourceTree = "<group>";
@@ -1080,7 +1088,6 @@
 				5B7CE0B72430A458002CD923 /* Health Survey */,
 				5B7F239B2434878F00F7A72E /* Request Help */,
 				5B7F2394243482BF00F7A72E /* Give Help */,
-				5B4EF6DC2446AE9B00BCB323 /* Behavior */,
 				5BFC8DC724331AC900815828 /* Pan Modals */,
 				5B97887E243F21A6005BADA9 /* Location */,
 			);
@@ -1157,6 +1164,15 @@
 				5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */,
 			);
 			path = "Onboarding Steps";
+			sourceTree = "<group>";
+		};
+		5BDA94E2244991BB00BE829A /* Behavior */ = {
+			isa = PBXGroup;
+			children = (
+				5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */,
+				5B92E3E52436E6E300E5949A /* BehaviorService.swift */,
+			);
+			path = Behavior;
 			sourceTree = "<group>";
 		};
 		5BFC8DBD243307BE00815828 /* Help Request */ = {
@@ -1683,7 +1699,8 @@
 				5B87F075242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790E242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577922242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
-				5B92E3E72436E6E300E5949A /* SymptomAPI.swift in Sources */,
+				5B92E3E72436E6E300E5949A /* BehaviorAPI.swift in Sources */,
+				5B92E3E72436E6E300E5949A /* BehaviorAPI.swift in Sources */,
 				5B7F23A82434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
 				5B577901242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
@@ -1696,7 +1713,8 @@
 				5B577894242B47060028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B87F085242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577895242B470A0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
-				5B92E3E92436E6E300E5949A /* SymptomService.swift in Sources */,
+				5B92E3E92436E6E300E5949A /* BehaviorService.swift in Sources */,
+				5B92E3E92436E6E300E5949A /* BehaviorService.swift in Sources */,
 				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5B213F002444133E0095BE18 /* HelpRequestService.swift in Sources */,
@@ -1711,6 +1729,7 @@
 				5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
 				5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */,
 				5B577934242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
+				5B4957432449938E0012D6E1 /* SymptomService.swift in Sources */,
 				5B577927242B4EA20028D3E3 /* ViewModel.swift in Sources */,
 				5BA808B6244010E100B2733A /* LocationSearchViewController.swift in Sources */,
 				5B5778E3242B48AA0028D3E3 /* R.generated.swift in Sources */,
@@ -1769,6 +1788,7 @@
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791D242B4E290028D3E3 /* Label.swift in Sources */,
+				5B4957412449938E0012D6E1 /* SymptomAPI.swift in Sources */,
 				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
@@ -1800,7 +1820,8 @@
 				5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790D242B4CB30028D3E3 /* NavigationController.swift in Sources */,
 				5B577921242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
-				5B92E3E62436E6E300E5949A /* SymptomAPI.swift in Sources */,
+				5B92E3E62436E6E300E5949A /* BehaviorAPI.swift in Sources */,
+				5B92E3E62436E6E300E5949A /* BehaviorAPI.swift in Sources */,
 				5B7F23A72434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
 				5B577900242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
@@ -1813,7 +1834,8 @@
 				5B57786D242B43140028D3E3 /* Credential.swift in Sources */,
 				5B87F084242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577890242B460E0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
-				5B92E3E82436E6E300E5949A /* SymptomService.swift in Sources */,
+				5B92E3E82436E6E300E5949A /* BehaviorService.swift in Sources */,
+				5B92E3E82436E6E300E5949A /* BehaviorService.swift in Sources */,
 				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5B213EFF2444133E0095BE18 /* HelpRequestService.swift in Sources */,
@@ -1828,6 +1850,7 @@
 				5B7F23AD2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
 				5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */,
 				5B577933242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
+				5B4957422449938E0012D6E1 /* SymptomService.swift in Sources */,
 				5B577926242B4EA20028D3E3 /* ViewModel.swift in Sources */,
 				5BA808B5244010E100B2733A /* LocationSearchViewController.swift in Sources */,
 				5B5778E2242B48AA0028D3E3 /* R.generated.swift in Sources */,
@@ -1886,6 +1909,7 @@
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791C242B4E290028D3E3 /* Label.swift in Sources */,
+				5B4957402449938E0012D6E1 /* SymptomAPI.swift in Sources */,
 				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
