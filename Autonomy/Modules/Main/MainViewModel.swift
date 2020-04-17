@@ -50,6 +50,14 @@ class MainViewModel: ViewModel {
             .disposed(by: disposeBag)
     }
 
+    func fetchAreaProfile(poiID: String?) -> Single<AreaProfile> {
+        if let poiID = poiID {
+            return AreaProfileService.get(poiID: poiID)
+        } else {
+            return AreaProfileService.get()
+        }
+    }
+
     func addNewPOI(placeID: String) {
         let gmsPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
             UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))!
@@ -68,7 +76,6 @@ class MainViewModel: ViewModel {
             }
 
             let pointOfInterest = PointOfInterest(place: place)
-
             PointOfInterestService.create(pointOfInterest: pointOfInterest)
                 .subscribe(onSuccess: { [weak self] (newPOI) in
                     guard let self = self else { return }

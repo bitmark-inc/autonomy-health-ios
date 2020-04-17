@@ -19,16 +19,10 @@ class LocationListCell: UICollectionViewCell {
 
     var pois = [PointOfInterest]()
     var poiLimitation = 10
+    var addLocationObserver: Disposable?
     weak var locationDelegate: LocationDelegate? {
         didSet {
-            locationDelegate?.addLocationSubject
-                .subscribe(onNext: { [weak self] (poi) in
-                    guard let self = self else { return }
-                    self.pois.append(poi)
-                    self.locationTableView.insertRows(at: [IndexPath(row: self.pois.count - 1, section: 0)], with: .automatic)
-                    self.toggleAddLocationMode(isOn: true)
-                })
-                .disposed(by: disposeBag)
+            observeAddLocationEvent()
         }
     }
     var didCallOvercomeSelectAllIssue: Bool = false
@@ -42,11 +36,26 @@ class LocationListCell: UICollectionViewCell {
         setupViews()
     }
 
+    deinit {
+        addLocationObserver?.dispose()
+    }
+
     func setData(pois: [PointOfInterest]) {
         self.pois = pois
         locationTableView.reloadData { [weak self] in
             self?.toggleAddLocationMode(isOn: true)
         }
+    }
+
+    func observeAddLocationEvent() {
+        addLocationObserver?.dispose()
+        addLocationObserver = locationDelegate?.addLocationSubject
+            .subscribe(onNext: { [weak self] (poi) in
+                guard let self = self else { return }
+                self.pois.append(poi)
+                self.locationTableView.insertRows(at: [IndexPath(row: self.pois.count - 1, section: 0)], with: .automatic)
+                self.toggleAddLocationMode(isOn: true)
+            })
     }
 
     fileprivate func setupViews() {

@@ -20,6 +20,9 @@
 "Location_data" = "Location data";
 
 "RiskLevel" = "Risk Level";
+"LowRisk" = "Low Risk";
+"ModerateRisk" = "Moderate Risk";
+"HighRisk" = "High Risk";
 
 "Survey" = "Survey";
 "Symptoms" = "Symptoms";

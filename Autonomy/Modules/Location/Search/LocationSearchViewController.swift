@@ -117,6 +117,7 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeID = autoCompleteLocations[indexPath.row].placeID
+        tableView.isUserInteractionEnabled = false
         thisViewModel.selectedPlaceIDSubject.onNext(placeID)
     }
 }

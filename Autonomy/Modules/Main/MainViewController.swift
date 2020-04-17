@@ -38,7 +38,8 @@ class MainViewController: ViewController {
         return viewModel as! MainViewModel
     }()
 
-    var pois = [PointOfInterest?]()
+    var pois = [PointOfInterest]()
+    var areaProfiles = [String: AreaProfile]()
     var currentUserLocationAddress: String?
 
     let sectionIndexes = (currentLocation: 0, poi: 1, poiList: 2)
@@ -74,6 +75,21 @@ class MainViewController: ViewController {
     override func bindViewModel() {
         super.bindViewModel()
 
+        thisViewModel.submitResultSubject
+            .subscribe(onNext: { (event) in
+                switch event {
+                case .error(let error):
+                    Global.log.error(error)
+                    if let viewController = self.presentedViewController as? LocationSearchViewController {
+                        viewController.dismiss(animated: true, completion: nil)
+                    }
+
+                default:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
+
         bindUserFriendlyAddress()
         bindPOIChangeEvents()
     }
@@ -91,6 +107,11 @@ class MainViewController: ViewController {
             .subscribe(onNext: { [weak self] (userFriendlyAddress) in
                 guard let self = self else { return }
                 self.currentUserLocationAddress = userFriendlyAddress
+
+                let currentLocationIndexPath = IndexPath(row: 0, section: self.sectionIndexes.currentLocation)
+                if self.mainCollectionView.indexPathsForVisibleItems.contains(currentLocationIndexPath) {
+                    self.locationLabel.setText(userFriendlyAddress)
+                }
             }, onError: { (error) in
                 Global.log.error(error)
             })
@@ -117,7 +138,6 @@ class MainViewController: ViewController {
                 }
 
                 self.mainCollectionView.reloadSections(IndexSet(integer: 1))
-                self.mainCollectionView.setContentOffset(CGPoint.zero, animated: false)
                 self.pageControl.numberOfPages = poisValue.pois.count + 2
             })
             .disposed(by: disposeBag)
@@ -147,6 +167,18 @@ class MainViewController: ViewController {
                 self.pageControl.numberOfPages -= 1
             })
             .disposed(by: disposeBag)
+    }
+
+    // MARK: - Error Handlers
+    func errorWhenFetchingData(error: Error) {
+        guard !AppError.errorByNetworkConnection(error),
+            !showIfRequireUpdateVersion(with: error),
+            !handleErrorIfAsAFError(error) else {
+                return
+        }
+
+        Global.log.error(error)
+        showErrorAlertWithSupport(message: R.string.error.system())
     }
 
     override func setupViews() {
@@ -216,27 +248,37 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         setupPageControl(with: indexPath)
 
+        var areaProfileKey: String?
+
         switch indexPath.section {
         case sectionIndexes.currentLocation:
             locationLabel.setText(currentUserLocationAddress)
-            guard let cell = cell as? HealthScoreCollectionCell else {
-                return
-            }
-
-            cell.setData()
-
         case sectionIndexes.poi:
-            let poiAddressAlias = pois[indexPath.row]?.alias
+            let poi = pois[indexPath.row]
+            let poiAddressAlias = poi.alias
             locationLabel.setText(poiAddressAlias)
-            guard let cell = cell as? HealthScoreCollectionCell else {
-                return
-            }
-
-            cell.setData()
-
+            areaProfileKey = poi.id
         default:
+            break
+        }
+
+        guard let cell = cell as? HealthScoreCollectionCell else {
             return
         }
+
+        let areaProfile = areaProfiles[areaProfileKey ?? "current"]
+        cell.setData(areaProfile: areaProfile)
+
+        thisViewModel.fetchAreaProfile(poiID: areaProfileKey)
+            .subscribe(onSuccess: { [weak self] (areaProfile) in
+                guard let self = self else { return }
+                cell.setData(areaProfile: areaProfile)
+                self.areaProfiles[areaProfileKey ?? "current"] = areaProfile
+
+            }, onError: { [weak self] (error) in
+                self?.errorWhenFetchingData(error: error)
+            })
+            .disposed(by: disposeBag)
     }
 
     fileprivate func setupPageControl(with indexPath: IndexPath) {

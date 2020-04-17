@@ -40,7 +40,7 @@ class HealthSurveyViewController: ViewController {
         }.disposed(by: disposeBag)
 
         greenButton.rx.tap.bind { [weak self] in
-            self?.gotoMainScreen()
+            self?.gotoReportBehaviorScreen()
         }.disposed(by: disposeBag)
     }
 

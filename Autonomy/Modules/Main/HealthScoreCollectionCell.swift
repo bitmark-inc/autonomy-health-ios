@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import SkeletonView
 
 class HealthScoreCollectionCell: UICollectionViewCell {
 
@@ -54,9 +55,68 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         }
     }
 
-    func setData() {
-        riskLabel.setText("LOW RISK")
-        behaviorLabel.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.")
+    func setData(areaProfile: AreaProfile?) {
+        guard let areaProfile = areaProfile else {
+            guideView.showAnimatedSkeleton()
+            return
+        }
+
+        guideView.hideSkeleton()
+        let healthRisk = HealthRisk(from: areaProfile.score)
+        riskLabel.setText(healthRisk?.title)
+        bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
+        bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
+        bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)
+
+    }
+
+    fileprivate func bindInfo(for scoreInfoType: ScoreInfoType, number: Int, delta: Int) {
+        let formattedNumber = formatNumber(number)
+        let formattedDelta = formatNumber(abs(delta))
+
+        switch scoreInfoType {
+        case .confirmedCases:
+            confirmedCasesView.currentNumberLabel.setText(formattedNumber)
+            confirmedCasesView.changeNumberLabel.setText(formattedDelta)
+            switch true {
+            case (delta > 0): confirmedCasesView.changeStatusArrow.image = R.image.redUpArrow()
+            case (delta < 0): confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
+            default:
+                confirmedCasesView.changeStatusArrow.image = nil
+                confirmedCasesView.changeNumberLabel.setText(nil)
+            }
+
+        case .reportedSymptoms:
+            reportedSymptomsView.currentNumberLabel.setText(formattedNumber)
+            reportedSymptomsView.changeNumberLabel.setText(formattedDelta)
+            switch true {
+            case (delta > 0): reportedSymptomsView.changeStatusArrow.image = R.image.redUpArrow()
+            case (delta < 0): reportedSymptomsView.changeStatusArrow.image = R.image.greenDownArrow()
+            default:
+                reportedSymptomsView.changeStatusArrow.image = nil
+                reportedSymptomsView.changeNumberLabel.setText(nil)
+            }
+
+        case .healthyBehaviors:
+            healthyBehaviorsView.currentNumberLabel.setText(formattedNumber)
+            healthyBehaviorsView.changeNumberLabel.setText(formattedDelta)
+            switch true {
+            case (delta > 0): healthyBehaviorsView.changeStatusArrow.image = R.image.greenUpArrow()
+            case (delta < 0): healthyBehaviorsView.changeStatusArrow.image = R.image.redDownArrow()
+            default:
+                healthyBehaviorsView.changeStatusArrow.image = nil
+                healthyBehaviorsView.changeNumberLabel.setText(nil)
+            }
+
+        case .populationDensity:
+            break
+        }
+    }
+
+    fileprivate func formatNumber(_ number: Int) -> String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: number))
     }
 }
 
@@ -117,6 +177,7 @@ extension HealthScoreCollectionCell {
         let view = UIView()
         view.addSubview(behaviorGuideView)
         view.addSubview(guideDataView)
+        guideDataView.isSkeletonable = true
 
         guideDataView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -127,6 +188,7 @@ extension HealthScoreCollectionCell {
         }
 
         behaviorGuideView.isHidden = true
+        view.isSkeletonable = true
         return view
     }
 

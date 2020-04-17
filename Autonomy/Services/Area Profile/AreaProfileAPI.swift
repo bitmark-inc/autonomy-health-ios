@@ -1,5 +1,5 @@
 //
-//  SymptomAPI.swift
+//  AreaProfileAPI.swift
 //  Autonomy
 //
 //  Created by thuyentruong on 11/26/19.
@@ -10,26 +10,28 @@ import Foundation
 import BitmarkSDK
 import Moya
 
-enum SymptomAPI {
-    case list
-    case report(symptomKeys: [String])
+enum AreaProfileAPI {
+    case get
+    case getPOI(poiID: String)
 }
 
-extension SymptomAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
+extension AreaProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
 
     var baseURL: URL {
-        return URL(string: Constant.apiServerURL + "/api/symptoms")!
+        return URL(string: Constant.apiServerURL + "/api/area_profile")!
     }
 
     var path: String {
-        return ""
+        switch self {
+        case .get:
+            return "/"
+        case .getPOI(let poiID):
+            return poiID
+        }
     }
 
     var method: Moya.Method {
-        switch self {
-        case .list:   return .get
-        case .report: return .post
-        }
+        return .get
     }
 
     var sampleData: Data {
@@ -37,14 +39,7 @@ extension SymptomAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
     }
 
     var parameters: [String: Any]? {
-        var params: [String: Any] = [:]
-        switch self {
-        case .list:
-            return nil
-        case .report(let symptomKeys):
-            params["symptoms"] = symptomKeys
-        }
-        return params
+        return nil
     }
 
     var task: Task {

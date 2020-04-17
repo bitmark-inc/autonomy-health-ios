@@ -23,11 +23,7 @@ class ScoreInfoView: UIView {
         super.init(frame: CGRect.zero)
 
         setupViews()
-
         titleLabel.setText(getTitle())
-        currentNumberLabel.setText("231")
-        changeNumberLabel.setText("32")
-        changeStatusArrow.image = R.image.redUpArrow()
     }
 
     required init?(coder: NSCoder) {

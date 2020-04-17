@@ -56,4 +56,12 @@ enum HealthRisk {
             return nil
         }
     }
+
+    var title: String {
+        switch self {
+        case .high:         return R.string.localizable.highRisk().localizedUppercase
+        case .moderate:     return R.string.localizable.moderateRisk().localizedUppercase
+        case .low:          return R.string.localizable.lowRisk().localizedUppercase
+        }
+    }
 }
