@@ -13,11 +13,39 @@ import Moya
 class PointOfInterestService {
     static var provider = MoyaProvider<PointOfInterestAPI>(plugins: Global.default.networkLoggerPlugin)
 
-    static func update(pointOfInterests: [PointOfInterest]) {
-        Global.log.info("[start] PointOfInterestService.update(pointOfInterests:)")
+    static func get() -> Single<[PointOfInterest]> {
+        Global.log.info("[start] PointOfInterestService.get")
 
-         provider.rx
-            .requestWithRefreshJwt(.update(pointOfInterests: pointOfInterests))
-            .subscribe { print($0) }
+        return provider.rx
+            .requestWithRefreshJwt(.get)
+            .filterSuccess()
+            .map([PointOfInterest].self)
+    }
+
+    static func create(pointOfInterest: PointOfInterest) -> Single<PointOfInterest> {
+        Global.log.info("[start] PointOfInterestService.create(pointOfInterest:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.create(pointOfInterest: pointOfInterest))
+            .filterSuccess()
+            .map(PointOfInterest.self)
+    }
+
+    static func update(poiID: String, alias: String) -> Completable {
+        Global.log.info("[start] PointOfInterestService.update(poiID:, alias:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.update(poiID: poiID, alias: alias))
+            .filterSuccess()
+            .asCompletable()
+    }
+
+    static func delete(poiID: String) -> Completable {
+        Global.log.info("[start] PointOfInterestService.delete(poiID:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.delete(poiID: poiID))
+            .filterSuccess()
+            .asCompletable()
     }
 }

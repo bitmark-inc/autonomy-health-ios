@@ -148,11 +148,9 @@ class Navigator {
                 nav.pushViewController(target, animated: true)
             }
         case .customModal(let type):
-            // present modally with custom animation
-            DispatchQueue.main.async {
-                let nav = NavigationController(rootViewController: target)
+            if let nav = sender.navigationController {
                 nav.hero.modalAnimationType = .autoReverse(presenting: type)
-                sender.present(nav, animated: true, completion: nil)
+                sender.present(target, animated: true, completion: nil)
             }
         case .modal:
             // present modally

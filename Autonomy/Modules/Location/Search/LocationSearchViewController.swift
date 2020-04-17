@@ -80,7 +80,7 @@ class LocationSearchViewController: ViewController {
         }
 
         resultTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBar.snp.bottom)
+            make.top.equalTo(searchBar.snp.bottom).offset(15)
             make.leading.trailing.equalToSuperview()
             bottomConstraint = make.bottom.equalToSuperview().constraint
         }
@@ -118,8 +118,6 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let placeID = autoCompleteLocations[indexPath.row].placeID
         thisViewModel.selectedPlaceIDSubject.onNext(placeID)
-
-        dismiss(animated: true, completion: nil)
     }
 }
 

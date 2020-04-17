@@ -7,15 +7,21 @@
 //
 
 import UIKit
-import SkeletonView
+import RxSwift
 import MGSwipeTableCell
 
 class LocationTableCell: MGSwipeTableCell {
 
     // MARK: - Properties
     lazy var titleLabel = makeTitleLabel()
+    lazy var titleTextField = makeTextFieldLabel()
     lazy var healthScoreLabel = makeHealthScoreLabel()
     lazy var healthScoreView = makeHealthScoreView()
+
+    var poiID: String?
+    weak var locationDelegate: LocationDelegate?
+    weak var parentLocationListCell: LocationListCell?
+    fileprivate let disposeBag = DisposeBag()
 
     // MARK: - Inits
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,14 +37,19 @@ class LocationTableCell: MGSwipeTableCell {
                 .inset(UIEdgeInsets(top: 7, left: 0, bottom: 7, right: 0))
         }
 
+        contentCell.addSubview(titleTextField)
         contentCell.addSubview(titleLabel)
         contentCell.addSubview(healthScoreView)
 
+        titleTextField.snp.makeConstraints { (make) in
+            make.trailing.equalTo(healthScoreView.snp.leading).offset(-15)
+            make.top.bottom.leading.equalTo(titleLabel)
+            make.centerY.equalToSuperview()
+        }
+
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(15)
-            make.leading.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-15)
-            make.height.greaterThanOrEqualTo(60)
+            make.top.leading.bottom.equalToSuperview()
+            make.height.greaterThanOrEqualTo(90)
         }
 
         healthScoreView.snp.makeConstraints { (make) in
@@ -47,10 +58,29 @@ class LocationTableCell: MGSwipeTableCell {
         }
     }
 
-    func setData() {
-        titleLabel.setText("Taipei Main Station")
-        healthScoreLabel.setText("94")
-        healthScoreView.backgroundColor = .red
+    func setData(poiID: String, alias: String, score: Int) {
+        self.poiID = poiID
+        setTitle(alias)
+        healthScoreLabel.setText("\(score)")
+        healthScoreView.backgroundColor = HealthRisk(from: score)?.color
+    }
+
+    func toggleEditMode(isOn: Bool) {
+        titleLabel.isHidden = isOn
+        titleTextField.isHidden = !isOn
+
+        if isOn {
+            titleTextField.perform(#selector(selectAll(_:)), with: nil, afterDelay: 0.5)
+            titleTextField.becomeFirstResponder()
+        } else {
+            titleTextField.resignFirstResponder()
+            parentLocationListCell?.toggleAddLocationMode(isOn: true)
+        }
+    }
+
+    fileprivate func setTitle(_ title: String) {
+        titleLabel.setText(title)
+        titleTextField.text = title
     }
 
     required init?(coder: NSCoder) {
@@ -58,6 +88,35 @@ class LocationTableCell: MGSwipeTableCell {
     }
 }
 
+extension LocationTableCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        toggleEditMode(isOn: false)
+
+        guard let text = textField.text, text.isNotEmpty else {
+            textField.text = titleLabel.text
+            return
+        }
+
+        guard let poiID = poiID, text != titleLabel.text else {
+            return
+        }
+        locationDelegate?.updatePOI(poiID: poiID, alias: text)
+        parentLocationListCell?.updatePOI(poiID: poiID, alias: text)
+        setTitle(text)
+    }
+
+    func overcomeSelectAllIssue() {
+        titleTextField.perform(#selector(selectAll(_:)), with: nil, afterDelay: 0)
+        titleTextField.perform(#selector(resignFirstResponder), with: nil, afterDelay: 0)
+    }
+}
+
+// MARK: - Setup views
 extension LocationTableCell {
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
@@ -84,5 +143,19 @@ extension LocationTableCell {
         let label = Label()
         label.apply(font: R.font.domaineSansTextLight(size: 24), themeStyle: .lightTextColor)
         return label
+    }
+
+    fileprivate func makeTextFieldLabel() -> UITextField {
+        let textfield = UITextField()
+        textfield.font = R.font.atlasGroteskLight(size: 24)
+        themeService.rx
+            .bind( { $0.lightTextColor }, to: textfield.rx.textColor)
+            .disposed(by: disposeBag)
+        textfield.autocorrectionType = .no
+        textfield.isHidden = true
+        textfield.returnKeyType = .done
+        textfield.delegate = self
+        textfield.tintColor = themeService.attrs.silverTextColor
+        return textfield
     }
 }

@@ -300,7 +300,7 @@ extension GiveHelpViewController {
     fileprivate func makeSubjectView() -> UIView {
         let coloredCircle = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
         coloredCircle.cornerRadius = 45
-        coloredCircle.backgroundColor = Constant.HeathColor.red
+        coloredCircle.backgroundColor = HealthRisk.high.color
 
         let rightView = LinearView(items: [(dateInfoLabel, 0), (subjectLabel, 5)])
         rightView.isSkeletonable = true

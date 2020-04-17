@@ -186,7 +186,7 @@ extension ReviewHelpRequestViewController {
     fileprivate func makeSubjectView() -> UIView {
         let coloredCircle = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
         coloredCircle.cornerRadius = 45
-        coloredCircle.backgroundColor = Constant.HeathColor.red
+        coloredCircle.backgroundColor = HealthRisk.high.color
 
         let dateInfoLabel = Label()
         dateInfoLabel.apply(

@@ -18,9 +18,9 @@ class HealthSurveyViewController: ViewController {
         HeaderView(header: R.string.localizable.survey().localizedUppercase)
     }()
     lazy var titleScreen = makeTitleScreen()
-    lazy var redButton = makeHealthButton(color: Constant.HeathColor.red)
-    lazy var yellowButton = makeHealthButton(color: Constant.HeathColor.yellow)
-    lazy var greenButton = makeHealthButton(color: Constant.HeathColor.green)
+    lazy var redButton = makeHealthButton(healthRisk: .high)
+    lazy var yellowButton = makeHealthButton(healthRisk: .moderate)
+    lazy var greenButton = makeHealthButton(healthRisk: .low)
 
     let buttonWidth: CGFloat = Size.dw(105)
 
@@ -103,10 +103,10 @@ extension HealthSurveyViewController {
         return CenterView(contentView: label)
     }
 
-    fileprivate func makeHealthButton(color: UIColor) -> UIButton {
+    fileprivate func makeHealthButton(healthRisk: HealthRisk) -> UIButton {
         let button = UIButton()
         button.layer.cornerRadius = buttonWidth / 2
-        button.backgroundColor = color
+        button.backgroundColor = healthRisk.color
         button.snp.makeConstraints { (make) in
             make.width.height.equalTo(buttonWidth)
         }

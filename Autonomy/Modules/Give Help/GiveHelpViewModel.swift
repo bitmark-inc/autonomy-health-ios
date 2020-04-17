@@ -17,7 +17,7 @@ class GiveHelpViewModel: ViewModel {
     // MARK: - Outputs
     var helpRequestRelay = BehaviorRelay<HelpRequest?>(value: nil)
     let fetchDataResultSubject = PublishSubject<Event<Void>>()
-    var submitResultSubject = PublishSubject<Event<Never>>()
+    let submitResultSubject = PublishSubject<Event<Never>>()
 
     var signUpHiddenDrive: Driver<Bool>
 

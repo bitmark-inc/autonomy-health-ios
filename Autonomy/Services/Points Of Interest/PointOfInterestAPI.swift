@@ -11,7 +11,10 @@ import BitmarkSDK
 import Moya
 
 enum PointOfInterestAPI {
-    case update(pointOfInterests: [PointOfInterest])
+    case get
+    case create(pointOfInterest: PointOfInterest)
+    case update(poiID: String, alias: String)
+    case delete(poiID: String)
 }
 
 extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -22,14 +25,18 @@ extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationT
 
     var path: String {
         switch self {
-        case .update:
-            return ""
+        case .get, .create: return ""
+        case .update(let poiID, _), .delete(let poiID):
+            return poiID
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .update:           return .put
+        case .get:      return .get
+        case .create:   return .post
+        case .update:   return .patch
+        case .delete:   return .delete
         }
     }
 
@@ -40,10 +47,22 @@ extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationT
     var parameters: [String: Any]? {
         var params: [String: Any] = [:]
         switch self {
-        case .update(let pointOfInterests):
-            let pointsOfInterestData = pointOfInterests.map { ["alias": $0.alias, "location": ["latitude": $0.location.latitude, "longitude": $0.location.longitude]] }
-            params["points_of_interest"] = pointsOfInterestData
+        case .create(let pointOfInterest):
+            params["alias"] = pointOfInterest.alias
+            params["addess"] = pointOfInterest.alias
+            let location = pointOfInterest.location
+            params["location"] = [
+                "latitude" : location.latitude,
+                "longitude": location.longitude
+            ]
+
+        case .update(_, let alias):
+            params["alias"] = alias
+
+        case .get, .delete:
+            return nil
         }
+
         return params
     }
 

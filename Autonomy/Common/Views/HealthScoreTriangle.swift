@@ -26,7 +26,7 @@ class HealthScoreTriangle: UIView {
 
         if let score = score, score > 0 {
             let colored = CAShapeLayer(pathString: colorPath[score - 1])
-            let healthColor = getHealthScore(with: score)?.cgColor
+            let healthColor = HealthRisk(from: score)?.color.cgColor
             colored.fillColor = healthColor
             colored.strokeColor = healthColor
             colored.transform = transformScale
@@ -36,16 +36,6 @@ class HealthScoreTriangle: UIView {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-
-    fileprivate func getHealthScore(with score: Int) -> UIColor? {
-        switch score {
-        case 1...33:    return UIColor(red: 204, green: 50, blue: 50)
-        case 34...66:   return UIColor(red: 241, green: 180, blue: 22)
-        case 67...100:  return UIColor(red: 45, green: 201, blue: 55)
-        default:
-            return nil
-        }
     }
 
     fileprivate let backgroundPath = "M156 0 L156 62.3538 L258 239.023 L54 239.023 L156 62.3538 L156 0 L0 270.2 L312 270.2 Z"

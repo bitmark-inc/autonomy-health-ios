@@ -14,8 +14,12 @@ class MainViewModel: ViewModel {
 
     // MARK: - Outputs
     var healthScoreRelay = BehaviorRelay<Int?>(value: nil)
-    var feedsRelay = BehaviorRelay<[HelpRequest]>(value: [])
-    let fetchFeedStateRelay = BehaviorRelay<LoadState>(value: .hide)
+    let poisRelay = BehaviorRelay(value: (pois: [PointOfInterest](), userInteractive: false))
+    let fetchPOIStateRelay = BehaviorRelay<LoadState>(value: .hide)
+
+    let addLocationSubject = PublishSubject<PointOfInterest>()
+    let deleteLocationIndexSubject = PublishSubject<Int>()
+    let submitResultSubject = PublishSubject<Event<Never>>()
 
     // MARK: - Handlers
     func fetchHealthScore() {
@@ -29,39 +33,92 @@ class MainViewModel: ViewModel {
             .disposed(by: disposeBag)
     }
 
-    func fetchFeeds() {
-        fetchFeedStateRelay.accept(.loading)
+    func fetchPOIs() {
+        fetchPOIStateRelay.accept(.loading)
 
-        HelpRequestService.list()
+        PointOfInterestService.get()
             .do(onDispose: { [weak self] in
-                self?.fetchFeedStateRelay.accept(.hide)
+                self?.fetchPOIStateRelay.accept(.hide)
             })
-            .subscribe(onSuccess: { [weak self] (helpRequests) in
+            .subscribe(onSuccess: { [weak self] (savedPOIs) in
                 guard let self = self else { return }
-                self.feedsRelay.accept(helpRequests)
+                self.poisRelay.accept((pois: savedPOIs, userInteractive: false))
+
             }, onError: { (error) in
                 Global.log.error(error)
             })
             .disposed(by: disposeBag)
-
     }
 
-    func addNewLocation(placeID: String) {
+    func addNewPOI(placeID: String) {
         let gmsPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
             UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))!
 
         let token = GMSAutocompleteSessionToken()
 
-        GMSPlacesClient.shared().fetchPlace(fromPlaceID: placeID, placeFields: gmsPlaceField, sessionToken: token) { (place, error) in
+        GMSPlacesClient.shared().fetchPlace(fromPlaceID: placeID, placeFields: gmsPlaceField, sessionToken: token) { [weak self] (place, error) in
+            guard let self = self else { return }
             if let error = error {
                 Global.log.error(error)
             }
 
-            if let place = place {
-                let pointOfInterest = PointOfInterest(alias: place.name ?? "", location: Location(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
-
-                PointOfInterestService.update(pointOfInterests: [pointOfInterest])
+            guard let place = place else {
+                Global.log.error("empty place when fetchPlace with placeID: \(placeID)")
+                return
             }
+
+            let pointOfInterest = PointOfInterest(place: place)
+
+            PointOfInterestService.create(pointOfInterest: pointOfInterest)
+                .subscribe(onSuccess: { [weak self] (newPOI) in
+                    guard let self = self else { return }
+                    var newPOIs = self.poisRelay.value.pois; newPOIs.append(newPOI)
+                    self.poisRelay.accept((pois: newPOIs, userInteractive: true))
+                    self.addLocationSubject.onNext(newPOI)
+
+                }, onError: { [weak self] (error) in
+                    self?.submitResultSubject.onNext(Event.error(error))
+                })
+                .disposed(by: self.disposeBag)
         }
+    }
+
+    func updatePOI(poiID: String, alias: String) {
+        PointOfInterestService.update(poiID: poiID, alias: alias)
+            .subscribe(onCompleted: { [weak self] in
+                guard let self = self else { return }
+                var currentPOIs = self.poisRelay.value.pois
+                guard let updatedPOIIndex = currentPOIs.firstIndex(where: { $0.id == poiID }) else {
+                    Global.log.error("[incorrect data] can not find poiID")
+                    return
+                }
+
+                var updatedPOI = currentPOIs[updatedPOIIndex]
+                updatedPOI.alias = alias
+                currentPOIs[updatedPOIIndex] = updatedPOI
+
+                self.poisRelay.accept((pois: currentPOIs, userInteractive: true))
+            }, onError: { [weak self] (error) in
+                self?.submitResultSubject.onNext(Event.error(error))
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func deletePOI(poiID: String) {
+        PointOfInterestService.delete(poiID: poiID)
+            .subscribe(onCompleted: { [weak self] in
+                guard let self = self else { return }
+                var currentPOIs = self.poisRelay.value.pois
+                guard let deletedPOIIndex = currentPOIs.firstIndex(where: { $0.id == poiID }) else {
+                    Global.log.error("[incorrect data] can not find poiID")
+                    return
+                }
+                currentPOIs.removeAll(where: { $0.id == poiID })
+                self.poisRelay.accept((pois: currentPOIs, userInteractive: true))
+                self.deleteLocationIndexSubject.onNext(deletedPOIIndex)
+            }, onError: { [weak self] (error) in
+                self?.submitResultSubject.onNext(Event.error(error))
+            })
+            .disposed(by: disposeBag)
     }
 }

@@ -83,7 +83,7 @@ extension FeedTableCell {
     fileprivate func makeColoredCircle() -> UIView {
         let coloredCircle = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         coloredCircle.cornerRadius = 15
-        coloredCircle.backgroundColor = Constant.HeathColor.red
+        coloredCircle.backgroundColor = HealthRisk.high.color
         return coloredCircle
     }
 
@@ -92,8 +92,8 @@ extension FeedTableCell {
         checkBox.on = true
         checkBox.lineWidth = 1
         checkBox.onCheckColor = .white
-        checkBox.onTintColor = Constant.HeathColor.red
-        checkBox.onFillColor = Constant.HeathColor.red
+        checkBox.onTintColor = HealthRisk.high.color
+        checkBox.onFillColor = HealthRisk.high.color
         checkBox.isUserInteractionEnabled = false
         return checkBox
     }

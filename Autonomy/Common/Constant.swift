@@ -34,10 +34,26 @@ public struct Constant {
         public static let checkInSurvey1 = "check-in-survey-1"
         public static let checkInSurvey2 = "check-in-survey-2"
     }
+}
 
-    public struct HeathColor {
-        public static let red = UIColor(hexString: "#CC3232")!
-        public static let yellow = UIColor(hexString: "#E7B416")!
-        public static let green = UIColor(hexString: "#2DC937")!
+enum HealthRisk {
+    case high, moderate, low
+
+    var color: UIColor {
+        switch self {
+        case .high:     return UIColor(red: 204, green: 50, blue: 50)!
+        case .moderate: return UIColor(red: 241, green: 180, blue: 22)!
+        case .low:      return UIColor(red: 45, green: 201, blue: 55)!
+        }
+    }
+
+    init?(from score: Int) {
+        switch score {
+        case 0...33:    self = .high
+        case 34...66:   self = .moderate
+        case 67...100:  self = .low
+        default:
+            return nil
+        }
     }
 }

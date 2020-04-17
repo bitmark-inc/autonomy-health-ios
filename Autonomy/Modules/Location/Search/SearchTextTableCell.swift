@@ -31,9 +31,11 @@ class SearchTextTableCell: TableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = .clear
+        selectionStyle = .default
+
         contentCell.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 7, left: 0, bottom: 7, right: 0))
+                .inset(UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
         }
 
         contentCell.addSubview(singleTextLabel)

@@ -13,6 +13,11 @@ import SnapKit
 import SkeletonView
 
 protocol LocationDelegate: class {
+    var addLocationSubject: PublishSubject<PointOfInterest> { get }
+
+    func updatePOI(poiID: String, alias: String)
+    func deletePOI(poiID: String)
+
     func gotoAddLocationScreen()
     func gotoLastPOICell()
 }
@@ -32,8 +37,8 @@ class MainViewController: ViewController {
         return viewModel as! MainViewModel
     }()
 
-    var lock = NSLock()
     var pois = [PointOfInterest?]()
+    var currentUserLocationAddress: String?
 
     let sectionIndexes = (currentLocation: 0, poi: 1, poiList: 2)
 
@@ -55,15 +60,13 @@ class MainViewController: ViewController {
                 NotificationPermission.scheduleReminderNotificationIfNeeded()
             }
         }
-
-        pageControl.numberOfPages = pois.count + 2
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         thisViewModel.fetchHealthScore()
-        thisViewModel.fetchFeeds()
+        thisViewModel.fetchPOIs()
     }
 
     // MARK: - bindViewModel
@@ -71,6 +74,7 @@ class MainViewController: ViewController {
         super.bindViewModel()
 
         bindUserFriendlyAddress()
+        bindPOIChangeEvents()
     }
 
     fileprivate func bindUserFriendlyAddress() {
@@ -85,14 +89,51 @@ class MainViewController: ViewController {
             })
             .subscribe(onNext: { [weak self] (userFriendlyAddress) in
                 guard let self = self else { return }
-                guard let userFriendlyAddress = userFriendlyAddress else {
-                    self.locationInfoView.isHidden = true
+                self.currentUserLocationAddress = userFriendlyAddress
+            }, onError: { (error) in
+                Global.log.error(error)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    fileprivate func bindPOIChangeEvents() {
+        thisViewModel.poisRelay
+            .subscribe(onNext: { [weak self] (poisValue) in
+                guard let self = self else { return }
+                self.pois = poisValue.pois
+
+                guard !poisValue.userInteractive else {
                     return
                 }
 
-                self.locationLabel.setText(userFriendlyAddress)
-            }, onError: { (error) in
-                Global.log.error(error)
+                self.mainCollectionView.reloadSections(IndexSet(integer: 1))
+                self.pageControl.numberOfPages = poisValue.pois.count + 2
+            })
+            .disposed(by: disposeBag)
+
+        thisViewModel.addLocationSubject
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                self.mainCollectionView.performBatchUpdates({
+                    self.mainCollectionView.insertItems(at: [IndexPath(row: self.pois.count - 1, section: 1)])
+
+                }, completion: { [weak self] (_) in
+                    guard let self = self else { return }
+
+                    self.gotoLocationListCell()
+                    if let viewController = self.presentedViewController as? LocationSearchViewController {
+                        viewController.dismiss(animated: true, completion: nil)
+                    }
+                })
+                self.pageControl.numberOfPages = self.pois.count + 2
+            })
+            .disposed(by: disposeBag)
+
+        thisViewModel.deleteLocationIndexSubject
+            .subscribe(onNext: { [weak self] (deletedIndex) in
+                guard let self = self else { return }
+                self.mainCollectionView.deleteItems(at: [IndexPath(row: deletedIndex, section: self.sectionIndexes.poi)])
+                self.pageControl.numberOfPages -= 1
             })
             .disposed(by: disposeBag)
     }
@@ -121,6 +162,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case sectionIndexes.currentLocation:    return 1
@@ -139,6 +181,14 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         case sectionIndexes.poiList:
             let cell = collectionView.dequeueReusableCell(withClass: LocationListCell.self, for: indexPath)
             cell.locationDelegate = self
+
+            thisViewModel.poisRelay
+                .filter { !$0.userInteractive }.map { $0.pois } // don't want to reload data when userInteractive; manually reload by action
+                .subscribe(onNext: {
+                    cell.setData(pois: $0)
+                })
+                .disposed(by: disposeBag)
+
             return cell
         default:
             return UICollectionViewCell()
@@ -146,12 +196,29 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard collectionView.indexPathsForVisibleItems.contains(indexPath) else { return }
-
         setupPageControl(with: indexPath)
 
-        guard let cell = cell as? HealthScoreCollectionCell else { return }
-        cell.setData()
+        switch indexPath.section {
+        case sectionIndexes.currentLocation:
+            locationLabel.setText(currentUserLocationAddress)
+            guard let cell = cell as? HealthScoreCollectionCell else {
+                return
+            }
+
+            cell.setData()
+
+        case sectionIndexes.poi:
+            let poiAddressAlias = pois[indexPath.row]?.alias
+            locationLabel.setText(poiAddressAlias)
+            guard let cell = cell as? HealthScoreCollectionCell else {
+                return
+            }
+
+            cell.setData()
+
+        default:
+            return
+        }
     }
 
     fileprivate func setupPageControl(with indexPath: IndexPath) {
@@ -159,7 +226,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let isInPoiList = indexPath.section == sectionIndexes.poiList
 
         currentLocationButton.isEnabled = !isInCurrentLocation
-        mainCollectionView.isScrollEnabled = !isInPoiList
         locationButton.isEnabled = !isInPoiList
         locationLabel.isHidden = isInPoiList
 
@@ -171,24 +237,33 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             break
         }
     }
-
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let currentIndexPath = collectionView.indexPathsForVisibleItems.first else { return }
-        setupPageControl(with: currentIndexPath)
-    }
 }
 
 extension MainViewController: LocationDelegate {
+    var addLocationSubject: PublishSubject<PointOfInterest> {
+        return thisViewModel.addLocationSubject
+    }
+
+    func updatePOI(poiID: String, alias: String) {
+        thisViewModel.updatePOI(poiID: poiID, alias: alias)
+    }
+
+    func deletePOI(poiID: String) {
+        thisViewModel.deletePOI(poiID: poiID)
+    }
+
     func gotoAddLocationScreen() {
         let viewModel = LocationSearchViewModel()
         viewModel.selectedPlaceIDSubject
             .filterNil()
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] (selectedPlaceID) in
-                self?.thisViewModel.addNewLocation(placeID: selectedPlaceID)
+                guard let self = self else { return }
+                self.thisViewModel.addNewPOI(placeID: selectedPlaceID)
             })
             .disposed(by: disposeBag)
 
-        navigator.show(segue: .locationSearch(viewModel: viewModel), sender: self, transition: .modal)
+        navigator.show(segue: .locationSearch(viewModel: viewModel), sender: self, transition: .customModal(type: .slide(direction: .up)))
     }
 
     func gotoLastPOICell() {
@@ -205,6 +280,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+
 }
 
 // MARK: - Navigator
@@ -239,6 +315,7 @@ extension MainViewController {
 extension MainViewController {
     fileprivate func makeLocationLabel() -> Label {
         let label = Label()
+        label.textAlignment = .center
         label.apply(font: R.font.atlasGroteskLight(size: 16),
                     themeStyle: .silverChaliceColor)
         return label

@@ -16,8 +16,22 @@ class LocationListCell: UICollectionViewCell {
     // MARK: - Properties
     lazy var locationTableView = makeLocationTableView()
 
-    var locationList = 3
-    weak var locationDelegate: LocationDelegate?
+
+    var pois = [PointOfInterest]()
+    var poiLimitation = 10
+    weak var locationDelegate: LocationDelegate? {
+        didSet {
+            locationDelegate?.addLocationSubject
+                .subscribe(onNext: { [weak self] (poi) in
+                    guard let self = self else { return }
+                    self.pois.append(poi)
+                    self.locationTableView.insertRows(at: [IndexPath(row: self.pois.count - 1, section: 0)], with: .automatic)
+                    self.toggleAddLocationMode(isOn: true)
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    var didCallOvercomeSelectAllIssue: Bool = false
 
     fileprivate let disposeBag = DisposeBag()
 
@@ -26,6 +40,13 @@ class LocationListCell: UICollectionViewCell {
         super.init(frame: frame)
 
         setupViews()
+    }
+
+    func setData(pois: [PointOfInterest]) {
+        self.pois = pois
+        locationTableView.reloadData { [weak self] in
+            self?.toggleAddLocationMode(isOn: true)
+        }
     }
 
     fileprivate func setupViews() {
@@ -42,9 +63,6 @@ class LocationListCell: UICollectionViewCell {
         locationDelegate?.gotoLastPOICell()
     }
 
-    func setData() {
-    }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -58,7 +76,7 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return locationList
+        case 0: return pois.count
         case 1: return 1
         default:
             return 0
@@ -73,23 +91,83 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withClass: LocationTableCell.self, for: indexPath)
-            cell.setData()
             cell.separatorInset = UIEdgeInsets.zero
+            let poi = pois[indexPath.row]
             cell.rightButtons = [
-            MGSwipeButton(title: "", icon: R.image.deleteLocationCell()!, backgroundColor: .clear),
-            MGSwipeButton(title: "", icon: R.image.editLocationCell()!, backgroundColor: .clear)]
-            cell.rightSwipeSettings.transition = .rotate3D
+                makeDeleteLocationSwipeButton(poiID: poi.id),
+                makeEditLocationSwipeButton(poiID: poi.id)]
+            cell.locationDelegate = locationDelegate
+
+            cell.setData(poiID: poi.id, alias: poi.alias, score: poi.displayScore)
+            cell.parentLocationListCell = self
+
+            if !didCallOvercomeSelectAllIssue && indexPath.row == 0 {
+                didCallOvercomeSelectAllIssue = true
+                cell.overcomeSelectAllIssue()
+            }
+
             return cell
 
         case 1:
             let cell = tableView.dequeueReusableCell(withClass: AddLocationCell.self, for: indexPath)
             cell.separatorInset = UIEdgeInsets.zero
             cell.addGestureRecognizer(makeAddLocationTapGestureRecognizer())
+            cell.isHidden = pois.count >= poiLimitation
             return cell
 
         default:
             return UITableViewCell()
         }
+    }
+
+    fileprivate func makeDeleteLocationSwipeButton(poiID: String) -> MGSwipeButton {
+        return MGSwipeButton(title: "", icon: R.image.deleteLocationCell()!, backgroundColor: .clear) { [weak self] (_) -> Bool in
+            guard let self = self, let indexRow = self.pois.firstIndex(where: { $0.id == poiID }) else {
+                return true
+            }
+
+            self.pois.remove(at: indexRow)
+            self.locationTableView.deleteRows(at: [IndexPath(row: indexRow, section: 0)], with: .fade)
+            self.locationDelegate?.deletePOI(poiID: poiID)
+            self.toggleAddLocationMode(isOn: true)
+            return true
+        }
+    }
+
+    fileprivate func makeEditLocationSwipeButton(poiID: String) -> MGSwipeButton {
+        return MGSwipeButton(title: "", icon: R.image.editLocationCell()!, backgroundColor: .clear) { [weak self] (_) -> Bool in
+            guard let self = self,
+                let indexRow = self.pois.firstIndex(where: { $0.id == poiID }),
+                let cell = self.locationTableView.cellForRow(at: IndexPath(row: indexRow, section: 0)) as? LocationTableCell
+                else {
+                    return true
+            }
+
+            cell.toggleEditMode(isOn: true)
+            self.toggleAddLocationMode(isOn: false)
+            return true
+        }
+    }
+
+    func toggleAddLocationMode(isOn: Bool) {
+        guard let addLocationCell = locationTableView.cellForRow(at: IndexPath(row: 0, section: 1)) else { return }
+
+        if isOn && pois.count < poiLimitation {
+            addLocationCell.isHidden = false
+        } else {
+            addLocationCell.isHidden = true
+        }
+    }
+
+    func updatePOI(poiID: String, alias: String) {
+        guard let updatedPOIIndex = pois.firstIndex(where: { $0.id == poiID }) else {
+            Global.log.error("[incorrect data] can not find poiID")
+            return
+        }
+
+        var updatedPOI = pois[updatedPOIIndex]
+        updatedPOI.alias = alias
+        pois[updatedPOIIndex] = updatedPOI
     }
 }
 
