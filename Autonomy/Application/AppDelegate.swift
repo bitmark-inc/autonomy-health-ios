@@ -82,11 +82,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         guard let additionalData = payload.additionalData as? [String: String],
-            let helpID = additionalData["help_id"] else {
-                Global.log.error("[notification] missing help_id")
+            let notifityType = additionalData["notification_type"] else {
                 return
         }
-        Navigator.gotoHelpDetailsScreen(helpRequestID: helpID)
+
+        Global.openAppWithNotification = true
+
+        let TypeKey = Constant.OneSignal.TypeKey.self
+        switch notifityType {
+        case TypeKey.broadCastNewHelp, TypeKey.notifyHelpExired, TypeKey.notifyHelpExired:
+            guard let helpID = additionalData["help_id"] else {
+                Global.log.error("[notification] missing help_id")
+                return
+            }
+
+            Navigator.gotoHelpDetailsScreen(helpRequestID: helpID)
+
+        case TypeKey.riskLevelChanged:
+            let poiID = additionalData["poi_id"]
+            Navigator.gotoPOIScreen(poiID: poiID)
+
+        default:
+            return
+        }
     }
 
     // MARK: UISceneSession Lifecycle
@@ -96,6 +114,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         guard Global.current.account != nil else { return }
+
+        guard !Global.openAppWithNotification else {
+            Global.openAppWithNotification = false
+            return
+        }
+
         Navigator.gotoHealthSurveyScreenIfNeeded()
     }
 

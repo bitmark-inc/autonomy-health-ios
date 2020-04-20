@@ -27,6 +27,7 @@ public struct Constant {
             public static let broadCastNewHelp = "BROADCAST_NEW_HELP"
             public static let notifyHelpSigned = "NOTIFY_HELP_ACCEPTED"
             public static let notifyHelpExired = "NOTIFY_HELP_EXPIRED"
+            public static let riskLevelChanged = "RISK_LEVEL_CHANGED"
         }
     }
 
@@ -37,10 +38,11 @@ public struct Constant {
 }
 
 enum HealthRisk {
-    case high, moderate, low
+    case high, moderate, low, zero
 
     var color: UIColor {
         switch self {
+        case .zero:     return UIColor(hexString: "#2B2B2B")!
         case .high:     return UIColor(red: 204, green: 50, blue: 50)!
         case .moderate: return UIColor(red: 241, green: 180, blue: 22)!
         case .low:      return UIColor(red: 45, green: 201, blue: 55)!
@@ -49,19 +51,12 @@ enum HealthRisk {
 
     init?(from score: Int) {
         switch score {
+        case 0:         self = .zero
         case 0...33:    self = .high
         case 34...66:   self = .moderate
         case 67...100:  self = .low
         default:
             return nil
-        }
-    }
-
-    var title: String {
-        switch self {
-        case .high:         return R.string.localizable.highRisk().localizedUppercase
-        case .moderate:     return R.string.localizable.moderateRisk().localizedUppercase
-        case .low:          return R.string.localizable.lowRisk().localizedUppercase
         }
     }
 }

@@ -34,7 +34,7 @@ class LocationSearchViewModel: ViewModel {
 
     fileprivate func observeLocationTextInput() {
         searchLocationTextRelay
-            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] (searchText) in
                 guard let self = self else { return }
 
@@ -43,7 +43,7 @@ class LocationSearchViewModel: ViewModel {
                     return
                 }
 
-                GMSPlacesClient.shared().findAutocompletePredictions(fromQuery: searchText, filter: self.filter, sessionToken: self.token) { [weak self] (results, error) in
+                GMSPlacesClient.shared().findAutocompletePredictions(fromQuery: searchText, filter: nil, sessionToken: self.token) { [weak self] (results, error) in
                     guard let self = self else { return }
 
                     if let error = error {

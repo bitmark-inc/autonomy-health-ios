@@ -187,12 +187,6 @@ class Navigator {
 
 extension Navigator {
     static func gotoHealthSurveyScreenIfNeeded() {
-        if UIApplication.shared.applicationIconBadgeNumber > 0 {
-            gotoHealthSurveyScreen()
-            UIApplication.shared.applicationIconBadgeNumber = 0
-            return
-        }
-
         guard let enteredBackgroundTime = UserDefaults.standard.enteredBackgroundTime,
             Date() >= enteredBackgroundTime.adding(.minute, value: 10) else {
             return
@@ -216,6 +210,23 @@ extension Navigator {
 
                 let viewModel = GiveHelpViewModel(helpRequestID: helpRequestID)
                 Navigator.default.show(segue: .giveHelp(viewModel: viewModel), sender: currentVC)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    static func gotoPOIScreen(poiID: String?) {
+        Global.current.accountNumberRelay
+            .filterNil()
+            .take(1)
+            .subscribe(onNext: { (_) in
+                Global.log.info("[notification] move to POI Screen: \(poiID ?? "nil")")
+                if let currentVC = Navigator.getRootViewController()?.topViewController,
+                    let mainVC = currentVC as? MainViewController {
+                    mainVC.gotoPOI(with: poiID)
+                }
+
+                let viewModel = MainViewModel(navigateToPoiID: poiID)
+                Navigator.default.show(segue: .main(viewModel: viewModel), sender: nil, transition: .replace(type: .none))
             })
             .disposed(by: disposeBag)
     }

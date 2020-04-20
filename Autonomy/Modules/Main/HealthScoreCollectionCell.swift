@@ -51,7 +51,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         guideView.snp.makeConstraints { (make) in
             make.top.equalTo(healthView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(210)
+            make.height.equalTo(150)
         }
     }
 
@@ -62,12 +62,9 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         }
 
         guideView.hideSkeleton()
-        let healthRisk = HealthRisk(from: areaProfile.score)
-        riskLabel.setText(healthRisk?.title)
         bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
         bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
         bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)
-
     }
 
     fileprivate func bindInfo(for scoreInfoType: ScoreInfoType, number: Int, delta: Int) {
@@ -201,17 +198,11 @@ extension HealthScoreCollectionCell {
         let row2 = makeScoreInfosRow(view1: healthyBehaviorsView)
 
         let paddingView = UIView()
-        paddingView.addSubview(riskLabel)
         paddingView.addSubview(row1)
         paddingView.addSubview(row2)
 
-        riskLabel.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-        }
-
         row1.snp.makeConstraints { (make) in
-            make.top.equalTo(riskLabel.snp.bottom).offset(Size.dh(26))
-            make.leading.trailing.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
         }
 
         row2.snp.makeConstraints { (make) in

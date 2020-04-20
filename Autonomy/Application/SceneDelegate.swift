@@ -45,6 +45,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         guard Global.current.account != nil else { return }
+
+        guard !Global.openAppWithNotification else {
+            Global.openAppWithNotification = false
+            return
+        }
+
         Navigator.gotoHealthSurveyScreenIfNeeded()
     }
 
@@ -52,4 +58,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UserDefaults.standard.enteredBackgroundTime = Date()
     }
 }
-

@@ -21,6 +21,12 @@ class MainViewModel: ViewModel {
     let deleteLocationIndexSubject = PublishSubject<Int>()
     let orderLocationIndexSubject = PublishSubject<(from: Int, to: Int)>()
     let submitResultSubject = PublishSubject<Event<Never>>()
+    var navigateToPoiID: String?
+
+    convenience init(navigateToPoiID: String?) {
+        self.init()
+        self.navigateToPoiID = navigateToPoiID
+    }
 
     // MARK: - Handlers
     func fetchHealthScore() {

@@ -17,6 +17,7 @@ import SwiftDate
 class Global {
     static var current = Global()
     static let `default` = current
+    static var openAppWithNotification: Bool = false
 
     var account: Account?
     lazy var accountNumberRelay = BehaviorRelay<String?>(value: account?.getAccountNumber())

@@ -140,6 +140,11 @@ class MainViewController: ViewController {
 
                 self.mainCollectionView.reloadSections(IndexSet(integer: 1))
                 self.pageControl.numberOfPages = poisValue.pois.count + 2
+
+                if self.pois.isNotEmpty, let navigatePoiID = self.thisViewModel.navigateToPoiID {
+                    self.thisViewModel.navigateToPoiID = nil
+                    self.gotoPOI(with: navigatePoiID)
+                }
             })
             .disposed(by: disposeBag)
 
@@ -371,6 +376,11 @@ extension MainViewController {
         let indexPath = IndexPath(row: 0, section: sectionIndexes.poiList)
         mainCollectionView.scrollToItem(at: indexPath, at: .right, animated: false)
         setupPageControl(with: indexPath)
+    }
+
+    func gotoPOI(with poiID: String?) {
+        let index = pois.firstIndex(where: { $0.id == poiID }) ?? 0
+        gotoPOICell(selectedIndex: index + 1)
     }
 
     fileprivate func gotoPOICell(selectedIndex: Int, animated: Bool = false) {

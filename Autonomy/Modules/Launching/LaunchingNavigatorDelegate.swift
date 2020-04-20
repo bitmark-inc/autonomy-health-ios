@@ -73,8 +73,7 @@ extension LaunchingNavigatorDelegate {
                 .disposed(by: disposeBag)
         }
 
-        Global.current.accountNumberRelay.accept(
-            Global.current.account?.getAccountNumber())
+        Global.openAppWithNotification = false
     }
 }
 
