@@ -32,7 +32,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
 
     lazy var backButton = makeLightBackItem()
     lazy var doneButton = SubmitButton(title: R.string.localizable.done().localizedUppercase,
-                     icon: R.image.doneCicleArrow()!)
+                     icon: R.image.doneCircleArrow()!)
     lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: true)
     }()

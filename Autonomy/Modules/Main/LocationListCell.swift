@@ -221,6 +221,7 @@ extension LocationListCell {
         tableView.showsVerticalScrollIndicator = false
         themeService.rx
             .bind({ $0.lightTextColor }, to: tableView.rx.separatorColor)
+            .bind({ $0.separateTableColor }, to: tableView.rx.separatorColor)
             .disposed(by: disposeBag)
         return tableView
     }
