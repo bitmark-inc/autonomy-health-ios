@@ -183,12 +183,21 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
 // MARK: - UITableViewDragDelegate, UITableViewDropDelegate
 extension LocationListCell: UITableViewDragDelegate, UITableViewDropDelegate {
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print(sourceIndexPath)
-        print(destinationIndexPath)
+        let fromIndex = sourceIndexPath.row
+        let toIndex = destinationIndexPath.row
+
+        locationDelegate?.orderPOI(from: fromIndex, to: toIndex)
+        let poi = pois[fromIndex]
+        var orderedPOIs = pois
+        orderedPOIs.remove(at: fromIndex); orderedPOIs.insert(poi, at: toIndex)
+    }
+
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 0
     }
 
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        return [UIDragItem(itemProvider: NSItemProvider())]
+        return []
     }
 
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
@@ -208,7 +217,6 @@ extension LocationListCell {
         tableView.dropDelegate = self
         tableView.separatorStyle = .singleLine
         tableView.delaysContentTouches = true
-        tableView.bounces = false
         tableView.showsVerticalScrollIndicator = false
         themeService.rx
             .bind({ $0.lightTextColor }, to: tableView.rx.separatorColor)

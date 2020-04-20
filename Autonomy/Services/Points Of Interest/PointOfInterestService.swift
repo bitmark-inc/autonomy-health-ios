@@ -48,4 +48,13 @@ class PointOfInterestService {
             .filterSuccess()
             .asCompletable()
     }
+
+    static func order(poiIDs: [String]) -> Completable {
+        Global.log.info("[start] PointOfInterestService.order(poiIDs:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.order(poiIDs: poiIDs))
+            .filterSuccess()
+            .asCompletable()
+    }
 }

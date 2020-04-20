@@ -15,6 +15,7 @@ enum PointOfInterestAPI {
     case create(pointOfInterest: PointOfInterest)
     case update(poiID: String, alias: String)
     case delete(poiID: String)
+    case order(poiIDs: [String])
 }
 
 extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -28,6 +29,8 @@ extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationT
         case .get, .create: return ""
         case .update(let poiID, _), .delete(let poiID):
             return poiID
+        case .order:
+            return "order"
         }
     }
 
@@ -37,6 +40,7 @@ extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationT
         case .create:   return .post
         case .update:   return .patch
         case .delete:   return .delete
+        case .order:    return .put
         }
     }
 
@@ -58,6 +62,9 @@ extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationT
 
         case .update(_, let alias):
             params["alias"] = alias
+
+        case .order(let poiIDs):
+            params["order"] = poiIDs
 
         case .get, .delete:
             return nil

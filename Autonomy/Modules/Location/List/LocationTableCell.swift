@@ -42,14 +42,13 @@ class LocationTableCell: MGSwipeTableCell {
         contentCell.addSubview(healthScoreView)
 
         titleTextField.snp.makeConstraints { (make) in
-            make.trailing.equalTo(healthScoreView.snp.leading).offset(-15)
-            make.top.bottom.leading.equalTo(titleLabel)
+            make.edges.equalTo(titleLabel)
             make.centerY.equalToSuperview()
         }
 
         titleLabel.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
-            make.height.greaterThanOrEqualTo(90)
+            make.height.equalTo(90)
         }
 
         healthScoreView.snp.makeConstraints { (make) in

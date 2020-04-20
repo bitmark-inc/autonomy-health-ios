@@ -17,6 +17,7 @@ protocol LocationDelegate: class {
 
     func updatePOI(poiID: String, alias: String)
     func deletePOI(poiID: String)
+    func orderPOI(from: Int, to: Int)
 
     func gotoAddLocationScreen()
     func gotoLastPOICell()
@@ -167,6 +168,17 @@ class MainViewController: ViewController {
                 self.pageControl.numberOfPages -= 1
             })
             .disposed(by: disposeBag)
+
+        thisViewModel.orderLocationIndexSubject
+            .subscribe(onNext: { [weak self] (from, to) in
+                guard let self = self else { return }
+
+                self.mainCollectionView.performBatchUpdates({
+                    self.mainCollectionView.deleteItems(at: [IndexPath(row: from, section: self.sectionIndexes.poi)])
+                    self.mainCollectionView.insertItems(at: [IndexPath(row: to, section: self.sectionIndexes.poi)])
+                })
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Error Handlers
@@ -310,6 +322,10 @@ extension MainViewController: LocationDelegate {
 
     func deletePOI(poiID: String) {
         thisViewModel.deletePOI(poiID: poiID)
+    }
+
+    func orderPOI(from: Int, to: Int) {
+        thisViewModel.orderPOI(from: from, to: to)
     }
 
     func gotoAddLocationScreen() {
