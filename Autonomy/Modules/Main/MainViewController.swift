@@ -70,6 +70,9 @@ class MainViewController: ViewController {
 
         thisViewModel.fetchHealthScore()
         thisViewModel.fetchPOIs()
+
+        // clear badge notification
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     // MARK: - bindViewModel

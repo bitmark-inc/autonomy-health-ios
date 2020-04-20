@@ -483,6 +483,8 @@
 		5B57793F242B62160028D3E3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		5B62A3A5242C45F500480A15 /* SignInWallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWallViewController.swift; sourceTree = "<group>"; };
 		5B62A3A8242C47CF00480A15 /* AppLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLink.swift; sourceTree = "<group>"; };
+		5B6E069E244D9FF500CC3DF6 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		5B6E069F244DA49E00CC3DF6 /* OneSignalNotificationServiceDevExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceDevExtension.entitlements; sourceTree = "<group>"; };
 		5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthSurveyViewController.swift; sourceTree = "<group>"; };
 		5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyHelpViewController.swift; sourceTree = "<group>"; };
 		5B7CE0C72430BE91002CD923 /* AreaProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaProfileAPI.swift; sourceTree = "<group>"; };
@@ -660,6 +662,8 @@
 		5B2C859A242DEDBB002CC53B /* OneSignalNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
+				5B6E069E244D9FF500CC3DF6 /* OneSignalNotificationServiceExtension.entitlements */,
+				5B6E069F244DA49E00CC3DF6 /* OneSignalNotificationServiceDevExtension.entitlements */,
 				5B2C859B242DEDBB002CC53B /* NotificationService.swift */,
 				5B2C859D242DEDBB002CC53B /* Info.plist */,
 			);
@@ -2025,6 +2029,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F172DB240CC2DBD7AFC6524 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
@@ -2049,6 +2054,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8184CB398EDA72463146FE2E /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
@@ -2073,6 +2079,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 01010BF588720E3688E84690 /* Pods-OneSignalNotificationServiceDevExtension.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
@@ -2098,6 +2105,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6C8A4CB005CE65E66132FA92 /* Pods-OneSignalNotificationServiceDevExtension.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 5;
