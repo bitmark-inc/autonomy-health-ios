@@ -20,7 +20,7 @@ class AddLocationCell: TableViewCell {
 
         contentCell.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 7, left: 0, bottom: 7, right: 0))
+                .inset(UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
         }
 
         let plusImage = ImageView(image: R.image.concordPlusCircle())
@@ -36,9 +36,7 @@ class AddLocationCell: TableViewCell {
 
         plusImage.snp.makeConstraints { (make) in
             make.leading.equalTo(addNewLocationLabel.snp.trailing).offset(15)
-            make.centerY.trailing.equalToSuperview()
-            make.top.bottom.equalToSuperview()
-                .inset(UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
+            make.centerY.trailing.top.bottom.equalToSuperview()
         }
     }
 

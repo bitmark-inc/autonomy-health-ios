@@ -68,7 +68,6 @@ class MainViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        thisViewModel.fetchHealthScore()
         thisViewModel.fetchPOIs()
 
         // clear badge notification

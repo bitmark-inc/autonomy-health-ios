@@ -13,7 +13,6 @@ import GooglePlaces
 class MainViewModel: ViewModel {
 
     // MARK: - Outputs
-    var healthScoreRelay = BehaviorRelay<Int?>(value: nil)
     let poisRelay = BehaviorRelay(value: (pois: [PointOfInterest](), userInteractive: false))
     let fetchPOIStateRelay = BehaviorRelay<LoadState>(value: .hide)
 
@@ -29,17 +28,6 @@ class MainViewModel: ViewModel {
     }
 
     // MARK: - Handlers
-    func fetchHealthScore() {
-        HealthService.getScore()
-            .subscribe(onSuccess: { [weak self] (score) in
-                guard let self = self else { return }
-                self.healthScoreRelay.accept(Int(score))
-            }, onError: { (error) in
-                Global.log.error(error)
-            })
-            .disposed(by: disposeBag)
-    }
-
     func fetchPOIs() {
         fetchPOIStateRelay.accept(.loading)
 

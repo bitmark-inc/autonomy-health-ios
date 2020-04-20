@@ -37,8 +37,8 @@ class ScoreInfoView: UIView {
         dataView.addSubview(changeNumberLabel)
 
         currentNumberLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(-10)
-            make.leading.bottom.equalToSuperview()
+            make.top.leading.bottom.equalToSuperview()
+                .inset(UIEdgeInsets(top: -10, left: 0, bottom: -5, right: 0))
         }
 
         changeStatusArrow.snp.makeConstraints { (make) in

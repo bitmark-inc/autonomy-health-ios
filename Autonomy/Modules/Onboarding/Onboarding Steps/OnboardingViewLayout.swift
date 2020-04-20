@@ -55,7 +55,7 @@ extension OnboardingViewLayout where Self: ViewController {
                     font: R.font.atlasGroteskLight(size: Size.ds(36)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
-        return CenterView(contentView: label)
+        return CenterView(contentView: label, shrink: true)
     }
 
     func makeTalkingImageView() -> UIView {

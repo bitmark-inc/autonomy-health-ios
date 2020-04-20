@@ -79,7 +79,7 @@ extension Global {
         }
 
         let sentryDestination = SentryDestination(sentryClient: Client.shared!,
-                                                  queue: DispatchQueue(label: "com.synergy.ios.sentry", qos: .background))
+                                                  queue: DispatchQueue(label: "com.autonomy.ios.sentry", qos: .background))
         sentryDestination.outputLevel = .info
         sentryDestination.showLogIdentifier = false
         sentryDestination.showFunctionName = true

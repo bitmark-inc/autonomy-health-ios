@@ -34,7 +34,7 @@ class LocationTableCell: MGSwipeTableCell {
         contentView.addSubview(contentCell)
         contentCell.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 7, left: 0, bottom: 7, right: 0))
+                .inset(UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
         }
 
         contentCell.addSubview(titleTextField)
@@ -48,7 +48,7 @@ class LocationTableCell: MGSwipeTableCell {
 
         titleLabel.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
-            make.height.equalTo(90)
+            make.height.equalTo(60)
         }
 
         healthScoreView.snp.makeConstraints { (make) in

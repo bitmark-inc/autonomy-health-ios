@@ -51,7 +51,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         guideView.snp.makeConstraints { (make) in
             make.top.equalTo(healthView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(150)
         }
     }
 
@@ -207,7 +206,7 @@ extension HealthScoreCollectionCell {
 
         row2.snp.makeConstraints { (make) in
             make.top.equalTo(row1.snp.bottom).offset(Size.dh(15))
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
         }
 
         let view = UIView()

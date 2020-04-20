@@ -61,7 +61,8 @@ class LocationListCell: UICollectionViewCell {
     fileprivate func setupViews() {
         contentView.addSubview(locationTableView)
         locationTableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview().offset(15)
+            make.leading.trailing.bottom.equalToSuperview()
         }
 
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
