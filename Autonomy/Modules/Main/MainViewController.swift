@@ -22,12 +22,12 @@ protocol LocationDelegate: class {
 
     func gotoAddLocationScreen()
     func gotoLastPOICell()
+    func gotoPOI(with poiID: String?)
 }
 
 class MainViewController: ViewController {
 
     // MARK: - Properties
-    lazy var locationLabel = makeLocationLabel()
     lazy var locationInfoView = makeLocationInfoView()
     lazy var mainCollectionView = makeMainCollectionView()
     lazy var pageControl = makePageControl()
@@ -152,10 +152,10 @@ class MainViewController: ViewController {
                 guard let self = self else { return }
                 self.currentUserLocationAddress = userFriendlyAddress
 
-                let currentLocationIndexPath = IndexPath(row: 0, section: self.sectionIndexes.currentLocation)
-                if self.mainCollectionView.indexPathsForVisibleItems.contains(currentLocationIndexPath) {
-                    self.locationLabel.setText(userFriendlyAddress)
+                guard let cellForCurrent = self.mainCollectionView.cellForItem(at: IndexPath(row: 0, section: self.sectionIndexes.currentLocation)) as? HealthScoreCollectionCell else {
+                    return
                 }
+                cellForCurrent.locationLabel.setText(userFriendlyAddress)
             }, onError: { (error) in
                 Global.log.error(error)
             })
@@ -259,7 +259,7 @@ class MainViewController: ViewController {
         }
 
         locationInfoView.snp.makeConstraints { (make) in
-            make.top.equalTo(mainCollectionView.snp.bottom).offset(15)
+            make.top.equalTo(mainCollectionView.snp.bottom)
             make.leading.trailing.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-OurTheme.paddingInset.bottom + 10)
         }
@@ -328,14 +328,14 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         setupPageControl(with: indexPath)
 
         var areaProfileKey: String?
+        var locationName = ""
 
         switch indexPath.section {
         case sectionIndexes.currentLocation:
-            locationLabel.setText(currentUserLocationAddress)
+            locationName = currentUserLocationAddress ?? ""
         case sectionIndexes.poi:
             let poi = pois[indexPath.row]
-            let poiAddressAlias = poi.alias
-            locationLabel.setText(poiAddressAlias)
+            locationName = poi.alias
             areaProfileKey = poi.id
         default:
             break
@@ -346,12 +346,12 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
 
         let areaProfile = areaProfiles[areaProfileKey ?? "current"]
-        cell.setData(areaProfile: areaProfile)
+        cell.setData(areaProfile: areaProfile, locationName: locationName)
 
         thisViewModel.fetchAreaProfile(poiID: areaProfileKey)
             .subscribe(onSuccess: { [weak self] (areaProfile) in
                 guard let self = self else { return }
-                cell.setData(areaProfile: areaProfile)
+                cell.setData(areaProfile: areaProfile, locationName: locationName)
                 self.areaProfiles[areaProfileKey ?? "current"] = areaProfile
 
             }, onError: { [weak self] (error) in
@@ -366,7 +366,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
         currentLocationButton.isEnabled = !isInCurrentLocation
         locationButton.isEnabled = !isInPoiList
-        locationLabel.isHidden = isInPoiList
 
         switch indexPath.section {
         case sectionIndexes.currentLocation: pageControl.currentPage = 0
@@ -378,6 +377,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
+// MARK: - LocationDelegate
 extension MainViewController: LocationDelegate {
     var addLocationSubject: PublishSubject<PointOfInterest> {
         return thisViewModel.addLocationSubject
@@ -465,14 +465,6 @@ extension MainViewController {
 
 // MARK: - Setup Views
 extension MainViewController {
-    fileprivate func makeLocationLabel() -> Label {
-        let label = Label()
-        label.textAlignment = .center
-        label.apply(font: R.font.atlasGroteskLight(size: 16),
-                    themeStyle: .silverTextColor)
-        return label
-    }
-
     fileprivate func makeNavButtons() -> UIView {
         themeService.rx
             .bind({ $0.background }, to: currentLocationButton.rx.backgroundColor)
@@ -553,18 +545,9 @@ extension MainViewController {
     fileprivate func makeLocationInfoView() -> UIView {
         let view = UIView()
         view.addSubview(navButtons)
-        view.addSubview(locationLabel)
-
-        locationLabel.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().multipliedBy(0.7)
-            make.top.centerX.equalToSuperview()
-        }
-
         navButtons.snp.makeConstraints { (make) in
-            make.top.equalTo(locationLabel.snp.bottom).offset(-5)
-            make.centerX.bottom.equalToSuperview()
+            make.top.centerX.bottom.equalToSuperview()
         }
-
         return view
     }
 

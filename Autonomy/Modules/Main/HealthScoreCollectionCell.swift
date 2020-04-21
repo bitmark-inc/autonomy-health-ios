@@ -17,6 +17,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     lazy var guideView = makeGuideView()
     lazy var guideDataView = makeGuideDataView()
     lazy var behaviorGuideView = makeBehaviorGuideView()
+    lazy var locationLabel = makeLocationLabel()
 
     // Behavior Guide View
     lazy var behaviorLabel = makeBehaviorLabel()
@@ -40,6 +41,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     fileprivate func setupViews() {
         contentView.addSubview(healthView)
         contentView.addSubview(guideView)
+        contentView.addSubview(locationLabel)
 
         healthView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(Size.dh(70))
@@ -52,18 +54,26 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             make.top.equalTo(healthView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview()
         }
+
+        locationLabel.snp.makeConstraints { (make) in
+            make.width.equalToSuperview().multipliedBy(0.7)
+            make.bottom.centerX.equalToSuperview()
+        }
     }
 
-    func setData(areaProfile: AreaProfile?) {
+    func setData(areaProfile: AreaProfile?, locationName: String) {
         guard let areaProfile = areaProfile else {
-            guideView.showAnimatedSkeleton()
+            guideView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
             return
         }
 
         guideView.hideSkeleton()
+        rebuildHealthView(score: areaProfile.displayScore)
         bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
         bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
         bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)
+
+        locationLabel.setText(locationName)
     }
 
     fileprivate func bindInfo(for scoreInfoType: ScoreInfoType, number: Int, delta: Int) {
@@ -109,6 +119,17 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         }
     }
 
+    fileprivate func rebuildHealthView(score: Int?) {
+        let newHealthView = makeHealthScoreView(score: score)
+
+        healthView.removeSubviews()
+        healthView.addSubview(newHealthView)
+
+        newHealthView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+
     fileprivate func formatNumber(_ number: Int) -> String? {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -138,7 +159,6 @@ extension HealthScoreCollectionCell {
                     themeStyle: .lightTextColor)
 
         let scoreLabel = Label()
-
 
         let view = UIView()
         view.addSubview(healthScoreTriangle)
@@ -186,6 +206,14 @@ extension HealthScoreCollectionCell {
         behaviorGuideView.isHidden = true
         view.isSkeletonable = true
         return view
+    }
+
+    fileprivate func makeLocationLabel() -> Label {
+        let label = Label()
+        label.textAlignment = .center
+        label.apply(font: R.font.atlasGroteskLight(size: 16),
+                    themeStyle: .silverTextColor)
+        return label
     }
 
     fileprivate func makeBehaviorGuideView() -> UIView {

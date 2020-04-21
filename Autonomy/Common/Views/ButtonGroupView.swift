@@ -12,7 +12,7 @@ class ButtonGroupView: UIView {
 
     fileprivate lazy var gradientLayerView = makeGradientLayerView()
     let viewHeightWithGradient: CGFloat = 117
-    fileprivate let defaultBackgroundColor = UIColor(hexString: "#1B1B1B")!
+    fileprivate let defaultBackgroundColor = UIColor(hexString: "#000")!
 
     init(button1: UIView, button2: UIView, hasGradient: Bool = false) {
         super.init(frame: CGRect.zero)

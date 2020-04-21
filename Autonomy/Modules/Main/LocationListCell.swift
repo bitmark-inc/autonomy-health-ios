@@ -130,6 +130,12 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
         }
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == 0 else { return }
+        let poiID = pois[indexPath.row].id
+        locationDelegate?.gotoPOI(with: poiID)
+    }
+
     fileprivate func makeDeleteLocationSwipeButton(poiID: String) -> MGSwipeButton {
         return MGSwipeButton(title: "", icon: R.image.deleteLocationCell()!, backgroundColor: .clear) { [weak self] (_) -> Bool in
             guard let self = self, let indexRow = self.pois.firstIndex(where: { $0.id == poiID }) else {
