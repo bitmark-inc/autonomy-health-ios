@@ -43,7 +43,7 @@ class NetworkConnectionManager {
 
     var isReachable: Bool {
         let isReachableResult = reachRelay.value
-//        isReachableResult ? NoInternetBanner.hide() : NoInternetBanner.show()
+        isReachableResult ? NoInternetBanner.hide() : NoInternetBanner.show()
         return isReachableResult
     }
 }

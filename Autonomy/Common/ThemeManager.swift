@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxTheme
 
-let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .default)
+let globalStatusBarStyle = BehaviorRelay<UIStatusBarStyle>(value: .lightContent)
 var themeService = ThemeType.currentThemeService(for: .unspecified)
 
 struct OurTheme {

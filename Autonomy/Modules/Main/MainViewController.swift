@@ -98,7 +98,7 @@ class MainViewController: ViewController {
 
         self.audioLevel = currentLevel
         if Global.volumePressTrack.contains("00011") {
-            thisViewModel.signOutAccount()
+            gotoOnboardingScreen()
         }
     }
 
