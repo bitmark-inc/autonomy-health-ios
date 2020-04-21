@@ -15,7 +15,7 @@ class NoInternetBanner {
         attributes.entryBackground = .color(color: EKColor(UIColor(hexString: "#828180")!))
         attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10, offset: .zero))
-        attributes.displayDuration = 1.5
+        attributes.displayDuration = 300
         attributes.statusBar = .hidden
         return attributes
     }()

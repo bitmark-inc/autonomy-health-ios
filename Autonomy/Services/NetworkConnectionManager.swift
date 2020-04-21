@@ -46,4 +46,18 @@ class NetworkConnectionManager {
         isReachableResult ? NoInternetBanner.hide() : NoInternetBanner.show()
         return isReachableResult
     }
+
+    func doActionWhenConnecting(handler: @escaping () -> Void) {
+        guard let reachability = NetworkReachabilityManager() else { return }
+        reachability.startListening(onUpdatePerforming: { (status) in
+            switch status {
+            case .reachable:
+                NoInternetBanner.hide()
+                handler()
+                reachability.stopListening()
+            default:
+                NoInternetBanner.show()
+            }
+        })
+    }
 }

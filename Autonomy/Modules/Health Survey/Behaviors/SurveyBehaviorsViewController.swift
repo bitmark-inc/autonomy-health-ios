@@ -221,12 +221,12 @@ extension SurveyBehaviorsViewController {
 
     fileprivate func sampleBehaviorsScrollView() {
         let behaviorViews = (0...3).map { (_) -> CheckboxView in
-            return CheckboxView(title: "---", description: "---")
+            return CheckboxView(title: Constant.fieldPlaceholder, description: Constant.fieldPlaceholder)
         }
 
         let behaviorViewsStack = UIStackView(arrangedSubviews: behaviorViews, axis: .vertical, spacing: 15)
         behaviorViewsStack.isSkeletonable = true
-        behaviorViewsStack.showAnimatedSkeleton()
+        behaviorViewsStack.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
 
         behaviorsScrollView.removeSubviews()
         behaviorsScrollView.addSubview(behaviorViewsStack)

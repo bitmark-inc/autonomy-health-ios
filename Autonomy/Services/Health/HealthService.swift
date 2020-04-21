@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class HealthService {
-    static var provider = MoyaProvider<HealthAPI>(plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<HealthAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func getScore() -> Single<Double> {
         Global.log.info("[start] HealthService.getScore")

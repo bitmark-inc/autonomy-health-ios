@@ -17,9 +17,21 @@ class CheckboxView: UIView {
     lazy var checkBox = makeCheckBox()
     lazy var titleLabel = makeTitleLabel()
     lazy var descLabel = makeDescLabel()
+    fileprivate lazy var tapGestureRecognizer = makeTapGestureRecognizer()
+
     var title: String! {
         didSet {
             titleLabel.setText(title)
+
+            if title == Constant.fieldPlaceholder {
+                checkBox.tintColor = .clear
+                checkBox.isEnabled = false
+                tapGestureRecognizer.isEnabled = false
+            } else {
+                checkBox.tintColor = .white
+                checkBox.isEnabled = true
+                tapGestureRecognizer.isEnabled = true
+            }
         }
     }
     var desc: String? {
@@ -28,7 +40,6 @@ class CheckboxView: UIView {
         }
     }
 
-    fileprivate lazy var tapGestureRecognizer = makeTapGestureRecognizer()
     let disposeBag = DisposeBag()
 
     init(title: String?, description: String? = nil) {
@@ -76,6 +87,12 @@ class CheckboxView: UIView {
         isSkeletonable = true
         checkBox.isSkeletonable = true
         textView.isSkeletonable = true
+
+        if title == Constant.fieldPlaceholder {
+            checkBox.tintColor = .clear
+            checkBox.isEnabled = false
+            tapGestureRecognizer.isEnabled = false
+        }
     }
 
     required init?(coder: NSCoder) {

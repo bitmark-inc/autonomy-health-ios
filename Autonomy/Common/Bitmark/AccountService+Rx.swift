@@ -42,25 +42,26 @@ extension AccountServiceDelegate {
 
 class AccountService: AccountServiceDelegate {
     static func registerIntercom(for accountNumber: String?, metadata: [String: String] = [:]) {
-        Global.log.info("[start] registerIntercom")
-        
-        Intercom.logout()
-        
-        if let accountNumber = accountNumber {
-            let intercomUserID = "\(Constant.appName)_ios_\(accountNumber.hexDecodedData.sha3(length: 256).hexEncodedString)"
-            Intercom.registerUser(withUserId: intercomUserID)
-        } else {
-            Intercom.registerUnidentifiedUser()
+        NetworkConnectionManager.shared.doActionWhenConnecting {
+            Global.log.info("[start] registerIntercom")
+            Intercom.logout()
+
+            if let accountNumber = accountNumber {
+                let intercomUserID = "\(Constant.appName)_ios_\(accountNumber.hexDecodedData.sha3(length: 256).hexEncodedString)"
+                Intercom.registerUser(withUserId: intercomUserID)
+            } else {
+                Intercom.registerUnidentifiedUser()
+            }
+
+            let userAttributes = ICMUserAttributes()
+
+            var metadata = metadata
+            metadata["Service"] = (Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String) ?? ""
+            userAttributes.customAttributes = metadata
+
+            Intercom.updateUser(userAttributes)
+            Global.log.info("[done] registerIntercom")
         }
-        
-        let userAttributes = ICMUserAttributes()
-        
-        var metadata = metadata
-        metadata["Service"] = (Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String) ?? ""
-        userAttributes.customAttributes = metadata
-        
-        Intercom.updateUser(userAttributes)
-        Global.log.info("[done] registerIntercom")
     }
 
     static func rxCreateNewAccount() -> Single<Account> {

@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class AreaProfileService {
-    static var provider = MoyaProvider<AreaProfileAPI>(plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<AreaProfileAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func get() -> Single<AreaProfile> {
         Global.log.info("[start] AreaProfileService.get")

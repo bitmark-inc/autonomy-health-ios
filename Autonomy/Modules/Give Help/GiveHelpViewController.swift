@@ -75,7 +75,7 @@ class GiveHelpViewController: ViewController, BackNavigator {
                 guard let self = self else { return }
                 guard let helpRequest = helpRequest else {
                     self.submitButton.isEnabled = false
-                    self.scrollView.showAnimatedSkeleton()
+                    self.scrollView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
                     return
                 }
 

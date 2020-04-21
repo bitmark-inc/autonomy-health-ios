@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class BehaviorService {
-    static var provider = MoyaProvider<BehaviorAPI>(plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<BehaviorAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func getList() -> Single<[Behavior]> {
         Global.log.info("[start] BehaviorService.getList")

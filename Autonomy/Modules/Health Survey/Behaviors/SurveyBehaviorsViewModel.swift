@@ -20,6 +20,12 @@ class SurveyBehaviorsViewModel: ViewModel {
     override init() {
         super.init()
 
+        NetworkConnectionManager.shared.doActionWhenConnecting { [weak self] in
+            self?.fetchBehaviors()
+        }
+    }
+
+    fileprivate func fetchBehaviors() {
         BehaviorService.getList()
             .subscribe(onSuccess: { [weak self] in
                 self?.behaviorsRelay.accept($0)

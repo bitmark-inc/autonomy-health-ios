@@ -35,6 +35,9 @@ public struct Constant {
         public static let checkInSurvey1 = "check-in-survey-1"
         public static let checkInSurvey2 = "check-in-survey-2"
     }
+
+    static let fieldPlaceholder = "---"
+    static let skeletonColor = UIColor(red: 0.109804, green: 0.137255, blue: 0.145098, alpha: 1)
 }
 
 enum HealthRisk {

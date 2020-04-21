@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class PointOfInterestService {
-    static var provider = MoyaProvider<PointOfInterestAPI>(plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<PointOfInterestAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func get() -> Single<[PointOfInterest]> {
         Global.log.info("[start] PointOfInterestService.get")

@@ -28,7 +28,7 @@ class AuthService {
         }
     }
 
-    var provider = MoyaProvider<AuthAPI>(plugins: Global.default.networkLoggerPlugin)
+    var provider = MoyaProvider<AuthAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
     var lock = NSLock()
     let disposeBag = DisposeBag()
 

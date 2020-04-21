@@ -221,12 +221,12 @@ extension SurveySymptomsViewController {
 
     fileprivate func sampleSymptomsScrollView() {
         let symptomViews = (0...3).map { (_) -> CheckboxView in
-            return CheckboxView(title: "---", description: "---")
+            return CheckboxView(title: Constant.fieldPlaceholder, description: Constant.fieldPlaceholder)
         }
 
         let symptomViewsStack = UIStackView(arrangedSubviews: symptomViews, axis: .vertical, spacing: 15)
         symptomViewsStack.isSkeletonable = true
-        symptomViewsStack.showAnimatedSkeleton()
+        symptomViewsStack.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
 
         symptomsScrollView.removeSubviews()
         symptomsScrollView.addSubview(symptomViewsStack)

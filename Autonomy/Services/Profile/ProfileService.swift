@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class ProfileService {
-    static var provider = MoyaProvider<ProfileAPI>(plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<ProfileAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func create(metadata: [String: Any]) -> Single<Profile> {
         return Single.deferred {

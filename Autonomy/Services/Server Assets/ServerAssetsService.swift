@@ -12,7 +12,7 @@ import Moya
 
 class ServerAssetsService {
 
-    static var provider = MoyaProvider<ServerAssetsAPI>(plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<ServerAssetsAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func getAppInformation() -> Single<AppInfo> {
         Global.log.info("[start] getAppInformation")

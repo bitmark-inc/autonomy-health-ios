@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class HelpRequestService {
-    static var provider = MoyaProvider<HelpRequestAPI>(plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<HelpRequestAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func create(helpRequest: HelpRequest) -> Completable {
         Global.log.info("[start] HelpRequestService.create(helpRequest:)")

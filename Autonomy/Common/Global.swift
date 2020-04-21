@@ -15,6 +15,7 @@ import CoreLocation
 import SwiftDate
 import Intercom
 import OneSignal
+import Alamofire
 
 class Global {
     static var current = Global()
@@ -151,4 +152,14 @@ enum AppError: Error {
 
 enum AccountError: Error {
     case invalidRecoveryKey
+}
+
+class CustomMoyaSession: Alamofire.Session {
+    static let shared: CustomMoyaSession = {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 10 // as seconds
+        configuration.timeoutIntervalForResource = 10 // as seconds
+        configuration.requestCachePolicy = .useProtocolCachePolicy
+        return CustomMoyaSession(configuration: configuration)
+    }()
 }

@@ -20,6 +20,12 @@ class SurveySymptomsViewModel: ViewModel {
     override init() {
         super.init()
 
+        NetworkConnectionManager.shared.doActionWhenConnecting { [weak self] in
+            self?.fetchSymptoms()
+        }
+    }
+
+    fileprivate func fetchSymptoms() {
         SymptomService.getList()
             .subscribe(onSuccess: { [weak self] in
                 self?.symptomsRelay.accept($0)
