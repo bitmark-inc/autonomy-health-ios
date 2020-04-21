@@ -13,11 +13,14 @@ import RxSwift
 import RxCocoa
 import CoreLocation
 import SwiftDate
+import Intercom
+import OneSignal
 
 class Global {
     static var current = Global()
     static let `default` = current
     static var openAppWithNotification: Bool = false
+    static var volumePressTrack = ""
 
     var account: Account?
     lazy var accountNumberRelay = BehaviorRelay<String?>(value: account?.getAccountNumber())
@@ -96,6 +99,24 @@ class Global {
                 gradation: customGradation,
                 allowedUnits: [.day, .week, .month, .year])
     }()
+
+    func removeCurrentAccount() throws {
+        guard Global.current.account != nil else {
+            throw AppError.emptyCurrentAccount
+        }
+
+        try KeychainStore.removeSeedCoreFromKeychain()
+
+        // clear user data
+        Global.current = Global() // reset local variable
+        AuthService.shared = AuthService()
+        Intercom.logout()
+        OneSignal.setSubscription(false)
+        OneSignal.deleteTag(Constant.OneSignal.Tags.key)
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+
+        ErrorReporting.setUser(bitmarkAccountNumber: nil)
+    }
 }
 
 extension UserDefaults {

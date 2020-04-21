@@ -29,14 +29,13 @@ class AddLocationCell: TableViewCell {
         contentCell.addSubview(plusImage)
 
         addNewLocationLabel.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.8)
+            make.top.bottom.leading.equalToSuperview()
         }
 
         plusImage.snp.makeConstraints { (make) in
             make.leading.equalTo(addNewLocationLabel.snp.trailing).offset(15)
             make.centerY.trailing.top.bottom.equalToSuperview()
+            make.width.height.equalTo(60)
         }
     }
 

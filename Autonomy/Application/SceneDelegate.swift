@@ -44,6 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
+        Global.volumePressTrack = ""
         guard Global.current.account != nil else { return }
 
         guard !Global.openAppWithNotification else {

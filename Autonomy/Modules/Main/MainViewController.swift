@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import SkeletonView
+import MediaPlayer
 
 protocol LocationDelegate: class {
     var addLocationSubject: PublishSubject<PointOfInterest> { get }
@@ -53,7 +54,10 @@ class MainViewController: ViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        Global.volumePressTrack = ""
+
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            guard Global.current.account != nil else { return }
             guard settings.authorizationStatus == .provisional || settings.authorizationStatus == .authorized else {
                 return
             }
@@ -74,9 +78,46 @@ class MainViewController: ViewController {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
+    // Properties for temporary shortcut to reset the onboarding
+    let audioSession = AVAudioSession.sharedInstance()
+    var audioLevel: Float? = nil
+
+    @objc func volumeChanged(_ notification: Notification) {
+        guard let currentLevel = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as? Float,
+            let audioLevel = audioLevel else {
+                self.audioLevel = audioSession.outputVolume
+                return
+        }
+
+        if currentLevel > audioLevel || currentLevel == 1 { // press volume up
+            Global.volumePressTrack.append("1")
+        }
+        if currentLevel < audioLevel || currentLevel == 0 { // press volume down
+            Global.volumePressTrack.append("0")
+        }
+
+        self.audioLevel = currentLevel
+        if Global.volumePressTrack.contains("00011") {
+            thisViewModel.signOutAccount()
+        }
+    }
+
     // MARK: - bindViewModel
     override func bindViewModel() {
         super.bindViewModel()
+        thisViewModel.signOutAccountResultSubject
+            .subscribe(onNext: { [weak self] (event) in
+                guard let self = self else { return }
+                switch event {
+                case .error(let error):
+                    self.errorWhenSignOutAccount(error: error)
+                case .completed:
+                    Global.log.info("[done] signOut Account")
+                    self.gotoOnboardingScreen()
+                default:
+                    break
+                }
+            }).disposed(by: disposeBag)
 
         thisViewModel.submitResultSubject
             .subscribe(onNext: { (event) in
@@ -200,6 +241,11 @@ class MainViewController: ViewController {
         showErrorAlertWithSupport(message: R.string.error.system())
     }
 
+    func errorWhenSignOutAccount(error: Error) {
+        Global.log.error(error)
+        showErrorAlertWithSupport(message: R.string.error.accountSignOutError())
+    }
+
     override func setupViews() {
         super.setupViews()
 
@@ -223,6 +269,20 @@ class MainViewController: ViewController {
             make.top.equalTo(locationInfoView).offset(10)
             make.width.height.equalTo(10)
         }
+
+        // temporary shortcut to reset the onboarding
+        let volumeView = MPVolumeView(frame: CGRect.zero)
+        volumeView.isHidden = true
+        self.view.addSubview(volumeView)
+        do {
+            try audioSession.setActive(true)
+        } catch {
+            Global.log.info("[audioSession] error for setActive")
+            Global.log.error(error)
+        }
+        NotificationCenter.default.addObserver (self, selector: #selector(volumeChanged(_:)),
+                                                name: NSNotification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
+                                                object: nil)
     }
 }
 
@@ -396,6 +456,10 @@ extension MainViewController {
             mainCollectionView.scrollToItem(at: indexPath, at: .right, animated: animated)
             setupPageControl(with: indexPath)
         }
+    }
+
+    fileprivate func gotoOnboardingScreen() {
+        navigator.show(segue: .signInWall, sender: self, transition: .replace(type: .none))
     }
 }
 

@@ -21,6 +21,7 @@ class MainViewModel: ViewModel {
     let orderLocationIndexSubject = PublishSubject<(from: Int, to: Int)>()
     let submitResultSubject = PublishSubject<Event<Never>>()
     var navigateToPoiID: String?
+    let signOutAccountResultSubject = PublishSubject<Event<Never>>()
 
     convenience init(navigateToPoiID: String?) {
         self.init()
@@ -143,5 +144,14 @@ class MainViewModel: ViewModel {
                 self?.submitResultSubject.onNext(Event.error(error))
             })
             .disposed(by: disposeBag)
+    }
+
+    func signOutAccount() {
+        do {
+            try Global.current.removeCurrentAccount()
+            signOutAccountResultSubject.onNext(.completed)
+        } catch {
+            signOutAccountResultSubject.onNext(.error(error))
+        }
     }
 }

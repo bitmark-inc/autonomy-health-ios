@@ -113,6 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        Global.volumePressTrack = ""
         guard Global.current.account != nil else { return }
 
         guard !Global.openAppWithNotification else {
