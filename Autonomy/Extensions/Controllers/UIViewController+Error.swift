@@ -97,16 +97,21 @@ struct ErrorAlert {
 
 extension Global {
     static func handleErrorIfAsAFError(_ error: Error) -> Bool {
-        guard let error = error.asAFError else {
+        guard let error = error as? MoyaError else {
             return false
         }
 
         switch error {
-        case .sessionTaskFailed(let error):
-            Global.log.info("[done] handle silently AFError; show error: \(error.localizedDescription)")
-            Global.log.error(error)
-            return true
+        case .underlying(let error, _):
+            guard let error = error.asAFError else { return false }
+            switch error {
+            case .sessionTaskFailed(let error):
+                Global.log.info("[done] handle silently AFError; show error: \(error.localizedDescription)")
+                return true
 
+            default:
+                break
+            }
         default:
             break
         }

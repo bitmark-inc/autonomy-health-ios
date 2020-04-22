@@ -74,6 +74,11 @@ class LocationTableCell: MGSwipeTableCell {
         } else {
             titleTextField.resignFirstResponder()
             parentLocationListCell?.toggleAddLocationMode(isOn: true)
+
+            // wait for affecting select TableCell first, before changing isEditMode value
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.parentLocationListCell?.isEditMode = false
+            }
         }
     }
 

@@ -14,7 +14,7 @@ import SkeletonView
 import MediaPlayer
 
 protocol LocationDelegate: class {
-    var addLocationSubject: PublishSubject<PointOfInterest> { get }
+    var addLocationSubject: PublishSubject<PointOfInterest?> { get }
 
     func updatePOI(poiID: String, alias: String)
     func deletePOI(poiID: String)
@@ -82,6 +82,12 @@ class MainViewController: ViewController {
         super.viewWillDisappear(animated)
         
         removeNotificationsObserver()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        thisViewModel.fetchPOIs()
     }
 
     // Properties for temporary shortcut to reset the onboarding
@@ -199,8 +205,15 @@ class MainViewController: ViewController {
             .disposed(by: disposeBag)
 
         thisViewModel.addLocationSubject
-            .subscribe(onNext: { [weak self] (_) in
+            .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
+
+                if $0 == nil {
+                    guard let viewController = self.presentedViewController as? LocationSearchViewController else { return }
+                    viewController.dismiss(animated: true, completion: nil)
+                    return
+                }
+
                 self.mainCollectionView.performBatchUpdates({
                     self.mainCollectionView.insertItems(at: [IndexPath(row: self.pois.count - 1, section: 1)])
 
@@ -386,7 +399,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 // MARK: - LocationDelegate
 extension MainViewController: LocationDelegate {
-    var addLocationSubject: PublishSubject<PointOfInterest> {
+    var addLocationSubject: PublishSubject<PointOfInterest?> {
         return thisViewModel.addLocationSubject
     }
 

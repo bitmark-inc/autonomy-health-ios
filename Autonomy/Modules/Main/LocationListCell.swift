@@ -26,6 +26,7 @@ class LocationListCell: UICollectionViewCell {
         }
     }
     var didCallOvercomeSelectAllIssue: Bool = false
+    var isEditMode: Bool = false
 
     fileprivate let disposeBag = DisposeBag()
 
@@ -50,6 +51,7 @@ class LocationListCell: UICollectionViewCell {
     func observeAddLocationEvent() {
         addLocationObserver?.dispose()
         addLocationObserver = locationDelegate?.addLocationSubject
+            .filterNil()
             .subscribe(onNext: { [weak self] (poi) in
                 guard let self = self else { return }
                 self.pois.append(poi)
@@ -131,7 +133,7 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.section == 0 else { return }
+        guard !isEditMode, indexPath.section == 0 else { return }
         let poiID = pois[indexPath.row].id
         locationDelegate?.gotoPOI(with: poiID)
     }
@@ -159,6 +161,7 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
                     return true
             }
 
+            self.isEditMode = true
             cell.toggleEditMode(isOn: true)
             self.toggleAddLocationMode(isOn: false)
             return true

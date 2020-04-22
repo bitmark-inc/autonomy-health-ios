@@ -16,7 +16,7 @@ class MainViewModel: ViewModel {
     let poisRelay = BehaviorRelay(value: (pois: [PointOfInterest](), userInteractive: false))
     let fetchPOIStateRelay = BehaviorRelay<LoadState>(value: .hide)
 
-    let addLocationSubject = PublishSubject<PointOfInterest>()
+    let addLocationSubject = PublishSubject<PointOfInterest?>()
     let deleteLocationIndexSubject = PublishSubject<Int>()
     let orderLocationIndexSubject = PublishSubject<(from: Int, to: Int)>()
     let submitResultSubject = PublishSubject<Event<Never>>()
@@ -41,6 +41,10 @@ class MainViewModel: ViewModel {
                 self.poisRelay.accept((pois: savedPOIs, userInteractive: false))
 
             }, onError: { (error) in
+                guard !AppError.errorByNetworkConnection(error),
+                    !Global.handleErrorIfAsAFError(error) else {
+                        return
+                }
                 Global.log.error(error)
             })
             .disposed(by: disposeBag)
@@ -68,6 +72,13 @@ class MainViewModel: ViewModel {
 
             guard let place = place else {
                 Global.log.error("empty place when fetchPlace with placeID: \(placeID)")
+                return
+            }
+
+            if self.poisRelay.value.pois.contains(where: {
+                $0.location.latitude == place.coordinate.latitude && $0.location.longitude == place.coordinate.longitude }) {
+                Global.log.info("[addLocation] duplicated location")
+                self.addLocationSubject.onNext(nil)
                 return
             }
 
