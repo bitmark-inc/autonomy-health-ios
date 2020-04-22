@@ -23,9 +23,7 @@ class RiskLevelViewModel: ViewModel {
         loadingState.onNext(.loading)
         ProfileDataEngine.create(riskLevel: riskLevel)
             .asObservable()
-            .materialize().bind { [weak self] in
-                self?.signUpResultSubject.onNext($0)
-            }
+            .materializeWithCompleted(to: signUpResultSubject)
             .disposed(by: disposeBag)
     }
 }

@@ -57,9 +57,7 @@ class GiveHelpViewModel: ViewModel {
 
         HelpRequestService.give(to: helpRequestID)
             .asObservable()
-            .materialize().bind { [weak self] in
-                self?.submitResultSubject.onNext($0)
-            }
+            .materializeWithCompleted(to: submitResultSubject)
             .disposed(by: disposeBag)
     }
 }

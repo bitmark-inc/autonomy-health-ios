@@ -84,6 +84,7 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
 
         doneButton.rxTap.bind { [weak self] in
             guard let self = self else { return }
+            loadingState.onNext(.loading)
             let selectedSymptomKeys = self.getSelectedSymptomKeys()
             self.thisViewModel.report(with: selectedSymptomKeys)
         }.disposed(by: disposeBag)

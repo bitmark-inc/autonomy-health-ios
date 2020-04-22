@@ -222,6 +222,7 @@ extension LocationListCell {
         tableView.dragInteractionEnabled = true
         tableView.dragDelegate = self
         tableView.dropDelegate = self
+        tableView.bounces = false
         tableView.separatorStyle = .singleLine
         tableView.delaysContentTouches = true
         tableView.showsVerticalScrollIndicator = false

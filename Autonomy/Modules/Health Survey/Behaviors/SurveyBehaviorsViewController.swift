@@ -84,6 +84,7 @@ class SurveyBehaviorsViewController: ViewController, BackNavigator {
 
         doneButton.rxTap.bind { [weak self] in
             guard let self = self else { return }
+            loadingState.onNext(.loading)
             let selectedBehaviorKeys = self.getSelectedBehaviorKeys()
             self.thisViewModel.report(with: selectedBehaviorKeys)
         }.disposed(by: disposeBag)

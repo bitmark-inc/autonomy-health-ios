@@ -32,3 +32,17 @@ func <=> <Base>(textInput: TextInput<Base>, variable: BehaviorRelay<String>) -> 
 
     return Disposables.create(bindToUIDisposable, bindToVariable)
 }
+
+extension ObservableType {
+
+    // materialize events; AND complete the subject when event is completed
+    func materializeWithCompleted(to eventSubject: PublishSubject<Event<Self.Element>>) -> Disposable {
+        return self.materialize()
+            .subscribe(onNext: { (event) in
+                eventSubject.onNext(event)
+                if event.isCompleted {
+                    eventSubject.onCompleted()
+                }
+            })
+    }
+}

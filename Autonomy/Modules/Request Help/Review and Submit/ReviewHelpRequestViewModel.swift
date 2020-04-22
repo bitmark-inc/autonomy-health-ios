@@ -26,9 +26,7 @@ class ReviewHelpRequestViewModel: ViewModel {
         loadingState.onNext(.loading)
         HelpRequestService.create(helpRequest: helpRequest)
             .asObservable()
-            .materialize().bind { [weak self] in
-                self?.submitResultSubject.onNext($0)
-            }
+            .materializeWithCompleted(to: submitResultSubject)
             .disposed(by: disposeBag)
     }
 }

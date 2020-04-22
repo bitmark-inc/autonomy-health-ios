@@ -38,9 +38,7 @@ class SurveyBehaviorsViewModel: ViewModel {
     func report(with behaviorKeys: [String]) {
         BehaviorService.report(behaviorKeys: behaviorKeys)
             .asObservable()
-            .materialize().bind { [weak self] in
-                self?.surveySubmitResultSubject.onNext($0)
-            }
+            .materializeWithCompleted(to: surveySubmitResultSubject)
             .disposed(by: disposeBag)
     }
 }

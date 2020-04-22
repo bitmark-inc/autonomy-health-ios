@@ -38,9 +38,7 @@ class SurveySymptomsViewModel: ViewModel {
     func report(with symptomKeys: [String]) {
         SymptomService.report(symptomKeys: symptomKeys)
             .asObservable()
-            .materialize().bind { [weak self] in
-                self?.surveySubmitResultSubject.onNext($0)
-            }
+            .materializeWithCompleted(to: surveySubmitResultSubject)
             .disposed(by: disposeBag)
     }
 }

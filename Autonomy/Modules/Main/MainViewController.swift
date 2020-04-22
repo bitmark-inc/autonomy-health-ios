@@ -78,6 +78,12 @@ class MainViewController: ViewController {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        removeNotificationsObserver()
+    }
+
     // Properties for temporary shortcut to reset the onboarding
     let audioSession = AVAudioSession.sharedInstance()
     var audioLevel: Float? = nil
@@ -98,6 +104,7 @@ class MainViewController: ViewController {
 
         self.audioLevel = currentLevel
         if Global.volumePressTrack.contains("00011") {
+            Global.volumePressTrack = ""
             gotoOnboardingScreen()
         }
     }
