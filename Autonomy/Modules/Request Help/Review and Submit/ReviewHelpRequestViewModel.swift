@@ -23,7 +23,7 @@ class ReviewHelpRequestViewModel: ViewModel {
     }
 
     func submit() {
-        loadingState.onNext(.loading)
+        loadingState.onNext(.processing)
         HelpRequestService.create(helpRequest: helpRequest)
             .asObservable()
             .materializeWithCompleted(to: submitResultSubject)

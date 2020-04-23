@@ -65,26 +65,15 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
             .disposed(by: disposeBag)
 
         thisViewModel.surveySubmitResultSubject
-            .subscribe(onNext: { [weak self] (event) in
-                guard let self = self else { return }
+            .subscribe(onCompleted: { [weak self] in
                 loadingState.onNext(.hide)
-                switch event {
-                case .error(let error):
-                    self.errorWhenFetchingData(error: error)
-
-                case .completed:
-                    Global.log.info("[symptoms] report successfully")
-                    self.showSignedPanModel()
-                default:
-                    break
-                }
-
+                self?.showSignedPanModel()
             })
             .disposed(by: disposeBag)
 
         doneButton.rxTap.bind { [weak self] in
             guard let self = self else { return }
-            loadingState.onNext(.loading)
+            loadingState.onNext(.processing)
             let selectedSymptomKeys = self.getSelectedSymptomKeys()
             self.thisViewModel.report(with: selectedSymptomKeys)
         }.disposed(by: disposeBag)

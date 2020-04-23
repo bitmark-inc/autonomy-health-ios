@@ -53,7 +53,7 @@ class GiveHelpViewModel: ViewModel {
     }
 
     func giveHelp() {
-        loadingState.onNext(.loading)
+        loadingState.onNext(.processing)
 
         HelpRequestService.give(to: helpRequestID)
             .asObservable()

@@ -36,9 +36,14 @@ class SurveySymptomsViewModel: ViewModel {
     }
 
     func report(with symptomKeys: [String]) {
+        surveySubmitResultSubject.onCompleted() // don't block user to wait for this result.
+
         SymptomService.report(symptomKeys: symptomKeys)
-            .asObservable()
-            .materializeWithCompleted(to: surveySubmitResultSubject)
+            .subscribe(onCompleted: {
+                Global.log.info("[symptom] report successfully")
+            }, onError: { (error) in
+                Global.log.error(error)
+            })
             .disposed(by: disposeBag)
     }
 }

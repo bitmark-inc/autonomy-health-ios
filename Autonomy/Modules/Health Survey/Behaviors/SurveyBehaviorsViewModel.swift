@@ -36,9 +36,14 @@ class SurveyBehaviorsViewModel: ViewModel {
     }
 
     func report(with behaviorKeys: [String]) {
+        surveySubmitResultSubject.onCompleted() // don't block user to wait for this result.
+
         BehaviorService.report(behaviorKeys: behaviorKeys)
-            .asObservable()
-            .materializeWithCompleted(to: surveySubmitResultSubject)
+            .subscribe(onCompleted: {
+                Global.log.info("[behavior] report successfully")
+            }, onError: { (error) in
+                Global.log.error(error)
+            })
             .disposed(by: disposeBag)
     }
 }

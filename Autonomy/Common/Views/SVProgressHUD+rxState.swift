@@ -27,7 +27,13 @@ extension Reactive where Base: SVProgressHUD {
                 SVProgressHUD.showError(withStatus: nil)
             case .hide, .done:
                 SVProgressHUD.dismiss()
+            case .processing:
+                break // do below
             }
+
+            state == .processing ?
+                UIApplication.shared.beginIgnoringInteractionEvents() :
+                UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
 }
@@ -39,4 +45,5 @@ enum LoadState {
     case hide
     case tickSuccess
     case done
+    case processing // just block userInteraction; no show loading
 }
