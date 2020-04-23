@@ -55,7 +55,7 @@ class PermissionViewController: ViewController, BackNavigator {
             if LocationPermission.isEnabled() == false {
                 LocationPermission.askEnableLocationAlert()
             } else {
-                Global.current.locationManager.requestAlwaysAuthorization()
+                Global.current.locationManager.requestWhenInUseAuthorization()
             }
         }.disposed(by: disposeBag)
 
