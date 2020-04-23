@@ -26,5 +26,9 @@ class TableView: UITableView {
         backgroundColor = .clear
         separatorStyle = .none
         tableFooterView = UIView()
+
+        themeService.rx
+            .bind({ $0.separateTableColor }, to: rx.separatorColor)
+            .disposed(by: disposeBag)
     }
 }

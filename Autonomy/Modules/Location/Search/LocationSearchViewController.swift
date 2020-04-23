@@ -104,15 +104,23 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: SearchTextTableCell.self)
+        cell.separatorInset = .zero
+
+        let autoCompleteLocation = autoCompleteLocations[indexPath.row]
 
         let searchText = thisViewModel.searchLocationTextRelay.value
-        let locationText = autoCompleteLocations[indexPath.row].attributedFullText.string
+        let placeText = autoCompleteLocation.attributedPrimaryText.string
+        let secondaryText = autoCompleteLocation.attributedSecondaryText?.string ?? autoCompleteLocation.attributedFullText.string
 
-        let regex = try! NSRegularExpression(pattern: "(?i)(\(searchText))")
-        let styleAttributedText = regex.stringByReplacingMatches(in: locationText, range: NSRange(0..<locationText.utf16.count), withTemplate: "<b>$1</b>")
-
-        cell.setData(attributedText: styleAttributedText)
+        cell.setData(
+            placeAttributedText: makeAttributedText(searchText, in: placeText),
+            secondaryAttributedText: makeAttributedText(searchText, in: secondaryText))
         return cell
+    }
+
+    fileprivate func makeAttributedText(_ searchText: String, in text: String) -> String {
+        let regex = try! NSRegularExpression(pattern: "(?i)(\(searchText))")
+        return regex.stringByReplacingMatches(in: text, range: NSRange(0..<text.utf16.count), withTemplate: "<b>$1</b>")
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -142,7 +150,6 @@ extension LocationSearchViewController {
 extension LocationSearchViewController {
     fileprivate func makeSearchBar() -> UIView {
         let separateLine = SeparateLine(height: 1)
-        separateLine.backgroundColor = UIColor(hexString: "#828180")
 
         let view = UIView()
         view.addSubview(searchTextField)
@@ -194,6 +201,8 @@ extension LocationSearchViewController {
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .singleLine
+
         tableView.register(cellWithClass: SearchTextTableCell.self)
         return tableView
     }

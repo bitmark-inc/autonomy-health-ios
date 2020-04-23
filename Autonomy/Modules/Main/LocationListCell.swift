@@ -103,7 +103,7 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withClass: LocationTableCell.self, for: indexPath)
-            cell.separatorInset = UIEdgeInsets.zero
+            cell.separatorInset = .zero
             let poi = pois[indexPath.row]
             cell.rightButtons = [
                 makeDeleteLocationSwipeButton(poiID: poi.id),
@@ -229,10 +229,6 @@ extension LocationListCell {
         tableView.separatorStyle = .singleLine
         tableView.delaysContentTouches = true
         tableView.showsVerticalScrollIndicator = false
-        themeService.rx
-            .bind({ $0.lightTextColor }, to: tableView.rx.separatorColor)
-            .bind({ $0.separateTableColor }, to: tableView.rx.separatorColor)
-            .disposed(by: disposeBag)
         return tableView
     }
 
