@@ -31,6 +31,8 @@ class Global {
         return UserDefaults.userStandard(for: accountNumber)
     }
 
+    static var audioVolumeNotificationCalled = false
+
     static let backgroundErrorSubject = PublishSubject<Error>()
     lazy var locationManager: CLLocationManager = {
         return CLLocationManager()

@@ -12,6 +12,7 @@ import RxCocoa
 import SnapKit
 import SkeletonView
 import MediaPlayer
+import GoogleMaps
 
 protocol LocationDelegate: class {
     var addLocationSubject: PublishSubject<PointOfInterest?> { get }
@@ -95,9 +96,13 @@ class MainViewController: ViewController {
     var audioLevel: Float? = nil
 
     @objc func volumeChanged(_ notification: Notification) {
+        guard Global.audioVolumeNotificationCalled else {
+            Global.audioVolumeNotificationCalled = true
+            return
+        }
+
         guard let currentLevel = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as? Float,
             let audioLevel = audioLevel else {
-                self.audioLevel = audioSession.outputVolume
                 return
         }
 
@@ -133,7 +138,8 @@ class MainViewController: ViewController {
             }).disposed(by: disposeBag)
 
         thisViewModel.submitResultSubject
-            .subscribe(onNext: { (event) in
+            .subscribe(onNext: { [weak self] (event) in
+                guard let self = self else { return }
                 switch event {
                 case .error(let error):
                     Global.log.error(error)
@@ -152,12 +158,15 @@ class MainViewController: ViewController {
     }
 
     fileprivate func bindUserFriendlyAddress() {
+        var previousLocation: CLLocation?
+
         Global.current.userLocationRelay
-            .distinctUntilChanged { (previousLocation, updatedLocation) -> Bool in
-                guard let previousLocation = previousLocation, let updatedLocation = updatedLocation else { return false }
-                return previousLocation.distance(from: updatedLocation) < 50.0 // avoid to request reserve address too much; exceeds Apple's limitation.
-            }
+            .filter({ (location) -> Bool in
+                guard let previousLocation = previousLocation, let location = location else { return true }
+                return previousLocation.distance(from: location) >= 50.0 // avoid to request reserve address too much; exceeds Apple's limitation.
+            })
             .flatMap({ (location) -> Single<String?> in
+                previousLocation = location
                 guard let location = location else { return Single.just(nil) }
                 return LocationPermission.lookupAddress(from: location)
             })
@@ -300,6 +309,7 @@ class MainViewController: ViewController {
             Global.log.info("[audioSession] error for setActive")
             Global.log.error(error)
         }
+        audioLevel = audioSession.outputVolume
         NotificationCenter.default.addObserver (self, selector: #selector(volumeChanged(_:)),
                                                 name: NSNotification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
                                                 object: nil)

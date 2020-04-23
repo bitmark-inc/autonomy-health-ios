@@ -40,7 +40,12 @@ class LocationPermission {
                     return
                 }
 
-                event(.success(gmsAddress.lines?.first))
+                let addressString = gmsAddress.lines?.first
+                if addressString == nil || addressString!.isEmpty {
+                    Global.log.error("empty gmsAddress for location: \(location)")
+                }
+
+                event(.success(addressString))
             }
             return Disposables.create()
         }
