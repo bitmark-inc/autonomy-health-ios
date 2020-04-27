@@ -52,9 +52,9 @@ extension Label {
                 .bind({ $0.blackTextColor }, to: rx.textColor)
                 .disposed(by: disposeBag)
 
-        case .silverTextColor:
+        case .silverColor:
             themeService.rx
-                .bind({ $0.silverTextColor }, to: rx.textColor)
+                .bind({ $0.silverColor }, to: rx.textColor)
                 .disposed(by: disposeBag)
 
         case .silverC4TextColor:
@@ -62,9 +62,9 @@ extension Label {
                 .bind({ $0.silverC4TextColor }, to: rx.textColor)
                 .disposed(by: disposeBag)
 
-        case .concordTextColor:
+        case .concordColor:
             themeService.rx
-                .bind({ $0.concordTextColor }, to: rx.textColor)
+                .bind({ $0.concordColor }, to: rx.textColor)
                 .disposed(by: disposeBag)
 
         case .silverChaliceColor:

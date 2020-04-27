@@ -50,7 +50,7 @@ extension AddLocationCell {
         label.apply(
             text: R.string.localizable.addNewLocation(),
             font: R.font.atlasGroteskLight(size: 24),
-            themeStyle: .concordTextColor)
+            themeStyle: .concordColor)
         return label
     }
 }

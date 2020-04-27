@@ -183,7 +183,7 @@ extension LocationSearchViewController {
 
         themeService.rx
             .bind({ $0.lightTextColor  }, to: textField.rx.textColor)
-            .bind({ $0.silverTextColor }, to: textField.rx.placeholderColor)
+            .bind({ $0.silverColor }, to: textField.rx.placeholderColor)
             .disposed(by: disposeBag)
 
         return textField

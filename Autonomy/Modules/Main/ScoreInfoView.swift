@@ -17,6 +17,14 @@ class ScoreInfoView: UIView {
     lazy var changeNumberLabel = makeChangeNumberLabel()
 
     let scoreInfoType: ScoreInfoType!
+    var titleFontSize: CGFloat {
+        switch UIScreen.main.bounds.size.width {
+        case let x where x <= 320:
+            return 10
+        default:
+            return 12
+        }
+    }
 
     init(scoreInfoType: ScoreInfoType) {
         self.scoreInfoType = scoreInfoType
@@ -87,14 +95,14 @@ enum ScoreInfoType {
 extension ScoreInfoView {
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
-        label.apply(font: R.font.atlasGroteskLight(size: Size.ds(12)),
+        label.apply(font: R.font.atlasGroteskLight(size: titleFontSize),
                     themeStyle: .lightTextColor)
         return label
     }
 
     fileprivate func makeCurrentNumberLabel() -> Label {
         let label = Label()
-        label.apply(font: R.font.ibmPlexMonoMedium(size: Size.ds(30)),
+        label.apply(font: R.font.ibmPlexMonoMedium(size: 24),
                     themeStyle: .lightTextColor)
         return label
     }
@@ -106,7 +114,7 @@ extension ScoreInfoView {
     fileprivate func makeChangeNumberLabel() -> Label {
         let label = Label()
         label.apply(font: R.font.ibmPlexMonoLight(size: 14),
-                    themeStyle: .silverTextColor)
+                    themeStyle: .silverColor)
         return label
     }
 }

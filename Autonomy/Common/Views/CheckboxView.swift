@@ -127,7 +127,7 @@ extension CheckboxView {
         label.numberOfLines = 0
         label.apply(text: desc,
                     font: R.font.atlasGroteskLight(size: 14),
-                    themeStyle: .silverTextColor,
+                    themeStyle: .silverColor,
                     lineHeight: 1.2)
         return label
     }

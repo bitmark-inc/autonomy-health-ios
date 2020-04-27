@@ -23,7 +23,7 @@ class HeaderView: UIView {
     fileprivate lazy var styleGroup: StyleXML = {
         let style = Style {
             $0.font = R.font.domaineSansTextLight(size: 14)
-            $0.color = themeService.attrs.silverTextColor
+            $0.color = themeService.attrs.silverColor
         }
 
         let highlight = Style {

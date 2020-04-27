@@ -229,8 +229,6 @@
 		5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */; };
 		5B7F23AF2434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */; };
 		5B7F23B02434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */; };
-		5B7F23B22434B65F00F7A72E /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B12434B65F00F7A72E /* SuccessPanViewController.swift */; };
-		5B7F23B32434B65F00F7A72E /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B12434B65F00F7A72E /* SuccessPanViewController.swift */; };
 		5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
 		5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
 		5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
@@ -499,7 +497,6 @@
 		5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceViewController.swift; sourceTree = "<group>"; };
 		5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewController.swift; sourceTree = "<group>"; };
 		5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewModel.swift; sourceTree = "<group>"; };
-		5B7F23B12434B65F00F7A72E /* SuccessPanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessPanViewController.swift; sourceTree = "<group>"; };
 		5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalDelegate.swift; sourceTree = "<group>"; };
 		5B87F070242C85B90084B4F6 /* SeparateLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateLine.swift; sourceTree = "<group>"; };
 		5B87F073242C92DA0084B4F6 /* LinearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearView.swift; sourceTree = "<group>"; };
@@ -1211,7 +1208,6 @@
 		5BFC8DC724331AC900815828 /* Pan Modals */ = {
 			isa = PBXGroup;
 			children = (
-				5B7F23B12434B65F00F7A72E /* SuccessPanViewController.swift */,
 				5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */,
 			);
 			path = "Pan Modals";
@@ -1763,7 +1759,6 @@
 				5B57787F242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577878242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0CA2430BE91002CD923 /* AreaProfileAPI.swift in Sources */,
-				5B7F23B32434B65F00F7A72E /* SuccessPanViewController.swift in Sources */,
 				5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */,
 				5B4EF6E62446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
@@ -1887,7 +1882,6 @@
 				5B57787E242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B577877242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0C92430BE91002CD923 /* AreaProfileAPI.swift in Sources */,
-				5B7F23B22434B65F00F7A72E /* SuccessPanViewController.swift in Sources */,
 				5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */,
 				5B4EF6E52446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,

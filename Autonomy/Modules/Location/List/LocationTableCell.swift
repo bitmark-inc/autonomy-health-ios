@@ -159,7 +159,7 @@ extension LocationTableCell {
         textfield.isHidden = true
         textfield.returnKeyType = .done
         textfield.delegate = self
-        textfield.tintColor = themeService.attrs.silverTextColor
+        textfield.tintColor = themeService.attrs.silverColor
         return textfield
     }
 }

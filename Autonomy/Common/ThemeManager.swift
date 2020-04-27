@@ -34,22 +34,23 @@ enum ThemeStyle {
     case headerLineColor
     case headerColor
     case blackTextColor
-    case concordTextColor
-    case silverTextColor
+    case concordColor
+    case silverColor
     case silverC4TextColor
     case lightTextColor
     case separateTextColor
     case background
     case silverChaliceColor
     case textViewTextColor
+    case blueRibbonColor
 }
 
 protocol Theme {
     var headerLineColor:    UIColor { get }
     var headerColor:        UIColor { get }
     var blackTextColor:     UIColor { get }
-    var concordTextColor:   UIColor { get }
-    var silverTextColor:    UIColor { get }
+    var concordColor:       UIColor { get }
+    var silverColor:        UIColor { get }
     var silverC4TextColor:  UIColor { get }
     var lightTextColor:     UIColor { get }
     var separateTextColor:  UIColor { get }
@@ -58,6 +59,7 @@ protocol Theme {
     var mineShaftBackground:  UIColor { get }
     var silverChaliceColor: UIColor { get }
     var textViewTextColor:  UIColor { get }
+    var blueRibbonColor:    UIColor { get }
 
     init(colorTheme: ColorTheme)
 }
@@ -66,8 +68,8 @@ struct LightTheme: Theme {
     let headerLineColor     = UIColor(hexString: "#828180")!
     let headerColor         = UIColor(hexString: "#BFBFBF")!
     let blackTextColor      = UIColor.Material.black
-    let concordTextColor    = UIColor(hexString: "#828180")!
-    let silverTextColor     = UIColor(hexString: "#BFBFBF")!
+    let concordColor        = UIColor(hexString: "#828180")!
+    let silverColor         = UIColor(hexString: "#BFBFBF")!
     let silverC4TextColor   = UIColor(hexString: "#828180")!
     let lightTextColor      = UIColor.Material.white
     let separateTextColor   = UIColor(hexString: "#828180")!
@@ -76,6 +78,7 @@ struct LightTheme: Theme {
     let mineShaftBackground   = UIColor(hexString: "#2B2B2B")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
     let textViewTextColor   = UIColor(hexString: "#FFF")!
+    let blueRibbonColor     = UIColor(hexString: "#0060F2")!
 
     init(colorTheme: ColorTheme) {}
 }
@@ -84,8 +87,8 @@ struct DarkTheme: Theme {
     let headerLineColor     = UIColor(hexString: "#828180")!
     let headerColor         = UIColor(hexString: "#BFBFBF")!
     let blackTextColor      = UIColor.Material.black
-    let concordTextColor    = UIColor(hexString: "#828180")!
-    let silverTextColor     = UIColor(hexString: "#BFBFBF")!
+    let concordColor        = UIColor(hexString: "#828180")!
+    let silverColor         = UIColor(hexString: "#BFBFBF")!
     let silverC4TextColor   = UIColor(hexString: "#C4C4C4")!
     let lightTextColor      = UIColor.Material.white
     let separateTextColor   = UIColor(hexString: "#828180")!
@@ -94,6 +97,7 @@ struct DarkTheme: Theme {
     let mineShaftBackground   = UIColor(hexString: "#2B2B2B")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
     let textViewTextColor   = UIColor(hexString: "#FFF")!
+    let blueRibbonColor     = UIColor(hexString: "#0060F2")!
 
     init(colorTheme: ColorTheme) {}
 }

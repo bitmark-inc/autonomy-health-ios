@@ -16,6 +16,8 @@ class SubmitButton: UIView {
     lazy var titleLabel = makeTitleLabel()
     lazy var button = UIButton()
 
+    let titleThemeColor: ThemeStyle!
+
     fileprivate lazy var tapGestureRecognizer = makeTapGestureRecognizer()
     fileprivate let disposeBag = DisposeBag()
 
@@ -26,7 +28,9 @@ class SubmitButton: UIView {
         }
     }
 
-    init(title: String, icon: UIImage) {
+    init(title: String, icon: UIImage, titleThemeColor: ThemeStyle = .lightTextColor) {
+        self.titleThemeColor = titleThemeColor
+
         super.init(frame: CGRect.zero)
 
         titleLabel.setText(title)
@@ -73,7 +77,7 @@ extension SubmitButton {
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
         label.apply(font: R.font.domaineSansTextLight(size: 24),
-                    themeStyle: .lightTextColor)
+                    themeStyle: titleThemeColor)
         return label
     }
 

@@ -18,7 +18,7 @@ class SearchTextTableCell: TableViewCell {
     lazy var placeStyleGroup: StyleXML = {
         let style = Style {
             $0.font = R.font.atlasGroteskLight(size: 16)
-            $0.color = themeService.attrs.silverTextColor
+            $0.color = themeService.attrs.silverColor
         }
 
         let highlight = Style {
@@ -30,7 +30,7 @@ class SearchTextTableCell: TableViewCell {
     lazy var secondaryStyleGroup: StyleXML = {
         let style = Style {
             $0.font = R.font.atlasGroteskLight(size: 14)
-            $0.color = themeService.attrs.silverTextColor
+            $0.color = themeService.attrs.silverColor
         }
 
         let highlight = Style {
