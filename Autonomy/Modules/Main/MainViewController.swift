@@ -29,12 +29,12 @@ protocol LocationDelegate: class {
 class MainViewController: ViewController {
 
     // MARK: - Properties
-    lazy var locationInfoView = makeLocationInfoView()
     lazy var mainCollectionView = makeMainCollectionView()
     lazy var pageControl = makePageControl()
     lazy var currentLocationButton = makeVectorNavButton()
     lazy var locationButton = makeLocationButton()
     lazy var navButtons = makeNavButtons()
+    lazy var profileButton = makeProfileButton()
     lazy var poiActivityIndicator = makeActivityIndicator()
 
     lazy var thisViewModel: MainViewModel = {
@@ -278,31 +278,34 @@ class MainViewController: ViewController {
     override func setupViews() {
         super.setupViews()
 
+        contentView.addSubview(profileButton)
+        contentView.addSubview(navButtons)
         contentView.addSubview(mainCollectionView)
-        contentView.addSubview(locationInfoView)
         contentView.addSubview(poiActivityIndicator)
 
-        mainCollectionView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-                .inset(UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15))
+        profileButton.snp.makeConstraints { (make) in
+            make.top.leading.equalToSuperview()
         }
 
-        locationInfoView.snp.makeConstraints { (make) in
-            make.top.equalTo(mainCollectionView.snp.bottom)
-            make.leading.trailing.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-OurTheme.paddingInset.bottom + 10)
+        navButtons.snp.makeConstraints { (make) in
+            make.top.centerX.equalToSuperview()
         }
 
         poiActivityIndicator.snp.makeConstraints { (make) in
-            make.trailing.equalToSuperview().offset(-30)
-            make.top.equalTo(locationInfoView).offset(10)
+            make.top.trailing.equalToSuperview().offset(30)
             make.width.height.equalTo(10)
+        }
+
+        mainCollectionView.snp.makeConstraints { (make) in
+            make.top.equalTo(navButtons.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
         }
 
         // temporary shortcut to reset the onboarding
         let volumeView = MPVolumeView(frame: CGRect.zero)
         volumeView.isHidden = true
-        self.view.addSubview(volumeView)
+        view.addSubview(volumeView)
+
         do {
             try audioSession.setActive(true)
         } catch {
@@ -495,6 +498,17 @@ extension MainViewController {
 
 // MARK: - Setup Views
 extension MainViewController {
+    fileprivate func makeProfileButton() -> UIButton {
+        let button = UIButton()
+        button.setImage(R.image.profileButton(), for: .normal)
+
+        button.rx.tap.bind { [weak self] in
+            self?.gotoLocationListCell()
+        }.disposed(by: disposeBag)
+
+        return button
+    }
+
     fileprivate func makeNavButtons() -> UIView {
         themeService.rx
             .bind({ $0.background }, to: currentLocationButton.rx.backgroundColor)
@@ -570,15 +584,6 @@ extension MainViewController {
             .disposed(by: disposeBag)
 
         return pageControl
-    }
-
-    fileprivate func makeLocationInfoView() -> UIView {
-        let view = UIView()
-        view.addSubview(navButtons)
-        navButtons.snp.makeConstraints { (make) in
-            make.top.centerX.bottom.equalToSuperview()
-        }
-        return view
     }
 
     fileprivate func makeMainCollectionView() -> UICollectionView {

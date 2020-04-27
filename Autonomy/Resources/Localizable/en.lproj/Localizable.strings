@@ -38,6 +38,8 @@
 "SignedUp" = "Signed Up";
 "Copied" = "Copied";
 "Reported" = "Reported";
+"ViewSource" = "View Source";
+"Reset" = "Reset";
 
 "RawData" = "Raw Data";
 "from_last_24_hours" = "from last 24 hours ";
@@ -54,3 +56,11 @@
 "TryAgain" = "Try Again";
 "Contact_us" = "Contact us";
 "YourAuthorizationIsRequired" = "Your authorization is required.";
+
+"formula.cases" = "cases";
+"formula.casesWeight" = "cases_weight";
+"formula.symptoms" = "symptoms";
+"formula.symptomsWeight" = "symptoms_weight";
+"formula.behaviors" = "behaviors";
+"formula.behaviorsWeight" = "behaviors_weight";
+"formula" = "<b>autonomy</b> = (cases * cases_weight) + (symptoms * symptoms_weight) + (behaviors * behaviors_weight) ";

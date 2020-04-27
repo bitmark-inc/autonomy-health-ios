@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		0D8B6DF360D1CCC1F900410E /* Pods_Autonomy_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */; };
 		1069FBDB37576812A95BC44E /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A710DB2805CCB5FC902C5B3A /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		5B130BAF2451A1C00031F176 /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BAD2451A1C00031F176 /* SuccessPanViewController.swift */; };
+		5B130BB12451A1E30031F176 /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BAD2451A1C00031F176 /* SuccessPanViewController.swift */; };
+		5B130BB62451A9990031F176 /* FormulaSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BB52451A9990031F176 /* FormulaSourceView.swift */; };
+		5B130BB72451A9990031F176 /* FormulaSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BB52451A9990031F176 /* FormulaSourceView.swift */; };
+		5B130BBA2451AA8D0031F176 /* RightIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BB92451AA8D0031F176 /* RightIconButton.swift */; };
+		5B130BBB2451AA8D0031F176 /* RightIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BB92451AA8D0031F176 /* RightIconButton.swift */; };
+		5B130BBD2451AD590031F176 /* FormulaIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BBC2451AD590031F176 /* FormulaIndicatorView.swift */; };
+		5B130BBE2451AD590031F176 /* FormulaIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BBC2451AD590031F176 /* FormulaIndicatorView.swift */; };
 		5B213EFF2444133E0095BE18 /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFD2444133E0095BE18 /* HelpRequestService.swift */; };
 		5B213F002444133E0095BE18 /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFD2444133E0095BE18 /* HelpRequestService.swift */; };
 		5B213F012444133E0095BE18 /* HelpRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFE2444133E0095BE18 /* HelpRequestAPI.swift */; };
@@ -382,6 +390,10 @@
 		4F172DB240CC2DBD7AFC6524 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		57BDEC92F058C9C5F88DDF72 /* Pods_OneSignalNotificationServiceDevExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceDevExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.debug.xcconfig"; sourceTree = "<group>"; };
+		5B130BAD2451A1C00031F176 /* SuccessPanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessPanViewController.swift; sourceTree = "<group>"; };
+		5B130BB52451A9990031F176 /* FormulaSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaSourceView.swift; sourceTree = "<group>"; };
+		5B130BB92451AA8D0031F176 /* RightIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightIconButton.swift; sourceTree = "<group>"; };
+		5B130BBC2451AD590031F176 /* FormulaIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaIndicatorView.swift; sourceTree = "<group>"; };
 		5B213EFD2444133E0095BE18 /* HelpRequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestService.swift; sourceTree = "<group>"; };
 		5B213EFE2444133E0095BE18 /* HelpRequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestAPI.swift; sourceTree = "<group>"; };
 		5B213F03244413E90095BE18 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
@@ -596,6 +608,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B130BAC2451A16F0031F176 /* View Formula Source */ = {
+			isa = PBXGroup;
+			children = (
+				5B130BB52451A9990031F176 /* FormulaSourceView.swift */,
+				5B130BBC2451AD590031F176 /* FormulaIndicatorView.swift */,
+			);
+			path = "View Formula Source";
+			sourceTree = "<group>";
+		};
 		5B213EFC244412EB0095BE18 /* Points Of Interest */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,6 +664,7 @@
 				5BA808C0244081E300B2733A /* LocationListCell.swift */,
 				5B978886243F22B4005BADA9 /* LocationTableCell.swift */,
 				5B396E742445CEE800D14FEC /* AddLocationCell.swift */,
+				5B130BAC2451A16F0031F176 /* View Formula Source */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -768,6 +790,7 @@
 				5B7CE0D32430CB6C002CD923 /* TableViewCell.swift */,
 				5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */,
 				5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */,
+				5B130BB92451AA8D0031F176 /* RightIconButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1208,6 +1231,7 @@
 		5BFC8DC724331AC900815828 /* Pan Modals */ = {
 			isa = PBXGroup;
 			children = (
+				5B130BAD2451A1C00031F176 /* SuccessPanViewController.swift */,
 				5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */,
 			);
 			path = "Pan Modals";
@@ -1744,6 +1768,7 @@
 				5B577931242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577941242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
+				5B130BBB2451AA8D0031F176 /* RightIconButton.swift in Sources */,
 				5BA808B9244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
 				5B57790C242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
@@ -1762,6 +1787,7 @@
 				5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */,
 				5B4EF6E62446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
+				5B130BBE2451AD590031F176 /* FormulaIndicatorView.swift in Sources */,
 				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B213F08244413FC0095BE18 /* Location.swift in Sources */,
 				5B7F239A243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
@@ -1793,6 +1819,7 @@
 				5B577924242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
 				5B577864242B421B0028D3E3 /* Constant.swift in Sources */,
+				5B130BB12451A1E30031F176 /* SuccessPanViewController.swift in Sources */,
 				5B577867242B42310028D3E3 /* Global+Log.swift in Sources */,
 				5BA808BC2440226A00B2733A /* SearchTextTableCell.swift in Sources */,
 				5B2C8594242DDE51002CC53B /* AppInfo.swift in Sources */,
@@ -1807,6 +1834,7 @@
 				5BFC8DC12433081400815828 /* HealthService.swift in Sources */,
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
+				5B130BB72451A9990031F176 /* FormulaSourceView.swift in Sources */,
 				5B57791D242B4E290028D3E3 /* Label.swift in Sources */,
 				5B4957412449938E0012D6E1 /* SymptomAPI.swift in Sources */,
 				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
@@ -1867,6 +1895,7 @@
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B577940242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08A242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
+				5B130BBA2451AA8D0031F176 /* RightIconButton.swift in Sources */,
 				5BA808B8244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
 				5B57790B242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5B7F23AD2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
@@ -1885,6 +1914,7 @@
 				5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */,
 				5B4EF6E52446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
+				5B130BBD2451AD590031F176 /* FormulaIndicatorView.swift in Sources */,
 				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B213F07244413FC0095BE18 /* Location.swift in Sources */,
 				5B7F2399243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
@@ -1916,6 +1946,7 @@
 				5B577923242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
 				5B577863242B421B0028D3E3 /* Constant.swift in Sources */,
+				5B130BAF2451A1C00031F176 /* SuccessPanViewController.swift in Sources */,
 				5B577866242B42310028D3E3 /* Global+Log.swift in Sources */,
 				5BA808BB2440226A00B2733A /* SearchTextTableCell.swift in Sources */,
 				5B2C8593242DDE51002CC53B /* AppInfo.swift in Sources */,
@@ -1930,6 +1961,7 @@
 				5BFC8DC02433081400815828 /* HealthService.swift in Sources */,
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
+				5B130BB62451A9990031F176 /* FormulaSourceView.swift in Sources */,
 				5B57791C242B4E290028D3E3 /* Label.swift in Sources */,
 				5B4957402449938E0012D6E1 /* SymptomAPI.swift in Sources */,
 				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
