@@ -25,14 +25,18 @@
 		5B213F05244413E90095BE18 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F03244413E90095BE18 /* PointOfInterest.swift */; };
 		5B213F07244413FC0095BE18 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F06244413FC0095BE18 /* Location.swift */; };
 		5B213F08244413FC0095BE18 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F06244413FC0095BE18 /* Location.swift */; };
+		5B2661AA2457DF6B00163404 /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */; };
+		5B2661AB2457DF6B00163404 /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A92457DF6B00163404 /* PointOfInterestService.swift */; };
+		5B2661AC2457DF8600163404 /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */; };
+		5B2661AD2457DF8600163404 /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A92457DF6B00163404 /* PointOfInterestService.swift */; };
 		5B2C856D242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
 		5B2C856E242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
 		5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
 		5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
-		5B2C8576242DD42B002CC53B /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* PointOfInterestAPI.swift */; };
-		5B2C8577242DD42B002CC53B /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* PointOfInterestAPI.swift */; };
-		5B2C8578242DD42B002CC53B /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* PointOfInterestService.swift */; };
-		5B2C8579242DD42B002CC53B /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* PointOfInterestService.swift */; };
+		5B2C8576242DD42B002CC53B /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* FormulaAPI.swift */; };
+		5B2C8577242DD42B002CC53B /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* FormulaAPI.swift */; };
+		5B2C8578242DD42B002CC53B /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* FormulaService.swift */; };
+		5B2C8579242DD42B002CC53B /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* FormulaService.swift */; };
 		5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
 		5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
 		5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */; };
@@ -398,10 +402,12 @@
 		5B213EFE2444133E0095BE18 /* HelpRequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpRequestAPI.swift; sourceTree = "<group>"; };
 		5B213F03244413E90095BE18 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
 		5B213F06244413FC0095BE18 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestAPI.swift; sourceTree = "<group>"; };
+		5B2661A92457DF6B00163404 /* PointOfInterestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestService.swift; sourceTree = "<group>"; };
 		5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		5B2C8570242DB786002CC53B /* LocationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermission.swift; sourceTree = "<group>"; };
-		5B2C8574242DD42B002CC53B /* PointOfInterestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestAPI.swift; sourceTree = "<group>"; };
-		5B2C8575242DD42B002CC53B /* PointOfInterestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestService.swift; sourceTree = "<group>"; };
+		5B2C8574242DD42B002CC53B /* FormulaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaAPI.swift; sourceTree = "<group>"; };
+		5B2C8575242DD42B002CC53B /* FormulaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaService.swift; sourceTree = "<group>"; };
 		5B2C857A242DD4CB002CC53B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataEngine.swift; sourceTree = "<group>"; };
 		5B2C8582242DDBFB002CC53B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -620,10 +626,19 @@
 		5B213EFC244412EB0095BE18 /* Points Of Interest */ = {
 			isa = PBXGroup;
 			children = (
-				5B2C8574242DD42B002CC53B /* PointOfInterestAPI.swift */,
-				5B2C8575242DD42B002CC53B /* PointOfInterestService.swift */,
+				5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */,
+				5B2661A92457DF6B00163404 /* PointOfInterestService.swift */,
 			);
 			path = "Points Of Interest";
+			sourceTree = "<group>";
+		};
+		5B2661A72457DBBF00163404 /* Formula */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C8574242DD42B002CC53B /* FormulaAPI.swift */,
+				5B2C8575242DD42B002CC53B /* FormulaService.swift */,
+			);
+			path = Formula;
 			sourceTree = "<group>";
 		};
 		5B2C856F242DB774002CC53B /* Permissions */ = {
@@ -755,6 +770,7 @@
 				5BDA94E2244991BB00BE829A /* Behavior */,
 				5BFC8DBD243307BE00815828 /* Help Request */,
 				5B213EFC244412EB0095BE18 /* Points Of Interest */,
+				5B2661A72457DBBF00163404 /* Formula */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1794,7 +1810,7 @@
 				5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
 				5B7F2397243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5B2C8591242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
-				5B2C8579242DD42B002CC53B /* PointOfInterestService.swift in Sources */,
+				5B2C8579242DD42B002CC53B /* FormulaService.swift in Sources */,
 				5B213F05244413E90095BE18 /* PointOfInterest.swift in Sources */,
 				5B57786A242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
@@ -1807,11 +1823,13 @@
 				5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */,
 				5B396E762445CEE800D14FEC /* AddLocationCell.swift in Sources */,
 				5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
+				5B2661AC2457DF8600163404 /* PointOfInterestAPI.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EB2446B06000BCB323 /* Behavior.swift in Sources */,
 				5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */,
+				5B2661AD2457DF8600163404 /* PointOfInterestService.swift in Sources */,
 				5BFC8DCD2433264A00815828 /* FeedTableCell.swift in Sources */,
 				5B7CE0D52430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
@@ -1840,7 +1858,7 @@
 				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
-				5B2C8577242DD42B002CC53B /* PointOfInterestAPI.swift in Sources */,
+				5B2C8577242DD42B002CC53B /* FormulaAPI.swift in Sources */,
 				5B49574D2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
 				5B7F23AA2434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
 				5BB140A0242C6138009EFC59 /* BackNavigator.swift in Sources */,
@@ -1921,7 +1939,7 @@
 				5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
 				5B7F2396243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5B2C8590242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
-				5B2C8578242DD42B002CC53B /* PointOfInterestService.swift in Sources */,
+				5B2C8578242DD42B002CC53B /* FormulaService.swift in Sources */,
 				5B213F04244413E90095BE18 /* PointOfInterest.swift in Sources */,
 				5B577869242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
@@ -1934,11 +1952,13 @@
 				5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */,
 				5B396E752445CEE800D14FEC /* AddLocationCell.swift in Sources */,
 				5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
+				5B2661AA2457DF6B00163404 /* PointOfInterestAPI.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EA2446B06000BCB323 /* Behavior.swift in Sources */,
 				5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */,
+				5B2661AB2457DF6B00163404 /* PointOfInterestService.swift in Sources */,
 				5BFC8DCC2433264A00815828 /* FeedTableCell.swift in Sources */,
 				5B7CE0D42430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
@@ -1967,7 +1987,7 @@
 				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
-				5B2C8576242DD42B002CC53B /* PointOfInterestAPI.swift in Sources */,
+				5B2C8576242DD42B002CC53B /* FormulaAPI.swift in Sources */,
 				5B49574C2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
 				5B7F23A92434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
 				5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */,

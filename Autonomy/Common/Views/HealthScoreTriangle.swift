@@ -11,27 +11,90 @@ import SwiftSVG
 
 class HealthScoreTriangle: UIView {
 
+    // MARK: - Properties
     static let originalSize = CGSize(width: 312, height: 270)
     static let scale = (UIScreen.main.bounds.size.width - 30) / originalSize.width
+    lazy var transformScale = CATransform3DMakeScale(Self.scale, Self.scale, 0)
+
+    lazy var scoreLabel = makeScoreLabel()
+    lazy var appNameLabel = makeAppNameLabel()
+    var coloredSublayer: CAShapeLayer?
+    var processingTimer: Timer?
+
+
+    var currentScore: Int?
 
     init(score: Int?) {
+        self.currentScore = score
         super.init(frame: CGRect.zero)
-
-        let transformScale = CATransform3DMakeScale(Self.scale, Self.scale, 0)
-
         let infillLayer = CAShapeLayer(pathString: backgroundPath)
         infillLayer.fillColor = UIColor(red: 43, green: 43, blue: 43)?.cgColor
         infillLayer.transform = transformScale
         layer.addSublayer(infillLayer)
 
-        if let score = score, score > 0 {
-            let colored = CAShapeLayer(pathString: colorPath[score - 1])
-            let healthColor = HealthRisk(from: score)?.color.cgColor
-            colored.fillColor = healthColor
-            colored.strokeColor = healthColor
-            colored.transform = transformScale
-            layer.addSublayer(colored)
+        if let score = score, score > 0, let coloredSublayer = makeColoredSublayer(for: score) {
+            layer.addSublayer(coloredSublayer)
+            self.coloredSublayer = coloredSublayer
         }
+
+        addSubview(scoreLabel)
+        addSubview(appNameLabel)
+
+        appNameLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-55 * Self.scale)
+        }
+
+        scoreLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(appNameLabel.snp.top).offset(10)
+            make.centerX.equalToSuperview()
+        }
+    }
+
+    func updateLayout(score: Int, animate: Bool) {
+        processingTimer?.invalidate()
+        guard score != currentScore else { return }
+        scoreLabel.setText("\(score)")
+
+        let step = (score > (currentScore ?? 0)) ? 1 : -1
+        var updatingScore = currentScore ?? 0
+
+        processingTimer = Timer.scheduledTimer(withTimeInterval: 0.022, repeats: true) { [weak self] (timer) in
+            guard let self = self else { return }
+
+            if animate {
+                updatingScore = updatingScore + step
+            } else {
+                updatingScore = score
+            }
+
+            self.coloredSublayer?.removeFromSuperlayer()
+            self.coloredSublayer = nil
+
+            if let coloredSublayer = self.makeColoredSublayer(for: updatingScore) {
+                self.layer.addSublayer(coloredSublayer)
+                self.coloredSublayer = coloredSublayer
+            }
+
+            self.currentScore = updatingScore
+            if updatingScore == score {
+                timer.invalidate()
+            }
+        }
+    }
+
+    fileprivate func makeColoredSublayer(for score: Int) -> CAShapeLayer? {
+        guard score > 0 else {
+            return nil
+        }
+
+        let colored = CAShapeLayer(pathString: colorPath[score - 1])
+        let healthColor = HealthRisk(from: score)?.color.cgColor
+        colored.fillColor = healthColor
+        colored.strokeColor = healthColor
+        colored.transform = transformScale
+
+        return colored
     }
 
     required init?(coder: NSCoder) {
@@ -141,4 +204,20 @@ class HealthScoreTriangle: UIView {
         "M156 0 L156 62.3538 L258 239.023 L54 239.023 L152.9092 67.7075 L151.2727 8.1878 L0 270.2 L312 270.2 Z",
         "M156 0 L156 62.3538 L258 239.023 L54 239.023 L156 62.3538 L156 0 L0 270.2 L312 270.2 Z",
     ]
+
+    fileprivate func makeScoreLabel() -> Label {
+        let label = Label()
+        label.apply(
+            font: R.font.domaineSansTextLight(size: 64),
+            themeStyle: .lightTextColor)
+        return label
+    }
+
+    fileprivate func makeAppNameLabel() -> Label {
+        let label = Label()
+        label.apply(text: Constant.appName.localizedUppercase,
+                    font: R.font.domaineSansTextLight(size: 18),
+                    themeStyle: .lightTextColor)
+        return label
+    }
 }

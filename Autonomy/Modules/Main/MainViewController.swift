@@ -75,6 +75,8 @@ class MainViewController: ViewController {
                 NotificationPermission.scheduleReminderNotificationIfNeeded()
             }
         }
+
+        bindViewModelAfterViewAppear()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -130,6 +132,7 @@ class MainViewController: ViewController {
     // MARK: - bindViewModel
     override func bindViewModel() {
         super.bindViewModel()
+
         thisViewModel.signOutAccountResultSubject
             .subscribe(onNext: { [weak self] (event) in
                 guard let self = self else { return }
@@ -162,6 +165,27 @@ class MainViewController: ViewController {
 
         bindUserFriendlyAddress()
         bindPOIChangeEvents()
+    }
+
+    fileprivate func bindViewModelAfterViewAppear() {
+        thisViewModel.poisRelay
+            .subscribe(onNext: { [weak self] (poisValue) in
+                guard let self = self else { return }
+                self.pois = poisValue.pois
+
+                guard !poisValue.userInteractive else {
+                    return
+                }
+
+                self.mainCollectionView.reloadSections(IndexSet(integer: 1))
+                self.pageControl.numberOfPages = poisValue.pois.count + 2
+
+                if self.pois.isNotEmpty, let navigatePoiID = self.thisViewModel.navigateToPoiID {
+                    self.thisViewModel.navigateToPoiID = nil
+                    self.gotoPOI(with: navigatePoiID)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     fileprivate func bindUserFriendlyAddress() {
@@ -198,25 +222,6 @@ class MainViewController: ViewController {
                 loadState == .loading ?
                     self.poiActivityIndicator.startAnimating() :
                     self.poiActivityIndicator.stopAnimating()
-            })
-            .disposed(by: disposeBag)
-
-        thisViewModel.poisRelay
-            .subscribe(onNext: { [weak self] (poisValue) in
-                guard let self = self else { return }
-                self.pois = poisValue.pois
-
-                guard !poisValue.userInteractive else {
-                    return
-                }
-
-                self.mainCollectionView.reloadSections(IndexSet(integer: 1))
-                self.pageControl.numberOfPages = poisValue.pois.count + 2
-
-                if self.pois.isNotEmpty, let navigatePoiID = self.thisViewModel.navigateToPoiID {
-                    self.thisViewModel.navigateToPoiID = nil
-                    self.gotoPOI(with: navigatePoiID)
-                }
             })
             .disposed(by: disposeBag)
 
@@ -349,7 +354,13 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
-        case sectionIndexes.currentLocation, sectionIndexes.poi:
+        case sectionIndexes.currentLocation:
+            let cell = collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
+            cell.scoreSourceDelegate = self
+            cell.locationLabel.setText(currentUserLocationAddress)
+            return cell
+
+        case sectionIndexes.poi:
             let cell = collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
             cell.scoreSourceDelegate = self
             return cell
@@ -398,7 +409,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         thisViewModel.fetchAreaProfile(poiID: areaProfileKey)
             .subscribe(onSuccess: { [weak self] (areaProfile) in
                 guard let self = self else { return }
-                cell.setData(areaProfile: areaProfile, locationName: locationName)
+                cell.setData(areaProfile: areaProfile)
                 self.areaProfiles[areaProfileKey ?? "current"] = areaProfile
 
             }, onError: { (error) in
@@ -577,14 +588,6 @@ extension MainViewController {
         return button
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-        pageControl.subviews.forEach {
-            $0.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }
-    }
-
     fileprivate func makePageControl() -> UIPageControl {
         let pageControl = UIPageControl()
         pageControl.rx.controlEvent(.valueChanged)
@@ -596,6 +599,12 @@ extension MainViewController {
                 self?.gotoPOICell(selectedIndex: currentPage)
             })
             .disposed(by: disposeBag)
+
+        defer {
+            pageControl.subviews.forEach {
+                $0.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }
+        }
 
         return pageControl
     }

@@ -35,7 +35,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
 
     weak var scoreSourceDelegate: ScoreSourceDelegate? {
         didSet {
-            bindEvents()
+            bindScoreSourceEvents()
         }
     }
     fileprivate var disposeBag = DisposeBag()
@@ -44,7 +44,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     fileprivate let healthViewHeight: CGFloat = HealthScoreTriangle.originalSize.height * HealthScoreTriangle.scale
 
     // Formula View
-    lazy var topSpacing: CGFloat = 225
+    lazy var topSpacing: CGFloat = 270
 
     var formulaDragHeight: CGFloat {
         let requiredTopSpacing: CGFloat = healthViewHeight / 2 + 120
@@ -74,6 +74,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
 
         setupViews()
+        bindEvents()
     }
 
     override func prepareForReuse() {
@@ -83,6 +84,8 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         animationProgressWhenIntrupped = 0
 
         disposeBag = DisposeBag()
+        bindEvents()
+    }
     }
 
     required init?(coder: NSCoder) {
@@ -96,7 +99,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     }
 
     // MARK: - Handlers
-    fileprivate func bindEvents() {
+    fileprivate func bindScoreSourceEvents() {
         scoreSourceDelegate?.formStateRelay
             .filterNil()
             .subscribe(onNext: { [weak self] (cell, state) in
@@ -106,19 +109,32 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             .disposed(by: disposeBag)
     }
 
-    func setData(areaProfile: AreaProfile?, locationName: String) {
+    fileprivate func bindEvents() {
+        formulaSourceView.scoreRelay
+            .skip(1)
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] (score) in
+                guard let self = self else { return }
+                self.healthView.updateLayout(score: score, animate: true)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func setData(areaProfile: AreaProfile?, locationName: String? = nil) {
         guard let areaProfile = areaProfile else {
             guideDataView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
             return
         }
 
         guideDataView.hideSkeleton()
-        rebuildHealthView(score: areaProfile.displayScore)
+        healthView.updateLayout(score: areaProfile.displayScore, animate: false)
         bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
         bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
         bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)
 
-        locationLabel.setText(locationName)
+        if let locationName = locationName {
+            locationLabel.setText(locationName)
+        }
     }
 
     fileprivate func bindInfo(for scoreInfoType: ScoreInfoType, number: Int, delta: Int) {
@@ -161,17 +177,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
 
         case .populationDensity:
             break
-        }
-    }
-
-    fileprivate func rebuildHealthView(score: Int?) {
-        let newHealthView = makeHealthScoreView(score: score)
-
-        healthView.removeSubviews()
-        healthView.addSubview(newHealthView)
-
-        newHealthView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
         }
     }
 
@@ -346,55 +351,8 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
 
 // MARK: - Setup views
 extension HealthScoreCollectionCell {
-    fileprivate func makeHealthView() -> UIView {
-        let emptyTriangle = makeHealthScoreView(score: nil)
-
-        let view = UIView()
-        view.addSubview(emptyTriangle)
-        emptyTriangle.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-
-        return view
-    }
-
-    fileprivate func makeHealthScoreView(score: Int?) -> UIView {
-        let healthScoreTriangle = HealthScoreTriangle(score: score)
-
-        let appNameLabel = Label()
-        appNameLabel.apply(text: Constant.appName.localizedUppercase,
-                    font: R.font.domaineSansTextLight(size: 18),
-                    themeStyle: .lightTextColor)
-
-        let scoreLabel = Label()
-
-        let view = UIView()
-        view.addSubview(healthScoreTriangle)
-        view.addSubview(appNameLabel)
-
-        healthScoreTriangle.snp.makeConstraints { (make) in
-            make.edges.centerX.equalToSuperview()
-        }
-
-        appNameLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(healthScoreTriangle).offset(-40 * HealthScoreTriangle.scale)
-        }
-
-        if let score = score {
-            scoreLabel.apply(
-                text: "\(score)",
-                font: R.font.domaineSansTextLight(size: 64),
-                themeStyle: .lightTextColor)
-
-            view.addSubview(scoreLabel)
-            scoreLabel.snp.makeConstraints { (make) in
-                make.bottom.equalTo(appNameLabel.snp.top).offset(10)
-                make.centerX.equalToSuperview()
-            }
-        }
-
-        return view
+    fileprivate func makeHealthView() -> HealthScoreTriangle {
+        return HealthScoreTriangle(score: nil)
     }
 
     fileprivate func makeLocationLabel() -> Label {
@@ -460,18 +418,8 @@ extension HealthScoreCollectionCell {
         return scrollView
     }
 
-    fileprivate func makeFormularSourceView() -> UIView {
-        let view = UIView()
-        view.backgroundColor = .white
-
-        let formulaView = FormulaSourceView()
-        view.addSubview(formulaView)
-
-        formulaView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-
-        return view
+    fileprivate func makeFormularSourceView() -> FormulaSourceView {
+        return FormulaSourceView()
     }
 
     fileprivate func makeTapHealthViewGesture() -> UITapGestureRecognizer {

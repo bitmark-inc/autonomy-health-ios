@@ -20,11 +20,7 @@ class FormulaIndicatorView: UIView {
 
     let scoreInfoType: ScoreInfoType!
 
-    var weightValue: Float = 0 {
-        didSet {
-            weightTextLabel.setText("\(String(format: "%.2f", weightValue))")
-        }
-    }
+    let weightRelay = BehaviorRelay<Float>(value: 0)
 
     fileprivate let disposeBag = DisposeBag()
 
@@ -33,11 +29,19 @@ class FormulaIndicatorView: UIView {
         super.init(frame: CGRect.zero)
 
         setupViews()
+        bindViews()
+    }
+
+    func bindViews() {
+        weightRelay
+            .map { String(format: "%.2f", $0) }
+            .bind(to: weightTextLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 
     func setInitWeightValue(_ value: Float) {
-        weightValue = value
-        weightSlider.value = weightValue
+        weightRelay.accept(value)
+        weightSlider.value = value
     }
 
     fileprivate func setupViews() {
@@ -131,7 +135,7 @@ extension FormulaIndicatorView {
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
                 let sliderValueText = String(format: "%.2f", slider.value)
-                self.weightValue = Float(sliderValueText) ?? 0
+                self.weightRelay.accept(Float(sliderValueText) ?? 0)
             })
             .disposed(by: disposeBag)
         slider.snp.makeConstraints { (make) in

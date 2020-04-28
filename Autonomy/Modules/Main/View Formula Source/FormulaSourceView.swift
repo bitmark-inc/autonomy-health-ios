@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import SwiftRichString
 
 class FormulaSourceView: UIView {
@@ -21,10 +22,15 @@ class FormulaSourceView: UIView {
     lazy var buttonGroupsView = makeButtonGroupsView()
     let disposeBag = DisposeBag()
 
+    // - Indicator
+    let casesWeightRelay = BehaviorRelay<Float>(value: 0.33)
+    let scoreRelay = BehaviorRelay<Int>(value: 0)
+
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        bindToCalculate()
     }
 
     // MARK: - Setup views
@@ -44,12 +50,27 @@ class FormulaSourceView: UIView {
         addSubview(formulaView)
         formulaView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
-            .inset(UIEdgeInsets(top: 14, left: 15, bottom: 58, right: 15))
+                .inset(UIEdgeInsets(top: 14, left: 15, bottom: 58, right: 15))
         }
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Formula Calculator
+extension FormulaSourceView {
+    func bindToCalculate() {
+        let casesWeightRelay = caseFormulaIndicatorView.weightRelay.share()
+
+        BehaviorRelay.combineLatest(casesWeightRelay, casesWeightRelay)
+            .subscribe(onNext: { [weak self] (casesWeight, behaviorsWeight) in
+                guard let self = self else { return }
+                let score = casesWeight * 100
+                self.scoreRelay.accept(Int(score))
+            })
+            .disposed(by: disposeBag)
     }
 }
 
