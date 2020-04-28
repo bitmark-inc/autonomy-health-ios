@@ -12,6 +12,11 @@ import SkeletonView
 import PanModal
 import SnapKit
 
+enum BottomSlideViewState {
+    case expanded
+    case collapsed
+}
+
 class HealthScoreCollectionCell: UICollectionViewCell {
 
     // MARK: - Properties
@@ -28,15 +33,18 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     lazy var healthyBehaviorsView = ScoreInfoView(scoreInfoType: .healthyBehaviors)
     lazy var populationDensityView = ScoreInfoView(scoreInfoType: .populationDensity)
 
-    fileprivate let disposeBag = DisposeBag()
+    weak var scoreSourceDelegate: ScoreSourceDelegate? {
+        didSet {
+            bindEvents()
+        }
+    }
+    fileprivate var disposeBag = DisposeBag()
 
     // Constants
     fileprivate let healthViewHeight: CGFloat = HealthScoreTriangle.originalSize.height * HealthScoreTriangle.scale
 
     // Formula View
-    lazy var topSpacing: CGFloat = {
-        return frame.height - formulaDragHeight
-    }()
+    lazy var topSpacing: CGFloat = 225
 
     var formulaDragHeight: CGFloat {
         let requiredTopSpacing: CGFloat = healthViewHeight / 2 + 120
@@ -48,14 +56,9 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     let bottomY = UIScreen.main.bounds.height + 10
     let topHealthView: CGFloat = Size.dh(70)
 
-    enum BottomSlideViewState {
-        case expanded
-        case collpased
-    }
-
-    var bottomSlideViewVisible = false
-    var nextState:BottomSlideViewState {
-        return bottomSlideViewVisible ? .collpased : .expanded
+    var currentState: BottomSlideViewState = .collapsed
+    var nextState: BottomSlideViewState {
+        return currentState == .expanded ? .collapsed : .expanded
     }
 
     // Animation Supports
@@ -73,6 +76,15 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         setupViews()
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        animations.removeAll()
+        animationProgressWhenIntrupped = 0
+
+        disposeBag = DisposeBag()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -83,45 +95,15 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         heightScrollViewConstraint?.update(offset: formulaDragHeight)
     }
 
-    fileprivate func setupViews() {
-        let paddingContentView = UIView()
-        paddingContentView.addSubview(locationLabel)
-        paddingContentView.addSubview(healthView)
-        paddingContentView.addSubview(guideDataView)
-
-        locationLabel.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().multipliedBy(0.7)
-            make.top.centerX.equalToSuperview()
-        }
-
-        healthView.snp.makeConstraints { (make) in
-            topHealthViewConstraint = make.top.equalTo(locationLabel.snp.bottom).offset(topHealthView).constraint
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(healthViewHeight)
-        }
-
-        guideDataView.snp.makeConstraints { (make) in
-            make.top.equalTo(healthView.snp.bottom).offset(45)
-            make.leading.trailing.equalToSuperview()
-        }
-
-        contentView.addSubview(paddingContentView)
-        contentView.addSubview(scrollView)
-
-        scrollView.snp.makeConstraints { (make) in
-            make.leading.trailing.equalToSuperview()
-            make.width.equalToSuperview()
-            heightScrollViewConstraint = make.height.equalTo(100).constraint
-            topFormulaViewConstraint = make.top.equalToSuperview().offset(bottomY).constraint
-        }
-
-        paddingContentView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 0, left: OurTheme.horizontalPadding, bottom: 0, right: OurTheme.horizontalPadding))
-        }
-
-        healthView.addGestureRecognizer(tapHealthViewGesture)
+    // MARK: - Handlers
+    fileprivate func bindEvents() {
+        scoreSourceDelegate?.formStateRelay
+            .filterNil()
+            .subscribe(onNext: { [weak self] (cell, state) in
+                guard let self = self , cell != self else { return }
+                self.slideBottomView(with: state)
+            })
+            .disposed(by: disposeBag)
     }
 
     func setData(areaProfile: AreaProfile?, locationName: String) {
@@ -193,6 +175,49 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         }
     }
 
+    // MARK: - Setup Views
+    fileprivate func setupViews() {
+        let paddingContentView = UIView()
+        paddingContentView.addSubview(locationLabel)
+        paddingContentView.addSubview(healthView)
+        paddingContentView.addSubview(guideDataView)
+
+        locationLabel.snp.makeConstraints { (make) in
+            make.width.equalToSuperview().multipliedBy(0.7)
+            make.top.centerX.equalToSuperview()
+            make.height.equalTo(16)
+        }
+
+        healthView.snp.makeConstraints { (make) in
+            topHealthViewConstraint = make.top.equalTo(locationLabel.snp.bottom).offset(topHealthView).constraint
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(healthViewHeight)
+        }
+
+        guideDataView.snp.makeConstraints { (make) in
+            make.top.equalTo(healthView.snp.bottom).offset(45)
+            make.leading.trailing.equalToSuperview()
+        }
+
+        contentView.addSubview(paddingContentView)
+        contentView.addSubview(scrollView)
+
+        scrollView.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            make.width.equalToSuperview()
+            heightScrollViewConstraint = make.height.equalTo(100).constraint
+            topFormulaViewConstraint = make.top.equalToSuperview().offset(bottomY).constraint
+        }
+
+        paddingContentView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+                .inset(UIEdgeInsets(top: 0, left: OurTheme.horizontalPadding, bottom: 0, right: OurTheme.horizontalPadding))
+        }
+
+        healthView.addGestureRecognizer(tapHealthViewGesture)
+    }
+
     fileprivate func formatNumber(_ number: Int) -> String? {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -212,29 +237,37 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
             return
         }
 
+        // setup temporary first state for other cells can show/hide bottom without waiting for finishing animation
+        scoreSourceDelegate?.formStateRelay.accept((cell: self, state: state))
+
         let moveUpAnimation = UIViewPropertyAnimator.init(duration: TimeInterval(formulaViewAnimateDuration), dampingRatio: 1.0) { [weak self] in
             guard let self = self else  { return }
-            switch state {
-            case .collpased:
-                self.topFormulaViewConstraint?.update(offset: self.bottomY)
-                self.healthView.transform = CGAffineTransform(scaleX: 1, y: 1)
-                self.topHealthViewConstraint?.update(offset: self.topHealthView)
-            case .expanded:
-                self.topFormulaViewConstraint?.update(offset: self.topSpacing)
-                self.healthView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-                self.topHealthViewConstraint?.update(offset: -50)
-            }
-
+            self.slideBottomView(with: state)
             self.layoutIfNeeded()
         }
         moveUpAnimation.addCompletion { [weak self] _ in
             guard let self = self else { return }
-            self.bottomSlideViewVisible =  state ==  .collpased ? false : true
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+            self.updateBottomSlideView(state: state)
             self.animations.removeAll()
         }
 
         moveUpAnimation.startAnimation()
         animations.append(moveUpAnimation)
+    }
+
+    func slideBottomView(with state: BottomSlideViewState) {
+        switch state {
+        case .collapsed:
+            topFormulaViewConstraint?.update(offset: bottomY)
+            healthView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            topHealthViewConstraint?.update(offset: topHealthView)
+
+        case .expanded:
+            topFormulaViewConstraint?.update(offset: topSpacing)
+            healthView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            topHealthViewConstraint?.update(offset: -50)
+        }
     }
 
     @objc func wasDragged(gestureRecognizer: UIPanGestureRecognizer) {
@@ -250,12 +283,17 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
         case .changed:
             let translation = gestureRecognizer.translation(in: scrollView)
             let fractionCompleted = translation.y / formulaDragHeight
-            let fraction = bottomSlideViewVisible ? fractionCompleted : -fractionCompleted
+            let fraction = currentState == .expanded ? fractionCompleted : -fractionCompleted
             updateIntractiveAnimation(animationProgress: fraction)
 
         case .ended:
             scrollView.isUserInteractionEnabled = true
-            continueAnimation(finalVelocity: gestureRecognizer.velocity(in: scrollView))
+            let translation = gestureRecognizer.translation(in: scrollView)
+            var finalVelocity = gestureRecognizer.velocity(in: scrollView)
+            if translation.y <= 50 { // keep bottomSlideView is expanded when scrolling horizontal (slider)
+                finalVelocity.y = -20.0
+            }
+            continueAnimation(finalVelocity: finalVelocity)
 
         default:
             break
@@ -281,19 +319,28 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
     }
 
     func continueAnimation (finalVelocity:CGPoint) {
-        if bottomSlideViewVisible == (finalVelocity.y < 0) {
+        if (currentState == .expanded) == (finalVelocity.y < 0) {
             for animation in animations {
                 animation.stopAnimation(true)
             }
             animations.removeAll()
-            self.bottomSlideViewVisible =  !self.bottomSlideViewVisible
-            self.createAnimation(state: nextState)
+            updateBottomSlideView(state: nextState)
+            createAnimation(state: nextState)
 
         } else {
             for animation in animations {
                 animation.continueAnimation(withTimingParameters: nil, durationFactor: 0)
             }
         }
+    }
+
+    func updateBottomSlideView(state: BottomSlideViewState) {
+        currentState = state
+        scoreSourceDelegate?.formStateRelay.accept((cell: self, state: state))
+    }
+
+    @objc func tapHealthView(_ sender: UITapGestureRecognizer) {
+        createAnimation(state: nextState)
     }
 }
 
@@ -417,7 +464,7 @@ extension HealthScoreCollectionCell {
         let view = UIView()
         view.backgroundColor = .white
 
-            let formulaView = FormulaSourceView()
+        let formulaView = FormulaSourceView()
         view.addSubview(formulaView)
 
         formulaView.snp.makeConstraints { (make) in
@@ -428,11 +475,6 @@ extension HealthScoreCollectionCell {
     }
 
     fileprivate func makeTapHealthViewGesture() -> UITapGestureRecognizer {
-        let tapGestureRecogniter = UITapGestureRecognizer()
-        tapGestureRecogniter.rx.event.bind { [weak self] (_) in
-            guard let self = self else { return }
-            self.createAnimation(state: self.nextState)
-        }.disposed(by: disposeBag)
-        return tapGestureRecogniter
+        return UITapGestureRecognizer(target: self, action: #selector(tapHealthView(_:)))
     }
 }

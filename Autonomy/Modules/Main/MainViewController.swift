@@ -26,6 +26,10 @@ protocol LocationDelegate: class {
     func gotoPOI(with poiID: String?)
 }
 
+protocol ScoreSourceDelegate: class {
+    var formStateRelay: BehaviorRelay<(cell: HealthScoreCollectionCell, state: BottomSlideViewState)?> { get }
+}
+
 class MainViewController: ViewController {
 
     // MARK: - Properties
@@ -46,6 +50,9 @@ class MainViewController: ViewController {
     var currentUserLocationAddress: String?
 
     let sectionIndexes = (currentLocation: 0, poi: 1, poiList: 2)
+
+    // View Source
+    let formStateRelay = BehaviorRelay<(cell: HealthScoreCollectionCell, state: BottomSlideViewState)?>(value: nil)
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -319,6 +326,11 @@ class MainViewController: ViewController {
     }
 }
 
+// MARK: - ScoreSourceDelegate
+extension MainViewController: ScoreSourceDelegate {
+
+}
+
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -338,7 +350,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case sectionIndexes.currentLocation, sectionIndexes.poi:
-            return collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
+            cell.scoreSourceDelegate = self
+            return cell
 
         case sectionIndexes.poiList:
             let cell = collectionView.dequeueReusableCell(withClass: LocationListCell.self, for: indexPath)
@@ -387,8 +401,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
                 cell.setData(areaProfile: areaProfile, locationName: locationName)
                 self.areaProfiles[areaProfileKey ?? "current"] = areaProfile
 
-            }, onError: { [weak self] (error) in
-                self?.errorWhenFetchingData(error: error)
+            }, onError: { (error) in
+                Global.log.error(error)
             })
             .disposed(by: disposeBag)
     }
