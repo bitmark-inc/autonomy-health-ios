@@ -33,15 +33,15 @@ class LinearView: UIView {
                     make.leading.trailing.equalToSuperview()
                 }
 
-                // add bottom constraint if needed
-                if bottomConstraint && index == items.count - 1 {
-                    item.snp.makeConstraints { (make) in
-                        make.bottom.equalToSuperview()
-                    }
-                }
-
             default:
                 return
+            }
+        }
+
+        // add bottom constraint if needed
+        if bottomConstraint {
+            items.last?.0.snp.makeConstraints { (make) in
+                make.bottom.equalToSuperview()
             }
         }
     }

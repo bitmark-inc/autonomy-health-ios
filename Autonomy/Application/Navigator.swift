@@ -39,6 +39,7 @@ class Navigator {
         case reviewHelpRequest(viewModel: ReviewHelpRequestViewModel)
         case giveHelp(viewModel: GiveHelpViewModel)
         case locationSearch(viewModel: LocationSearchViewModel)
+        case profile
         case safariController(URL)
     }
 
@@ -78,6 +79,7 @@ class Navigator {
         case .reviewHelpRequest(let viewModel): return ReviewHelpRequestViewController(viewModel: viewModel)
         case .giveHelp(let viewModel):          return GiveHelpViewController(viewModel: viewModel)
         case .locationSearch(let viewModel):    return LocationSearchViewController(viewModel: viewModel)
+        case .profile:                          return ProfileViewController()
 
         case .safariController(let url):
             let vc = SFSafariViewController(url: url)

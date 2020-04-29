@@ -25,6 +25,8 @@ struct OurTheme {
         }
     }()
 
+    static var profilePaddingInset = UIEdgeInsets(top: 46, left: 15, bottom: 0, right: 15)
+
     static var paddingOverBottomInset = UIEdgeInsets(top: 14, left: 15, bottom: 0, right: 15)
 
     static let titleHeight: CGFloat = 0.23

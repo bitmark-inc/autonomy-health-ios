@@ -29,6 +29,8 @@
 		5B2661AB2457DF6B00163404 /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A92457DF6B00163404 /* PointOfInterestService.swift */; };
 		5B2661AC2457DF8600163404 /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */; };
 		5B2661AD2457DF8600163404 /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A92457DF6B00163404 /* PointOfInterestService.swift */; };
+		5B2661B324583C5700163404 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661B224583C5700163404 /* ProfileViewController.swift */; };
+		5B2661B424583C5700163404 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661B224583C5700163404 /* ProfileViewController.swift */; };
 		5B2C856D242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
 		5B2C856E242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
 		5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
@@ -404,6 +406,7 @@
 		5B213F06244413FC0095BE18 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestAPI.swift; sourceTree = "<group>"; };
 		5B2661A92457DF6B00163404 /* PointOfInterestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestService.swift; sourceTree = "<group>"; };
+		5B2661B224583C5700163404 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		5B2C8570242DB786002CC53B /* LocationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermission.swift; sourceTree = "<group>"; };
 		5B2C8574242DD42B002CC53B /* FormulaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaAPI.swift; sourceTree = "<group>"; };
@@ -639,6 +642,14 @@
 				5B2C8575242DD42B002CC53B /* FormulaService.swift */,
 			);
 			path = Formula;
+			sourceTree = "<group>";
+		};
+		5B2661AE24583C3500163404 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5B2661B224583C5700163404 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		5B2C856F242DB774002CC53B /* Permissions */ = {
@@ -1150,6 +1161,7 @@
 				5B7F2394243482BF00F7A72E /* Give Help */,
 				5BFC8DC724331AC900815828 /* Pan Modals */,
 				5B97887E243F21A6005BADA9 /* Location */,
+				5B2661AE24583C3500163404 /* Profile */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1824,6 +1836,7 @@
 				5B396E762445CEE800D14FEC /* AddLocationCell.swift in Sources */,
 				5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5B2661AC2457DF8600163404 /* PointOfInterestAPI.swift in Sources */,
+				5B2661B424583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
@@ -1953,6 +1966,7 @@
 				5B396E752445CEE800D14FEC /* AddLocationCell.swift in Sources */,
 				5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5B2661AA2457DF6B00163404 /* PointOfInterestAPI.swift in Sources */,
+				5B2661B324583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,

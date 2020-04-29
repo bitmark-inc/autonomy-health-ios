@@ -36,6 +36,14 @@ public struct Constant {
         public static let checkInSurvey2 = "check-in-survey-2"
     }
 
+
+    public struct  SettingsBundle {
+        struct Keys {
+            static let kVersion = "CFBundleShortVersionString"
+            static let kBundle = "CFBundleVersion"
+        }
+    }
+
     static let fieldPlaceholder = "---"
     static let skeletonColor = UIColor(red: 0.109804, green: 0.137255, blue: 0.145098, alpha: 1)
 }

@@ -519,6 +519,10 @@ extension MainViewController {
     fileprivate func gotoOnboardingScreen() {
         navigator.show(segue: .signInWall, sender: self, transition: .replace(type: .none))
     }
+
+    fileprivate func gotoProfileScreen() {
+        navigator.show(segue: .profile, sender: self, transition: .navigation(type: .slide(direction: .down)))
+    }
 }
 
 // MARK: - Setup Views
@@ -528,7 +532,7 @@ extension MainViewController {
         button.setImage(R.image.profileButton(), for: .normal)
 
         button.rx.tap.bind { [weak self] in
-            self?.gotoLocationListCell()
+            self?.gotoProfileScreen()
         }.disposed(by: disposeBag)
 
         return button

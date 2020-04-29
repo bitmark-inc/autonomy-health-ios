@@ -40,6 +40,18 @@
 "Reported" = "Reported";
 "ViewSource" = "View Source";
 "Reset" = "Reset";
+"Profile" = "Profile";
+"Report" = "Report";
+"History" = "History";
+"Locations" = "Locations";
+"Data" = "Data";
+"Security" = "Security";
+"Support" = "Support";
+"FAQ" = "FAQ";
+"Export" = "Export";
+"Delete" = "Delete";
+"SignOut" = "Sign Out";
+"RecoveryKey" = "Recovery Key";
 
 "RawData" = "Raw Data";
 "from_last_24_hours" = "from last 24 hours ";
@@ -49,6 +61,7 @@
 "PopulationDensity" = "POPULATION DENSITY";
 
 "addNewLocation..." = "Add new location ...";
+"VersionWithNumber" = "Version %@";
 
 "supportMessage" = "\n%@\n\nWould you like to contact with support team?";
 "Contact" = "Contact";
