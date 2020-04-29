@@ -30,4 +30,13 @@ class HistoryService {
             .filterSuccess()
             .subscribe { print($0) }
     }
+
+    static func locations(before date: Date?) -> Single<[LocationHistory]> {
+        Global.log.info("[start] HistoryService.locations(before:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.locations(before: date))
+            .filterSuccess()
+            .map([LocationHistory].self, atKeyPath: "locations_history")
+    }
 }

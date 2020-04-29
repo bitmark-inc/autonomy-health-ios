@@ -49,7 +49,7 @@ class ProfileViewController: ViewController, BackNavigator {
         }.disposed(by: disposeBag)
 
         historySymptomsButton.rx.tap.bind { [weak self] in
-            self?.gotoHistorySymptomsScreen()
+            self?.gotoSymptomHistoryScreen()
         }.disposed(by: disposeBag)
 
         reportBehaviorsButton.rx.tap.bind { [weak self] in
@@ -57,7 +57,11 @@ class ProfileViewController: ViewController, BackNavigator {
         }.disposed(by: disposeBag)
 
         historyBehaviorsButton.rx.tap.bind { [weak self] in
-            self?.gotoHistoryBehaviorsScreen()
+            self?.gotoBehaviorHistoryScreen()
+        }.disposed(by: disposeBag)
+
+        historyLocationsButton.rx.tap.bind { [weak self] in
+            self?.gotoLocationHistoryScreen()
         }.disposed(by: disposeBag)
     }
 
@@ -157,7 +161,7 @@ extension ProfileViewController {
         navigator.show(segue: .surveySymptoms(viewModel: viewModel), sender: self)
     }
 
-    fileprivate func gotoHistorySymptomsScreen() {
+    fileprivate func gotoSymptomHistoryScreen() {
         let viewModel = SymptomHistoryViewModel()
         navigator.show(segue: .symptomHistory(viewModel: viewModel), sender: self)
     }
@@ -167,9 +171,14 @@ extension ProfileViewController {
         navigator.show(segue: .surveyBehaviors(viewModel: viewModel), sender: self)
     }
 
-    fileprivate func gotoHistoryBehaviorsScreen() {
+    fileprivate func gotoBehaviorHistoryScreen() {
         let viewModel = BehaviorHistoryViewModel()
         navigator.show(segue: .behaviorHistory(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoLocationHistoryScreen() {
+        let viewModel = LocationHistoryViewModel()
+        navigator.show(segue: .locationHistory(viewModel: viewModel), sender: self)
     }
 }
 

@@ -17,3 +17,10 @@ struct SymptomsHistory: Codable {
     let location: Location
     let timestamp: Date
 }
+
+struct LocationHistory: Codable {
+
+    // MARK: - Properties
+    let location: Location
+    let timestamp: Date
+}

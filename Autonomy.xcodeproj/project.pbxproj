@@ -330,6 +330,10 @@
 		5BAA77172459640C003CCE92 /* BehaviorHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA77132459640C003CCE92 /* BehaviorHistoryViewModel.swift */; };
 		5BAA772324596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772224596498003CCE92 /* SurveyHistoryTableCell.swift */; };
 		5BAA772424596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772224596498003CCE92 /* SurveyHistoryTableCell.swift */; };
+		5BAA772C24599287003CCE92 /* LocationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772A24599287003CCE92 /* LocationHistoryViewModel.swift */; };
+		5BAA772D24599287003CCE92 /* LocationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772A24599287003CCE92 /* LocationHistoryViewModel.swift */; };
+		5BAA772E24599287003CCE92 /* LocationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */; };
+		5BAA772F24599287003CCE92 /* LocationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */; };
 		5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
@@ -586,6 +590,8 @@
 		5BAA772624598D4F003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Phrase.strings"; sourceTree = "<group>"; };
 		5BAA772724598D50003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Error.strings"; sourceTree = "<group>"; };
 		5BAA772824598D50003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		5BAA772A24599287003CCE92 /* LocationHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewModel.swift; sourceTree = "<group>"; };
+		5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewController.swift; sourceTree = "<group>"; };
 		5BB14091242C4A57009EFC59 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
 		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
@@ -1264,6 +1270,7 @@
 				5BAA772224596498003CCE92 /* SurveyHistoryTableCell.swift */,
 				5BAA770324596305003CCE92 /* Symptoms */,
 				5BAA77042459630B003CCE92 /* Behaviors */,
+				5BAA772924599287003CCE92 /* Locations */,
 			);
 			name = History;
 			path = "Hítory";
@@ -1295,6 +1302,16 @@
 			);
 			path = Behaviors;
 			sourceTree = "<group>";
+		};
+		5BAA772924599287003CCE92 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				5BAA772A24599287003CCE92 /* LocationHistoryViewModel.swift */,
+				5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */,
+			);
+			name = Locations;
+			path = Autonomy/Modules/History/Locations;
+			sourceTree = SOURCE_ROOT;
 		};
 		5BB1409A242C606A009EFC59 /* Onboarding Steps */ = {
 			isa = PBXGroup;
@@ -1840,6 +1857,7 @@
 				5B7CE0D22430C72F002CD923 /* TableView.swift in Sources */,
 				5B87F075242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790E242B4CB30028D3E3 /* NavigationController.swift in Sources */,
+				5BAA772D24599287003CCE92 /* LocationHistoryViewModel.swift in Sources */,
 				5B577922242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
 				5B92E3E72436E6E300E5949A /* BehaviorAPI.swift in Sources */,
 				5B92E3E72436E6E300E5949A /* BehaviorAPI.swift in Sources */,
@@ -1888,6 +1906,7 @@
 				5B577878242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0CA2430BE91002CD923 /* AreaProfileAPI.swift in Sources */,
 				5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */,
+				5BAA772F24599287003CCE92 /* LocationHistoryViewController.swift in Sources */,
 				5B4EF6E62446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
 				5B130BBE2451AD590031F176 /* FormulaIndicatorView.swift in Sources */,
@@ -1978,6 +1997,7 @@
 				5B7CE0D12430C72E002CD923 /* TableView.swift in Sources */,
 				5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */,
 				5B57790D242B4CB30028D3E3 /* NavigationController.swift in Sources */,
+				5BAA772C24599287003CCE92 /* LocationHistoryViewModel.swift in Sources */,
 				5B577921242B4E830028D3E3 /* AssetService+Rx.swift in Sources */,
 				5B92E3E62436E6E300E5949A /* BehaviorAPI.swift in Sources */,
 				5B92E3E62436E6E300E5949A /* BehaviorAPI.swift in Sources */,
@@ -2026,6 +2046,7 @@
 				5B577877242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0C92430BE91002CD923 /* AreaProfileAPI.swift in Sources */,
 				5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */,
+				5BAA772E24599287003CCE92 /* LocationHistoryViewController.swift in Sources */,
 				5B4EF6E52446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
 				5B130BBD2451AD590031F176 /* FormulaIndicatorView.swift in Sources */,

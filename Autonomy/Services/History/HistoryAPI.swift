@@ -13,6 +13,7 @@ import Moya
 enum HistoryAPI {
     case symptoms(before: Date?)
     case behaviors(before: Date?)
+    case locations(before: Date?)
 }
 
 extension HistoryAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -23,8 +24,9 @@ extension HistoryAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
 
     var path: String {
         switch self {
-        case .symptoms: return "symptoms"
-        case .behaviors: return "behaviors"
+        case .symptoms:     return "symptoms"
+        case .behaviors:    return "behaviors"
+        case .locations:    return "locations"
         }
     }
 
@@ -38,7 +40,9 @@ extension HistoryAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
 
     var task: Task {
         switch self {
-        case .symptoms(let beforeDate), .behaviors(let beforeDate):
+        case .symptoms(let beforeDate),
+             .behaviors(let beforeDate),
+             .locations(let beforeDate):
             var params: [String: Any] = ["limit": 20]
 
             if let beforeDate = beforeDate {

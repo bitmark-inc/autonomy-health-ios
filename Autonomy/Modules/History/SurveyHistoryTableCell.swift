@@ -60,6 +60,13 @@ class SurveyHistoryTableCell: TableViewCell {
         attributeLabel.setText(attributeText)
         infoLabel.setText(history.symptoms.joined(separator: ", "))
     }
+
+    func setData(history: LocationHistory) {
+        let timestamp = history.timestamp.string(withFormat: Constant.TimeFormat.history)
+        let locationText = "(\(history.location.longitude), \(history.location.latitude))"
+        attributeLabel.setText(timestamp)
+        infoLabel.setText(locationText)
+    }
 }
 
 extension SurveyHistoryTableCell {
