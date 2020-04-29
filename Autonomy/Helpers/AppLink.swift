@@ -18,6 +18,7 @@ enum AppLink: String {
     case exportData = "export-data"
     case personalAPI = "personal-api"
     case sourceCode = "source-code"
+    case digitalRights = "digital-rights"
 
     var path: String {
         return Constant.appName + "://\(rawValue)"
@@ -27,6 +28,7 @@ enum AppLink: String {
         switch self {
         case .eula:                 return R.string.phrase.eula()
         case .privacyOfPolicy:      return R.string.phrase.privacyPolicy()
+        case .digitalRights:        return R.string.localizable.digitalRights()
         default:
             return ""
         }
@@ -41,6 +43,7 @@ enum AppLink: String {
         case .faq:              return URL(string: serverURL + "/faq.md")
         case .personalAPI:      return URL(string: "https://documenter.getpostman.com/view/59304/SzRw2rJn?version=latest")
         case .sourceCode:       return URL(string: "https://github.com/bitmark-inc/spring-ios")
+        case .digitalRights:    return URL(string: "https://bitmark.com")
         default:
             return nil
         }

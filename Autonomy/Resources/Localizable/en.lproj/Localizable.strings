@@ -23,6 +23,7 @@
 "LowRisk" = "Low Risk";
 "ModerateRisk" = "Moderate Risk";
 "HighRisk" = "High Risk";
+"DigitalRights" = "Digital Rights";
 
 "Survey" = "Survey";
 "Symptoms" = "Symptoms";
@@ -69,6 +70,24 @@
 "TryAgain" = "Try Again";
 "Contact_us" = "Contact us";
 "YourAuthorizationIsRequired" = "Your authorization is required.";
+
+"CasesWeight" = "Cases Weight";
+"BehaviorsWeight" = "Behaviors Weight";
+"SymptomsWeight" = "Symptoms Weight";
+
+"cases_score" = "cases_score";
+"behaviors_score" = "behaviors_score";
+"symptoms_score" = "symptoms_score";
+"ConfirmedCasesScore" = "Confirmed Cases Score";
+"ReportedBehaviorsScore" = "Reported Behaviors Score";
+"ReportedSymptomsScore" = "Reported Symptoms Score";
+"ReportedBehaviorsScore.desc" = "The score is calculated for all people reporting behaviors in a 1km radius.";
+"ReportedSymptomsScore.desc" = "Each reported symptom is given a score of 1 to 3, depending on the likelihood of it being a predictor of COVID-19. The overall symptoms score is calculated for all symptoms in a 1km radius. Current symptoms and scores are";
+
+"TotalBehaviors" = "Total Behaviors";
+"SymptomsTotal" = "Symptoms Total";
+"TotalPeople" = "Total People";
+"MaxScorePerPerson" = "Max Score Per Person";
 
 "formula.cases" = "cases";
 "formula.casesWeight" = "cases_weight";

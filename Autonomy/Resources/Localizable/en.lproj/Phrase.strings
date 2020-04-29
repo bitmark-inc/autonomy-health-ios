@@ -8,6 +8,7 @@
 
 "launch.name" = "Autonomy";
 "launch.description" = "Get better.\nTogether.";
+"launch.policyTerm" = "We protect your %@.";
 
 "onboarding.1.description" = "We’ll use community data to calculate a health score for your current location.";
 "onboarding.2.description" = "Your privacy gets stronger as more people join Autonomy.";
@@ -100,7 +101,6 @@
 "eula" = "EULA";
 "privacyPolicy" = "Privacy Policy";
 "termsAndPolicyPhrase" = "%@ and %@.";
-"termAndPolicyPhrase.prefix.inSignInWall" = "By continuing, you agree to our";
 
 "notification.survey.title" = "Check-in survey";
 "notification.survey.desc" = "How are you right now? Tap to check in.";

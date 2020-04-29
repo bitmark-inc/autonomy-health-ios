@@ -67,7 +67,7 @@ class SignInWallViewController: ViewController {
         }
 
         termsAndPolicyView.snp.makeConstraints { (make) in
-            make.width.centerX.equalToSuperview()
+            make.centerX.equalToSuperview()
             make.bottom.equalTo(getStartedButton.snp.top).offset(-29)
         }
 
@@ -120,50 +120,27 @@ extension SignInWallViewController {
         return CenterView(contentView: label)
     }
 
-    fileprivate func makeTermsAndPolicyView() -> UIView {
-        let prefixLabel = Label()
-        prefixLabel.apply(
-            text: R.string.phrase.termAndPolicyPhrasePrefixInSignInWall(),
-            font: R.font.atlasGroteskLight(size: 14),
-            themeStyle: .lightTextColor, lineHeight: 1.2)
-
+    fileprivate func makeTermsAndPolicyView() -> ReadingTextView {
         let textView = ReadingTextView()
-        textView.apply(colorTheme: .white)
         textView.isScrollEnabled = false
         textView.delegate = self
         textView.linkTextAttributes = [
           .foregroundColor: themeService.attrs.lightTextColor
         ]
         textView.attributedText = LinkAttributedString.make(
-            string: R.string.phrase.termsAndPolicyPhrase(
-                AppLink.eula.generalText,
-                AppLink.privacyOfPolicy.generalText),
+            string: R.string.phrase.launchPolicyTerm(AppLink.digitalRights.generalText),
             lineHeight: 1.3,
             attributes: [
                 .font: R.font.atlasGroteskLight(size: 14)!,
                 .foregroundColor: themeService.attrs.lightTextColor
             ], links: [
-                (text: AppLink.eula.generalText, url: AppLink.eula.path),
-                (text: AppLink.privacyOfPolicy.generalText, url: AppLink.privacyOfPolicy.path)
+                (text: AppLink.digitalRights.generalText, url: AppLink.digitalRights.path)
             ], linkAttributes: [
                 .font: R.font.atlasGroteskLight(size: 14)!,
                 .underlineColor: themeService.attrs.lightTextColor,
                 .underlineStyle: NSUnderlineStyle.single.rawValue
             ])
 
-        let view = UIView()
-        view.addSubview(prefixLabel)
-        view.addSubview(textView)
-
-        prefixLabel.snp.makeConstraints { (make) in
-            make.top.centerX.equalToSuperview()
-        }
-
-        textView.snp.makeConstraints { (make) in
-            make.top.equalTo(prefixLabel.snp.bottom).offset(2)
-            make.centerX.bottom.equalToSuperview()
-        }
-
-        return view
+        return textView
     }
 }
