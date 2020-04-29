@@ -1,0 +1,98 @@
+/* 
+  Localizable.strings
+  Autonomy
+
+  Created by thuyentruong on 11/19/19.
+  Copyright © 2019 Bitmark Inc. All rights reserved.
+*/
+
+"Back" = "Back";
+"Done" = "Done";
+"Success" = "Success";
+"ok" = "OK";
+"Start" = "Start";
+"Next" = "Next";
+"Today" = "Today";
+"Enable" = "Enable";
+
+"Permission" = "Permission";
+"Notifications" = "Notifications";
+"Location_data" = "Location data";
+
+"RiskLevel" = "Risk Level";
+"LowRisk" = "Low Risk";
+"ModerateRisk" = "Moderate Risk";
+"HighRisk" = "High Risk";
+"DigitalRights" = "Digital Rights";
+
+"Survey" = "Survey";
+"Symptoms" = "Symptoms";
+"Behaviors" = "Behaviors";
+"Assistance" = "Assistance";
+"Request" = "Request";
+"Requests" = "Requests";
+"Review" = "Review";
+"GotIt" = "Got It";
+"Submit" = "Submit";
+"SignUp" = "Sign Up";
+"Submitted" = "Submitted";
+"SignedUp" = "Signed Up";
+"Copied" = "Copied";
+"Reported" = "Reported";
+"ViewSource" = "View Source";
+"Reset" = "Reset";
+"Profile" = "Profile";
+"Report" = "Report";
+"History" = "History";
+"Locations" = "Locations";
+"Data" = "Data";
+"Security" = "Security";
+"Support" = "Support";
+"FAQ" = "FAQ";
+"Export" = "Export";
+"Delete" = "Delete";
+"SignOut" = "Sign Out";
+"RecoveryKey" = "Recovery Key";
+
+"RawData" = "Raw Data";
+"from_last_24_hours" = "from last 24 hours ";
+"ConfirmedCases" = "CONFIRMED CASES";
+"ReportedSymptoms" = "REPORTED SYMPTOMS";
+"HealthyBehaviors" = "HEALTHY BEHAVIORS";
+"PopulationDensity" = "POPULATION DENSITY";
+
+"addNewLocation..." = "Add new location ...";
+"VersionWithNumber" = "Version %@";
+
+"supportMessage" = "\n%@\n\nWould you like to contact with support team?";
+"Contact" = "Contact";
+"Cancel" = "Cancel";
+"TryAgain" = "Try Again";
+"Contact_us" = "Contact us";
+"YourAuthorizationIsRequired" = "Your authorization is required.";
+
+"CasesWeight" = "Cases Weight";
+"BehaviorsWeight" = "Behaviors Weight";
+"SymptomsWeight" = "Symptoms Weight";
+
+"cases_score" = "cases_score";
+"behaviors_score" = "behaviors_score";
+"symptoms_score" = "symptoms_score";
+"ConfirmedCasesScore" = "Confirmed Cases Score";
+"ReportedBehaviorsScore" = "Reported Behaviors Score";
+"ReportedSymptomsScore" = "Reported Symptoms Score";
+"ReportedBehaviorsScore.desc" = "The score is calculated for all people reporting behaviors in a 1km radius.";
+"ReportedSymptomsScore.desc" = "Each reported symptom is given a score of 1 to 3, depending on the likelihood of it being a predictor of COVID-19. The overall symptoms score is calculated for all symptoms in a 1km radius. Current symptoms and scores are";
+
+"TotalBehaviors" = "Total Behaviors";
+"SymptomsTotal" = "Symptoms Total";
+"TotalPeople" = "Total People";
+"MaxScorePerPerson" = "Max Score Per Person";
+
+"formula.cases" = "cases";
+"formula.casesWeight" = "cases_weight";
+"formula.symptoms" = "symptoms";
+"formula.symptomsWeight" = "symptoms_weight";
+"formula.behaviors" = "behaviors";
+"formula.behaviorsWeight" = "behaviors_weight";
+"formula" = "<b>autonomy</b> = (cases * cases_weight) + (symptoms * symptoms_weight) + (behaviors * behaviors_weight) ";

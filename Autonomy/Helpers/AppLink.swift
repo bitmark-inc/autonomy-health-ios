@@ -35,14 +35,14 @@ enum AppLink: String {
     }
 
     var websiteURL: URL? {
-        let serverURL = "https://raw.githubusercontent.com/bitmark-inc/spring/master"
+        let serverURL = "https://raw.githubusercontent.com/bitmark-inc/autonomy/master"
 
         switch self {
         case .eula:             return URL(string: "https://bitmark.com")
         case .privacyOfPolicy:  return URL(string: "https://bitmark.com")
         case .faq:              return URL(string: serverURL + "/faq.md")
         case .personalAPI:      return URL(string: "https://documenter.getpostman.com/view/59304/SzRw2rJn?version=latest")
-        case .sourceCode:       return URL(string: "https://github.com/bitmark-inc/spring-ios")
+        case .sourceCode:       return URL(string: "https://github.com/bitmark-inc/autonomy-ios")
         case .digitalRights:    return URL(string: "https://bitmark.com")
         default:
             return nil

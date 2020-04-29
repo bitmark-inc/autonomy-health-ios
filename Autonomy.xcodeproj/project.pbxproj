@@ -582,6 +582,10 @@
 		5BAA77122459640C003CCE92 /* BehaviorHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BehaviorHistoryViewController.swift; path = Autonomy/Modules/History/Behaviors/BehaviorHistoryViewController.swift; sourceTree = SOURCE_ROOT; };
 		5BAA77132459640C003CCE92 /* BehaviorHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BehaviorHistoryViewModel.swift; path = Autonomy/Modules/History/Behaviors/BehaviorHistoryViewModel.swift; sourceTree = SOURCE_ROOT; };
 		5BAA772224596498003CCE92 /* SurveyHistoryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurveyHistoryTableCell.swift; path = Autonomy/Modules/History/SurveyHistoryTableCell.swift; sourceTree = SOURCE_ROOT; };
+		5BAA772524598D4F003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		5BAA772624598D4F003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Phrase.strings"; sourceTree = "<group>"; };
+		5BAA772724598D50003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Error.strings"; sourceTree = "<group>"; };
+		5BAA772824598D50003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5BB14091242C4A57009EFC59 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
 		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
@@ -1477,6 +1481,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant-TW",
 			);
 			mainGroup = 5B9542B0242AF8010072D933;
 			productRefGroup = 5B9542BA242AF8010072D933 /* Products */;
@@ -2119,6 +2124,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5B5778E6242B49140028D3E3 /* en */,
+				5BAA772724598D50003CCE92 /* zh-Hant-TW */,
 			);
 			name = Error.strings;
 			sourceTree = "<group>";
@@ -2127,6 +2133,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5B5778E8242B49140028D3E3 /* en */,
+				5BAA772624598D4F003CCE92 /* zh-Hant-TW */,
 			);
 			name = Phrase.strings;
 			sourceTree = "<group>";
@@ -2135,6 +2142,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5B5778EA242B49140028D3E3 /* en */,
+				5BAA772524598D4F003CCE92 /* zh-Hant-TW */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -2143,6 +2151,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5B5778EC242B49140028D3E3 /* en */,
+				5BAA772824598D50003CCE92 /* zh-Hant-TW */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -2320,6 +2329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2380,6 +2390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

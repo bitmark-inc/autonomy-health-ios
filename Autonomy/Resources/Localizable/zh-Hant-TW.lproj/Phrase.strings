@@ -1,0 +1,106 @@
+/* 
+  Phrase.strings
+  Autonomy
+
+  Created by thuyentruong on 11/19/19.
+  Copyright © 2019 Bitmark Inc. All rights reserved.
+*/
+
+"launch.name" = "Autonomy";
+"launch.description" = "Get better.\nTogether.";
+"launch.policyTerm" = "We protect your %@.";
+
+"onboarding.1.description" = "We’ll use community data to calculate a health score for your current location.";
+"onboarding.2.description" = "Your privacy gets stronger as more people join Autonomy.";
+"onboarding.3.description" = "We’ll help you and your community help one another.";
+
+"onboarding.2.title" = "Do you have any of the following symptoms?";
+"onboarding.2.item.1" = "Fever";
+"onboarding.2.item.1.desc" = "Body temperature above 100ºF (38ºC)";
+"onboarding.2.item.2" = "Dry cough";
+"onboarding.2.item.2.desc" = "Without mucous or phlegm (rattling)";
+
+"onboarding.3.title" = "Did you do any of the following behaviors today?";
+"onboarding.3.item.1" = "Frequent hand cleaning";
+"onboarding.3.item.1.desc" = "Washing hands thoroughly with soap and water for at least 20 seconds or applying an alcohol-based hand sanitizer.";
+"onboarding.3.item.2" = "Social & physical distancing";
+"onboarding.3.item.2.desc" = "Avoiding crowds, working from home, and maintaining at least 6 feet of distance from others whenever possible.";
+
+"permission.description" = "Autonomy requires access to the following:";
+"permission.notification.description" = "We’ll send you regular reminders to report symptoms and healthy behaviors and alerts when there is a health status change to one of your saved locations.";
+"permission.location.description" = "Your current location will be used to help improve your community’s data. Your location data is always private, and you cannot be personally identified by sharing your location.";
+
+"riskLevel.description" = "Are you at higher risk for severe illness from COVID-19?";
+"riskLevel.yes" = "Yes, I’m at higher risk";
+"riskLevel.yes.description" = "Higher risk individuals currently include:\n• People over age 65\n\nAnd anyone with any of the following\npre-existing medical conditions:\n• High blood pressure (hypertension)\n• Cardiovascular disease\n• Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer";
+"riskLevel.no" = "No, I’m not at higher risk";
+
+"survey.title" = "How are you right now?";
+"survey.help.title" = "How can we help?";
+"survey.help.symptoms" = "I have symptoms";
+"survey.help.symptoms.description" = "Let us if you are currently experiencing any of common COVID-19 symptoms.";
+"survey.help.assistance" = "I need assistance";
+"survey.help.assistance.description" = "Let people in your local community know that you need help.";
+
+"survey.symptoms.title" = "Do you have any of the following symptoms?";
+"survey.behaviors.title" = "Did you do any of the following behaviors today?";
+
+"assistance.title" = "What kind of assistance do you need?";
+"assistance.foodAndWater" = "Access to food or water";
+"assistance.foodAndWater.desc" = "I need help getting food and water.";
+"assistance.foodAndWater.requestTitle" = "Need access to food or water";
+"assistance.medicine" = "Access to medicine";
+"assistance.medicine.desc" = "I need help getting essential medications.";
+"assistance.medicine.requestTitle" = "Need access to medicine";
+"assistance.transport" = "Transport to healthcare";
+"assistance.transport.desc" = "I need help traveling to get medical care.";
+"assistance.transport.requestTitle" = "Need transport to healthcare";
+"assistance.unsafeHome" = "My home is unsafe";
+"assistance.unsafeHome.desc" = "I need help traveling to a safe location.";
+"assistance.unsafeHome.requestTitle" = "Need transport from an unsafe home";
+
+"assistance.needItems.title" = "What exactly do you need?";
+"assistance.needItems.placeholder" = "Enter description of desired items or destination here";
+
+"assistance.place.title" = "Where is a safe place to meet your helper?";
+"assistance.place.placeholder" = "Enter a physical address other safe location description here";
+
+"assistance.contact.title" = "How should your helper contact you?";
+"assistance.contact.placeholder" = "Enter contact info here. For example, a Line ID, WhatsApp ID, or phone number.";
+
+"review.title" = "Please review your request for assistance:";
+"assistance.info.exactNeeds" = "Exact Needs";
+"assistance.info.meetingLocation" = "Meeting Location";
+"assistance.info.contactInfo" = "Contact Info";
+
+"requestHelp.submitted.title" = "Your request for assistance has been broadcast to your LOCAL community";
+"requestHelp.submitted.desc" = "You will receive a notification when someone has volunteered to help.";
+"requestHelp.generalTitle" = "Community request for assistance";
+
+"giveHelp.signUp.title" = "Thank You For Signing Up To Fulfill This Community Request";
+"giveHelp.signUp.desc" = "The community member in need has been notified of your response. Please write down or take a screenshot of the request details now then contact the community member.";
+
+"giveHelp.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
+"giveHelp.helper.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
+"giveHelp.helper.otherSubmitted" = "Someone has already signed up to fulfill this community request.";
+"giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
+
+"symptoms.reported.title" = "Your Symptoms Have Been Successfully Reported To Your Community ";
+"symptoms.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your symptoms if they continue.";
+
+"behaviors.reported.title" = "Your Behaviors Have Been Successfully Reported To Your Community ";
+"behaviors.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your behaviors if they continue.";
+
+"history.symptom.title" = "Symptom History";
+"history.behavior.title" = "Behavior History";
+"history.location.title" = "Location History";
+
+"signIn.title" = "Sign In";
+"signIn.submitButton" = "Submit »";
+
+"eula" = "EULA";
+"privacyPolicy" = "Privacy Policy";
+"termsAndPolicyPhrase" = "%@ and %@.";
+
+"notification.survey.title" = "Check-in survey";
+"notification.survey.desc" = "How are you right now? Tap to check in.";
