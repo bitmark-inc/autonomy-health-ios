@@ -35,10 +35,10 @@
 		5B2C856E242DAFC6002CC53B /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
 		5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
 		5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
-		5B2C8576242DD42B002CC53B /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* FormulaAPI.swift */; };
-		5B2C8577242DD42B002CC53B /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* FormulaAPI.swift */; };
-		5B2C8578242DD42B002CC53B /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* FormulaService.swift */; };
-		5B2C8579242DD42B002CC53B /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* FormulaService.swift */; };
+		5B2C8576242DD42B002CC53B /* HistoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* HistoryAPI.swift */; };
+		5B2C8577242DD42B002CC53B /* HistoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* HistoryAPI.swift */; };
+		5B2C8578242DD42B002CC53B /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* HistoryService.swift */; };
+		5B2C8579242DD42B002CC53B /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* HistoryService.swift */; };
 		5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
 		5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
 		5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */; };
@@ -314,6 +314,22 @@
 		5BA808BC2440226A00B2733A /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
 		5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
 		5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
+		5BAA76FA24595CA3003CCE92 /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
+		5BAA76FB24595CA3003CCE92 /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
+		5BAA76FF2459603C003CCE92 /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* FormulaAPI.swift */; };
+		5BAA77002459603C003CCE92 /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* FormulaAPI.swift */; };
+		5BAA77012459603C003CCE92 /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FE2459603C003CCE92 /* FormulaService.swift */; };
+		5BAA77022459603C003CCE92 /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FE2459603C003CCE92 /* FormulaService.swift */; };
+		5BAA770E245963FD003CCE92 /* SymptomHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA770C245963FD003CCE92 /* SymptomHistoryViewModel.swift */; };
+		5BAA770F245963FD003CCE92 /* SymptomHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA770C245963FD003CCE92 /* SymptomHistoryViewModel.swift */; };
+		5BAA7710245963FD003CCE92 /* SymptomHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA770D245963FD003CCE92 /* SymptomHistoryViewController.swift */; };
+		5BAA7711245963FD003CCE92 /* SymptomHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA770D245963FD003CCE92 /* SymptomHistoryViewController.swift */; };
+		5BAA77142459640C003CCE92 /* BehaviorHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA77122459640C003CCE92 /* BehaviorHistoryViewController.swift */; };
+		5BAA77152459640C003CCE92 /* BehaviorHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA77122459640C003CCE92 /* BehaviorHistoryViewController.swift */; };
+		5BAA77162459640C003CCE92 /* BehaviorHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA77132459640C003CCE92 /* BehaviorHistoryViewModel.swift */; };
+		5BAA77172459640C003CCE92 /* BehaviorHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA77132459640C003CCE92 /* BehaviorHistoryViewModel.swift */; };
+		5BAA772324596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772224596498003CCE92 /* SurveyHistoryTableCell.swift */; };
+		5BAA772424596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772224596498003CCE92 /* SurveyHistoryTableCell.swift */; };
 		5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
@@ -409,8 +425,8 @@
 		5B2661B224583C5700163404 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		5B2C8570242DB786002CC53B /* LocationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermission.swift; sourceTree = "<group>"; };
-		5B2C8574242DD42B002CC53B /* FormulaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaAPI.swift; sourceTree = "<group>"; };
-		5B2C8575242DD42B002CC53B /* FormulaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaService.swift; sourceTree = "<group>"; };
+		5B2C8574242DD42B002CC53B /* HistoryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAPI.swift; sourceTree = "<group>"; };
+		5B2C8575242DD42B002CC53B /* HistoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		5B2C857A242DD4CB002CC53B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataEngine.swift; sourceTree = "<group>"; };
 		5B2C8582242DDBFB002CC53B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -558,6 +574,14 @@
 		5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
 		5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextTableCell.swift; sourceTree = "<group>"; };
 		5BA808C0244081E300B2733A /* LocationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListCell.swift; sourceTree = "<group>"; };
+		5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsHistory.swift; sourceTree = "<group>"; };
+		5BAA76FD2459603C003CCE92 /* FormulaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaAPI.swift; sourceTree = "<group>"; };
+		5BAA76FE2459603C003CCE92 /* FormulaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaService.swift; sourceTree = "<group>"; };
+		5BAA770C245963FD003CCE92 /* SymptomHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SymptomHistoryViewModel.swift; path = Autonomy/Modules/History/Symptoms/SymptomHistoryViewModel.swift; sourceTree = SOURCE_ROOT; };
+		5BAA770D245963FD003CCE92 /* SymptomHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SymptomHistoryViewController.swift; path = Autonomy/Modules/History/Symptoms/SymptomHistoryViewController.swift; sourceTree = SOURCE_ROOT; };
+		5BAA77122459640C003CCE92 /* BehaviorHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BehaviorHistoryViewController.swift; path = Autonomy/Modules/History/Behaviors/BehaviorHistoryViewController.swift; sourceTree = SOURCE_ROOT; };
+		5BAA77132459640C003CCE92 /* BehaviorHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BehaviorHistoryViewModel.swift; path = Autonomy/Modules/History/Behaviors/BehaviorHistoryViewModel.swift; sourceTree = SOURCE_ROOT; };
+		5BAA772224596498003CCE92 /* SurveyHistoryTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SurveyHistoryTableCell.swift; path = Autonomy/Modules/History/SurveyHistoryTableCell.swift; sourceTree = SOURCE_ROOT; };
 		5BB14091242C4A57009EFC59 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
 		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
@@ -638,8 +662,8 @@
 		5B2661A72457DBBF00163404 /* Formula */ = {
 			isa = PBXGroup;
 			children = (
-				5B2C8574242DD42B002CC53B /* FormulaAPI.swift */,
-				5B2C8575242DD42B002CC53B /* FormulaService.swift */,
+				5BAA76FD2459603C003CCE92 /* FormulaAPI.swift */,
+				5BAA76FE2459603C003CCE92 /* FormulaService.swift */,
 			);
 			path = Formula;
 			sourceTree = "<group>";
@@ -782,6 +806,7 @@
 				5BFC8DBD243307BE00815828 /* Help Request */,
 				5B213EFC244412EB0095BE18 /* Points Of Interest */,
 				5B2661A72457DBBF00163404 /* Formula */,
+				5BAA76FC24595F54003CCE92 /* History */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -834,6 +859,7 @@
 				5B4EF6E92446B06000BCB323 /* Behavior.swift */,
 				5B213F03244413E90095BE18 /* PointOfInterest.swift */,
 				5B213F06244413FC0095BE18 /* Location.swift */,
+				5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1162,6 +1188,7 @@
 				5BFC8DC724331AC900815828 /* Pan Modals */,
 				5B97887E243F21A6005BADA9 /* Location */,
 				5B2661AE24583C3500163404 /* Profile */,
+				5BAA76E824593A49003CCE92 /* History */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1225,6 +1252,44 @@
 				5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		5BAA76E824593A49003CCE92 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				5BAA772224596498003CCE92 /* SurveyHistoryTableCell.swift */,
+				5BAA770324596305003CCE92 /* Symptoms */,
+				5BAA77042459630B003CCE92 /* Behaviors */,
+			);
+			name = History;
+			path = "Hítory";
+			sourceTree = "<group>";
+		};
+		5BAA76FC24595F54003CCE92 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				5B2C8574242DD42B002CC53B /* HistoryAPI.swift */,
+				5B2C8575242DD42B002CC53B /* HistoryService.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		5BAA770324596305003CCE92 /* Symptoms */ = {
+			isa = PBXGroup;
+			children = (
+				5BAA770D245963FD003CCE92 /* SymptomHistoryViewController.swift */,
+				5BAA770C245963FD003CCE92 /* SymptomHistoryViewModel.swift */,
+			);
+			path = Symptoms;
+			sourceTree = "<group>";
+		};
+		5BAA77042459630B003CCE92 /* Behaviors */ = {
+			isa = PBXGroup;
+			children = (
+				5BAA77122459640C003CCE92 /* BehaviorHistoryViewController.swift */,
+				5BAA77132459640C003CCE92 /* BehaviorHistoryViewModel.swift */,
+			);
+			path = Behaviors;
 			sourceTree = "<group>";
 		};
 		5BB1409A242C606A009EFC59 /* Onboarding Steps */ = {
@@ -1782,6 +1847,7 @@
 				5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B7F23AC2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
+				5BAA772424596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */,
 				5B577894242B47060028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B87F085242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577895242B470A0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
@@ -1789,6 +1855,7 @@
 				5B92E3E92436E6E300E5949A /* BehaviorService.swift in Sources */,
 				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
+				5BAA77002459603C003CCE92 /* FormulaAPI.swift in Sources */,
 				5B213F002444133E0095BE18 /* HelpRequestService.swift in Sources */,
 				5B93F704243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
@@ -1799,9 +1866,12 @@
 				5B130BBB2451AA8D0031F176 /* RightIconButton.swift in Sources */,
 				5BA808B9244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
 				5B57790C242B4CB30028D3E3 /* ViewController.swift in Sources */,
+				5BAA76FB24595CA3003CCE92 /* SymptomsHistory.swift in Sources */,
 				5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
 				5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */,
+				5BAA770F245963FD003CCE92 /* SymptomHistoryViewModel.swift in Sources */,
 				5B577934242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
+				5BAA7711245963FD003CCE92 /* SymptomHistoryViewController.swift in Sources */,
 				5B4957432449938E0012D6E1 /* SymptomService.swift in Sources */,
 				5B577927242B4EA20028D3E3 /* ViewModel.swift in Sources */,
 				5BA808B6244010E100B2733A /* LocationSearchViewController.swift in Sources */,
@@ -1822,7 +1892,7 @@
 				5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
 				5B7F2397243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5B2C8591242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
-				5B2C8579242DD42B002CC53B /* FormulaService.swift in Sources */,
+				5B2C8579242DD42B002CC53B /* HistoryService.swift in Sources */,
 				5B213F05244413E90095BE18 /* PointOfInterest.swift in Sources */,
 				5B57786A242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
@@ -1860,6 +1930,7 @@
 				5B2C858A242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B7CE0BA2430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
 				5B7F23A62434878F00F7A72E /* ReviewHelpRequestViewController.swift in Sources */,
+				5BAA77172459640C003CCE92 /* BehaviorHistoryViewModel.swift in Sources */,
 				5BFC8DD424333E5700815828 /* Symptom.swift in Sources */,
 				5BFC8DD1243327E000815828 /* Date+Formatter.swift in Sources */,
 				5BFC8DC12433081400815828 /* HealthService.swift in Sources */,
@@ -1871,12 +1942,14 @@
 				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
-				5B2C8577242DD42B002CC53B /* FormulaAPI.swift in Sources */,
+				5B2C8577242DD42B002CC53B /* HistoryAPI.swift in Sources */,
 				5B49574D2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
 				5B7F23AA2434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
+				5BAA77022459603C003CCE92 /* FormulaService.swift in Sources */,
 				5BB140A0242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577916242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B7CE0CC2430BE91002CD923 /* AreaProfileService.swift in Sources */,
+				5BAA77152459640C003CCE92 /* BehaviorHistoryViewController.swift in Sources */,
 				5B577937242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5B577918242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5B577907242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
@@ -1912,6 +1985,7 @@
 				5B51BF562431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
 				5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B7F23AB2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
+				5BAA772324596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */,
 				5B57786D242B43140028D3E3 /* Credential.swift in Sources */,
 				5B87F084242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577890242B460E0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
@@ -1919,6 +1993,7 @@
 				5B92E3E82436E6E300E5949A /* BehaviorService.swift in Sources */,
 				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
+				5BAA76FF2459603C003CCE92 /* FormulaAPI.swift in Sources */,
 				5B213EFF2444133E0095BE18 /* HelpRequestService.swift in Sources */,
 				5B93F703243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
@@ -1929,9 +2004,12 @@
 				5B130BBA2451AA8D0031F176 /* RightIconButton.swift in Sources */,
 				5BA808B8244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
 				5B57790B242B4CB30028D3E3 /* ViewController.swift in Sources */,
+				5BAA76FA24595CA3003CCE92 /* SymptomsHistory.swift in Sources */,
 				5B7F23AD2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
 				5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */,
+				5BAA770E245963FD003CCE92 /* SymptomHistoryViewModel.swift in Sources */,
 				5B577933242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
+				5BAA7710245963FD003CCE92 /* SymptomHistoryViewController.swift in Sources */,
 				5B4957422449938E0012D6E1 /* SymptomService.swift in Sources */,
 				5B577926242B4EA20028D3E3 /* ViewModel.swift in Sources */,
 				5BA808B5244010E100B2733A /* LocationSearchViewController.swift in Sources */,
@@ -1952,7 +2030,7 @@
 				5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
 				5B7F2396243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5B2C8590242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
-				5B2C8578242DD42B002CC53B /* FormulaService.swift in Sources */,
+				5B2C8578242DD42B002CC53B /* HistoryService.swift in Sources */,
 				5B213F04244413E90095BE18 /* PointOfInterest.swift in Sources */,
 				5B577869242B424C0028D3E3 /* Global.swift in Sources */,
 				5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
@@ -1990,6 +2068,7 @@
 				5B2C8589242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B7CE0B92430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
 				5B7F23A52434878F00F7A72E /* ReviewHelpRequestViewController.swift in Sources */,
+				5BAA77162459640C003CCE92 /* BehaviorHistoryViewModel.swift in Sources */,
 				5BFC8DD324333E5700815828 /* Symptom.swift in Sources */,
 				5BFC8DD0243327E000815828 /* Date+Formatter.swift in Sources */,
 				5BFC8DC02433081400815828 /* HealthService.swift in Sources */,
@@ -2001,12 +2080,14 @@
 				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
-				5B2C8576242DD42B002CC53B /* FormulaAPI.swift in Sources */,
+				5B2C8576242DD42B002CC53B /* HistoryAPI.swift in Sources */,
 				5B49574C2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
 				5B7F23A92434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
+				5BAA77012459603C003CCE92 /* FormulaService.swift in Sources */,
 				5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577915242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B7CE0CB2430BE91002CD923 /* AreaProfileService.swift in Sources */,
+				5BAA77142459640C003CCE92 /* BehaviorHistoryViewController.swift in Sources */,
 				5B577936242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5B577917242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5B577906242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,

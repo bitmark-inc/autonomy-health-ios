@@ -90,6 +90,10 @@
 "behaviors.reported.title" = "Your Behaviors Have Been Successfully Reported To Your Community ";
 "behaviors.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your behaviors if they continue.";
 
+"history.symptom.title" = "Symptom History";
+"history.behavior.title" = "Behavior History";
+"history.location.title" = "Location History";
+
 "signIn.title" = "Sign In";
 "signIn.submitButton" = "Submit »";
 

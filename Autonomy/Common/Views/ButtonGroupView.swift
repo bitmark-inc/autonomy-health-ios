@@ -14,19 +14,20 @@ class ButtonGroupView: UIView {
     let viewHeightWithGradient: CGFloat = 117
     fileprivate let defaultBackgroundColor = UIColor(hexString: "#000")!
 
-    init(button1: UIView, button2: UIView, hasGradient: Bool = false) {
+    init(button1: UIView, button2: UIView?, hasGradient: Bool = false) {
         super.init(frame: CGRect.zero)
 
         let buttonsLine = UIView()
         buttonsLine.addSubview(button1)
-        buttonsLine.addSubview(button2)
-
         button1.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
         }
 
-        button2.snp.makeConstraints { (make) in
-            make.top.bottom.trailing.equalToSuperview()
+        if let button2 = button2 {
+            buttonsLine.addSubview(button2)
+            button2.snp.makeConstraints { (make) in
+                make.top.bottom.trailing.equalToSuperview()
+            }
         }
 
         addSubview(buttonsLine)

@@ -44,6 +44,10 @@ public struct Constant {
         }
     }
 
+    struct TimeFormat {
+        static let history = "MMM d 'at' h:mm a"
+    }
+
     static let fieldPlaceholder = "---"
     static let skeletonColor = UIColor(red: 0.109804, green: 0.137255, blue: 0.145098, alpha: 1)
 }

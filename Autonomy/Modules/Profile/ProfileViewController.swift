@@ -37,6 +37,30 @@ class ProfileViewController: ViewController, BackNavigator {
     lazy var versionLabel = makeVersionLabel()
     lazy var bitmarkCertView = makeBitmarkCertView()
 
+    override func bindViewModel() {
+        super.bindViewModel()
+
+        doneButton.rx.tap.bind { [weak self] in
+            self?.navigator.pop(sender: self)
+        }.disposed(by: disposeBag)
+
+        reportSymptomsButton.rx.tap.bind { [weak self] in
+            self?.gotoReportSymptomsScreen()
+        }.disposed(by: disposeBag)
+
+        historySymptomsButton.rx.tap.bind { [weak self] in
+            self?.gotoHistorySymptomsScreen()
+        }.disposed(by: disposeBag)
+
+        reportBehaviorsButton.rx.tap.bind { [weak self] in
+            self?.gotoReportBehaviorsScreen()
+        }.disposed(by: disposeBag)
+
+        historyBehaviorsButton.rx.tap.bind { [weak self] in
+            self?.gotoHistoryBehaviorsScreen()
+        }.disposed(by: disposeBag)
+    }
+
     override func setupViews() {
         super.setupViews()
 
@@ -126,11 +150,33 @@ extension ProfileViewController: UITextViewDelegate {
     }
 }
 
+// MARK: Navigator
+extension ProfileViewController {
+    fileprivate func gotoReportSymptomsScreen() {
+        let viewModel = SurveySymptomsViewModel()
+        navigator.show(segue: .surveySymptoms(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoHistorySymptomsScreen() {
+        let viewModel = SymptomHistoryViewModel()
+        navigator.show(segue: .symptomHistory(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoReportBehaviorsScreen() {
+        let viewModel = SurveyBehaviorsViewModel()
+        navigator.show(segue: .surveyBehaviors(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoHistoryBehaviorsScreen() {
+        let viewModel = BehaviorHistoryViewModel()
+        navigator.show(segue: .behaviorHistory(viewModel: viewModel), sender: self)
+    }
+}
+
 // MARK: - Setup Views
 extension ProfileViewController {
     fileprivate func makeTitleSectionView() -> UIView {
         let titleScreenLabel = makeTitleScreenLabel()
-        let doneButton = makeDoneButton()
 
         let view = UIView()
         view.addSubview(titleScreenLabel)
@@ -191,6 +237,7 @@ extension ProfileViewController {
                 button.snp.makeConstraints { (make) in
                     make.top.equalToSuperview()
                     make.trailing.equalToSuperview()
+                    make.leading.greaterThanOrEqualToSuperview()
                 }
 
             case 1..<buttons.count:
@@ -198,8 +245,8 @@ extension ProfileViewController {
                 button.snp.makeConstraints { (make) in
                     make.top.equalTo(previousItem.snp.bottom).offset(-10)
                     make.trailing.equalToSuperview()
+                    make.leading.greaterThanOrEqualToSuperview()
                 }
-
 
             default:
                 break
@@ -234,6 +281,7 @@ extension ProfileViewController {
             make.top.equalToSuperview().offset(-15)
             make.bottom.equalToSuperview()
             make.trailing.equalToSuperview().offset(30)
+            make.leading.greaterThanOrEqualTo(titleLabel.snp.trailing)
         }
 
         let separateLine = SeparateLine(height: 1, themeStyle: .separateTextColor)

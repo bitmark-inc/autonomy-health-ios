@@ -198,7 +198,6 @@ extension LocationSearchViewController {
 
     fileprivate func makeResultTableView() -> TableView {
         let tableView = TableView()
-        tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .singleLine
