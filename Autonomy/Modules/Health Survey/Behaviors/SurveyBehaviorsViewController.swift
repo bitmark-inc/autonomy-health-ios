@@ -15,25 +15,27 @@ import SkeletonView
 class SurveyBehaviorsViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
-    lazy var headerScreen: UIView = {
+    fileprivate lazy var headerScreen: UIView = {
         HeaderView(header: R.string.localizable.behaviors().localizedUppercase)
     }()
-    lazy var titleScreen = makeTitleScreen()
-    lazy var behaviorsScrollView = makeBehaviorsScrollView()
+    fileprivate lazy var titleScreen = makeTitleScreen()
+    fileprivate lazy var behaviorsScrollView = makeBehaviorsScrollView()
+    fileprivate lazy var behaviorViewsStack = UIStackView()
+    fileprivate lazy var addNewBehaviorView = makeAddNewBehaviorView()
 
-    lazy var backButton = makeLightBackItem()
-    lazy var doneButton = SubmitButton(title: R.string.localizable.submit().localizedUppercase,
+    fileprivate lazy var backButton = makeLightBackItem()
+    fileprivate lazy var doneButton = SubmitButton(title: R.string.localizable.submit().localizedUppercase,
                                        icon: R.image.upCircleArrow()!)
-    lazy var groupsButton: UIView = {
+    fileprivate lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: false)
     }()
 
-    lazy var thisViewModel: SurveyBehaviorsViewModel = {
+    fileprivate lazy var thisViewModel: SurveyBehaviorsViewModel = {
         return viewModel as! SurveyBehaviorsViewModel
     }()
 
-    var behaviors = [Behavior]()
-    var behaviorViews = [CheckboxView]()
+    fileprivate var behaviors = [Behavior]()
+    var newBehaviorSubject = PublishSubject<Behavior>()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -77,6 +79,14 @@ class SurveyBehaviorsViewController: ViewController, BackNavigator {
             let selectedBehaviorKeys = self.getSelectedBehaviorKeys()
             self.thisViewModel.report(with: selectedBehaviorKeys)
         }.disposed(by: disposeBag)
+
+        newBehaviorSubject
+            .subscribe(onNext: { [weak self] (behavior) in
+                guard let self = self else { return }
+                self.behaviors.append(behavior)
+                self.behaviorViewsStack.addArrangedSubview(CheckboxView(title: behavior.name, description: behavior.desc))
+            })
+            .disposed(by: disposeBag)
     }
 
     fileprivate func showSignedPanModel() {
@@ -90,6 +100,10 @@ class SurveyBehaviorsViewController: ViewController, BackNavigator {
     }
 
     func getSelectedBehaviorKeys() -> [String] {
+        guard let behaviorViews = behaviorViewsStack.arrangedSubviews as? [CheckboxView] else {
+            return []
+        }
+
         return behaviors.enumerated().compactMap { (index, behavior) -> String? in
             let behaviorCheckView = behaviorViews[index]
             return behaviorCheckView.checkBox.on ? behavior.id : nil
@@ -97,18 +111,22 @@ class SurveyBehaviorsViewController: ViewController, BackNavigator {
     }
 
     fileprivate func rebuilBehaviorsScrollView() {
-        behaviorViews = behaviors.map { (behavior) -> CheckboxView in
-            return CheckboxView(title: behavior.name, description: behavior.desc)
-        }
-
-        let behaviorViewsStack = UIStackView(arrangedSubviews: behaviorViews, axis: .vertical, spacing: 15)
+        behaviorViewsStack = UIStackView(
+            arrangedSubviews: behaviors.map { CheckboxView(title: $0.name, description: $0.desc) },
+            axis: .vertical, spacing: 15)
 
         behaviorsScrollView.removeSubviews()
         behaviorsScrollView.addSubview(behaviorViewsStack)
+        behaviorsScrollView.addSubview(addNewBehaviorView)
 
         behaviorViewsStack.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
             make.width.equalToSuperview().offset(-30)
+        }
+
+        addNewBehaviorView.snp.makeConstraints { (make) in
+            make.top.equalTo(behaviorViewsStack.snp.bottom).offset(15)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 
@@ -188,6 +206,12 @@ extension SurveyBehaviorsViewController {
         navigator.show(segue: .main(viewModel: viewModel), sender: self,
                        transition: .replace(type: .slide(direction: .down)))
     }
+
+    fileprivate func gotoAddNewBehavior() {
+        let survey = Survey()
+        let viewModel = AskInfoViewModel(askInfoType: .behaviorTitle, survey: survey)
+        navigator.show(segue: .askInfo(viewModel: viewModel), sender: self)
+    }
 }
 
 // MARK: - Setup views
@@ -200,6 +224,18 @@ extension SurveyBehaviorsViewController {
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
         return CenterView(contentView: label, shrink: true)
+    }
+
+    fileprivate func makeAddNewBehaviorView() -> UIView {
+        let addNewView = AddRow(title: R.string.phrase.addBehaviorAdd())
+
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.rx.event.bind { [weak self] (_) in
+            self?.gotoAddNewBehavior()
+        }.disposed(by: disposeBag)
+
+        addNewView.addGestureRecognizer(tapGesture)
+        return addNewView
     }
 
     fileprivate func makeBehaviorsScrollView() -> UIScrollView {

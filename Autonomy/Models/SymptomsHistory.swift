@@ -18,6 +18,14 @@ struct SymptomsHistory: Codable {
     let timestamp: Date
 }
 
+struct BehaviorsHistory: Codable {
+
+    // MARK: - Properties
+    let behaviors: [Behavior]
+    let location: Location
+    let timestamp: Date
+}
+
 struct LocationHistory: Codable {
 
     // MARK: - Properties

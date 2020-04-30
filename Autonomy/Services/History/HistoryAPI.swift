@@ -43,7 +43,7 @@ extension HistoryAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
         case .symptoms(let beforeDate),
              .behaviors(let beforeDate),
              .locations(let beforeDate):
-            var params: [String: Any] = ["limit": 20]
+            var params: [String: Any] = ["limit": Constant.callHistoryLimit]
 
             if let beforeDate = beforeDate {
                 params["before"] = beforeDate.timeIntervalSince1970

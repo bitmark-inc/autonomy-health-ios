@@ -11,5 +11,45 @@ import RxCocoa
 
 class BehaviorHistoryViewModel: ViewModel {
 
-    // MARK: - Properties
+    // MARK: - Output
+    let behaviorHistoriesRelay = BehaviorRelay<[BehaviorsHistory]?>(value: nil)
+    let fetchDataResultSubject = PublishSubject<Event<Void>>()
+    let loadingStateRelay = BehaviorRelay<LoadState>(value: .hide)
+    let lock = NSLock()
+    var endRecord: Bool = false
+
+    override init() {
+        super.init()
+
+        fetchHistories()
+    }
+
+    func fetchHistories(before date: Date? = nil) {
+        guard lock.try() else {
+            return
+        }
+
+        loadingStateRelay.accept(.loading)
+        HistoryService.behaviors(before: date)
+            .do(onDispose: { [weak self] in
+                guard let self = self else { return }
+                self.lock.unlock()
+                self.loadingStateRelay.accept(.hide)
+            })
+            .subscribe(onSuccess: { [weak self] in
+                guard let self = self else { return }
+
+                // track endRecord
+                if $0.count < Constant.callHistoryLimit {
+                    self.endRecord = true
+                }
+
+                var histories = self.behaviorHistoriesRelay.value ?? []
+                histories.append(contentsOf: $0)
+                self.behaviorHistoriesRelay.accept(histories)
+            }, onError: { [weak self] (error) in
+                self?.fetchDataResultSubject.onNext(Event.error(error))
+            })
+            .disposed(by: disposeBag)
+    }
 }

@@ -12,6 +12,7 @@ import Moya
 
 enum BehaviorAPI {
     case list
+    case create(survey: Survey)
     case report(behaviorKeys: [String])
 }
 
@@ -22,13 +23,17 @@ extension BehaviorAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
     }
 
     var path: String {
-        return ""
+        switch self {
+        case .list, .create:    return ""
+        case .report:           return "report"
+        }
     }
 
     var method: Moya.Method {
         switch self {
-        case .list:   return .get
-        case .report: return .post
+        case .list:     return .get
+        case .create:   return .post
+        case .report:   return .post
         }
     }
 
@@ -41,8 +46,13 @@ extension BehaviorAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
         switch self {
         case .list:
             return nil
+
+        case .create(let survey):
+            params["name"] = survey.name
+            params["desc"] = survey.desc
+
         case .report(let behaviorKeys):
-            params["good_behaviors"] = behaviorKeys
+            params["behaviors"] = behaviorKeys
         }
         return params
     }

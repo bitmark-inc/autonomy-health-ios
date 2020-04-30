@@ -22,13 +22,13 @@ class HistoryService {
             .map([SymptomsHistory].self, atKeyPath: "symptoms_history")
     }
 
-    static func behaviors(before date: Date?) {
+    static func behaviors(before date: Date?) -> Single<[BehaviorsHistory]> {
         Global.log.info("[start] HistoryService.behaviors(before:)")
 
-        provider.rx
+        return provider.rx
             .requestWithRefreshJwt(.behaviors(before: date))
             .filterSuccess()
-            .subscribe { print($0) }
+            .map([BehaviorsHistory].self, atKeyPath: "behaviors_history")
     }
 
     static func locations(before date: Date?) -> Single<[LocationHistory]> {

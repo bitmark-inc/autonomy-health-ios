@@ -39,15 +39,14 @@ class SymptomHistoryViewController: ViewController, BackNavigator {
         thisViewModel.symptomHistoriesRelay
             .subscribe(onNext: { [weak self] (symptomHistories) in
                 guard let self = self else { return }
-                self.histories = symptomHistories
 
-                if self.histories.isEmpty {
-                    self.historyTableView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
-                } else {
+                if let symptomHistories = symptomHistories {
+                    self.histories = symptomHistories
                     self.historyTableView.hideSkeleton()
+                    self.historyTableView.reloadData()
+                } else {
+                    self.historyTableView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
                 }
-
-                self.historyTableView.reloadData()
             })
             .disposed(by: disposeBag)
 
@@ -104,7 +103,7 @@ extension SymptomHistoryViewController: SkeletonTableViewDataSource, UITableView
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let lastIndexPath = tableView.indexPathForLastRow
+        guard !thisViewModel.endRecord, let lastIndexPath = tableView.indexPathForLastRow
             else {
                 return
         }

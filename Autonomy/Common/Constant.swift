@@ -50,6 +50,7 @@ public struct Constant {
 
     static let fieldPlaceholder = "---"
     static let skeletonColor = UIColor(red: 0.109804, green: 0.137255, blue: 0.145098, alpha: 1)
+    static let callHistoryLimit = 20
 }
 
 enum HealthRisk {

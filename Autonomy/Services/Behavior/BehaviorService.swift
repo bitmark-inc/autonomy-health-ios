@@ -19,7 +19,17 @@ class BehaviorService {
         return provider.rx
             .requestWithRefreshJwt(.list)
             .filterSuccess()
-            .map([Behavior].self, atKeyPath: "good_behaviors")
+            .map([Behavior].self, atKeyPath: "behaviors")
+    }
+
+    static func create(survey: Survey) -> Single<Behavior> {
+        Global.log.info("[start] BehaviorService.create(survey:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.create(survey: survey))
+            .filterSuccess()
+            .map(String.self, atKeyPath: "id")
+            .map { Behavior(id: $0, name: survey.name, desc: survey.desc) }
     }
 
     static func report(behaviorKeys: [String]) -> Completable {

@@ -11,13 +11,12 @@ import RxCocoa
 
 class SymptomHistoryViewModel: ViewModel {
 
-    // MARK: - Properties
-
     // MARK: - Output
-    let symptomHistoriesRelay = BehaviorRelay<[SymptomsHistory]>(value: [])
+    let symptomHistoriesRelay = BehaviorRelay<[SymptomsHistory]?>(value: nil)
     let fetchDataResultSubject = PublishSubject<Event<Void>>()
     let loadingStateRelay = BehaviorRelay<LoadState>(value: .hide)
     let lock = NSLock()
+    var endRecord: Bool = false
 
     override init() {
         super.init()
@@ -39,9 +38,14 @@ class SymptomHistoryViewModel: ViewModel {
             })
             .subscribe(onSuccess: { [weak self] in
                 guard let self = self else { return }
-                var histories = self.symptomHistoriesRelay.value
-                histories.append(contentsOf: $0)
 
+                // track endRecord
+                if $0.count < Constant.callHistoryLimit {
+                    self.endRecord = true
+                }
+
+                var histories = self.symptomHistoriesRelay.value ?? []
+                histories.append(contentsOf: $0)
                 self.symptomHistoriesRelay.accept(histories)
             }, onError: { [weak self] (error) in
                 self?.fetchDataResultSubject.onNext(Event.error(error))
