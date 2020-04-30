@@ -22,6 +22,16 @@ class SymptomService {
             .map([Symptom].self, atKeyPath: "symptoms")
     }
 
+    static func create(survey: Survey) -> Single<Symptom> {
+        Global.log.info("[start] SymptomService.create(survey:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.create(survey: survey))
+            .filterSuccess()
+            .map(String.self, atKeyPath: "id")
+            .map { Symptom(id: $0, name: survey.name, desc: survey.desc) }
+    }
+
     static func report(symptomKeys: [String]) -> Completable {
         Global.log.info("[start] SymptomService.report(symptomKeys:)")
 

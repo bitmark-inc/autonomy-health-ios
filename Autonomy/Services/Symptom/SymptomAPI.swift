@@ -12,6 +12,7 @@ import Moya
 
 enum SymptomAPI {
     case list
+    case create(survey: Survey)
     case report(symptomKeys: [String])
 }
 
@@ -22,17 +23,31 @@ extension SymptomAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
     }
 
     var path: String {
-        return ""
+        switch self {
+        case .list, .create:    return ""
+        case .report:           return "report"
+        }
     }
 
     var method: Moya.Method {
         switch self {
-        case .list:   return .get
-        case .report: return .post
+        case .list:     return .get
+        case .create:   return .post
+        case .report:   return .post
         }
     }
 
     var sampleData: Data {
+        var dataURL: URL?
+        switch self {
+        case .list: dataURL = R.file.symptomsListJson()
+        default:
+            break
+        }
+
+        if let dataURL = dataURL, let data = try? Data(contentsOf: dataURL) {
+            return data
+        }
         return Data()
     }
 
@@ -41,6 +56,11 @@ extension SymptomAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
         switch self {
         case .list:
             return nil
+    
+        case .create(let survey):
+            params["name"] = survey.name
+            params["desc"] = survey.desc
+
         case .report(let symptomKeys):
             params["symptoms"] = symptomKeys
         }

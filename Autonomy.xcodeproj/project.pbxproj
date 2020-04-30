@@ -239,10 +239,10 @@
 		5B7F23AA2434878F00F7A72E /* AssistanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A02434878F00F7A72E /* AssistanceViewModel.swift */; };
 		5B7F23AB2434878F00F7A72E /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */; };
 		5B7F23AC2434878F00F7A72E /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */; };
-		5B7F23AD2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */; };
-		5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */; };
-		5B7F23AF2434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */; };
-		5B7F23B02434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */; };
+		5B7F23AD2434878F00F7A72E /* AskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A32434878F00F7A72E /* AskInfoViewController.swift */; };
+		5B7F23AE2434878F00F7A72E /* AskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A32434878F00F7A72E /* AskInfoViewController.swift */; };
+		5B7F23AF2434878F00F7A72E /* AskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AskInfoViewModel.swift */; };
+		5B7F23B02434878F00F7A72E /* AskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AskInfoViewModel.swift */; };
 		5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
 		5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
 		5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
@@ -306,6 +306,10 @@
 		5B97887A243EFF71005BADA9 /* ScoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978878243EFF71005BADA9 /* ScoreInfoView.swift */; };
 		5B978887243F22B4005BADA9 /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978886243F22B4005BADA9 /* LocationTableCell.swift */; };
 		5B978888243F22B4005BADA9 /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978886243F22B4005BADA9 /* LocationTableCell.swift */; };
+		5BA4B133245A89AC00B125ED /* symptoms-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B132245A89AC00B125ED /* symptoms-list.json */; };
+		5BA4B134245A89AC00B125ED /* symptoms-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B132245A89AC00B125ED /* symptoms-list.json */; };
+		5BA4B136245A8DAD00B125ED /* auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B135245A8DAD00B125ED /* auth.json */; };
+		5BA4B137245A8DAD00B125ED /* auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B135245A8DAD00B125ED /* auth.json */; };
 		5BA808B5244010E100B2733A /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* LocationSearchViewController.swift */; };
 		5BA808B6244010E100B2733A /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* LocationSearchViewController.swift */; };
 		5BA808B8244010EC00B2733A /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */; };
@@ -352,6 +356,14 @@
 		5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */; };
 		5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */; };
 		5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */; };
+		5BC6AEDA245A6F8C00F60AF2 /* AddRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AED9245A6F8C00F60AF2 /* AddRow.swift */; };
+		5BC6AEDB245A6F8C00F60AF2 /* AddRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AED9245A6F8C00F60AF2 /* AddRow.swift */; };
+		5BC6AEDF245A7A8900F60AF2 /* Ask Info Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEDE245A7A8900F60AF2 /* Ask Info Helpers.swift */; };
+		5BC6AEE0245A7A8900F60AF2 /* Ask Info Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEDE245A7A8900F60AF2 /* Ask Info Helpers.swift */; };
+		5BC6AEE3245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEE1245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift */; };
+		5BC6AEE4245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEE1245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift */; };
+		5BC6AEE5245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEE2245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift */; };
+		5BC6AEE6245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEE2245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift */; };
 		5BFC8DC02433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC12433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
@@ -536,8 +548,8 @@
 		5B7F239E2434878F00F7A72E /* ReviewHelpRequestViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewHelpRequestViewModel.swift; sourceTree = "<group>"; };
 		5B7F23A02434878F00F7A72E /* AssistanceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceViewModel.swift; sourceTree = "<group>"; };
 		5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceViewController.swift; sourceTree = "<group>"; };
-		5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewController.swift; sourceTree = "<group>"; };
-		5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewModel.swift; sourceTree = "<group>"; };
+		5B7F23A32434878F00F7A72E /* AskInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskInfoViewController.swift; sourceTree = "<group>"; };
+		5B7F23A42434878F00F7A72E /* AskInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskInfoViewModel.swift; sourceTree = "<group>"; };
 		5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalDelegate.swift; sourceTree = "<group>"; };
 		5B87F070242C85B90084B4F6 /* SeparateLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateLine.swift; sourceTree = "<group>"; };
 		5B87F073242C92DA0084B4F6 /* LinearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearView.swift; sourceTree = "<group>"; };
@@ -574,6 +586,8 @@
 		5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-LightItalic.ttf"; sourceTree = "<group>"; };
 		5B978878243EFF71005BADA9 /* ScoreInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreInfoView.swift; sourceTree = "<group>"; };
 		5B978886243F22B4005BADA9 /* LocationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationTableCell.swift; path = ../Location/List/LocationTableCell.swift; sourceTree = "<group>"; };
+		5BA4B132245A89AC00B125ED /* symptoms-list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "symptoms-list.json"; sourceTree = "<group>"; };
+		5BA4B135245A8DAD00B125ED /* auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = auth.json; sourceTree = "<group>"; };
 		5BA808B4244010E100B2733A /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
 		5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextTableCell.swift; sourceTree = "<group>"; };
@@ -601,6 +615,10 @@
 		5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewLayout.swift; sourceTree = "<group>"; };
 		5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
 		5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewModel.swift; sourceTree = "<group>"; };
+		5BC6AED9245A6F8C00F60AF2 /* AddRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRow.swift; sourceTree = "<group>"; };
+		5BC6AEDE245A7A8900F60AF2 /* Ask Info Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ask Info Helpers.swift"; sourceTree = "<group>"; };
+		5BC6AEE1245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewModel.swift; sourceTree = "<group>"; };
+		5BC6AEE2245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewController.swift; sourceTree = "<group>"; };
 		5BFC8DBE2433081400815828 /* HealthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		5BFC8DBF2433081400815828 /* HealthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAPI.swift; sourceTree = "<group>"; };
 		5BFC8DCB2433264A00815828 /* FeedTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableCell.swift; sourceTree = "<group>"; };
@@ -817,6 +835,7 @@
 				5B213EFC244412EB0095BE18 /* Points Of Interest */,
 				5B2661A72457DBBF00163404 /* Formula */,
 				5BAA76FC24595F54003CCE92 /* History */,
+				5BA4B131245A898C00B125ED /* Stubbed Responses */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -853,6 +872,7 @@
 				5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */,
 				5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */,
 				5B130BB92451AA8D0031F176 /* RightIconButton.swift */,
+				5BC6AED9245A6F8C00F60AF2 /* AddRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1032,6 +1052,7 @@
 				5B7CE0BB2430A974002CD923 /* Help */,
 				5B7CE0BF2430AD7B002CD923 /* Symptoms */,
 				5B4EF6DC2446AE9B00BCB323 /* Behaviors */,
+				5BC6AEDC245A795500F60AF2 /* Ask Info */,
 			);
 			path = "Health Survey";
 			sourceTree = "<group>";
@@ -1102,8 +1123,8 @@
 		5B7F23A22434878F00F7A72E /* Ask Info */ = {
 			isa = PBXGroup;
 			children = (
-				5B7F23A32434878F00F7A72E /* AssistanceAskInfoViewController.swift */,
-				5B7F23A42434878F00F7A72E /* AssistanceAskInfoViewModel.swift */,
+				5BC6AEE2245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift */,
+				5BC6AEE1245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift */,
 			);
 			path = "Ask Info";
 			sourceTree = "<group>";
@@ -1254,6 +1275,15 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		5BA4B131245A898C00B125ED /* Stubbed Responses */ = {
+			isa = PBXGroup;
+			children = (
+				5BA4B135245A8DAD00B125ED /* auth.json */,
+				5BA4B132245A89AC00B125ED /* symptoms-list.json */,
+			);
+			path = "Stubbed Responses";
+			sourceTree = "<group>";
+		};
 		5BA808B3244010CE00B2733A /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -1322,6 +1352,24 @@
 				5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */,
 			);
 			path = "Onboarding Steps";
+			sourceTree = "<group>";
+		};
+		5BC6AEDC245A795500F60AF2 /* Ask Info */ = {
+			isa = PBXGroup;
+			children = (
+				5BC6AEDD245A7A7200F60AF2 /* Helpers */,
+				5B7F23A32434878F00F7A72E /* AskInfoViewController.swift */,
+				5B7F23A42434878F00F7A72E /* AskInfoViewModel.swift */,
+			);
+			path = "Ask Info";
+			sourceTree = "<group>";
+		};
+		5BC6AEDD245A7A7200F60AF2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5BC6AEDE245A7A8900F60AF2 /* Ask Info Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		5BDA94E2244991BB00BE829A /* Behavior */ = {
@@ -1554,7 +1602,9 @@
 				5B5778C0242B48230028D3E3 /* AtlasGrotesk-LightItalic.otf in Resources */,
 				5B97885F243EDFED005BADA9 /* IBMPlexMono-Bold.ttf in Resources */,
 				5B978863243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf in Resources */,
+				5BA4B137245A8DAD00B125ED /* auth.json in Resources */,
 				5B5778D6242B48230028D3E3 /* DomaineSansText-Medium.otf in Resources */,
+				5BA4B134245A89AC00B125ED /* symptoms-list.json in Resources */,
 				5B978871243EDFED005BADA9 /* IBMPlexMono-Italic.ttf in Resources */,
 				5B978875243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf in Resources */,
 				5B978865243EDFED005BADA9 /* IBMPlexMono-Medium.ttf in Resources */,
@@ -1609,7 +1659,9 @@
 				5B97886C243EDFED005BADA9 /* IBMPlexMono-Regular.ttf in Resources */,
 				5B5778D5242B48230028D3E3 /* DomaineSansText-Medium.otf in Resources */,
 				5B978866243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf in Resources */,
+				5BA4B136245A8DAD00B125ED /* auth.json in Resources */,
 				5B5778C5242B48230028D3E3 /* AtlasGrotesk-BlackItalic.otf in Resources */,
+				5BA4B133245A89AC00B125ED /* symptoms-list.json in Resources */,
 				5B5778F8242B49140028D3E3 /* InfoPlist.strings in Resources */,
 				5B5778B5242B48230028D3E3 /* AtlasGrotesk-BoldItalic.otf in Resources */,
 				5B9542C4242AF8010072D933 /* Main.storyboard in Resources */,
@@ -1890,7 +1942,7 @@
 				5BA808B9244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
 				5B57790C242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5BAA76FB24595CA3003CCE92 /* SymptomsHistory.swift in Sources */,
-				5B7F23AE2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
+				5B7F23AE2434878F00F7A72E /* AskInfoViewController.swift in Sources */,
 				5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */,
 				5BAA770F245963FD003CCE92 /* SymptomHistoryViewModel.swift in Sources */,
 				5B577934242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
@@ -1923,7 +1975,7 @@
 				5B213F022444133E0095BE18 /* HelpRequestAPI.swift in Sources */,
 				5B57793B242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B7CE0BE2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
-				5B7F23B02434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */,
+				5B7F23B02434878F00F7A72E /* AskInfoViewModel.swift in Sources */,
 				5B4EF6E02446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */,
 				5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */,
@@ -1960,13 +2012,16 @@
 				5BFC8DC12433081400815828 /* HealthService.swift in Sources */,
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
+				5BC6AEE0245A7A8900F60AF2 /* Ask Info Helpers.swift in Sources */,
 				5B130BB72451A9990031F176 /* FormulaSourceView.swift in Sources */,
+				5BC6AEE6245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift in Sources */,
 				5B57791D242B4E290028D3E3 /* Label.swift in Sources */,
 				5B4957412449938E0012D6E1 /* SymptomAPI.swift in Sources */,
 				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
 				5B2C8577242DD42B002CC53B /* HistoryAPI.swift in Sources */,
+				5BC6AEDB245A6F8C00F60AF2 /* AddRow.swift in Sources */,
 				5B49574D2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
 				5B7F23AA2434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
 				5BAA77022459603C003CCE92 /* FormulaService.swift in Sources */,
@@ -1975,6 +2030,7 @@
 				5B7CE0CC2430BE91002CD923 /* AreaProfileService.swift in Sources */,
 				5BAA77152459640C003CCE92 /* BehaviorHistoryViewController.swift in Sources */,
 				5B577937242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
+				5BC6AEE4245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift in Sources */,
 				5B577918242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5B577907242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
 				5B92E3EC2437220D00E5949A /* HealthScoreTriangle.swift in Sources */,
@@ -2030,7 +2086,7 @@
 				5BA808B8244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
 				5B57790B242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5BAA76FA24595CA3003CCE92 /* SymptomsHistory.swift in Sources */,
-				5B7F23AD2434878F00F7A72E /* AssistanceAskInfoViewController.swift in Sources */,
+				5B7F23AD2434878F00F7A72E /* AskInfoViewController.swift in Sources */,
 				5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */,
 				5BAA770E245963FD003CCE92 /* SymptomHistoryViewModel.swift in Sources */,
 				5B577933242B50190028D3E3 /* SVProgressHUD+rxState.swift in Sources */,
@@ -2063,7 +2119,7 @@
 				5B213F012444133E0095BE18 /* HelpRequestAPI.swift in Sources */,
 				5B57793A242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B7CE0BD2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
-				5B7F23AF2434878F00F7A72E /* AssistanceAskInfoViewModel.swift in Sources */,
+				5B7F23AF2434878F00F7A72E /* AskInfoViewModel.swift in Sources */,
 				5B4EF6DF2446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */,
 				5BB140A5242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
 				5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */,
@@ -2100,13 +2156,16 @@
 				5BFC8DC02433081400815828 /* HealthService.swift in Sources */,
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
+				5BC6AEDF245A7A8900F60AF2 /* Ask Info Helpers.swift in Sources */,
 				5B130BB62451A9990031F176 /* FormulaSourceView.swift in Sources */,
+				5BC6AEE5245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift in Sources */,
 				5B57791C242B4E290028D3E3 /* Label.swift in Sources */,
 				5B4957402449938E0012D6E1 /* SymptomAPI.swift in Sources */,
 				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
 				5B2C8576242DD42B002CC53B /* HistoryAPI.swift in Sources */,
+				5BC6AEDA245A6F8C00F60AF2 /* AddRow.swift in Sources */,
 				5B49574C2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
 				5B7F23A92434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
 				5BAA77012459603C003CCE92 /* FormulaService.swift in Sources */,
@@ -2115,6 +2174,7 @@
 				5B7CE0CB2430BE91002CD923 /* AreaProfileService.swift in Sources */,
 				5BAA77142459640C003CCE92 /* BehaviorHistoryViewController.swift in Sources */,
 				5B577936242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
+				5BC6AEE3245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift in Sources */,
 				5B577917242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5B577906242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
 				5B92E3EB2437220D00E5949A /* HealthScoreTriangle.swift in Sources */,

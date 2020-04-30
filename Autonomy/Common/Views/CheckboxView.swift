@@ -55,12 +55,16 @@ class CheckboxView: UIView {
         isSkeletonable = true
 
         let textView: UIView!
-        if desc != nil {
+        if desc != nil, desc!.isNotEmpty {
             textView = LinearView(items: [(titleLabel, 0), (descLabel, 3)], bottomConstraint: true)
             titleLabel.isSkeletonable = true
             descLabel.isSkeletonable = true
         } else {
             textView = titleLabel
+
+            textView.snp.makeConstraints { (make) in
+                make.height.greaterThanOrEqualTo(45)
+            }
         }
 
         textView.isUserInteractionEnabled = true
@@ -77,10 +81,6 @@ class CheckboxView: UIView {
             make.leading.equalTo(checkBox.snp.trailing).offset(15)
             make.top.trailing.bottom.equalToSuperview()
             make.centerY.equalToSuperview()
-        }
-
-        snp.makeConstraints { (make) in
-            make.height.greaterThanOrEqualTo(45)
         }
 
         // setup isSkeletonable

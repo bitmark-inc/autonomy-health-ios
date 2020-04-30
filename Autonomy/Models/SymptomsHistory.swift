@@ -13,7 +13,7 @@ import RxCocoa
 struct SymptomsHistory: Codable {
 
     // MARK: - Properties
-    let symptoms: [String]
+    let symptoms: [Symptom]
     let location: Location
     let timestamp: Date
 }

@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   Autonomy
 
@@ -27,7 +27,9 @@
 
 "Survey" = "Survey";
 "Symptoms" = "Symptoms";
+"Symptom" = "Symptom";
 "Behaviors" = "Behaviors";
+"Behavior" = "Behavior";
 "Assistance" = "Assistance";
 "Request" = "Request";
 "Requests" = "Requests";
@@ -39,6 +41,7 @@
 "SignedUp" = "Signed Up";
 "Copied" = "Copied";
 "Reported" = "Reported";
+"Added" = "Added";
 "ViewSource" = "View Source";
 "Reset" = "Reset";
 "Profile" = "Profile";

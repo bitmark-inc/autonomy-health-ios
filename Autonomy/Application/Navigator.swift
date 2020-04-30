@@ -34,6 +34,7 @@ class Navigator {
         case surveyHelp
         case surveySymptoms(viewModel: SurveySymptomsViewModel)
         case surveyBehaviors(viewModel: SurveyBehaviorsViewModel)
+        case askInfo(viewModel: AskInfoViewModel)
         case assistance(viewModel: AssistanceViewModel)
         case assistanceAskInfo(viewModel: AssistanceAskInfoViewModel)
         case reviewHelpRequest(viewModel: ReviewHelpRequestViewModel)
@@ -77,6 +78,7 @@ class Navigator {
         case .surveyHelp:                       return SurveyHelpViewController()
         case .surveySymptoms(let viewModel):    return SurveySymptomsViewController(viewModel: viewModel)
         case .surveyBehaviors(let viewModel):   return SurveyBehaviorsViewController(viewModel: viewModel)
+        case .askInfo(let viewModel):           return AskInfoViewController(viewModel: viewModel)
         case .assistance(let viewModel):        return AssistanceViewController(viewModel: viewModel)
         case .assistanceAskInfo(let viewModel): return AssistanceAskInfoViewController(viewModel: viewModel)
         case .reviewHelpRequest(let viewModel): return ReviewHelpRequestViewController(viewModel: viewModel)
@@ -95,11 +97,11 @@ class Navigator {
         }
     }
 
-    func pop(sender: UIViewController?, toRoot: Bool = false) {
+    func pop(sender: UIViewController?, toRoot: Bool = false, animated: Bool = true) {
         if toRoot {
-            sender?.navigationController?.popToRootViewController(animated: true)
+            sender?.navigationController?.popToRootViewController(animated: animated)
         } else {
-            sender?.navigationController?.popViewController()
+            sender?.navigationController?.popViewController(animated: animated)
         }
     }
 

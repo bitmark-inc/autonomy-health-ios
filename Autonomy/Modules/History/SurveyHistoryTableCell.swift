@@ -58,7 +58,9 @@ class SurveyHistoryTableCell: TableViewCell {
 
         let attributeText = "\(timestamp) (\(history.location.longitude), \(history.location.latitude))"
         attributeLabel.setText(attributeText)
-        infoLabel.setText(history.symptoms.joined(separator: ", "))
+
+        let symptomNames = history.symptoms.map { $0.name }
+        infoLabel.setText(symptomNames.joined(separator: ", "))
     }
 
     func setData(history: LocationHistory) {

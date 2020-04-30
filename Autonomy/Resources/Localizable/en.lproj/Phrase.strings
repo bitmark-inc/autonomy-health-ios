@@ -87,9 +87,23 @@
 
 "symptoms.reported.title" = "Your Symptoms Have Been Successfully Reported To Your Community ";
 "symptoms.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your symptoms if they continue.";
+"addSymptom.add" = "Add symptom ...";
+"addSymptom.form.name" = "Create a title for your symptom:";
+"addSymptom.form.name.placeholder" = "Enter your title here ...";
+"addSymptom.form.desc" = "You can add a short description for your symptom (optional):";
+"addSymptom.form.desc.placeholder" = "Enter your optional description here ...";
+"addSymptom.thank.title" = "Your symptom has been successfully added to your community’s list of symptoms";
+"addSymptom.thank.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report other symptoms as they appear.";
 
 "behaviors.reported.title" = "Your Behaviors Have Been Successfully Reported To Your Community ";
 "behaviors.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your behaviors if they continue.";
+"addBehavior.add" = "Add behavior ...";
+"addBehavior.form.name" = "Create a title for your behavior:";
+"addBehavior.form.name.placeholder" = "Enter your title here ...";
+"addBehavior.form.desc" = "You can add a short description for your behavior (optional):";
+"addBehavior.form.desc.placeholder" = "Enter your optional description here ...";
+"addBehavior.thank.title" = "Your behavior has been successfully added to your community’s list of behaviors";
+"addBehavior.thank.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report other behaviors you adopt in the future.";
 
 "history.symptom.title" = "Symptom History";
 "history.behavior.title" = "Behavior History";
