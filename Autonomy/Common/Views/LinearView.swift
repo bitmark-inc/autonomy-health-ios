@@ -50,3 +50,51 @@ class LinearView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class RowView: UIView {
+
+    init(items: [(UIView, CGFloat)], trailingConstraint: Bool = false) {
+        super.init(frame: CGRect.zero)
+
+        for item in items {
+            addSubview(item.0)
+        }
+
+        for (index, (item, spacing)) in items.enumerated() {
+            switch index {
+            case 0:
+                item.snp.makeConstraints { (make) in
+                    make.leading.equalToSuperview().offset(spacing)
+                    make.top.bottom.equalToSuperview()
+                }
+
+            case 1..<items.count:
+                let previousItem = items[index - 1].0
+                item.snp.makeConstraints { (make) in
+                    make.leading.equalTo(previousItem.snp.trailing).offset(spacing)
+                    make.top.bottom.equalToSuperview()
+                }
+
+            default:
+                return
+            }
+
+            item.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+            }
+        }
+
+        // add bottom constraint if needed
+        if trailingConstraint {
+            items.last?.0.snp.makeConstraints { (make) in
+                make.trailing.equalToSuperview()
+            }
+        }
+
+
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

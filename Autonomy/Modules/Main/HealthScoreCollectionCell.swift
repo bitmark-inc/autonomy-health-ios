@@ -47,10 +47,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     lazy var topSpacing: CGFloat = 270
 
     var formulaDragHeight: CGFloat {
-        let requiredTopSpacing: CGFloat = healthViewHeight / 2 + 120
-        let sizeOfFormula = scrollView.contentSize.height
-        let limitHeight = UIScreen.main.bounds.height - requiredTopSpacing
-        return min(sizeOfFormula, limitHeight)
+        return formulaSourceView.frame.height
     }
     let formulaViewAnimateDuration: CGFloat = 0.9
     let bottomY = UIScreen.main.bounds.height + 10
@@ -66,7 +63,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     var animationProgressWhenIntrupped:CGFloat = 0
 
     var topFormulaViewConstraint: Constraint?
-    var heightScrollViewConstraint: Constraint?
     var topHealthViewConstraint: Constraint?
 
     // MARK: - Init
@@ -89,12 +85,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        heightScrollViewConstraint?.update(offset: formulaDragHeight)
     }
 
     // MARK: - Handlers
@@ -208,9 +198,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         contentView.addSubview(scrollView)
 
         scrollView.snp.makeConstraints { (make) in
-            make.leading.trailing.equalToSuperview()
-            make.width.equalToSuperview()
-            heightScrollViewConstraint = make.height.equalTo(100).constraint
+            make.width.bottom.leading.trailing.equalToSuperview()
             topFormulaViewConstraint = make.top.equalToSuperview().offset(bottomY).constraint
         }
 
@@ -251,7 +239,6 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
         }
         moveUpAnimation.addCompletion { [weak self] _ in
             guard let self = self else { return }
-            self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             self.updateBottomSlideView(state: state)
             self.animations.removeAll()
         }

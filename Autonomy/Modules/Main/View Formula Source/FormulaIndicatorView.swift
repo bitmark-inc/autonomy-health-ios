@@ -13,8 +13,7 @@ import RxCocoa
 class FormulaIndicatorView: UIView {
 
     // MARK: - Properties
-    lazy var latestTimeLabel = makeLatestTimeLabel()
-    lazy var numberButton = makeNumberButton()
+    lazy var scoreLabel = makeScoreLabel()
     lazy var weightTextLabel = makeWeightTextLabel()
     lazy var weightSlider = makeWeightSlider()
 
@@ -45,87 +44,77 @@ class FormulaIndicatorView: UIView {
     }
 
     fileprivate func setupViews() {
-        var scoreText = ""
-        var weightText = ""
+        let weightView = RowView(items: [
+            (makeLabel(text: leadingText), 0),
+            (makeWeightBoxView(), 0),
+            (makeLabel(text: ")"), 0)
+        ], trailingConstraint: false)
 
-        switch scoreInfoType {
-        case .confirmedCases:
-            scoreText = R.string.localizable.formulaCases()
-            weightText = R.string.localizable.formulaCasesWeight()
-        case .reportedSymptoms:
-            scoreText = R.string.localizable.formulaSymptoms()
-            weightText = R.string.localizable.formulaSymptomsWeight()
-        case .healthyBehaviors:
-            scoreText = R.string.localizable.formulaBehaviors()
-            weightText = R.string.localizable.formulaBehaviorsWeight()
-        default:
-            break
-        }
-
-        let scoreView = makeRow(
-            label: makeLeftLabel(text: scoreText),
-            view: numberButton)
-
-        let weightView = makeRow(
-            label: makeLeftLabel(text: weightText),
-            view: makeWeightBoxView())
-
-        addSubview(latestTimeLabel)
-        addSubview(scoreView)
+        let topInfoLabel = makeTopInfoLabel(text: topInfoText)
+        addSubview(scoreLabel)
         addSubview(weightView)
+        addSubview(topInfoLabel)
 
-        latestTimeLabel.snp.makeConstraints { (make) in
+        topInfoLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
-            make.trailing.equalTo(scoreView.snp.trailing).offset(-15)
-        }
-
-        scoreView.snp.makeConstraints { (make) in
-            make.top.equalTo(latestTimeLabel.snp.bottom).offset(3)
-            make.leading.equalToSuperview()
-            make.trailing.lessThanOrEqualToSuperview()
+            make.trailing.equalTo(weightSlider).offset(-2)
         }
 
         weightView.snp.makeConstraints { (make) in
-            make.top.equalTo(scoreView.snp.bottom).offset(10)
-            make.leading.bottom.equalToSuperview()
-            make.trailing.lessThanOrEqualToSuperview()
+            make.top.equalTo(topInfoLabel.snp.bottom).offset(2)
+            make.leading.trailing.bottom.equalToSuperview()
         }
 
-        latestTimeLabel.setText("Yesterday".localizedUppercase)
-        numberButton.setTitle("200", for: .normal)
+        scoreLabel.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(10)
+            make.bottom.equalTo(weightTextLabel.snp.top).offset(2)
+        }
+
+        scoreLabel.text = "85"
+        scoreLabel.textColor = .green
         setInitWeightValue(0.33)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    fileprivate lazy var leadingText: String = {
+        switch scoreInfoType {
+        case .confirmedCases:   return "(\(R.string.localizable.cases_score()) * "
+        case .healthyBehaviors: return "(\(R.string.localizable.behaviors_score()) * "
+        case .reportedSymptoms: return "(\(R.string.localizable.symptoms_score()) * "
+        default:
+            return ""
+        }
+    }()
+
+    fileprivate lazy var topInfoText: String = {
+        switch scoreInfoType {
+        case .confirmedCases:   return R.string.localizable.casesWeight().localizedUppercase
+        case .healthyBehaviors: return R.string.localizable.behaviorsWeight().localizedUppercase
+        case .reportedSymptoms: return R.string.localizable.symptomsWeight().localizedUppercase
+        default:
+            return ""
+        }
+    }()
 }
 
 // MARK: - Setup views
 extension FormulaIndicatorView {
-    fileprivate func makeLatestTimeLabel() -> Label {
+    fileprivate func  makeScoreLabel() -> Label {
         let label = Label()
-        label.apply(font: R.font.atlasGroteskLight(size: 9),
-                    themeStyle: .silverC4TextColor)
+        label.font = R.font.ibmPlexMonoLight(size: 14)
         return label
     }
 
-    fileprivate func makeLeftLabel(text: String) -> Label {
-        let text = text + " = "
+    fileprivate func makeLabel(text: String) -> Label {
         let label = Label()
-        label.apply(text: text, font: R.font.ibmPlexMonoLight(size: 18), themeStyle: .blackTextColor)
+        label.apply(
+            text: text,
+            font: R.font.ibmPlexMonoLight(size: Size.dw(18)),
+            themeStyle: .blackTextColor)
         return label
-    }
-
-    fileprivate func makeNumberButton() -> UIButton {
-        let button = RightIconButton(icon: R.image.crossCircleArrow())
-        button.cornerRadius = 15
-        button.apply(font: R.font.ibmPlexMonoLight(size: 18),
-                     backgroundTheme: .blueRibbonColor)
-        button.snp.makeConstraints { (make) in
-            make.height.equalTo(30)
-        }
-        return button
     }
 
     fileprivate func makeWeightSlider() -> UISlider {
@@ -154,16 +143,25 @@ extension FormulaIndicatorView {
         return label
     }
 
+    fileprivate func makeTopInfoLabel(text: String) -> Label {
+        let label = Label()
+        label.apply(
+            text: text,
+            font: R.font.atlasGroteskLight(size: 9),
+            themeStyle: .silverC4TextColor)
+        return label
+    }
+
     fileprivate func makeWeightBoxView() -> UIView {
-        let view = UIView()
-        view.addSubview(weightTextLabel)
-        view.addSubview(weightSlider)
-        view.cornerRadius = 15
+        let weightSliderView = UIView()
+        weightSliderView.addSubview(weightTextLabel)
+        weightSliderView.addSubview(weightSlider)
+        weightSliderView.cornerRadius = 15
 
         let contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
 
         themeService.rx
-            .bind({ $0.concordColor }, to: view.rx.backgroundColor)
+            .bind({ $0.concordColor }, to: weightSliderView.rx.backgroundColor)
             .disposed(by: disposeBag)
 
         weightTextLabel.snp.makeConstraints { (make) in
@@ -177,27 +175,10 @@ extension FormulaIndicatorView {
                 .inset(contentEdgeInsets)
         }
 
-        view.snp.makeConstraints { (make) in
+        weightSliderView.snp.makeConstraints { (make) in
             make.height.equalTo(30)
         }
 
-        return view
-    }
-
-    fileprivate func makeRow(label: UILabel, view: UIView) -> UIView {
-        let rowView = UIView()
-        rowView.addSubview(label)
-        rowView.addSubview(view)
-
-        label.snp.makeConstraints { (make) in
-            make.top.leading.bottom.equalToSuperview()
-        }
-
-        view.snp.makeConstraints { (make) in
-            make.leading.equalTo(label.snp.trailing)
-            make.top.trailing.bottom.equalToSuperview()
-        }
-
-        return rowView
+        return weightSliderView
     }
 }

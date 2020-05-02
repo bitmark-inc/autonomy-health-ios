@@ -85,9 +85,9 @@
 "ReportedBehaviorsScore" = "Reported Behaviors Score";
 "ReportedSymptomsScore" = "Reported Symptoms Score";
 "ReportedBehaviorsScore.desc" = "The score is calculated for all people reporting behaviors in a 1km radius.";
-"ReportedSymptomsScore.desc" = "Each reported symptom is given a score of 1 to 3, depending on the likelihood of it being a predictor of COVID-19. The overall symptoms score is calculated for all symptoms in a 1km radius. Current symptoms and scores are";
+"ReportedSymptomsScore.desc" = "Each reported symptom is given a score of 1 to 3, depending on the likelihood of it being a predictor of COVID-19. The overall symptoms score is calculated for all symptoms in a 1km radius. Current symptoms and scores are:";
 
-"TotalBehaviors" = "Total Behaviors";
+"BehaviorsTotal" = "Behaviors Total";
 "SymptomsTotal" = "Symptoms Total";
 "TotalPeople" = "Total People";
 "MaxScorePerPerson" = "Max Score Per Person";
@@ -99,3 +99,6 @@
 "formula.behaviors" = "behaviors";
 "formula.behaviorsWeight" = "behaviors_weight";
 "formula" = "<b>autonomy</b> = (cases * cases_weight) + (symptoms * symptoms_weight) + (behaviors * behaviors_weight) ";
+
+"Yesterday" = "Yesterday";
+"Today" = "Today";

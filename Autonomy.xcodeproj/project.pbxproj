@@ -87,6 +87,8 @@
 		5B51BF602431D63C00AD998B /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
 		5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
 		5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
+		5B544E9A245C3D7800B8003A /* FigLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B544E99245C3D7800B8003A /* FigLabel.swift */; };
+		5B544E9B245C3D7800B8003A /* FigLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B544E99245C3D7800B8003A /* FigLabel.swift */; };
 		5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
 		5B577857242B330E0028D3E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
@@ -245,6 +247,10 @@
 		5B7F23B02434878F00F7A72E /* AskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AskInfoViewModel.swift */; };
 		5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
 		5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
+		5B82FD0D245BE06400C81856 /* FormulaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0C245BE06400C81856 /* FormulaView.swift */; };
+		5B82FD0E245BE06400C81856 /* FormulaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0C245BE06400C81856 /* FormulaView.swift */; };
+		5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0F245C20AC00C81856 /* FigDataView.swift */; };
+		5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0F245C20AC00C81856 /* FigDataView.swift */; };
 		5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
 		5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
 		5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F073242C92DA0084B4F6 /* LinearView.swift */; };
@@ -471,6 +477,7 @@
 		5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		5B51BF5E2431D63C00AD998B /* HelpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
 		5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSubmitButton.swift; sourceTree = "<group>"; };
+		5B544E99245C3D7800B8003A /* FigLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigLabel.swift; sourceTree = "<group>"; };
 		5B57785D242B330E0028D3E3 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B57785F242B3FC10028D3E3 /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
 		5B577862242B421B0028D3E3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -551,6 +558,8 @@
 		5B7F23A32434878F00F7A72E /* AskInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskInfoViewController.swift; sourceTree = "<group>"; };
 		5B7F23A42434878F00F7A72E /* AskInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AskInfoViewModel.swift; sourceTree = "<group>"; };
 		5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalDelegate.swift; sourceTree = "<group>"; };
+		5B82FD0C245BE06400C81856 /* FormulaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaView.swift; sourceTree = "<group>"; };
+		5B82FD0F245C20AC00C81856 /* FigDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigDataView.swift; sourceTree = "<group>"; };
 		5B87F070242C85B90084B4F6 /* SeparateLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateLine.swift; sourceTree = "<group>"; };
 		5B87F073242C92DA0084B4F6 /* LinearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearView.swift; sourceTree = "<group>"; };
 		5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep3ViewController.swift; sourceTree = "<group>"; };
@@ -873,6 +882,9 @@
 				5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */,
 				5B130BB92451AA8D0031F176 /* RightIconButton.swift */,
 				5BC6AED9245A6F8C00F60AF2 /* AddRow.swift */,
+				5B82FD0C245BE06400C81856 /* FormulaView.swift */,
+				5B82FD0F245C20AC00C81856 /* FigDataView.swift */,
+				5B544E99245C3D7800B8003A /* FigLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1916,6 +1928,7 @@
 				5B7F23A82434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
 				5B577901242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
+				5B544E9B245C3D7800B8003A /* FigLabel.swift in Sources */,
 				5B97887A243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
 				5B57789A242B47770028D3E3 /* ServerAPIError.swift in Sources */,
 				5B978888243F22B4005BADA9 /* LocationTableCell.swift in Sources */,
@@ -1984,6 +1997,7 @@
 				5B2661AC2457DF8600163404 /* PointOfInterestAPI.swift in Sources */,
 				5B2661B424583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
+				5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EB2446B06000BCB323 /* Behavior.swift in Sources */,
@@ -2010,6 +2024,7 @@
 				5BFC8DD424333E5700815828 /* Symptom.swift in Sources */,
 				5BFC8DD1243327E000815828 /* Date+Formatter.swift in Sources */,
 				5BFC8DC12433081400815828 /* HealthService.swift in Sources */,
+				5B82FD0E245BE06400C81856 /* FormulaView.swift in Sources */,
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5BC6AEE0245A7A8900F60AF2 /* Ask Info Helpers.swift in Sources */,
@@ -2060,6 +2075,7 @@
 				5B7F23A72434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
 				5B577900242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
+				5B544E9A245C3D7800B8003A /* FigLabel.swift in Sources */,
 				5B978879243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
 				5B577899242B47670028D3E3 /* ServerAPIError.swift in Sources */,
 				5B978887243F22B4005BADA9 /* LocationTableCell.swift in Sources */,
@@ -2128,6 +2144,7 @@
 				5B2661AA2457DF6B00163404 /* PointOfInterestAPI.swift in Sources */,
 				5B2661B324583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
+				5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
 				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EA2446B06000BCB323 /* Behavior.swift in Sources */,
@@ -2154,6 +2171,7 @@
 				5BFC8DD324333E5700815828 /* Symptom.swift in Sources */,
 				5BFC8DD0243327E000815828 /* Date+Formatter.swift in Sources */,
 				5BFC8DC02433081400815828 /* HealthService.swift in Sources */,
+				5B82FD0D245BE06400C81856 /* FormulaView.swift in Sources */,
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5BC6AEDF245A7A8900F60AF2 /* Ask Info Helpers.swift in Sources */,
