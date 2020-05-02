@@ -9,10 +9,8 @@
  NSFaceIDUsageDescription = "Autonomy will use Face ID to secure your account and data.";
 */
 
-NSLocationAlwaysAndWhenInUseUsageDescription = "We’ll use your location data to give you 
-the latest COVID-19 outbreak information for your local current area and tell how to help your local community.";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Your current location will be used to help improve your community’s data. Your location data is always private, and you cannot be personally identified by sharing your location.";
 
-NSLocationWhenInUseUsageDescription = "We’ll use your location data to give you
-the latest COVID-19 outbreak information for your local current area and tell how to help your local community.";
+NSLocationWhenInUseUsageDescription = "Your current location will be used to help improve your community’s data. Your location data is always private, and you cannot be personally identified by sharing your location.";
 
 NSPhotoLibraryUsageDescription = "Autonomy will use photos from your library.";

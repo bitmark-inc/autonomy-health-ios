@@ -103,7 +103,6 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withClass: LocationTableCell.self, for: indexPath)
-            cell.separatorInset = .zero
             let poi = pois[indexPath.row]
             cell.rightButtons = [
                 makeDeleteLocationSwipeButton(poiID: poi.id),
@@ -122,7 +121,6 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
 
         case 1:
             let cell = tableView.dequeueReusableCell(withClass: AddLocationCell.self, for: indexPath)
-            cell.separatorInset = UIEdgeInsets.zero
             cell.addGestureRecognizer(makeAddLocationTapGestureRecognizer())
             cell.isHidden = pois.count >= poiLimitation
             return cell
@@ -229,6 +227,7 @@ extension LocationListCell {
         tableView.separatorStyle = .singleLine
         tableView.delaysContentTouches = true
         tableView.showsVerticalScrollIndicator = false
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         return tableView
     }
 

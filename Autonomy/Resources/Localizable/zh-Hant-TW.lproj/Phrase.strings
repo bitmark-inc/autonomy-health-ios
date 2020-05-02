@@ -10,9 +10,9 @@
 "launch.description" = "Get better.\nTogether.";
 "launch.policyTerm" = "We protect your %@.";
 
-"onboarding.1.description" = "We’ll use community data to calculate a health score for your current location.";
-"onboarding.2.description" = "Your privacy gets stronger as more people join Autonomy.";
-"onboarding.3.description" = "We’ll help you and your community help one another.";
+"onboarding.1.description" = "We’ll forecast the public health of your neighborhood.";
+"onboarding.2.description" = "Your privacy gets stronger as more people join.";
+"onboarding.3.description" = "We’ll help your neighborhood grow healthier together.";
 
 "onboarding.2.title" = "Do you have any of the following symptoms?";
 "onboarding.2.item.1" = "Fever";
@@ -27,8 +27,9 @@
 "onboarding.3.item.2.desc" = "Avoiding crowds, working from home, and maintaining at least 6 feet of distance from others whenever possible.";
 
 "permission.description" = "Autonomy requires access to the following:";
-"permission.notification.description" = "We’ll send you regular reminders to report symptoms and healthy behaviors and alerts when there is a health status change to one of your saved locations.";
-"permission.location.description" = "Your current location will be used to help improve your community’s data. Your location data is always private, and you cannot be personally identified by sharing your location.";
+"permission.notification.description" = "We’ll remind you to report symptoms and practice healthy behaviors. When your neighborhood’s health changes, we’ll send you alerts.";
+
+"permission.location.description" = "Your data will be used to help improve your neighborhood’s health. Your own location will be kept private.";
 
 "riskLevel.description" = "Are you at higher risk for severe illness from COVID-19?";
 "riskLevel.yes" = "Yes, I’m at higher risk";
@@ -108,6 +109,9 @@
 "history.symptom.title" = "Symptom History";
 "history.behavior.title" = "Behavior History";
 "history.location.title" = "Location History";
+
+"history.symptom.empty.desc" = "You haven’t reported any symptoms yet.";
+"history.behavior.empty.desc" = "You haven’t reported any healthy behaviors yet.";
 
 "signIn.title" = "Sign In";
 "signIn.submitButton" = "Submit »";

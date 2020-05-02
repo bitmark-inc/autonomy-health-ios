@@ -71,7 +71,7 @@ class FormulaIndicatorView: UIView {
         }
 
         scoreLabel.text = "85"
-        scoreLabel.textColor = .green
+        scoreLabel.textColor =  HealthRisk(from: 85)?.color
         setInitWeightValue(0.33)
     }
 

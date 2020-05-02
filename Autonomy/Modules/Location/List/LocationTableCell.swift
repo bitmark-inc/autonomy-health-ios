@@ -34,7 +34,7 @@ class LocationTableCell: MGSwipeTableCell {
         contentView.addSubview(contentCell)
         contentCell.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
+                .inset(UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
         }
 
         contentCell.addSubview(titleTextField)

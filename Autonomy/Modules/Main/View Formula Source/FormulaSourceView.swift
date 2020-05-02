@@ -32,36 +32,36 @@ class FormulaSourceView: UIView {
 
     // Reported Behaviors Score
     fileprivate let behaviorElementHeight: CGFloat = 60
-    lazy var behaviorsFormulaView = makeBehaviorsFormulaView()
-    lazy var behaviorsTotalDataView = FigDataView(
+    fileprivate lazy var behaviorsFormulaView = makeBehaviorsFormulaView()
+    fileprivate lazy var behaviorsTotalDataView = FigDataView(
         topInfo: R.string.localizable.behaviorsTotal().localizedUppercase,
         height: behaviorElementHeight)
-    lazy var behaviorsTotalPeopleDataView = FigDataView(
+    fileprivate lazy var behaviorsTotalPeopleDataView = FigDataView(
         topInfo: R.string.localizable.totalPeople().localizedUppercase,
         height: behaviorElementHeight)
-    lazy var behaviorsMaxScorePerPersonDataView = FigDataView(
+    fileprivate lazy var behaviorsMaxScorePerPersonDataView = FigDataView(
         topInfo: R.string.localizable.maxScorePerPerson().localizedUppercase,
         height: behaviorElementHeight)
 
     // Reported Symptoms Score
     fileprivate let symptomElementHeight: CGFloat = 60
-    lazy var symptomsFormulaView = makeSymptomsFormulaView()
-    lazy var symptomsTotalDataView = FigDataView(
+    fileprivate lazy var symptomsFormulaView = makeSymptomsFormulaView()
+    fileprivate lazy var symptomsTotalDataView = FigDataView(
         topInfo: R.string.localizable.symptomsTotal().localizedUppercase,
         height: symptomElementHeight)
-    lazy var symptomsTotalPeopleDataView = FigDataView(
+    fileprivate lazy var symptomsTotalPeopleDataView = FigDataView(
         topInfo: R.string.localizable.totalPeople().localizedUppercase,
         height: symptomElementHeight)
-    lazy var symptomsMaxScorePerPersonDataView = FigDataView(
+    fileprivate lazy var symptomsMaxScorePerPersonDataView = FigDataView(
         topInfo: R.string.localizable.maxScorePerPerson().localizedUppercase,
         height: symptomElementHeight)
 
-    lazy var resetButton = makeResetButton()
-    lazy var buttonGroupsView = makeButtonGroupsView()
-    let disposeBag = DisposeBag()
+    fileprivate lazy var resetButton = makeResetButton()
+    fileprivate lazy var buttonGroupsView = makeButtonGroupsView()
+    fileprivate let disposeBag = DisposeBag()
 
     // - Indicator
-    let casesWeightRelay = BehaviorRelay<Float>(value: 0.33)
+    fileprivate let casesWeightRelay = BehaviorRelay<Float>(value: 0.33)
     let scoreRelay = BehaviorRelay<Int>(value: 0)
 
     // MARK: - Init
@@ -137,7 +137,7 @@ extension FormulaSourceView {
         let label = Label()
         label.numberOfLines = 0
         label.apply(text: text,
-                    font: R.font.ibmPlexMonoBold(size: 18),
+                    font: R.font.ibmPlexMonoMedium(size: 18),
                     themeStyle: .blackTextColor)
         return label
     }
@@ -237,41 +237,6 @@ extension FormulaSourceView {
             text: text,
             font: R.font.atlasGroteskLight(size: 9),
             themeStyle: .silverC4TextColor)
-        return label
-    }
-
-    fileprivate func makeNumberButton() -> UIButton {
-        let button = RightIconButton(icon: R.image.crossCircleArrow())
-        button.cornerRadius = 15
-        button.apply(font: R.font.ibmPlexMonoLight(size: 18),
-                     backgroundTheme: .blueRibbonColor)
-        button.snp.makeConstraints { (make) in
-            make.height.equalTo(30)
-        }
-
-        button.rx.tap.bind {
-            print("go to click")
-        }.disposed(by: disposeBag)
-        return button
-    }
-
-    fileprivate func makeFormulaLabel() -> Label {
-        let styleGroup: StyleXML = {
-            let style = Style {
-                $0.font = R.font.ibmPlexMono(size: 18)
-                $0.color = themeService.attrs.blackTextColor
-            }
-
-            let highlight = Style {
-                $0.font = R.font.ibmPlexMonoMedium(size: 18)
-            }
-
-            return StyleXML(base: style, ["b": highlight])
-        }()
-
-        let label = Label()
-        label.numberOfLines = 0
-        label.attributedText = R.string.localizable.formula().set(style: styleGroup)
         return label
     }
 

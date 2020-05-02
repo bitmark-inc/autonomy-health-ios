@@ -11,37 +11,41 @@ import UIKit
 class ProfileViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
-    lazy var scroll = makeScrollView()
-    lazy var contentScrollView = UIView()
+    fileprivate lazy var scrollView = makeScrollView()
+    fileprivate lazy var contentScrollView = UIView()
 
-    lazy var titleSectionView = makeTitleSectionView()
-    lazy var doneButton = makeDoneButton()
+    fileprivate lazy var titleSectionView = makeTitleSectionView()
+    fileprivate lazy var doneButton = makeDoneButton()
 
-    lazy var reportSymptomsButton = makeButton(title: R.string.localizable.report().localizedUppercase)
-    lazy var historySymptomsButton = makeButton(title: R.string.localizable.history().localizedUppercase)
+    fileprivate lazy var reportSymptomsButton = makeButton(title: R.string.localizable.report().localizedUppercase)
+    fileprivate lazy var historySymptomsButton = makeButton(title: R.string.localizable.history().localizedUppercase)
 
-    lazy var reportBehaviorsButton = makeButton(title: R.string.localizable.report().localizedUppercase)
-    lazy var historyBehaviorsButton = makeButton(title: R.string.localizable.history().localizedUppercase)
+    fileprivate lazy var reportBehaviorsButton = makeButton(title: R.string.localizable.report().localizedUppercase)
+    fileprivate lazy var historyBehaviorsButton = makeButton(title: R.string.localizable.history().localizedUppercase)
 
-    lazy var historyLocationsButton = makeButton(title: R.string.localizable.history().localizedUppercase)
+    fileprivate lazy var historyLocationsButton = makeButton(title: R.string.localizable.history().localizedUppercase)
 
-    lazy var exportDataButton = makeButton(title: R.string.localizable.export().localizedUppercase)
-    lazy var deleteDataButton = makeButton(title: R.string.localizable.delete().localizedUppercase)
+    fileprivate lazy var exportDataButton = makeButton(title: R.string.localizable.export().localizedUppercase)
+    fileprivate lazy var deleteDataButton = makeButton(title: R.string.localizable.delete().localizedUppercase)
 
-    lazy var signOutButton = makeButton(title: R.string.localizable.signOut().localizedUppercase)
-    lazy var recoverykeyButton = makeButton(title: R.string.localizable.recoveryKey().localizedUppercase)
+    fileprivate lazy var signOutButton = makeButton(title: R.string.localizable.signOut().localizedUppercase)
+    fileprivate lazy var recoverykeyButton = makeButton(title: R.string.localizable.recoveryKey().localizedUppercase)
 
-    lazy var faqButton = makeButton(title: R.string.localizable.faQ().localizedUppercase)
-    lazy var contactButton = makeButton(title: R.string.localizable.contact().localizedUppercase)
+    fileprivate lazy var faqButton = makeButton(title: R.string.localizable.faQ().localizedUppercase)
+    fileprivate lazy var contactButton = makeButton(title: R.string.localizable.contact().localizedUppercase)
 
-    lazy var versionLabel = makeVersionLabel()
-    lazy var bitmarkCertView = makeBitmarkCertView()
+    fileprivate lazy var versionLabel = makeVersionLabel()
+    fileprivate lazy var bitmarkCertView = makeBitmarkCertView()
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override func bindViewModel() {
         super.bindViewModel()
 
         doneButton.rx.tap.bind { [weak self] in
-            self?.navigator.pop(sender: self)
+            self?.navigator.pop(sender: self, animationType: .slide(direction: .up))
         }.disposed(by: disposeBag)
 
         reportSymptomsButton.rx.tap.bind { [weak self] in
@@ -123,15 +127,15 @@ class ProfileViewController: ViewController, BackNavigator {
             make.leading.trailing.bottom.equalToSuperview()
         }
 
-        scroll.addSubview(contentScrollView)
-        contentView.addSubview(scroll)
-        scroll.snp.makeConstraints { (make) in
+        scrollView.addSubview(contentScrollView)
+        contentView.addSubview(scrollView)
+        scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
 
         contentScrollView.snp.makeConstraints { (make) in
             make.width.equalTo(contentView)
-            make.top.leading.bottom.equalToSuperview()
+            make.top.bottom.leading.equalToSuperview()
         }
     }
 }
@@ -223,6 +227,9 @@ extension ProfileViewController {
 
     fileprivate func makeScrollView() -> UIScrollView {
         let scrollView = UIScrollView()
+        scrollView.contentInset = .zero
+        scrollView.scrollIndicatorInsets = .zero;
+        scrollView.contentInsetAdjustmentBehavior = .never
         return scrollView
     }
 

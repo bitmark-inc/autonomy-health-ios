@@ -197,6 +197,7 @@ extension SymptomHistoryViewController {
         let reportButton = makeReportButton()
 
         let view = UIView()
+        view.isHidden = true
         view.addSubview(label)
         view.addSubview(reportButton)
 

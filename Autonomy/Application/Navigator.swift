@@ -97,7 +97,12 @@ class Navigator {
         }
     }
 
-    func pop(sender: UIViewController?, toRoot: Bool = false, animated: Bool = true) {
+    func pop(sender: UIViewController?, toRoot: Bool = false, animated: Bool = true, animationType: HeroDefaultAnimationType? = nil) {
+
+        if let animationType = animationType {
+            Self.getRootViewController()?.hero.navigationAnimationType = animationType
+        }
+
         if toRoot {
             sender?.navigationController?.popToRootViewController(animated: animated)
         } else {
