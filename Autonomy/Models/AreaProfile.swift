@@ -10,16 +10,16 @@ import Foundation
 
 struct AreaProfile: Codable {
     let score: Float
-    let confirm, confirmDelta, symptoms: Int
-    let symptomsDelta, behavior, behaviorDelta: Int
+//    let confirm, confirmDelta, symptoms: Int
+//    let symptomsDelta, behavior, behaviorDelta: Int
 
     enum CodingKeys: String, CodingKey {
-        case score, confirm
-        case confirmDelta = "confirm_delta"
-        case symptoms
-        case symptomsDelta = "symptoms_delta"
-        case behavior
-        case behaviorDelta = "behavior_delta"
+        case score
+//        case confirmDelta = "confirm_delta"
+//        case symptoms
+//        case symptomsDelta = "symptoms_delta"
+//        case behavior
+//        case behaviorDelta = "behavior_delta"
     }
 }
 
