@@ -195,6 +195,16 @@ class SurveyBehaviorsViewController: ViewController, BackNavigator {
 // MARK: - PanModalDelegate
 extension SurveyBehaviorsViewController: PanModalDelegate {
     func donePanModel() {
+
+        if let navViewControllers = navigationController?.viewControllers {
+            let leadingViewController = navViewControllers[navViewControllers.count - 2]
+
+            if type(of: leadingViewController) == BehaviorHistoryViewController.self {
+                Navigator.default.pop(sender: self)
+                return
+            }
+        }
+
         gotoMainScreen()
     }
 }

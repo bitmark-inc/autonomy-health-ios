@@ -21,16 +21,30 @@ class BehaviorHistoryViewController: ViewController, BackNavigator {
     fileprivate lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: nil, hasGradient: false)
     }()
+    fileprivate lazy var emptyView = makeEmptyView()
     fileprivate lazy var activityIndicator = makeActivityIndicator()
 
     fileprivate lazy var thisViewModel: BehaviorHistoryViewModel = {
         return viewModel as! BehaviorHistoryViewModel
     }()
-    fileprivate var histories = [BehaviorsHistory]()
-
+    fileprivate var histories = [BehaviorsHistory]() {
+        didSet {
+            let emptyRecords = histories.count <= 0
+            emptyView.isHidden = !emptyRecords
+        }
+    }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    // MARK: - Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if histories.count <= 0 { // load new history after user report from navigation
+            thisViewModel.fetchHistories()
+        }
     }
 
         override func bindViewModel() {
@@ -67,6 +81,7 @@ class BehaviorHistoryViewController: ViewController, BackNavigator {
             contentView.addSubview(titleSectionView)
             contentView.addSubview(historyTableView)
             contentView.addSubview(groupsButton)
+            contentView.addSubview(emptyView)
 
             titleSectionView.snp.makeConstraints { (make) in
                 make.top.leading.trailing.equalToSuperview()
@@ -82,6 +97,12 @@ class BehaviorHistoryViewController: ViewController, BackNavigator {
                 make.top.equalTo(historyTableView.snp.bottom).offset(3)
                 make.leading.trailing.bottom.equalToSuperview()
             }
+
+            emptyView.snp.makeConstraints { (make) in
+                make.top.equalTo(titleSectionView.snp.bottom).offset(45)
+                make.leading.trailing.equalToSuperview()
+                    .inset(OurTheme.profilePaddingInset)
+            }
         }
     }
 
@@ -94,6 +115,7 @@ class BehaviorHistoryViewController: ViewController, BackNavigator {
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withClass: SurveyHistoryTableCell.self)
             cell.separatorInset = .zero
+            cell.hideSkeleton()
             let history = histories[indexPath.row]
             cell.setData(history: history)
             return cell
@@ -114,6 +136,14 @@ class BehaviorHistoryViewController: ViewController, BackNavigator {
             }
         }
     }
+
+// MARK: - Navigator
+extension BehaviorHistoryViewController {
+    fileprivate func gotoReportBehaviorsScreen() {
+        let viewModel = SurveyBehaviorsViewModel()
+        navigator.show(segue: .surveyBehaviors(viewModel: viewModel), sender: self)
+    }
+}
 
     // MARK: - Setup Views
     extension BehaviorHistoryViewController {
@@ -155,6 +185,45 @@ class BehaviorHistoryViewController: ViewController, BackNavigator {
             tableView.estimatedRowHeight = 75.0
             tableView.allowsSelection = false
             return tableView
+        }
+
+        fileprivate func makeEmptyView() -> UIView {
+            let label = Label()
+            label.numberOfLines = 0
+            label.apply(text: R.string.phrase.historyBehaviorEmptyDesc(),
+                        font: R.font.atlasGroteskLight(size: 14),
+                        themeStyle: .lightTextColor, lineHeight: 1.25)
+
+            let reportButton = makeReportButton()
+
+            let view = UIView()
+            view.addSubview(label)
+            view.addSubview(reportButton)
+
+            label.snp.makeConstraints { (make) in
+                make.top.leading.trailing.equalToSuperview()
+            }
+
+            reportButton.snp.makeConstraints { (make) in
+                make.top.equalTo(label.snp.bottom).offset(30)
+                make.trailing.equalToSuperview().offset(15)
+                make.bottom.equalToSuperview()
+            }
+
+            return view
+        }
+
+        fileprivate func makeReportButton() -> UIButton {
+            let reportButton = RightIconButton(
+                title: R.string.localizable.report().localizedUppercase,
+                icon: R.image.nextCircleArrow(), spacing: 15)
+            reportButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 7, right: 7)
+
+            reportButton.rx.tap.bind { [weak self] in
+                self?.gotoReportBehaviorsScreen()
+            }.disposed(by: disposeBag)
+
+            return reportButton
         }
 
         fileprivate func makeActivityIndicator() -> UIActivityIndicatorView {

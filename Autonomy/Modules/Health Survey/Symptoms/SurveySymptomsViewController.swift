@@ -195,6 +195,15 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
 // MARK: - PanModalDelegate
 extension SurveySymptomsViewController: PanModalDelegate {
     func donePanModel() {
+        if let navViewControllers = navigationController?.viewControllers {
+            let leadingViewController = navViewControllers[navViewControllers.count - 2]
+
+            if type(of: leadingViewController) == SymptomHistoryViewController.self {
+                Navigator.default.pop(sender: self)
+                return
+            }
+        }
+
         gotoMainScreen()
     }
 }

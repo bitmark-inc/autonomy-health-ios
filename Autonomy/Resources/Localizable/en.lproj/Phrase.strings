@@ -109,6 +109,9 @@
 "history.behavior.title" = "Behavior History";
 "history.location.title" = "Location History";
 
+"history.symptom.empty.desc" = "You haven’t reported any symptoms yet.";
+"history.behavior.empty.desc" = "You haven’t reported any healthy behaviors yet.";
+
 "signIn.title" = "Sign In";
 "signIn.submitButton" = "Submit »";
 
