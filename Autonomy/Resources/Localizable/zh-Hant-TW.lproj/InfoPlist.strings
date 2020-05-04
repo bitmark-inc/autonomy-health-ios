@@ -9,8 +9,8 @@
  NSFaceIDUsageDescription = "Autonomy will use Face ID to secure your account and data.";
 */
 
-NSLocationAlwaysAndWhenInUseUsageDescription = "Your current location will be used to help improve your community’s data. Your location data is always private, and you cannot be personally identified by sharing your location.";
+NSLocationAlwaysAndWhenInUseUsageDescription = "您目前的位置會被使用於幫助您周圍社群的數據。您的位置資料永遠都是非公開的，而分享您的位置不會使您本人被識別。";
 
-NSLocationWhenInUseUsageDescription = "Your current location will be used to help improve your community’s data. Your location data is always private, and you cannot be personally identified by sharing your location.";
+NSLocationWhenInUseUsageDescription = "您目前的位置會被使用於幫助您周圍社群的數據。您的位置資料永遠都是非公開的，而分享您的位置不會使您本人被識別。";
 
-NSPhotoLibraryUsageDescription = "Autonomy will use photos from your library.";
+NSPhotoLibraryUsageDescription = "Autonomy 將使用您照片圖庫中的照片。";
