@@ -38,6 +38,10 @@ class FormulaIndicatorView: UIView {
             .disposed(by: disposeBag)
     }
 
+    func setData(score: Float) {
+        setScore(score, in: scoreLabel)
+    }
+
     func setInitWeightValue(_ value: Float) {
         weightRelay.accept(value)
         weightSlider.value = value
@@ -69,10 +73,6 @@ class FormulaIndicatorView: UIView {
             make.leading.equalToSuperview().offset(10)
             make.bottom.equalTo(weightTextLabel.snp.top).offset(2)
         }
-
-        scoreLabel.text = "85"
-        scoreLabel.textColor =  HealthRisk(from: 85)?.color
-        setInitWeightValue(0.33)
     }
 
     required init?(coder: NSCoder) {
@@ -121,6 +121,7 @@ extension FormulaIndicatorView {
         let slider = UISlider()
         slider.setThumbImage(R.image.thumbSlider(), for: .normal)
         slider.rx.controlEvent(.valueChanged)
+            .skip(1)
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
                 let sliderValueText = String(format: "%.2f", slider.value)

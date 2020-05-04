@@ -1,0 +1,29 @@
+{
+   "confirm":0,
+   "confirm_delta":0,
+   "symptoms":3,
+   "symptoms_delta":0,
+   "behavior":2,
+   "behavior_delta":100,
+   "score":17.307692307692307,
+   "LastUpdate":1588559660,
+   "details":{
+      "confirm":{
+         "yesterday":0,
+         "today":0,
+         "score":0
+      },
+      "behaviors":{
+         "behavior_total":0,
+         "total_people":0,
+         "max_score_per_person":0,
+         "score":0
+      },
+      "symptoms":{
+         "symptom_total":4,
+         "total_people":1,
+         "max_score_per_person":13,
+         "score":69.23076923076923
+      }
+   }
+}

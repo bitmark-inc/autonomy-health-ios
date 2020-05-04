@@ -13,12 +13,30 @@ import Moya
 class FormulaService {
     static var provider = MoyaProvider<FormulaAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
-    static func get() {
+    static func get() -> Single<FormulaWeight> {
         Global.log.info("[start] FormulaService.get")
 
-        provider.rx
+        return provider.rx
             .requestWithRefreshJwt(.get)
             .filterSuccess()
-            .subscribe { print($0) }
+            .map(FormulaWeight.self)
+    }
+
+    static func update(coefficient: Coefficient) -> Completable {
+        Global.log.info("[start] FormulaService.update(coefficient:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.update(coefficient: coefficient))
+            .filterSuccess()
+            .asCompletable()
+    }
+
+    static func delete() -> Completable {
+        Global.log.info("[start] FormulaService.delete")
+
+        return provider.rx
+            .requestWithRefreshJwt(.delete)
+            .filterSuccess()
+            .asCompletable()
     }
 }

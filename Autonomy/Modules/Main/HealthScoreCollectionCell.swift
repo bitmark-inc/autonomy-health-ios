@@ -36,6 +36,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     weak var scoreSourceDelegate: ScoreSourceDelegate? {
         didSet {
             bindScoreSourceEvents()
+            formulaSourceView.delegate = scoreSourceDelegate
         }
     }
     fileprivate var disposeBag = DisposeBag()
@@ -104,7 +105,8 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] (score) in
                 guard let self = self else { return }
-                self.healthView.updateLayout(score: score, animate: true)
+                setScore(score, in: self.formulaSourceView.scoreLabel)
+                self.healthView.updateLayout(score: Int(score), animate: true)
             })
             .disposed(by: disposeBag)
     }
@@ -117,18 +119,20 @@ class HealthScoreCollectionCell: UICollectionViewCell {
 
         guideDataView.hideSkeleton()
         healthView.updateLayout(score: areaProfile.displayScore, animate: false)
-//        bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
-//        bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
-//        bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)
+        bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
+        bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
+        bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)
+
+        formulaSourceView.setData(areaProfile: areaProfile)
 
         if let locationName = locationName {
             locationLabel.setText(locationName)
         }
     }
 
-    fileprivate func bindInfo(for scoreInfoType: ScoreInfoType, number: Int, delta: Int) {
-        let formattedNumber = formatNumber(number)
-        let formattedDelta = formatNumber(abs(delta))
+    fileprivate func bindInfo(for scoreInfoType: ScoreInfoType, number: Int, delta: Float) {
+        let formattedNumber = number.formatNumber
+        let formattedDelta = "\(abs(delta).formatPercent)%"
 
         switch scoreInfoType {
         case .confirmedCases:
@@ -138,8 +142,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             case (delta > 0): confirmedCasesView.changeStatusArrow.image = R.image.redUpArrow()
             case (delta < 0): confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
             default:
-                confirmedCasesView.changeStatusArrow.image = nil
-                confirmedCasesView.changeNumberLabel.setText(nil)
+                confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
             }
 
         case .reportedSymptoms:
@@ -149,8 +152,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             case (delta > 0): reportedSymptomsView.changeStatusArrow.image = R.image.redUpArrow()
             case (delta < 0): reportedSymptomsView.changeStatusArrow.image = R.image.greenDownArrow()
             default:
-                reportedSymptomsView.changeStatusArrow.image = nil
-                reportedSymptomsView.changeNumberLabel.setText(nil)
+                confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
             }
 
         case .healthyBehaviors:
@@ -160,8 +162,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             case (delta > 0): healthyBehaviorsView.changeStatusArrow.image = R.image.greenUpArrow()
             case (delta < 0): healthyBehaviorsView.changeStatusArrow.image = R.image.redDownArrow()
             default:
-                healthyBehaviorsView.changeStatusArrow.image = nil
-                healthyBehaviorsView.changeNumberLabel.setText(nil)
+                confirmedCasesView.changeStatusArrow.image = R.image.greenUpArrow()
             }
 
         case .populationDensity:
@@ -208,12 +209,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         }
 
         healthView.addGestureRecognizer(tapHealthViewGesture)
-    }
-
-    fileprivate func formatNumber(_ number: Int) -> String? {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        return numberFormatter.string(from: NSNumber(value: number))
     }
 }
 

@@ -12,6 +12,8 @@ import Moya
 
 enum FormulaAPI {
     case get
+    case update(coefficient: Coefficient)
+    case delete
 }
 
 extension FormulaAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -22,13 +24,15 @@ extension FormulaAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
 
     var path: String {
         switch self {
-        case .get: return ""
+        case .get, .update, .delete: return ""
         }
     }
 
     var method: Moya.Method {
         switch self {
         case .get:      return .get
+        case .update:   return .put
+        case .delete:   return .delete
         }
     }
 
@@ -36,15 +40,25 @@ extension FormulaAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
         return Data()
     }
 
-    var parameters: [String: Any]? {
-        return nil
-    }
-
     var task: Task {
-        if let parameters = parameters {
-            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        switch self {
+        case .get, .delete:
+            return .requestPlain
+
+        case .update(let coefficient):
+            var symptomWeights = [String: Int]()
+            coefficient.symptomWeights.forEach { symptomWeights[$0.symptom.id] = $0.weight }
+
+            let coefficient: [String: Any] = [
+                "symptoms": coefficient.symptoms,
+                "behaviors": coefficient.behaviors,
+                "confirms": coefficient.confirms,
+                "symptom_weights": symptomWeights
+            ]
+
+            let params = ["coefficient": coefficient]
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         }
-        return .requestPlain
     }
 
     var headers: [String: String]? {

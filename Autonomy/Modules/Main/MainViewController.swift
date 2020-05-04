@@ -28,6 +28,9 @@ protocol LocationDelegate: class {
 
 protocol ScoreSourceDelegate: class {
     var formStateRelay: BehaviorRelay<(cell: HealthScoreCollectionCell, state: BottomSlideViewState)?> { get }
+    var coefficientRelay: BehaviorRelay<(value: Coefficient, userInteractive: Bool)?> { get }
+    func explainData()
+    func resetFormula()
 }
 
 class MainViewController: ViewController {
@@ -53,6 +56,7 @@ class MainViewController: ViewController {
 
     // View Source
     let formStateRelay = BehaviorRelay<(cell: HealthScoreCollectionCell, state: BottomSlideViewState)?>(value: nil)
+    lazy var coefficientRelay = thisViewModel.coefficientRelay
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -82,8 +86,6 @@ class MainViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        thisViewModel.fetchPOIs()
-
         // clear badge notification
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
@@ -92,12 +94,6 @@ class MainViewController: ViewController {
         super.viewWillDisappear(animated)
         
         removeNotificationsObserver()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        thisViewModel.fetchPOIs()
     }
 
     // Properties for temporary shortcut to reset the onboarding
@@ -333,7 +329,14 @@ class MainViewController: ViewController {
 
 // MARK: - ScoreSourceDelegate
 extension MainViewController: ScoreSourceDelegate {
+    func resetFormula() {
+        thisViewModel.resetFormula()
+    }
 
+    func explainData() {
+        guard let cdcURL = URL(string: "https://www.cdc.gov.tw") else { return }
+        navigator.show(segue: .safariController(cdcURL), sender: self, transition: .alert)
+    }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate

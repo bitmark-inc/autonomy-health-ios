@@ -71,6 +71,14 @@
 		5B49574A2449A0CD0012D6E1 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4957462449A0CD0012D6E1 /* ProfileService.swift */; };
 		5B49574C2449A0E60012D6E1 /* AreaProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49574B2449A0E60012D6E1 /* AreaProfile.swift */; };
 		5B49574D2449A0E60012D6E1 /* AreaProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49574B2449A0E60012D6E1 /* AreaProfile.swift */; };
+		5B4B60AE245FB95200432151 /* area-profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B4B60AD245FB95200432151 /* area-profile.json */; };
+		5B4B60AF245FB95200432151 /* area-profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B4B60AD245FB95200432151 /* area-profile.json */; };
+		5B4B60B1245FC2F000432151 /* Float+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B0245FC2F000432151 /* Float+Formatter.swift */; };
+		5B4B60B2245FC2F000432151 /* Float+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B0245FC2F000432151 /* Float+Formatter.swift */; };
+		5B4B60B4245FD62A00432151 /* FormulaWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B3245FD62A00432151 /* FormulaWeight.swift */; };
+		5B4B60B5245FD62A00432151 /* FormulaWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B3245FD62A00432151 /* FormulaWeight.swift */; };
+		5B4B60BE2460149A00432151 /* SymptomWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60BD2460149A00432151 /* SymptomWeightView.swift */; };
+		5B4B60BF2460149A00432151 /* SymptomWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60BD2460149A00432151 /* SymptomWeightView.swift */; };
 		5B4EF6DF2446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */; };
 		5B4EF6E02446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */; };
 		5B4EF6E12446AEF600BCB323 /* SurveySymptomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */; };
@@ -469,6 +477,10 @@
 		5B4957452449A0CD0012D6E1 /* ProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
 		5B4957462449A0CD0012D6E1 /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		5B49574B2449A0E60012D6E1 /* AreaProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaProfile.swift; sourceTree = "<group>"; };
+		5B4B60AD245FB95200432151 /* area-profile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "area-profile.json"; sourceTree = "<group>"; };
+		5B4B60B0245FC2F000432151 /* Float+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Formatter.swift"; sourceTree = "<group>"; };
+		5B4B60B3245FD62A00432151 /* FormulaWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaWeight.swift; sourceTree = "<group>"; };
+		5B4B60BD2460149A00432151 /* SymptomWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomWeightView.swift; sourceTree = "<group>"; };
 		5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveySymptomsViewController.swift; sourceTree = "<group>"; };
 		5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveySymptomsViewModel.swift; sourceTree = "<group>"; };
 		5B4EF6E32446AFE800BCB323 /* SurveyBehaviorsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyBehaviorsViewModel.swift; sourceTree = "<group>"; };
@@ -683,6 +695,7 @@
 			children = (
 				5B130BB52451A9990031F176 /* FormulaSourceView.swift */,
 				5B130BBC2451AD590031F176 /* FormulaIndicatorView.swift */,
+				5B4B60BD2460149A00432151 /* SymptomWeightView.swift */,
 			);
 			path = "View Formula Source";
 			sourceTree = "<group>";
@@ -902,6 +915,7 @@
 				5B213F03244413E90095BE18 /* PointOfInterest.swift */,
 				5B213F06244413FC0095BE18 /* Location.swift */,
 				5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */,
+				5B4B60B3245FD62A00432151 /* FormulaWeight.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1292,6 +1306,7 @@
 			children = (
 				5BA4B135245A8DAD00B125ED /* auth.json */,
 				5BA4B132245A89AC00B125ED /* symptoms-list.json */,
+				5B4B60AD245FB95200432151 /* area-profile.json */,
 			);
 			path = "Stubbed Responses";
 			sourceTree = "<group>";
@@ -1415,6 +1430,7 @@
 			isa = PBXGroup;
 			children = (
 				5BFC8DCF243327E000815828 /* Date+Formatter.swift */,
+				5B4B60B0245FC2F000432151 /* Float+Formatter.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1630,6 +1646,7 @@
 				5B577859242B330E0028D3E3 /* Main.storyboard in Resources */,
 				5B97886D243EDFED005BADA9 /* IBMPlexMono-Regular.ttf in Resources */,
 				5B978877243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf in Resources */,
+				5B4B60AF245FB95200432151 /* area-profile.json in Resources */,
 				5B5778BC242B48230028D3E3 /* AtlasGrotesk-Light.otf in Resources */,
 				5B5778BA242B48230028D3E3 /* AtlasGrotesk-ThinItalic.otf in Resources */,
 				5B5778DA242B48230028D3E3 /* DomaineSansText-RegularItalic.otf in Resources */,
@@ -1684,6 +1701,7 @@
 				5B97886E243EDFED005BADA9 /* IBMPlexMono-Light.ttf in Resources */,
 				5B5778D1242B48230028D3E3 /* DomaineSansText-Bold.otf in Resources */,
 				5B978874243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf in Resources */,
+				5B4B60AE245FB95200432151 /* area-profile.json in Resources */,
 				5B5778B7242B48230028D3E3 /* AtlasGrotesk-Medium.otf in Resources */,
 				5B5778C3242B48230028D3E3 /* AtlasGrotesk-RegularItalic.otf in Resources */,
 				5B978860243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf in Resources */,
@@ -1933,7 +1951,9 @@
 				5B57789A242B47770028D3E3 /* ServerAPIError.swift in Sources */,
 				5B978888243F22B4005BADA9 /* LocationTableCell.swift in Sources */,
 				5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
+				5B4B60B5245FD62A00432151 /* FormulaWeight.swift in Sources */,
 				5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
+				5B4B60B2245FC2F000432151 /* Float+Formatter.swift in Sources */,
 				5B7F23AC2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
 				5BAA772424596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */,
 				5B577894242B47060028D3E3 /* MoyaProviderType+Request.swift in Sources */,
@@ -1994,6 +2014,7 @@
 				5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */,
 				5B396E762445CEE800D14FEC /* AddLocationCell.swift in Sources */,
 				5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
+				5B4B60BF2460149A00432151 /* SymptomWeightView.swift in Sources */,
 				5B2661AC2457DF8600163404 /* PointOfInterestAPI.swift in Sources */,
 				5B2661B424583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
@@ -2080,7 +2101,9 @@
 				5B577899242B47670028D3E3 /* ServerAPIError.swift in Sources */,
 				5B978887243F22B4005BADA9 /* LocationTableCell.swift in Sources */,
 				5B51BF562431CA8B00AD998B /* PlaceholderTextView.swift in Sources */,
+				5B4B60B4245FD62A00432151 /* FormulaWeight.swift in Sources */,
 				5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
+				5B4B60B1245FC2F000432151 /* Float+Formatter.swift in Sources */,
 				5B7F23AB2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
 				5BAA772324596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */,
 				5B57786D242B43140028D3E3 /* Credential.swift in Sources */,
@@ -2141,6 +2164,7 @@
 				5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */,
 				5B396E752445CEE800D14FEC /* AddLocationCell.swift in Sources */,
 				5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
+				5B4B60BE2460149A00432151 /* SymptomWeightView.swift in Sources */,
 				5B2661AA2457DF6B00163404 /* PointOfInterestAPI.swift in Sources */,
 				5B2661B324583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,

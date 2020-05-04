@@ -35,6 +35,16 @@ extension AreaProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTarge
     }
 
     var sampleData: Data {
+        var dataURL: URL?
+        switch self {
+        case .get: dataURL = R.file.areaProfileJson()
+        default:
+            break
+        }
+
+        if let dataURL = dataURL, let data = try? Data(contentsOf: dataURL) {
+            return data
+        }
         return Data()
     }
 

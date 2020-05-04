@@ -56,6 +56,10 @@ class FigDataView: UIView {
         }
     }
 
+    func setValue(_ value: Int) {
+        button.setTitle(value.formatNumber, for: .normal)
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

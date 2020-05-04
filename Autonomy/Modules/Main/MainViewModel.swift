@@ -15,6 +15,7 @@ class MainViewModel: ViewModel {
     // MARK: - Outputs
     let poisRelay = BehaviorRelay(value: (pois: [PointOfInterest](), userInteractive: false))
     let fetchPOIStateRelay = BehaviorRelay<LoadState>(value: .hide)
+    let coefficientRelay = BehaviorRelay<(value: Coefficient, userInteractive: Bool)?>(value: nil)
 
     let addLocationSubject = PublishSubject<PointOfInterest?>()
     let deleteLocationIndexSubject = PublishSubject<Int>()
@@ -22,6 +23,15 @@ class MainViewModel: ViewModel {
     let submitResultSubject = PublishSubject<Event<Never>>()
     var navigateToPoiID: String?
     let signOutAccountResultSubject = PublishSubject<Event<Never>>()
+    var observeAndSubmitProfileFormulaDisposable: Disposable?
+
+    override init() {
+        super.init()
+
+        fetchPOIs()
+        fetchProfileFormula()
+        observeAndSubmitProfileFormula()
+    }
 
     convenience init(navigateToPoiID: String?) {
         self.init()
@@ -29,7 +39,7 @@ class MainViewModel: ViewModel {
     }
 
     // MARK: - Handlers
-    func fetchPOIs() {
+    fileprivate func fetchPOIs() {
         fetchPOIStateRelay.accept(.loading)
 
         PointOfInterestService.get()
@@ -40,6 +50,69 @@ class MainViewModel: ViewModel {
                 guard let self = self else { return }
                 self.poisRelay.accept((pois: savedPOIs, userInteractive: false))
 
+            }, onError: { (error) in
+                guard !AppError.errorByNetworkConnection(error),
+                    !Global.handleErrorIfAsAFError(error) else {
+                        return
+                }
+                Global.log.error(error)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    fileprivate func fetchProfileFormula() {
+        FormulaService.get()
+            .subscribe(onSuccess: { [weak self] (formulaWeight) in
+                guard let self = self else { return }
+                self.coefficientRelay.accept((value: formulaWeight.coefficient, userInteractive: false))
+            }, onError: { (error) in
+                guard !AppError.errorByNetworkConnection(error),
+                    !Global.handleErrorIfAsAFError(error) else {
+                        return
+                }
+                Global.log.error(error)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    fileprivate func observeAndSubmitProfileFormula() {
+        observeAndSubmitProfileFormulaDisposable = coefficientRelay
+            .filterNil()
+            .filter { $0.userInteractive }
+            .debounce(.seconds(3), scheduler: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] (coefficient, _) in
+                guard let disposeBag = self?.disposeBag else { return }
+
+                FormulaService.update(coefficient: coefficient)
+                    .subscribe(onCompleted: {
+                        Global.log.info("[formula] updates successfully")
+                    }, onError: { (error) in
+                        guard !AppError.errorByNetworkConnection(error),
+                            !Global.handleErrorIfAsAFError(error) else {
+                                return
+                        }
+                        Global.log.error(error)
+                    })
+                    .disposed(by: disposeBag)
+            })
+
+        observeAndSubmitProfileFormulaDisposable?
+            .disposed(by: disposeBag)
+    }
+
+    func resetFormula() {
+        observeAndSubmitProfileFormulaDisposable?.dispose() // ensure update with debounce 3s don't call after deleting
+
+        // TODO: freeze not allow to edit
+        FormulaService.delete()
+            .andThen(FormulaService.get())
+            .do(onDispose: { [weak self] in
+                self?.observeAndSubmitProfileFormula()
+            })
+            .subscribe(onSuccess: { [weak self] (formulaWeight) in
+                guard let self = self else { return }
+                Global.log.info("[formula] resets successfully")
+                self.coefficientRelay.accept((value: formulaWeight.coefficient, userInteractive: false))
             }, onError: { (error) in
                 guard !AppError.errorByNetworkConnection(error),
                     !Global.handleErrorIfAsAFError(error) else {

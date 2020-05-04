@@ -8,18 +8,56 @@
 
 import Foundation
 
-struct AreaProfile: Codable {
+struct AreaProfile: Decodable {
     let score: Float
-//    let confirm, confirmDelta, symptoms: Int
-//    let symptomsDelta, behavior, behaviorDelta: Int
+    let confirm, symptoms, behavior: Int
+    let confirmDelta, symptomsDelta, behaviorDelta: Float
+    let details: AreaProfileDetails
 
     enum CodingKeys: String, CodingKey {
         case score
-//        case confirmDelta = "confirm_delta"
-//        case symptoms
-//        case symptomsDelta = "symptoms_delta"
-//        case behavior
-//        case behaviorDelta = "behavior_delta"
+        case confirm
+        case confirmDelta = "confirm_delta"
+        case symptoms
+        case symptomsDelta = "symptoms_delta"
+        case behavior
+        case behaviorDelta = "behavior_delta"
+        case details
+    }
+}
+
+class AreaProfileDetails: Decodable {
+    let confirm:   AreaProfileConfirmDetails
+    let behaviors: AreaProfileBehaviorsDetails
+    let symptoms: AreaProfileSymptomsDetails
+}
+
+class AreaProfileConfirmDetails: Decodable {
+    let yesterday, today: Int
+    let score: Float
+}
+
+class AreaProfileBehaviorsDetails: Codable {
+    let behaviorTotal, totalPeople, maxScorePerPerson: Int
+    let score: Float
+
+    enum CodingKeys: String, CodingKey {
+        case behaviorTotal = "behavior_total"
+        case totalPeople = "total_people"
+        case maxScorePerPerson = "max_score_per_person"
+        case score
+    }
+}
+
+class AreaProfileSymptomsDetails: Decodable {
+    let symptomTotal, totalPeople, maxScorePerPerson: Int
+    let score: Float
+
+    enum CodingKeys: String, CodingKey {
+        case symptomTotal = "symptom_total"
+        case totalPeople = "total_people"
+        case maxScorePerPerson = "max_score_per_person"
+        case score
     }
 }
 
