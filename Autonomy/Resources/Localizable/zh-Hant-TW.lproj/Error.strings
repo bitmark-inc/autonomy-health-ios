@@ -6,23 +6,23 @@
   Copyright © 2019 Bitmark Inc. All rights reserved.
 */
 
-"generalTitle" = "Error";
-"system" = "There was an system error. We will update to fix it soon. Please try later.";
-"NoInternetConnection" = "No Internet Connection";
+"generalTitle" = "錯誤";
+"system" = "系統錯誤。我們會盡快排除，請稍後再試。";
+"NoInternetConnection" = "偵測不到網路連線";
 
-"notification.title" = "Enable Push Notifications";
-"notification.message" = "We’ll send you timely surveys about your current conditions and important health recommendations.";
+"notification.title" = "啟用通知";
+"notification.message" = "我們將會適時的詢問您當下的狀況以及推送重要的健康建議。";
 
-"location.title" = "Enable Location";
-"location.message" = "We’ll use your location data to give you the latest COVID-19 outbreak information for your local current area and tell how to help your local community.";
+"location.title" = "啟用定位";
+"location.message" = "我們會使用您的位置資料來提供您所在周圍最新的新冠肺炎疫情資訊，並且讓您知道您可以如何幫助周遭的人。";
 
-"requireAppUpdate.title" = "Update Required";
-"requireAppUpdate.message" = "The Autonomy app on your device is out of date. Please update Autonomy to continue using it.";
-"requireAppUpdate.action" = "Update now";
+"requireAppUpdate.title" = "請立即進行軟體更新";
+"requireAppUpdate.message" = "您裝置上的 Autonomy app 不是最新版本。請立即更新以繼續使用。";
+"requireAppUpdate.action" = "立即更新";
 
 "requestHelp.duplicate" = "Only One Help Request Allowed";
 "requestHelp.duplicate.message" = "Sorry, but you already have an outstanding help request to your community. Currently, our system only supports one request at a time for each community member.";
 "giveHelp.alreadySigned" = "Someone Just Signed Up";
 "giveHelp.alreadySigned.message" = "Thanks so much for your eagerness to help out, but another community member just signed up for this request!";
 
-"account.signOut.error" = "There was an error while signing your account out from this device.";
+"account.signOut.error" = "登出裝置的過程中出現錯誤。";
