@@ -6,24 +6,24 @@
   Copyright © 2019 Bitmark Inc. All rights reserved.
 */
 
-"Back" = "Back";
-"Done" = "Done";
-"Success" = "Success";
+"Back" = "返回";
+"Done" = "完成";
+"Success" = "成功";
 "ok" = "OK";
-"Start" = "Start";
-"Next" = "Next";
-"Today" = "Today";
-"Enable" = "Enable";
+"Start" = "開始";
+"Next" = "下一步";
+"Today" = "今日";
+"Enable" = "啟用";
 
-"Permission" = "Permission";
-"Notifications" = "Notifications";
-"Location_data" = "Location data";
+"Permission" = "允許";
+"Notifications" = "通知";
+"Location_data" = "位置資料";
 
-"RiskLevel" = "Risk Level";
-"LowRisk" = "Low Risk";
-"ModerateRisk" = "Moderate Risk";
-"HighRisk" = "High Risk";
-"DigitalRights" = "Digital Rights";
+"RiskLevel" = "風險水平";
+"LowRisk" = "低風險";
+"ModerateRisk" = "中等風險";
+"HighRisk" = "高風險";
+"DigitalRights" = "數位權利";
 
 "Survey" = "Survey";
 "Symptoms" = "Symptoms";
