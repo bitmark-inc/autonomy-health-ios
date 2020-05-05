@@ -28,7 +28,6 @@ protocol LocationDelegate: class {
 
 protocol ScoreSourceDelegate: class {
     var formStateRelay: BehaviorRelay<(cell: HealthScoreCollectionCell, state: BottomSlideViewState)?> { get }
-    var coefficientRelay: BehaviorRelay<(value: Coefficient, userInteractive: Bool)?> { get }
     func explainData()
     func resetFormula()
 }
@@ -57,7 +56,6 @@ class MainViewController: ViewController {
 
     // View Source
     let formStateRelay = BehaviorRelay<(cell: HealthScoreCollectionCell, state: BottomSlideViewState)?>(value: nil)
-    lazy var coefficientRelay = thisViewModel.coefficientRelay
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -331,6 +329,7 @@ class MainViewController: ViewController {
         NotificationCenter.default.addObserver (self, selector: #selector(volumeChanged(_:)),
                                                 name: NSNotification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
                                                 object: nil)
+        FormulaSupporter.mainCollectionView = mainCollectionView
     }
 }
 
@@ -415,11 +414,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
         let areaProfile = areaProfiles[areaProfileKey ?? "current"]
         cell.setData(areaProfile: areaProfile, locationName: locationName)
-
-        if let coefficient = thisViewModel.coefficientRelay.value?.value {
-            cell.formulaSourceView.setRemoteData(coefficient: coefficient)
-            cell.formulaSourceView.calculateAndBind(with: coefficient)
-        }
 
         thisViewModel.fetchAreaProfile(poiID: areaProfileKey)
             .subscribe(onSuccess: { [weak self] (areaProfile) in

@@ -64,7 +64,7 @@ extension LaunchingNavigatorDelegate {
                 .subscribe(onSuccess: { [weak self] (isEnabled) in
                     guard let self = self else { return }
                     isEnabled ?
-                        self.gotoHealthSurveyScreen() :
+                        self.gotoMainScreen() :
                         self.gotoPermissionScreen()
 
                     Global.current.accountNumberRelay.accept(
@@ -79,12 +79,14 @@ extension LaunchingNavigatorDelegate {
 
 // MARK: - Navigator
 extension LaunchingNavigatorDelegate {
-    fileprivate func gotoSignInWallScreen() {
-        navigator.show(segue: .signInWall, sender: self, transition: .replace(type: .none))
+    fileprivate func gotoMainScreen() {
+        let viewModel = MainViewModel()
+        navigator.show(segue: .main(viewModel: viewModel), sender: self,
+                       transition: .replace(type: .slide(direction: .down)))
     }
 
-    fileprivate func gotoHealthSurveyScreen() {
-        navigator.show(segue: .healthSurvey, sender: self, transition: .replace(type: .none))
+    fileprivate func gotoSignInWallScreen() {
+        navigator.show(segue: .signInWall, sender: self, transition: .replace(type: .none))
     }
 
     fileprivate func gotoPermissionScreen() {

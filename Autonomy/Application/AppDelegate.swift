@@ -114,14 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         Global.volumePressTrack = ""
-        guard Global.current.account != nil else { return }
-
-        guard !Global.openAppWithNotification else {
-            Global.openAppWithNotification = false
-            return
-        }
-
-        Navigator.gotoHealthSurveyScreenIfNeeded()
     }
 
     @available(iOS 13.0, *)

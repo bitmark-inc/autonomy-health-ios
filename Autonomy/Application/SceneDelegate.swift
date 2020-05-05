@@ -45,14 +45,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         Global.volumePressTrack = ""
-        guard Global.current.account != nil else { return }
-
-        guard !Global.openAppWithNotification else {
-            Global.openAppWithNotification = false
-            return
-        }
-
-        Navigator.gotoHealthSurveyScreenIfNeeded()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

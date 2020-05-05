@@ -289,6 +289,8 @@
 		5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F089242CC01C0084B4F6 /* CheckboxView.swift */; };
 		5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */; };
 		5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */; };
+		5B89B8B4246178C80078A854 /* FormulaSupporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89B8B3246178C80078A854 /* FormulaSupporter.swift */; };
+		5B89B8B5246178C80078A854 /* FormulaSupporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89B8B3246178C80078A854 /* FormulaSupporter.swift */; };
 		5B92E3E62436E6E300E5949A /* BehaviorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */; };
 		5B92E3E72436E6E300E5949A /* BehaviorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */; };
 		5B92E3E82436E6E300E5949A /* BehaviorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E52436E6E300E5949A /* BehaviorService.swift */; };
@@ -601,6 +603,7 @@
 		5B87F086242CB7C40084B4F6 /* OptionBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionBoxView.swift; sourceTree = "<group>"; };
 		5B87F089242CC01C0084B4F6 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewController.swift; sourceTree = "<group>"; };
+		5B89B8B3246178C80078A854 /* FormulaSupporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaSupporter.swift; sourceTree = "<group>"; };
 		5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorAPI.swift; sourceTree = "<group>"; };
 		5B92E3E52436E6E300E5949A /* BehaviorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorService.swift; sourceTree = "<group>"; };
 		5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreTriangle.swift; sourceTree = "<group>"; };
@@ -717,6 +720,7 @@
 				5B130BB52451A9990031F176 /* FormulaSourceView.swift */,
 				5B130BBC2451AD590031F176 /* FormulaIndicatorView.swift */,
 				5B4B60BD2460149A00432151 /* SymptomWeightView.swift */,
+				5B89B8B3246178C80078A854 /* FormulaSupporter.swift */,
 			);
 			path = "View Formula Source";
 			sourceTree = "<group>";
@@ -2020,6 +2024,7 @@
 				5B577941242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
 				5B130BBB2451AA8D0031F176 /* RightIconButton.swift in Sources */,
+				5B89B8B5246178C80078A854 /* FormulaSupporter.swift in Sources */,
 				5BA808B9244010EC00B2733A /* DebugLocationViewModel.swift in Sources */,
 				5B57790C242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5BAA76FB24595CA3003CCE92 /* SymptomsHistory.swift in Sources */,
@@ -2176,6 +2181,7 @@
 				5B577940242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08A242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
 				5B130BBA2451AA8D0031F176 /* RightIconButton.swift in Sources */,
+				5B89B8B4246178C80078A854 /* FormulaSupporter.swift in Sources */,
 				5BA808B8244010EC00B2733A /* DebugLocationViewModel.swift in Sources */,
 				5B57790B242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5BAA76FA24595CA3003CCE92 /* SymptomsHistory.swift in Sources */,
@@ -2413,7 +2419,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2439,7 +2445,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

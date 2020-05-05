@@ -15,7 +15,6 @@ class MainViewModel: ViewModel {
     // MARK: - Outputs
     let poisRelay = BehaviorRelay(value: (pois: [PointOfInterest](), userInteractive: false))
     let fetchPOIStateRelay = BehaviorRelay<LoadState>(value: .hide)
-    let coefficientRelay = BehaviorRelay<(value: Coefficient, userInteractive: Bool)?>(value: nil)
 
     let addLocationSubject = PublishSubject<PointOfInterest?>()
     let deleteLocationIndexSubject = PublishSubject<Int>()
@@ -62,9 +61,9 @@ class MainViewModel: ViewModel {
 
     fileprivate func fetchProfileFormula() {
         FormulaService.get()
-            .subscribe(onSuccess: { [weak self] (formulaWeight) in
-                guard let self = self else { return }
-                self.coefficientRelay.accept((value: formulaWeight.coefficient, userInteractive: false))
+            .subscribe(onSuccess: { (formulaWeight) in
+                FormulaSupporter.coefficientRelay
+                    .accept((actor: nil, v: formulaWeight.coefficient))
             }, onError: { (error) in
                 guard !AppError.errorByNetworkConnection(error),
                     !Global.handleErrorIfAsAFError(error) else {
@@ -76,11 +75,11 @@ class MainViewModel: ViewModel {
     }
 
     fileprivate func observeAndSubmitProfileFormula() {
-        observeAndSubmitProfileFormulaDisposable = coefficientRelay
+        observeAndSubmitProfileFormulaDisposable = FormulaSupporter.coefficientRelay
             .filterNil()
-            .filter { $0.userInteractive }
-            .debounce(.seconds(0), scheduler: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] (coefficient, _) in
+            .filter { $0.actor != nil }.map { $0.v }
+            .debounce(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] (coefficient) in
                 guard let disposeBag = self?.disposeBag else { return }
 
                 FormulaService.update(coefficient: coefficient)
@@ -109,10 +108,10 @@ class MainViewModel: ViewModel {
             .do(onDispose: { [weak self] in
                 self?.observeAndSubmitProfileFormula()
             })
-            .subscribe(onSuccess: { [weak self] (formulaWeight) in
-                guard let self = self else { return }
+            .subscribe(onSuccess: { (formulaWeight) in
                 Global.log.info("[formula] resets successfully")
-                self.coefficientRelay.accept((value: formulaWeight.coefficient, userInteractive: false))
+                FormulaSupporter.coefficientRelay
+                    .accept((actor: nil, v: formulaWeight.coefficient))
             }, onError: { (error) in
                 guard !AppError.errorByNetworkConnection(error),
                     !Global.handleErrorIfAsAFError(error) else {

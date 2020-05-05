@@ -68,13 +68,12 @@ class FormulaSourceView: UIView {
 
     fileprivate lazy var resetButton = makeResetButton()
     fileprivate lazy var buttonGroupsView = makeButtonGroupsView()
+
+    fileprivate let symptomWeightsRelay = BehaviorRelay<[(String, Int)]>(value: [])
+    fileprivate var localSymptomWeightsDisposable: Disposable?
     fileprivate var calculatorDisposable: Disposable?
 
-    weak var delegate: ScoreSourceDelegate? {
-        didSet {
-            bindFormulaWeightEvents()
-        }
-    }
+    weak var delegate: ScoreSourceDelegate?
     fileprivate let disposeBag = DisposeBag()
 
     // - Indicator
@@ -85,6 +84,8 @@ class FormulaSourceView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+
+        bindFormulaWeightEvents()
     }
 
     deinit {
@@ -145,26 +146,34 @@ class FormulaSourceView: UIView {
         buildSymptomWeightsStackView(with: coefficient.symptomWeights)
     }
 
-    var didSet: Bool = false
-
+    var didObserve: Bool = false
     fileprivate func bindFormulaWeightEvents() {
-
-        delegate?.coefficientRelay
+        // bind Data
+        FormulaSupporter.coefficientRelay
             .filterNil()
-            .subscribe(onNext: { [weak self] (coefficient, userInteractive) in
+            .filter { [weak self] in
+                guard let self = self else { return false }
+                return $0.actor == nil || $0.actor != self
+            }
+            .map { $0.v }
+            .subscribe(onNext: { [weak self] (coefficient) in
                 guard let self = self else { return }
-                guard !self.didSet || !userInteractive else { return }
-
+                self.isUserInteractionEnabled = true
                 self.setRemoteData(coefficient: coefficient)
-                self.bindToCalculate()
-                self.didSet = true
+
+                if !self.didObserve { // only observe after setting remote data the first time
+                    self.observeElementEventsAndCalculateScore()
+                    self.didObserve = true
+                }
+
             })
             .disposed(by: disposeBag)
 
-        delegate?.coefficientRelay
+        // Calculate
+        FormulaSupporter.coefficientRelay
             .filterNil()
-            .filter { $0.userInteractive }
-            .subscribe(onNext: { [weak self] (coefficient, _) in
+            .map { $0.v }
+            .subscribe(onNext: { [weak self] (coefficient) in
                 guard let self = self else { return }
                 self.calculateAndBind(with: coefficient)
             })
@@ -206,36 +215,37 @@ class FormulaSourceView: UIView {
 
 // MARK: Formula Calculator
 extension FormulaSourceView {
-    func bindToCalculate() {
-        guard let symptomWeightViews = symptomWeightsStackView.arrangedSubviews as? [SymptomWeightView] else {
-            return
-        }
-
+    func observeElementEventsAndCalculateScore() {
+        calculatorDisposable?.dispose()
         let confirmsWeightRelay = caseFormulaIndicatorView.weightRelay
         let behaviorsWeightRelay = behaviorFormulaIndicatorView.weightRelay
         let symptomsWeightRelay = symptomFormulaIndicatorView.weightRelay
 
-        let symptomWeightsRelay = Observable.combineLatest(symptomWeightViews.map {
-            $0.weightRelay.distinctUntilChanged { $0.1 == $1.1 } })
-
         calculatorDisposable = BehaviorRelay.combineLatest(confirmsWeightRelay, behaviorsWeightRelay, symptomsWeightRelay, symptomWeightsRelay)
-            .skip(1)
             .subscribe(onNext: { [weak self] (confirmWeight, behaviorsWeight, symptomsWeight, symptomWeights) in
-                guard let self = self, let coefficient = self.delegate?.coefficientRelay.value?.value else {
+                guard let self = self, let coefficient = FormulaSupporter.coefficientRelay.value?.v else {
                     return
                 }
 
-                let newCoefficient = coefficient
+                if let displayingCell = FormulaSupporter.displayingCell, displayingCell.formulaSourceView != self {
+                    return
+                }
+
+                var newCoefficient = coefficient
                 newCoefficient.confirms = confirmWeight
                 newCoefficient.behaviors = behaviorsWeight
                 newCoefficient.symptoms = symptomsWeight
 
-                for symptomWeight in symptomWeights {
-                    newCoefficient.symptomWeights.first(where: { $0.symptom.id == symptomWeight.0 })?
-                        .weight = symptomWeight.1
+                let newSymptomWeights = newCoefficient.symptomWeights.map { (symptomWeight) -> SymptomWeight in
+                    var newSymptomWeight = symptomWeight
+                    newSymptomWeight.weight = symptomWeights.first(where: { $0.0 == newSymptomWeight.symptom.id })?.1 ?? 0
+                    return newSymptomWeight
                 }
+                newCoefficient.symptomWeights = newSymptomWeights
 
-                self.delegate?.coefficientRelay.accept((value: newCoefficient, userInteractive: true))
+                if newCoefficient != coefficient {
+                    FormulaSupporter.coefficientRelay.accept((actor: self, v: newCoefficient))
+                }
             })
     }
 
@@ -417,6 +427,7 @@ extension FormulaSourceView {
     }
 
     fileprivate func buildSymptomWeightsStackView(with symptomWeights: [SymptomWeight]) {
+        localSymptomWeightsDisposable?.dispose()
         symptomWeightsStackView.removeArrangedSubviews()
         symptomWeightsStackView.removeSubviews()
 
@@ -426,6 +437,18 @@ extension FormulaSourceView {
 
             symptomWeightsStackView.addArrangedSubview(symptomWeightView)
         }
+
+        guard let symptomWeightViews = symptomWeightsStackView.arrangedSubviews as? [SymptomWeightView] else {
+            return
+        }
+
+        let arrayOfSymptomWeights = symptomWeightViews.map { $0.weightRelay
+            .distinctUntilChanged { $0.1 == $1.1 } }
+
+        localSymptomWeightsDisposable = Observable.combineLatest(arrayOfSymptomWeights)
+            .bind(to: symptomWeightsRelay)
+
+        localSymptomWeightsDisposable?.disposed(by: disposeBag)
     }
 
     fileprivate func  makeIndicatorScoreLabel() -> Label {
@@ -466,14 +489,6 @@ extension FormulaSourceView {
         resetButton.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
         }
-
-        resetButton.rx.tap.bind { [weak self] in
-            guard let self = self else { return }
-            self.didSet = false
-            self.calculatorDisposable?.dispose()
-            self.delegate?.resetFormula()
-        }.disposed(by: disposeBag)
-
         return view
     }
 
@@ -485,10 +500,15 @@ extension FormulaSourceView {
             make.height.equalTo(30)
         }
         button.cornerRadius = 15
-
         themeService.rx
-            .bind( { $0.silverColor }, to: button.rx.backgroundColor)
-            .disposed(by: disposeBag)
+        .bind( { $0.silverColor }, to: button.rx.backgroundColor)
+        .disposed(by: disposeBag)
+
+        button.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.isUserInteractionEnabled = false
+            self.delegate?.resetFormula()
+        }.disposed(by: disposeBag)
 
         return button
     }

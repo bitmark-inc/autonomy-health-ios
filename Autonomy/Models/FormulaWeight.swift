@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FormulaWeight: Decodable {
+struct FormulaWeight: Decodable {
     let coefficient: Coefficient
     let isDefault: Bool
 
@@ -18,7 +18,7 @@ class FormulaWeight: Decodable {
     }
 }
 
-class Coefficient: Decodable {
+struct Coefficient: Decodable {
     var symptoms: Float
     var behaviors: Float
     var confirms: Float
@@ -31,7 +31,29 @@ class Coefficient: Decodable {
     }
 }
 
-class SymptomWeight: Decodable {
+struct SymptomWeight: Decodable {
     let symptom: Symptom
     var weight: Int
+}
+
+extension Coefficient: Equatable {
+    static func ==(lhs: Coefficient, rhs: Coefficient) -> Bool {
+        var symptomWeightsEqual: Bool = true
+        for lhsSymptomWeight in lhs.symptomWeights {
+            guard let rhsSymptomWeight = rhs.symptomWeights.first(where: { $0.symptom.id == lhsSymptomWeight.symptom.id }) else {
+                symptomWeightsEqual = false
+                break
+            }
+
+            if lhsSymptomWeight.weight != rhsSymptomWeight.weight {
+                symptomWeightsEqual = false
+                break
+            }
+        }
+
+        return symptomWeightsEqual &&
+            lhs.symptoms == rhs.symptoms &&
+            lhs.behaviors == rhs.behaviors &&
+            lhs.confirms == rhs.confirms
+    }
 }
