@@ -43,6 +43,7 @@ class MainViewController: ViewController {
     lazy var navButtons = makeNavButtons()
     lazy var profileButton = makeProfileButton()
     lazy var poiActivityIndicator = makeActivityIndicator()
+    lazy var debugButton = makeDebugButton()
 
     lazy var thisViewModel: MainViewModel = {
         return viewModel as! MainViewModel
@@ -290,9 +291,15 @@ class MainViewController: ViewController {
         contentView.addSubview(navButtons)
         contentView.addSubview(mainCollectionView)
         contentView.addSubview(poiActivityIndicator)
+        contentView.addSubview(debugButton)
 
         profileButton.snp.makeConstraints { (make) in
             make.top.leading.equalToSuperview()
+        }
+
+        debugButton.snp.makeConstraints { (make) in
+            make.top.trailing.equalToSuperview()
+                .inset(OurTheme.paddingInset)
         }
 
         navButtons.snp.makeConstraints { (make) in
@@ -526,6 +533,11 @@ extension MainViewController {
     fileprivate func gotoProfileScreen() {
         navigator.show(segue: .profile, sender: self, transition: .navigation(type: .slide(direction: .down)))
     }
+
+    fileprivate func gotoDebugScreen() {
+        let viewModel = DebugLocationViewModel(pois: pois)
+        navigator.show(segue: .debugLocation(viewModel: viewModel), sender: self, transition: .customModal(type: .slide(direction: .up)))
+    }
 }
 
 // MARK: - Setup Views
@@ -638,6 +650,23 @@ extension MainViewController {
         let indicator = UIActivityIndicatorView()
         indicator.style = .white
         return indicator
+    }
+
+    fileprivate func makeDebugButton() -> UIButton {
+        let button = UIButton()
+        button.setImage(R.image.gearIcon(), for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 29, bottom: 29, right: 0)
+
+        Global.enableDebugRelay
+            .map { !$0 }
+            .bind(to: button.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        button.rx.tap.bind { [weak self] in
+            self?.gotoDebugScreen()
+        }.disposed(by: disposeBag)
+
+        return button
     }
 }
 

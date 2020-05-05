@@ -44,6 +44,7 @@ class Navigator {
         case symptomHistory(viewModel: SymptomHistoryViewModel)
         case behaviorHistory(viewModel: BehaviorHistoryViewModel)
         case locationHistory(viewModel: LocationHistoryViewModel)
+        case debugLocation(viewModel: DebugLocationViewModel)
         case safariController(URL)
     }
 
@@ -89,6 +90,7 @@ class Navigator {
         case .behaviorHistory(let viewModel):   return BehaviorHistoryViewController(viewModel: 
             viewModel)
         case .locationHistory(let viewModel):   return LocationHistoryViewController(viewModel: viewModel)
+        case .debugLocation(let viewModel):     return DebugLocationViewController(viewModel: viewModel)
 
         case .safariController(let url):
             let vc = SFSafariViewController(url: url)

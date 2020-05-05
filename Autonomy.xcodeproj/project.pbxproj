@@ -77,8 +77,22 @@
 		5B4B60B2245FC2F000432151 /* Float+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B0245FC2F000432151 /* Float+Formatter.swift */; };
 		5B4B60B4245FD62A00432151 /* FormulaWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B3245FD62A00432151 /* FormulaWeight.swift */; };
 		5B4B60B5245FD62A00432151 /* FormulaWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B3245FD62A00432151 /* FormulaWeight.swift */; };
+		5B4B60B924600B5600432151 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B724600B5600432151 /* LocationSearchViewController.swift */; };
+		5B4B60BA24600B5600432151 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B724600B5600432151 /* LocationSearchViewController.swift */; };
+		5B4B60BB24600B5600432151 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B824600B5600432151 /* LocationSearchViewModel.swift */; };
+		5B4B60BC24600B5600432151 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B824600B5600432151 /* LocationSearchViewModel.swift */; };
 		5B4B60BE2460149A00432151 /* SymptomWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60BD2460149A00432151 /* SymptomWeightView.swift */; };
 		5B4B60BF2460149A00432151 /* SymptomWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60BD2460149A00432151 /* SymptomWeightView.swift */; };
+		5B4B60C22460462000432151 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C12460462000432151 /* Debug.swift */; };
+		5B4B60C32460462000432151 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C12460462000432151 /* Debug.swift */; };
+		5B4B60C62460466300432151 /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C42460466300432151 /* FormulaAPI.swift */; };
+		5B4B60C72460466300432151 /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C42460466300432151 /* FormulaAPI.swift */; };
+		5B4B60C82460466300432151 /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C52460466300432151 /* FormulaService.swift */; };
+		5B4B60C92460466300432151 /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C52460466300432151 /* FormulaService.swift */; };
+		5B4B60CB24604A7E00432151 /* debug-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B4B60CA24604A7E00432151 /* debug-data.json */; };
+		5B4B60CC24604A7E00432151 /* debug-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B4B60CA24604A7E00432151 /* debug-data.json */; };
+		5B4B60CE24606FFB00432151 /* DebugInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60CD24606FFB00432151 /* DebugInfoWindowView.swift */; };
+		5B4B60CF24606FFB00432151 /* DebugInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60CD24606FFB00432151 /* DebugInfoWindowView.swift */; };
 		5B4EF6DF2446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */; };
 		5B4EF6E02446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */; };
 		5B4EF6E12446AEF600BCB323 /* SurveySymptomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */; };
@@ -324,20 +338,20 @@
 		5BA4B134245A89AC00B125ED /* symptoms-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B132245A89AC00B125ED /* symptoms-list.json */; };
 		5BA4B136245A8DAD00B125ED /* auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B135245A8DAD00B125ED /* auth.json */; };
 		5BA4B137245A8DAD00B125ED /* auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B135245A8DAD00B125ED /* auth.json */; };
-		5BA808B5244010E100B2733A /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* LocationSearchViewController.swift */; };
-		5BA808B6244010E100B2733A /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* LocationSearchViewController.swift */; };
-		5BA808B8244010EC00B2733A /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */; };
-		5BA808B9244010EC00B2733A /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */; };
+		5BA808B5244010E100B2733A /* DebugLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* DebugLocationViewController.swift */; };
+		5BA808B6244010E100B2733A /* DebugLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* DebugLocationViewController.swift */; };
+		5BA808B8244010EC00B2733A /* DebugLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* DebugLocationViewModel.swift */; };
+		5BA808B9244010EC00B2733A /* DebugLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* DebugLocationViewModel.swift */; };
 		5BA808BB2440226A00B2733A /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
 		5BA808BC2440226A00B2733A /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
 		5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
 		5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
 		5BAA76FA24595CA3003CCE92 /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
 		5BAA76FB24595CA3003CCE92 /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
-		5BAA76FF2459603C003CCE92 /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* FormulaAPI.swift */; };
-		5BAA77002459603C003CCE92 /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* FormulaAPI.swift */; };
-		5BAA77012459603C003CCE92 /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FE2459603C003CCE92 /* FormulaService.swift */; };
-		5BAA77022459603C003CCE92 /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FE2459603C003CCE92 /* FormulaService.swift */; };
+		5BAA76FF2459603C003CCE92 /* DebugAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* DebugAPI.swift */; };
+		5BAA77002459603C003CCE92 /* DebugAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* DebugAPI.swift */; };
+		5BAA77012459603C003CCE92 /* DebugService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FE2459603C003CCE92 /* DebugService.swift */; };
+		5BAA77022459603C003CCE92 /* DebugService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FE2459603C003CCE92 /* DebugService.swift */; };
 		5BAA770E245963FD003CCE92 /* SymptomHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA770C245963FD003CCE92 /* SymptomHistoryViewModel.swift */; };
 		5BAA770F245963FD003CCE92 /* SymptomHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA770C245963FD003CCE92 /* SymptomHistoryViewModel.swift */; };
 		5BAA7710245963FD003CCE92 /* SymptomHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA770D245963FD003CCE92 /* SymptomHistoryViewController.swift */; };
@@ -480,7 +494,14 @@
 		5B4B60AD245FB95200432151 /* area-profile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "area-profile.json"; sourceTree = "<group>"; };
 		5B4B60B0245FC2F000432151 /* Float+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Formatter.swift"; sourceTree = "<group>"; };
 		5B4B60B3245FD62A00432151 /* FormulaWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaWeight.swift; sourceTree = "<group>"; };
+		5B4B60B724600B5600432151 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		5B4B60B824600B5600432151 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
 		5B4B60BD2460149A00432151 /* SymptomWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomWeightView.swift; sourceTree = "<group>"; };
+		5B4B60C12460462000432151 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		5B4B60C42460466300432151 /* FormulaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaAPI.swift; sourceTree = "<group>"; };
+		5B4B60C52460466300432151 /* FormulaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaService.swift; sourceTree = "<group>"; };
+		5B4B60CA24604A7E00432151 /* debug-data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "debug-data.json"; sourceTree = "<group>"; };
+		5B4B60CD24606FFB00432151 /* DebugInfoWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugInfoWindowView.swift; sourceTree = "<group>"; };
 		5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveySymptomsViewController.swift; sourceTree = "<group>"; };
 		5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveySymptomsViewModel.swift; sourceTree = "<group>"; };
 		5B4EF6E32446AFE800BCB323 /* SurveyBehaviorsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyBehaviorsViewModel.swift; sourceTree = "<group>"; };
@@ -609,13 +630,13 @@
 		5B978886243F22B4005BADA9 /* LocationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationTableCell.swift; path = ../Location/List/LocationTableCell.swift; sourceTree = "<group>"; };
 		5BA4B132245A89AC00B125ED /* symptoms-list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "symptoms-list.json"; sourceTree = "<group>"; };
 		5BA4B135245A8DAD00B125ED /* auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = auth.json; sourceTree = "<group>"; };
-		5BA808B4244010E100B2733A /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
-		5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
+		5BA808B4244010E100B2733A /* DebugLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLocationViewController.swift; sourceTree = "<group>"; };
+		5BA808B7244010EC00B2733A /* DebugLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLocationViewModel.swift; sourceTree = "<group>"; };
 		5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextTableCell.swift; sourceTree = "<group>"; };
 		5BA808C0244081E300B2733A /* LocationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListCell.swift; sourceTree = "<group>"; };
 		5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsHistory.swift; sourceTree = "<group>"; };
-		5BAA76FD2459603C003CCE92 /* FormulaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaAPI.swift; sourceTree = "<group>"; };
-		5BAA76FE2459603C003CCE92 /* FormulaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormulaService.swift; sourceTree = "<group>"; };
+		5BAA76FD2459603C003CCE92 /* DebugAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugAPI.swift; sourceTree = "<group>"; };
+		5BAA76FE2459603C003CCE92 /* DebugService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugService.swift; sourceTree = "<group>"; };
 		5BAA770C245963FD003CCE92 /* SymptomHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SymptomHistoryViewModel.swift; path = Autonomy/Modules/History/Symptoms/SymptomHistoryViewModel.swift; sourceTree = SOURCE_ROOT; };
 		5BAA770D245963FD003CCE92 /* SymptomHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SymptomHistoryViewController.swift; path = Autonomy/Modules/History/Symptoms/SymptomHistoryViewController.swift; sourceTree = SOURCE_ROOT; };
 		5BAA77122459640C003CCE92 /* BehaviorHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BehaviorHistoryViewController.swift; path = Autonomy/Modules/History/Behaviors/BehaviorHistoryViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -712,8 +733,8 @@
 		5B2661A72457DBBF00163404 /* Formula */ = {
 			isa = PBXGroup;
 			children = (
-				5BAA76FD2459603C003CCE92 /* FormulaAPI.swift */,
-				5BAA76FE2459603C003CCE92 /* FormulaService.swift */,
+				5B4B60C42460466300432151 /* FormulaAPI.swift */,
+				5B4B60C52460466300432151 /* FormulaService.swift */,
 			);
 			path = Formula;
 			sourceTree = "<group>";
@@ -807,6 +828,25 @@
 			path = "Area Profile";
 			sourceTree = "<group>";
 		};
+		5B4B60B624600AD800432151 /* Debug Location */ = {
+			isa = PBXGroup;
+			children = (
+				5BA808B4244010E100B2733A /* DebugLocationViewController.swift */,
+				5BA808B7244010EC00B2733A /* DebugLocationViewModel.swift */,
+				5B4B60CD24606FFB00432151 /* DebugInfoWindowView.swift */,
+			);
+			path = "Debug Location";
+			sourceTree = "<group>";
+		};
+		5B4B60C02460444400432151 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				5BAA76FD2459603C003CCE92 /* DebugAPI.swift */,
+				5BAA76FE2459603C003CCE92 /* DebugService.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		5B4EF6DC2446AE9B00BCB323 /* Behaviors */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,6 +897,7 @@
 				5B213EFC244412EB0095BE18 /* Points Of Interest */,
 				5B2661A72457DBBF00163404 /* Formula */,
 				5BAA76FC24595F54003CCE92 /* History */,
+				5B4B60C02460444400432151 /* Debug */,
 				5BA4B131245A898C00B125ED /* Stubbed Responses */,
 			);
 			path = Services;
@@ -916,6 +957,7 @@
 				5B213F06244413FC0095BE18 /* Location.swift */,
 				5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */,
 				5B4B60B3245FD62A00432151 /* FormulaWeight.swift */,
+				5B4B60C12460462000432151 /* Debug.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1246,6 +1288,7 @@
 				5B97887E243F21A6005BADA9 /* Location */,
 				5B2661AE24583C3500163404 /* Profile */,
 				5BAA76E824593A49003CCE92 /* History */,
+				5B4B60B624600AD800432151 /* Debug Location */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1307,6 +1350,7 @@
 				5BA4B135245A8DAD00B125ED /* auth.json */,
 				5BA4B132245A89AC00B125ED /* symptoms-list.json */,
 				5B4B60AD245FB95200432151 /* area-profile.json */,
+				5B4B60CA24604A7E00432151 /* debug-data.json */,
 			);
 			path = "Stubbed Responses";
 			sourceTree = "<group>";
@@ -1314,8 +1358,8 @@
 		5BA808B3244010CE00B2733A /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				5BA808B4244010E100B2733A /* LocationSearchViewController.swift */,
-				5BA808B7244010EC00B2733A /* LocationSearchViewModel.swift */,
+				5B4B60B724600B5600432151 /* LocationSearchViewController.swift */,
+				5B4B60B824600B5600432151 /* LocationSearchViewModel.swift */,
 				5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */,
 			);
 			path = Search;
@@ -1620,6 +1664,7 @@
 				5B5778D4242B48230028D3E3 /* DomaineSansText-LightItalic.otf in Resources */,
 				5B5778B8242B48230028D3E3 /* AtlasGrotesk-Medium.otf in Resources */,
 				5B97885D243EDFED005BADA9 /* IBMPlexMono-Thin.ttf in Resources */,
+				5B4B60CC24604A7E00432151 /* debug-data.json in Resources */,
 				5B5778CA242B48230028D3E3 /* AtlasGrotesk-Thin.otf in Resources */,
 				5B5778D0242B48230028D3E3 /* DomaineSansText-BoldItalic.otf in Resources */,
 				5B5778DC242B48230028D3E3 /* DomaineSansText-Regular.otf in Resources */,
@@ -1674,6 +1719,7 @@
 				5B97885E243EDFED005BADA9 /* IBMPlexMono-Bold.ttf in Resources */,
 				5B5778F2242B49140028D3E3 /* Error.strings in Resources */,
 				5B978864243EDFED005BADA9 /* IBMPlexMono-Medium.ttf in Resources */,
+				5B4B60CB24604A7E00432151 /* debug-data.json in Resources */,
 				5B5778CD242B48230028D3E3 /* DomaineSansText-Light.otf in Resources */,
 				5B5778D3242B48230028D3E3 /* DomaineSansText-LightItalic.otf in Resources */,
 				5B577860242B3FC10028D3E3 /* Dev-Info.plist in Resources */,
@@ -1944,7 +1990,9 @@
 				5B92E3E72436E6E300E5949A /* BehaviorAPI.swift in Sources */,
 				5B92E3E72436E6E300E5949A /* BehaviorAPI.swift in Sources */,
 				5B7F23A82434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
+				5B4B60CF24606FFB00432151 /* DebugInfoWindowView.swift in Sources */,
 				5B577901242B4C010028D3E3 /* Navigator.swift in Sources */,
+				5B4B60C92460466300432151 /* FormulaService.swift in Sources */,
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B544E9B245C3D7800B8003A /* FigLabel.swift in Sources */,
 				5B97887A243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
@@ -1963,7 +2011,7 @@
 				5B92E3E92436E6E300E5949A /* BehaviorService.swift in Sources */,
 				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
-				5BAA77002459603C003CCE92 /* FormulaAPI.swift in Sources */,
+				5BAA77002459603C003CCE92 /* DebugAPI.swift in Sources */,
 				5B213F002444133E0095BE18 /* HelpRequestService.swift in Sources */,
 				5B93F704243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
@@ -1972,7 +2020,7 @@
 				5B577941242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08B242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
 				5B130BBB2451AA8D0031F176 /* RightIconButton.swift in Sources */,
-				5BA808B9244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
+				5BA808B9244010EC00B2733A /* DebugLocationViewModel.swift in Sources */,
 				5B57790C242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5BAA76FB24595CA3003CCE92 /* SymptomsHistory.swift in Sources */,
 				5B7F23AE2434878F00F7A72E /* AskInfoViewController.swift in Sources */,
@@ -1982,7 +2030,7 @@
 				5BAA7711245963FD003CCE92 /* SymptomHistoryViewController.swift in Sources */,
 				5B4957432449938E0012D6E1 /* SymptomService.swift in Sources */,
 				5B577927242B4EA20028D3E3 /* ViewModel.swift in Sources */,
-				5BA808B6244010E100B2733A /* LocationSearchViewController.swift in Sources */,
+				5BA808B6244010E100B2733A /* DebugLocationViewController.swift in Sources */,
 				5B5778E3242B48AA0028D3E3 /* R.generated.swift in Sources */,
 				5B57787D242B43B70028D3E3 /* AuthAPI.swift in Sources */,
 				5B577883242B43DC0028D3E3 /* NoInternetBanner.swift in Sources */,
@@ -2008,6 +2056,7 @@
 				5B213F022444133E0095BE18 /* HelpRequestAPI.swift in Sources */,
 				5B57793B242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B7CE0BE2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
+				5B4B60C72460466300432151 /* FormulaAPI.swift in Sources */,
 				5B7F23B02434878F00F7A72E /* AskInfoViewModel.swift in Sources */,
 				5B4EF6E02446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */,
 				5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
@@ -2016,6 +2065,7 @@
 				5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5B4B60BF2460149A00432151 /* SymptomWeightView.swift in Sources */,
 				5B2661AC2457DF8600163404 /* PointOfInterestAPI.swift in Sources */,
+				5B4B60C32460462000432151 /* Debug.swift in Sources */,
 				5B2661B424583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */,
@@ -2025,11 +2075,13 @@
 				5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */,
 				5B2661AD2457DF8600163404 /* PointOfInterestService.swift in Sources */,
 				5BFC8DCD2433264A00815828 /* FeedTableCell.swift in Sources */,
+				5B4B60BA24600B5600432151 /* LocationSearchViewController.swift in Sources */,
 				5B7CE0D52430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
 				5BB140A3242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577924242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
+				5B4B60BC24600B5600432151 /* LocationSearchViewModel.swift in Sources */,
 				5B577864242B421B0028D3E3 /* Constant.swift in Sources */,
 				5B130BB12451A1E30031F176 /* SuccessPanViewController.swift in Sources */,
 				5B577867242B42310028D3E3 /* Global+Log.swift in Sources */,
@@ -2060,7 +2112,7 @@
 				5BC6AEDB245A6F8C00F60AF2 /* AddRow.swift in Sources */,
 				5B49574D2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
 				5B7F23AA2434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
-				5BAA77022459603C003CCE92 /* FormulaService.swift in Sources */,
+				5BAA77022459603C003CCE92 /* DebugService.swift in Sources */,
 				5BB140A0242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577916242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B7CE0CC2430BE91002CD923 /* AreaProfileService.swift in Sources */,
@@ -2094,7 +2146,9 @@
 				5B92E3E62436E6E300E5949A /* BehaviorAPI.swift in Sources */,
 				5B92E3E62436E6E300E5949A /* BehaviorAPI.swift in Sources */,
 				5B7F23A72434878F00F7A72E /* ReviewHelpRequestViewModel.swift in Sources */,
+				5B4B60CE24606FFB00432151 /* DebugInfoWindowView.swift in Sources */,
 				5B577900242B4C010028D3E3 /* Navigator.swift in Sources */,
+				5B4B60C82460466300432151 /* FormulaService.swift in Sources */,
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
 				5B544E9A245C3D7800B8003A /* FigLabel.swift in Sources */,
 				5B978879243EFF71005BADA9 /* ScoreInfoView.swift in Sources */,
@@ -2113,7 +2167,7 @@
 				5B92E3E82436E6E300E5949A /* BehaviorService.swift in Sources */,
 				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
 				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
-				5BAA76FF2459603C003CCE92 /* FormulaAPI.swift in Sources */,
+				5BAA76FF2459603C003CCE92 /* DebugAPI.swift in Sources */,
 				5B213EFF2444133E0095BE18 /* HelpRequestService.swift in Sources */,
 				5B93F703243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
@@ -2122,7 +2176,7 @@
 				5B577940242B62160028D3E3 /* HeaderView.swift in Sources */,
 				5B87F08A242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
 				5B130BBA2451AA8D0031F176 /* RightIconButton.swift in Sources */,
-				5BA808B8244010EC00B2733A /* LocationSearchViewModel.swift in Sources */,
+				5BA808B8244010EC00B2733A /* DebugLocationViewModel.swift in Sources */,
 				5B57790B242B4CB30028D3E3 /* ViewController.swift in Sources */,
 				5BAA76FA24595CA3003CCE92 /* SymptomsHistory.swift in Sources */,
 				5B7F23AD2434878F00F7A72E /* AskInfoViewController.swift in Sources */,
@@ -2132,7 +2186,7 @@
 				5BAA7710245963FD003CCE92 /* SymptomHistoryViewController.swift in Sources */,
 				5B4957422449938E0012D6E1 /* SymptomService.swift in Sources */,
 				5B577926242B4EA20028D3E3 /* ViewModel.swift in Sources */,
-				5BA808B5244010E100B2733A /* LocationSearchViewController.swift in Sources */,
+				5BA808B5244010E100B2733A /* DebugLocationViewController.swift in Sources */,
 				5B5778E2242B48AA0028D3E3 /* R.generated.swift in Sources */,
 				5B57787C242B43B70028D3E3 /* AuthAPI.swift in Sources */,
 				5B577882242B43DC0028D3E3 /* NoInternetBanner.swift in Sources */,
@@ -2158,6 +2212,7 @@
 				5B213F012444133E0095BE18 /* HelpRequestAPI.swift in Sources */,
 				5B57793A242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B7CE0BD2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */,
+				5B4B60C62460466300432151 /* FormulaAPI.swift in Sources */,
 				5B7F23AF2434878F00F7A72E /* AskInfoViewModel.swift in Sources */,
 				5B4EF6DF2446AEF600BCB323 /* SurveySymptomsViewController.swift in Sources */,
 				5BB140A5242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
@@ -2166,6 +2221,7 @@
 				5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */,
 				5B4B60BE2460149A00432151 /* SymptomWeightView.swift in Sources */,
 				5B2661AA2457DF6B00163404 /* PointOfInterestAPI.swift in Sources */,
+				5B4B60C22460462000432151 /* Debug.swift in Sources */,
 				5B2661B324583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */,
@@ -2175,11 +2231,13 @@
 				5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */,
 				5B2661AB2457DF6B00163404 /* PointOfInterestService.swift in Sources */,
 				5BFC8DCC2433264A00815828 /* FeedTableCell.swift in Sources */,
+				5B4B60B924600B5600432151 /* LocationSearchViewController.swift in Sources */,
 				5B7CE0D42430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
 				5BB140A2242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5B577923242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
 				5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */,
+				5B4B60BB24600B5600432151 /* LocationSearchViewModel.swift in Sources */,
 				5B577863242B421B0028D3E3 /* Constant.swift in Sources */,
 				5B130BAF2451A1C00031F176 /* SuccessPanViewController.swift in Sources */,
 				5B577866242B42310028D3E3 /* Global+Log.swift in Sources */,
@@ -2210,7 +2268,7 @@
 				5BC6AEDA245A6F8C00F60AF2 /* AddRow.swift in Sources */,
 				5B49574C2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
 				5B7F23A92434878F00F7A72E /* AssistanceViewModel.swift in Sources */,
-				5BAA77012459603C003CCE92 /* FormulaService.swift in Sources */,
+				5BAA77012459603C003CCE92 /* DebugService.swift in Sources */,
 				5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */,
 				5B577915242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5B7CE0CB2430BE91002CD923 /* AreaProfileService.swift in Sources */,

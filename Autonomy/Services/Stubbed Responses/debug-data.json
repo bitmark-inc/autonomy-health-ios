@@ -1,0 +1,14 @@
+{
+  "metrics": {
+    "score": 70,
+    "confirm": 120,
+    "confirm_delta": 1,
+    "symptoms": 90,
+    "symptoms_delta": -10,
+    "behavior": 90,
+    "behavior_delta": 15
+  },
+  "users": 12,
+  "aqi": 47,
+  "symptoms": 124
+}

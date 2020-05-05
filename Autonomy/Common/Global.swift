@@ -22,6 +22,7 @@ class Global {
     static let `default` = current
     static var openAppWithNotification: Bool = false
     static var volumePressTrack = ""
+    static var enableDebugRelay = BehaviorRelay<Bool>(value: false)
 
     var account: Account?
     lazy var accountNumberRelay = BehaviorRelay<String?>(value: account?.getAccountNumber())
