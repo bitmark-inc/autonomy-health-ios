@@ -51,27 +51,25 @@ extension SymptomAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
         return Data()
     }
 
-    var parameters: [String: Any]? {
+    var task: Task {
         var params: [String: Any] = [:]
+
         switch self {
         case .list:
-            return nil
-    
+            if let localeCode = Locale.current.languageCode {
+                params["lang"] = localeCode
+            }
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+
         case .create(let survey):
             params["name"] = survey.name
             params["desc"] = survey.desc
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
 
         case .report(let symptomKeys):
             params["symptoms"] = symptomKeys
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         }
-        return params
-    }
-
-    var task: Task {
-        if let parameters = parameters {
-            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-        }
-        return .requestPlain
     }
 
     var headers: [String: String]? {

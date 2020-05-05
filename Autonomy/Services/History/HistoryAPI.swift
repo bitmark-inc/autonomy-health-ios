@@ -49,6 +49,10 @@ extension HistoryAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
                 params["before"] = beforeDate.timeIntervalSince1970
             }
 
+            if let localeCode = Locale.current.languageCode {
+                params["lang"] = localeCode
+            }
+
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         }
     }

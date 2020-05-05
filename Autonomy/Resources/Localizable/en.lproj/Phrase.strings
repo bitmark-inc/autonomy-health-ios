@@ -38,14 +38,18 @@
 
 "survey.title" = "How are you right now?";
 "survey.help.title" = "How can we help?";
+
+/// ====== Begin: Dont need this parts ======
 "survey.help.symptoms" = "I have symptoms";
 "survey.help.symptoms.description" = "Let us if you are currently experiencing any of common COVID-19 symptoms.";
 "survey.help.assistance" = "I need assistance";
 "survey.help.assistance.description" = "Let people in your local community know that you need help.";
+/// ====== End: Dont need this parts.  ======
 
 "survey.symptoms.title" = "Do you have any of the following symptoms?";
 "survey.behaviors.title" = "Did you do any of the following behaviors today?";
 
+/// ====== Begin: Dont need this parts ======
 "assistance.title" = "What kind of assistance do you need?";
 "assistance.foodAndWater" = "Access to food or water";
 "assistance.foodAndWater.desc" = "I need help getting food and water.";
@@ -85,6 +89,7 @@
 "giveHelp.helper.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
 "giveHelp.helper.otherSubmitted" = "Someone has already signed up to fulfill this community request.";
 "giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
+/// ====== End: Dont need this parts.  ======
 
 "symptoms.reported.title" = "Your Symptoms Have Been Successfully Reported To Your Community ";
 "symptoms.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your symptoms if they continue.";

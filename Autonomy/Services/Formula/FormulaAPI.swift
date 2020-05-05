@@ -41,8 +41,16 @@ extension FormulaAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
     }
 
     var task: Task {
+        var params: [String: Any] = [:]
+
         switch self {
-        case .get, .delete:
+        case .get:
+            if let localeCode = Locale.current.languageCode {
+                params["lang"] = localeCode
+            }
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+
+        case .delete:
             return .requestPlain
 
         case .update(let coefficient):
@@ -56,7 +64,7 @@ extension FormulaAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
                 "symptom_weights": symptomWeights
             ]
 
-            let params = ["coefficient": coefficient]
+            params = ["coefficient": coefficient]
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         }
     }
