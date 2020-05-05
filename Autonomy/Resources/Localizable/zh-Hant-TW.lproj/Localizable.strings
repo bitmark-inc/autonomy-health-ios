@@ -85,7 +85,7 @@
 "ReportedBehaviorsScore" = "已回報行為評分";
 "ReportedSymptomsScore" = "已回報症狀評分";
 "ReportedBehaviorsScore.desc" = "評分經由周圍1公里內所有使用者回報的行為來計算。";
-"ReportedSymptomsScore.desc" = "Each reported symptom is given a score of 1 to 3, depending on the likelihood of it being a predictor of COVID-19. The overall symptoms score is calculated for all symptoms in a 1km radius. Current symptoms and scores are:";
+"ReportedSymptomsScore.desc" = "針對每個回報的證據，依據其為新冠肺炎徵狀的可能性給予 1 至 3 不等的評分。綜合症狀評分是依據 1 公里距離內的所有症狀綜合計算。目前的症狀及評分為：";
 
 "BehaviorsTotal" = "綜合行為";
 "SymptomsTotal" = "綜合症狀";
