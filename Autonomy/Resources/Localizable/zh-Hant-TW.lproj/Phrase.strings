@@ -68,7 +68,7 @@
 
 "assistance.contact.title" = "您的協助者應該如何聯絡您？";
 "assistance.contact.placeholder" = "請輸入聯絡資訊。例如，Line ID，WhatsApp ID，或是電話號碼。";
-///
+/*
 "review.title" = "請確認您提出的協助需求：";
 "assistance.info.exactNeeds" = "確切需要的協助";
 "assistance.info.meetingLocation" = "碰面地點";
@@ -85,7 +85,7 @@
 "giveHelp.helper.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
 "giveHelp.helper.otherSubmitted" = "Someone has already signed up to fulfill this community request.";
 "giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
-///
+*/
 "symptoms.reported.title" = "已成功將您的症狀回報給您的社群";
 "symptoms.reported.desc" = "感謝您花時間讓您的社群更開心健康。如果症狀持續，請持續回報。";
 "addSymptom.add" = "新增症狀...";
