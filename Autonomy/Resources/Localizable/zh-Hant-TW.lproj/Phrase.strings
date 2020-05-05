@@ -7,76 +7,76 @@
 */
 
 "launch.name" = "Autonomy";
-"launch.description" = "Get better.\nTogether.";
-"launch.policyTerm" = "We protect your %@.";
+"launch.description" = "大家一起。\n變得更好。";
+"launch.policyTerm" = "我們保護您的 %@ 。";
 
-"onboarding.1.description" = "We’ll forecast the public health of your neighborhood.";
-"onboarding.2.description" = "Your privacy gets stronger as more people join.";
-"onboarding.3.description" = "We’ll help your neighborhood grow healthier together.";
+"onboarding.1.description" = "我們將會預測您周圍的公共健康狀況。";
+"onboarding.2.description" = "越多人加入，您越有隱私。";
+"onboarding.3.description" = "我們會幫助您周圍的人一起變得更健康。";
 
-"onboarding.2.title" = "Do you have any of the following symptoms?";
-"onboarding.2.item.1" = "Fever";
-"onboarding.2.item.1.desc" = "Body temperature above 100ºF (38ºC)";
-"onboarding.2.item.2" = "Dry cough";
-"onboarding.2.item.2.desc" = "Without mucous or phlegm (rattling)";
+"onboarding.2.title" = "您有以下症狀嗎？";
+"onboarding.2.item.1" = "發燒";
+"onboarding.2.item.1.desc" = "體溫高於38ºC(100ºF)";
+"onboarding.2.item.2" = "乾咳";
+"onboarding.2.item.2.desc" = "沒有痰或黏液 (嘎嘎作響)";
 
-"onboarding.3.title" = "Did you do any of the following behaviors today?";
-"onboarding.3.item.1" = "Frequent hand cleaning";
-"onboarding.3.item.1.desc" = "Washing hands thoroughly with soap and water for at least 20 seconds or applying an alcohol-based hand sanitizer.";
-"onboarding.3.item.2" = "Social & physical distancing";
-"onboarding.3.item.2.desc" = "Avoiding crowds, working from home, and maintaining at least 6 feet of distance from others whenever possible.";
+"onboarding.3.title" = "您今天有執行以下事項嗎？";
+"onboarding.3.item.1" = "經常洗手";
+"onboarding.3.item.1.desc" = "徹底使用肥皂與水洗手至少20秒，或是使用含有酒精的手部消毒劑。";
+"onboarding.3.item.2" = "保持社交距離";
+"onboarding.3.item.2.desc" = "避免群聚，在家辦公，盡可能與人保持室內至少保持1.8公尺(6英尺)的距離。";
 
-"permission.description" = "Autonomy requires access to the following:";
-"permission.notification.description" = "We’ll remind you to report symptoms and practice healthy behaviors. When your neighborhood’s health changes, we’ll send you alerts.";
+"permission.description" = "Autonomy需要存取以下項目：";
+"permission.notification.description" = "我們會提醒您回報症狀以及保持良好的健康習慣。當您周圍的人群健康狀況有改變時，我們會寄警訊給您。";
 
-"permission.location.description" = "Your data will be used to help improve your neighborhood’s health. Your own location will be kept private.";
+"permission.location.description" = "您目前的位置會被用於增進您周圍人群的健康。您的位置資料永遠都是私密的。";
 
-"riskLevel.description" = "Are you at higher risk for severe illness from COVID-19?";
-"riskLevel.yes" = "Yes, I’m at higher risk";
-"riskLevel.yes.description" = "Higher risk individuals currently include:\n• People over age 65\n\nAnd anyone with any of the following\npre-existing medical conditions:\n• High blood pressure (hypertension)\n• Cardiovascular disease\n• Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer";
-"riskLevel.no" = "No, I’m not at higher risk";
+"riskLevel.description" = "您屬於新冠肺炎重症的高危險群嗎？";
+"riskLevel.yes" = "是的，我屬於高危險群";
+"riskLevel.yes.description" = "高危險群目前包含：\n• 65歲以上 \n\n 以及任何有以下健康狀況的人： \n• 高血壓 \n• 心血管疾病 \n• 糖尿病 \n• 慢性呼吸道疾病(例如肺病或氣喘) \n• 癌症";
+"riskLevel.no" = "不，我不屬於高危險群";
 
-"survey.title" = "How are you right now?";
-"survey.help.title" = "How can we help?";
-"survey.help.symptoms" = "I have symptoms";
-"survey.help.symptoms.description" = "Let us if you are currently experiencing any of common COVID-19 symptoms.";
-"survey.help.assistance" = "I need assistance";
-"survey.help.assistance.description" = "Let people in your local community know that you need help.";
+"survey.title" = "您現在感覺如何？";
+"survey.help.title" = "我們可以如何幫忙您？";
+"survey.help.symptoms" = "我有出現症狀";
+"survey.help.symptoms.description" = "如果您有常見的新冠肺炎症狀，請讓我們知道。";
+"survey.help.assistance" = "我需要協助";
+"survey.help.assistance.description" = "讓您當地的社群知道您需要幫助。";
 
-"survey.symptoms.title" = "Do you have any of the following symptoms?";
-"survey.behaviors.title" = "Did you do any of the following behaviors today?";
+"survey.symptoms.title" = "您有以下症狀嗎？";
+"survey.behaviors.title" = "您今天有執行以下事項嗎？";
 
-"assistance.title" = "What kind of assistance do you need?";
-"assistance.foodAndWater" = "Access to food or water";
-"assistance.foodAndWater.desc" = "I need help getting food and water.";
-"assistance.foodAndWater.requestTitle" = "Need access to food or water";
-"assistance.medicine" = "Access to medicine";
-"assistance.medicine.desc" = "I need help getting essential medications.";
-"assistance.medicine.requestTitle" = "Need access to medicine";
-"assistance.transport" = "Transport to healthcare";
-"assistance.transport.desc" = "I need help traveling to get medical care.";
-"assistance.transport.requestTitle" = "Need transport to healthcare";
-"assistance.unsafeHome" = "My home is unsafe";
-"assistance.unsafeHome.desc" = "I need help traveling to a safe location.";
-"assistance.unsafeHome.requestTitle" = "Need transport from an unsafe home";
+"assistance.title" = "您需要哪一類的協助？";
+"assistance.foodAndWater" = "取得食物或飲水";
+"assistance.foodAndWater.desc" = "我需要他人協助我取得食物及飲水。";
+"assistance.foodAndWater.requestTitle" = "需要取得食物或飲水";
+"assistance.medicine" = "取得醫療物資";
+"assistance.medicine.desc" = "我需要他人協助我取得必要的醫療物資。";
+"assistance.medicine.requestTitle" = "我需要取得醫療物資。";
+"assistance.transport" = "前往醫療院所";
+"assistance.transport.desc" = "我需要他人協助帶我去醫療院所接受照護。";
+"assistance.transport.requestTitle" = "需要前往醫療院所";
+"assistance.unsafeHome" = "我的住所不安全";
+"assistance.unsafeHome.desc" = "我需要他人協助帶我去安全的地點。";
+"assistance.unsafeHome.requestTitle" = "需要離開不安全的住所";
 
-"assistance.needItems.title" = "What exactly do you need?";
-"assistance.needItems.placeholder" = "Enter description of desired items or destination here";
+"assistance.needItems.title" = "您確切需要些什麼？";
+"assistance.needItems.placeholder" = "請輸入需要的品項或是前往目的地的詳細資訊";
 
-"assistance.place.title" = "Where is a safe place to meet your helper?";
-"assistance.place.placeholder" = "Enter a physical address other safe location description here";
+"assistance.place.title" = "可以安全地與您的協助者見面的地點為？";
+"assistance.place.placeholder" = "請輸入地址或是其他安全地點的描述";
 
-"assistance.contact.title" = "How should your helper contact you?";
-"assistance.contact.placeholder" = "Enter contact info here. For example, a Line ID, WhatsApp ID, or phone number.";
+"assistance.contact.title" = "您的協助者應該如何聯絡您？";
+"assistance.contact.placeholder" = "請輸入聯絡資訊。例如，Line ID，WhatsApp ID，或是電話號碼。";
+///
+"review.title" = "請確認您提出的協助需求：";
+"assistance.info.exactNeeds" = "確切需要的協助";
+"assistance.info.meetingLocation" = "碰面地點";
+"assistance.info.contactInfo" = "聯絡方式";
 
-"review.title" = "Please review your request for assistance:";
-"assistance.info.exactNeeds" = "Exact Needs";
-"assistance.info.meetingLocation" = "Meeting Location";
-"assistance.info.contactInfo" = "Contact Info";
-
-"requestHelp.submitted.title" = "Your request for assistance has been broadcast to your LOCAL community";
-"requestHelp.submitted.desc" = "You will receive a notification when someone has volunteered to help.";
-"requestHelp.generalTitle" = "Community request for assistance";
+"requestHelp.submitted.title" = "您的協助需求已經廣播至您周圍的社群";
+"requestHelp.submitted.desc" = "如果有人自願協助，您將會收到通知。";
+"requestHelp.generalTitle" = "社群中有人提出協助需求Community request for assistance";
 
 "giveHelp.signUp.title" = "Thank You For Signing Up To Fulfill This Community Request";
 "giveHelp.signUp.desc" = "The community member in need has been notified of your response. Please write down or take a screenshot of the request details now then contact the community member.";
@@ -85,40 +85,40 @@
 "giveHelp.helper.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
 "giveHelp.helper.otherSubmitted" = "Someone has already signed up to fulfill this community request.";
 "giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
+///
+"symptoms.reported.title" = "已成功將您的症狀回報給您的社群";
+"symptoms.reported.desc" = "感謝您花時間讓您的社群更開心健康。如果症狀持續，請持續回報。";
+"addSymptom.add" = "新增症狀...";
+"addSymptom.form.name" = "新增您的症狀的標題：";
+"addSymptom.form.name.placeholder" = "請輸入標題...";
+"addSymptom.form.desc" = "您可以為新增的症狀加入一些描述(選填)：";
+"addSymptom.form.desc.placeholder" = "請輸入您選填的描述...";
+"addSymptom.thank.title" = "已成功新增症狀至您所屬的社群的症狀清單中";
+"addSymptom.thank.desc" = "感謝您花時間讓您的社群更開心健康。若有其他症狀，請持續新增。";
 
-"symptoms.reported.title" = "Your Symptoms Have Been Successfully Reported To Your Community ";
-"symptoms.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your symptoms if they continue.";
-"addSymptom.add" = "Add symptom ...";
-"addSymptom.form.name" = "Create a title for your symptom:";
-"addSymptom.form.name.placeholder" = "Enter your title here ...";
-"addSymptom.form.desc" = "You can add a short description for your symptom (optional):";
-"addSymptom.form.desc.placeholder" = "Enter your optional description here ...";
-"addSymptom.thank.title" = "Your symptom has been successfully added to your community’s list of symptoms";
-"addSymptom.thank.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report other symptoms as they appear.";
+"behaviors.reported.title" = "已成功回報您的行為至您的社群";
+"behaviors.reported.desc" = "感謝您花時間讓您的社群更開心健康。如果您持續有相同的行為，請持續回報。";
+"addBehavior.add" = "新增行為...";
+"addBehavior.form.name" = "新增您的行為的標題：";
+"addBehavior.form.name.placeholder" = "請輸入標題...";
+"addBehavior.form.desc" = "您可以為新增的行為加入一些描述(選填)：";
+"addBehavior.form.desc.placeholder" = "請輸入您選填的描述...";
+"addBehavior.thank.title" = "已成功新增症狀至您所屬的社群的行為清單中";
+"addBehavior.thank.desc" = "感謝您花時間讓您的社群更開心健康。若之後有其他新的行為，請持續新增。";
 
-"behaviors.reported.title" = "Your Behaviors Have Been Successfully Reported To Your Community ";
-"behaviors.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your behaviors if they continue.";
-"addBehavior.add" = "Add behavior ...";
-"addBehavior.form.name" = "Create a title for your behavior:";
-"addBehavior.form.name.placeholder" = "Enter your title here ...";
-"addBehavior.form.desc" = "You can add a short description for your behavior (optional):";
-"addBehavior.form.desc.placeholder" = "Enter your optional description here ...";
-"addBehavior.thank.title" = "Your behavior has been successfully added to your community’s list of behaviors";
-"addBehavior.thank.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report other behaviors you adopt in the future.";
+"history.symptom.title" = "症狀歷史";
+"history.behavior.title" = "行為歷史";
+"history.location.title" = "位置歷史";
 
-"history.symptom.title" = "Symptom History";
-"history.behavior.title" = "Behavior History";
-"history.location.title" = "Location History";
+"history.symptom.empty.desc" = "您尚未回報任何症狀。";
+"history.behavior.empty.desc" = "您尚未回報任何健康行為。";
 
-"history.symptom.empty.desc" = "You haven’t reported any symptoms yet.";
-"history.behavior.empty.desc" = "You haven’t reported any healthy behaviors yet.";
+"signIn.title" = "登入";
+"signIn.submitButton" = "提交»";
 
-"signIn.title" = "Sign In";
-"signIn.submitButton" = "Submit »";
+"eula" = "終端使用者授權協定(EULA)";
+"privacyPolicy" = "隱私權政策";
+"termsAndPolicyPhrase" = "%@ 及 %@.";
 
-"eula" = "EULA";
-"privacyPolicy" = "Privacy Policy";
-"termsAndPolicyPhrase" = "%@ and %@.";
-
-"notification.survey.title" = "Check-in survey";
-"notification.survey.desc" = "How are you right now? Tap to check in.";
+"notification.survey.title" = "報到問卷";
+"notification.survey.desc" = "您現在覺得如何？請點擊報到。";
