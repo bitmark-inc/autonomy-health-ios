@@ -59,7 +59,7 @@ class HealthScoreTriangle: UIView {
         let step = (score > (currentScore ?? 0)) ? 1 : -1
         var updatingScore = currentScore ?? 0
 
-        processingTimer = Timer.scheduledTimer(withTimeInterval: 0.022, repeats: true) { [weak self] (timer) in
+        processingTimer = Timer.scheduledTimer(withTimeInterval: 0.025, repeats: true) { [weak self] (timer) in
             guard let self = self else { return }
 
             if animate {
@@ -87,8 +87,8 @@ class HealthScoreTriangle: UIView {
         guard score > 0 else {
             return nil
         }
-
-        let colored = CAShapeLayer(pathString: colorPath[score - 1])
+        
+        let colored = CAShapeLayer(pathString: score <= 100 ? colorPath[score - 1] : colorPath[99])
         let healthColor = HealthRisk(from: score)?.color.cgColor
         colored.fillColor = healthColor
         colored.strokeColor = healthColor

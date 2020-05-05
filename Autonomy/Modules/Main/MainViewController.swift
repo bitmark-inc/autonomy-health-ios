@@ -416,6 +416,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let areaProfile = areaProfiles[areaProfileKey ?? "current"]
         cell.setData(areaProfile: areaProfile, locationName: locationName)
 
+        if let coefficient = thisViewModel.coefficientRelay.value?.value {
+            cell.formulaSourceView.setRemoteData(coefficient: coefficient)
+            cell.formulaSourceView.calculateAndBind(with: coefficient)
+        }
+
         thisViewModel.fetchAreaProfile(poiID: areaProfileKey)
             .subscribe(onSuccess: { [weak self] (areaProfile) in
                 guard let self = self else { return }

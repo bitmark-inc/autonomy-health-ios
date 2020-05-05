@@ -88,9 +88,12 @@
 "ReportedSymptomsScore.desc" = "Each reported symptom is given a score of 1 to 3, depending on the likelihood of it being a predictor of COVID-19. The overall symptoms score is calculated for all symptoms in a 1km radius. Current symptoms and scores are:";
 
 "BehaviorsTotal" = "Behaviors Total";
-"SymptomsTotal" = "Symptoms Total";
 "TotalPeople" = "Total People";
 "MaxScorePerPerson" = "Max Score Per Person";
+"TotalCustomized" = "Total Customized";
+"TotalWeight" = "Total Weight";
+"MaxWeight" = "Max Weight";
+"CustomizedWeight" = "Customized Weight";
 
 "Yesterday" = "Yesterday";
 "Today" = "Today";

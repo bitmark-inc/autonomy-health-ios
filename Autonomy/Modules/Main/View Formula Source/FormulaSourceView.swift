@@ -44,20 +44,26 @@ class FormulaSourceView: UIView {
     fileprivate lazy var behaviorsMaxScorePerPersonDataView = makeFigDataView(
         topInfo: R.string.localizable.maxScorePerPerson().localizedUppercase,
         height: behaviorElementHeight)
+    fileprivate lazy var behaviorsTotalCustomizedDataView = makeFigDataView(
+        topInfo: R.string.localizable.totalCustomized().localizedUppercase,
+        height: behaviorElementHeight)
 
     // Reported Symptoms Score
     fileprivate let symptomElementHeight: CGFloat = 60
     fileprivate lazy var symptomsScoreLabel = makeIndicatorScoreLabel()
     fileprivate lazy var symptomsFormulaView = makeSymptomsFormulaView()
     fileprivate lazy var symptomWeightsStackView = makeSymptomWeightsStackView()
-    fileprivate lazy var symptomsTotalDataView = makeFigDataView(
-        topInfo: R.string.localizable.symptomsTotal().localizedUppercase,
+    fileprivate lazy var symptomsTotalWeightDataView = makeFigDataView(
+        topInfo: R.string.localizable.totalWeight().localizedUppercase,
         height: symptomElementHeight)
     fileprivate lazy var symptomsTotalPeopleDataView = makeFigDataView(
         topInfo: R.string.localizable.totalPeople().localizedUppercase,
         height: symptomElementHeight)
-    fileprivate lazy var symptomsMaxScorePerPersonDataView = makeFigDataView(
-        topInfo: R.string.localizable.maxScorePerPerson().localizedUppercase,
+    fileprivate lazy var symptomsMaxWeightDataView = makeFigDataView(
+        topInfo: R.string.localizable.maxWeight().localizedUppercase,
+        height: symptomElementHeight)
+    fileprivate lazy var symptomsCustomizedWeightDataView = makeFigDataView(
+        topInfo: R.string.localizable.customizedWeight().localizedUppercase,
         height: symptomElementHeight)
 
     fileprivate lazy var resetButton = makeResetButton()
@@ -121,29 +127,37 @@ class FormulaSourceView: UIView {
         behaviorsTotalDataView.setValue(behaviorsDetails.behaviorTotal)
         behaviorsTotalPeopleDataView.setValue(behaviorsDetails.totalPeople)
         behaviorsMaxScorePerPersonDataView.setValue(behaviorsDetails.maxScorePerPerson)
+        behaviorsTotalCustomizedDataView.setValue(behaviorsDetails.behaviorCustomizedTotal)
 
         // -- Symptoms Formula
         setScore(symptomsDetails.score, in: symptomsScoreLabel)
-        symptomsTotalDataView.setValue(symptomsDetails.symptomTotal)
+        symptomsTotalWeightDataView.setValue(symptomsDetails.totalWeight)
         symptomsTotalPeopleDataView.setValue(symptomsDetails.totalPeople)
-        symptomsMaxScorePerPersonDataView.setValue(symptomsDetails.maxScorePerPerson)
+        symptomsMaxWeightDataView.setValue(symptomsDetails.maxWeight)
+        symptomsCustomizedWeightDataView.setValue(symptomsDetails.customizedWeight)
     }
 
-    fileprivate func setRemoteData(coefficient: Coefficient) {
+    func setRemoteData(coefficient: Coefficient) {
         caseFormulaIndicatorView.setInitWeightValue(coefficient.confirms)
         behaviorFormulaIndicatorView.setInitWeightValue(coefficient.behaviors)
         symptomFormulaIndicatorView.setInitWeightValue(coefficient.symptoms)
 
         buildSymptomWeightsStackView(with: coefficient.symptomWeights)
-        bindToCalculate()
     }
 
+    var didSet: Bool = false
+
     fileprivate func bindFormulaWeightEvents() {
+
         delegate?.coefficientRelay
             .filterNil()
-            .filter { !$0.userInteractive }
-            .subscribe(onNext: { [weak self] (coefficient, _) in
-                self?.setRemoteData(coefficient: coefficient)
+            .subscribe(onNext: { [weak self] (coefficient, userInteractive) in
+                guard let self = self else { return }
+                guard !self.didSet || !userInteractive else { return }
+
+                self.setRemoteData(coefficient: coefficient)
+                self.bindToCalculate()
+                self.didSet = true
             })
             .disposed(by: disposeBag)
 
@@ -232,12 +246,35 @@ extension FormulaSourceView {
         let behaviorsPart = areaProfile.details.behaviors.score * coefficient.behaviors
         let symptomsPart = areaProfile.details.symptoms.score * coefficient.symptoms
 
-        caseFormulaIndicatorView.setData(score: confirmsPart)
-        behaviorFormulaIndicatorView.setData(score: behaviorsPart)
-        symptomFormulaIndicatorView.setData(score: symptomsPart)
+//        let maxWeight = coefficient.symptomWeights.map { $0.weight }.sum()
+//        let totalWeight = maxWeight + areaProfile.details.symptoms.customizedWeight
+//
+//        let symptomScore = calSymptomsScore(totalWeight: totalWeight, maxWeight: maxWeight)
+//        let symptomsPart = symptomScore * coefficient.symptoms
+
+//        caseFormulaIndicatorView.setData(score: confirmsPart)
+//        behaviorFormulaIndicatorView.setData(score: behaviorsPart)
+//        symptomsTotalWeightDataView.setValue(totalWeight)
+//        symptomsMaxWeightDataView.setValue(maxWeight)
+//        symptomFormulaIndicatorView.setData(score: symptomsPart)
 
         let score = confirmsPart + behaviorsPart + symptomsPart
         scoreRelay.accept(score)
+        scoreLabel.setText("\(Int(score))")
+    }
+
+    fileprivate func calSymptomsScore(totalWeight: Int, maxWeight: Int) -> Float {
+        guard let areaProfile = areaProfile else { return 0 }
+
+        let symptomDetails = areaProfile.details.symptoms
+
+        let part1 = Float(symptomDetails.totalPeople * symptomDetails.maxWeight)
+        if part1 == 0 {
+            return 100 - Float(symptomDetails.customizedWeight)
+        }
+        let part2 = Float(totalWeight) / part1
+
+        return 100 - (100 * part2 + Float(symptomDetails.customizedWeight))
     }
 }
 
@@ -340,10 +377,14 @@ extension FormulaSourceView {
         formulaView.addPart(FigLabel("(", height: behaviorElementHeight))
         formulaView.addPart(behaviorsTotalDataView)
         formulaView.addPart(FigLabel("/", height: behaviorElementHeight))
+        formulaView.addPart(FigLabel("(", height: behaviorElementHeight))
         formulaView.addPart(behaviorsTotalPeopleDataView)
         formulaView.addPart(FigLabel("*", height: behaviorElementHeight))
         formulaView.addPart(behaviorsMaxScorePerPersonDataView)
-        formulaView.addPart(FigLabel("))", height: behaviorElementHeight))
+        formulaView.addPart(FigLabel(")", height: behaviorElementHeight))
+        formulaView.addPart(FigLabel("+", height: behaviorElementHeight))
+        formulaView.addPart(behaviorsTotalCustomizedDataView)
+        formulaView.addPart(FigLabel(")", height: behaviorElementHeight))
         return formulaView
     }
 
@@ -352,14 +393,18 @@ extension FormulaSourceView {
         formulaView.addPart(FigLabel(R.string.localizable.symptoms_score(), height: symptomElementHeight))
         formulaView.addPart(FigLabel("=", height: symptomElementHeight))
         formulaView.addPart(FigLabel("100 -", height: symptomElementHeight))
-        formulaView.addPart(FigLabel("(100 *", height: symptomElementHeight))
+        formulaView.addPart(FigLabel("100 *", height: symptomElementHeight))
         formulaView.addPart(FigLabel("(", height: symptomElementHeight))
-        formulaView.addPart(symptomsTotalDataView)
+        formulaView.addPart(symptomsTotalWeightDataView)
         formulaView.addPart(FigLabel("/", height: symptomElementHeight))
+        formulaView.addPart(FigLabel("((", height: symptomElementHeight))
         formulaView.addPart(symptomsTotalPeopleDataView)
         formulaView.addPart(FigLabel("*", height: symptomElementHeight))
-        formulaView.addPart(symptomsMaxScorePerPersonDataView)
-        formulaView.addPart(FigLabel(")))", height: symptomElementHeight))
+        formulaView.addPart(symptomsMaxWeightDataView)
+        formulaView.addPart(FigLabel(")", height: symptomElementHeight))
+        formulaView.addPart(FigLabel("+", height: symptomElementHeight))
+        formulaView.addPart(symptomsCustomizedWeightDataView)
+        formulaView.addPart(FigLabel("))", height: symptomElementHeight))
         return formulaView
     }
 
@@ -373,6 +418,7 @@ extension FormulaSourceView {
 
     fileprivate func buildSymptomWeightsStackView(with symptomWeights: [SymptomWeight]) {
         symptomWeightsStackView.removeArrangedSubviews()
+        symptomWeightsStackView.removeSubviews()
 
         for symptomWeight in symptomWeights {
             let symptomWeightView = SymptomWeightView(for: symptomWeight.symptom)
@@ -423,6 +469,7 @@ extension FormulaSourceView {
 
         resetButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
+            self.didSet = false
             self.calculatorDisposable?.dispose()
             self.delegate?.resetFormula()
         }.disposed(by: disposeBag)

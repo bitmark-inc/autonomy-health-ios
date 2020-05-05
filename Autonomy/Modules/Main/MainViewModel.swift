@@ -79,7 +79,7 @@ class MainViewModel: ViewModel {
         observeAndSubmitProfileFormulaDisposable = coefficientRelay
             .filterNil()
             .filter { $0.userInteractive }
-            .debounce(.seconds(3), scheduler: MainScheduler.asyncInstance)
+            .debounce(.seconds(0), scheduler: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] (coefficient, _) in
                 guard let disposeBag = self?.disposeBag else { return }
 

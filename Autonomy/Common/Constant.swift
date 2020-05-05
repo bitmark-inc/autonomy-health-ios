@@ -70,7 +70,7 @@ enum HealthRisk {
         case 0:         self = .zero
         case 0...33:    self = .high
         case 34...66:   self = .moderate
-        case 67...100:  self = .low
+        case 67...:  self = .low
         default:
             return nil
         }
@@ -81,7 +81,7 @@ enum HealthRisk {
         case 0:         self = .zero
         case 0...33:    self = .high
         case 34...66:   self = .moderate
-        case 67...100:  self = .low
+        case 67...:  self = .low
         default:
             return nil
         }

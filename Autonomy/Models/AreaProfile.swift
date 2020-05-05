@@ -38,25 +38,27 @@ class AreaProfileConfirmDetails: Decodable {
 }
 
 class AreaProfileBehaviorsDetails: Codable {
-    let behaviorTotal, totalPeople, maxScorePerPerson: Int
+    let behaviorTotal, totalPeople, maxScorePerPerson, behaviorCustomizedTotal: Int
     let score: Float
 
     enum CodingKeys: String, CodingKey {
         case behaviorTotal = "behavior_total"
         case totalPeople = "total_people"
         case maxScorePerPerson = "max_score_per_person"
+        case behaviorCustomizedTotal = "behavior_customized_total"
         case score
     }
 }
 
 class AreaProfileSymptomsDetails: Decodable {
-    let symptomTotal, totalPeople, maxScorePerPerson: Int
+    let totalWeight, totalPeople, maxWeight, customizedWeight: Int
     let score: Float
 
     enum CodingKeys: String, CodingKey {
-        case symptomTotal = "symptom_total"
+        case totalWeight = "total_weight"
         case totalPeople = "total_people"
-        case maxScorePerPerson = "max_score_per_person"
+        case maxWeight = "max_weight"
+        case customizedWeight = "customized_weight"
         case score
     }
 }

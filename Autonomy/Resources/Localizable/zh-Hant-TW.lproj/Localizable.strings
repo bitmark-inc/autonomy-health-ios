@@ -88,9 +88,12 @@
 "ReportedSymptomsScore.desc" = "針對每個回報的證據，依據其為新冠肺炎徵狀的可能性給予 1 至 3 不等的評分。綜合症狀評分是依據 1 公里距離內的所有症狀綜合計算。目前的症狀及評分為：";
 
 "BehaviorsTotal" = "綜合行為";
-"SymptomsTotal" = "綜合症狀";
 "TotalPeople" = "所有人";
 "MaxScorePerPerson" = "每個人的最高分";
+"TotalCustomized" = "Total Customized";
+"TotalWeight" = "Total Weight";
+"MaxWeight" = "Max Weight";
+"CustomizedWeight" = "Customized Weight";
 
 "Yesterday" = "昨日";
 "Today" = "今日";

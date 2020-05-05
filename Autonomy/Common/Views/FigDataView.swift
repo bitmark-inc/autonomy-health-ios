@@ -45,7 +45,7 @@ class FigDataView: UIView {
             make.leading.greaterThanOrEqualToSuperview()
             make.bottom.equalTo(button.snp.top).offset(-2)
 
-            if let topInfo = topInfo, topInfo.split(separator: " ").count > 2 {
+            if let topInfo = topInfo, topInfo.count >= 17 {
                 make.width.equalTo(67)
             }
         }
@@ -69,6 +69,7 @@ extension FigDataView {
     fileprivate func makeTopInfoLabel() -> Label {
         let label = Label()
         label.numberOfLines = 0
+        label.textAlignment = .right
         label.apply(
             text: topInfo,
             font: R.font.atlasGroteskLight(size: 9),
