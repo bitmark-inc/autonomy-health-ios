@@ -113,8 +113,7 @@ extension ScoreInfoView {
 
     fileprivate func makeChangeNumberLabel() -> Label {
         let label = Label()
-        label.apply(font: R.font.ibmPlexMonoLight(size: 14),
-                    themeStyle: .silverColor)
+        label.font = R.font.ibmPlexMonoLight(size: 14)
         return label
     }
 }

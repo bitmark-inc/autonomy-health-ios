@@ -119,6 +119,8 @@ extension FormulaIndicatorView {
 
     fileprivate func makeWeightSlider() -> UISlider {
         let slider = UISlider()
+        slider.minimumTrackTintColor = .white
+        slider.maximumTrackTintColor = .white
         slider.setThumbImage(R.image.thumbSlider(), for: .normal)
         slider.rx.controlEvent(.valueChanged)
             .skip(1)

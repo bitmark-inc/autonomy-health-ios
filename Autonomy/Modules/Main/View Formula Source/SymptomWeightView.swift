@@ -73,11 +73,12 @@ extension SymptomWeightView {
 
     fileprivate func makeWeightSlider() -> UISlider {
         let slider = UISlider()
+        slider.minimumTrackTintColor = .white
+        slider.maximumTrackTintColor = .white
         slider.minimumValue = 1
         slider.maximumValue = 3
         slider.setThumbImage(R.image.thumbSlider(), for: .normal)
         slider.isEnabled = false
-        slider.alpha = 0.8
         slider.rx.controlEvent(.valueChanged)
             .skip(1)
             .subscribe(onNext: { [weak self] (_) in

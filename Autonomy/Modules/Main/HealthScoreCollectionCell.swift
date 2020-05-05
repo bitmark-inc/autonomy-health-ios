@@ -33,6 +33,9 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     lazy var healthyBehaviorsView = ScoreInfoView(scoreInfoType: .healthyBehaviors)
     lazy var populationDensityView = ScoreInfoView(scoreInfoType: .populationDensity)
 
+    let redColor = UIColor(hexString: "#CC3232")
+    let greenColor = UIColor(hexString: "#2DC937")
+
     weak var scoreSourceDelegate: ScoreSourceDelegate? {
         didSet {
             bindScoreSourceEvents()
@@ -144,30 +147,45 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             confirmedCasesView.currentNumberLabel.setText(formattedNumber)
             confirmedCasesView.changeNumberLabel.setText(formattedDelta)
             switch true {
-            case (delta > 0): confirmedCasesView.changeStatusArrow.image = R.image.redUpArrow()
-            case (delta < 0): confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
+            case (delta > 0):
+                confirmedCasesView.changeStatusArrow.image = R.image.redUpArrow()
+                confirmedCasesView.changeNumberLabel.textColor = redColor
+            case (delta < 0):
+                confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
+                confirmedCasesView.changeNumberLabel.textColor = greenColor
             default:
                 confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
+                confirmedCasesView.changeNumberLabel.textColor = greenColor
             }
 
         case .reportedSymptoms:
             reportedSymptomsView.currentNumberLabel.setText(formattedNumber)
             reportedSymptomsView.changeNumberLabel.setText(formattedDelta)
             switch true {
-            case (delta > 0): reportedSymptomsView.changeStatusArrow.image = R.image.redUpArrow()
-            case (delta < 0): reportedSymptomsView.changeStatusArrow.image = R.image.greenDownArrow()
+            case (delta > 0):
+                reportedSymptomsView.changeStatusArrow.image = R.image.redUpArrow()
+                reportedSymptomsView.changeNumberLabel.textColor = redColor
+            case (delta < 0):
+                reportedSymptomsView.changeStatusArrow.image = R.image.greenDownArrow()
+                reportedSymptomsView.changeNumberLabel.textColor = greenColor
             default:
-                confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
+                reportedSymptomsView.changeStatusArrow.image = R.image.greenDownArrow()
+                reportedSymptomsView.changeNumberLabel.textColor = greenColor
             }
 
         case .healthyBehaviors:
             healthyBehaviorsView.currentNumberLabel.setText(formattedNumber)
             healthyBehaviorsView.changeNumberLabel.setText(formattedDelta)
             switch true {
-            case (delta > 0): healthyBehaviorsView.changeStatusArrow.image = R.image.greenUpArrow()
-            case (delta < 0): healthyBehaviorsView.changeStatusArrow.image = R.image.redDownArrow()
+            case (delta > 0):
+                healthyBehaviorsView.changeStatusArrow.image = R.image.greenUpArrow()
+                healthyBehaviorsView.changeNumberLabel.textColor = greenColor
+            case (delta < 0):
+                healthyBehaviorsView.changeStatusArrow.image = R.image.redDownArrow()
+                healthyBehaviorsView.changeNumberLabel.textColor = redColor
             default:
-                confirmedCasesView.changeStatusArrow.image = R.image.greenUpArrow()
+                healthyBehaviorsView.changeStatusArrow.image = R.image.greenUpArrow()
+                healthyBehaviorsView.changeNumberLabel.textColor = greenColor
             }
 
         case .populationDensity:

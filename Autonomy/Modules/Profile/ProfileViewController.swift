@@ -216,7 +216,7 @@ extension ProfileViewController {
 
     fileprivate func makeDoneButton() -> UIButton {
         let button = UIButton()
-        button.setImage(R.image.checkedCircle(), for: .normal)
+        button.setImage(R.image.profileCloseIcon(), for: .normal)
 
         button.snp.makeConstraints { (make) in
             make.height.width.equalTo(30)
@@ -367,23 +367,19 @@ extension ProfileViewController {
 
     fileprivate func makeEulaAndPolicyTextView() -> UITextView {
         let textView = ReadingTextView()
-        textView.apply(colorTheme: .white)
         textView.isScrollEnabled = false
         textView.delegate = self
         textView.linkTextAttributes = [
           .foregroundColor: themeService.attrs.lightTextColor
         ]
         textView.attributedText = LinkAttributedString.make(
-            string: R.string.phrase.termsAndPolicyPhrase(
-                AppLink.eula.generalText,
-                AppLink.privacyOfPolicy.generalText),
+            string: R.string.phrase.launchPolicyTerm(AppLink.digitalRights.generalText),
             lineHeight: 1.3,
             attributes: [
                 .font: R.font.atlasGroteskLight(size: 14)!,
                 .foregroundColor: themeService.attrs.lightTextColor
             ], links: [
-                (text: AppLink.eula.generalText, url: AppLink.eula.path),
-                (text: AppLink.privacyOfPolicy.generalText, url: AppLink.privacyOfPolicy.path)
+                (text: AppLink.digitalRights.generalText, url: AppLink.digitalRights.path)
             ], linkAttributes: [
                 .font: R.font.atlasGroteskLight(size: 14)!,
                 .underlineColor: themeService.attrs.lightTextColor,

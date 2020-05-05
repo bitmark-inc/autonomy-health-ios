@@ -90,10 +90,10 @@
 "BehaviorsTotal" = "綜合行為";
 "TotalPeople" = "所有人";
 "MaxScorePerPerson" = "每個人的最高分";
-"TotalCustomized" = "Total Customized";
-"TotalWeight" = "Total Weight";
-"MaxWeight" = "Max Weight";
-"CustomizedWeight" = "Customized Weight";
+"TotalCustomized" = "總自定義";
+"TotalWeight" = "總權重";
+"MaxWeight" = "每人最大權重";
+"CustomizedWeight" = "自定義總重";
 
 "Yesterday" = "昨日";
 "Today" = "今日";

@@ -401,10 +401,10 @@ extension FormulaSourceView {
         formulaView.addPart(symptomsTotalPeopleDataView)
         formulaView.addPart(FigLabel("*", height: symptomElementHeight))
         formulaView.addPart(symptomsMaxWeightDataView)
-        formulaView.addPart(FigLabel(")", height: symptomElementHeight))
-        formulaView.addPart(FigLabel("+", height: symptomElementHeight))
+        formulaView.addPart(FigLabel(") +", height: symptomElementHeight))
         formulaView.addPart(symptomsCustomizedWeightDataView)
-        formulaView.addPart(FigLabel("))", height: symptomElementHeight))
+        formulaView.addPart(FigLabel(")", height: symptomElementHeight))
+        formulaView.addPart(FigLabel(")", height: symptomElementHeight))
         return formulaView
     }
 
