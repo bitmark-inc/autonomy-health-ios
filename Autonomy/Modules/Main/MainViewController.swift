@@ -413,7 +413,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
 
         let areaProfile = areaProfiles[areaProfileKey ?? "current"]
-        cell.setData(areaProfile: areaProfile, locationName: locationName)
+
+        cell.setData(areaProfile: areaProfile)
+        cell.setData(locationName: locationName)
 
         thisViewModel.fetchAreaProfile(poiID: areaProfileKey)
             .subscribe(onSuccess: { [weak self] (areaProfile) in

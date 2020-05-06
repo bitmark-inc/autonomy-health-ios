@@ -116,7 +116,12 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             .disposed(by: disposeBag)
     }
 
-    func setData(areaProfile: AreaProfile?, locationName: String? = nil) {
+    func setData(locationName: String) {
+        guard locationName.isNotEmpty else { return }
+        locationLabel.setText(locationName)
+    }
+
+    func setData(areaProfile: AreaProfile?) {
         guard let areaProfile = areaProfile else {
             guideDataView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
             return
@@ -132,10 +137,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)
 
         formulaSourceView.setData(areaProfile: areaProfile)
-
-        if let locationName = locationName {
-            locationLabel.setText(locationName)
-        }
     }
 
     fileprivate func bindInfo(for scoreInfoType: ScoreInfoType, number: Int, delta: Float) {
