@@ -15,11 +15,7 @@ class FormulaSourceView: UIView {
 
     // MARK: - Properties
     var thisActor: String {
-        guard let key = key, key.isNotEmpty else {
-            Global.log.error("empty cellKey")
-            return ""
-        }
-        return key
+        return key ?? ""
     }
     lazy var scoreLabel = makeScoreLabel()
 
@@ -155,7 +151,7 @@ class FormulaSourceView: UIView {
         behaviorFormulaIndicatorView.setInitWeightValue(coefficient.behaviors)
         symptomFormulaIndicatorView.setInitWeightValue(coefficient.symptoms)
 
-        buildSymptomWeightsStackView(with: coefficient.symptomWeights)
+        buildSymptomWeightsStackView(with: coefficient)
     }
 
     var didObserve: Bool = false
@@ -439,14 +435,19 @@ extension FormulaSourceView {
         return stackView
     }
 
-    fileprivate func buildSymptomWeightsStackView(with symptomWeights: [SymptomWeight]) {
+    fileprivate func buildSymptomWeightsStackView(with coefficient: Coefficient) {
         localSymptomWeightsDisposable?.dispose()
         symptomWeightsStackView.removeArrangedSubviews()
         symptomWeightsStackView.removeSubviews()
 
-        for symptomWeight in symptomWeights {
-            let symptomWeightView = SymptomWeightView(for: symptomWeight.symptom)
-            symptomWeightView.setInitWeightValue(symptomWeight.weight)
+        let symptoms = coefficient.symptomWeights.map { $0.symptom }
+        let symptomKeyWeights = coefficient.symptomKeyWeights
+
+        for symptom in symptoms {
+            let symptomWeightView = SymptomWeightView(for: symptom)
+
+            let weight = symptomKeyWeights[symptom.id] ?? 0
+            symptomWeightView.setInitWeightValue(weight)
 
             symptomWeightsStackView.addArrangedSubview(symptomWeightView)
         }

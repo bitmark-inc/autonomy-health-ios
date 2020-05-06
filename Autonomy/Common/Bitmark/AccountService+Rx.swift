@@ -16,7 +16,7 @@ protocol AccountServiceDelegate {
     // Reactive
     static func rxCreateAndSetupNewAccountIfNotExist() -> Completable
     static func rxCreateNewAccount() -> Single<Account>
-    static func rxExistsCurrentAccount() -> Single<Account?>
+    static func getAccountFromKeychain() -> Account?
     static func rxGetAccount(phrases: [String]) -> Single<Account>
 }
 
@@ -32,7 +32,7 @@ extension AccountServiceDelegate {
             }
             return rxCreateNewAccount()
                 .flatMapCompletable({
-                    Global.current.account = $0
+                    Global.current.cachedAccount = $0
                     registerIntercom(for: $0.getAccountNumber())
                     return Global.current.setupCoreData()
                 })
@@ -70,19 +70,19 @@ class AccountService: AccountServiceDelegate {
         return Single.just(()).map { try Account() }
     }
 
-    static func rxExistsCurrentAccount() -> Single<Account?> {
-        Global.log.info("[start] existsCurrentAccount")
+    static func getAccountFromKeychain() -> Account? {
+        Global.log.info("[start] getAccountFromKeychain")
 
-        return KeychainStore.getSeedDataFromKeychain()
-            .flatMap({ (seedCore) -> Single<Account?> in
-                guard let seedCore = seedCore else { return Single.just(nil) }
-                do {
-                    let seed = try Seed.fromCore(seedCore, version: .v2)
-                    return Single.just(try Account(seed: seed))
-                } catch {
-                    return Single.error(error)
-                }
-            })
+        do {
+            guard let seedCore = try KeychainStore.getSeedDataFromKeychain() else {
+                return nil
+            }
+            let seed = try Seed.fromCore(seedCore, version: .v2)
+            return try Account(seed: seed)
+        } catch {
+            Global.log.error(error)
+        }
+        return nil
     }
 
     static func rxGetAccount(phrases: [String]) -> Single<Account> {

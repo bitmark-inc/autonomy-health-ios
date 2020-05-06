@@ -82,7 +82,8 @@ extension SymptomWeightView {
             .skip(1)
             .subscribe(onNext: { [weak self] (_) in
                 guard let self = self else { return }
-                self.weightRelay.accept((self.symptom.id, Int(slider.value)))
+                let sliderValue = Int(slider.value.rounded())
+                self.weightRelay.accept((self.symptom.id, sliderValue))
             })
             .disposed(by: disposeBag)
         slider.snp.makeConstraints { (make) in

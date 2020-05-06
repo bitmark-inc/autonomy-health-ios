@@ -87,6 +87,10 @@ class MainViewController: ViewController {
 
         // clear badge notification
         UIApplication.shared.applicationIconBadgeNumber = 0
+
+        NotificationCenter.default.addObserver (self, selector: #selector(volumeChanged(_:)),
+            name: NSNotification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
+            object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,7 +110,7 @@ class MainViewController: ViewController {
         }
 
         if let volumePressTime = Global.volumePressTime,
-            Date() >= volumePressTime.adding(.second, value: 2) {
+            Date() >= volumePressTime.adding(.second, value: 5) {
             Global.volumePressTrack = ""
         }
 
@@ -337,9 +341,7 @@ class MainViewController: ViewController {
             Global.log.error(error)
         }
         audioLevel = audioSession.outputVolume
-        NotificationCenter.default.addObserver (self, selector: #selector(volumeChanged(_:)),
-                                                name: NSNotification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
-                                                object: nil)
+
         FormulaSupporter.mainCollectionView = mainCollectionView
     }
 }
@@ -378,11 +380,13 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             let cell = collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
             cell.scoreSourceDelegate = self
             cell.locationLabel.setText(currentUserLocationAddress)
+            cell.key = "current"
             return cell
 
         case sectionIndexes.poi:
             let cell = collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
             cell.scoreSourceDelegate = self
+            cell.key = pois[indexPath.row].id
             return cell
 
         case sectionIndexes.poiList:
@@ -428,9 +432,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
         let cellKey = areaProfileKey ?? "current"
         let areaProfile = areaProfiles[cellKey]
-        cell.key = cellKey
         cell.setData(areaProfile: areaProfile)
         cell.setData(locationName: locationName)
+        cell.key = cellKey
 
         thisViewModel.fetchAreaProfile(poiID: areaProfileKey)
             .subscribe(onSuccess: { [weak self] (areaProfile) in

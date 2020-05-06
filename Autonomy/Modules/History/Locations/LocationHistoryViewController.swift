@@ -139,7 +139,7 @@ extension LocationHistoryViewController {
 
     fileprivate func makeTitleScreenLabel() -> UILabel {
         let label = Label()
-        label.apply(text: R.string.phrase.historySymptomTitle(),
+        label.apply(text: R.string.phrase.historyLocationTitle(),
                     font: R.font.atlasGroteskLight(size: 24),
                     themeStyle: .lightTextColor)
         return label

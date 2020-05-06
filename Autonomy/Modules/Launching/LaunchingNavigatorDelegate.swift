@@ -20,21 +20,13 @@ protocol LaunchingNavigatorDelegate: ViewController {
 extension LaunchingNavigatorDelegate {
 
     func loadAndNavigate() {
-        let existsCurrentAccountSingle = Single<Account?>.deferred {
-            if let account = Global.current.account {
-                return Single.just(account)
-            } else {
-                return AccountService.rxExistsCurrentAccount()
-            }
-        }
-
-        existsCurrentAccountSingle
+        Single.just(Global.current.account)
             .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] (account) in
                 guard let self = self else { return }
 
                 if let account = account {
-                    Global.current.account = account
+                    Global.current.cachedAccount = account
                     AccountService.registerIntercom(for: account.getAccountNumber())
                 }
 

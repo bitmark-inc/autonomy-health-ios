@@ -25,7 +25,13 @@ class Global {
     static var volumePressTime: Date?
     static var enableDebugRelay = BehaviorRelay<Bool>(value: false)
 
-    var account: Account?
+    var account: Account? {
+        cachedAccount = cachedAccount ?? AccountService.getAccountFromKeychain()
+        return cachedAccount
+    }
+
+    var cachedAccount: Account?
+
     lazy var accountNumberRelay = BehaviorRelay<String?>(value: account?.getAccountNumber())
     var userDefault: UserDefaults? {
         guard let accountNumber = account?.getAccountNumber()

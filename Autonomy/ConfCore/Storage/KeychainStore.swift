@@ -47,20 +47,8 @@ class KeychainStore {
         try keychain.remove(accountCoreKey)
     }
 
-    static func getSeedDataFromKeychain() -> Single<Data?> {
+    static func getSeedDataFromKeychain() throws -> Data? {
         Global.log.info("[start] getSeedDataFromKeychain")
-
-        return Single<Data?>.create(subscribe: { (single) -> Disposable in
-            DispatchQueue.global().async {
-                do {
-                    let seedData = try keychain.getData(accountCoreKey)
-                    Global.log.info("[done] getSeedDataFromKeychain")
-                    single(.success(seedData))
-                } catch {
-                    single(.error(error))
-                }
-            }
-            return Disposables.create()
-        })
+        return try keychain.getData(accountCoreKey)
     }
 }

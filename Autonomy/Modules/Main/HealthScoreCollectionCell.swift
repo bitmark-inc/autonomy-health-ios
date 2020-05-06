@@ -259,7 +259,6 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
         }
         moveUpAnimation.addCompletion { [weak self] _ in
             guard let self = self else { return }
-            self.scrollView.flashScrollIndicators()
             self.updateBottomSlideView(state: state)
             self.animations.removeAll()
         }
