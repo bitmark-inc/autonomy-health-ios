@@ -26,18 +26,18 @@ struct AreaProfile: Decodable {
     }
 }
 
-class AreaProfileDetails: Decodable {
+struct AreaProfileDetails: Decodable {
     let confirm:   AreaProfileConfirmDetails
     let behaviors: AreaProfileBehaviorsDetails
     let symptoms: AreaProfileSymptomsDetails
 }
 
-class AreaProfileConfirmDetails: Decodable {
+struct AreaProfileConfirmDetails: Decodable {
     let yesterday, today: Int
     let score: Float
 }
 
-class AreaProfileBehaviorsDetails: Codable {
+struct AreaProfileBehaviorsDetails: Decodable {
     let behaviorTotal, totalPeople, maxScorePerPerson, behaviorCustomizedTotal: Int
     let score: Float
 
@@ -50,9 +50,10 @@ class AreaProfileBehaviorsDetails: Codable {
     }
 }
 
-class AreaProfileSymptomsDetails: Decodable {
+struct AreaProfileSymptomsDetails: Decodable {
     let totalWeight, totalPeople, maxWeight, customizedWeight: Int
     let score: Float
+    let todayData: TodayData
 
     enum CodingKeys: String, CodingKey {
         case totalWeight = "total_weight"
@@ -60,11 +61,26 @@ class AreaProfileSymptomsDetails: Decodable {
         case maxWeight = "max_weight"
         case customizedWeight = "customized_weight"
         case score
+        case todayData = "today_data"
     }
 }
 
-extension AreaProfile {
-    var displayScore: Int {
-        return Int(score)
+struct TodayData: Decodable {
+    let userCount, officialCount, customizedCount: Int
+    let weightDistribution: [String: Int]
+
+    enum CodingKeys: String, CodingKey {
+        case userCount = "user_count"
+        case officialCount = "official_count"
+        case customizedCount = "customized_count"
+        case weightDistribution = "weight_distribution"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values          = try decoder.container(keyedBy: CodingKeys.self)
+        userCount           = try values.decode(Int.self, forKey: .userCount)
+        officialCount       = try values.decode(Int.self, forKey: .officialCount)
+        customizedCount     = try values.decode(Int.self, forKey: .customizedCount)
+        weightDistribution  = try values.decode([String: Int]?.self, forKey: .weightDistribution) ?? [:]
     }
 }

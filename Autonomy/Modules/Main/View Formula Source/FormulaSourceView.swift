@@ -105,8 +105,8 @@ class FormulaSourceView: UIView {
         self.areaProfile = areaProfile
 
         // Global Score
-        scoreLabel.setText("\(areaProfile.displayScore)")
-        scoreLabel.textColor = HealthRisk(from: areaProfile.displayScore)?.color
+        scoreLabel.setText("\(areaProfile.score.formatScoreInt)")
+        scoreLabel.textColor = HealthRisk(from: Int(areaProfile.score))?.color
 
         ///
         let confirmDetails = areaProfile.details.confirm
@@ -236,12 +236,9 @@ extension FormulaSourceView {
                 newCoefficient.behaviors = behaviorsWeight
                 newCoefficient.symptoms = symptomsWeight
 
-                let newSymptomWeights = newCoefficient.symptomWeights.map { (symptomWeight) -> SymptomWeight in
-                    var newSymptomWeight = symptomWeight
-                    newSymptomWeight.weight = symptomWeights.first(where: { $0.0 == newSymptomWeight.symptom.id })?.1 ?? 0
-                    return newSymptomWeight
-                }
-                newCoefficient.symptomWeights = newSymptomWeights
+                var newSymptomKeyWeights: [String: Int] = [:]
+                symptomWeights.forEach { newSymptomKeyWeights[$0.0] = $0.1 }
+                newCoefficient.symptomKeyWeights = newSymptomKeyWeights
 
                 if newCoefficient != coefficient {
                     FormulaSupporter.coefficientRelay.accept((actor: self, v: newCoefficient))
@@ -254,19 +251,21 @@ extension FormulaSourceView {
 
         let confirmsPart = areaProfile.details.confirm.score * coefficient.confirms
         let behaviorsPart = areaProfile.details.behaviors.score * coefficient.behaviors
-        let symptomsPart = areaProfile.details.symptoms.score * coefficient.symptoms
 
-//        let maxWeight = coefficient.symptomWeights.map { $0.weight }.sum()
-//        let totalWeight = maxWeight + areaProfile.details.symptoms.customizedWeight
-//
-//        let symptomScore = calSymptomsScore(totalWeight: totalWeight, maxWeight: maxWeight)
-//        let symptomsPart = symptomScore * coefficient.symptoms
 
-//        caseFormulaIndicatorView.setData(score: confirmsPart)
-//        behaviorFormulaIndicatorView.setData(score: behaviorsPart)
-//        symptomsTotalWeightDataView.setValue(totalWeight)
-//        symptomsMaxWeightDataView.setValue(maxWeight)
-//        symptomFormulaIndicatorView.setData(score: symptomsPart)
+        let maxWeight = coefficient.symptomKeyWeights.values.sum()
+        var totalWeight = 0
+        for (key, distribution) in areaProfile.details.symptoms.todayData.weightDistribution {
+            let weight = coefficient.symptomKeyWeights[key] ?? 0
+            totalWeight += weight * distribution
+        }
+
+        let symptomsScore = calSymptomsScore(totalWeight: totalWeight, maxWeight: maxWeight)
+        let symptomsPart = symptomsScore * coefficient.symptoms
+        symptomsTotalWeightDataView.setValue(totalWeight)
+        symptomsMaxWeightDataView.setValue(maxWeight)
+        symptomsScoreLabel.setText(symptomsScore.formatScoreInt)
+        symptomFormulaIndicatorView.setData(score: symptomsScore)
 
         let score = confirmsPart + behaviorsPart + symptomsPart
         scoreRelay.accept(score)
@@ -278,13 +277,12 @@ extension FormulaSourceView {
 
         let symptomDetails = areaProfile.details.symptoms
 
-        let part1 = Float(symptomDetails.totalPeople * symptomDetails.maxWeight)
+        let part1 = Float(symptomDetails.totalPeople) * Float(maxWeight) + Float(symptomDetails.customizedWeight)
         if part1 == 0 {
-            return 100 - Float(symptomDetails.customizedWeight)
+            return 100
         }
         let part2 = Float(totalWeight) / part1
-
-        return 100 - (100 * part2 + Float(symptomDetails.customizedWeight))
+        return 100.0 - 100.0 * part2
     }
 }
 

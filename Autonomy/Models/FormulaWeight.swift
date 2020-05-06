@@ -24,10 +24,23 @@ struct Coefficient: Decodable {
     var confirms: Float
 
     var symptomWeights: [SymptomWeight]
+    var symptomKeyWeights: [String: Int]
 
     enum CodingKeys: String, CodingKey {
         case symptoms, behaviors, confirms
         case symptomWeights = "symptom_weights"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values      = try decoder.container(keyedBy: CodingKeys.self)
+        symptoms        = try values.decode(Float.self, forKey: .symptoms)
+        behaviors       = try values.decode(Float.self, forKey: .behaviors)
+        confirms        = try values.decode(Float.self, forKey: .confirms)
+        symptomWeights  = try values.decode([SymptomWeight].self, forKey: .symptomWeights)
+        symptomKeyWeights = [:]
+        symptomWeights.forEach {
+            symptomKeyWeights[$0.symptom.id] = $0.weight
+        }
     }
 }
 
@@ -39,13 +52,11 @@ struct SymptomWeight: Decodable {
 extension Coefficient: Equatable {
     static func ==(lhs: Coefficient, rhs: Coefficient) -> Bool {
         var symptomWeightsEqual: Bool = true
-        for lhsSymptomWeight in lhs.symptomWeights {
-            guard let rhsSymptomWeight = rhs.symptomWeights.first(where: { $0.symptom.id == lhsSymptomWeight.symptom.id }) else {
-                symptomWeightsEqual = false
-                break
-            }
+        let rhsSymptomKeyWeights = rhs.symptomKeyWeights
+        for (key, lhsWeight) in lhs.symptomKeyWeights {
+            let rhsWeight = rhsSymptomKeyWeights[key]
 
-            if lhsSymptomWeight.weight != rhsSymptomWeight.weight {
+            if lhsWeight != rhsWeight {
                 symptomWeightsEqual = false
                 break
             }

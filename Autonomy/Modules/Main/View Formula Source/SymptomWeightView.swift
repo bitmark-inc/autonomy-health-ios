@@ -78,7 +78,6 @@ extension SymptomWeightView {
         slider.minimumValue = 1
         slider.maximumValue = 3
         slider.setThumbImage(R.image.thumbSlider(), for: .normal)
-        slider.isEnabled = false
         slider.rx.controlEvent(.valueChanged)
             .skip(1)
             .subscribe(onNext: { [weak self] (_) in

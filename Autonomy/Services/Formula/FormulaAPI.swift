@@ -54,14 +54,11 @@ extension FormulaAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
             return .requestPlain
 
         case .update(let coefficient):
-            var symptomWeights = [String: Int]()
-            coefficient.symptomWeights.forEach { symptomWeights[$0.symptom.id] = $0.weight }
-
             let coefficient: [String: Any] = [
                 "symptoms": coefficient.symptoms,
                 "behaviors": coefficient.behaviors,
                 "confirms": coefficient.confirms,
-                "symptom_weights": symptomWeights
+                "symptom_weights": coefficient.symptomKeyWeights
             ]
 
             params = ["coefficient": coefficient]

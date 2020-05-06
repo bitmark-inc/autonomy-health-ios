@@ -127,7 +127,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         }
 
         guideDataView.hideSkeleton()
-        healthView.updateLayout(score: areaProfile.displayScore, animate: false)
+        healthView.updateLayout(score: Int(areaProfile.score), animate: false)
         bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
         bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
         bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)
