@@ -51,6 +51,14 @@ class HealthScoreTriangle: UIView {
         }
     }
 
+    func resetLayout() {
+        scoreLabel.setText(nil)
+        currentScore = nil
+        processingTimer?.invalidate()
+        coloredSublayer?.removeFromSuperlayer()
+        coloredSublayer = nil
+    }
+
     func updateLayout(score: Int, animate: Bool) {
         processingTimer?.invalidate()
         guard score != currentScore else { return }

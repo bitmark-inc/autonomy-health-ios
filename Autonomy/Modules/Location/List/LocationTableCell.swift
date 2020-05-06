@@ -57,10 +57,10 @@ class LocationTableCell: MGSwipeTableCell {
         }
     }
 
-    func setData(poiID: String, alias: String, score: Int) {
+    func setData(poiID: String, alias: String, score: Float) {
         self.poiID = poiID
         setTitle(alias)
-        healthScoreLabel.setText("\(score)")
+        healthScoreLabel.setText(score.formatScoreInt)
         healthScoreView.backgroundColor = HealthRisk(from: score)?.color
     }
 

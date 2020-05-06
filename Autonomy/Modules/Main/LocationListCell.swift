@@ -109,7 +109,7 @@ extension LocationListCell: SkeletonTableViewDataSource, UITableViewDelegate {
                 makeEditLocationSwipeButton(poiID: poi.id)]
             cell.locationDelegate = locationDelegate
 
-            cell.setData(poiID: poi.id, alias: poi.alias, score: poi.displayScore)
+            cell.setData(poiID: poi.id, alias: poi.alias, score: poi.score ?? 0)
             cell.parentLocationListCell = self
 
             if !didCallOvercomeSelectAllIssue && indexPath.row == 0 {

@@ -69,8 +69,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     var topFormulaViewConstraint: Constraint?
     var topHealthViewConstraint: Constraint?
 
-    var didSet: Bool = false
-
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -84,6 +82,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
 
         animations.removeAll()
         animationProgressWhenIntrupped = 0
+        healthView.resetLayout()
 
         disposeBag = DisposeBag()
         bindEvents()
@@ -128,10 +127,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         }
 
         guideDataView.hideSkeleton()
-        if !didSet {
-            didSet = true
-            healthView.updateLayout(score: areaProfile.displayScore, animate: false)
-        }
+        healthView.updateLayout(score: areaProfile.displayScore, animate: false)
         bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
         bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
         bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)

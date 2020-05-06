@@ -10,10 +10,16 @@ import RxSwift
 import RxCocoa
 import GooglePlaces
 
+enum POIFetchSource {
+    case remote
+    case userAdjust
+    case userAdjustFormula
+}
+
 class MainViewModel: ViewModel {
 
     // MARK: - Outputs
-    let poisRelay = BehaviorRelay(value: (pois: [PointOfInterest](), userInteractive: false))
+    let poisRelay = BehaviorRelay<(pois: [PointOfInterest], source: POIFetchSource)>(value: (pois: [], source: .remote))
     let fetchPOIStateRelay = BehaviorRelay<LoadState>(value: .hide)
 
     let addLocationSubject = PublishSubject<PointOfInterest?>()
@@ -38,7 +44,7 @@ class MainViewModel: ViewModel {
     }
 
     // MARK: - Handlers
-    fileprivate func fetchPOIs() {
+    func fetchPOIs(source: POIFetchSource = .remote) {
         fetchPOIStateRelay.accept(.loading)
 
         PointOfInterestService.get()
@@ -47,7 +53,7 @@ class MainViewModel: ViewModel {
             })
             .subscribe(onSuccess: { [weak self] (savedPOIs) in
                 guard let self = self else { return }
-                self.poisRelay.accept((pois: savedPOIs, userInteractive: false))
+                self.poisRelay.accept((pois: savedPOIs, source: source))
 
             }, onError: { (error) in
                 guard !AppError.errorByNetworkConnection(error),
@@ -159,7 +165,7 @@ class MainViewModel: ViewModel {
                 .subscribe(onSuccess: { [weak self] (newPOI) in
                     guard let self = self else { return }
                     var newPOIs = self.poisRelay.value.pois; newPOIs.append(newPOI)
-                    self.poisRelay.accept((pois: newPOIs, userInteractive: true))
+                    self.poisRelay.accept((pois: newPOIs, source: .userAdjust))
                     self.addLocationSubject.onNext(newPOI)
 
                 }, onError: { [weak self] (error) in
@@ -183,7 +189,7 @@ class MainViewModel: ViewModel {
                 updatedPOI.alias = alias
                 currentPOIs[updatedPOIIndex] = updatedPOI
 
-                self.poisRelay.accept((pois: currentPOIs, userInteractive: true))
+                self.poisRelay.accept((pois: currentPOIs, source: .userAdjust))
             }, onError: { [weak self] (error) in
                 self?.submitResultSubject.onNext(Event.error(error))
             })
@@ -200,7 +206,7 @@ class MainViewModel: ViewModel {
                     return
                 }
                 currentPOIs.removeAll(where: { $0.id == poiID })
-                self.poisRelay.accept((pois: currentPOIs, userInteractive: true))
+                self.poisRelay.accept((pois: currentPOIs, source: .userAdjust))
                 self.deleteLocationIndexSubject.onNext(deletedPOIIndex)
             }, onError: { [weak self] (error) in
                 self?.submitResultSubject.onNext(Event.error(error))
@@ -216,7 +222,7 @@ class MainViewModel: ViewModel {
         orderedPOIs.remove(at: from)
         orderedPOIs.insert(orderedPOI, at: to)
 
-        poisRelay.accept((pois: orderedPOIs, userInteractive: true))
+        poisRelay.accept((pois: orderedPOIs, source: .userAdjust))
         orderLocationIndexSubject.onNext((from: from, to: to))
 
         let orderedPoiIDs = orderedPOIs.map { $0.id }

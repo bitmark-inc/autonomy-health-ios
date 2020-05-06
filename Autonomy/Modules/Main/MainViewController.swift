@@ -168,7 +168,7 @@ class MainViewController: ViewController {
                 guard let self = self else { return }
                 self.pois = poisValue.pois
 
-                guard !poisValue.userInteractive else {
+                guard poisValue.source == .remote else {
                     return
                 }
 
@@ -379,7 +379,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.locationDelegate = self
 
             thisViewModel.poisRelay
-                .filter { !$0.userInteractive }.map { $0.pois } // don't want to reload data when userInteractive; manually reload by action
+                .filter { $0.source != .userAdjust }.map { $0.pois } // don't want to reload data when userAdjust; manually reload by action
                 .subscribe(onNext: {
                     cell.setData(pois: $0)
                 })
@@ -393,6 +393,13 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         setupPageControl(with: indexPath)
+
+        handleWhenDisplayHealthCell(cell: cell, in: indexPath)
+        handleWhenDisplayLocationList(cell: cell)
+    }
+
+    fileprivate func handleWhenDisplayHealthCell(cell: UICollectionViewCell, in indexPath: IndexPath) {
+        guard let cell = cell as? HealthScoreCollectionCell else { return }
 
         var areaProfileKey: String?
         var locationName = ""
@@ -408,12 +415,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             break
         }
 
-        guard let cell = cell as? HealthScoreCollectionCell else {
-            return
-        }
-
         let areaProfile = areaProfiles[areaProfileKey ?? "current"]
-
         cell.setData(areaProfile: areaProfile)
         cell.setData(locationName: locationName)
 
@@ -427,6 +429,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
                 Global.log.error(error)
             })
             .disposed(by: disposeBag)
+    }
+
+    fileprivate func handleWhenDisplayLocationList(cell: UICollectionViewCell) {
+        guard type(of: cell) == LocationListCell.self else { return }
+        thisViewModel.fetchPOIs(source: .userAdjustFormula)
     }
 
     fileprivate func setupPageControl(with indexPath: IndexPath) {

@@ -13,7 +13,7 @@ struct PointOfInterest: Codable {
     var id: String = ""
     var alias: String
     let location: Location
-    var score: Double? = nil
+    var score: Float? = nil
 
     init(place: GMSPlace) {
         self.alias = place.name ?? ""
@@ -26,12 +26,6 @@ struct PointOfInterest: Codable {
         id = try values.decode(String.self, forKey: .id)
         alias = try values.decode(String.self, forKey: .alias)
         location = try values.decode(Location.self, forKey: .location)
-        score = try values.decode(Double.self, forKey: .score)
-    }
-}
-
-extension PointOfInterest {
-    var displayScore: Int {
-        return Int(score ?? 0)
+        score = try values.decode(Float.self, forKey: .score)
     }
 }
