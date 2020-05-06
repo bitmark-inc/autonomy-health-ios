@@ -105,6 +105,12 @@ class MainViewController: ViewController {
             return
         }
 
+        if let volumePressTime = Global.volumePressTime,
+            Date() >= volumePressTime.adding(.second, value: 2) {
+            Global.volumePressTrack = ""
+        }
+
+        Global.volumePressTime = Date()
         guard let currentLevel = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as? Float,
             let audioLevel = audioLevel else {
                 return
@@ -121,6 +127,11 @@ class MainViewController: ViewController {
         if Global.volumePressTrack.contains("00011") {
             Global.volumePressTrack = ""
             gotoOnboardingScreen()
+        }
+
+        if Global.volumePressTrack.contains("11000") {
+            Global.volumePressTrack = ""
+            Global.enableDebugRelay.accept(!Global.enableDebugRelay.value)
         }
     }
 

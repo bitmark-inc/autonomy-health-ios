@@ -84,7 +84,7 @@ class DebugLocationViewController: ViewController, GMSMapViewDelegate {
     }
 
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        let infoWindow = DebugInfoWindowView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
+        let infoWindow = DebugInfoWindowView(frame: CGRect(x: 0, y: 0, width: 300, height: 170))
         infoWindow.backgroundColor = UIColor(hexString: "#828180")!
 
         let poiID = markers.keys(forValue: marker).first ?? nil

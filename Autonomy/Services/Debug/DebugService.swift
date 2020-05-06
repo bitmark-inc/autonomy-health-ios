@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class DebugService {
-    static var provider = MoyaProvider<DebugAPI>(stubClosure: MoyaProvider.immediatelyStub, session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<DebugAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func get() -> Single<Debug> {
         Global.log.info("[start] DebugService.get")
