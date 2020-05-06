@@ -18,6 +18,7 @@ class FigDataView: UIView {
     let fixedHeight: CGFloat?
 
     override var intrinsicContentSize: CGSize {
+        topInfoLabel.invalidateIntrinsicContentSize()
         let labelSize = topInfoLabel.intrinsicContentSize
         let buttonSize = button.intrinsicContentSize
 
@@ -42,11 +43,10 @@ class FigDataView: UIView {
 
         topInfoLabel.snp.makeConstraints { (make) in
             make.trailing.equalToSuperview().offset(-3)
-            make.leading.greaterThanOrEqualToSuperview()
             make.bottom.equalTo(button.snp.top).offset(-2)
 
-            if let topInfo = topInfo, topInfo.count >= 17 {
-                make.width.equalTo(67)
+            if let topInfo = topInfo, topInfo.count >= 16 {
+                make.width.lessThanOrEqualTo(67)
             }
         }
 

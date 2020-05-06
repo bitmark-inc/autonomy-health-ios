@@ -200,6 +200,7 @@ extension SurveySymptomsViewController: PanModalDelegate {
 
             if type(of: leadingViewController) == SymptomHistoryViewController.self {
                 Navigator.default.pop(sender: self)
+                FormulaSupporter.pollingSyncFormula()
                 return
             }
         }

@@ -34,7 +34,7 @@ class MainViewModel: ViewModel {
         super.init()
 
         fetchPOIs()
-        fetchProfileFormula()
+        FormulaSupporter.pollingSyncFormula()
         observeAndSubmitProfileFormula()
     }
 
@@ -55,21 +55,6 @@ class MainViewModel: ViewModel {
                 guard let self = self else { return }
                 self.poisRelay.accept((pois: savedPOIs, source: source))
 
-            }, onError: { (error) in
-                guard !AppError.errorByNetworkConnection(error),
-                    !Global.handleErrorIfAsAFError(error) else {
-                        return
-                }
-                Global.log.error(error)
-            })
-            .disposed(by: disposeBag)
-    }
-
-    fileprivate func fetchProfileFormula() {
-        FormulaService.get()
-            .subscribe(onSuccess: { (formulaWeight) in
-                FormulaSupporter.coefficientRelay
-                    .accept((actor: nil, v: formulaWeight.coefficient))
             }, onError: { (error) in
                 guard !AppError.errorByNetworkConnection(error),
                     !Global.handleErrorIfAsAFError(error) else {

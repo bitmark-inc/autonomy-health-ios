@@ -35,6 +35,11 @@ class HealthScoreCollectionCell: UICollectionViewCell {
 
     let redColor = UIColor(hexString: "#CC3232")
     let greenColor = UIColor(hexString: "#2DC937")
+    var key: String? {
+        didSet {
+            formulaSourceView.key = key
+        }
+    }
 
     weak var scoreSourceDelegate: ScoreSourceDelegate? {
         didSet {
@@ -254,6 +259,7 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
         }
         moveUpAnimation.addCompletion { [weak self] _ in
             guard let self = self else { return }
+            self.scrollView.flashScrollIndicators()
             self.updateBottomSlideView(state: state)
             self.animations.removeAll()
         }
@@ -267,11 +273,15 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
         case .collapsed:
             topFormulaViewConstraint?.update(offset: bottomY)
             healthView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            healthView.appNameLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+            healthView.appNameLabel.alpha = 1
             topHealthViewConstraint?.update(offset: topHealthView)
 
         case .expanded:
             topFormulaViewConstraint?.update(offset: topSpacing)
             healthView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            healthView.appNameLabel.transform = CGAffineTransform(translationX: 300, y: 250)
+            healthView.appNameLabel.alpha = 0
             topHealthViewConstraint?.update(offset: -50)
         }
     }

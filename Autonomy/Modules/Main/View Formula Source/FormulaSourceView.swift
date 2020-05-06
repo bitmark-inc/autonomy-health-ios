@@ -14,6 +14,13 @@ import SwiftRichString
 class FormulaSourceView: UIView {
 
     // MARK: - Properties
+    var thisActor: String {
+        guard let key = key, key.isNotEmpty else {
+            Global.log.error("empty cellKey")
+            return ""
+        }
+        return key
+    }
     lazy var scoreLabel = makeScoreLabel()
 
     lazy var caseFormulaIndicatorView = FormulaIndicatorView(for: .confirmedCases)
@@ -74,6 +81,7 @@ class FormulaSourceView: UIView {
     fileprivate var calculatorDisposable: Disposable?
 
     weak var delegate: ScoreSourceDelegate?
+    var key: String?
     fileprivate let disposeBag = DisposeBag()
 
     // - Indicator
@@ -94,6 +102,10 @@ class FormulaSourceView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+
+        confirmedCasesFormulaView.invalidateIntrinsicContentSize()
+        behaviorsFormulaView.invalidateIntrinsicContentSize()
+        symptomsFormulaView.invalidateIntrinsicContentSize()
 
         confirmedCasesFormulaView.rearrangeViews()
         behaviorsFormulaView.rearrangeViews()
@@ -153,7 +165,7 @@ class FormulaSourceView: UIView {
             .filterNil()
             .filter { [weak self] in
                 guard let self = self else { return false }
-                return $0.actor == nil || $0.actor != self
+                return $0.actor == nil || $0.actor != self.thisActor
             }
             .map { $0.v }
             .subscribe(onNext: { [weak self] (coefficient) in
@@ -241,7 +253,7 @@ extension FormulaSourceView {
                 newCoefficient.symptomKeyWeights = newSymptomKeyWeights
 
                 if newCoefficient != coefficient {
-                    FormulaSupporter.coefficientRelay.accept((actor: self, v: newCoefficient))
+                    FormulaSupporter.coefficientRelay.accept((actor: self.thisActor, v: newCoefficient))
                 }
             })
     }
@@ -264,6 +276,10 @@ extension FormulaSourceView {
         let symptomsPart = symptomsScore * coefficient.symptoms
         symptomsTotalWeightDataView.setValue(totalWeight)
         symptomsMaxWeightDataView.setValue(maxWeight)
+        symptomsTotalWeightDataView.invalidateIntrinsicContentSize()
+        symptomsMaxWeightDataView.invalidateIntrinsicContentSize()
+        symptomsFormulaView.rearrangeViews()
+
         symptomsScoreLabel.setText(symptomsScore.formatScoreInt)
         symptomFormulaIndicatorView.setData(score: symptomsScore)
 
@@ -411,8 +427,7 @@ extension FormulaSourceView {
         formulaView.addPart(symptomsMaxWeightDataView)
         formulaView.addPart(FigLabel(") +", height: symptomElementHeight))
         formulaView.addPart(symptomsCustomizedWeightDataView)
-        formulaView.addPart(FigLabel(")", height: symptomElementHeight))
-        formulaView.addPart(FigLabel(")", height: symptomElementHeight))
+        formulaView.addPart(FigLabel("))", height: symptomElementHeight))
         return formulaView
     }
 

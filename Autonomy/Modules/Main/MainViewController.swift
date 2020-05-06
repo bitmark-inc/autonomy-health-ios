@@ -415,7 +415,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             break
         }
 
-        let areaProfile = areaProfiles[areaProfileKey ?? "current"]
+        let cellKey = areaProfileKey ?? "current"
+        let areaProfile = areaProfiles[cellKey]
+        cell.key = cellKey
         cell.setData(areaProfile: areaProfile)
         cell.setData(locationName: locationName)
 

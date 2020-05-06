@@ -42,7 +42,7 @@ class HealthScoreTriangle: UIView {
 
         appNameLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-55 * Self.scale)
+            make.bottom.equalToSuperview().offset(-47 * Self.scale)
         }
 
         scoreLabel.snp.makeConstraints { (make) in
@@ -61,8 +61,9 @@ class HealthScoreTriangle: UIView {
 
     func updateLayout(score: Int, animate: Bool) {
         processingTimer?.invalidate()
-        guard score != currentScore else { return }
         scoreLabel.setText("\(score)")
+
+        guard score != currentScore else { return }
 
         let step = (score > (currentScore ?? 0)) ? 1 : -1
         var updatingScore = currentScore ?? 0

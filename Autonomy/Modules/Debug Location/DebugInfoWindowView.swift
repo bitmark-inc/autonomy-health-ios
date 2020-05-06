@@ -31,7 +31,7 @@ class DebugInfoWindowView: UIView {
 
     func setData(coordinate: CLLocationCoordinate2D, debug: Debug) {
         let text = """
-coordinate: (\(coordinate.latitude),\(coordinate.longitude))
+coordinate: (\(coordinate.latitude), \(coordinate.longitude))
 score: \(debug.metrics.score)
 24h_confirms_count/delta: \(debug.metrics.confirm)/\(debug.metrics.confirmDelta)
 24h_symptom_count/delta: \(debug.metrics.symptoms)/\(debug.metrics.symptomsDelta)
