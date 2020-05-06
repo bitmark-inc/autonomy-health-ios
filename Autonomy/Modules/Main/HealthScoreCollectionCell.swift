@@ -154,8 +154,8 @@ class HealthScoreCollectionCell: UICollectionViewCell {
                 confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
                 confirmedCasesView.changeNumberLabel.textColor = greenColor
             default:
-                confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
-                confirmedCasesView.changeNumberLabel.textColor = greenColor
+                confirmedCasesView.changeStatusArrow.image = nil
+                confirmedCasesView.changeNumberLabel.textColor = .white
             }
 
         case .reportedSymptoms:
@@ -169,8 +169,8 @@ class HealthScoreCollectionCell: UICollectionViewCell {
                 reportedSymptomsView.changeStatusArrow.image = R.image.greenDownArrow()
                 reportedSymptomsView.changeNumberLabel.textColor = greenColor
             default:
-                reportedSymptomsView.changeStatusArrow.image = R.image.greenDownArrow()
-                reportedSymptomsView.changeNumberLabel.textColor = greenColor
+                reportedSymptomsView.changeStatusArrow.image = nil
+                reportedSymptomsView.changeNumberLabel.textColor = .white
             }
 
         case .healthyBehaviors:
@@ -184,8 +184,8 @@ class HealthScoreCollectionCell: UICollectionViewCell {
                 healthyBehaviorsView.changeStatusArrow.image = R.image.redDownArrow()
                 healthyBehaviorsView.changeNumberLabel.textColor = redColor
             default:
-                healthyBehaviorsView.changeStatusArrow.image = R.image.greenUpArrow()
-                healthyBehaviorsView.changeNumberLabel.textColor = greenColor
+                healthyBehaviorsView.changeStatusArrow.image = nil
+                healthyBehaviorsView.changeNumberLabel.textColor = .white
             }
 
         case .populationDensity:
