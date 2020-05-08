@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Location permission
         let locationManager = Global.default.locationManager
         locationManager.delegate = self
-        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
 
         GMSServices.provideAPIKey(Constant.googleAPIKey)
         GMSPlacesClient.provideAPIKey(Constant.googleAPIKey)
