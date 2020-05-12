@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios dev
 ```
 Push a new dev build to AppCenter
+### ios inhouse
+```
+fastlane ios inhouse
+```
+Push a new inhouse build to AppCenter
 
 ----
 

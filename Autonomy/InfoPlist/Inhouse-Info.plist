@@ -5,9 +5,9 @@
 	<key>AppCredentials</key>
 	<dict>
 		<key>API_SERVER_URL</key>
-		<string>https://autonomy.test.bitmark.com</string>
+		<string>https://autonomy.bitmark.com</string>
 		<key>ENVIRONMENT</key>
-		<string>development</string>
+		<string>production</string>
 		<key>GOOGLE_API_KEY</key>
 		<string></string>
 		<key>INTERCOM_APP_ID</key>
@@ -15,7 +15,7 @@
 		<key>INTERCOM_APP_KEY</key>
 		<string>ios_sdk-73c4808d20211944196736d561a405f6ffcdaded</string>
 		<key>ONESIGNAL_APP_ID</key>
-		<string>74f5ef01-1e4f-407e-a288-fa78fd552556</string>
+		<string></string>
 		<key>SENTRY_DSN</key>
 		<string>https://0ee9c8b5a9f940ff89151a7c438d9588@sentry.io/5174296</string>
 	</dict>
@@ -34,7 +34,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>24</string>
+	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlechromes</string>

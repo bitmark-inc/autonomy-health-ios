@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D8B6DF360D1CCC1F900410E /* Pods_Autonomy_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */; };
+		0D8B6DF360D1CCC1F900410E /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		1069FBDB37576812A95BC44E /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A710DB2805CCB5FC902C5B3A /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		2E24E1967717BB98D23B2E2B /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		4F8F94CE445E549BDE5BC758 /* Pods_Autonomy_Inhouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035D2F84243DFBD5249B35F7 /* Pods_Autonomy_Inhouse.framework */; };
 		5B130BAF2451A1C00031F176 /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BAD2451A1C00031F176 /* SuccessPanViewController.swift */; };
 		5B130BB12451A1E30031F176 /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BAD2451A1C00031F176 /* SuccessPanViewController.swift */; };
 		5B130BB62451A9990031F176 /* FormulaSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BB52451A9990031F176 /* FormulaSourceView.swift */; };
@@ -116,7 +118,6 @@
 		5B577857242B330E0028D3E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
 		5B577858242B330E0028D3E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C5242AF8040072D933 /* Assets.xcassets */; };
 		5B577859242B330E0028D3E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C2242AF8010072D933 /* Main.storyboard */; };
-		5B577860242B3FC10028D3E3 /* Dev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B57785F242B3FC10028D3E3 /* Dev-Info.plist */; };
 		5B577863242B421B0028D3E3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577862242B421B0028D3E3 /* Constant.swift */; };
 		5B577864242B421B0028D3E3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577862242B421B0028D3E3 /* Constant.swift */; };
 		5B577866242B42310028D3E3 /* Global+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577865242B42310028D3E3 /* Global+Log.swift */; };
@@ -368,6 +369,201 @@
 		5BAA772D24599287003CCE92 /* LocationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772A24599287003CCE92 /* LocationHistoryViewModel.swift */; };
 		5BAA772E24599287003CCE92 /* LocationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */; };
 		5BAA772F24599287003CCE92 /* LocationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */; };
+		5BAE83EF246A7985006E118D /* ThemedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57790A242B4CB20028D3E3 /* ThemedViewController.swift */; };
+		5BAE83F0246A7985006E118D /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
+		5BAE83F1246A7985006E118D /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
+		5BAE83F2246A7985006E118D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8582242DDBFB002CC53B /* MainViewController.swift */; };
+		5BAE83F3246A7985006E118D /* SurveyBehaviorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6E42446AFE800BCB323 /* SurveyBehaviorsViewController.swift */; };
+		5BAE83F4246A7985006E118D /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D02430C72E002CD923 /* TableView.swift */; };
+		5BAE83F5246A7985006E118D /* LinearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F073242C92DA0084B4F6 /* LinearView.swift */; };
+		5BAE83F6246A7985006E118D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577909242B4CB20028D3E3 /* NavigationController.swift */; };
+		5BAE83F7246A7985006E118D /* LocationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772A24599287003CCE92 /* LocationHistoryViewModel.swift */; };
+		5BAE83F8246A7985006E118D /* AssetService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57791F242B4E830028D3E3 /* AssetService+Rx.swift */; };
+		5BAE83F9246A7985006E118D /* BehaviorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */; };
+		5BAE83FA246A7985006E118D /* ReviewHelpRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F239E2434878F00F7A72E /* ReviewHelpRequestViewModel.swift */; };
+		5BAE83FB246A7985006E118D /* DebugInfoWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60CD24606FFB00432151 /* DebugInfoWindowView.swift */; };
+		5BAE83FC246A7985006E118D /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5778FE242B4C010028D3E3 /* Navigator.swift */; };
+		5BAE83FD246A7985006E118D /* FormulaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C52460466300432151 /* FormulaService.swift */; };
+		5BAE83FE246A7985006E118D /* Observable+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57788E242B460E0028D3E3 /* Observable+Operators.swift */; };
+		5BAE83FF246A7985006E118D /* FigLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B544E99245C3D7800B8003A /* FigLabel.swift */; };
+		5BAE8400246A7985006E118D /* ScoreInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978878243EFF71005BADA9 /* ScoreInfoView.swift */; };
+		5BAE8401246A7985006E118D /* ServerAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577898242B47670028D3E3 /* ServerAPIError.swift */; };
+		5BAE8402246A7985006E118D /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B978886243F22B4005BADA9 /* LocationTableCell.swift */; };
+		5BAE8403246A7985006E118D /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */; };
+		5BAE8404246A7985006E118D /* FormulaWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B3245FD62A00432151 /* FormulaWeight.swift */; };
+		5BAE8405246A7985006E118D /* OnboardingStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */; };
+		5BAE8406246A7985006E118D /* Float+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B0245FC2F000432151 /* Float+Formatter.swift */; };
+		5BAE8407246A7985006E118D /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A12434878F00F7A72E /* AssistanceViewController.swift */; };
+		5BAE8408246A7985006E118D /* SurveyHistoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772224596498003CCE92 /* SurveyHistoryTableCell.swift */; };
+		5BAE8409246A7985006E118D /* MoyaProviderType+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577892242B46230028D3E3 /* MoyaProviderType+Request.swift */; };
+		5BAE840A246A7985006E118D /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F083242CAE9E0084B4F6 /* PermissionViewController.swift */; };
+		5BAE840B246A7985006E118D /* RxOptional+Single+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57788D242B460E0028D3E3 /* RxOptional+Single+Optional.swift */; };
+		5BAE840C246A7985006E118D /* BehaviorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E52436E6E300E5949A /* BehaviorService.swift */; };
+		5BAE840D246A7985006E118D /* SignInWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A5242C45F500480A15 /* SignInWallViewController.swift */; };
+		5BAE840E246A7985006E118D /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
+		5BAE840F246A7985006E118D /* DebugAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* DebugAPI.swift */; };
+		5BAE8410246A7985006E118D /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFD2444133E0095BE18 /* HelpRequestService.swift */; };
+		5BAE8411246A7985006E118D /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */; };
+		5BAE8412246A7985006E118D /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
+		5BAE8413246A7985006E118D /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57786C242B43140028D3E3 /* Credential.swift */; };
+		5BAE8414246A7985006E118D /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57792B242B4F6B0028D3E3 /* KeychainStore.swift */; };
+		5BAE8415246A7985006E118D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57793F242B62160028D3E3 /* HeaderView.swift */; };
+		5BAE8416246A7985006E118D /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F089242CC01C0084B4F6 /* CheckboxView.swift */; };
+		5BAE8417246A7985006E118D /* RightIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BB92451AA8D0031F176 /* RightIconButton.swift */; };
+		5BAE8418246A7985006E118D /* FormulaSupporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B89B8B3246178C80078A854 /* FormulaSupporter.swift */; };
+		5BAE8419246A7985006E118D /* DebugLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* DebugLocationViewModel.swift */; };
+		5BAE841A246A7985006E118D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577908242B4CB20028D3E3 /* ViewController.swift */; };
+		5BAE841B246A7985006E118D /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
+		5BAE841C246A7985006E118D /* AskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A32434878F00F7A72E /* AskInfoViewController.swift */; };
+		5BAE841D246A7985006E118D /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A8242C47CF00480A15 /* AppLink.swift */; };
+		5BAE841E246A7985006E118D /* SymptomHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA770C245963FD003CCE92 /* SymptomHistoryViewModel.swift */; };
+		5BAE841F246A7985006E118D /* SVProgressHUD+rxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577932242B50180028D3E3 /* SVProgressHUD+rxState.swift */; };
+		5BAE8420246A7985006E118D /* SymptomHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA770D245963FD003CCE92 /* SymptomHistoryViewController.swift */; };
+		5BAE8421246A7985006E118D /* SymptomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49573F2449938E0012D6E1 /* SymptomService.swift */; };
+		5BAE8422246A7985006E118D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577925242B4EA20028D3E3 /* ViewModel.swift */; };
+		5BAE8423246A7985006E118D /* DebugLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* DebugLocationViewController.swift */; };
+		5BAE8424246A7985006E118D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5778E1242B48AA0028D3E3 /* R.generated.swift */; };
+		5BAE8425246A7985006E118D /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57787A242B43B70028D3E3 /* AuthAPI.swift */; };
+		5BAE8426246A7985006E118D /* NoInternetBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577881242B43DC0028D3E3 /* NoInternetBanner.swift */; };
+		5BAE8427246A7985006E118D /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4957462449A0CD0012D6E1 /* ProfileService.swift */; };
+		5BAE8428246A7985006E118D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57787B242B43B70028D3E3 /* AuthService.swift */; };
+		5BAE8429246A7985006E118D /* NetworkConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577876242B43A30028D3E3 /* NetworkConnectionManager.swift */; };
+		5BAE842A246A7985006E118D /* AreaProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C72430BE91002CD923 /* AreaProfileAPI.swift */; };
+		5BAE842B246A7985006E118D /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
+		5BAE842C246A7985006E118D /* LocationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */; };
+		5BAE842D246A7985006E118D /* SurveyBehaviorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6E32446AFE800BCB323 /* SurveyBehaviorsViewModel.swift */; };
+		5BAE842E246A7985006E118D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
+		5BAE842F246A7985006E118D /* FormulaIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BBC2451AD590031F176 /* FormulaIndicatorView.swift */; };
+		5BAE8430246A7985006E118D /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
+		5BAE8431246A7985006E118D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F06244413FC0095BE18 /* Location.swift */; };
+		5BAE8432246A7985006E118D /* GiveHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F2398243482EF00F7A72E /* GiveHelpViewController.swift */; };
+		5BAE8433246A7985006E118D /* PanModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */; };
+		5BAE8434246A7985006E118D /* GiveHelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F2395243482E500F7A72E /* GiveHelpViewModel.swift */; };
+		5BAE8435246A7985006E118D /* ServerAssetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C858D242DDDFB002CC53B /* ServerAssetsService.swift */; };
+		5BAE8436246A7985006E118D /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8575242DD42B002CC53B /* HistoryService.swift */; };
+		5BAE8437246A7985006E118D /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F03244413E90095BE18 /* PointOfInterest.swift */; };
+		5BAE8438246A7985006E118D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577868242B424C0028D3E3 /* Global.swift */; };
+		5BAE8439246A7985006E118D /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
+		5BAE843A246A7985006E118D /* HelpRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFE2444133E0095BE18 /* HelpRequestAPI.swift */; };
+		5BAE843B246A7985006E118D /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577939242B50E30028D3E3 /* ImageView.swift */; };
+		5BAE843C246A7985006E118D /* SurveyHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */; };
+		5BAE843D246A7985006E118D /* FormulaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C42460466300432151 /* FormulaAPI.swift */; };
+		5BAE843E246A7985006E118D /* AskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A42434878F00F7A72E /* AskInfoViewModel.swift */; };
+		5BAE843F246A7985006E118D /* SurveySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DD2446AEF600BCB323 /* SurveySymptomsViewController.swift */; };
+		5BAE8440246A7985006E118D /* OnboardingViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */; };
+		5BAE8441246A7985006E118D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
+		5BAE8442246A7985006E118D /* AddLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B396E742445CEE800D14FEC /* AddLocationCell.swift */; };
+		5BAE8443246A7985006E118D /* ProfileDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */; };
+		5BAE8444246A7985006E118D /* SymptomWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60BD2460149A00432151 /* SymptomWeightView.swift */; };
+		5BAE8445246A7985006E118D /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */; };
+		5BAE8446246A7985006E118D /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C12460462000432151 /* Debug.swift */; };
+		5BAE8447246A7985006E118D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661B224583C5700163404 /* ProfileViewController.swift */; };
+		5BAE8448246A7985006E118D /* LinkAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */; };
+		5BAE8449246A7985006E118D /* FigDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0F245C20AC00C81856 /* FigDataView.swift */; };
+		5BAE844A246A7985006E118D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5778FF242B4C010028D3E3 /* Application.swift */; };
+		5BAE844B246A7985006E118D /* RiskLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */; };
+		5BAE844C246A7985006E118D /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6E92446B06000BCB323 /* Behavior.swift */; };
+		5BAE844D246A7985006E118D /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
+		5BAE844E246A7985006E118D /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A92457DF6B00163404 /* PointOfInterestService.swift */; };
+		5BAE844F246A7985006E118D /* FeedTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCB2433264A00815828 /* FeedTableCell.swift */; };
+		5BAE8450246A7985006E118D /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B724600B5600432151 /* LocationSearchViewController.swift */; };
+		5BAE8451246A7985006E118D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D32430CB6C002CD923 /* TableViewCell.swift */; };
+		5BAE8452246A7985006E118D /* RiskLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */; };
+		5BAE8453246A7985006E118D /* ButtonGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */; };
+		5BAE8454246A7985006E118D /* AccountService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577920242B4E830028D3E3 /* AccountService+Rx.swift */; };
+		5BAE8455246A7985006E118D /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */; };
+		5BAE8456246A7985006E118D /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60B824600B5600432151 /* LocationSearchViewModel.swift */; };
+		5BAE8457246A7985006E118D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577862242B421B0028D3E3 /* Constant.swift */; };
+		5BAE8458246A7985006E118D /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BAD2451A1C00031F176 /* SuccessPanViewController.swift */; };
+		5BAE8459246A7985006E118D /* Global+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577865242B42310028D3E3 /* Global+Log.swift */; };
+		5BAE845A246A7985006E118D /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
+		5BAE845B246A7985006E118D /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8592242DDE51002CC53B /* AppInfo.swift */; };
+		5BAE845C246A7985006E118D /* SurveySymptomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */; };
+		5BAE845D246A7985006E118D /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
+		5BAE845E246A7985006E118D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577887242B45820028D3E3 /* Auth.swift */; };
+		5BAE845F246A7985006E118D /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8588242DDDE1002CC53B /* AppVersion.swift */; };
+		5BAE8460246A7985006E118D /* HealthSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */; };
+		5BAE8461246A7985006E118D /* ReviewHelpRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F239D2434878F00F7A72E /* ReviewHelpRequestViewController.swift */; };
+		5BAE8462246A7985006E118D /* BehaviorHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA77132459640C003CCE92 /* BehaviorHistoryViewModel.swift */; };
+		5BAE8463246A7985006E118D /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DD224333E5700815828 /* Symptom.swift */; };
+		5BAE8464246A7985006E118D /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCF243327E000815828 /* Date+Formatter.swift */; };
+		5BAE8465246A7985006E118D /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
+		5BAE8466246A7985006E118D /* FormulaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0C245BE06400C81856 /* FormulaView.swift */; };
+		5BAE8467246A7985006E118D /* BitmarkSDKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57786F242B431A0028D3E3 /* BitmarkSDKService.swift */; };
+		5BAE8468246A7985006E118D /* MoyaAuthPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577873242B439D0028D3E3 /* MoyaAuthPlugin.swift */; };
+		5BAE8469246A7985006E118D /* Ask Info Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEDE245A7A8900F60AF2 /* Ask Info Helpers.swift */; };
+		5BAE846A246A7985006E118D /* FormulaSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BB52451A9990031F176 /* FormulaSourceView.swift */; };
+		5BAE846B246A7985006E118D /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEE2245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift */; };
+		5BAE846C246A7985006E118D /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57791B242B4E290028D3E3 /* Label.swift */; };
+		5BAE846D246A7985006E118D /* SymptomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49573E2449938E0012D6E1 /* SymptomAPI.swift */; };
+		5BAE846E246A7985006E118D /* ServerAssetsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C858C242DDDFB002CC53B /* ServerAssetsAPI.swift */; };
+		5BAE846F246A7985006E118D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
+		5BAE8470246A7985006E118D /* OptionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F086242CB7C40084B4F6 /* OptionBoxView.swift */; };
+		5BAE8471246A7985006E118D /* HistoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8574242DD42B002CC53B /* HistoryAPI.swift */; };
+		5BAE8472246A7985006E118D /* AddRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AED9245A6F8C00F60AF2 /* AddRow.swift */; };
+		5BAE8473246A7985006E118D /* AreaProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49574B2449A0E60012D6E1 /* AreaProfile.swift */; };
+		5BAE8474246A7985006E118D /* AssistanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F23A02434878F00F7A72E /* AssistanceViewModel.swift */; };
+		5BAE8475246A7985006E118D /* DebugService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FE2459603C003CCE92 /* DebugService.swift */; };
+		5BAE8476246A7985006E118D /* BackNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1409E242C6138009EFC59 /* BackNavigator.swift */; };
+		5BAE8477246A7985006E118D /* LaunchingNavigatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577912242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift */; };
+		5BAE8478246A7985006E118D /* AreaProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C82430BE91002CD923 /* AreaProfileService.swift */; };
+		5BAE8479246A7985006E118D /* BehaviorHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA77122459640C003CCE92 /* BehaviorHistoryViewController.swift */; };
+		5BAE847A246A7985006E118D /* UIViewController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577935242B503E0028D3E3 /* UIViewController+Error.swift */; };
+		5BAE847B246A7985006E118D /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEE1245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift */; };
+		5BAE847C246A7985006E118D /* LaunchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577913242B4D5A0028D3E3 /* LaunchingViewController.swift */; };
+		5BAE847D246A7985006E118D /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577905242B4C6C0028D3E3 /* ThemeManager.swift */; };
+		5BAE847E246A7985006E118D /* HealthScoreTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */; };
+		5BAE847F246A7985006E118D /* CenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F080242CA2D80084B4F6 /* CenterView.swift */; };
+		5BAE8480246A7985006E118D /* ProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4957452449A0CD0012D6E1 /* ProfileAPI.swift */; };
+		5BAE8481246A7985006E118D /* OnboardingStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1409B242C6087009EFC59 /* OnboardingStep1ViewController.swift */; };
+		5BAE8482246A7985006E118D /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8585242DDC1E002CC53B /* MainViewModel.swift */; };
+		5BAE8487246A7985006E118D /* AtlasGrotesk-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A5242B48220028D3E3 /* AtlasGrotesk-BlackItalic.otf */; };
+		5BAE8488246A7985006E118D /* DomaineSansText-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778B2242B48230028D3E3 /* DomaineSansText-MediumItalic.otf */; };
+		5BAE8489246A7985006E118D /* IBMPlexMono-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978854243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf */; };
+		5BAE848A246A7985006E118D /* DomaineSansText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778AA242B48230028D3E3 /* DomaineSansText-Light.otf */; };
+		5BAE848B246A7985006E118D /* Error.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778E5242B49140028D3E3 /* Error.strings */; };
+		5BAE848C246A7985006E118D /* AtlasGrotesk-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B57789C242B48220028D3E3 /* AtlasGrotesk-MediumItalic.otf */; };
+		5BAE848D246A7985006E118D /* AtlasGrotesk-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B57789D242B48220028D3E3 /* AtlasGrotesk-BoldItalic.otf */; };
+		5BAE848E246A7985006E118D /* IBMPlexMono-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978850243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf */; };
+		5BAE848F246A7985006E118D /* IBMPlexMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978857243EDFED005BADA9 /* IBMPlexMono-Light.ttf */; };
+		5BAE8490246A7985006E118D /* DomaineSansText-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778AD242B48230028D3E3 /* DomaineSansText-LightItalic.otf */; };
+		5BAE8491246A7985006E118D /* AtlasGrotesk-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B57789E242B48220028D3E3 /* AtlasGrotesk-Medium.otf */; };
+		5BAE8492246A7985006E118D /* IBMPlexMono-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97884E243EDFED005BADA9 /* IBMPlexMono-Thin.ttf */; };
+		5BAE8493246A7985006E118D /* debug-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B4B60CA24604A7E00432151 /* debug-data.json */; };
+		5BAE8494246A7985006E118D /* AtlasGrotesk-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A7242B48220028D3E3 /* AtlasGrotesk-Thin.otf */; };
+		5BAE8495246A7985006E118D /* DomaineSansText-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778AB242B48230028D3E3 /* DomaineSansText-BoldItalic.otf */; };
+		5BAE8496246A7985006E118D /* DomaineSansText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778B1242B48230028D3E3 /* DomaineSansText-Regular.otf */; };
+		5BAE8497246A7985006E118D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
+		5BAE8498246A7985006E118D /* IBMPlexMono-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978855243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf */; };
+		5BAE8499246A7985006E118D /* AtlasGrotesk-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A3242B48220028D3E3 /* AtlasGrotesk-Black.otf */; };
+		5BAE849A246A7985006E118D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778EB242B49140028D3E3 /* InfoPlist.strings */; };
+		5BAE849B246A7985006E118D /* AtlasGrotesk-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A2242B48220028D3E3 /* AtlasGrotesk-LightItalic.otf */; };
+		5BAE849C246A7985006E118D /* IBMPlexMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97884F243EDFED005BADA9 /* IBMPlexMono-Bold.ttf */; };
+		5BAE849D246A7985006E118D /* IBMPlexMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978851243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf */; };
+		5BAE849E246A7985006E118D /* auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B135245A8DAD00B125ED /* auth.json */; };
+		5BAE849F246A7985006E118D /* DomaineSansText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778AE242B48230028D3E3 /* DomaineSansText-Medium.otf */; };
+		5BAE84A0246A7985006E118D /* symptoms-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B132245A89AC00B125ED /* symptoms-list.json */; };
+		5BAE84A1246A7985006E118D /* IBMPlexMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978858243EDFED005BADA9 /* IBMPlexMono-Italic.ttf */; };
+		5BAE84A2246A7985006E118D /* IBMPlexMono-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885A243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf */; };
+		5BAE84A3246A7985006E118D /* IBMPlexMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978852243EDFED005BADA9 /* IBMPlexMono-Medium.ttf */; };
+		5BAE84A4246A7985006E118D /* AtlasGrotesk-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A4242B48220028D3E3 /* AtlasGrotesk-RegularItalic.otf */; };
+		5BAE84A5246A7985006E118D /* IBMPlexMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978859243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf */; };
+		5BAE84A6246A7985006E118D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C5242AF8040072D933 /* Assets.xcassets */; };
+		5BAE84A7246A7985006E118D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778E9242B49140028D3E3 /* Localizable.strings */; };
+		5BAE84A8246A7985006E118D /* IBMPlexMono-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978853243EDFED005BADA9 /* IBMPlexMono-ExtraLight.ttf */; };
+		5BAE84A9246A7985006E118D /* DomaineSansText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778AC242B48230028D3E3 /* DomaineSansText-Bold.otf */; };
+		5BAE84AA246A7985006E118D /* DomaineSansText-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778AF242B48230028D3E3 /* DomaineSansText-Black.otf */; };
+		5BAE84AB246A7985006E118D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C2242AF8010072D933 /* Main.storyboard */; };
+		5BAE84AC246A7985006E118D /* IBMPlexMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B978856243EDFED005BADA9 /* IBMPlexMono-Regular.ttf */; };
+		5BAE84AD246A7985006E118D /* IBMPlexMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */; };
+		5BAE84AE246A7985006E118D /* area-profile.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B4B60AD245FB95200432151 /* area-profile.json */; };
+		5BAE84AF246A7985006E118D /* AtlasGrotesk-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A0242B48220028D3E3 /* AtlasGrotesk-Light.otf */; };
+		5BAE84B0246A7985006E118D /* AtlasGrotesk-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B57789F242B48220028D3E3 /* AtlasGrotesk-ThinItalic.otf */; };
+		5BAE84B1246A7985006E118D /* DomaineSansText-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778B0242B48230028D3E3 /* DomaineSansText-RegularItalic.otf */; };
+		5BAE84B2246A7985006E118D /* Phrase.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778E7242B49140028D3E3 /* Phrase.strings */; };
+		5BAE84B3246A7985006E118D /* DomaineSansText-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A9242B48230028D3E3 /* DomaineSansText-BlackItalic.otf */; };
+		5BAE84B4246A7985006E118D /* AtlasGrotesk-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A6242B48220028D3E3 /* AtlasGrotesk-Bold.otf */; };
+		5BAE84B5246A7985006E118D /* AtlasGrotesk-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A1242B48220028D3E3 /* AtlasGrotesk-Regular.otf */; };
 		5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
@@ -394,6 +590,8 @@
 		5BC6AEE4245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEE1245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift */; };
 		5BC6AEE5245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEE2245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift */; };
 		5BC6AEE6245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6AEE2245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift */; };
+		5BDB655B246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BDB655F246A84C1003CD084 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C859B242DEDBB002CC53B /* NotificationService.swift */; };
 		5BFC8DC02433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC12433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
@@ -404,6 +602,8 @@
 		5BFC8DD1243327E000815828 /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCF243327E000815828 /* Date+Formatter.swift */; };
 		5BFC8DD324333E5700815828 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DD224333E5700815828 /* Symptom.swift */; };
 		5BFC8DD424333E5700815828 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DD224333E5700815828 /* Symptom.swift */; };
+		6360CAD4A63EF1AA146333BA /* Pods_Autonomy_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76753B32A5FC5C7DD8ADDFD6 /* Pods_Autonomy_Dev.framework */; };
+		6F404DB95413F97092EC3E08 /* Pods_OneSignalNotificationServiceInhouseExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46DB35567C8733CA0E4906AA /* Pods_OneSignalNotificationServiceInhouseExtension.framework */; };
 		8C760E6E844F96C8D6CF45F3 /* Pods_OneSignalNotificationServiceDevExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BDEC92F058C9C5F88DDF72 /* Pods_OneSignalNotificationServiceDevExtension.framework */; };
 		9274E41DFA60457D6330C994 /* Pods_Autonomy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FED53A2F08C29F4D0A12ABC /* Pods_Autonomy.framework */; };
 		AEEB286E0D5A750E78445D10 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -423,6 +623,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5B2C85A8242DEE33002CC53B;
 			remoteInfo = OneSignalNotificationServiceDevExtension;
+		};
+		5BDB6559246A8489003CD084 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B9542B1242AF8010072D933 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BDB6553246A8489003CD084;
+			remoteInfo = OneSignalNotificationServiceInhouseExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -449,12 +656,25 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BAE84C7246A7A70006E118D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5BDB655B246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		01010BF588720E3688E84690 /* Pods-OneSignalNotificationServiceDevExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceDevExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceDevExtension/Pods-OneSignalNotificationServiceDevExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		035D2F84243DFBD5249B35F7 /* Pods_Autonomy_Inhouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy_Inhouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FD168122C110B880E8CDC71 /* Pods-OneSignalNotificationServiceInhouseExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceInhouseExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceInhouseExtension/Pods-OneSignalNotificationServiceInhouseExtension.release.xcconfig"; sourceTree = "<group>"; };
 		0FED53A2F08C29F4D0A12ABC /* Pods_Autonomy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46DB35567C8733CA0E4906AA /* Pods_OneSignalNotificationServiceInhouseExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceInhouseExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F172DB240CC2DBD7AFC6524 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		57BDEC92F058C9C5F88DDF72 /* Pods_OneSignalNotificationServiceDevExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceDevExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A069D32ABE4EDBA7F96DAF5 /* Pods-Autonomy Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.debug.xcconfig"; sourceTree = "<group>"; };
@@ -604,6 +824,9 @@
 		5B87F089242CC01C0084B4F6 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
 		5B87F08D242CC18C0084B4F6 /* RiskLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewController.swift; sourceTree = "<group>"; };
 		5B89B8B3246178C80078A854 /* FormulaSupporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaSupporter.swift; sourceTree = "<group>"; };
+		5B8CF2FF246A4CD900939C47 /* Autonomy Inhouse.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Autonomy Inhouse.entitlements"; sourceTree = "<group>"; };
+		5B8CF300246A4D4300939C47 /* OneSignalNotificationServiceInhouseExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceInhouseExtension.entitlements; sourceTree = "<group>"; };
+		5B8CF310246A5A5000939C47 /* Inhouse-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Inhouse-Info.plist"; sourceTree = "<group>"; };
 		5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorAPI.swift; sourceTree = "<group>"; };
 		5B92E3E52436E6E300E5949A /* BehaviorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorService.swift; sourceTree = "<group>"; };
 		5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreTriangle.swift; sourceTree = "<group>"; };
@@ -651,6 +874,7 @@
 		5BAA772824598D50003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5BAA772A24599287003CCE92 /* LocationHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewModel.swift; sourceTree = "<group>"; };
 		5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewController.swift; sourceTree = "<group>"; };
+		5BAE84BD246A7985006E118D /* Autonomy Inhouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Autonomy Inhouse.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB14091242C4A57009EFC59 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
 		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
@@ -664,17 +888,22 @@
 		5BC6AEDE245A7A8900F60AF2 /* Ask Info Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ask Info Helpers.swift"; sourceTree = "<group>"; };
 		5BC6AEE1245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewModel.swift; sourceTree = "<group>"; };
 		5BC6AEE2245A7B9C00F60AF2 /* AssistanceAskInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistanceAskInfoViewController.swift; sourceTree = "<group>"; };
+		5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceInhouseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFC8DBE2433081400815828 /* HealthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		5BFC8DBF2433081400815828 /* HealthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAPI.swift; sourceTree = "<group>"; };
 		5BFC8DCB2433264A00815828 /* FeedTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableCell.swift; sourceTree = "<group>"; };
 		5BFC8DCF243327E000815828 /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
 		5BFC8DD224333E5700815828 /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		6C8A4CB005CE65E66132FA92 /* Pods-OneSignalNotificationServiceDevExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceDevExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceDevExtension/Pods-OneSignalNotificationServiceDevExtension.release.xcconfig"; sourceTree = "<group>"; };
+		75C6C82D9EF984757673FC1A /* Pods-Autonomy Inhouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Inhouse.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy Inhouse/Pods-Autonomy Inhouse.debug.xcconfig"; sourceTree = "<group>"; };
+		76753B32A5FC5C7DD8ADDFD6 /* Pods_Autonomy_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Autonomy_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8184CB398EDA72463146FE2E /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		83828CE63A123E0883F74DBA /* Pods-Autonomy Inhouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Inhouse.release.xcconfig"; path = "Target Support Files/Pods-Autonomy Inhouse/Pods-Autonomy Inhouse.release.xcconfig"; sourceTree = "<group>"; };
 		845A15EDE2B54B01DC44BB28 /* Pods-Autonomy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.release.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.release.xcconfig"; sourceTree = "<group>"; };
 		A710DB2805CCB5FC902C5B3A /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B13C25D60415405C0E648B0A /* Pods-Autonomy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy/Pods-Autonomy.debug.xcconfig"; sourceTree = "<group>"; };
 		DD9BD59551A78DBE3656D222 /* Pods-Autonomy Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Dev.release.xcconfig"; path = "Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev.release.xcconfig"; sourceTree = "<group>"; };
+		FCBDA8D02138C042F4754C78 /* Pods-OneSignalNotificationServiceInhouseExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceInhouseExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceInhouseExtension/Pods-OneSignalNotificationServiceInhouseExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -698,7 +927,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D8B6DF360D1CCC1F900410E /* Pods_Autonomy_Dev.framework in Frameworks */,
+				0D8B6DF360D1CCC1F900410E /* (null) in Frameworks */,
+				2E24E1967717BB98D23B2E2B /* (null) in Frameworks */,
+				6360CAD4A63EF1AA146333BA /* Pods_Autonomy_Dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +939,22 @@
 			files = (
 				AEEB286E0D5A750E78445D10 /* (null) in Frameworks */,
 				9274E41DFA60457D6330C994 /* Pods_Autonomy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BAE8483246A7985006E118D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F8F94CE445E549BDE5BC758 /* Pods_Autonomy_Inhouse.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BDB6551246A8489003CD084 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F404DB95413F97092EC3E08 /* Pods_OneSignalNotificationServiceInhouseExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,6 +1053,7 @@
 		5B2C859A242DEDBB002CC53B /* OneSignalNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
+				5B8CF300246A4D4300939C47 /* OneSignalNotificationServiceInhouseExtension.entitlements */,
 				5B6E069E244D9FF500CC3DF6 /* OneSignalNotificationServiceExtension.entitlements */,
 				5B6E069F244DA49E00CC3DF6 /* OneSignalNotificationServiceDevExtension.entitlements */,
 				5B2C859B242DEDBB002CC53B /* NotificationService.swift */,
@@ -817,6 +1065,7 @@
 		5B2C85B6242DFC61002CC53B /* Entitlements */ = {
 			isa = PBXGroup;
 			children = (
+				5B8CF2FF246A4CD900939C47 /* Autonomy Inhouse.entitlements */,
 				5B2C85B9242DFC78002CC53B /* Autonomy Dev.entitlements */,
 				5B2C85B8242DFC78002CC53B /* Autonomy.entitlements */,
 			);
@@ -1245,6 +1494,8 @@
 				5B57785D242B330E0028D3E3 /* Autonomy.app */,
 				5B2C8599242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex */,
 				5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */,
+				5BAE84BD246A7985006E118D /* Autonomy Inhouse.app */,
+				5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1315,6 +1566,7 @@
 			children = (
 				5B9542CA242AF8040072D933 /* Info.plist */,
 				5B57785F242B3FC10028D3E3 /* Dev-Info.plist */,
+				5B8CF310246A5A5000939C47 /* Inhouse-Info.plist */,
 			);
 			path = InfoPlist;
 			sourceTree = "<group>";
@@ -1494,6 +1746,10 @@
 				6C8A4CB005CE65E66132FA92 /* Pods-OneSignalNotificationServiceDevExtension.release.xcconfig */,
 				4F172DB240CC2DBD7AFC6524 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
 				8184CB398EDA72463146FE2E /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
+				75C6C82D9EF984757673FC1A /* Pods-Autonomy Inhouse.debug.xcconfig */,
+				83828CE63A123E0883F74DBA /* Pods-Autonomy Inhouse.release.xcconfig */,
+				FCBDA8D02138C042F4754C78 /* Pods-OneSignalNotificationServiceInhouseExtension.debug.xcconfig */,
+				0FD168122C110B880E8CDC71 /* Pods-OneSignalNotificationServiceInhouseExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1501,10 +1757,12 @@
 		880D136B6C2301145AFB10A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				245CB84D4BF14DDCDD86EC62 /* Pods_Autonomy_Dev.framework */,
 				0FED53A2F08C29F4D0A12ABC /* Pods_Autonomy.framework */,
 				57BDEC92F058C9C5F88DDF72 /* Pods_OneSignalNotificationServiceDevExtension.framework */,
 				A710DB2805CCB5FC902C5B3A /* Pods_OneSignalNotificationServiceExtension.framework */,
+				035D2F84243DFBD5249B35F7 /* Pods_Autonomy_Inhouse.framework */,
+				46DB35567C8733CA0E4906AA /* Pods_OneSignalNotificationServiceInhouseExtension.framework */,
+				76753B32A5FC5C7DD8ADDFD6 /* Pods_Autonomy_Dev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1594,13 +1852,54 @@
 			productReference = 5B9542B9242AF8010072D933 /* Autonomy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		5BAE83E9246A7985006E118D /* Autonomy Inhouse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BAE84BA246A7985006E118D /* Build configuration list for PBXNativeTarget "Autonomy Inhouse" */;
+			buildPhases = (
+				5BAE83EC246A7985006E118D /* [CP] Check Pods Manifest.lock */,
+				5BAE83ED246A7985006E118D /* ShellScript */,
+				5BAE83EE246A7985006E118D /* Sources */,
+				5BAE8483246A7985006E118D /* Frameworks */,
+				5BAE8486246A7985006E118D /* Resources */,
+				5BAE84B6246A7985006E118D /* [CP] Embed Pods Frameworks */,
+				5BAE84B7246A7985006E118D /* [CP] Copy Pods Resources */,
+				5BAE84C7246A7A70006E118D /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5BDB655A246A8489003CD084 /* PBXTargetDependency */,
+			);
+			name = "Autonomy Inhouse";
+			productName = Autonomy;
+			productReference = 5BAE84BD246A7985006E118D /* Autonomy Inhouse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5BDB6553246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BDB655C246A8489003CD084 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceInhouseExtension" */;
+			buildPhases = (
+				F49F7214800001760ED67B22 /* [CP] Check Pods Manifest.lock */,
+				5BDB6550246A8489003CD084 /* Sources */,
+				5BDB6551246A8489003CD084 /* Frameworks */,
+				5BDB6552246A8489003CD084 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceInhouseExtension;
+			productName = OneSignalNotificationServiceInhouseExtension;
+			productReference = 5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		5B9542B1242AF8010072D933 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Bitmark Inc.";
 				TargetAttributes = {
@@ -1612,6 +1911,9 @@
 					};
 					5B9542B8242AF8010072D933 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					5BDB6553246A8489003CD084 = {
+						CreatedOnToolsVersion = 11.5;
 					};
 				};
 			};
@@ -1631,8 +1933,10 @@
 			targets = (
 				5B9542B8242AF8010072D933 /* Autonomy */,
 				5B57784E242B330E0028D3E3 /* Autonomy Dev */,
+				5BAE83E9246A7985006E118D /* Autonomy Inhouse */,
 				5B2C8598242DEDBB002CC53B /* OneSignalNotificationServiceExtension */,
 				5B2C85A8242DEE33002CC53B /* OneSignalNotificationServiceDevExtension */,
+				5BDB6553246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1726,7 +2030,6 @@
 				5B4B60CB24604A7E00432151 /* debug-data.json in Resources */,
 				5B5778CD242B48230028D3E3 /* DomaineSansText-Light.otf in Resources */,
 				5B5778D3242B48230028D3E3 /* DomaineSansText-LightItalic.otf in Resources */,
-				5B577860242B3FC10028D3E3 /* Dev-Info.plist in Resources */,
 				5B5778B3242B48230028D3E3 /* AtlasGrotesk-MediumItalic.otf in Resources */,
 				5B97886A243EDFED005BADA9 /* IBMPlexMono-ThinItalic.ttf in Resources */,
 				5B5778DD242B48230028D3E3 /* DomaineSansText-MediumItalic.otf in Resources */,
@@ -1758,6 +2061,67 @@
 				5B5778C1242B48230028D3E3 /* AtlasGrotesk-Black.otf in Resources */,
 				5B978862243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf in Resources */,
 				5B5778D7242B48230028D3E3 /* DomaineSansText-Black.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BAE8486246A7985006E118D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BAE8487246A7985006E118D /* AtlasGrotesk-BlackItalic.otf in Resources */,
+				5BAE8488246A7985006E118D /* DomaineSansText-MediumItalic.otf in Resources */,
+				5BAE8489246A7985006E118D /* IBMPlexMono-ExtraLightItalic.ttf in Resources */,
+				5BAE848A246A7985006E118D /* DomaineSansText-Light.otf in Resources */,
+				5BAE848B246A7985006E118D /* Error.strings in Resources */,
+				5BAE848C246A7985006E118D /* AtlasGrotesk-MediumItalic.otf in Resources */,
+				5BAE848D246A7985006E118D /* AtlasGrotesk-BoldItalic.otf in Resources */,
+				5BAE848E246A7985006E118D /* IBMPlexMono-MediumItalic.ttf in Resources */,
+				5BAE848F246A7985006E118D /* IBMPlexMono-Light.ttf in Resources */,
+				5BAE8490246A7985006E118D /* DomaineSansText-LightItalic.otf in Resources */,
+				5BAE8491246A7985006E118D /* AtlasGrotesk-Medium.otf in Resources */,
+				5BAE8492246A7985006E118D /* IBMPlexMono-Thin.ttf in Resources */,
+				5BAE8493246A7985006E118D /* debug-data.json in Resources */,
+				5BAE8494246A7985006E118D /* AtlasGrotesk-Thin.otf in Resources */,
+				5BAE8495246A7985006E118D /* DomaineSansText-BoldItalic.otf in Resources */,
+				5BAE8496246A7985006E118D /* DomaineSansText-Regular.otf in Resources */,
+				5BAE8497246A7985006E118D /* LaunchScreen.storyboard in Resources */,
+				5BAE8498246A7985006E118D /* IBMPlexMono-ThinItalic.ttf in Resources */,
+				5BAE8499246A7985006E118D /* AtlasGrotesk-Black.otf in Resources */,
+				5BAE849A246A7985006E118D /* InfoPlist.strings in Resources */,
+				5BAE849B246A7985006E118D /* AtlasGrotesk-LightItalic.otf in Resources */,
+				5BAE849C246A7985006E118D /* IBMPlexMono-Bold.ttf in Resources */,
+				5BAE849D246A7985006E118D /* IBMPlexMono-BoldItalic.ttf in Resources */,
+				5BAE849E246A7985006E118D /* auth.json in Resources */,
+				5BAE849F246A7985006E118D /* DomaineSansText-Medium.otf in Resources */,
+				5BAE84A0246A7985006E118D /* symptoms-list.json in Resources */,
+				5BAE84A1246A7985006E118D /* IBMPlexMono-Italic.ttf in Resources */,
+				5BAE84A2246A7985006E118D /* IBMPlexMono-SemiBoldItalic.ttf in Resources */,
+				5BAE84A3246A7985006E118D /* IBMPlexMono-Medium.ttf in Resources */,
+				5BAE84A4246A7985006E118D /* AtlasGrotesk-RegularItalic.otf in Resources */,
+				5BAE84A5246A7985006E118D /* IBMPlexMono-SemiBold.ttf in Resources */,
+				5BAE84A6246A7985006E118D /* Assets.xcassets in Resources */,
+				5BAE84A7246A7985006E118D /* Localizable.strings in Resources */,
+				5BAE84A8246A7985006E118D /* IBMPlexMono-ExtraLight.ttf in Resources */,
+				5BAE84A9246A7985006E118D /* DomaineSansText-Bold.otf in Resources */,
+				5BAE84AA246A7985006E118D /* DomaineSansText-Black.otf in Resources */,
+				5BAE84AB246A7985006E118D /* Main.storyboard in Resources */,
+				5BAE84AC246A7985006E118D /* IBMPlexMono-Regular.ttf in Resources */,
+				5BAE84AD246A7985006E118D /* IBMPlexMono-LightItalic.ttf in Resources */,
+				5BAE84AE246A7985006E118D /* area-profile.json in Resources */,
+				5BAE84AF246A7985006E118D /* AtlasGrotesk-Light.otf in Resources */,
+				5BAE84B0246A7985006E118D /* AtlasGrotesk-ThinItalic.otf in Resources */,
+				5BAE84B1246A7985006E118D /* DomaineSansText-RegularItalic.otf in Resources */,
+				5BAE84B2246A7985006E118D /* Phrase.strings in Resources */,
+				5BAE84B3246A7985006E118D /* DomaineSansText-BlackItalic.otf in Resources */,
+				5BAE84B4246A7985006E118D /* AtlasGrotesk-Bold.otf in Resources */,
+				5BAE84B5246A7985006E118D /* AtlasGrotesk-Regular.otf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BDB6552246A8489003CD084 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1924,6 +2288,81 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Autonomy/Resources/R.generated.swift\"\n";
 		};
+		5BAE83EC246A7985006E118D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Autonomy Inhouse-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BAE83ED246A7985006E118D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/Autonomy/Resources/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Autonomy/Resources/R.generated.swift\"\n";
+		};
+		5BAE84B6246A7985006E118D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autonomy Inhouse/Pods-Autonomy Inhouse-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autonomy Inhouse/Pods-Autonomy Inhouse-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Autonomy Inhouse/Pods-Autonomy Inhouse-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BAE84B7246A7985006E118D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autonomy Inhouse/Pods-Autonomy Inhouse-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Autonomy Inhouse/Pods-Autonomy Inhouse-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Autonomy Inhouse/Pods-Autonomy Inhouse-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		93F2AAF53685F6105DCA8577 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1956,6 +2395,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Autonomy Dev/Pods-Autonomy Dev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F49F7214800001760ED67B22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceInhouseExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2291,6 +2752,171 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5BAE83EE246A7985006E118D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BAE83EF246A7985006E118D /* ThemedViewController.swift in Sources */,
+				5BAE83F0246A7985006E118D /* NotificationPermission.swift in Sources */,
+				5BAE83F1246A7985006E118D /* HelpRequest.swift in Sources */,
+				5BAE83F2246A7985006E118D /* MainViewController.swift in Sources */,
+				5BAE83F3246A7985006E118D /* SurveyBehaviorsViewController.swift in Sources */,
+				5BAE83F4246A7985006E118D /* TableView.swift in Sources */,
+				5BAE83F5246A7985006E118D /* LinearView.swift in Sources */,
+				5BAE83F6246A7985006E118D /* NavigationController.swift in Sources */,
+				5BAE83F7246A7985006E118D /* LocationHistoryViewModel.swift in Sources */,
+				5BAE83F8246A7985006E118D /* AssetService+Rx.swift in Sources */,
+				5BAE83F9246A7985006E118D /* BehaviorAPI.swift in Sources */,
+				5BAE83F9246A7985006E118D /* BehaviorAPI.swift in Sources */,
+				5BAE83FA246A7985006E118D /* ReviewHelpRequestViewModel.swift in Sources */,
+				5BAE83FB246A7985006E118D /* DebugInfoWindowView.swift in Sources */,
+				5BAE83FC246A7985006E118D /* Navigator.swift in Sources */,
+				5BAE83FD246A7985006E118D /* FormulaService.swift in Sources */,
+				5BAE83FE246A7985006E118D /* Observable+Operators.swift in Sources */,
+				5BAE83FF246A7985006E118D /* FigLabel.swift in Sources */,
+				5BAE8400246A7985006E118D /* ScoreInfoView.swift in Sources */,
+				5BAE8401246A7985006E118D /* ServerAPIError.swift in Sources */,
+				5BAE8402246A7985006E118D /* LocationTableCell.swift in Sources */,
+				5BAE8403246A7985006E118D /* PlaceholderTextView.swift in Sources */,
+				5BAE8404246A7985006E118D /* FormulaWeight.swift in Sources */,
+				5BAE8405246A7985006E118D /* OnboardingStep3ViewController.swift in Sources */,
+				5BAE8406246A7985006E118D /* Float+Formatter.swift in Sources */,
+				5BAE8407246A7985006E118D /* AssistanceViewController.swift in Sources */,
+				5BAE8408246A7985006E118D /* SurveyHistoryTableCell.swift in Sources */,
+				5BAE8409246A7985006E118D /* MoyaProviderType+Request.swift in Sources */,
+				5BAE840A246A7985006E118D /* PermissionViewController.swift in Sources */,
+				5BAE840B246A7985006E118D /* RxOptional+Single+Optional.swift in Sources */,
+				5BAE840C246A7985006E118D /* BehaviorService.swift in Sources */,
+				5BAE840C246A7985006E118D /* BehaviorService.swift in Sources */,
+				5BAE840D246A7985006E118D /* SignInWallViewController.swift in Sources */,
+				5BAE840E246A7985006E118D /* LocationPermission.swift in Sources */,
+				5BAE840F246A7985006E118D /* DebugAPI.swift in Sources */,
+				5BAE8410246A7985006E118D /* HelpRequestService.swift in Sources */,
+				5BAE8411246A7985006E118D /* HealthScoreCollectionCell.swift in Sources */,
+				5BAE8412246A7985006E118D /* LeftSubmitButton.swift in Sources */,
+				5BAE8413246A7985006E118D /* Credential.swift in Sources */,
+				5BAE8414246A7985006E118D /* KeychainStore.swift in Sources */,
+				5BAE8415246A7985006E118D /* HeaderView.swift in Sources */,
+				5BAE8416246A7985006E118D /* CheckboxView.swift in Sources */,
+				5BAE8417246A7985006E118D /* RightIconButton.swift in Sources */,
+				5BAE8418246A7985006E118D /* FormulaSupporter.swift in Sources */,
+				5BAE8419246A7985006E118D /* DebugLocationViewModel.swift in Sources */,
+				5BAE841A246A7985006E118D /* ViewController.swift in Sources */,
+				5BAE841B246A7985006E118D /* SymptomsHistory.swift in Sources */,
+				5BAE841C246A7985006E118D /* AskInfoViewController.swift in Sources */,
+				5BAE841D246A7985006E118D /* AppLink.swift in Sources */,
+				5BAE841E246A7985006E118D /* SymptomHistoryViewModel.swift in Sources */,
+				5BAE841F246A7985006E118D /* SVProgressHUD+rxState.swift in Sources */,
+				5BAE8420246A7985006E118D /* SymptomHistoryViewController.swift in Sources */,
+				5BAE8421246A7985006E118D /* SymptomService.swift in Sources */,
+				5BAE8422246A7985006E118D /* ViewModel.swift in Sources */,
+				5BAE8423246A7985006E118D /* DebugLocationViewController.swift in Sources */,
+				5BAE8424246A7985006E118D /* R.generated.swift in Sources */,
+				5BAE8425246A7985006E118D /* AuthAPI.swift in Sources */,
+				5BAE8426246A7985006E118D /* NoInternetBanner.swift in Sources */,
+				5BAE8427246A7985006E118D /* ProfileService.swift in Sources */,
+				5BAE8428246A7985006E118D /* AuthService.swift in Sources */,
+				5BAE8429246A7985006E118D /* NetworkConnectionManager.swift in Sources */,
+				5BAE842A246A7985006E118D /* AreaProfileAPI.swift in Sources */,
+				5BAE842B246A7985006E118D /* HealthAPI.swift in Sources */,
+				5BAE842C246A7985006E118D /* LocationHistoryViewController.swift in Sources */,
+				5BAE842D246A7985006E118D /* SurveyBehaviorsViewModel.swift in Sources */,
+				5BAE842E246A7985006E118D /* AppDelegate.swift in Sources */,
+				5BAE842F246A7985006E118D /* FormulaIndicatorView.swift in Sources */,
+				5BAE8430246A7985006E118D /* SeparateLine.swift in Sources */,
+				5BAE8431246A7985006E118D /* Location.swift in Sources */,
+				5BAE8432246A7985006E118D /* GiveHelpViewController.swift in Sources */,
+				5BAE8433246A7985006E118D /* PanModalDelegate.swift in Sources */,
+				5BAE8434246A7985006E118D /* GiveHelpViewModel.swift in Sources */,
+				5BAE8435246A7985006E118D /* ServerAssetsService.swift in Sources */,
+				5BAE8436246A7985006E118D /* HistoryService.swift in Sources */,
+				5BAE8437246A7985006E118D /* PointOfInterest.swift in Sources */,
+				5BAE8438246A7985006E118D /* Global.swift in Sources */,
+				5BAE8439246A7985006E118D /* ReadingTextView.swift in Sources */,
+				5BAE843A246A7985006E118D /* HelpRequestAPI.swift in Sources */,
+				5BAE843B246A7985006E118D /* ImageView.swift in Sources */,
+				5BAE843C246A7985006E118D /* SurveyHelpViewController.swift in Sources */,
+				5BAE843D246A7985006E118D /* FormulaAPI.swift in Sources */,
+				5BAE843E246A7985006E118D /* AskInfoViewModel.swift in Sources */,
+				5BAE843F246A7985006E118D /* SurveySymptomsViewController.swift in Sources */,
+				5BAE8440246A7985006E118D /* OnboardingViewLayout.swift in Sources */,
+				5BAE8441246A7985006E118D /* SceneDelegate.swift in Sources */,
+				5BAE8442246A7985006E118D /* AddLocationCell.swift in Sources */,
+				5BAE8443246A7985006E118D /* ProfileDataEngine.swift in Sources */,
+				5BAE8444246A7985006E118D /* SymptomWeightView.swift in Sources */,
+				5BAE8445246A7985006E118D /* PointOfInterestAPI.swift in Sources */,
+				5BAE8446246A7985006E118D /* Debug.swift in Sources */,
+				5BAE8447246A7985006E118D /* ProfileViewController.swift in Sources */,
+				5BAE8448246A7985006E118D /* LinkAttributedString.swift in Sources */,
+				5BAE8449246A7985006E118D /* FigDataView.swift in Sources */,
+				5BAE844A246A7985006E118D /* Application.swift in Sources */,
+				5BAE844B246A7985006E118D /* RiskLevelViewModel.swift in Sources */,
+				5BAE844C246A7985006E118D /* Behavior.swift in Sources */,
+				5BAE844D246A7985006E118D /* LocationListCell.swift in Sources */,
+				5BAE844E246A7985006E118D /* PointOfInterestService.swift in Sources */,
+				5BAE844F246A7985006E118D /* FeedTableCell.swift in Sources */,
+				5BAE8450246A7985006E118D /* LocationSearchViewController.swift in Sources */,
+				5BAE8451246A7985006E118D /* TableViewCell.swift in Sources */,
+				5BAE8452246A7985006E118D /* RiskLevelViewController.swift in Sources */,
+				5BAE8453246A7985006E118D /* ButtonGroupView.swift in Sources */,
+				5BAE8454246A7985006E118D /* AccountService+Rx.swift in Sources */,
+				5BAE8455246A7985006E118D /* OnboardingStep2ViewController.swift in Sources */,
+				5BAE8456246A7985006E118D /* LocationSearchViewModel.swift in Sources */,
+				5BAE8457246A7985006E118D /* Constant.swift in Sources */,
+				5BAE8458246A7985006E118D /* SuccessPanViewController.swift in Sources */,
+				5BAE8459246A7985006E118D /* Global+Log.swift in Sources */,
+				5BAE845A246A7985006E118D /* SearchTextTableCell.swift in Sources */,
+				5BAE845B246A7985006E118D /* AppInfo.swift in Sources */,
+				5BAE845C246A7985006E118D /* SurveySymptomsViewModel.swift in Sources */,
+				5BAE845D246A7985006E118D /* SubmitButton.swift in Sources */,
+				5BAE845E246A7985006E118D /* Auth.swift in Sources */,
+				5BAE845F246A7985006E118D /* AppVersion.swift in Sources */,
+				5BAE8460246A7985006E118D /* HealthSurveyViewController.swift in Sources */,
+				5BAE8461246A7985006E118D /* ReviewHelpRequestViewController.swift in Sources */,
+				5BAE8462246A7985006E118D /* BehaviorHistoryViewModel.swift in Sources */,
+				5BAE8463246A7985006E118D /* Symptom.swift in Sources */,
+				5BAE8464246A7985006E118D /* Date+Formatter.swift in Sources */,
+				5BAE8465246A7985006E118D /* HealthService.swift in Sources */,
+				5BAE8466246A7985006E118D /* FormulaView.swift in Sources */,
+				5BAE8467246A7985006E118D /* BitmarkSDKService.swift in Sources */,
+				5BAE8468246A7985006E118D /* MoyaAuthPlugin.swift in Sources */,
+				5BAE8469246A7985006E118D /* Ask Info Helpers.swift in Sources */,
+				5BAE846A246A7985006E118D /* FormulaSourceView.swift in Sources */,
+				5BAE846B246A7985006E118D /* AssistanceAskInfoViewController.swift in Sources */,
+				5BAE846C246A7985006E118D /* Label.swift in Sources */,
+				5BAE846D246A7985006E118D /* SymptomAPI.swift in Sources */,
+				5BAE846E246A7985006E118D /* ServerAssetsAPI.swift in Sources */,
+				5BAE846F246A7985006E118D /* Profile.swift in Sources */,
+				5BAE8470246A7985006E118D /* OptionBoxView.swift in Sources */,
+				5BAE8471246A7985006E118D /* HistoryAPI.swift in Sources */,
+				5BAE8472246A7985006E118D /* AddRow.swift in Sources */,
+				5BAE8473246A7985006E118D /* AreaProfile.swift in Sources */,
+				5BAE8474246A7985006E118D /* AssistanceViewModel.swift in Sources */,
+				5BAE8475246A7985006E118D /* DebugService.swift in Sources */,
+				5BAE8476246A7985006E118D /* BackNavigator.swift in Sources */,
+				5BAE8477246A7985006E118D /* LaunchingNavigatorDelegate.swift in Sources */,
+				5BAE8478246A7985006E118D /* AreaProfileService.swift in Sources */,
+				5BAE8479246A7985006E118D /* BehaviorHistoryViewController.swift in Sources */,
+				5BAE847A246A7985006E118D /* UIViewController+Error.swift in Sources */,
+				5BAE847B246A7985006E118D /* AssistanceAskInfoViewModel.swift in Sources */,
+				5BAE847C246A7985006E118D /* LaunchingViewController.swift in Sources */,
+				5BAE847D246A7985006E118D /* ThemeManager.swift in Sources */,
+				5BAE847E246A7985006E118D /* HealthScoreTriangle.swift in Sources */,
+				5BAE847F246A7985006E118D /* CenterView.swift in Sources */,
+				5BAE8480246A7985006E118D /* ProfileAPI.swift in Sources */,
+				5BAE8481246A7985006E118D /* OnboardingStep1ViewController.swift in Sources */,
+				5BAE8482246A7985006E118D /* MainViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BDB6550246A8489003CD084 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BDB655F246A84C1003CD084 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2303,6 +2929,11 @@
 			isa = PBXTargetDependency;
 			target = 5B2C85A8242DEE33002CC53B /* OneSignalNotificationServiceDevExtension */;
 			targetProxy = 5B2C85AE242DEE33002CC53B /* PBXContainerItemProxy */;
+		};
+		5BDB655A246A8489003CD084 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BDB6553246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension */;
+			targetProxy = 5BDB6559246A8489003CD084 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2676,6 +3307,110 @@
 			};
 			name = Release;
 		};
+		5BAE84BB246A7985006E118D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75C6C82D9EF984757673FC1A /* Pods-Autonomy Inhouse.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Inhouse-AppIcon";
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Inhouse.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A52M7AQ8B2;
+				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Inhouse-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D PRODUCTION";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.inhouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev Inhouse";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5BAE84BC246A7985006E118D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83828CE63A123E0883F74DBA /* Pods-Autonomy Inhouse.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Inhouse-AppIcon";
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Inhouse.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A52M7AQ8B2;
+				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Inhouse-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D PRODUCTION";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.inhouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "com.bitmark.autonomy.inhouse InHouse";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		5BDB655D246A8489003CD084 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCBDA8D02138C042F4754C78 /* Pods-OneSignalNotificationServiceInhouseExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceInhouseExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A52M7AQ8B2;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.inhouse.onesignal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev Inhouse OneSignal";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5BDB655E246A8489003CD084 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FD168122C110B880E8CDC71 /* Pods-OneSignalNotificationServiceInhouseExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceInhouseExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A52M7AQ8B2;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.inhouse.onesignal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Inhouse OneSignal";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2720,6 +3455,24 @@
 			buildConfigurations = (
 				5B9542CE242AF8040072D933 /* Debug */,
 				5B9542CF242AF8040072D933 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BAE84BA246A7985006E118D /* Build configuration list for PBXNativeTarget "Autonomy Inhouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BAE84BB246A7985006E118D /* Debug */,
+				5BAE84BC246A7985006E118D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5BDB655C246A8489003CD084 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceInhouseExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BDB655D246A8489003CD084 /* Debug */,
+				5BDB655E246A8489003CD084 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

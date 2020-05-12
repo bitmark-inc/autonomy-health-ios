@@ -58,6 +58,14 @@ target 'Autonomy Dev' do
   pod 'SwiftLint'
 end
 
+target 'Autonomy Inhouse' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Autonomy Dev
+  sharedPods
+end
+
 target 'OneSignalNotificationServiceExtension' do
   use_frameworks!
 
@@ -69,3 +77,10 @@ target 'OneSignalNotificationServiceDevExtension' do
 
   pod 'OneSignal'
 end
+
+target 'OneSignalNotificationServiceInhouseExtension' do
+  use_frameworks!
+
+  pod 'OneSignal'
+end
+

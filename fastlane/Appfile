@@ -4,3 +4,8 @@ for_lane :dev do
 	app_identifier "com.bitmark.autonomy.test"
 	team_id "Z5CE7A3A7N"
 end
+
+for_lane :inhouse do
+	app_identifier "com.bitmark.autonomy.inhouse"
+	team_id "A52M7AQ8B2"
+end
