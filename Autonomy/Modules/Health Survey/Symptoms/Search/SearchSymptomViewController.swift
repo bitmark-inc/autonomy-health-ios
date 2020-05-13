@@ -68,8 +68,8 @@ extension SearchSymptomViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: SearchSurveyTableCell.self)
 
-        let autoCompleteName = filteredRecords[indexPath.row].name
-        let searchText = thisViewModel.searchNameTextRelay.value
+        let autoCompleteName = filteredRecords[indexPath.row].name.lowercased()
+        let searchText = thisViewModel.searchNameTextRelay.value.lowercased()
 
         cell.setData(attributedText: makeAttributedText(searchText, in: autoCompleteName))
         return cell
@@ -83,6 +83,7 @@ extension SearchSymptomViewController: UITableViewDataSource, UITableViewDelegat
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text, text.isNotEmpty else {
+            dismiss(animated: true, completion: nil)
             return true
         }
 

@@ -54,7 +54,9 @@ class SearchBehaviorViewModel: ViewModel {
                 }
 
                 let fullBehaviors = self.fullBehaviorsRelay.value
-                let filteredBehaviors = fullBehaviors.filter { $0.name.contains(searchText) }
+                let filteredBehaviors = fullBehaviors.filter {
+                    $0.name.lowercased().contains(searchText.lowercased())
+                }
                 self.filteredRecordsResultRelay.accept(filteredBehaviors)
 
             })

@@ -74,9 +74,11 @@
 "ReportBehaviors" = "Report Behaviors";
 "LearnHowToKeepOthersSafe" = "Learn how to keep others safe";
 "AreYouDoingThemCorrectly" = "Are you doing them correctly?";
+"HowWeKeepYourDataPrivate" = "How we keep your data private";
 
 "addNewLocation..." = "新增位置...";
 "VersionWithNumber" = "版本 %@";
+"HelpKeepAutonomyFree" = "Help Keep Autonomy Free";
 
 "supportMessage" = "\n%@\n\n您要聯絡支援團隊嗎？";
 "Contact" = "聯絡";

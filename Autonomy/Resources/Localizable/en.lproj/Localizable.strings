@@ -74,9 +74,11 @@
 "ReportBehaviors" = "Report Behaviors";
 "LearnHowToKeepOthersSafe" = "Learn how to keep others safe";
 "AreYouDoingThemCorrectly" = "Are you doing them correctly?";
+"HowWeKeepYourDataPrivate" = "How we keep your data private";
 
 "addNewLocation..." = "Add new location ...";
 "VersionWithNumber" = "Version %@";
+"HelpKeepAutonomyFree" = "Help Keep Autonomy Free";
 
 "supportMessage" = "\n%@\n\nWould you like to contact with support team?";
 "Contact" = "Contact";

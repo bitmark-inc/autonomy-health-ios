@@ -17,14 +17,13 @@ class ProfileViewController: ViewController, BackNavigator {
     fileprivate lazy var titleSectionView = makeTitleSectionView()
     fileprivate lazy var doneButton = makeDoneButton()
 
-    fileprivate lazy var reportSymptomsButton = makeButton(title: R.string.localizable.report().localizedUppercase)
-    fileprivate lazy var historySymptomsButton = makeButton(title: R.string.localizable.history().localizedUppercase)
+    fileprivate lazy var donateTapGestureRecognizer = UITapGestureRecognizer()
+    fileprivate lazy var donateButtonView = makeDonateTapView()
 
-    fileprivate lazy var reportBehaviorsButton = makeButton(title: R.string.localizable.report().localizedUppercase)
-    fileprivate lazy var historyBehaviorsButton = makeButton(title: R.string.localizable.history().localizedUppercase)
+    fileprivate lazy var reportSymptomsButton = makeButton(title: R.string.localizable.symptoms().localizedUppercase)
+    fileprivate lazy var reportBehaviorsButton = makeButton(title: R.string.localizable.behaviors().localizedUppercase)
 
-    fileprivate lazy var historyLocationsButton = makeButton(title: R.string.localizable.history().localizedUppercase)
-
+    fileprivate lazy var apiDataButton = makeButton(title: "API")
     fileprivate lazy var exportDataButton = makeButton(title: R.string.localizable.export().localizedUppercase)
     fileprivate lazy var deleteDataButton = makeButton(title: R.string.localizable.delete().localizedUppercase)
 
@@ -44,6 +43,10 @@ class ProfileViewController: ViewController, BackNavigator {
     override func bindViewModel() {
         super.bindViewModel()
 
+        donateTapGestureRecognizer.rx.event.bind { _ in
+            print("click donateTapGestureRecognizer")
+        }.disposed(by: disposeBag)
+
         doneButton.rx.tap.bind { [weak self] in
             self?.navigator.pop(sender: self, animationType: .slide(direction: .up))
         }.disposed(by: disposeBag)
@@ -52,41 +55,21 @@ class ProfileViewController: ViewController, BackNavigator {
             self?.gotoReportSymptomsScreen()
         }.disposed(by: disposeBag)
 
-        historySymptomsButton.rx.tap.bind { [weak self] in
-            self?.gotoSymptomHistoryScreen()
-        }.disposed(by: disposeBag)
-
         reportBehaviorsButton.rx.tap.bind { [weak self] in
             self?.gotoReportBehaviorsScreen()
-        }.disposed(by: disposeBag)
-
-        historyBehaviorsButton.rx.tap.bind { [weak self] in
-            self?.gotoBehaviorHistoryScreen()
-        }.disposed(by: disposeBag)
-
-        historyLocationsButton.rx.tap.bind { [weak self] in
-            self?.gotoLocationHistoryScreen()
         }.disposed(by: disposeBag)
     }
 
     override func setupViews() {
         super.setupViews()
 
-        let symptomsSectionView = makeSectionView(
-            title: R.string.localizable.symptoms(),
-            buttons: [reportSymptomsButton, historySymptomsButton])
-
-        let behaviorsSectionView = makeSectionView(
-            title: R.string.localizable.behaviors(),
-            buttons: [reportBehaviorsButton, historyBehaviorsButton])
-
-        let locationsSectionView = makeSectionView(
-            title: R.string.localizable.locations(),
-            buttons: [historyLocationsButton])
+        let reportSectionView = makeSectionView(
+            title: R.string.localizable.report(),
+            buttons: [reportSymptomsButton, reportBehaviorsButton])
 
         let dataSectionView = makeSectionView(
             title: R.string.localizable.data(),
-            buttons: [exportDataButton, deleteDataButton])
+            buttons: [apiDataButton, exportDataButton, deleteDataButton])
 
         let securitySectionView = makeSectionView(
             title: R.string.localizable.security(),
@@ -98,15 +81,14 @@ class ProfileViewController: ViewController, BackNavigator {
 
         let settingsContentView = LinearView(
             items: [
-                (symptomsSectionView, 0),
-                (behaviorsSectionView, 0),
-                (locationsSectionView, 0),
+                (reportSectionView, 0),
                 (dataSectionView, 0),
                 (securitySectionView, 0),
                 (supportSectionView, 0)
             ], bottomConstraint: true)
 
         contentScrollView.addSubview(titleSectionView)
+        contentScrollView.addSubview(donateButtonView)
         contentScrollView.addSubview(settingsContentView)
         contentScrollView.addSubview(bitmarkCertView)
 
@@ -115,8 +97,14 @@ class ProfileViewController: ViewController, BackNavigator {
                 .inset(OurTheme.profilePaddingInset)
         }
 
+        donateButtonView.snp.makeConstraints { (make) in
+            make.top.equalTo(titleSectionView.snp.bottom).offset(39)
+            make.leading.trailing.equalToSuperview()
+
+        }
+
         settingsContentView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleSectionView.snp.bottom).offset(60)
+            make.top.equalTo(donateButtonView.snp.bottom).offset(30)
             make.width.equalToSuperview().offset(-30)
             make.leading.trailing.equalToSuperview()
                 .inset(UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15))
@@ -234,10 +222,40 @@ extension ProfileViewController {
     }
 
     fileprivate func makeButton(title: String) -> UIButton {
-        let button = RightIconButton(title: title, icon: R.image.nextCircleArrow(), spacing: 15)
-        button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 7, right: 7)
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
+        return RightIconButton(title: title, icon: R.image.nextSilverCircle30(), spacing: 15)
+    }
+
+    fileprivate func makeDonateTapView() -> UIView {
+        let label = Label()
+        label.apply(text: R.string.localizable.helpKeepAutonomyFree().localizedUppercase,
+                    font: R.font.domaineSansTextLight(size: 18),
+                    themeStyle: .lightTextColor)
+
+        let imageView = ImageView(image: R.image.nextSilverCircle30())
+
+        let view = UIView()
+        view.addSubview(label)
+        view.addSubview(imageView)
+
+        view.addGestureRecognizer(donateTapGestureRecognizer)
+        view.isUserInteractionEnabled = true
+
+        label.snp.makeConstraints { (make) in
+            make.top.leading.bottom.equalToSuperview()
+                .inset(UIEdgeInsets(top: 8, left: 15, bottom: 7, right: 15))
+            make.trailing.lessThanOrEqualTo(imageView.snp.leading)
+        }
+
+        imageView.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-15)
+        }
+
+        themeService.rx
+            .bind({ $0.blueRibbonColor}, to: view.rx.backgroundColor)
+            .disposed(by: disposeBag)
+
+        return view
     }
 
     fileprivate func makeButtonsView(buttons: [UIButton]) -> UIView {
@@ -259,7 +277,7 @@ extension ProfileViewController {
             case 1..<buttons.count:
                 let previousItem = buttons[index - 1]
                 button.snp.makeConstraints { (make) in
-                    make.top.equalTo(previousItem.snp.bottom).offset(-10)
+                    make.top.equalTo(previousItem.snp.bottom)
                     make.trailing.equalToSuperview()
                     make.leading.greaterThanOrEqualToSuperview()
                 }
@@ -295,8 +313,7 @@ extension ProfileViewController {
 
         buttonsView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(-15)
-            make.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().offset(30)
+            make.bottom.trailing.equalToSuperview()
             make.leading.greaterThanOrEqualTo(titleLabel.snp.trailing)
         }
 

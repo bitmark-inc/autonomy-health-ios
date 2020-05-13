@@ -54,7 +54,9 @@ class SearchSymptomViewModel: ViewModel {
                 }
 
                 let fullSymptoms = self.fullSymptomsRelay.value
-                let filteredSymptoms = fullSymptoms.filter { $0.name.contains(searchText) }
+                let filteredSymptoms = fullSymptoms.filter {
+                    $0.name.lowercased().contains(searchText.lowercased())
+                }
                 self.filteredRecordsResultRelay.accept(filteredSymptoms)
 
             })
