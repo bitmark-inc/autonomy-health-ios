@@ -11,34 +11,52 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import SkeletonView
+import MaterialProgressBar
 
-class SurveyBehaviorsViewController: ViewController, BackNavigator {
+class SurveyBehaviorsViewController: ViewController, BackNavigator, ReportSurveyLayout {
 
     // MARK: - Properties
-    fileprivate lazy var headerScreen: UIView = {
+    lazy var headerScreen: UIView = {
         HeaderView(header: R.string.localizable.behaviors().localizedUppercase)
     }()
-    fileprivate lazy var titleScreen = makeTitleScreen()
-    fileprivate lazy var behaviorsScrollView = makeBehaviorsScrollView()
-    fileprivate lazy var behaviorViewsStack = UIStackView()
-    fileprivate lazy var addNewBehaviorView = makeAddNewBehaviorView()
+    lazy var scrollView = makeScrollView()
+    lazy var titleScreen = makeTitleScreen()
+    lazy var commonTagViews = TagListView()
+    lazy var sampleCommonTagView = makeSampleTagListView()
+    lazy var recentTagViews = TagListView()
+    lazy var sampleRecentTagViews = makeSampleTagListView()
+    lazy var noneRecentLabel = makeNoneRecentLabel()
 
-    fileprivate lazy var backButton = makeLightBackItem()
-    fileprivate lazy var doneButton = SubmitButton(title: R.string.localizable.submit().localizedUppercase,
-                                       icon: R.image.upCircleArrow()!)
-    fileprivate lazy var groupsButton: UIView = {
+    lazy var addNewSurveyView = makeAddNewBehaviorView()
+    lazy var backButton = makeLightBackItem()
+    lazy var doneButton = RightIconButton(
+        title: R.string.localizable.submit().localizedUppercase,
+        icon: R.image.upCircleArrow()!)
+    lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: false)
     }()
 
-    fileprivate lazy var thisViewModel: SurveyBehaviorsViewModel = {
+    var surveyTitleText = R.string.phrase.surveyBehaviorsTitle()
+    var commonSurveyText = R.string.phrase.surveyCommonBehaviors().localizedUppercase
+    var recentSurveyText = R.string.phrase.surveyRecentBehaviors().localizedUppercase
+
+    lazy var thisViewModel: SurveyBehaviorsViewModel = {
         return viewModel as! SurveyBehaviorsViewModel
     }()
 
-    fileprivate var behaviors = [Behavior]()
-    var newBehaviorSubject = PublishSubject<Behavior>()
+    fileprivate var behaviorList: BehaviorList?
+    weak var panModalVC: ProgressPanViewController?
+    var sampleHeightConstraints = [Constraint]()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        commonTagViews.rearrangeViews()
+        recentTagViews.rearrangeViews()
     }
 
     // MARK: - bindViewModel
@@ -50,194 +68,146 @@ class SurveyBehaviorsViewController: ViewController, BackNavigator {
                 guard let self = self else { return }
                 switch event {
                 case .error(let error):
-                    self.errorWhenFetchingData(error: error)
+                    self.errorForGeneral(error: error)
                 default:
                     break
                 }
             })
             .disposed(by: disposeBag)
 
-        thisViewModel.behaviorsRelay
-            .filterNil()
-            .subscribe(onNext: { [weak self] (behaviors) in
+        thisViewModel.behaviorListRelay
+            .subscribe(onNext: { [weak self] (behaviorList) in
                 guard let self = self else { return }
-                self.behaviors = behaviors
-                self.rebuilBehaviorsScrollView()
+
+                if let behaviorList = behaviorList {
+                    self.sampleHeightConstraints.forEach { $0.update(offset: 0) }
+                    self.paddingContentView.hideSkeleton()
+                    self.behaviorList = behaviorList
+                    self.rebuildBehaviorsScrollView()
+                } else {
+                    self.paddingContentView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
+                }
             })
             .disposed(by: disposeBag)
 
         thisViewModel.surveySubmitResultSubject
-            .subscribe(onCompleted: { [weak self] in
+            .subscribe(onNext: { [weak self] (event) in
                 loadingState.onNext(.hide)
-                self?.showSignedPanModel()
+                self?.panModalVC?.dismiss(animated: true, completion: { [weak self] in
+                    guard let self = self else { return }
+                    switch event {
+                    case .completed:
+                        self.gotoReportedScreen()
+                    case .error(let error):
+                        self.errorForGeneral(error: error)
+                    }
+                })
             })
             .disposed(by: disposeBag)
 
-        doneButton.rxTap.bind { [weak self] in
+        doneButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
-            loadingState.onNext(.processing)
-            let selectedBehaviorKeys = self.getSelectedBehaviorKeys()
+            let selectedBehaviorKeys = self.getSelectedKeys()
             self.thisViewModel.report(with: selectedBehaviorKeys)
+            self.showProgressPanModal()
         }.disposed(by: disposeBag)
-
-        newBehaviorSubject
-            .subscribe(onNext: { [weak self] (behavior) in
-                guard let self = self else { return }
-                self.behaviors.append(behavior)
-                self.behaviorViewsStack.addArrangedSubview(CheckboxView(title: behavior.name, description: behavior.desc))
-            })
-            .disposed(by: disposeBag)
     }
 
-    fileprivate func showSignedPanModel() {
-        let viewController = SuccessPanViewController()
-        viewController.headerScreen.header = R.string.localizable.reported().localizedUppercase
-        viewController.titleLabel.setText(R.string.phrase.behaviorsReportedTitle().localizedUppercase)
-        viewController.descLabel.setText(R.string.phrase.behaviorsReportedDesc())
-        viewController.gotItButton.titleLabel.setText(R.string.localizable.ok().localizedUppercase)
-        viewController.delegate = self
+    fileprivate func showProgressPanModal() {
+        let viewController = ProgressPanViewController()
+        viewController.headerScreen.header = R.string.localizable.submitting().localizedUppercase
+        viewController.titleLabel.setText(R.string.phrase.surveyBehaviorReporting())
         presentPanModal(viewController)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            viewController.indeterminateProgressBar.startAnimating()
+        }
+
+        panModalVC = viewController
     }
 
-    func getSelectedBehaviorKeys() -> [String] {
-        guard let behaviorViews = behaviorViewsStack.arrangedSubviews as? [CheckboxView] else {
-            return []
-        }
+    fileprivate func rebuildBehaviorsScrollView() {
+        guard let behaviorList = behaviorList else { return }
 
-        return behaviors.enumerated().compactMap { (index, behavior) -> String? in
-            let behaviorCheckView = behaviorViews[index]
-            return behaviorCheckView.checkBox.on ? behavior.id : nil
+        commonTagViews.reset()
+
+        for behavior in behaviorList.officialBehaviors {
+            let tagView = commonTagViews.addTag(( behavior.id, behavior.name.lowercased()))
+            tagView.isSelectedRelay
+                .subscribe(onNext: { [weak self] (_) in
+                    self?.checkSelectedState()
+                })
+                .disposed(by: disposeBag)
         }
+        commonTagViews.rearrangeViews()
+
+        recentTagViews.reset()
+
+        for behavior in behaviorList.neighborhoodBehaviors {
+            let tagView = recentTagViews.addTag(( behavior.id, behavior.name.lowercased()))
+            tagView.isSelectedRelay
+                .subscribe(onNext: { [weak self] (_) in
+                    self?.checkSelectedState()
+                })
+                .disposed(by: disposeBag)
+        }
+        recentTagViews.rearrangeViews()
+        noneRecentLabel.isHidden = behaviorList.neighborhoodBehaviors.isNotEmpty
     }
 
-    fileprivate func rebuilBehaviorsScrollView() {
-        behaviorViewsStack = UIStackView(
-            arrangedSubviews: behaviors.map { CheckboxView(title: $0.name, description: $0.desc) },
-            axis: .vertical, spacing: 15)
-
-        behaviorsScrollView.removeSubviews()
-        behaviorsScrollView.addSubview(behaviorViewsStack)
-        behaviorsScrollView.addSubview(addNewBehaviorView)
-
-        behaviorViewsStack.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-            make.width.equalToSuperview().offset(-30)
-        }
-
-        addNewBehaviorView.snp.makeConstraints { (make) in
-            make.top.equalTo(behaviorViewsStack.snp.bottom).offset(15)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-    }
-
-    // MARK: - Error Handlers
-    func errorWhenFetchingData(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !showIfRequireUpdateVersion(with: error),
-            !handleErrorIfAsAFError(error) else {
-                return
-        }
-
-        Global.log.error(error)
-        showErrorAlertWithSupport(message: R.string.error.system())
-    }
-
-    fileprivate func errorWhenReport(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !handleErrorIfAsAFError(error),
-            !showIfRequireUpdateVersion(with: error) else {
-                return
-        }
-
-        Global.log.error(error)
-        showErrorAlertWithSupport(message: R.string.error.system())
-    }
+    var paddingContentView: UIView!
 
     // MARK: - Setup views
     override func setupViews() {
         super.setupViews()
-
-        // *** Setup subviews ***
-        let paddingContentView = LinearView(
-            items: [
-                (headerScreen, 0),
-                (titleScreen, 0),
-                (SeparateLine(height: 1), 3)],
-            bottomConstraint: true)
-
-        contentView.addSubview(paddingContentView)
-        contentView.addSubview(behaviorsScrollView)
-        contentView.addSubview(groupsButton)
-
-        titleScreen.snp.makeConstraints { (make) in
-            make.height.equalTo(contentView).multipliedBy(OurTheme.titleHeight)
-        }
-
-        paddingContentView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-                .inset(OurTheme.paddingOverBottomInset)
-        }
-
-        behaviorsScrollView.snp.makeConstraints { (make) in
-            make.top.equalTo(paddingContentView.snp.bottom).offset(13)
-            make.leading.trailing.equalToSuperview()
-        }
-
-        groupsButton.snp.makeConstraints { (make) in
-            make.top.equalTo(behaviorsScrollView.snp.bottom).offset(3)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-
-        sampleBehaviorsScrollView()
-    }
-}
-
-// MARK: - PanModalDelegate
-extension SurveyBehaviorsViewController: PanModalDelegate {
-    func donePanModel() {
-
-        if let navViewControllers = navigationController?.viewControllers {
-            let leadingViewController = navViewControllers[navViewControllers.count - 2]
-
-            if type(of: leadingViewController) == BehaviorHistoryViewController.self {
-                Navigator.default.pop(sender: self)
-                return
-            }
-        }
-
-        gotoMainScreen()
+        setupLayoutViews()
     }
 }
 
 // MARK: - Navigator
 extension SurveyBehaviorsViewController {
-    fileprivate func gotoMainScreen() {
-        let viewModel = MainViewModel()
-        navigator.show(segue: .main(viewModel: viewModel), sender: self,
-                       transition: .replace(type: .slide(direction: .down)))
+    fileprivate func gotoReportedScreen() {
+        let viewModel = ReportedBehaviorViewModel()
+        navigator.show(segue: .reportedBehaviors(viewModel: viewModel), sender: self)
     }
 
     fileprivate func gotoAddNewBehavior() {
-        let survey = Survey()
-        let viewModel = AskInfoViewModel(askInfoType: .behaviorTitle, survey: survey)
-        navigator.show(segue: .askInfo(viewModel: viewModel), sender: self)
-    }
-}
+        let viewModel = SearchBehaviorViewModel()
 
-// MARK: - Setup views
-extension SurveyBehaviorsViewController {
-    fileprivate func makeTitleScreen() -> CenterView {
-        let label = Label()
-        label.numberOfLines = 0
-        label.apply(text: R.string.phrase.surveyBehaviorsTitle(),
-                    font: R.font.atlasGroteskLight(size: Size.ds(36)),
-                    themeStyle: .lightTextColor, lineHeight: 1.2)
-        label.textAlignment = .center
-        return CenterView(contentView: label, shrink: true)
+        viewModel.newBehaviorSubject
+            .subscribe(onNext: { [weak self] (behavior) in
+                guard let self = self else { return }
+                self.selectIfExistingOrAdd(with: behavior)
+            })
+            .disposed(by: disposeBag)
+
+        navigator.show(segue: .searchBehavior(viewModel: viewModel), sender: self,
+                       transition: .customModal(type: .slide(direction: .up)))
+    }
+
+    fileprivate func selectIfExistingOrAdd(with behavior: Behavior) {
+        for tagView in (commonTagViews.tagViews + recentTagViews.tagViews) {
+            if tagView.id == behavior.id {
+                tagView.isSelected = true
+                return
+            }
+        }
+
+        let newTagView = recentTagViews.addTag((id: behavior.id, value: behavior.name.lowercased()))
+        newTagView.isSelected = true
+        doneButton.isEnabled = true
+        recentTagViews.rearrangeViews()
+        noneRecentLabel.isHidden = true
+
+        newTagView.isSelectedRelay
+            .subscribe(onNext: { [weak self] (_) in
+                self?.checkSelectedState()
+            })
+            .disposed(by: disposeBag)
     }
 
     fileprivate func makeAddNewBehaviorView() -> UIView {
-        let addNewView = AddRow(title: R.string.phrase.addBehaviorAdd())
+        let addNewView = AddRow(title: R.string.phrase.surveyReportNewBehavior())
 
         let tapGesture = UITapGestureRecognizer()
         tapGesture.rx.event.bind { [weak self] (_) in
@@ -246,30 +216,5 @@ extension SurveyBehaviorsViewController {
 
         addNewView.addGestureRecognizer(tapGesture)
         return addNewView
-    }
-
-    fileprivate func makeBehaviorsScrollView() -> UIScrollView {
-        let scrollView = UIScrollView()
-        scrollView.contentInset = OurTheme.paddingInset
-        scrollView.isSkeletonable = true
-        return scrollView
-    }
-
-    fileprivate func sampleBehaviorsScrollView() {
-        let behaviorViews = (0...3).map { (_) -> CheckboxView in
-            return CheckboxView(title: Constant.fieldPlaceholder, description: Constant.fieldPlaceholder)
-        }
-
-        let behaviorViewsStack = UIStackView(arrangedSubviews: behaviorViews, axis: .vertical, spacing: 15)
-        behaviorViewsStack.isSkeletonable = true
-        behaviorViewsStack.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
-
-        behaviorsScrollView.removeSubviews()
-        behaviorsScrollView.addSubview(behaviorViewsStack)
-
-        behaviorViewsStack.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-            make.width.equalToSuperview().offset(-30)
-        }
     }
 }

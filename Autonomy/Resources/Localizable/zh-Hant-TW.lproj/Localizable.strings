@@ -38,6 +38,7 @@
 "Submit" = "提交";
 "SignUp" = "註冊";
 "Submitted" = "已提交";
+"Submitting" = "Submitting";
 "SignedUp" = "已註冊";
 "Copied" = "已複製";
 "Reported" = "已提交報告";
@@ -56,6 +57,7 @@
 "Delete" = "刪除";
 "SignOut" = "登出";
 "RecoveryKey" = "恢復金鑰";
+"None" = "None";
 
 "RawData" = "原始資料";
 "from_last_24_hours" = "從過去24小時";
@@ -63,6 +65,14 @@
 "ReportedSymptoms" = "通報症狀";
 "HealthyBehaviors" = "健康行為";
 "PopulationDensity" = "人口密度";
+
+"YourTotalForToday" = "Your Total\nFor Today";
+"CommunityAverageForToday" = "Community Average\nFor Today";
+"FromYesterday" = "From Yesterday";
+"ReportSymptoms" = "Report Symptoms";
+"ReportBehaviors" = "Report Behaviors";
+"LearnHowToKeepOthersSafe" = "Learn how to keep others safe";
+"AreYouDoingThemCorrectly" = "Are you doing them correctly?";
 
 "addNewLocation..." = "新增位置...";
 "VersionWithNumber" = "版本 %@";

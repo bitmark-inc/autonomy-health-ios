@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RxSwift
 
 class AddRow: UIView {
 
     // MARK: - Properties
     lazy var addNewLabel = makeAddNewLabel()
+    fileprivate let disposeBag = DisposeBag()
 
     // MARK: - Inits
     init(title: String) {
@@ -26,7 +28,8 @@ class AddRow: UIView {
 
         addImageView.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
-            make.width.height.equalTo(45)
+                .inset(UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 0))
+            make.width.height.equalTo(30)
         }
 
         addNewLabel.snp.makeConstraints { (make) in
@@ -34,6 +37,10 @@ class AddRow: UIView {
             make.top.trailing.bottom.equalToSuperview()
             make.centerY.equalToSuperview()
         }
+
+        themeService.rx
+            .bind({ $0.mineShaftBackground }, to: rx.backgroundColor)
+            .disposed(by: disposeBag)
     }
 
     required init?(coder: NSCoder) {
@@ -45,8 +52,8 @@ extension AddRow {
     fileprivate func makeAddNewLabel() -> Label {
         let label = Label()
         label.apply(
-            font: R.font.atlasGroteskLight(size: 24),
-            themeStyle: .concordColor)
+            font: R.font.atlasGroteskLight(size: 18),
+            themeStyle: .silverColor)
         return label
     }
 }

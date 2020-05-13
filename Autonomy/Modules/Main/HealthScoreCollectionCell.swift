@@ -33,8 +33,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     lazy var healthyBehaviorsView = ScoreInfoView(scoreInfoType: .healthyBehaviors)
     lazy var populationDensityView = ScoreInfoView(scoreInfoType: .populationDensity)
 
-    let redColor = UIColor(hexString: "#CC3232")
-    let greenColor = UIColor(hexString: "#2DC937")
     var key: String? {
         didSet {
             formulaSourceView.key = key
@@ -151,10 +149,10 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             switch true {
             case (delta > 0):
                 confirmedCasesView.changeStatusArrow.image = R.image.redUpArrow()
-                confirmedCasesView.changeNumberLabel.textColor = redColor
+                confirmedCasesView.changeNumberLabel.textColor = Constant.negativeColor
             case (delta < 0):
                 confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
-                confirmedCasesView.changeNumberLabel.textColor = greenColor
+                confirmedCasesView.changeNumberLabel.textColor = Constant.positiveColor
             default:
                 confirmedCasesView.changeStatusArrow.image = nil
                 confirmedCasesView.changeNumberLabel.textColor = .white
@@ -166,10 +164,10 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             switch true {
             case (delta > 0):
                 reportedSymptomsView.changeStatusArrow.image = R.image.redUpArrow()
-                reportedSymptomsView.changeNumberLabel.textColor = redColor
+                reportedSymptomsView.changeNumberLabel.textColor = Constant.negativeColor
             case (delta < 0):
                 reportedSymptomsView.changeStatusArrow.image = R.image.greenDownArrow()
-                reportedSymptomsView.changeNumberLabel.textColor = greenColor
+                reportedSymptomsView.changeNumberLabel.textColor = Constant.positiveColor
             default:
                 reportedSymptomsView.changeStatusArrow.image = nil
                 reportedSymptomsView.changeNumberLabel.textColor = .white
@@ -181,10 +179,10 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             switch true {
             case (delta > 0):
                 healthyBehaviorsView.changeStatusArrow.image = R.image.greenUpArrow()
-                healthyBehaviorsView.changeNumberLabel.textColor = greenColor
+                healthyBehaviorsView.changeNumberLabel.textColor = Constant.positiveColor
             case (delta < 0):
                 healthyBehaviorsView.changeStatusArrow.image = R.image.redDownArrow()
-                healthyBehaviorsView.changeNumberLabel.textColor = redColor
+                healthyBehaviorsView.changeNumberLabel.textColor = Constant.negativeColor
             default:
                 healthyBehaviorsView.changeStatusArrow.image = nil
                 healthyBehaviorsView.changeNumberLabel.textColor = .white

@@ -11,9 +11,8 @@ import RxCocoa
 
 class SurveyBehaviorsViewModel: ViewModel {
 
-    // MARK: - Input
     // MARK: - Output
-    let behaviorsRelay = BehaviorRelay<[Behavior]?>(value: nil)
+    let behaviorListRelay = BehaviorRelay<BehaviorList?>(value: nil)
     let fetchDataResultSubject = PublishSubject<Event<Void>>()
     let surveySubmitResultSubject = PublishSubject<Event<Never>>()
 
@@ -28,7 +27,7 @@ class SurveyBehaviorsViewModel: ViewModel {
     fileprivate func fetchBehaviors() {
         BehaviorService.getList()
             .subscribe(onSuccess: { [weak self] in
-                self?.behaviorsRelay.accept($0)
+                self?.behaviorListRelay.accept($0)
             }, onError: { [weak self] (error) in
                 self?.fetchDataResultSubject.onNext(Event.error(error))
             })
@@ -36,14 +35,18 @@ class SurveyBehaviorsViewModel: ViewModel {
     }
 
     func report(with behaviorKeys: [String]) {
-        surveySubmitResultSubject.onCompleted() // don't block user to wait for this result.
+        loadingState.onNext(.processing)
 
-        BehaviorService.report(behaviorKeys: behaviorKeys)
-            .subscribe(onCompleted: {
-                Global.log.info("[behavior] report successfully")
-            }, onError: { (error) in
-                Global.log.error(error)
-            })
-            .disposed(by: disposeBag)
+        Observable.zip(
+            Observable.just(()).delay(.seconds(3), scheduler: MainScheduler.instance).asObservable(),
+            BehaviorService.report(behaviorKeys: behaviorKeys).asObservable()
+        ).subscribe(onError: { [weak self] (error) in
+            self?.surveySubmitResultSubject.onNext(Event.error(error))
+        }, onCompleted: { [weak self] in
+            guard let self = self else { return }
+            self.surveySubmitResultSubject.onNext(Event.completed)
+            self.surveySubmitResultSubject.onCompleted()
+        })
+        .disposed(by: disposeBag)
     }
 }

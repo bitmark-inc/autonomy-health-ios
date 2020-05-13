@@ -46,8 +46,17 @@
 "survey.help.assistance.description" = "Let people in your local community know that you need help.";
 /// ====== End: Dont need this parts.  ======
 
-"survey.symptoms.title" = "Do you have any of the following symptoms?";
-"survey.behaviors.title" = "Did you do any of the following behaviors today?";
+"survey.symptoms.title" = "Tap any symptoms you have or add new ones:";
+"survey.commonSymptoms" = "Common covid-19 symptoms";
+"survey.recentSymptoms" = "Recent neighborhood symptoms";
+"survey.reportNewSymptom" = "Report other symptom ...";
+"survey.symptom.reporting" = "Reporting your symptoms to your neighborhood ...";
+
+"survey.behaviors.title" = "Tap any healthy behaviors you did today or add new ones:";
+"survey.commonBehaviors" = "Recommended covid-19 behaviors:";
+"survey.recentBehaviors" = "Recent behaviors near you";
+"survey.reportNewBehavior" = "Report other behavior ...";
+"survey.behavior.reporting" = "Reporting your healthy behaviors to your neighborhood ...";
 
 /// ====== Begin: Dont need this parts ======
 "assistance.title" = "What kind of assistance do you need?";
@@ -91,25 +100,8 @@
 "giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
 /// ====== End: Dont need this parts.  ======
 
-"symptoms.reported.title" = "Your Symptoms Have Been Successfully Reported To Your Community ";
-"symptoms.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your symptoms if they continue.";
-"addSymptom.add" = "Add symptom ...";
-"addSymptom.form.name" = "Create a title for your symptom:";
-"addSymptom.form.name.placeholder" = "Enter your title here ...";
-"addSymptom.form.desc" = "You can add a short description for your symptom (optional):";
-"addSymptom.form.desc.placeholder" = "Enter your optional description here ...";
-"addSymptom.thank.title" = "Your symptom has been successfully added to your community’s list of symptoms";
-"addSymptom.thank.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report other symptoms as they appear.";
-
-"behaviors.reported.title" = "Your Behaviors Have Been Successfully Reported To Your Community ";
-"behaviors.reported.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report your behaviors if they continue.";
-"addBehavior.add" = "Add behavior ...";
-"addBehavior.form.name" = "Create a title for your behavior:";
-"addBehavior.form.name.placeholder" = "Enter your title here ...";
-"addBehavior.form.desc" = "You can add a short description for your behavior (optional):";
-"addBehavior.form.desc.placeholder" = "Enter your optional description here ...";
-"addBehavior.thank.title" = "Your behavior has been successfully added to your community’s list of behaviors";
-"addBehavior.thank.desc" = "Thanks for taking the time to make your community a healthier and happier place. Please continue to report other behaviors you adopt in the future.";
+"symptoms.reported.title" = "Thanks for sharing your symptoms with your neighborhood!";
+"behaviors.reported.title" = "Thanks for making your neighborhood healthier!";
 
 "history.symptom.title" = "Symptom History";
 "history.behavior.title" = "Behavior History";

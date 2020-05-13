@@ -16,6 +16,15 @@ extension Float {
     var formatPercent: String {
         return String(format: "%.2f", self)
     }
+
+    var simple: String {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 1
+        formatter.numberStyle = .decimal
+
+        return formatter.string(from: self as NSNumber) ?? ""
+    }
 }
 
 extension Int {

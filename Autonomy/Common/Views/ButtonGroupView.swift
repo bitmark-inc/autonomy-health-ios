@@ -19,8 +19,10 @@ class ButtonGroupView: UIView {
 
         let buttonsLine = UIView()
         buttonsLine.addSubview(button1)
+
         button1.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.5)
         }
 
         if let button2 = button2 {
@@ -50,6 +52,15 @@ class ButtonGroupView: UIView {
             buttonsLine.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(OurTheme.paddingInset.top)
             }
+        }
+    }
+
+    func attachSeparateLine() {
+        let separateLine = SeparateLine(height: 1, themeStyle: .mineShaftBackground)
+        addSubview(separateLine)
+
+        separateLine.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
         }
     }
 

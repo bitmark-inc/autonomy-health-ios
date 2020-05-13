@@ -38,6 +38,7 @@
 "Submit" = "Submit";
 "SignUp" = "Sign Up";
 "Submitted" = "Submitted";
+"Submitting" = "Submitting";
 "SignedUp" = "Signed Up";
 "Copied" = "Copied";
 "Reported" = "Reported";
@@ -56,6 +57,7 @@
 "Delete" = "Delete";
 "SignOut" = "Sign Out";
 "RecoveryKey" = "Recovery Key";
+"None" = "None";
 
 "RawData" = "Raw Data";
 "from_last_24_hours" = "from last 24 hours ";
@@ -63,6 +65,14 @@
 "ReportedSymptoms" = "REPORTED SYMPTOMS";
 "HealthyBehaviors" = "HEALTHY BEHAVIORS";
 "PopulationDensity" = "POPULATION DENSITY";
+
+"YourTotalForToday" = "Your Total\nFor Today";
+"CommunityAverageForToday" = "Community Average\nFor Today";
+"FromYesterday" = "From Yesterday";
+"ReportSymptoms" = "Report Symptoms";
+"ReportBehaviors" = "Report Behaviors";
+"LearnHowToKeepOthersSafe" = "Learn how to keep others safe";
+"AreYouDoingThemCorrectly" = "Are you doing them correctly?";
 
 "addNewLocation..." = "Add new location ...";
 "VersionWithNumber" = "Version %@";

@@ -13,23 +13,32 @@ import Moya
 class SymptomService {
     static var provider = MoyaProvider<SymptomAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
-    static func getList() -> Single<[Symptom]> {
+    static func getList() -> Single<SymptomList> {
         Global.log.info("[start] SymptomService.getList")
 
         return provider.rx
             .requestWithRefreshJwt(.list)
             .filterSuccess()
-            .map([Symptom].self, atKeyPath: "symptoms")
+            .map(SymptomList.self)
     }
 
-    static func create(survey: Survey) -> Single<Symptom> {
-        Global.log.info("[start] SymptomService.create(survey:)")
+    static func getFullList() -> Single<SymptomFullList> {
+        Global.log.info("[start] SymptomService.getFullList")
 
         return provider.rx
-            .requestWithRefreshJwt(.create(survey: survey))
+            .requestWithRefreshJwt(.fullList)
+            .filterSuccess()
+            .map(SymptomFullList.self)
+    }
+
+    static func create(name: String) -> Single<Symptom> {
+        Global.log.info("[start] SymptomService.create(name:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.create(name: name))
             .filterSuccess()
             .map(String.self, atKeyPath: "id")
-            .map { Symptom(id: $0, name: survey.name, desc: survey.desc) }
+            .map { Symptom(id: $0, name: name) }
     }
 
     static func report(symptomKeys: [String]) -> Completable {
@@ -39,5 +48,14 @@ class SymptomService {
             .requestWithRefreshJwt(.report(symptomKeys: symptomKeys))
             .filterSuccess()
             .asCompletable()
+    }
+
+    static func getMetrics() -> Single<SurveyMetrics> {
+        Global.log.info("[start] SymptomService.getMetrics")
+
+        return provider.rx
+            .requestWithRefreshJwt(.metrics)
+            .filterSuccess()
+            .map(SurveyMetrics.self)
     }
 }

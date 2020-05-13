@@ -11,34 +11,52 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import SkeletonView
+import MaterialProgressBar
 
-class SurveySymptomsViewController: ViewController, BackNavigator {
+class SurveySymptomsViewController: ViewController, BackNavigator, ReportSurveyLayout {
 
     // MARK: - Properties
-    fileprivate lazy var headerScreen: UIView = {
+    lazy var headerScreen: UIView = {
         HeaderView(header: R.string.localizable.symptoms().localizedUppercase)
     }()
-    fileprivate lazy var titleScreen = makeTitleScreen()
-    fileprivate lazy var symptomsScrollView = makeSymptomsScrollView()
-    fileprivate lazy var symptomViewsStack = UIStackView()
-    fileprivate lazy var addNewSymptomView = makeAddNewSymptomView()
+    lazy var scrollView = makeScrollView()
+    lazy var titleScreen = makeTitleScreen()
+    lazy var commonTagViews = TagListView()
+    lazy var sampleCommonTagView = makeSampleTagListView()
+    lazy var recentTagViews = TagListView()
+    lazy var sampleRecentTagViews = makeSampleTagListView()
+    lazy var noneRecentLabel = makeNoneRecentLabel()
 
-    fileprivate lazy var backButton = makeLightBackItem()
-    fileprivate lazy var doneButton = SubmitButton(title: R.string.localizable.submit().localizedUppercase,
-                                       icon: R.image.upCircleArrow()!)
-    fileprivate lazy var groupsButton: UIView = {
+    lazy var addNewSurveyView = makeAddNewSymptomView()
+    lazy var backButton = makeLightBackItem()
+    lazy var doneButton = RightIconButton(
+        title: R.string.localizable.submit().localizedUppercase,
+        icon: R.image.upCircleArrow()!)
+    lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: false)
     }()
 
-    fileprivate lazy var thisViewModel: SurveySymptomsViewModel = {
+    var surveyTitleText = R.string.phrase.surveySymptomsTitle()
+    var commonSurveyText = R.string.phrase.surveyCommonSymptoms().localizedUppercase
+    var recentSurveyText = R.string.phrase.surveyRecentSymptoms().localizedUppercase
+
+    lazy var thisViewModel: SurveySymptomsViewModel = {
         return viewModel as! SurveySymptomsViewModel
     }()
 
-    fileprivate var symptoms = [Symptom]()
-    let newSymptomSubject = PublishSubject<Symptom>()
+    fileprivate var symptomList: SymptomList?
+    weak var panModalVC: ProgressPanViewController?
+    var sampleHeightConstraints = [Constraint]()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        commonTagViews.rearrangeViews()
+        recentTagViews.rearrangeViews()
     }
 
     // MARK: - bindViewModel
@@ -50,194 +68,146 @@ class SurveySymptomsViewController: ViewController, BackNavigator {
                 guard let self = self else { return }
                 switch event {
                 case .error(let error):
-                    self.errorWhenFetchingData(error: error)
+                    self.errorForGeneral(error: error)
                 default:
                     break
                 }
             })
             .disposed(by: disposeBag)
 
-        thisViewModel.symptomsRelay
-            .filterNil()
-            .subscribe(onNext: { [weak self] (symptoms) in
+        thisViewModel.symptomListRelay
+            .subscribe(onNext: { [weak self] (symptomList) in
                 guard let self = self else { return }
-                self.symptoms = symptoms
-                self.rebuildSymptomsScrollView()
+
+                if let symptomList = symptomList {
+                    self.sampleHeightConstraints.forEach { $0.update(offset: 0) }
+                    self.paddingContentView.hideSkeleton()
+                    self.symptomList = symptomList
+                    self.rebuildSymptomsScrollView()
+                } else {
+                    self.paddingContentView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
+                }
             })
             .disposed(by: disposeBag)
 
         thisViewModel.surveySubmitResultSubject
-            .subscribe(onCompleted: { [weak self] in
+            .subscribe(onNext: { [weak self] (event) in
                 loadingState.onNext(.hide)
-                self?.showSignedPanModel()
+                self?.panModalVC?.dismiss(animated: true, completion: { [weak self] in
+                    guard let self = self else { return }
+                    switch event {
+                    case .completed:
+                        self.gotoReportedScreen()
+                    case .error(let error):
+                        self.errorForGeneral(error: error)
+                    }
+                })
             })
             .disposed(by: disposeBag)
 
-        doneButton.rxTap.bind { [weak self] in
+        doneButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
-            loadingState.onNext(.processing)
-            let selectedSymptomKeys = self.getSelectedSymptomKeys()
+            let selectedSymptomKeys = self.getSelectedKeys()
             self.thisViewModel.report(with: selectedSymptomKeys)
+            self.showProgressPanModal()
         }.disposed(by: disposeBag)
-
-        newSymptomSubject
-            .subscribe(onNext: { [weak self] (symptom) in
-                guard let self = self else { return }
-                self.symptoms.append(symptom)
-                self.symptomViewsStack.addArrangedSubview(CheckboxView(title: symptom.name, description: symptom.desc))
-            })
-            .disposed(by: disposeBag)
     }
 
-    fileprivate func showSignedPanModel() {
-        let viewController = SuccessPanViewController()
-        viewController.headerScreen.header = R.string.localizable.reported().localizedUppercase
-        viewController.titleLabel.setText(R.string.phrase.symptomsReportedTitle().localizedUppercase)
-        viewController.descLabel.setText(R.string.phrase.symptomsReportedDesc())
-        viewController.gotItButton.titleLabel.setText(R.string.localizable.ok().localizedUppercase)
-        viewController.delegate = self
+    fileprivate func showProgressPanModal() {
+        let viewController = ProgressPanViewController()
+        viewController.headerScreen.header = R.string.localizable.submitting().localizedUppercase
+        viewController.titleLabel.setText(R.string.phrase.surveySymptomReporting())
         presentPanModal(viewController)
-    }
 
-    func getSelectedSymptomKeys() -> [String] {
-        guard let symptomViews = symptomViewsStack.arrangedSubviews as? [CheckboxView] else {
-            return []
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            viewController.indeterminateProgressBar.startAnimating()
         }
 
-        return symptoms.enumerated().compactMap { (index, symptom) -> String? in
-            let symptomCheckView = symptomViews[index]
-            return symptomCheckView.checkBox.on ? symptom.id : nil
-        }
+        panModalVC = viewController
     }
 
     fileprivate func rebuildSymptomsScrollView() {
-        symptomViewsStack = UIStackView(
-            arrangedSubviews: symptoms.map { CheckboxView(title: $0.name, description: $0.desc) },
-            axis: .vertical, spacing: 15)
+        guard let symptomList = symptomList else { return }
 
-        symptomsScrollView.removeSubviews()
-        symptomsScrollView.addSubview(symptomViewsStack)
-        symptomsScrollView.addSubview(addNewSymptomView)
+        commonTagViews.reset()
 
-        symptomViewsStack.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-            make.width.equalToSuperview().offset(-30)
+        for symptom in symptomList.officialSymptoms {
+            let tagView = commonTagViews.addTag(( symptom.id, symptom.name.lowercased()))
+            tagView.isSelectedRelay
+                .subscribe(onNext: { [weak self] (_) in
+                    self?.checkSelectedState()
+                })
+                .disposed(by: disposeBag)
         }
+        commonTagViews.rearrangeViews()
 
-        addNewSymptomView.snp.makeConstraints { (make) in
-            make.top.equalTo(symptomViewsStack.snp.bottom).offset(15)
-            make.leading.trailing.bottom.equalToSuperview()
+        recentTagViews.reset()
+
+        for symptom in symptomList.neighborhoodSymptoms {
+            let tagView = recentTagViews.addTag(( symptom.id, symptom.name.lowercased()))
+            tagView.isSelectedRelay
+                .subscribe(onNext: { [weak self] (_) in
+                    self?.checkSelectedState()
+                })
+                .disposed(by: disposeBag)
         }
+        recentTagViews.rearrangeViews()
+        noneRecentLabel.isHidden = symptomList.neighborhoodSymptoms.isNotEmpty
     }
 
-    // MARK: - Error Handlers
-    func errorWhenFetchingData(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !showIfRequireUpdateVersion(with: error),
-            !handleErrorIfAsAFError(error) else {
-                return
-        }
-
-        Global.log.error(error)
-        showErrorAlertWithSupport(message: R.string.error.system())
-    }
-
-    fileprivate func errorWhenReport(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !handleErrorIfAsAFError(error),
-            !showIfRequireUpdateVersion(with: error) else {
-                return
-        }
-
-        Global.log.error(error)
-        showErrorAlertWithSupport(message: R.string.error.system())
-    }
+    var paddingContentView: UIView!
 
     // MARK: - Setup views
     override func setupViews() {
         super.setupViews()
-
-        // *** Setup subviews ***
-        let paddingContentView = LinearView(
-            items: [
-                (headerScreen, 0),
-                (titleScreen, 0),
-                (SeparateLine(height: 1), 3)],
-            bottomConstraint: true)
-
-        contentView.addSubview(paddingContentView)
-        contentView.addSubview(symptomsScrollView)
-        contentView.addSubview(groupsButton)
-
-        titleScreen.snp.makeConstraints { (make) in
-            make.height.equalTo(contentView).multipliedBy(OurTheme.titleHeight)
-        }
-
-        paddingContentView.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-                .inset(OurTheme.paddingOverBottomInset)
-        }
-
-        symptomsScrollView.snp.makeConstraints { (make) in
-            make.top.equalTo(paddingContentView.snp.bottom).offset(13)
-            make.leading.trailing.equalToSuperview()
-        }
-
-        groupsButton.snp.makeConstraints { (make) in
-            make.top.equalTo(symptomsScrollView.snp.bottom).offset(3)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-
-        sampleSymptomsScrollView()
-    }
-}
-
-// MARK: - PanModalDelegate
-extension SurveySymptomsViewController: PanModalDelegate {
-    func donePanModel() {
-        if let navViewControllers = navigationController?.viewControllers {
-            let leadingViewController = navViewControllers[navViewControllers.count - 2]
-
-            if type(of: leadingViewController) == SymptomHistoryViewController.self {
-                Navigator.default.pop(sender: self)
-                FormulaSupporter.pollingSyncFormula()
-                return
-            }
-        }
-
-        gotoMainScreen()
+        setupLayoutViews()
     }
 }
 
 // MARK: - Navigator
 extension SurveySymptomsViewController {
-    fileprivate func gotoMainScreen() {
-        let viewModel = MainViewModel()
-        navigator.show(segue: .main(viewModel: viewModel), sender: self,
-                       transition: .replace(type: .slide(direction: .down)))
+    fileprivate func gotoReportedScreen() {
+        let viewModel = ReportedSymptomViewModel()
+        navigator.show(segue: .reportedSymptoms(viewModel: viewModel), sender: self)
     }
 
     fileprivate func gotoAddNewSymptom() {
-        let survey = Survey()
-        let viewModel = AskInfoViewModel(askInfoType: .symptomTitle, survey: survey)
-        navigator.show(segue: .askInfo(viewModel: viewModel), sender: self)
-    }
-}
+        let viewModel = SearchSymptomViewModel()
 
-// MARK: - Setup views
-extension SurveySymptomsViewController {
-    fileprivate func makeTitleScreen() -> CenterView {
-        let label = Label()
-        label.numberOfLines = 0
-        label.apply(text: R.string.phrase.surveySymptomsTitle(),
-                    font: R.font.atlasGroteskLight(size: Size.ds(36)),
-                    themeStyle: .lightTextColor, lineHeight: 1.2)
-        label.textAlignment = .center
-        return CenterView(contentView: label, shrink: true)
+        viewModel.newSymptomSubject
+            .subscribe(onNext: { [weak self] (symptom) in
+                guard let self = self else { return }
+                self.selectIfExistingOrAdd(with: symptom)
+            })
+            .disposed(by: disposeBag)
+
+        navigator.show(segue: .searchSymptom(viewModel: viewModel), sender: self,
+                       transition: .customModal(type: .slide(direction: .up)))
+    }
+
+    fileprivate func selectIfExistingOrAdd(with symptom: Symptom) {
+        for tagView in (commonTagViews.tagViews + recentTagViews.tagViews) {
+            if tagView.id == symptom.id {
+                tagView.isSelected = true
+                return
+            }
+        }
+
+        let newTagView = recentTagViews.addTag((id: symptom.id, value: symptom.name.lowercased()))
+        newTagView.isSelected = true
+        doneButton.isEnabled = true
+        recentTagViews.rearrangeViews()
+        noneRecentLabel.isHidden = true
+
+        newTagView.isSelectedRelay
+            .subscribe(onNext: { [weak self] (_) in
+                self?.checkSelectedState()
+            })
+            .disposed(by: disposeBag)
     }
 
     fileprivate func makeAddNewSymptomView() -> UIView {
-        let addNewView = AddRow(title: R.string.phrase.addSymptomAdd())
+        let addNewView = AddRow(title: R.string.phrase.surveyReportNewSymptom())
 
         let tapGesture = UITapGestureRecognizer()
         tapGesture.rx.event.bind { [weak self] (_) in
@@ -246,30 +216,5 @@ extension SurveySymptomsViewController {
 
         addNewView.addGestureRecognizer(tapGesture)
         return addNewView
-    }
-
-    fileprivate func makeSymptomsScrollView() -> UIScrollView {
-        let scrollView = UIScrollView()
-        scrollView.contentInset = OurTheme.paddingInset
-        scrollView.isSkeletonable = true
-        return scrollView
-    }
-
-    fileprivate func sampleSymptomsScrollView() {
-        let symptomViews = (0...3).map { (_) -> CheckboxView in
-            return CheckboxView(title: Constant.fieldPlaceholder, description: Constant.fieldPlaceholder)
-        }
-
-        let symptomViewsStack = UIStackView(arrangedSubviews: symptomViews, axis: .vertical, spacing: 15)
-        symptomViewsStack.isSkeletonable = true
-        symptomViewsStack.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
-
-        symptomsScrollView.removeSubviews()
-        symptomsScrollView.addSubview(symptomViewsStack)
-
-        symptomViewsStack.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-            make.width.equalToSuperview().offset(-30)
-        }
     }
 }

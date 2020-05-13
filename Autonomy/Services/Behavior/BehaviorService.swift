@@ -13,23 +13,32 @@ import Moya
 class BehaviorService {
     static var provider = MoyaProvider<BehaviorAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
-    static func getList() -> Single<[Behavior]> {
+    static func getList() -> Single<BehaviorList> {
         Global.log.info("[start] BehaviorService.getList")
 
         return provider.rx
             .requestWithRefreshJwt(.list)
             .filterSuccess()
-            .map([Behavior].self, atKeyPath: "behaviors")
+            .map(BehaviorList.self)
     }
 
-    static func create(survey: Survey) -> Single<Behavior> {
-        Global.log.info("[start] BehaviorService.create(survey:)")
+    static func getFullList() -> Single<BehaviorFullList> {
+        Global.log.info("[start] BehaviorService.getFullList")
 
         return provider.rx
-            .requestWithRefreshJwt(.create(survey: survey))
+            .requestWithRefreshJwt(.fullList)
+            .filterSuccess()
+            .map(BehaviorFullList.self)
+    }
+
+    static func create(name: String) -> Single<Behavior> {
+        Global.log.info("[start] BehaviorService.create(name:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.create(name: name))
             .filterSuccess()
             .map(String.self, atKeyPath: "id")
-            .map { Behavior(id: $0, name: survey.name, desc: survey.desc) }
+            .map { Behavior(id: $0, name: name) }
     }
 
     static func report(behaviorKeys: [String]) -> Completable {
@@ -39,5 +48,14 @@ class BehaviorService {
             .requestWithRefreshJwt(.report(behaviorKeys: behaviorKeys))
             .filterSuccess()
             .asCompletable()
+    }
+
+    static func getMetrics() -> Single<SurveyMetrics> {
+        Global.log.info("[start] BehaviorService.getMetrics")
+
+        return provider.rx
+            .requestWithRefreshJwt(.metrics)
+            .filterSuccess()
+            .map(SurveyMetrics.self)
     }
 }

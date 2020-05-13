@@ -43,8 +43,17 @@
 "survey.help.assistance" = "我需要協助";
 "survey.help.assistance.description" = "讓您當地的社群知道您需要幫助。";
 
-"survey.symptoms.title" = "您有以下症狀嗎？";
-"survey.behaviors.title" = "您今天有執行以下事項嗎？";
+"survey.symptoms.title" = "Tap any symptoms you have or add new ones:";
+"survey.commonSymptoms" = "Common covid-19 symptoms";
+"survey.recentSymptoms" = "Recent neighborhood symptoms";
+"survey.reportNewSymptom" = "Report other symptom ...";
+"survey.symptom.reporting" = "Reporting your symptoms to your neighborhood ...";
+
+"survey.behaviors.title" = "Tap any healthy behaviors you did today or add new ones:";
+"survey.commonBehaviors" = "Recommended covid-19 behaviors:";
+"survey.recentBehaviors" = "Recent behaviors near you";
+"survey.reportNewBehavior" = "Report other behavior ...";
+"survey.behavior.reporting" = "Reporting your healthy behaviors to your neighborhood ...";
 
 "assistance.title" = "您需要哪一類的協助？";
 "assistance.foodAndWater" = "取得食物或飲水";
@@ -86,25 +95,9 @@
 "giveHelp.helper.otherSubmitted" = "Someone has already signed up to fulfill this community request.";
 "giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
 */
-"symptoms.reported.title" = "已成功將您的症狀回報給您的社群";
-"symptoms.reported.desc" = "感謝您花時間讓您的社群更開心健康。如果症狀持續，請持續回報。";
-"addSymptom.add" = "新增症狀...";
-"addSymptom.form.name" = "新增您的症狀的標題：";
-"addSymptom.form.name.placeholder" = "請輸入標題...";
-"addSymptom.form.desc" = "您可以為新增的症狀加入一些描述(選填)：";
-"addSymptom.form.desc.placeholder" = "請輸入您選填的描述...";
-"addSymptom.thank.title" = "已成功新增症狀至您所屬的社群的症狀清單中";
-"addSymptom.thank.desc" = "感謝您花時間讓您的社群更開心健康。若有其他症狀，請持續新增。";
 
-"behaviors.reported.title" = "已成功回報您的行為至您的社群";
-"behaviors.reported.desc" = "感謝您花時間讓您的社群更開心健康。如果您持續有相同的行為，請持續回報。";
-"addBehavior.add" = "新增行為...";
-"addBehavior.form.name" = "新增您的行為的標題：";
-"addBehavior.form.name.placeholder" = "請輸入標題...";
-"addBehavior.form.desc" = "您可以為新增的行為加入一些描述(選填)：";
-"addBehavior.form.desc.placeholder" = "請輸入您選填的描述...";
-"addBehavior.thank.title" = "已成功新增症狀至您所屬的社群的行為清單中";
-"addBehavior.thank.desc" = "感謝您花時間讓您的社群更開心健康。若之後有其他新的行為，請持續新增。";
+"symptoms.reported.title" = "Thanks for sharing your symptoms with your neighborhood!";
+"behaviors.reported.title" = "Thanks for making your neighborhood healthier!";
 
 "history.symptom.title" = "症狀歷史";
 "history.behavior.title" = "行為歷史";

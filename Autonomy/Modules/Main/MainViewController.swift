@@ -499,7 +499,8 @@ extension MainViewController: LocationDelegate {
             })
             .disposed(by: disposeBag)
 
-        navigator.show(segue: .locationSearch(viewModel: viewModel), sender: self, transition: .customModal(type: .slide(direction: .up)))
+        navigator.show(segue: .locationSearch(viewModel: viewModel), sender: self,
+                       transition: .customModal(type: .slide(direction: .up)))
     }
 
     func gotoLastPOICell() {

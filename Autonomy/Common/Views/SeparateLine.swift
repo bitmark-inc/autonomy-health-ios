@@ -25,6 +25,12 @@ class SeparateLine: UIView {
             themeService.rx
                 .bind({ $0.separateTextColor }, to: rx.backgroundColor)
                 .disposed(by: disposeBag)
+
+        case .mineShaftBackground:
+            themeService.rx
+                .bind({ $0.mineShaftBackground }, to: rx.backgroundColor)
+                .disposed(by: disposeBag)
+
         default:
             break
         }

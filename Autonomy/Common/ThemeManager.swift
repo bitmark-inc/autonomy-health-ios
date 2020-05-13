@@ -42,6 +42,7 @@ enum ThemeStyle {
     case lightTextColor
     case separateTextColor
     case background
+    case mineShaftBackground
     case silverChaliceColor
     case textViewTextColor
     case blueRibbonColor

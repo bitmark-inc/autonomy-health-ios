@@ -38,6 +38,7 @@ def sharedPods
   pod 'SwiftRichString'
   pod 'SwiftDate'
   pod 'MGSwipeTableCell'
+  pod 'MaterialProgressBar'
 end
 
 

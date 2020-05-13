@@ -23,11 +23,10 @@ class RightIconButton: UIButton {
 
         // make icon in the right edge
         titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
-        contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: spacing + 10)
+        contentEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: spacing)
         transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
-        imageView?.contentMode = .scaleAspectFit
     }
 
     required init?(coder: NSCoder) {

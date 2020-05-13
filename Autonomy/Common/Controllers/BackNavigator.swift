@@ -9,18 +9,21 @@
 import UIKit
 
 protocol BackNavigator {
-    func makeLightBackItem() -> LeftSubmitButton
+    func makeLightBackItem() -> LeftIconButton
 }
 
 extension BackNavigator where Self: ViewController {
-    func makeLightBackItem() -> LeftSubmitButton {
-        let backItem = LeftSubmitButton(
+    func makeLightBackItem() -> LeftIconButton {
+        let backItem = LeftIconButton(
             title: R.string.localizable.back().localizedUppercase,
             icon: R.image.backCircleArrow()!)
 
-        backItem.rxTap.bind { [weak self] in
+        backItem.rx.tap.bind { [weak self] in
             self?.tapToBack()
         }.disposed(by: disposeBag)
+    
+        backItem.apply(font: R.font.domaineSansTextLight(size: 24),
+                       backgroundTheme: .lightTextColor)
 
         return backItem
     }
