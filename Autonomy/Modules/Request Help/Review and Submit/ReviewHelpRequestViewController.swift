@@ -140,7 +140,7 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
         }
 
         titleScreen.snp.makeConstraints { (make) in
-            make.height.equalTo(contentView).multipliedBy(OurTheme.titleHeight)
+            make.height.equalTo(OurTheme.titleHeight)
         }
 
         scrollView.snp.makeConstraints { (make) in

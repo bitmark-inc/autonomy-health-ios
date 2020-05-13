@@ -22,6 +22,7 @@ def sharedPods
   pod 'IQKeyboardManagerSwift'
   pod 'Hero'
   pod 'PanModal'
+  pod 'Kingfisher'
   pod 'SVProgressHUD'
   pod 'SwiftEntryKit'
   pod 'R.swift'
@@ -30,6 +31,7 @@ def sharedPods
   pod 'KMPlaceholderTextView'
   pod 'SkeletonView'
   pod 'SwiftSVG'
+  pod 'YoutubePlayerView'
 
   pod 'SwifterSwift'
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ImageView: UIImageView {
 
@@ -33,5 +34,22 @@ class ImageView: UIImageView {
     func setupViews() {
         contentMode = .scaleAspectFit
         layer.masksToBounds = true
+    }
+
+    func loadPhotoMedia(photoPath: String) {
+        guard let photoURL = URL(string: photoPath) else {
+            Global.log.error("invalid photo URL: \(photoPath)")
+            return
+        }
+
+        let imageResource = ImageResource(downloadURL: photoURL)
+        kf.setImage(with: imageResource) { (result) in
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                Global.log.debug(error)
+            }
+        }
     }
 }

@@ -54,7 +54,7 @@ class SurveyHelpViewController: ViewController {
 
         contentView.addSubview(paddingContentView)
         titleScreen.snp.makeConstraints { (make) in
-            make.height.equalTo(contentView).multipliedBy(OurTheme.titleHeight)
+            make.height.equalTo(OurTheme.titleHeight)
         }
         paddingContentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview().inset(OurTheme.paddingInset)

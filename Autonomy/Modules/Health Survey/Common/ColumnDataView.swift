@@ -37,10 +37,17 @@ class ColumnDataView: UIView {
                 (makeFromYesterdayLabel(), 8)
         ], bottomConstraint: true)
 
+        numberLabel.snp.makeConstraints { (make) in
+            make.width.equalToSuperview().multipliedBy(0.95)
+        }
+
         addSubview(contentView)
         contentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+
+        isSkeletonable = true
+        contentView.isSkeletonable = true
     }
 
     func setData(number: Float?, delta: Float?) {
@@ -89,14 +96,17 @@ class ColumnDataView: UIView {
     }
 
     fileprivate func makeDeltaView() -> UIView {
-        return RowView(items: [
-            (changeStatusArrow, 0),
-            (deltaLabel, 3)
-        ], trailingConstraint: false)
+        let rowView = RowView(items: [
+                (changeStatusArrow, 0),
+                (deltaLabel, 3)
+            ], trailingConstraint: false)
+        rowView.isSkeletonable = true
+        return rowView
     }
 
     fileprivate func makeNumberLabel() -> Label {
         let label = Label()
+        label.isSkeletonable = true
         label.adjustsFontSizeToFitWidth = true
         label.apply(font: R.font.ibmPlexMonoLight(size: 96), themeStyle: .lightTextColor)
         return label
@@ -104,12 +114,14 @@ class ColumnDataView: UIView {
 
     fileprivate func makeChangeStatusArrow() -> UIImageView {
         let imageView = UIImageView()
+        imageView.isSkeletonable = true
         imageView.contentMode = .scaleAspectFit
         return imageView
     }
 
     fileprivate func makeDeltaLabel() -> Label {
         let label = Label()
+        label.isSkeletonable = true
         label.font = R.font.ibmPlexMonoLight(size: 18)
         return label
     }

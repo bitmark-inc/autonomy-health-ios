@@ -35,6 +35,7 @@
 "Requests" = "請求";
 "Review" = "審閱";
 "GotIt" = "了解";
+"Guidance" = "Guidance";
 "Submit" = "提交";
 "SignUp" = "註冊";
 "Submitted" = "已提交";
@@ -107,3 +108,8 @@
 
 "Yesterday" = "昨日";
 "Today" = "今日";
+
+"HandWashing" = "Hand Washing";
+"Applying Hand Sanitizer" = "Applying Hand Sanitizer";
+"Wearing A Surgical Mask" = "Wearing A Surgical Mask";
+"Covering Coughs" = "Covering Coughs";

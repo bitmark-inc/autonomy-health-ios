@@ -68,11 +68,21 @@ class ReportedSymptomViewController: ViewController, ReportedSurveyLayout {
             .disposed(by: disposeBag)
 
         thisViewModel.metricsRelay
-            .filterNil()
             .subscribe(onNext: {  [weak self] (metrics) in
-                self?.bindData(with: metrics)
+                guard let self = self else { return }
+                if let metrics = metrics {
+                    self.setSkeleton(show: false)
+                    self.bindData(with: metrics)
+                } else {
+                    self.setSkeleton(show: true)
+                }
+
             })
             .disposed(by: disposeBag)
+
+        subInfoButton.rx.tap.bind { [weak self] in
+            self?.gotoBehaviorGuidanceView()
+        }.disposed(by: disposeBag)
     }
 
     // MARK: - Setup views
@@ -89,6 +99,10 @@ extension ReportedSymptomViewController {
         let viewModel = SurveyBehaviorsViewModel()
         navigator.show(segue: .surveyBehaviors(viewModel: viewModel), sender: self,
                        transition: .navigation(type: .slide(direction: .up)))
+    }
+
+    fileprivate func gotoBehaviorGuidanceView() {
+        navigator.show(segue: .behaviorGuidance, sender: self)
     }
 }
 

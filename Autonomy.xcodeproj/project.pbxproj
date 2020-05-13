@@ -626,6 +626,15 @@
 		5BCBBD0E246BD72600B735EE /* SurveyMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD0D246BD72600B735EE /* SurveyMetrics.swift */; };
 		5BCBBD0F246BD72600B735EE /* SurveyMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD0D246BD72600B735EE /* SurveyMetrics.swift */; };
 		5BCBBD10246BD72600B735EE /* SurveyMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD0D246BD72600B735EE /* SurveyMetrics.swift */; };
+		5BCBBD13246BEECE00B735EE /* BehaviorGuidanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD12246BEECE00B735EE /* BehaviorGuidanceViewController.swift */; };
+		5BCBBD14246BEECE00B735EE /* BehaviorGuidanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD12246BEECE00B735EE /* BehaviorGuidanceViewController.swift */; };
+		5BCBBD15246BEECE00B735EE /* BehaviorGuidanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD12246BEECE00B735EE /* BehaviorGuidanceViewController.swift */; };
+		5BCBBD17246BF09700B735EE /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD16246BF09700B735EE /* VideoCell.swift */; };
+		5BCBBD18246BF09700B735EE /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD16246BF09700B735EE /* VideoCell.swift */; };
+		5BCBBD19246BF09700B735EE /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD16246BF09700B735EE /* VideoCell.swift */; };
+		5BCBBD1B246C0F8500B735EE /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD1A246C0F8500B735EE /* HeaderCell.swift */; };
+		5BCBBD1C246C0F8500B735EE /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD1A246C0F8500B735EE /* HeaderCell.swift */; };
+		5BCBBD1D246C0F8500B735EE /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBBD1A246C0F8500B735EE /* HeaderCell.swift */; };
 		5BDB655B246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BDB655F246A84C1003CD084 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C859B242DEDBB002CC53B /* NotificationService.swift */; };
 		5BFC8DC02433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
@@ -914,7 +923,7 @@
 		5BAA772824598D50003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5BAA772A24599287003CCE92 /* LocationHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewModel.swift; sourceTree = "<group>"; };
 		5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewController.swift; sourceTree = "<group>"; };
-		5BAE84BD246A7985006E118D /* Autonomy Inhouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Autonomy Inhouse.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BAE84BD246A7985006E118D /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB14091242C4A57009EFC59 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
 		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
@@ -938,6 +947,9 @@
 		5BCBBD05246BD01600B735EE /* ReportedBehaviorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportedBehaviorViewController.swift; sourceTree = "<group>"; };
 		5BCBBD06246BD01600B735EE /* ReportedBehaviorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportedBehaviorViewModel.swift; sourceTree = "<group>"; };
 		5BCBBD0D246BD72600B735EE /* SurveyMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyMetrics.swift; sourceTree = "<group>"; };
+		5BCBBD12246BEECE00B735EE /* BehaviorGuidanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorGuidanceViewController.swift; sourceTree = "<group>"; };
+		5BCBBD16246BF09700B735EE /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		5BCBBD1A246C0F8500B735EE /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceInhouseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFC8DBE2433081400815828 /* HealthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		5BFC8DBF2433081400815828 /* HealthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAPI.swift; sourceTree = "<group>"; };
@@ -1175,6 +1187,7 @@
 				5B4EF6E32446AFE800BCB323 /* SurveyBehaviorsViewModel.swift */,
 				5BCBBCE7246BC55F00B735EE /* Search */,
 				5BCBBD04246BD01600B735EE /* Reported */,
+				5BCBBD11246BEEB100B735EE /* Guidance */,
 			);
 			path = Behaviors;
 			sourceTree = "<group>";
@@ -1264,6 +1277,7 @@
 				5B82FD0F245C20AC00C81856 /* FigDataView.swift */,
 				5B544E99245C3D7800B8003A /* FigLabel.swift */,
 				5B219BCE2468F2F3004FACEA /* TagListView.swift */,
+				5BCBBD1A246C0F8500B735EE /* HeaderCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1569,7 +1583,7 @@
 				5B57785D242B330E0028D3E3 /* Autonomy.app */,
 				5B2C8599242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex */,
 				5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */,
-				5BAE84BD246A7985006E118D /* Autonomy Inhouse.app */,
+				5BAE84BD246A7985006E118D /* Autonomy.app */,
 				5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */,
 			);
 			name = Products;
@@ -1786,6 +1800,15 @@
 			path = Reported;
 			sourceTree = "<group>";
 		};
+		5BCBBD11246BEEB100B735EE /* Guidance */ = {
+			isa = PBXGroup;
+			children = (
+				5BCBBD12246BEECE00B735EE /* BehaviorGuidanceViewController.swift */,
+				5BCBBD16246BF09700B735EE /* VideoCell.swift */,
+			);
+			path = Guidance;
+			sourceTree = "<group>";
+		};
 		5BDA94E2244991BB00BE829A /* Behavior */ = {
 			isa = PBXGroup;
 			children = (
@@ -1960,7 +1983,7 @@
 			);
 			name = "Autonomy Inhouse";
 			productName = Autonomy;
-			productReference = 5BAE84BD246A7985006E118D /* Autonomy Inhouse.app */;
+			productReference = 5BAE84BD246A7985006E118D /* Autonomy.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5BDB6553246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension */ = {
@@ -2604,6 +2627,7 @@
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
 				5B130BBE2451AD590031F176 /* FormulaIndicatorView.swift in Sources */,
 				5BCBBD0B246BD01600B735EE /* ReportedBehaviorViewModel.swift in Sources */,
+				5BCBBD14246BEECE00B735EE /* BehaviorGuidanceViewController.swift in Sources */,
 				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B213F08244413FC0095BE18 /* Location.swift in Sources */,
 				5B7F239A243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
@@ -2626,6 +2650,7 @@
 				5B4B60BF2460149A00432151 /* SymptomWeightView.swift in Sources */,
 				5B2661AC2457DF8600163404 /* PointOfInterestAPI.swift in Sources */,
 				5B4B60C32460462000432151 /* Debug.swift in Sources */,
+				5BCBBD18246BF09700B735EE /* VideoCell.swift in Sources */,
 				5B2661B424583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B219BDC246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
@@ -2688,6 +2713,7 @@
 				5B577918242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5BCBBCF6246BC59100B735EE /* SearchBehaviorViewController.swift in Sources */,
 				5B577907242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
+				5BCBBD1C246C0F8500B735EE /* HeaderCell.swift in Sources */,
 				5B92E3EC2437220D00E5949A /* HealthScoreTriangle.swift in Sources */,
 				5B87F082242CA2D80084B4F6 /* CenterView.swift in Sources */,
 				5B4957482449A0CD0012D6E1 /* ProfileAPI.swift in Sources */,
@@ -2775,6 +2801,7 @@
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
 				5B130BBD2451AD590031F176 /* FormulaIndicatorView.swift in Sources */,
 				5BCBBD0A246BD01600B735EE /* ReportedBehaviorViewModel.swift in Sources */,
+				5BCBBD13246BEECE00B735EE /* BehaviorGuidanceViewController.swift in Sources */,
 				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B213F07244413FC0095BE18 /* Location.swift in Sources */,
 				5B7F2399243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
@@ -2797,6 +2824,7 @@
 				5B4B60BE2460149A00432151 /* SymptomWeightView.swift in Sources */,
 				5B2661AA2457DF6B00163404 /* PointOfInterestAPI.swift in Sources */,
 				5B4B60C22460462000432151 /* Debug.swift in Sources */,
+				5BCBBD17246BF09700B735EE /* VideoCell.swift in Sources */,
 				5B2661B324583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B219BDB246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
@@ -2859,6 +2887,7 @@
 				5B577917242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5BCBBCF5246BC59100B735EE /* SearchBehaviorViewController.swift in Sources */,
 				5B577906242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
+				5BCBBD1B246C0F8500B735EE /* HeaderCell.swift in Sources */,
 				5B92E3EB2437220D00E5949A /* HealthScoreTriangle.swift in Sources */,
 				5B87F081242CA2D80084B4F6 /* CenterView.swift in Sources */,
 				5B4957472449A0CD0012D6E1 /* ProfileAPI.swift in Sources */,
@@ -2937,6 +2966,7 @@
 				5BAE8426246A7985006E118D /* NoInternetBanner.swift in Sources */,
 				5BAE8427246A7985006E118D /* ProfileService.swift in Sources */,
 				5BAE8428246A7985006E118D /* AuthService.swift in Sources */,
+				5BCBBD19246BF09700B735EE /* VideoCell.swift in Sources */,
 				5BAE8429246A7985006E118D /* NetworkConnectionManager.swift in Sources */,
 				5BAE842A246A7985006E118D /* AreaProfileAPI.swift in Sources */,
 				5BAE842B246A7985006E118D /* HealthAPI.swift in Sources */,
@@ -2947,6 +2977,7 @@
 				5BAE8430246A7985006E118D /* SeparateLine.swift in Sources */,
 				5BAE8431246A7985006E118D /* Location.swift in Sources */,
 				5BAE8432246A7985006E118D /* GiveHelpViewController.swift in Sources */,
+				5BCBBD1D246C0F8500B735EE /* HeaderCell.swift in Sources */,
 				5BAE8433246A7985006E118D /* PanModalDelegate.swift in Sources */,
 				5BAE8434246A7985006E118D /* GiveHelpViewModel.swift in Sources */,
 				5BAE8435246A7985006E118D /* ServerAssetsService.swift in Sources */,
@@ -3030,6 +3061,7 @@
 				5BCBBD10246BD72600B735EE /* SurveyMetrics.swift in Sources */,
 				5BAE8481246A7985006E118D /* OnboardingStep1ViewController.swift in Sources */,
 				5BAE8482246A7985006E118D /* MainViewModel.swift in Sources */,
+				5BCBBD15246BEECE00B735EE /* BehaviorGuidanceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3458,7 +3490,7 @@
 				MARKETING_VERSION = 0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D PRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.inhouse;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Autonomy;
 				PROVISIONING_PROFILE_SPECIFIER = "Autonomy Dev Inhouse";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3484,7 +3516,7 @@
 				MARKETING_VERSION = 0.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D PRODUCTION";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitmark.autonomy.inhouse;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Autonomy;
 				PROVISIONING_PROFILE_SPECIFIER = "com.bitmark.autonomy.inhouse InHouse";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

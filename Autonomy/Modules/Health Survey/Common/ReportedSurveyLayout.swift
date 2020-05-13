@@ -29,6 +29,7 @@ protocol ReportedSurveyLayout {
     func bindData(with metrics: SurveyMetrics)
     func errorForGeneral(error: Error)
     func gotoMainScreen()
+    func setSkeleton(show: Bool)
     func setupLayoutViews()
 }
 
@@ -58,6 +59,16 @@ extension ReportedSurveyLayout where Self: ViewController {
         let viewModel = MainViewModel()
         navigator.show(segue: .main(viewModel: viewModel), sender: self,
                        transition: .replace(type: .slide(direction: .up)))
+    }
+
+    func setSkeleton(show: Bool) {
+        if show {
+            totalDataView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
+            communityAverageDataView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
+        } else {
+            totalDataView.hideSkeleton()
+            communityAverageDataView.hideSkeleton()
+        }
     }
 
     func setupLayoutViews() {
@@ -104,7 +115,7 @@ extension ReportedSurveyLayout where Self: ViewController {
         contentView.addSubview(groupsButton)
 
         titleScreen.snp.makeConstraints { (make) in
-            make.height.equalTo(contentView).multipliedBy(OurTheme.titleHeight)
+            make.height.equalTo(OurTheme.titleHeight)
         }
 
         scrollView.snp.makeConstraints { (make) in

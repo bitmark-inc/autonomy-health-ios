@@ -103,6 +103,8 @@
 "symptoms.reported.title" = "Thanks for sharing your symptoms with your neighborhood!";
 "behaviors.reported.title" = "Thanks for making your neighborhood healthier!";
 
+"behaviors.guidance.title" = "How to correctly perform healthy behaviors:";
+
 "history.symptom.title" = "Symptom History";
 "history.behavior.title" = "Behavior History";
 "history.location.title" = "Location History";

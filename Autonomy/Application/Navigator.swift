@@ -38,6 +38,7 @@ class Navigator {
         case surveyBehaviors(viewModel: SurveyBehaviorsViewModel)
         case searchBehavior(viewModel: SearchBehaviorViewModel)
         case reportedBehaviors(viewModel: ReportedBehaviorViewModel)
+        case behaviorGuidance
         case assistance(viewModel: AssistanceViewModel)
         case assistanceAskInfo(viewModel: AssistanceAskInfoViewModel)
         case reviewHelpRequest(viewModel: ReviewHelpRequestViewModel)
@@ -86,6 +87,7 @@ class Navigator {
         case .surveyBehaviors(let viewModel):   return SurveyBehaviorsViewController(viewModel: viewModel)
         case .searchBehavior(let viewModel):      return SearchBehaviorViewController(viewModel: viewModel)
         case .reportedBehaviors(let viewModel):  return ReportedBehaviorViewController(viewModel: viewModel)
+        case .behaviorGuidance:                 return BehaviorGuidanceViewController()
         case .assistance(let viewModel):        return AssistanceViewController(viewModel: viewModel)
         case .assistanceAskInfo(let viewModel): return AssistanceAskInfoViewController(viewModel: viewModel)
         case .reviewHelpRequest(let viewModel): return ReviewHelpRequestViewController(viewModel: viewModel)
