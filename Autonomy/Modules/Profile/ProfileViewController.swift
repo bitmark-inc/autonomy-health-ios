@@ -63,6 +63,8 @@ class ProfileViewController: ViewController, BackNavigator {
     override func setupViews() {
         super.setupViews()
 
+        Global.current.locationManager.requestAlwaysAuthorization()
+
         let reportSectionView = makeSectionView(
             title: R.string.localizable.report(),
             buttons: [reportSymptomsButton, reportBehaviorsButton])

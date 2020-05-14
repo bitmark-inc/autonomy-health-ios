@@ -52,25 +52,25 @@ class LocationPermission {
     }
 
     static func askEnableLocationAlert() {
+        let alertController = UIAlertController(
+            title: R.string.error.locationTitle(),
+            message: R.string.error.locationMessage(),
+            preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(
+            title: R.string.localizable.cancel(),
+            style: .cancel, handler: nil)
+
+        let enableAction = UIAlertAction(
+            title: R.string.localizable.enable(),
+            style: .default, handler: self.openAppSettings)
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(enableAction)
+        alertController.preferredAction = enableAction
+
         DispatchQueue.main.async {
-            let alertController = UIAlertController(
-                title: R.string.error.locationTitle(),
-                message: R.string.error.locationMessage(),
-                preferredStyle: .alert)
-
-            let cancelAction = UIAlertAction(
-                title: R.string.localizable.cancel(),
-                style: .cancel, handler: nil)
-
-            let enableAction = UIAlertAction(
-                title: R.string.localizable.enable(),
-                style: .default, handler: self.openAppSettings)
-
-            alertController.addAction(cancelAction)
-            alertController.addAction(enableAction)
-            alertController.preferredAction = enableAction
-
-            alertController.show()
+                alertController.show()
         }
     }
 

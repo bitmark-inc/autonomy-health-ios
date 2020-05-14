@@ -57,4 +57,13 @@ class ProfileService {
             .filterSuccess()
             .asCompletable()
     }
+
+    static func reportHere() -> Completable {
+        Global.log.info("[start] ProfileService.reportHere")
+
+        return provider.rx
+            .requestWithRefreshJwt(.reportHere)
+            .filterSuccess()
+            .asCompletable()
+    }
 }

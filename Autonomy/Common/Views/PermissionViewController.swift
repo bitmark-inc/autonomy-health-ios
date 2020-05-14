@@ -55,7 +55,7 @@ class PermissionViewController: ViewController, BackNavigator {
             if LocationPermission.isEnabled() == false {
                 LocationPermission.askEnableLocationAlert()
             } else {
-                Global.current.locationManager.requestWhenInUseAuthorization()
+                Global.current.locationManager.requestAlwaysAuthorization()
             }
         }.disposed(by: disposeBag)
 
@@ -73,6 +73,10 @@ class PermissionViewController: ViewController, BackNavigator {
             .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] (isEnabled) in
                 self?.notificationOptionBox.button.isEnabled = !isEnabled
+                if isEnabled {
+                    Global.default.locationManager
+                        .startMonitoringSignificantLocationChanges()
+                }
             })
             .disposed(by: disposeBag)
 

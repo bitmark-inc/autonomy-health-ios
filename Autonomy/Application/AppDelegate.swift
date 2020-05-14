@@ -138,6 +138,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         Global.current.userLocationRelay.accept(locations.last)
+
+        _ = ProfileService.reportHere()
+            .subscribe(onCompleted: {
+                Global.log.info("[reportHere] successfully")
+            }, onError: { (error) in
+                Global.log.error(error)
+            })
     }
 }
 

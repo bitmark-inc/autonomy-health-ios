@@ -15,6 +15,7 @@ enum ProfileAPI {
     case getMe
     case updateMe(metadata: [String: Any])
     case deleteMe
+    case reportHere
 }
 
 extension ProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -29,6 +30,8 @@ extension ProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
             return ""
         case .getMe, .updateMe, .deleteMe:
             return "me"
+        case .reportHere:
+            return "me/here"
         }
     }
 
@@ -38,6 +41,7 @@ extension ProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
         case .getMe:    return .get
         case .updateMe: return .patch
         case .deleteMe: return .delete
+        case .reportHere: return .put
         }
     }
 
@@ -51,7 +55,7 @@ extension ProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
         case .create(let encryptedPublicKey, let metadata):
             params["enc_pub_key"] = encryptedPublicKey
             params["metadata"] = metadata
-        case .getMe, .deleteMe:
+        case .getMe, .deleteMe, .reportHere:
             return nil
         case .updateMe(let metadata):
             params["metadata"] = metadata
