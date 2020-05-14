@@ -66,6 +66,14 @@ class SearchBehaviorViewModel: ViewModel {
 
     func submitBehavior(name: String) {
         loadingState.onNext(.processing)
+        var name = name
+        let cleanName = name.trim().lowercased()
+
+        if let existingBehavior = fullBehaviorsRelay.value.first(where: { $0.name.lowercased() == cleanName }) {
+            submitBehaviorResultSubject.onNext(Event.next(existingBehavior))
+            return
+        }
+
         BehaviorService.create(name: name)
             .asObservable()
             .materializeWithCompleted(to: submitBehaviorResultSubject)

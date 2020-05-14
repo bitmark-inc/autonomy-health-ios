@@ -66,6 +66,14 @@ class SearchSymptomViewModel: ViewModel {
 
     func submitSymptom(name: String) {
         loadingState.onNext(.processing)
+        var name = name
+        let cleanName = name.trim().lowercased()
+
+        if let existingSymptom = fullSymptomsRelay.value.first(where: { $0.name.lowercased() == cleanName }) {
+            submitSymptomResultSubject.onNext(Event.next(existingSymptom))
+            return
+        }
+        
         SymptomService.create(name: name)
             .asObservable()
             .materializeWithCompleted(to: submitSymptomResultSubject)

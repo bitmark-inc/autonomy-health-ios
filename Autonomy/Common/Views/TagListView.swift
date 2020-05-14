@@ -69,6 +69,7 @@ class TagListView: UIView {
             tagView.frame.size = tagView.intrinsicContentSize
 
             if currentRowView == nil || currentRowWidth + tagView.frame.width > frameWidth {
+                tagView.frame.size.width = min(tagView.frame.width, frameWidth)
                 currentRow += 1
                 currentRowView = UIView()
                 currentRowWidth = 0
