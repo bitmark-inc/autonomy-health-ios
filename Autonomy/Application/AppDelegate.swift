@@ -151,8 +151,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             NotificationPermission.restartScheduleReminderNotification()
         }
 
-        if [Constant.NotificationIdentifier.checkInSurvey1, Constant.NotificationIdentifier.checkInSurvey2].contains(notificationIdentifier) {
-            Navigator.gotoHealthSurveyScreen()
+        guard Global.current.account != nil else { return }
+        switch notificationIdentifier {
+        case Constant.NotificationIdentifier.checkInSurvey1, Constant.NotificationIdentifier.checkInSurvey2:
+            Navigator.goto(segue: .healthSurvey)
+
+        case Constant.NotificationIdentifier.cleanAndDisinfectSurfaces:
+            let viewModel = ReportedBehaviorViewModel()
+            Navigator.goto(segue: .reportedBehaviors(viewModel: viewModel))
+
+        default:
+            return
         }
 
         completionHandler()

@@ -214,8 +214,13 @@ class Navigator {
 }
 
 extension Navigator {
-    static func gotoHealthSurveyScreen() {
-        Navigator.default.show(segue: .healthSurvey, sender: nil, transition: .replace(type: .none))
+    static func goto(segue: Scene) {
+        guard let currentVC = Navigator.getRootViewController()?.topViewController else {
+            Navigator.default.show(segue: segue, sender: nil, transition: .replace(type: .none))
+            return
+        }
+
+        Navigator.default.show(segue: segue, sender: currentVC)
     }
 
     static let disposeBag = DisposeBag()

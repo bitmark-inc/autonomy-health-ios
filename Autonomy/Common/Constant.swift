@@ -34,6 +34,7 @@ public struct Constant {
     public struct NotificationIdentifier {
         public static let checkInSurvey1 = "check-in-survey-1"
         public static let checkInSurvey2 = "check-in-survey-2"
+        public static let cleanAndDisinfectSurfaces = "clean-and-disinfect-surfaces";
     }
 
 

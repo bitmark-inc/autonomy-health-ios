@@ -125,3 +125,6 @@
 
 "notification.survey.title" = "Check-in survey";
 "notification.survey.desc" = "How are you right now? Tap to check in.";
+
+"notification.cleanAndDisinfectSurfaces.title" = "Clean and disinfect surfaces";
+"notification.cleanAndDisinfectSurfaces.desc" = "Have you cleaned and disinfected frequently touched surfaces today to prevent virus transmission? Tap if you did this.";
