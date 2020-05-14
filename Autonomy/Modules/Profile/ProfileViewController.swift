@@ -228,7 +228,9 @@ extension ProfileViewController {
     }
 
     fileprivate func makeButton(title: String) -> UIButton {
-        return RightIconButton(title: title, icon: R.image.nextSilverCircle30(), spacing: 15)
+        let button = RightIconButton(title: title, icon: R.image.nextSilverCircle30(), spacing: 15)
+        button.apply(font: R.font.domaineSansTextLight(size: 14))
+        return button
     }
 
     fileprivate func makeDonateTapView() -> UIView {
@@ -314,12 +316,12 @@ extension ProfileViewController {
         contentView.addSubview(buttonsView)
 
         titleLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalToSuperview()
+            make.top.equalToSuperview().offset(5)
+            make.leading.equalToSuperview()
         }
 
         buttonsView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(-15)
-            make.bottom.trailing.equalToSuperview()
+            make.top.bottom.trailing.equalToSuperview()
             make.leading.greaterThanOrEqualTo(titleLabel.snp.trailing)
         }
 

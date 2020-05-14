@@ -46,7 +46,7 @@ class AssistanceAskInfoViewController: ViewController, BackNavigator {
             .bind(to: nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
-        nextButton.rxTap.bind { [weak self] in
+        nextButton.rx.tap.bind { [weak self] in
             self?.gotoNextAskInfoScreen()
         }.disposed(by: disposeBag)
     }
@@ -191,14 +191,14 @@ extension AssistanceAskInfoViewController {
         return textView
     }
 
-    fileprivate func makeNextButton() -> SubmitButton {
+    fileprivate func makeNextButton() -> RightIconButton {
         switch thisViewModel.assistanceInfoType {
         case .exactNeeds, .meetingLocation:
-            return SubmitButton(
+            return RightIconButton(
                 title: R.string.localizable.next().localizedUppercase,
                 icon: R.image.nextCircleArrow()!)
         case .contactInfo, .none:
-            return SubmitButton(
+            return RightIconButton(
                 title: R.string.localizable.review().localizedUppercase,
                 icon: R.image.nextCircleArrow()!)
         }

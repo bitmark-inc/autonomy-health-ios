@@ -27,7 +27,7 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
     }()
 
     lazy var backButton = makeLightBackItem()
-    lazy var submitButton = SubmitButton(title: R.string.localizable.submit().localizedUppercase,
+    lazy var submitButton = RightIconButton(title: R.string.localizable.submit().localizedUppercase,
                                          icon: R.image.upCircleArrow()!)
 
     lazy var groupsButton: UIView = {
@@ -63,7 +63,7 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
                 }
             }).disposed(by: disposeBag)
 
-        submitButton.rxTap.bind { [weak self] in
+        submitButton.rx.tap.bind { [weak self] in
             self?.thisViewModel.submit()
         }.disposed(by: disposeBag)
     }

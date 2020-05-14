@@ -78,7 +78,7 @@ extension FigDataView {
     }
 
     fileprivate func makeNumberButton() -> UIButton {
-        let button = RightIconButton(icon: R.image.crossCircleArrow())
+        let button = RightIconButton(icon: R.image.crossCircleArrow(), edgeSpacing: 8)
         button.cornerRadius = 15
         button.apply(font: R.font.ibmPlexMonoLight(size: 18),
                      backgroundTheme: .blueRibbonColor)

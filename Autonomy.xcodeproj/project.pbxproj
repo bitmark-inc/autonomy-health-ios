@@ -121,8 +121,6 @@
 		5B51BF572431CA8B00AD998B /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */; };
 		5B51BF5F2431D63C00AD998B /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
 		5B51BF602431D63C00AD998B /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
-		5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
-		5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
 		5B544E9A245C3D7800B8003A /* FigLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B544E99245C3D7800B8003A /* FigLabel.swift */; };
 		5B544E9B245C3D7800B8003A /* FigLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B544E99245C3D7800B8003A /* FigLabel.swift */; };
 		5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
@@ -415,7 +413,6 @@
 		5BAE840F246A7985006E118D /* DebugAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* DebugAPI.swift */; };
 		5BAE8410246A7985006E118D /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFD2444133E0095BE18 /* HelpRequestService.swift */; };
 		5BAE8411246A7985006E118D /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */; };
-		5BAE8412246A7985006E118D /* LeftSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */; };
 		5BAE8413246A7985006E118D /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57786C242B43140028D3E3 /* Credential.swift */; };
 		5BAE8414246A7985006E118D /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57792B242B4F6B0028D3E3 /* KeychainStore.swift */; };
 		5BAE8415246A7985006E118D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57793F242B62160028D3E3 /* HeaderView.swift */; };
@@ -488,7 +485,6 @@
 		5BAE845A246A7985006E118D /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
 		5BAE845B246A7985006E118D /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8592242DDE51002CC53B /* AppInfo.swift */; };
 		5BAE845C246A7985006E118D /* SurveySymptomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */; };
-		5BAE845D246A7985006E118D /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BAE845E246A7985006E118D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577887242B45820028D3E3 /* Auth.swift */; };
 		5BAE845F246A7985006E118D /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8588242DDDE1002CC53B /* AppVersion.swift */; };
 		5BAE8460246A7985006E118D /* HealthSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */; };
@@ -572,8 +568,6 @@
 		5BAE84B3246A7985006E118D /* DomaineSansText-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A9242B48230028D3E3 /* DomaineSansText-BlackItalic.otf */; };
 		5BAE84B4246A7985006E118D /* AtlasGrotesk-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A6242B48220028D3E3 /* AtlasGrotesk-Bold.otf */; };
 		5BAE84B5246A7985006E118D /* AtlasGrotesk-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A1242B48220028D3E3 /* AtlasGrotesk-Regular.otf */; };
-		5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
-		5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14091242C4A57009EFC59 /* SubmitButton.swift */; };
 		5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
 		5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
 		5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */; };
@@ -788,7 +782,6 @@
 		5B4EF6E92446B06000BCB323 /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
 		5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		5B51BF5E2431D63C00AD998B /* HelpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequest.swift; sourceTree = "<group>"; };
-		5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSubmitButton.swift; sourceTree = "<group>"; };
 		5B544E99245C3D7800B8003A /* FigLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigLabel.swift; sourceTree = "<group>"; };
 		5B57785D242B330E0028D3E3 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B57785F242B3FC10028D3E3 /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
@@ -931,7 +924,6 @@
 		5BAA772A24599287003CCE92 /* LocationHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewModel.swift; sourceTree = "<group>"; };
 		5BAA772B24599287003CCE92 /* LocationHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHistoryViewController.swift; sourceTree = "<group>"; };
 		5BAE84BD246A7985006E118D /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BB14091242C4A57009EFC59 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
 		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
 		5BB1409B242C6087009EFC59 /* OnboardingStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep1ViewController.swift; sourceTree = "<group>"; };
@@ -1267,8 +1259,6 @@
 				5B87F070242C85B90084B4F6 /* SeparateLine.swift */,
 				5B57793F242B62160028D3E3 /* HeaderView.swift */,
 				5B87F080242CA2D80084B4F6 /* CenterView.swift */,
-				5BB14091242C4A57009EFC59 /* SubmitButton.swift */,
-				5B51BF682431E4ED00AD998B /* LeftSubmitButton.swift */,
 				5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */,
 				5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */,
 				5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */,
@@ -2614,7 +2604,6 @@
 				5BAA77002459603C003CCE92 /* DebugAPI.swift in Sources */,
 				5B213F002444133E0095BE18 /* HelpRequestService.swift in Sources */,
 				5B93F704243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
-				5B51BF6A2431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B57786E242B43140028D3E3 /* Credential.swift in Sources */,
 				5B577931242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B219BDF246910F1004FACEA /* ReportedSymptomViewController.swift in Sources */,
@@ -2698,7 +2687,6 @@
 				5B219BD3246907CB004FACEA /* SearchSymptomViewModel.swift in Sources */,
 				5B2C8594242DDE51002CC53B /* AppInfo.swift in Sources */,
 				5B4EF6E22446AEF600BCB323 /* SurveySymptomsViewModel.swift in Sources */,
-				5BB14093242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577889242B45830028D3E3 /* Auth.swift in Sources */,
 				5B2C858A242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B7CE0BA2430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
@@ -2790,7 +2778,6 @@
 				5BAA76FF2459603C003CCE92 /* DebugAPI.swift in Sources */,
 				5B213EFF2444133E0095BE18 /* HelpRequestService.swift in Sources */,
 				5B93F703243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
-				5B51BF692431E4ED00AD998B /* LeftSubmitButton.swift in Sources */,
 				5B577893242B46230028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B219BDE246910F1004FACEA /* ReportedSymptomViewController.swift in Sources */,
@@ -2874,7 +2861,6 @@
 				5B219BD2246907CB004FACEA /* SearchSymptomViewModel.swift in Sources */,
 				5B2C8593242DDE51002CC53B /* AppInfo.swift in Sources */,
 				5B4EF6E12446AEF600BCB323 /* SurveySymptomsViewModel.swift in Sources */,
-				5BB14092242C4A57009EFC59 /* SubmitButton.swift in Sources */,
 				5B577888242B45830028D3E3 /* Auth.swift in Sources */,
 				5B2C8589242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B7CE0B92430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
@@ -2965,7 +2951,6 @@
 				5BAE840F246A7985006E118D /* DebugAPI.swift in Sources */,
 				5BAE8410246A7985006E118D /* HelpRequestService.swift in Sources */,
 				5BAE8411246A7985006E118D /* HealthScoreCollectionCell.swift in Sources */,
-				5BAE8412246A7985006E118D /* LeftSubmitButton.swift in Sources */,
 				5BAE8413246A7985006E118D /* Credential.swift in Sources */,
 				5BAE8414246A7985006E118D /* KeychainStore.swift in Sources */,
 				5BAE8415246A7985006E118D /* HeaderView.swift in Sources */,
@@ -3043,7 +3028,6 @@
 				5BAE845A246A7985006E118D /* SearchTextTableCell.swift in Sources */,
 				5BAE845B246A7985006E118D /* AppInfo.swift in Sources */,
 				5BAE845C246A7985006E118D /* SurveySymptomsViewModel.swift in Sources */,
-				5BAE845D246A7985006E118D /* SubmitButton.swift in Sources */,
 				5BAE845E246A7985006E118D /* Auth.swift in Sources */,
 				5BAE845F246A7985006E118D /* AppVersion.swift in Sources */,
 				5BAE8460246A7985006E118D /* HealthSurveyViewController.swift in Sources */,
@@ -3232,7 +3216,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3258,7 +3242,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

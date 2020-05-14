@@ -39,7 +39,7 @@ class SuccessPanViewController: ViewController, PanModalPresentable {
     }()
     lazy var titleLabel = makeTitleLabel()
     lazy var descLabel = makeDescLabel()
-    lazy var gotItButton = LeftSubmitButton(
+    lazy var gotItButton = LeftIconButton(
         title: R.string.localizable.gotIt().localizedUppercase,
         icon: R.image.tickCircleArrow()!)
 
@@ -48,7 +48,7 @@ class SuccessPanViewController: ViewController, PanModalPresentable {
     override func bindViewModel() {
         super.bindViewModel()
 
-        gotItButton.rxTap.bind { [weak self] in
+        gotItButton.rx.tap.bind { [weak self] in
             self?.dismiss(animated: true)
         }.disposed(by: disposeBag)
     }

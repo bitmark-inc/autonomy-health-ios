@@ -509,7 +509,9 @@ extension FormulaSourceView {
     fileprivate func makeResetButton() -> UIButton {
         let button = RightIconButton(
             title: R.string.localizable.reset().localizedUppercase,
-            icon: R.image.resetIcon()!)
+            icon: R.image.resetIcon()!,
+            edgeSpacing: 8)
+        button.apply(font: R.font.atlasGroteskLight(size: 14))
         button.snp.makeConstraints { (make) in
             make.height.equalTo(30)
         }

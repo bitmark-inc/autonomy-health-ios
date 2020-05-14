@@ -15,7 +15,13 @@ class RightIconButton: UIButton {
     // MARK: - Properties
     fileprivate let disposeBag = DisposeBag()
 
-    init(title: String? = nil, icon: UIImage?, spacing: CGFloat = 6) {
+    override var isEnabled: Bool {
+        didSet {
+            alpha = isEnabled ? 1 : 0.3
+        }
+    }
+
+    init(title: String? = nil, icon: UIImage?, spacing: CGFloat = 6, edgeSpacing: CGFloat = 0) {
         super.init(frame: CGRect.zero)
 
         setTitle(title, for: .normal)
@@ -23,10 +29,12 @@ class RightIconButton: UIButton {
 
         // make icon in the right edge
         titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
-        contentEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: spacing)
+        contentEdgeInsets = UIEdgeInsets(top: 5, left: edgeSpacing, bottom: 5, right: spacing + edgeSpacing)
         transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+
+        titleLabel?.font = R.font.domaineSansTextLight(size: 24)
     }
 
     required init?(coder: NSCoder) {
@@ -35,7 +43,7 @@ class RightIconButton: UIButton {
 }
 
 extension RightIconButton {
-    func apply(font: UIFont?, backgroundTheme: ThemeStyle) {
+    func apply(font: UIFont?, backgroundTheme: ThemeStyle? = nil) {
         titleLabel?.font = font
 
         switch backgroundTheme {

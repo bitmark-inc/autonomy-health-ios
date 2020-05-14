@@ -80,7 +80,7 @@ enum HealthRisk {
     }
 
     init?(from score: Float) {
-        switch Int(score) {
+        switch Int(score.rounded()) {
         case 0:         self = .zero
         case 0...33:    self = .high
         case 34...66:   self = .moderate

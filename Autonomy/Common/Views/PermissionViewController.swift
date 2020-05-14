@@ -24,7 +24,7 @@ class PermissionViewController: ViewController, BackNavigator {
     lazy var notificationOptionBox = makeNotificationOptionBox()
     lazy var locationOptionBox = makeLocationOptionBox()
     lazy var backButton = makeLightBackItem()
-    lazy var nextButton = SubmitButton(title: R.string.localizable.next().localizedUppercase,
+    lazy var nextButton = RightIconButton(title: R.string.localizable.next().localizedUppercase,
                      icon: R.image.nextCircleArrow()!)
     lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
@@ -59,7 +59,7 @@ class PermissionViewController: ViewController, BackNavigator {
             }
         }.disposed(by: disposeBag)
 
-        nextButton.rxTap.bind { [weak self] in
+        nextButton.rx.tap.bind { [weak self] in
             self?.gotoRiskLevelScreen()
         }.disposed(by: disposeBag)
     }

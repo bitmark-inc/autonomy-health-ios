@@ -31,7 +31,7 @@ class GiveHelpViewController: ViewController, BackNavigator {
     }()
 
     lazy var backButton = makeLightBackItem()
-    lazy var submitButton = SubmitButton(title: R.string.localizable.signUp().localizedUppercase,
+    lazy var submitButton = RightIconButton(title: R.string.localizable.signUp().localizedUppercase,
                                          icon: R.image.tickCircleArrow()!)
     lazy var signedUpMessageView = UIView()
     lazy var copiedView = makeCopiedView()
@@ -101,7 +101,7 @@ class GiveHelpViewController: ViewController, BackNavigator {
                 }
             }).disposed(by: disposeBag)
 
-        submitButton.rxTap.bind { [weak self] in
+        submitButton.rx.tap.bind { [weak self] in
             self?.thisViewModel.giveHelp()
         }.disposed(by: disposeBag)
     }
@@ -111,7 +111,7 @@ class GiveHelpViewController: ViewController, BackNavigator {
         viewController.headerScreen.header = R.string.localizable.signedUp().localizedUppercase
         viewController.titleLabel.setText(R.string.phrase.giveHelpSignUpTitle().localizedUppercase)
         viewController.descLabel.setText(R.string.phrase.giveHelpSignUpDesc())
-        viewController.gotItButton.titleLabel.setText(R.string.localizable.gotIt().localizedUppercase)
+        viewController.gotItButton.setTitle(R.string.localizable.gotIt().localizedUppercase, for: .normal)
         viewController.delegate = self
         presentPanModal(viewController)
     }

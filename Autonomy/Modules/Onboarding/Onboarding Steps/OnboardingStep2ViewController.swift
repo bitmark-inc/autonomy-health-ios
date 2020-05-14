@@ -21,7 +21,7 @@ class OnboardingStep2ViewController: ViewController, BackNavigator, OnboardingVi
     lazy var titleScreen = makeTitleScreen(title: R.string.phrase.onboarding2Description())
     lazy var talkingImageView = makeTalkingImageView()
     lazy var backButton = makeLightBackItem()
-    lazy var nextButton = SubmitButton(title: R.string.localizable.next().localizedUppercase,
+    lazy var nextButton = RightIconButton(title: R.string.localizable.next().localizedUppercase,
                      icon: R.image.nextCircleArrow()!)
     lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
@@ -35,7 +35,7 @@ class OnboardingStep2ViewController: ViewController, BackNavigator, OnboardingVi
     override func bindViewModel() {
         super.bindViewModel()
 
-        nextButton.rxTap.bind { [weak self] in
+        nextButton.rx.tap.bind { [weak self] in
             self?.gotoOnboardingStep3Screen()
         }.disposed(by: disposeBag)
     }

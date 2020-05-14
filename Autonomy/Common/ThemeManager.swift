@@ -29,7 +29,7 @@ struct OurTheme {
 
     static var paddingOverBottomInset = UIEdgeInsets(top: 14, left: 15, bottom: 0, right: 15)
 
-    static let titleHeight: CGFloat = Size.dh(184)
+    static let titleHeight: CGFloat = Size.dw(190)
 }
 
 enum ThemeStyle {

@@ -31,7 +31,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
     }()
 
     lazy var backButton = makeLightBackItem()
-    lazy var doneButton = SubmitButton(title: R.string.localizable.done().localizedUppercase,
+    lazy var doneButton = RightIconButton(title: R.string.localizable.done().localizedUppercase,
                      icon: R.image.doneCircleArrow()!)
     lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: true)
@@ -58,7 +58,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
             .bind(to: doneButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
-        doneButton.rxTap.bind { [weak self] in
+        doneButton.rx.tap.bind { [weak self] in
             self?.thisViewModel.signUp()
         }.disposed(by: disposeBag)
 
