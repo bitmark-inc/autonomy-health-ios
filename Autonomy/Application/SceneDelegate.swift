@@ -45,6 +45,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         Global.volumePressTrack = ""
+        if Global.current.account != nil {
+            TimezoneDataEngine.syncTimezone()
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

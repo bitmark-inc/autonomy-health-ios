@@ -40,13 +40,13 @@ class ProfileService {
             .map(Profile.self, atKeyPath: "result", using: Global.default.decoder )
     }
 
-    static func updateMe(metadata: [String: Any]) -> Single<Profile> {
+    static func updateMe(metadata: [String: Any]) -> Completable {
         Global.log.info("[start] ProfileService.updateMe")
 
         return provider.rx
             .requestWithRefreshJwt(.updateMe(metadata: metadata))
             .filterSuccess()
-            .map(Profile.self, atKeyPath: "result", using: Global.default.decoder )
+            .asCompletable()
     }
 
     static func deleteMe() -> Completable {

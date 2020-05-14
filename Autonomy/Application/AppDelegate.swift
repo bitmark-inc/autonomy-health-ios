@@ -114,6 +114,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         Global.volumePressTrack = ""
+        if Global.current.account != nil {
+            TimezoneDataEngine.syncTimezone()
+        }
     }
 
     @available(iOS 13.0, *)
