@@ -79,6 +79,7 @@
 "addNewLocation..." = "Add new location ...";
 "VersionWithNumber" = "Version %@";
 "HelpKeepAutonomyFree" = "Help Keep Autonomy Free";
+"Other_amount" = "Other amount";
 
 "supportMessage" = "\n%@\n\nWould you like to contact with support team?";
 "Contact" = "Contact";

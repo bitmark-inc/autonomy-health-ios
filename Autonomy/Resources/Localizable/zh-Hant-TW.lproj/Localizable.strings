@@ -79,6 +79,7 @@
 "addNewLocation..." = "新增位置...";
 "VersionWithNumber" = "版本 %@";
 "HelpKeepAutonomyFree" = "Help Keep Autonomy Free";
+"Other_amount" = "Other amount";
 
 "supportMessage" = "\n%@\n\n您要聯絡支援團隊嗎？";
 "Contact" = "聯絡";

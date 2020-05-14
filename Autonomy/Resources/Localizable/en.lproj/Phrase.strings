@@ -112,6 +112,10 @@
 "history.symptom.empty.desc" = "You haven’t reported any symptoms yet.";
 "history.behavior.empty.desc" = "You haven’t reported any healthy behaviors yet.";
 
+"donate.header" = "Donate";
+"donate.title" = "If you believe in Autonomy, please consider donating:";
+"donate.message" = "Your generosity helps keep Autonomy free and open for everyone. Every little bit helps.";
+
 "signIn.title" = "Sign In";
 "signIn.submitButton" = "Submit »";
 

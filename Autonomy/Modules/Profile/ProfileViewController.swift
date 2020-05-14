@@ -43,8 +43,8 @@ class ProfileViewController: ViewController, BackNavigator {
     override func bindViewModel() {
         super.bindViewModel()
 
-        donateTapGestureRecognizer.rx.event.bind { _ in
-            print("click donateTapGestureRecognizer")
+        donateTapGestureRecognizer.rx.event.bind { [weak self] _ in
+            self?.gotoDonateScreen()
         }.disposed(by: disposeBag)
 
         doneButton.rx.tap.bind { [weak self] in
@@ -148,6 +148,10 @@ extension ProfileViewController: UITextViewDelegate {
 
 // MARK: Navigator
 extension ProfileViewController {
+    fileprivate func gotoDonateScreen() {
+        navigator.show(segue: .donate, sender: self)
+    }
+
     fileprivate func gotoReportSymptomsScreen() {
         let viewModel = SurveySymptomsViewModel()
         navigator.show(segue: .surveySymptoms(viewModel: viewModel), sender: self)

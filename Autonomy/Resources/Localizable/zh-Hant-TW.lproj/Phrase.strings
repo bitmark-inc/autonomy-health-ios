@@ -108,6 +108,10 @@
 "history.symptom.empty.desc" = "您尚未回報任何症狀。";
 "history.behavior.empty.desc" = "您尚未回報任何健康行為。";
 
+"donate.header" = "Donate";
+"donate.title" = "If you believe in Autonomy, please consider donating:";
+"donate.message" = "Your generosity helps keep Autonomy free and open for everyone. Every little bit helps.";
+
 "signIn.title" = "登入";
 "signIn.submitButton" = "提交»";
 

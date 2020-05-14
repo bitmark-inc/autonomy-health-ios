@@ -252,6 +252,9 @@
 		5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A5242C45F500480A15 /* SignInWallViewController.swift */; };
 		5B62A3A9242C47D400480A15 /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A8242C47CF00480A15 /* AppLink.swift */; };
 		5B62A3AA242C47D500480A15 /* AppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B62A3A8242C47CF00480A15 /* AppLink.swift */; };
+		5B6E666F246D039C0068EC42 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E666E246D039C0068EC42 /* DonateViewController.swift */; };
+		5B6E6670246D039C0068EC42 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E666E246D039C0068EC42 /* DonateViewController.swift */; };
+		5B6E6671246D039C0068EC42 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E666E246D039C0068EC42 /* DonateViewController.swift */; };
 		5B7CE0B92430A458002CD923 /* HealthSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */; };
 		5B7CE0BA2430A458002CD923 /* HealthSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */; };
 		5B7CE0BD2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */; };
@@ -852,6 +855,7 @@
 		5B62A3A8242C47CF00480A15 /* AppLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLink.swift; sourceTree = "<group>"; };
 		5B6E069E244D9FF500CC3DF6 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		5B6E069F244DA49E00CC3DF6 /* OneSignalNotificationServiceDevExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceDevExtension.entitlements; sourceTree = "<group>"; };
+		5B6E666E246D039C0068EC42 /* DonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
 		5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthSurveyViewController.swift; sourceTree = "<group>"; };
 		5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyHelpViewController.swift; sourceTree = "<group>"; };
 		5B7CE0C72430BE91002CD923 /* AreaProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaProfileAPI.swift; sourceTree = "<group>"; };
@@ -1458,6 +1462,14 @@
 			path = "Sign In Wall";
 			sourceTree = "<group>";
 		};
+		5B6E666D246D03860068EC42 /* Donate */ = {
+			isa = PBXGroup;
+			children = (
+				5B6E666E246D039C0068EC42 /* DonateViewController.swift */,
+			);
+			path = Donate;
+			sourceTree = "<group>";
+		};
 		5B7CE0B72430A458002CD923 /* Health Survey */ = {
 			isa = PBXGroup;
 			children = (
@@ -1636,6 +1648,7 @@
 				5BFC8DC724331AC900815828 /* Pan Modals */,
 				5B97887E243F21A6005BADA9 /* Location */,
 				5B2661AE24583C3500163404 /* Profile */,
+				5B6E666D246D03860068EC42 /* Donate */,
 				5BAA76E824593A49003CCE92 /* History */,
 				5B4B60B624600AD800432151 /* Debug Location */,
 			);
@@ -2576,6 +2589,7 @@
 				5B4B60CF24606FFB00432151 /* DebugInfoWindowView.swift in Sources */,
 				5BCBBCE5246BB11600B735EE /* ReportSurveyLayout.swift in Sources */,
 				5B219BD7246907E6004FACEA /* SearchSymptomViewController.swift in Sources */,
+				5B6E6670246D039C0068EC42 /* DonateViewController.swift in Sources */,
 				5B577901242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5B4B60C92460466300432151 /* FormulaService.swift in Sources */,
 				5B577896242B470A0028D3E3 /* Observable+Operators.swift in Sources */,
@@ -2751,6 +2765,7 @@
 				5B4B60CE24606FFB00432151 /* DebugInfoWindowView.swift in Sources */,
 				5BCBBCE4246BB11600B735EE /* ReportSurveyLayout.swift in Sources */,
 				5B219BD6246907E6004FACEA /* SearchSymptomViewController.swift in Sources */,
+				5B6E666F246D039C0068EC42 /* DonateViewController.swift in Sources */,
 				5B577900242B4C010028D3E3 /* Navigator.swift in Sources */,
 				5B4B60C82460466300432151 /* FormulaService.swift in Sources */,
 				5B577891242B460E0028D3E3 /* Observable+Operators.swift in Sources */,
@@ -3051,6 +3066,7 @@
 				5BAE846F246A7985006E118D /* Profile.swift in Sources */,
 				5BAE8470246A7985006E118D /* OptionBoxView.swift in Sources */,
 				5BAE8471246A7985006E118D /* HistoryAPI.swift in Sources */,
+				5B6E6671246D039C0068EC42 /* DonateViewController.swift in Sources */,
 				5BAE8472246A7985006E118D /* AddRow.swift in Sources */,
 				5BAE8473246A7985006E118D /* AreaProfile.swift in Sources */,
 				5BAE8474246A7985006E118D /* AssistanceViewModel.swift in Sources */,
