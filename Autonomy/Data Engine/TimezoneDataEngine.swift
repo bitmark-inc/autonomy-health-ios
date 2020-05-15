@@ -15,26 +15,34 @@ protocol TimezoneDataEngineDelegate {
 
 class TimezoneDataEngine: TimezoneDataEngineDelegate {
 
-    static var abbrTimezone: Any {
-        return TimeZone.current.abbreviation() ?? ""
+    static var abbrTimezoneInGMT: Any {
+        let secondsFromGMT = TimeZone.current.secondsFromGMT()
+        let sign = secondsFromGMT < 0 ? "-" : "+"
+        let absSecondsFromGMT = abs(secondsFromGMT)
+        let hours = Int(absSecondsFromGMT / 3600)
+        let minutes = Int(absSecondsFromGMT % 3600 / 60)
+
+        var str = "GMT\(sign)\(hours)"
+        if minutes != 0 {
+            str += ":\(minutes)"
+        }
+        return str
     }
 
     static let disposeBag = DisposeBag()
 
     static func syncTimezone() {
-        ProfileService.updateMe(metadata: ["timezone": abbrTimezone])
+        ProfileService.updateMe(metadata: ["timezone": abbrTimezoneInGMT])
             .subscribe(onCompleted: {
                 Global.log.info("[timezone] sync successfully")
             }, onError: { (error) in
                 Global.log.error(error)
             })
             .disposed(by: disposeBag)
-
     }
 
-
     static func create(riskLevel: RiskLevel) -> Completable {
-        let metadata = ["risk": riskLevel.rawValue, "timezone": abbrTimezone]
+        let metadata = ["risk": riskLevel.rawValue, "timezone": abbrTimezoneInGMT]
         return AccountService.rxCreateAndSetupNewAccountIfNotExist()
             .andThen(ProfileService.create(metadata: metadata))
             .asCompletable()
