@@ -11,16 +11,16 @@
 "launch.policyTerm" = "我們保護您的 %@ 。";
 
 "onboarding.1.description" = "我們將會預測您周圍的公共衛生狀況。";
-"onboarding.2.description" = "Your data is always kept 100% confidential.\n(Even to us.)";
+"onboarding.2.description" = "您的資料將永遠的維持100%保密（我們也無法存取）";
 "onboarding.3.description" = "我們會幫助您周圍的人一起變得更健康。";
 
 "permission.description" = "Autonomy需要存取以下項目：";
 "permission.notification.description" = "我們會提醒您回報症狀以及保持良好的健康習慣。當您周圍的人群健康狀況有改變時，我們會寄警訊給您。";
 "permission.location.description" = "您目前的位置會被用於增進您周圍人群的健康。您的位置資料永遠都是私密的。";
 
-"riskLevel.description" = "Are you at higher risk for severe illness?";
+"riskLevel.description" = "您屬於重症高危險群嗎？";
 "riskLevel.yes" = "是的，我屬於高危險群";
-"riskLevel.yes.description" = "Higher risk individuals often include:\n• People over age 65\n\nAnd any pre-existing medical conditions,\nsuch as:\n• High blood pressure (hypertension)\n• Cardiovascular disease\n• Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer\n• Obesity\n• Compromised immune system";
+"riskLevel.yes.description" = "高危險群通常包含：\n• 65歲以上\n\n 痼疾，例如：\n• 血壓\n• 心血管疾病\n• 糖尿病\n• 慢性呼吸道疾病（如肺病或氣喘\n• 癌症\n• 過胖\n• 免疫系統受損";
 "riskLevel.no" = "不，我不屬於高危險群";
 
 "survey.title" = "您現在感覺如何？";
@@ -30,17 +30,17 @@
 "survey.help.assistance" = "我需要協助";
 "survey.help.assistance.description" = "讓您當地的社群知道您需要幫助。";
 
-"survey.symptoms.title" = "Tap any symptoms you have or add new ones:";
-"survey.commonSymptoms" = "Common covid-19 symptoms";
-"survey.recentSymptoms" = "Recent neighborhood symptoms";
-"survey.reportNewSymptom" = "Report other symptom ...";
-"survey.symptom.reporting" = "Reporting your symptoms to your neighborhood ...";
+"survey.symptoms.title" = "點擊任何您有的症狀，或新增症狀：";
+"survey.commonSymptoms" = "常見新冠肺炎症狀";
+"survey.recentSymptoms" = "近期周圍社群的症狀";
+"survey.reportNewSymptom" = "回報其他症狀...";
+"survey.symptom.reporting" = "正在回報您的症狀至您周圍的社群...";
 
-"survey.behaviors.title" = "Tap any healthy behaviors you did today or add new ones:";
-"survey.commonBehaviors" = "Recommended covid-19 behaviors:";
-"survey.recentBehaviors" = "Recent behaviors near you";
-"survey.reportNewBehavior" = "Report other behavior ...";
-"survey.behavior.reporting" = "Reporting your healthy behaviors to your neighborhood ...";
+"survey.behaviors.title" = "T點擊任何您今天有執行的健康行為或是新增：";
+"survey.commonBehaviors" = "新冠肺炎應對行為建議：";
+"survey.recentBehaviors" = "你附近的人的行為";
+"survey.reportNewBehavior" = "回報其他行為...";
+"survey.behavior.reporting" = "正在回報您的健康行為給您周圍的社群...";
 
 "assistance.title" = "您需要哪一類的協助？";
 "assistance.foodAndWater" = "取得食物或飲水";
@@ -72,21 +72,21 @@
 
 "requestHelp.submitted.title" = "您的協助需求已經廣播至您周圍的社群";
 "requestHelp.submitted.desc" = "如果有人自願協助，您將會收到通知。";
-"requestHelp.generalTitle" = "社群中有人提出協助需求Community request for assistance";
+"requestHelp.generalTitle" = "社群中有人提出協助需求";
 
-"giveHelp.signUp.title" = "Thank You For Signing Up To Fulfill This Community Request";
-"giveHelp.signUp.desc" = "The community member in need has been notified of your response. Please write down or take a screenshot of the request details now then contact the community member.";
+"giveHelp.signUp.title" = "感謝您報名來達成此項來自社群的請求";
+"giveHelp.signUp.desc" = "提出請求的社群成員已被告知您回覆。請現在寫下或是擷取螢幕畫面請求的細節，然後聯絡該位社群成員。";
 
-"giveHelp.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
-"giveHelp.helper.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
-"giveHelp.helper.otherSubmitted" = "Someone has already signed up to fulfill this community request.";
-"giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
+"giveHelp.submitted" = "您現已報名來達成此項來自社群的請求。若您無法完成任務，請聯絡並告知社群成員。";
+"giveHelp.helper.submitted" = "您現已報名來達成此項來自社群的請求。若您無法完成任務，請聯絡並告知社群成員。";
+"giveHelp.helper.otherSubmitted" = "已經有人報名來達成此項來自社群的請求。";
+"giveHelp.requester.submitted" = "有人報名來達成您對社群發出的請求。請靜候聯絡。";
 */
 
-"symptoms.reported.title" = "Thanks for sharing your symptoms with your neighborhood!";
-"behaviors.reported.title" = "Thanks for making your neighborhood healthier!";
+"symptoms.reported.title" = "感謝您分享您的症狀給周圍的社群！";
+"behaviors.reported.title" = "感謝您讓您周圍的社群更健康！";
 
-"behaviors.guidance.title" = "How to correctly perform healthy behaviors:";
+"behaviors.guidance.title" = "如何正確施行健康行為：";
 
 "history.symptom.title" = "症狀歷史";
 "history.behavior.title" = "行為歷史";
@@ -95,9 +95,9 @@
 "history.symptom.empty.desc" = "您尚未回報任何症狀。";
 "history.behavior.empty.desc" = "您尚未回報任何健康行為。";
 
-"donate.header" = "Donate";
-"donate.title" = "If you believe in Autonomy, please consider donating:";
-"donate.message" = "Your generosity helps keep Autonomy free and open for everyone. Every little bit helps.";
+"donate.header" = "捐款";
+"donate.title" = "如果您認同Autonomy的理念，請考慮捐款：";
+"donate.message" = "您的大方貢獻將協助Autonomy可以維持開放給任何人免費地使用。任何金額都有幫助。";
 
 "signIn.title" = "登入";
 "signIn.submitButton" = "提交»";
@@ -109,16 +109,15 @@
 "notification.survey.title" = "報到問卷";
 "notification.survey.desc" = "您現在覺得如何？請點擊報到。";
 
-"notification.cleanAndDisinfectSurfaces.title" = "Clean and disinfect surfaces";
-"notification.cleanAndDisinfectSurfaces.desc" = "Have you cleaned and disinfected frequently touched surfaces today to prevent virus transmission? Tap if you did this.";
+"notification.cleanAndDisinfectSurfaces.title" = "清潔並消毒物體表面";
+"notification.cleanAndDisinfectSurfaces.desc" = "您今天是否有清潔並消毒碰觸過的物體表面？如果有，請點擊。";
 
 "sampleSymptom.fever" = "發燒";
 "sampleSymtom.dryCough" = "乾咳";
-"sampleSymptom.chills" = "chills";
-"sampleSymptom.fatigue" = "fatigue";
-"sampleSymptom.shortnessOfBreath" = "呼吸急促";
-"sampleSymptom.difficultyBreathing" = "difficulty breathing";
-"sampleSymptom.lossOfSenseOfTasteOrSmell" = "loss of sense of taste or smell";
+"sampleSymptom.chills" = "發寒";
+"sampleSymptom.fatigue" = "無力";
+"sampleSymptom.difficultyBreathing" = "呼吸困難";
+"sampleSymptom.lossOfSenseOfTasteOrSmell" = "失去味覺或嗅覺";
 
-"sample.notification.title" = "Wash your hands while you’re up!";
-"sample.notification.message" = "This a great chance to wash your hands for at least 20 seconds or apply hand sanitizer. Tap if you did this.";
+"sample.notification.title" = "記得洗手！";
+"sample.notification.message" = "現在是您洗手20秒或是使用手部消毒劑的好時機。如果您有做到，請點擊。";
