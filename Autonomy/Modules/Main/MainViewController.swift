@@ -27,7 +27,6 @@ protocol LocationDelegate: class {
 }
 
 protocol ScoreSourceDelegate: class {
-    var formStateRelay: BehaviorRelay<(cell: HealthScoreCollectionCell, state: BottomSlideViewState)?> { get }
     func explainData()
     func resetFormula()
 }
@@ -53,9 +52,6 @@ class MainViewController: ViewController {
     var currentUserLocationAddress: String?
 
     let sectionIndexes = (currentLocation: 0, poi: 1, poiList: 2)
-
-    // View Source
-    let formStateRelay = BehaviorRelay<(cell: HealthScoreCollectionCell, state: BottomSlideViewState)?>(value: nil)
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -399,6 +395,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
         handleWhenDisplayHealthCell(cell: cell, in: indexPath)
         handleWhenDisplayLocationList(cell: cell)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? HealthScoreCollectionCell else { return }
+        cell.slideBottomView(with: .collapsed)
     }
 
     fileprivate func handleWhenDisplayHealthCell(cell: UICollectionViewCell, in indexPath: IndexPath) {

@@ -41,7 +41,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
 
     weak var scoreSourceDelegate: ScoreSourceDelegate? {
         didSet {
-            bindScoreSourceEvents()
             formulaSourceView.delegate = scoreSourceDelegate
         }
     }
@@ -96,16 +95,6 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     }
 
     // MARK: - Handlers
-    fileprivate func bindScoreSourceEvents() {
-        scoreSourceDelegate?.formStateRelay
-            .filterNil()
-            .subscribe(onNext: { [weak self] (cell, state) in
-                guard let self = self , cell != self else { return }
-                self.slideBottomView(with: state)
-            })
-            .disposed(by: disposeBag)
-    }
-
     fileprivate func bindEvents() {
         formulaSourceView.scoreRelay
             .skip(1)
@@ -247,9 +236,6 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
             return
         }
 
-        // setup temporary first state for other cells can show/hide bottom without waiting for finishing animation
-        scoreSourceDelegate?.formStateRelay.accept((cell: self, state: state))
-
         let moveUpAnimation = UIViewPropertyAnimator.init(duration: TimeInterval(formulaViewAnimateDuration), dampingRatio: 1.0) { [weak self] in
             guard let self = self else  { return }
             self.slideBottomView(with: state)
@@ -349,7 +335,6 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
 
     func updateBottomSlideView(state: BottomSlideViewState) {
         currentState = state
-        scoreSourceDelegate?.formStateRelay.accept((cell: self, state: state))
     }
 
     @objc func tapHealthView(_ sender: UITapGestureRecognizer) {
