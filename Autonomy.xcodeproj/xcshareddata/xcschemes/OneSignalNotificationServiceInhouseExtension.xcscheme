@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5B8CF304246A4DD200939C47"
+               BlueprintIdentifier = "5BDB6553246A8489003CD084"
                BuildableName = "OneSignalNotificationServiceInhouseExtension.appex"
                BlueprintName = "OneSignalNotificationServiceInhouseExtension"
                ReferencedContainer = "container:Autonomy.xcodeproj">
@@ -29,8 +29,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5B8CF21E246A496A00939C47"
-               BuildableName = "Autonomy Inhouse.app"
+               BlueprintIdentifier = "5BAE83E9246A7985006E118D"
+               BuildableName = "Autonomy.app"
                BlueprintName = "Autonomy Inhouse"
                ReferencedContainer = "container:Autonomy.xcodeproj">
             </BuildableReference>
@@ -61,8 +61,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5B8CF21E246A496A00939C47"
-            BuildableName = "Autonomy Inhouse.app"
+            BlueprintIdentifier = "5BAE83E9246A7985006E118D"
+            BuildableName = "Autonomy.app"
             BlueprintName = "Autonomy Inhouse"
             ReferencedContainer = "container:Autonomy.xcodeproj">
          </BuildableReference>
@@ -79,8 +79,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5B8CF21E246A496A00939C47"
-            BuildableName = "Autonomy Inhouse.app"
+            BlueprintIdentifier = "5BAE83E9246A7985006E118D"
+            BuildableName = "Autonomy.app"
             BlueprintName = "Autonomy Inhouse"
             ReferencedContainer = "container:Autonomy.xcodeproj">
          </BuildableReference>

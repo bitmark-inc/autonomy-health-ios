@@ -104,11 +104,6 @@ class MainViewController: ViewController {
     var audioLevel: Float? = nil
 
     @objc func volumeChanged(_ notification: Notification) {
-        guard Global.audioVolumeNotificationCalled else {
-            Global.audioVolumeNotificationCalled = true
-            return
-        }
-
         if let volumePressTime = Global.volumePressTime,
             Date() >= volumePressTime.adding(.second, value: 5) {
             Global.volumePressTrack = ""
@@ -333,13 +328,6 @@ class MainViewController: ViewController {
         let volumeView = MPVolumeView(frame: CGRect.zero)
         volumeView.isHidden = true
         view.addSubview(volumeView)
-
-        do {
-            try audioSession.setActive(true)
-        } catch {
-            Global.log.info("[audioSession] error for setActive")
-            Global.log.error(error)
-        }
         audioLevel = audioSession.outputVolume
 
         FormulaSupporter.mainCollectionView = mainCollectionView
