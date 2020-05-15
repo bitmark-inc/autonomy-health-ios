@@ -11,12 +11,16 @@ import RxCocoa
 
 class SurveySymptomsViewModel: ViewModel {
 
+    let lastSymptomKeys: [String]!
+
     // MARK: - Output
     let symptomListRelay = BehaviorRelay<SymptomList?>(value: nil)
     let fetchDataResultSubject = PublishSubject<Event<Void>>()
     let surveySubmitResultSubject = PublishSubject<Event<Never>>()
 
-    override init() {
+
+    init(lastSymptomKeys: [String] = []) {
+        self.lastSymptomKeys = lastSymptomKeys
         super.init()
 
         NetworkConnectionManager.shared.doActionWhenConnecting { [weak self] in

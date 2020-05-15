@@ -29,6 +29,12 @@ extension BackNavigator where Self: ViewController {
     }
 
     func tapToBack() {
-        Navigator.default.pop(sender: self)
+        if (parent as? NavigationController)?.viewControllers.count ?? 0 > 1 {
+            Navigator.default.pop(sender: self)
+        } else {
+            let viewModel = MainViewModel()
+            navigator.show(segue: .main(viewModel: viewModel), sender: self,
+                           transition: .replace(type: .slide(direction: .right)))
+        }
     }
 }

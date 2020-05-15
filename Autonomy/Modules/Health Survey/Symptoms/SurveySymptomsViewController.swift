@@ -133,6 +133,10 @@ class SurveySymptomsViewController: ViewController, BackNavigator, ReportSurveyL
 
         for symptom in symptomList.officialSymptoms {
             let tagView = commonTagViews.addTag(( symptom.id, symptom.name.lowercased()))
+            if thisViewModel.lastSymptomKeys.contains(symptom.id) {
+                tagView.isSelected = true
+            }
+
             tagView.isSelectedRelay
                 .subscribe(onNext: { [weak self] (_) in
                     self?.checkSelectedState()
@@ -145,6 +149,9 @@ class SurveySymptomsViewController: ViewController, BackNavigator, ReportSurveyL
 
         for symptom in symptomList.neighborhoodSymptoms {
             let tagView = recentTagViews.addTag(( symptom.id, symptom.name.lowercased()))
+            if thisViewModel.lastSymptomKeys.contains(symptom.id) {
+                tagView.isSelected = true
+            }
             tagView.isSelectedRelay
                 .subscribe(onNext: { [weak self] (_) in
                     self?.checkSelectedState()

@@ -81,8 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
 
-        guard let additionalData = payload.additionalData as? [String: String],
-            let notifityType = additionalData["notification_type"] else {
+        guard let additionalData = payload.additionalData as? [String: Any],
+            let notifityType = additionalData["notification_type"] as? String else {
                 return
         }
 
@@ -90,17 +90,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let TypeKey = Constant.OneSignal.TypeKey.self
         switch notifityType {
-        case TypeKey.broadCastNewHelp, TypeKey.notifyHelpExired, TypeKey.notifyHelpExired:
-            guard let helpID = additionalData["help_id"] else {
-                Global.log.error("[notification] missing help_id")
-                return
+        case TypeKey.riskLevelChanged:
+            let poiID = additionalData["poi_id"] as? String
+            Navigator.gotoPOIScreen(poiID: poiID)
+
+        case TypeKey.accountSymptomFollowUp, TypeKey.accountSymptomSpike:
+            let symptomKeys = additionalData["symptoms"] as? [String]
+            if symptomKeys == nil {
+                Global.log.error("[notification] missing symptoms in \(notifityType)")
             }
 
-            Navigator.gotoHelpDetailsScreen(helpRequestID: helpID)
+            let viewModel = SurveySymptomsViewModel(lastSymptomKeys: symptomKeys ?? [])
+            Navigator.goto(segue: .surveySymptoms(viewModel: viewModel))
 
-        case TypeKey.riskLevelChanged:
-            let poiID = additionalData["poi_id"]
-            Navigator.gotoPOIScreen(poiID: poiID)
+        case TypeKey.behaviorOnRiskArea, TypeKey.behaviorSelfRiskArea:
+            let viewModel = ReportedBehaviorViewModel()
+            Navigator.goto(segue: .reportedBehaviors(viewModel: viewModel))
 
         default:
             return

@@ -27,7 +27,11 @@ public struct Constant {
             public static let broadCastNewHelp = "BROADCAST_NEW_HELP"
             public static let notifyHelpSigned = "NOTIFY_HELP_ACCEPTED"
             public static let notifyHelpExired = "NOTIFY_HELP_EXPIRED"
-            public static let riskLevelChanged = "RISK_LEVEL_CHANGED"
+            public static let riskLevelChanged = "RISK_LEVEL_CHANGED"                  // NSC1-2
+            public static let accountSymptomSpike = "ACCOUNT_SYMPTOM_SPIKE"            // NSY1
+            public static let accountSymptomFollowUp = "ACCOUNT_SYMPTOM_FOLLOW_UP"     // NSY2
+            public static let behaviorOnRiskArea = "BEHAVIOR_REPORT_ON_RISK_AREA"        // NB1
+            public static let behaviorSelfRiskArea = "BEHAVIOR_REPORT_ON_SELF_HIGH_RISK"   // NB3
         }
     }
 
