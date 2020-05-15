@@ -27,7 +27,7 @@ class PermissionViewController: ViewController, BackNavigator {
     lazy var nextButton = RightIconButton(title: R.string.localizable.next().localizedUppercase,
                      icon: R.image.nextCircleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
+        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: false)
     }()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -116,7 +116,7 @@ class PermissionViewController: ViewController, BackNavigator {
 
         scrollView.snp.makeConstraints { (make) in
             make.top.leading.trailing.width.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalToSuperview().offset(-117)
+            make.bottom.equalTo(groupsButton.snp.top)
         }
 
         nextButton.isEnabled = false

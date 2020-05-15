@@ -26,7 +26,7 @@ class ReportedSymptomViewController: ViewController, ReportedSurveyLayout {
     lazy  var reportOtherButton = makeReportOtherButton()
     lazy  var doneButton = RightIconButton(
         title: R.string.localizable.done().localizedUppercase,
-        icon: R.image.doneCircleArrow(), spacing: 15)
+        icon: R.image.doneCircleArrow())
     lazy  var groupsButton: UIView = {
         let groupView = ButtonGroupView(button1: reportOtherButton, button2: doneButton, hasGradient: false)
         groupView.attachSeparateLine()
@@ -111,7 +111,7 @@ extension ReportedSymptomViewController {
     func makeLearnToKeepOthersSafeButton() -> UIButton {
         let button = RightIconButton(
             title: R.string.localizable.learnHowToKeepOthersSafe(),
-            icon: R.image.nextSilverCircle30(), spacing: 15)
+            icon: R.image.nextSilverCircle30())
         button.imageView?.contentMode = .scaleAspectFit
         button.titleLabel?.font = R.font.atlasGroteskLight(size: 18)
         button.backgroundColor = .clear

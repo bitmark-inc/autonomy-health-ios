@@ -11,7 +11,7 @@
 "launch.policyTerm" = "我們保護您的 %@ 。";
 
 "onboarding.1.description" = "我們將會預測您周圍的公共衛生狀況。";
-"onboarding.2.description" = "您的資料將永遠的維持100%保密（我們也無法存取）";
+"onboarding.2.description" = "您的資料將永遠的維持100%保密\n（我們也無法存取）";
 "onboarding.3.description" = "我們會幫助您周圍的人一起變得更健康。";
 
 "permission.description" = "Autonomy需要存取以下項目：";
@@ -116,6 +116,7 @@
 "sampleSymtom.dryCough" = "乾咳";
 "sampleSymptom.chills" = "發寒";
 "sampleSymptom.fatigue" = "無力";
+"sampleSymptom.shortnessOfBreath" = "呼吸急促";
 "sampleSymptom.difficultyBreathing" = "呼吸困難";
 "sampleSymptom.lossOfSenseOfTasteOrSmell" = "失去味覺或嗅覺";
 

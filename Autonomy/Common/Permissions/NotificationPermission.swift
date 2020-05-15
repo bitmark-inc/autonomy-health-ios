@@ -88,12 +88,19 @@ class NotificationPermission {
                 Global.log.debug("[notification] schedules for checkInSurvey] notification")
             }
 
-            if !identifers.contains(Constant.NotificationIdentifier.cleanAndDisinfectSurfaces) {
-                let request = makeScheduledCleanAndDisinfectSurfacesRequest()
-                notificationCenter.add(request)
-                Global.log.debug("[notification] schedules for [clean And Disinfect Surfaces] notification")
-            }
+            resetNotifications() // only for updating locale for now
         }
+    }
+
+    static func resetNotifications() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [
+            Constant.NotificationIdentifier.cleanAndDisinfectSurfaces
+        ])
+
+        let request = makeScheduledCleanAndDisinfectSurfacesRequest()
+        notificationCenter.add(request)
+        Global.log.debug("[notification] schedules for [clean And Disinfect Surfaces] notification")
     }
 
     static func restartScheduleReminderNotification() {

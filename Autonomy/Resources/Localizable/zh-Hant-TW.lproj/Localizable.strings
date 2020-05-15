@@ -66,8 +66,8 @@
 "HealthyBehaviors" = "健康行為";
 "atRistPopulation" = "危險群";
 
-"YourTotalForToday" = "您今日的總\n";
-"CommunityAverageForToday" = "周圍社群今日平均\n";
+"YourTotalForToday" = "您今日的總";
+"CommunityAverageForToday" = "周圍社群今日平均";
 "FromYesterday" = "從昨天";
 "ReportSymptoms" = "已回報症狀";
 "ReportBehaviors" = "回報行為";

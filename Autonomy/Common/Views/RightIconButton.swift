@@ -21,7 +21,7 @@ class RightIconButton: UIButton {
         }
     }
 
-    init(title: String? = nil, icon: UIImage?, spacing: CGFloat = 6, edgeSpacing: CGFloat = 0) {
+    init(title: String? = nil, icon: UIImage?, spacing: CGFloat = Size.dw(15), edgeSpacing: CGFloat = 0) {
         super.init(frame: CGRect.zero)
 
         setTitle(title, for: .normal)

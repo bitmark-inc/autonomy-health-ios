@@ -217,7 +217,7 @@ extension SymptomHistoryViewController {
     fileprivate func makeReportButton() -> UIButton {
         let reportButton = RightIconButton(
             title: R.string.localizable.report().localizedUppercase,
-            icon: R.image.nextCircleArrow(), spacing: 15)
+            icon: R.image.nextCircleArrow())
         reportButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 7, right: 7)
 
         reportButton.rx.tap.bind { [weak self] in

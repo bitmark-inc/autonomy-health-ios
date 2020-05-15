@@ -15,7 +15,7 @@ class LeftIconButton: UIButton {
     // MARK: - Properties
     fileprivate let disposeBag = DisposeBag()
 
-    init(title: String? = nil, icon: UIImage?, spacing: CGFloat = 15) {
+    init(title: String? = nil, icon: UIImage?, spacing: CGFloat = Size.dw(15)) {
         super.init(frame: CGRect.zero)
 
         setTitle(title, for: .normal)

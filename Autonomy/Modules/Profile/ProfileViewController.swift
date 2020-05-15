@@ -235,6 +235,7 @@ extension ProfileViewController {
 
     fileprivate func makeDonateTapView() -> UIView {
         let label = Label()
+        label.adjustsFontSizeToFitWidth = true
         label.apply(text: R.string.localizable.helpKeepAutonomyFree().localizedUppercase,
                     font: R.font.domaineSansTextLight(size: 18),
                     themeStyle: .lightTextColor)
@@ -251,12 +252,12 @@ extension ProfileViewController {
         label.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
                 .inset(UIEdgeInsets(top: 8, left: 15, bottom: 7, right: 15))
-            make.trailing.lessThanOrEqualTo(imageView.snp.leading)
         }
 
         imageView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-15)
+            make.leading.greaterThanOrEqualTo(label.snp.trailing).offset(10)
         }
 
         themeService.rx

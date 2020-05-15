@@ -38,7 +38,7 @@ class DonateViewController: ViewController, BackNavigator {
     fileprivate lazy var nextButton = RightIconButton(title: R.string.localizable.next().localizedUppercase,
                                                       icon: R.image.nextCircleArrow())
     fileprivate lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
+        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: false)
     }()
 
     override func bindViewModel() {

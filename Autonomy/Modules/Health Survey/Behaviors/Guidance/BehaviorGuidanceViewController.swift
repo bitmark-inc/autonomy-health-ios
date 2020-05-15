@@ -29,27 +29,27 @@ class BehaviorGuidanceViewController: ViewController, BackNavigator {
         }
 
         var videoID: String {
-            return videoIDSet[Locale.current.languageCode ?? ""] ?? videoIDSet["en_US"]!
+            return videoIDSet[Locale.current.languageCode ?? ""] ?? videoIDSet["en"]!
         }
 
         fileprivate var videoIDSet: [String: String] {
             switch self {
             case .handWashing:
                 return [
-                    "en_US": "OkMJ8NYeVUE",
-                    "zh_Hant": "4_QBE_p0TqI"]
+                    "en": "OkMJ8NYeVUE",
+                    "zh": "4_QBE_p0TqI"]
             case .applyingHandSanitizer:
                 return [
-                    "en_US": "q2hMrlnU5Xk",
-                    "zh_Hant": "pBGKvGxHvjk"]
+                    "en": "q2hMrlnU5Xk",
+                    "zh": "pBGKvGxHvjk"]
             case .wearningASurginalMask:
                 return [
-                    "en_US": "h7MOW7tODRs",
-                    "zh_Hant": "p5eaGJivY4U"]
+                    "en": "h7MOW7tODRs",
+                    "zh": "p5eaGJivY4U"]
             case .coveringCoughs:
                 return [
-                    "en_US": "a3RXWMN-QgE",
-                    "zh_Hant": "a3RXWMN-QgE"]
+                    "en": "a3RXWMN-QgE",
+                    "zh": "a3RXWMN-QgE"]
             }
         }
     }

@@ -34,7 +34,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
     lazy var doneButton = RightIconButton(title: R.string.localizable.done().localizedUppercase,
                      icon: R.image.doneCircleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: true)
+        ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: false)
     }()
     lazy var bemCheckBoxGroup: BEMCheckBoxGroup = {
         return BEMCheckBoxGroup(checkBoxes: [yesRiskCheckboxBox.checkBox,
@@ -119,7 +119,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
 
         scrollView.snp.makeConstraints { (make) in
             make.top.leading.trailing.width.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalToSuperview().offset(-117)
+            make.bottom.equalTo(groupsButton.snp.top)
         }
 
         _ = bemCheckBoxGroup
