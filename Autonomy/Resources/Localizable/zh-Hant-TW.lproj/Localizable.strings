@@ -35,11 +35,11 @@
 "Requests" = "請求";
 "Review" = "審閱";
 "GotIt" = "了解";
-"Guidance" = "Guidance";
+"Guidance" = "指引";
 "Submit" = "提交";
 "SignUp" = "註冊";
 "Submitted" = "已提交";
-"Submitting" = "Submitting";
+"Submitting" = "提交中";
 "SignedUp" = "已註冊";
 "Copied" = "已複製";
 "Reported" = "已提交報告";
@@ -58,27 +58,27 @@
 "Delete" = "刪除";
 "SignOut" = "登出";
 "RecoveryKey" = "恢復金鑰";
-"None" = "None";
+"None" = "無";
 
 "RawData" = "原始資料";
 "from_last_24_hours" = "從過去24小時";
-"ConfirmedInfections" = "Confirmed Infections";
-"HealthyBehaviors" = " Healthy Behaviors";
-"atRistPopulation" = " At-risk Population";
+"ConfirmedInfections" = "確診數";
+"HealthyBehaviors" = "健康行為";
+"atRistPopulation" = "危險群";
 
-"YourTotalForToday" = "Your Total\nFor Today";
-"CommunityAverageForToday" = "Community Average\nFor Today";
-"FromYesterday" = "From Yesterday";
-"ReportSymptoms" = "Report Symptoms";
-"ReportBehaviors" = "Report Behaviors";
-"LearnHowToKeepOthersSafe" = "Learn how to keep others safe";
-"AreYouDoingThemCorrectly" = "Are you doing them correctly?";
-"HowWeKeepYourDataPrivate" = "How we keep your data private";
+"YourTotalForToday" = "您今日的總\n";
+"CommunityAverageForToday" = "周圍社群今日平均\n";
+"FromYesterday" = "從昨天";
+"ReportSymptoms" = "已回報症狀";
+"ReportBehaviors" = "回報行為";
+"LearnHowToKeepOthersSafe" = "學習如何保護他人";
+"AreYouDoingThemCorrectly" = "您的方法正確嗎？";
+"HowWeKeepYourDataPrivate" = "我們如何保護您的資料";
 
 "addNewLocation..." = "新增位置...";
 "VersionWithNumber" = "版本 %@";
-"HelpKeepAutonomyFree" = "Help Keep Autonomy Free";
-"Other_amount" = "Other amount";
+"HelpKeepAutonomyFree" = "協助維護Autonomy的免費服務";
+"Other_amount" = "其他金額";
 
 "supportMessage" = "\n%@\n\n您要聯絡支援團隊嗎？";
 "Contact" = "聯絡";
@@ -110,9 +110,9 @@
 
 "Yesterday" = "昨日";
 "Today" = "今日";
-"now" = "now";
+"now" = "現在";
 
-"HandWashing" = "Hand Washing";
-"Applying Hand Sanitizer" = "Applying Hand Sanitizer";
-"Wearing A Surgical Mask" = "Wearing A Surgical Mask";
-"Covering Coughs" = "Covering Coughs";
+"HandWashing" = "洗手";
+"Applying Hand Sanitizer" = "使用手部消毒劑";
+"Wearing A Surgical Mask" = "佩戴醫用口罩";
+"Covering Coughs" = "注意咳嗽禮節";
