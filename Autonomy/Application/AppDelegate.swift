@@ -64,6 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(Constant.googleAPIKey)
         GMSPlacesClient.provideAPIKey(Constant.googleAPIKey)
 
+        guard launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] == nil else {
+            return true
+        }
+
         if #available(iOS 13, *) {
             // already execute app flow in SceneDelegate
         } else {
@@ -85,8 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let notifityType = additionalData["notification_type"] as? String else {
                 return
         }
-
-        Global.openAppWithNotification = true
 
         let TypeKey = Constant.OneSignal.TypeKey.self
         switch notifityType {
@@ -119,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         Global.volumePressTrack = ""
-        if Global.current.account != nil {
+        if Global.current.cachedAccount != nil {
             TimezoneDataEngine.syncTimezone()
         }
     }

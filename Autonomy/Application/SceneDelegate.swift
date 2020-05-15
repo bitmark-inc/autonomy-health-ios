@@ -22,6 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         SVProgressHUD.setContainerView(window)
 
+        guard connectionOptions.notificationResponse == nil else {
+            return
+        }
+
         // Show initial screen
         Application.shared.presentInitialScreen(in: window!, fromDeeplink: false)
     }
@@ -45,7 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         Global.volumePressTrack = ""
-        if Global.current.account != nil {
+        if Global.current.cachedAccount != nil {
             TimezoneDataEngine.syncTimezone()
         }
     }

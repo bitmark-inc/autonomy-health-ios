@@ -20,7 +20,6 @@ import Alamofire
 class Global {
     static var current = Global()
     static let `default` = current
-    static var openAppWithNotification: Bool = false
     static var volumePressTrack = ""
     static var volumePressTime: Date?
     static var enableDebugRelay = BehaviorRelay<Bool>(value: false)

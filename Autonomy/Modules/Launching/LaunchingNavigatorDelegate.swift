@@ -64,8 +64,6 @@ extension LaunchingNavigatorDelegate {
                 })
                 .disposed(by: disposeBag)
         }
-
-        Global.openAppWithNotification = false
     }
 }
 

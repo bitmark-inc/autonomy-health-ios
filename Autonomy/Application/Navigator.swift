@@ -204,9 +204,13 @@ class Navigator {
     }
 
     static func getWindow() -> UIWindow? {
-        let window = UIApplication.shared.windows
+        var window = UIApplication.shared.windows
             .filter { ($0.rootViewController as? NavigationController) != nil }
             .first
+
+        if window == nil {
+            window = UIApplication.shared.windows.first(where: { !$0.isHidden })
+        }
 
         window?.makeKeyAndVisible()
         return window
@@ -215,7 +219,10 @@ class Navigator {
 
 extension Navigator {
     static func goto(segue: Scene) {
+        Global.log.info("[notification] move to Screen: \(segue)")
         guard let currentVC = Navigator.getRootViewController()?.topViewController else {
+            guard let window = getWindow() else { return }
+            Navigator.default.show(segue: .launchingNavigation, sender: nil, transition: .root(in: window))
             Navigator.default.show(segue: segue, sender: nil, transition: .replace(type: .none))
             return
         }
@@ -223,36 +230,15 @@ extension Navigator {
         Navigator.default.show(segue: segue, sender: currentVC)
     }
 
-    static let disposeBag = DisposeBag()
-
-    static func gotoHelpDetailsScreen(helpRequestID: String) {
-        Global.current.accountNumberRelay
-            .filterNil()
-            .take(1)
-            .subscribe(onNext: { (_) in
-                guard let currentVC = Navigator.getRootViewController()?.topViewController else { return }
-
-                let viewModel = GiveHelpViewModel(helpRequestID: helpRequestID)
-                Navigator.default.show(segue: .giveHelp(viewModel: viewModel), sender: currentVC)
-            })
-            .disposed(by: disposeBag)
-    }
-
     static func gotoPOIScreen(poiID: String?) {
-        Global.current.accountNumberRelay
-            .filterNil()
-            .take(1)
-            .subscribe(onNext: { (_) in
-                Global.log.info("[notification] move to POI Screen: \(poiID ?? "nil")")
-                if let currentVC = Navigator.getRootViewController()?.topViewController,
-                    let mainVC = currentVC as? MainViewController {
-                    mainVC.gotoPOI(with: poiID)
-                }
+        Global.log.info("[notification] move to POI Screen: \(poiID ?? "nil")")
+        if let currentVC = Navigator.getRootViewController()?.topViewController,
+            let mainVC = currentVC as? MainViewController {
+            mainVC.gotoPOI(with: poiID)
+        }
 
-                let viewModel = MainViewModel(navigateToPoiID: poiID)
-                Navigator.default.show(segue: .main(viewModel: viewModel), sender: nil, transition: .replace(type: .none))
-            })
-            .disposed(by: disposeBag)
+        let viewModel = MainViewModel(navigateToPoiID: poiID)
+        goto(segue: .main(viewModel: viewModel))
     }
 }
 
