@@ -113,7 +113,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
             .subscribe(onNext: { [weak self] (score) in
                 guard let self = self else { return }
                 setScore(score, in: self.formulaSourceView.scoreLabel)
-                self.healthView.updateLayout(score: Int(score), animate: true)
+                self.healthView.updateLayout(score: score, animate: true)
             })
             .disposed(by: disposeBag)
     }
@@ -130,7 +130,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         }
 
         guideDataView.hideSkeleton()
-        healthView.updateLayout(score: Int(areaProfile.score), animate: false)
+        healthView.updateLayout(score: areaProfile.score.rounded(), animate: false)
         bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
         bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
         bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)

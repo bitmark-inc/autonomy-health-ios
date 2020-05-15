@@ -40,7 +40,7 @@ extension OnboardingViewLayout where Self: ViewController {
         }
 
         talkingImageView.snp.makeConstraints { (make) in
-            make.height.equalToSuperview().multipliedBy(0.42)
+            make.height.equalToSuperview().multipliedBy(0.45)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-45)
         }
@@ -74,7 +74,7 @@ extension OnboardingViewLayout where Self: ViewController {
 
         contentTalkingView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: Size.dh(91), left: 18, bottom: 0, right: 18))
+                .inset(UIEdgeInsets(top: Size.dh(71), left: 18, bottom: 0, right: 18))
         }
 
         return view

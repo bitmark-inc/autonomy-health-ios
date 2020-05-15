@@ -62,10 +62,9 @@
 
 "RawData" = "Raw Data";
 "from_last_24_hours" = "from last 24 hours ";
-"ConfirmedCases" = "CONFIRMED CASES";
-"ReportedSymptoms" = "REPORTED SYMPTOMS";
-"HealthyBehaviors" = "HEALTHY BEHAVIORS";
-"PopulationDensity" = "POPULATION DENSITY";
+"ConfirmedInfections" = "Confirmed Infections";
+"HealthyBehaviors" = " Healthy Behaviors";
+"atRistPopulation" = " At-risk Population";
 
 "YourTotalForToday" = "Your Total\nFor Today";
 "CommunityAverageForToday" = "Community Average\nFor Today";
@@ -111,6 +110,7 @@
 
 "Yesterday" = "Yesterday";
 "Today" = "Today";
+"now" = "now";
 
 "HandWashing" = "Hand Washing";
 "Applying Hand Sanitizer" = "Applying Hand Sanitizer";

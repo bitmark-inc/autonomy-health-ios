@@ -23,8 +23,7 @@ class ColumnDataView: UIView {
     fileprivate lazy var changeStatusArrow = makeChangeStatusArrow()
     fileprivate lazy var deltaLabel = makeDeltaLabel()
 
-
-    init(title: String, _ thingType: ThingType) {
+    init(title: String, _ thingType: ThingType, isSample: Bool = false) {
         self.title = title
         self.thingType = thingType
         super.init(frame: .zero)
@@ -32,7 +31,7 @@ class ColumnDataView: UIView {
         let contentView = LinearView(
             items: [
                 (titleLabel, 0),
-                (numberLabel, 5),
+                (numberLabel, isSample ? -10 : 5),
                 (makeDeltaView(), 5),
                 (makeFromYesterdayLabel(), 8)
         ], bottomConstraint: true)
@@ -54,7 +53,7 @@ class ColumnDataView: UIView {
         let number = number ?? 0
         let delta = delta ?? 0
 
-        numberLabel.setText(number.simple)
+        numberLabel.setText("\(Int(number.rounded()))")
         changeStatusArrow.image = R.image.redDownArrowReported()
         deltaLabel.setText("\(abs(delta).formatPercent)%")
 

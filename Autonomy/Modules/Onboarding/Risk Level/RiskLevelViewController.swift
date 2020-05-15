@@ -164,7 +164,11 @@ extension RiskLevelViewController {
                     font: R.font.atlasGroteskLight(size: Size.ds(36)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
-        return CenterView(contentView: label, spacing: 25)
+        let view = CenterView(contentView: label, shrink: true)
+        view.snp.makeConstraints { (make) in
+            make.height.equalTo(OurTheme.titleHeight)
+        }
+        return view
     }
 
     fileprivate func makeYesRiskCheckboxView() -> CheckboxView {

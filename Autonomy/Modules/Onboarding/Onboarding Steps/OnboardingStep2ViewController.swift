@@ -27,8 +27,16 @@ class OnboardingStep2ViewController: ViewController, BackNavigator, OnboardingVi
         ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
     }()
 
+    lazy var sampleSymptomsTagView = makeSampleSymptomTagListView()
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        sampleSymptomsTagView.rearrangeViews()
     }
 
     // MARK: bindViewModel
@@ -72,38 +80,38 @@ extension OnboardingStep2ViewController {
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.apply(
-            text: R.string.phrase.onboarding2Title(),
+            text: R.string.phrase.surveySymptomsTitle(),
             font: R.font.atlasGroteskLight(size: Size.ds(24)),
             themeStyle: .lightTextColor, lineHeight: 1.2)
 
         let titleLabelCover = UIView()
         titleLabelCover.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().offset(-20)
+            make.width.equalToSuperview().multipliedBy(0.85)
             make.top.bottom.centerX.equalToSuperview()
         }
-
-        let sampleItem1 = makeSampleCheckBox(
-            title: R.string.phrase.onboarding2Item1(),
-            description: R.string.phrase.onboarding2Item1Desc())
-
-        let sampleItem2 = makeSampleCheckBox(
-            title: R.string.phrase.onboarding2Item2(),
-            description: R.string.phrase.onboarding2Item2Desc())
 
         return LinearView(
             items: [
                 (titleLabelCover        , 0),
-                (SeparateLine(height: 1), Size.dh(23)),
-                (sampleItem1         , Size.dh(28)),
-                (sampleItem2, 15)
+                (SeparateLine(height: 1), Size.dh(35)),
+                (sampleSymptomsTagView  , Size.dh(25))
             ])
     }
 
-    fileprivate func makeSampleCheckBox(title: String, description: String) -> CheckboxView {
-        let checkBox = CheckboxView(title: title, description: description)
-        checkBox.checkBox.on = true
-        checkBox.isUserInteractionEnabled = false
-        return checkBox
+    fileprivate func makeSampleSymptomTagListView() -> TagListView {
+        let tagListView = TagListView()
+        let sampleSymptomTexts = [
+            R.string.phrase.sampleSymtomDryCough(),
+            R.string.phrase.sampleSymptomFever(),
+            R.string.phrase.sampleSymptomChills(),
+            R.string.phrase.sampleSymptomFatigue(),
+            R.string.phrase.sampleSymptomShortnessOfBreath(),
+            R.string.phrase.sampleSymptomDifficultyBreathing(),
+            R.string.phrase.sampleSymptomLossOfSenseOfTasteOrSmell()
+            ].map { (id: "", value: $0) }
+
+        tagListView.addTags(sampleSymptomTexts)
+        return tagListView
     }
 }

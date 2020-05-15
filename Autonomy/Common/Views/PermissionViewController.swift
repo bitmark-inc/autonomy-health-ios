@@ -147,7 +147,11 @@ extension PermissionViewController {
                     font: R.font.atlasGroteskLight(size: Size.ds(36)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
-        return CenterView(contentView: label, spacing: 26, shrink: true)
+        let view = CenterView(contentView: label, shrink: true)
+        view.snp.makeConstraints { (make) in
+            make.height.equalTo(OurTheme.titleHeight)
+        }
+        return view
     }
 
     fileprivate func makeNotificationOptionBox() -> OptionBoxView {

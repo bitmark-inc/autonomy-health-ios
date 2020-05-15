@@ -70,42 +70,104 @@ extension OnboardingStep3ViewController {
     func makeContentTalkingView() -> UIView {
         let titleLabel = Label()
         titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .center
         titleLabel.apply(
-            text: R.string.phrase.onboarding3Title(),
-            font: R.font.atlasGroteskLight(size: Size.ds(24)),
+            text: R.string.localizable.healthyBehaviors().localizedUppercase,
+            font: R.font.domaineSansTextLight(size: 18),
             themeStyle: .lightTextColor, lineHeight: 1.2)
-
-        let titleLabelCover = UIView()
-        titleLabelCover.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().offset(-20)
-            make.top.bottom.centerX.equalToSuperview()
-        }
-
-        let sampleItem1 = makeSampleCheckBox(
-            title: R.string.phrase.onboarding3Item1(),
-            description: R.string.phrase.onboarding3Item1Desc())
-
-        let sampleItem2 = makeSampleCheckBox(
-            title: R.string.phrase.onboarding3Item2(),
-            description: R.string.phrase.onboarding3Item2Desc())
 
         return LinearView(
             items: [
-                (titleLabelCover        , 0),
-                (SeparateLine(height: 1), Size.dh(23)),
-                (sampleItem1         , Size.dh(28)),
-                (sampleItem2, 15)
+                (makeSampleNotificationView(), 0),
+                (titleLabel, 16),
+                (makeSampleColumnsView(), Size.dh(28))
             ])
     }
 
-    fileprivate func makeSampleCheckBox(title: String, description: String) -> CheckboxView {
-        let checkBox = CheckboxView(title: title, description: description)
-        checkBox.titleLabel.font = R.font.atlasGroteskLight(size: 16)
-        checkBox.descLabel.font = R.font.atlasGroteskLight(size: 12)
-        checkBox.checkBox.on = true
-        checkBox.isUserInteractionEnabled = false
-        return checkBox
+    fileprivate func makeSampleColumnsView() -> UIView {
+        let sampleItem1 = makeSampleColumnDataView(
+            title: R.string.localizable.yourTotalForToday().localizedUppercase,
+            number: 7)
+
+        let sampleItem2 = makeSampleColumnDataView(
+            title: R.string.localizable.communityAverageForToday().localizedUppercase,
+            number: 5)
+
+        let dataColumnsView = UIView()
+        dataColumnsView.addSubview(sampleItem1)
+        dataColumnsView.addSubview(sampleItem2)
+
+        sampleItem1.snp.makeConstraints { (make) in
+            make.leading.top.bottom.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.5).offset(-7.5)
+        }
+
+        sampleItem2.snp.makeConstraints { (make) in
+            make.leading.equalTo(sampleItem1.snp.trailing).offset(15)
+            make.top.trailing.bottom.equalToSuperview()
+        }
+        return dataColumnsView
+    }
+
+    fileprivate func makeSampleColumnDataView(title: String, number: Float) -> ColumnDataView {
+        let columnDataView = ColumnDataView(title: title, .good, isSample: true)
+        columnDataView.setData(number: number, delta: 0)
+        return columnDataView
+    }
+
+    fileprivate func makeSampleNotificationView() -> UIView {
+        let autonomyLabel = Label()
+        autonomyLabel.apply(text: Constant.appName.uppercased(),
+                            font: UIFont.systemFont(ofSize: 11) , themeStyle: .lightTextColor)
+
+        let appGroupView = RowView(items: [(ImageView(image: R.image.notificationAppIcon()), 0), (autonomyLabel, 7)],
+                                   trailingConstraint: true)
+
+        let notifiTitleLabel = Label()
+        notifiTitleLabel.numberOfLines = 0
+        notifiTitleLabel.apply(text: R.string.phrase.sampleNotificationTitle(),
+                               font: UIFont.systemFont(ofSize: 13, weight: .bold),
+                               themeStyle: .lightTextColor)
+
+        let notifiMesageLabel = Label()
+        notifiMesageLabel.numberOfLines = 0
+        notifiMesageLabel.apply(text: R.string.phrase.sampleNotificationMessage(),
+                                font: UIFont.systemFont(ofSize: 13),
+                                themeStyle: .lightTextColor, lineHeight: 1.125)
+
+        let nowLabel = Label()
+        nowLabel.apply(text: R.string.localizable.now(),
+                       font: UIFont.systemFont(ofSize: 11),
+                       themeStyle: .lightTextColor)
+
+        let notifiContentView = LinearView(items: [(notifiTitleLabel, 0), (notifiMesageLabel, 5)],
+                                           bottomConstraint: true)
+
+        let view = UIView()
+        view.addSubview(appGroupView)
+        view.addSubview(notifiContentView)
+        view.addSubview(nowLabel)
+        view.cornerRadius = 10
+
+        appGroupView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(12)
+            make.leading.equalToSuperview().offset(10)
+        }
+
+        notifiContentView.snp.makeConstraints { (make) in
+            make.top.equalTo(appGroupView.snp.bottom).offset(9)
+            make.leading.trailing.bottom.equalToSuperview()
+                .inset(UIEdgeInsets(top: 0, left: 10, bottom: 12, right: 10))
+        }
+
+        nowLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(appGroupView)
+            make.trailing.equalToSuperview().offset(-12)
+        }
+
+        themeService.rx
+            .bind({ $0.mineShaftBackground }, to: view.rx.backgroundColor)
+            .disposed(by: disposeBag)
+
+        return view
     }
 }

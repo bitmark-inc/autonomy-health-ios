@@ -11,29 +11,16 @@
 "launch.policyTerm" = "We protect your %@.";
 
 "onboarding.1.description" = "We’ll forecast the public health of your neighborhood.";
-"onboarding.2.description" = "Your privacy gets stronger as more people join.";
+"onboarding.2.description" = "Your data is always kept 100% confidential.\n(Even to us.)";
 "onboarding.3.description" = "We’ll help your neighborhood grow healthier together.";
-
-"onboarding.2.title" = "Do you have any of the following symptoms?";
-"onboarding.2.item.1" = "Fever";
-"onboarding.2.item.1.desc" = "Body temperature above 100ºF (38ºC)";
-"onboarding.2.item.2" = "Dry cough";
-"onboarding.2.item.2.desc" = "Without mucous or phlegm (rattling)";
-
-"onboarding.3.title" = "Did you do any of the following behaviors today?";
-"onboarding.3.item.1" = "Frequent hand cleaning";
-"onboarding.3.item.1.desc" = "Washing hands thoroughly with soap and water for at least 20 seconds or applying an alcohol-based hand sanitizer.";
-"onboarding.3.item.2" = "Social & physical distancing";
-"onboarding.3.item.2.desc" = "Avoiding crowds, working from home, and maintaining at least 6 feet of distance from others whenever possible.";
 
 "permission.description" = "Autonomy requires access to the following:";
 "permission.notification.description" = "We’ll remind you to report symptoms and practice healthy behaviors. When your neighborhood’s health changes, we’ll send you alerts.";
-
 "permission.location.description" = "Your data will be used to help improve your neighborhood’s health. Your own location will be kept private.";
 
-"riskLevel.description" = "Are you at higher risk for severe illness from COVID-19?";
+"riskLevel.description" = "Are you at higher risk for severe illness?";
 "riskLevel.yes" = "Yes, I’m at higher risk";
-"riskLevel.yes.description" = "Higher risk individuals currently include:\n• People over age 65\n\nAnd anyone with any of the following\npre-existing medical conditions:\n• High blood pressure (hypertension)\n• Cardiovascular disease\n• Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer";
+"riskLevel.yes.description" = "Higher risk individuals often include:\n• People over age 65\n\nAnd any pre-existing medical conditions,\nsuch as:\n• High blood pressure (hypertension)\n• Cardiovascular disease\n• Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer\n• Obesity\n• Compromised immune system";
 "riskLevel.no" = "No, I’m not at higher risk";
 
 "survey.title" = "How are you right now?";
@@ -128,3 +115,14 @@
 
 "notification.cleanAndDisinfectSurfaces.title" = "Clean and disinfect surfaces";
 "notification.cleanAndDisinfectSurfaces.desc" = "Have you cleaned and disinfected frequently touched surfaces today to prevent virus transmission? Tap if you did this.";
+
+"sampleSymptom.fever" = "fever";
+"sampleSymtom.dryCough" = "dry cough";
+"sampleSymptom.chills" = "chills";
+"sampleSymptom.fatigue" = "fatigue";
+"sampleSymptom.shortnessOfBreath" = "shortness of breath";
+"sampleSymptom.difficultyBreathing" = "difficulty breathing";
+"sampleSymptom.lossOfSenseOfTasteOrSmell" = "loss of sense of taste or smell";
+
+"sample.notification.title" = "Wash your hands while you’re up!";
+"sample.notification.message" = "This a great chance to wash your hands for at least 20 seconds or apply hand sanitizer. Tap if you did this.";

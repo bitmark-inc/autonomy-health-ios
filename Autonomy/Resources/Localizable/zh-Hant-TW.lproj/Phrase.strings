@@ -11,29 +11,16 @@
 "launch.policyTerm" = "我們保護您的 %@ 。";
 
 "onboarding.1.description" = "我們將會預測您周圍的公共衛生狀況。";
-"onboarding.2.description" = "越多人加入，您越有隱私。";
+"onboarding.2.description" = "Your data is always kept 100% confidential.\n(Even to us.)";
 "onboarding.3.description" = "我們會幫助您周圍的人一起變得更健康。";
-
-"onboarding.2.title" = "您有以下症狀嗎？";
-"onboarding.2.item.1" = "發燒";
-"onboarding.2.item.1.desc" = "體溫高於38ºC(100ºF)";
-"onboarding.2.item.2" = "乾咳";
-"onboarding.2.item.2.desc" = "沒有痰或黏液 (嘎嘎作響)";
-
-"onboarding.3.title" = "您今天有執行以下事項嗎？";
-"onboarding.3.item.1" = "經常洗手";
-"onboarding.3.item.1.desc" = "徹底使用肥皂與水洗手至少20秒，或是使用含有酒精的手部消毒劑。";
-"onboarding.3.item.2" = "保持社交距離";
-"onboarding.3.item.2.desc" = "避免群聚，在家辦公，盡可能與人保持室內至少保持1.8公尺(6英尺)的距離。";
 
 "permission.description" = "Autonomy需要存取以下項目：";
 "permission.notification.description" = "我們會提醒您回報症狀以及保持良好的健康習慣。當您周圍的人群健康狀況有改變時，我們會寄警訊給您。";
-
 "permission.location.description" = "您目前的位置會被用於增進您周圍人群的健康。您的位置資料永遠都是私密的。";
 
-"riskLevel.description" = "您屬於新冠肺炎重症的高危險群嗎？";
+"riskLevel.description" = "Are you at higher risk for severe illness?";
 "riskLevel.yes" = "是的，我屬於高危險群";
-"riskLevel.yes.description" = "高危險群目前包含：\n• 65歲以上 \n\n 以及任何有以下健康狀況的人： \n• 高血壓 \n• 心血管疾病 \n• 糖尿病 \n• 慢性呼吸道疾病(例如肺病或氣喘) \n• 癌症";
+"riskLevel.yes.description" = "Higher risk individuals often include:\n• People over age 65\n\nAnd any pre-existing medical conditions,\nsuch as:\n• High blood pressure (hypertension)\n• Cardiovascular disease\n• Diabetes\n• Chronic respiratory disease (such as lung disease or asthma)\n• Cancer\n• Obesity\n• Compromised immune system";
 "riskLevel.no" = "不，我不屬於高危險群";
 
 "survey.title" = "您現在感覺如何？";
@@ -124,3 +111,14 @@
 
 "notification.cleanAndDisinfectSurfaces.title" = "Clean and disinfect surfaces";
 "notification.cleanAndDisinfectSurfaces.desc" = "Have you cleaned and disinfected frequently touched surfaces today to prevent virus transmission? Tap if you did this.";
+
+"sampleSymptom.fever" = "發燒";
+"sampleSymtom.dryCough" = "乾咳";
+"sampleSymptom.chills" = "chills";
+"sampleSymptom.fatigue" = "fatigue";
+"sampleSymptom.shortnessOfBreath" = "呼吸急促";
+"sampleSymptom.difficultyBreathing" = "difficulty breathing";
+"sampleSymptom.lossOfSenseOfTasteOrSmell" = "loss of sense of taste or smell";
+
+"sample.notification.title" = "Wash your hands while you’re up!";
+"sample.notification.message" = "This a great chance to wash your hands for at least 20 seconds or apply hand sanitizer. Tap if you did this.";

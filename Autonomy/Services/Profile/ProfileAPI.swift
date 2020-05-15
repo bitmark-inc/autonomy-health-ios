@@ -31,7 +31,7 @@ extension ProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
         case .getMe, .updateMe, .deleteMe:
             return "me"
         case .reportHere:
-            return "me/here"
+            return "me"
         }
     }
 
@@ -41,7 +41,7 @@ extension ProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
         case .getMe:    return .get
         case .updateMe: return .patch
         case .deleteMe: return .delete
-        case .reportHere: return .put
+        case .reportHere: return .head
         }
     }
 

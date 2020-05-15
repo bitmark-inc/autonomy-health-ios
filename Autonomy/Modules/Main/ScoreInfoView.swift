@@ -75,10 +75,10 @@ class ScoreInfoView: UIView {
 
     fileprivate func getTitle() -> String {
         switch scoreInfoType {
-        case .confirmedCases:    return R.string.localizable.confirmedCases()
-        case .reportedSymptoms:  return R.string.localizable.reportedSymptoms()
-        case .healthyBehaviors:  return R.string.localizable.healthyBehaviors()
-        case .populationDensity: return R.string.localizable.populationDensity()
+        case .confirmedCases:    return R.string.localizable.confirmedInfections().localizedUppercase
+        case .reportedSymptoms:  return R.string.localizable.symptoms().localizedUppercase
+        case .healthyBehaviors:  return R.string.localizable.healthyBehaviors().localizedUppercase
+        case .populationDensity: return R.string.localizable.atRistPopulation().localizedUppercase
         case .none:
             return ""
         }

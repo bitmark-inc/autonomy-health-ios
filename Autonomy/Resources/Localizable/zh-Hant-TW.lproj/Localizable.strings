@@ -62,10 +62,9 @@
 
 "RawData" = "原始資料";
 "from_last_24_hours" = "從過去24小時";
-"ConfirmedCases" = "確診數";
-"ReportedSymptoms" = "通報症狀";
-"HealthyBehaviors" = "健康行為";
-"PopulationDensity" = "人口密度";
+"ConfirmedInfections" = "Confirmed Infections";
+"HealthyBehaviors" = " Healthy Behaviors";
+"atRistPopulation" = " At-risk Population";
 
 "YourTotalForToday" = "Your Total\nFor Today";
 "CommunityAverageForToday" = "Community Average\nFor Today";
@@ -111,6 +110,7 @@
 
 "Yesterday" = "昨日";
 "Today" = "今日";
+"now" = "now";
 
 "HandWashing" = "Hand Washing";
 "Applying Hand Sanitizer" = "Applying Hand Sanitizer";

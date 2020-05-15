@@ -59,7 +59,8 @@ class HealthScoreTriangle: UIView {
         coloredSublayer = nil
     }
 
-    func updateLayout(score: Int, animate: Bool) {
+    func updateLayout(score: Float, animate: Bool) {
+        let score = Int(score.rounded())
         processingTimer?.invalidate()
         scoreLabel.setText("\(score)")
 
