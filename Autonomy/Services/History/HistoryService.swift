@@ -19,6 +19,8 @@ class HistoryService {
         return provider.rx
             .requestWithRefreshJwt(.symptoms(before: date))
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map([SymptomsHistory].self, atKeyPath: "symptoms_history")
     }
 
@@ -28,6 +30,8 @@ class HistoryService {
         return provider.rx
             .requestWithRefreshJwt(.behaviors(before: date))
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map([BehaviorsHistory].self, atKeyPath: "behaviors_history")
     }
 
@@ -37,6 +41,8 @@ class HistoryService {
         return provider.rx
             .requestWithRefreshJwt(.locations(before: date))
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map([LocationHistory].self, atKeyPath: "locations_history")
     }
 }

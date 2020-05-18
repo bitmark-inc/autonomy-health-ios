@@ -95,6 +95,7 @@ class AuthService {
                     accountNumber: account.getAccountNumber(),
                     timestamp: timestamp, signature: signature))
                 .filterSuccess()
+                .asSingle()
                 .map(Auth.self)
                 .do(onSuccess: { BitmarkSDK.setAPIToken($0.jwtToken) })
         }

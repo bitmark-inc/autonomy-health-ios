@@ -27,6 +27,8 @@ class ProfileService {
                 .requestWithRefreshJwt(
                     .create(encryptedPublicKey: encryptedPublicKey, metadata: metadata))
                 .filterSuccess()
+                .retryWhenTransientError()
+                .asSingle()
                 .map(Profile.self, atKeyPath: "result", using: Global.default.decoder)
         }
     }
@@ -37,6 +39,8 @@ class ProfileService {
         return provider.rx
             .requestWithRefreshJwt(.getMe)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(Profile.self, atKeyPath: "result", using: Global.default.decoder )
     }
 
@@ -46,7 +50,8 @@ class ProfileService {
         return provider.rx
             .requestWithRefreshJwt(.updateMe(metadata: metadata))
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 
     static func deleteMe() -> Completable {
@@ -55,7 +60,8 @@ class ProfileService {
         return provider.rx
             .requestWithRefreshJwt(.deleteMe)
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 
     static func reportHere() -> Completable {
@@ -64,6 +70,7 @@ class ProfileService {
         return provider.rx
             .requestWithRefreshJwt(.reportHere)
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 }

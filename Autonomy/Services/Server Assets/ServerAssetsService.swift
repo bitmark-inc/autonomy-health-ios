@@ -20,6 +20,8 @@ class ServerAssetsService {
         return provider.rx
             .onlineRequest(.appInformation)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(AppInfo.self, atKeyPath: "information")
     }
 }

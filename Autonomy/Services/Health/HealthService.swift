@@ -19,6 +19,8 @@ class HealthService {
         return provider.rx
             .requestWithRefreshJwt(.score)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map([String: Double].self)
             .map { $0["score"] ?? 0}
     }

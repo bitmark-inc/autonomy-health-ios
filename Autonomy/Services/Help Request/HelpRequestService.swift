@@ -19,7 +19,8 @@ class HelpRequestService {
         return provider.rx
             .requestWithRefreshJwt(.create(helpRequest: helpRequest))
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 
     static func list() -> Single<[HelpRequest]> {
@@ -28,6 +29,8 @@ class HelpRequestService {
         return provider.rx
             .requestWithRefreshJwt(.list)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map([HelpRequest].self, atKeyPath: "result")
     }
 
@@ -37,6 +40,8 @@ class HelpRequestService {
         return provider.rx
             .requestWithRefreshJwt(.get(helpRequestID: helpRequestID))
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(HelpRequest.self, atKeyPath: "result")
     }
 
@@ -46,6 +51,7 @@ class HelpRequestService {
         return provider.rx
             .requestWithRefreshJwt(.give(helpRequestID: helpRequestID))
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 }

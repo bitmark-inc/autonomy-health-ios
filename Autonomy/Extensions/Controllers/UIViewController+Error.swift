@@ -43,27 +43,12 @@ extension UIViewController {
     }
 
     func handleErrorIfAsAFError(_ error: Error) -> Bool {
-        guard let error = error as? MoyaError else {
-            return false
+        if error.isTransient {
+            showErrorAlert(message: error.localizedDescription)
+            Global.log.info("[done] handle AFError; show error: \(error.localizedDescription)")
         }
 
-        switch error {
-        case .underlying(let error, _):
-            guard let error = error.asAFError else { return false }
-            switch error {
-            case .sessionTaskFailed(let error):
-                showErrorAlert(message: error.localizedDescription)
-                Global.log.info("[done] handle AFError; show error: \(error.localizedDescription)")
-                return true
-
-            default:
-                break
-            }
-        default:
-            break
-        }
-
-        return false
+        return error.isTransient
     }
 }
 
@@ -97,25 +82,9 @@ struct ErrorAlert {
 
 extension Global {
     static func handleErrorIfAsAFError(_ error: Error) -> Bool {
-        guard let error = error as? MoyaError else {
-            return false
+        if error.isTransient {
+            Global.log.info("[done] handle silently AFError; show error: \(error.localizedDescription)")
         }
-
-        switch error {
-        case .underlying(let error, _):
-            guard let error = error.asAFError else { return false }
-            switch error {
-            case .sessionTaskFailed(let error):
-                Global.log.info("[done] handle silently AFError; show error: \(error.localizedDescription)")
-                return true
-
-            default:
-                break
-            }
-        default:
-            break
-        }
-
-        return false
+        return error.isTransient
     }
 }

@@ -19,6 +19,8 @@ class SymptomService {
         return provider.rx
             .requestWithRefreshJwt(.list)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(SymptomList.self)
     }
 
@@ -28,6 +30,8 @@ class SymptomService {
         return provider.rx
             .requestWithRefreshJwt(.fullList)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(SymptomFullList.self)
     }
 
@@ -37,6 +41,8 @@ class SymptomService {
         return provider.rx
             .requestWithRefreshJwt(.create(name: name))
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(String.self, atKeyPath: "id")
             .map { Symptom(id: $0, name: name) }
     }
@@ -47,7 +53,8 @@ class SymptomService {
         return provider.rx
             .requestWithRefreshJwt(.report(symptomKeys: symptomKeys))
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 
     static func getMetrics() -> Single<SurveyMetrics> {
@@ -56,6 +63,8 @@ class SymptomService {
         return provider.rx
             .requestWithRefreshJwt(.metrics)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(SurveyMetrics.self)
     }
 }

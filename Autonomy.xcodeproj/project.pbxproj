@@ -637,6 +637,9 @@
 		5BD0D2C0246CE73000022AE1 /* TimezoneDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD0D2BD246CE73000022AE1 /* TimezoneDataEngine.swift */; };
 		5BDB655B246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5BDB655F246A84C1003CD084 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C859B242DEDBB002CC53B /* NotificationService.swift */; };
+		5BE08D54247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
+		5BE08D55247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
+		5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
 		5BFC8DC02433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC12433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
@@ -951,6 +954,7 @@
 		5BCBBD1A246C0F8500B735EE /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		5BD0D2BD246CE73000022AE1 /* TimezoneDataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneDataEngine.swift; sourceTree = "<group>"; };
 		5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceInhouseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BE08D53247261D4006A3034 /* Error+Supporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Supporter.swift"; sourceTree = "<group>"; };
 		5BFC8DBE2433081400815828 /* HealthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		5BFC8DBF2433081400815828 /* HealthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAPI.swift; sourceTree = "<group>"; };
 		5BFC8DCB2433264A00815828 /* FeedTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableCell.swift; sourceTree = "<group>"; };
@@ -1850,6 +1854,7 @@
 			children = (
 				5BFC8DCF243327E000815828 /* Date+Formatter.swift */,
 				5B4B60B0245FC2F000432151 /* Float+Formatter.swift */,
+				5BE08D53247261D4006A3034 /* Error+Supporter.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -2674,6 +2679,7 @@
 				5BCBBCF3246BC59100B735EE /* SearchBehaviorViewModel.swift in Sources */,
 				5B7CE0D52430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08F242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
+				5BE08D55247261D4006A3034 /* Error+Supporter.swift in Sources */,
 				5BB140A3242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5BCBBD02246BCEFA00B735EE /* ColumnDataView.swift in Sources */,
 				5B577924242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
@@ -2848,6 +2854,7 @@
 				5BCBBCF2246BC59100B735EE /* SearchBehaviorViewModel.swift in Sources */,
 				5B7CE0D42430CB6C002CD923 /* TableViewCell.swift in Sources */,
 				5B87F08E242CC18C0084B4F6 /* RiskLevelViewController.swift in Sources */,
+				5BE08D54247261D4006A3034 /* Error+Supporter.swift in Sources */,
 				5BB140A2242C6296009EFC59 /* ButtonGroupView.swift in Sources */,
 				5BCBBD01246BCEFA00B735EE /* ColumnDataView.swift in Sources */,
 				5B577923242B4E830028D3E3 /* AccountService+Rx.swift in Sources */,
@@ -3028,6 +3035,7 @@
 				5BAE845A246A7985006E118D /* SearchTextTableCell.swift in Sources */,
 				5BAE845B246A7985006E118D /* AppInfo.swift in Sources */,
 				5BAE845C246A7985006E118D /* SurveySymptomsViewModel.swift in Sources */,
+				5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */,
 				5BAE845E246A7985006E118D /* Auth.swift in Sources */,
 				5BAE845F246A7985006E118D /* AppVersion.swift in Sources */,
 				5BAE8460246A7985006E118D /* HealthSurveyViewController.swift in Sources */,

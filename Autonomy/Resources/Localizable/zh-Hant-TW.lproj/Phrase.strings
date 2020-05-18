@@ -36,7 +36,7 @@
 "survey.reportNewSymptom" = "回報其他症狀...";
 "survey.symptom.reporting" = "正在回報您的症狀至您周圍的社群...";
 
-"survey.behaviors.title" = "T點擊任何您今天有執行的健康行為或是新增：";
+"survey.behaviors.title" = "點選或新增任何您今天有執行的健康行為：";
 "survey.commonBehaviors" = "新冠肺炎應對行為建議：";
 "survey.recentBehaviors" = "你附近的人的行為";
 "survey.reportNewBehavior" = "回報其他行為...";

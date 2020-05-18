@@ -36,6 +36,10 @@ class TimezoneDataEngine: TimezoneDataEngineDelegate {
             .subscribe(onCompleted: {
                 Global.log.info("[timezone] sync successfully")
             }, onError: { (error) in
+                guard !AppError.errorByNetworkConnection(error),
+                    !Global.handleErrorIfAsAFError(error) else {
+                        return
+                }
                 Global.log.error(error)
             })
             .disposed(by: disposeBag)

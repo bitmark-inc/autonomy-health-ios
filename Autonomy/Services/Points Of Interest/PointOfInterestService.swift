@@ -19,6 +19,8 @@ class PointOfInterestService {
         return provider.rx
             .requestWithRefreshJwt(.get)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map([PointOfInterest].self)
     }
 
@@ -28,6 +30,8 @@ class PointOfInterestService {
         return provider.rx
             .requestWithRefreshJwt(.create(pointOfInterest: pointOfInterest))
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(PointOfInterest.self)
     }
 
@@ -37,7 +41,8 @@ class PointOfInterestService {
         return provider.rx
             .requestWithRefreshJwt(.update(poiID: poiID, alias: alias))
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 
     static func delete(poiID: String) -> Completable {
@@ -46,7 +51,8 @@ class PointOfInterestService {
         return provider.rx
             .requestWithRefreshJwt(.delete(poiID: poiID))
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 
     static func order(poiIDs: [String]) -> Completable {
@@ -55,6 +61,7 @@ class PointOfInterestService {
         return provider.rx
             .requestWithRefreshJwt(.order(poiIDs: poiIDs))
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 }

@@ -19,6 +19,8 @@ class FormulaService {
         return provider.rx
             .requestWithRefreshJwt(.get)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(FormulaWeight.self)
     }
 
@@ -28,7 +30,8 @@ class FormulaService {
         return provider.rx
             .requestWithRefreshJwt(.update(coefficient: coefficient))
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 
     static func delete() -> Completable {
@@ -37,6 +40,7 @@ class FormulaService {
         return provider.rx
             .requestWithRefreshJwt(.delete)
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 }

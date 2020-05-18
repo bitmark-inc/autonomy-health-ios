@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import Moya
 import SwifterSwift
+import RxSwiftExt
 
 let errorKeyPath = "error"
 
@@ -46,21 +47,22 @@ struct ServerAPIError: Codable, Error {
 }
 
 extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
-    func filterSuccess() -> Single<Element> {
-        return self.flatMap { (response) -> Single<Element> in
+    func filterSuccess() -> Observable<Element> {
+        return self.asObservable().flatMap { (response) -> Observable<Element> in
             Global.log.debug("----- successful response -----")
             Global.log.debug(String(data: response.data, encoding: .utf8))
 
             if 200 ... 299 ~= response.statusCode {
-                return Single.just(response)
+                return Observable.just(response)
             }
 
             if response.statusCode == 406 {
-                return Single.error(ServerAPIError(code: .RequireUpdateVersion, message: ""))
+                return Observable.error(ServerAPIError(code: .RequireUpdateVersion, message: ""))
             }
 
             let serverAPIError = response.data.convertServerAPIError()
-            return Single.error(serverAPIError)
+
+            return Observable.error(serverAPIError)
         }
     }
 }

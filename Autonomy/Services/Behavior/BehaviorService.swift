@@ -19,6 +19,8 @@ class BehaviorService {
         return provider.rx
             .requestWithRefreshJwt(.list)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(BehaviorList.self)
     }
 
@@ -28,6 +30,8 @@ class BehaviorService {
         return provider.rx
             .requestWithRefreshJwt(.fullList)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(BehaviorFullList.self)
     }
 
@@ -37,6 +41,8 @@ class BehaviorService {
         return provider.rx
             .requestWithRefreshJwt(.create(name: name))
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(String.self, atKeyPath: "id")
             .map { Behavior(id: $0, name: name) }
     }
@@ -47,7 +53,8 @@ class BehaviorService {
         return provider.rx
             .requestWithRefreshJwt(.report(behaviorKeys: behaviorKeys))
             .filterSuccess()
-            .asCompletable()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 
     static func getMetrics() -> Single<SurveyMetrics> {
@@ -56,6 +63,8 @@ class BehaviorService {
         return provider.rx
             .requestWithRefreshJwt(.metrics)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(SurveyMetrics.self)
     }
 }

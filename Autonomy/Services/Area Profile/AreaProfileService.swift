@@ -19,6 +19,8 @@ class AreaProfileService {
         return provider.rx
             .requestWithRefreshJwt(.get)
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(AreaProfile.self)
     }
 
@@ -28,6 +30,8 @@ class AreaProfileService {
         return provider.rx
             .requestWithRefreshJwt(.getPOI(poiID: poiID))
             .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
             .map(AreaProfile.self)
     }
 }
