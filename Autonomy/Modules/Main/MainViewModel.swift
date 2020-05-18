@@ -34,7 +34,7 @@ class MainViewModel: ViewModel {
         super.init()
 
         fetchPOIs()
-        FormulaSupporter.pollingSyncFormula()
+        FormulaSupporter.shared.pollingSyncFormula()
         observeAndSubmitProfileFormula()
     }
 
@@ -66,7 +66,7 @@ class MainViewModel: ViewModel {
     }
 
     fileprivate func observeAndSubmitProfileFormula() {
-        observeAndSubmitProfileFormulaDisposable = FormulaSupporter.coefficientRelay
+        observeAndSubmitProfileFormulaDisposable = FormulaSupporter.shared.coefficientRelay
             .filterNil()
             .filter { $0.actor != nil }.map { $0.v }
             .debounce(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
@@ -93,7 +93,8 @@ class MainViewModel: ViewModel {
     func resetFormula() {
         observeAndSubmitProfileFormulaDisposable?.dispose() // ensure update with debounce 3s don't call after deleting
 
-        // TODO: freeze not allow to edit
+        FormulaSupporter.shared.defaultStateRelay.accept(.isReseting)
+
         FormulaService.delete()
             .andThen(FormulaService.get())
             .do(onDispose: { [weak self] in
@@ -101,8 +102,9 @@ class MainViewModel: ViewModel {
             })
             .subscribe(onSuccess: { (formulaWeight) in
                 Global.log.info("[formula] resets successfully")
-                FormulaSupporter.coefficientRelay
+                FormulaSupporter.shared.coefficientRelay
                     .accept((actor: nil, v: formulaWeight.coefficient))
+                FormulaSupporter.shared.defaultStateRelay.accept(formulaWeight.isDefault ? .default : .custom)
             }, onError: { (error) in
                 guard !AppError.errorByNetworkConnection(error),
                     !Global.handleErrorIfAsAFError(error) else {

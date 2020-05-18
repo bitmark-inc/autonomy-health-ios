@@ -326,7 +326,7 @@ class MainViewController: ViewController {
         view.addSubview(volumeView)
         audioLevel = audioSession.outputVolume
 
-        FormulaSupporter.mainCollectionView = mainCollectionView
+        FormulaSupporter.shared.mainCollectionView = mainCollectionView
     }
 }
 
@@ -399,6 +399,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? HealthScoreCollectionCell else { return }
+        cell.currentState = .collapsed
         cell.slideBottomView(with: .collapsed)
     }
 

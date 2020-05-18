@@ -30,7 +30,7 @@
 "survey.help.assistance" = "我需要協助";
 "survey.help.assistance.description" = "讓您當地的社群知道您需要幫助。";
 
-"survey.symptoms.title" = "點擊任何您有的症狀，或新增症狀：";
+"survey.symptoms.title" = "點選或新增任何您有的症狀：";
 "survey.commonSymptoms" = "常見新冠肺炎症狀";
 "survey.recentSymptoms" = "近期周圍社群的症狀";
 "survey.reportNewSymptom" = "回報其他症狀...";

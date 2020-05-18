@@ -24,6 +24,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     lazy var guideDataView = makeGuideDataView()
     lazy var locationLabel = makeLocationLabel()
     lazy var scrollView = makeScrollView()
+    lazy var loadingSourceView = makeLoadingSourceView()
     lazy var formulaSourceView = makeFormularSourceView()
     lazy var tapHealthViewGesture = makeTapHealthViewGesture()
 
@@ -209,6 +210,11 @@ class HealthScoreCollectionCell: UICollectionViewCell {
 
         contentView.addSubview(paddingContentView)
         contentView.addSubview(scrollView)
+        contentView.addSubview(loadingSourceView)
+
+        loadingSourceView.snp.makeConstraints { (make) in
+            make.edges.equalTo(scrollView)
+        }
 
         scrollView.snp.makeConstraints { (make) in
             make.width.bottom.leading.trailing.equalToSuperview()
@@ -254,6 +260,7 @@ extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
     func slideBottomView(with state: BottomSlideViewState) {
         switch state {
         case .collapsed:
+            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             topFormulaViewConstraint?.update(offset: bottomY)
             healthView.transform = CGAffineTransform(scaleX: 1, y: 1)
             healthView.appNameLabel.transform = CGAffineTransform(translationX: 0, y: 0)
@@ -417,5 +424,37 @@ extension HealthScoreCollectionCell {
 
     fileprivate func makeTapHealthViewGesture() -> UITapGestureRecognizer {
         return UITapGestureRecognizer(target: self, action: #selector(tapHealthView(_:)))
+    }
+
+    fileprivate func makeLoadingSourceView() -> UIView {
+        let loadingIndicator = makeLoadingIndicatorInSourceView()
+
+        let view = UIView()
+        view.alpha = 0.3
+        view.addSubview(loadingIndicator)
+
+        loadingIndicator.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalToSuperview()
+        }
+
+        themeService.rx
+            .bind({ $0.background }, to: view.rx.backgroundColor)
+            .disposed(by: disposeBag)
+
+        FormulaSupporter.shared.defaultStateRelay
+            .map { $0 != .isReseting }
+            .subscribe(onNext: { (notIsReseting) in
+                view.isHidden = notIsReseting
+                notIsReseting ? loadingIndicator.stopAnimating() : loadingIndicator.startAnimating()
+            })
+            .disposed(by: disposeBag)
+
+        return view
+    }
+
+    fileprivate func makeLoadingIndicatorInSourceView() -> UIActivityIndicatorView {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .whiteLarge
+        return indicator
     }
 }

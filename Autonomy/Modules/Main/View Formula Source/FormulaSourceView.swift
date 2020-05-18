@@ -90,6 +90,11 @@ class FormulaSourceView: UIView {
         setupViews()
 
         bindFormulaWeightEvents()
+
+        FormulaSupporter.shared.defaultStateRelay
+            .map { $0 == .custom }
+            .bind(to: resetButton.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
 
     deinit {
@@ -157,7 +162,7 @@ class FormulaSourceView: UIView {
     var didObserve: Bool = false
     fileprivate func bindFormulaWeightEvents() {
         // bind Data
-        FormulaSupporter.coefficientRelay
+        FormulaSupporter.shared.coefficientRelay
             .filterNil()
             .filter { [weak self] in
                 guard let self = self else { return false }
@@ -178,7 +183,7 @@ class FormulaSourceView: UIView {
             .disposed(by: disposeBag)
 
         // Calculate
-        FormulaSupporter.coefficientRelay
+        FormulaSupporter.shared.coefficientRelay
             .filterNil()
             .map { $0.v }
             .subscribe(onNext: { [weak self] (coefficient) in
@@ -231,11 +236,11 @@ extension FormulaSourceView {
 
         calculatorDisposable = BehaviorRelay.combineLatest(confirmsWeightRelay, behaviorsWeightRelay, symptomsWeightRelay, symptomWeightsRelay)
             .subscribe(onNext: { [weak self] (confirmWeight, behaviorsWeight, symptomsWeight, symptomWeights) in
-                guard let self = self, let coefficient = FormulaSupporter.coefficientRelay.value?.v else {
+                guard let self = self, let coefficient = FormulaSupporter.shared.coefficientRelay.value?.v else {
                     return
                 }
 
-                if let displayingCell = FormulaSupporter.displayingCell, displayingCell.formulaSourceView != self {
+                if let displayingCell = FormulaSupporter.shared.displayingCell, displayingCell.formulaSourceView != self {
                     return
                 }
 
@@ -249,7 +254,7 @@ extension FormulaSourceView {
                 newCoefficient.symptomKeyWeights = newSymptomKeyWeights
 
                 if newCoefficient != coefficient {
-                    FormulaSupporter.coefficientRelay.accept((actor: self.thisActor, v: newCoefficient))
+                    FormulaSupporter.shared.coefficientRelay.accept((actor: self.thisActor, v: newCoefficient))
                 }
             })
     }
@@ -510,15 +515,17 @@ extension FormulaSourceView {
         let button = RightIconButton(
             title: R.string.localizable.reset().localizedUppercase,
             icon: R.image.resetIcon()!,
-            edgeSpacing: 8)
+            spacing: 7,
+            edgeSpacing: 10)
         button.apply(font: R.font.atlasGroteskLight(size: 14))
         button.snp.makeConstraints { (make) in
             make.height.equalTo(30)
         }
         button.cornerRadius = 15
+
         themeService.rx
-        .bind( { $0.silverColor }, to: button.rx.backgroundColor)
-        .disposed(by: disposeBag)
+            .bind( { $0.concordColor }, to: button.rx.backgroundColor)
+            .disposed(by: disposeBag)
 
         button.rx.tap.bind { [weak self] in
             guard let self = self else { return }

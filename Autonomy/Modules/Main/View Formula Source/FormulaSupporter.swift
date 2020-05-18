@@ -17,24 +17,44 @@ enum FakeAppError: Error {
 
 class FormulaSupporter {
 
+    enum DefaultState {
+        case `default`
+        case custom
+        case isReseting
+    }
+
+    static var shared = FormulaSupporter()
+
     // MARK: - Properties
-    static let coefficientRelay = BehaviorRelay<(actor: String?, v: Coefficient)?>(value: nil)
-    weak static var mainCollectionView: UICollectionView?
-    static var displayingCell: HealthScoreCollectionCell? {
+    let coefficientRelay = BehaviorRelay<(actor: String?, v: Coefficient)?>(value: nil)
+    let defaultStateRelay = BehaviorRelay<DefaultState>(value: .default)
+    weak var mainCollectionView: UICollectionView?
+    var displayingCell: HealthScoreCollectionCell? {
         return mainCollectionView?.visibleCells.first as? HealthScoreCollectionCell
     }
 
-    static var pollingSyncFormulaDisposable: Disposable?
-    static let disposeBag = DisposeBag()
+    var pollingSyncFormulaDisposable: Disposable?
+    let disposeBag = DisposeBag()
 
-    static func pollingSyncFormula() {
+    init() {
+        coefficientRelay
+            .filterNil()
+            .filter { $0.actor != nil }
+            .map { _ in .custom }
+            .bind(to: defaultStateRelay)
+            .disposed(by: disposeBag)
+    }
+
+    func pollingSyncFormula() {
         pollingSyncFormulaDisposable?.dispose()
 
         func pollingFunction() -> Observable<Void> {
             return FormulaService.get()
                 .asObservable()
-                .flatMap({ (formulaWeight) -> Observable<Void> in
-                    coefficientRelay.accept((actor: nil, v: formulaWeight.coefficient))
+                .flatMap({ [weak self] (formulaWeight) -> Observable<Void> in
+                    guard let self = self else { return Observable.never() }
+                    self.coefficientRelay.accept((actor: nil, v: formulaWeight.coefficient))
+                    self.defaultStateRelay.accept(formulaWeight.isDefault ? .default : .custom)
                     return Observable.error(FakeAppError.reloadPolling)
                 })
                 .do(onError: { (error) in
