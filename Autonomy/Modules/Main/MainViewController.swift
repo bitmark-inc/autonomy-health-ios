@@ -81,9 +81,6 @@ class MainViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // clear badge notification
-        UIApplication.shared.applicationIconBadgeNumber = 0
-
         NotificationCenter.default.addObserver (self, selector: #selector(volumeChanged(_:)),
             name: NSNotification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
             object: nil)
@@ -433,6 +430,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
                 self.areaProfiles[areaProfileKey ?? "current"] = areaProfile
 
             }, onError: { (error) in
+                guard !AppError.errorByNetworkConnection(error),
+                    !Global.handleErrorIfAsAFError(error) else {
+                        return
+                }
+
                 Global.log.error(error)
             })
             .disposed(by: disposeBag)

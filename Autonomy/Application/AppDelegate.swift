@@ -121,6 +121,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         Global.volumePressTrack = ""
+
+        // clear badge notification
+        UIApplication.shared.applicationIconBadgeNumber = 0
+
         if Global.current.cachedAccount != nil {
             TimezoneDataEngine.syncTimezone()
         }
@@ -146,16 +150,18 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         Global.current.userLocationRelay.accept(locations.last)
 
-        _ = ProfileService.reportHere()
-            .subscribe(onCompleted: {
-                Global.log.info("[reportHere] successfully")
-            }, onError: { (error) in
-                guard !AppError.errorByNetworkConnection(error),
-                    !Global.handleErrorIfAsAFError(error) else {
-                        return
-                }
-                Global.log.error(error)
-            })
+        if Global.current.cachedAccount != nil {
+            _ = ProfileService.reportHere()
+                .subscribe(onCompleted: {
+                    Global.log.info("[reportHere] successfully")
+                }, onError: { (error) in
+                    guard !AppError.errorByNetworkConnection(error),
+                        !Global.handleErrorIfAsAFError(error) else {
+                            return
+                    }
+                    Global.log.error(error)
+                })
+        }
     }
 }
 

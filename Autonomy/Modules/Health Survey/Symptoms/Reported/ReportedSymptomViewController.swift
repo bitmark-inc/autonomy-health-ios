@@ -20,7 +20,7 @@ class ReportedSymptomViewController: ViewController, ReportedSurveyLayout {
     }()
     lazy  var scrollView = makeScrollView()
     lazy  var titleScreen = makeTitleScreen(text: R.string.phrase.symptomsReportedTitle())
-    lazy  var totalDataView = ColumnDataView(title: R.string.localizable.yourTotalForToday().localizedUppercase, .bad)
+    lazy  var totalDataView = ColumnDataView(title: R.string.localizable.symptomsYouReportedToday().localizedUppercase, .bad)
     lazy  var communityAverageDataView = ColumnDataView(title: R.string.localizable.communityAverageForToday().localizedUppercase, .bad)
     lazy  var subInfoButton = makeLearnToKeepOthersSafeButton()
     lazy  var reportOtherButton = makeReportOtherButton()
@@ -52,7 +52,7 @@ class ReportedSymptomViewController: ViewController, ReportedSurveyLayout {
         }.disposed(by: disposeBag)
 
         doneButton.rx.tap.bind { [weak self] in
-            self?.gotoMainScreen()
+            self?.backOrGotoMainScreen()
         }.disposed(by: disposeBag)
 
         thisViewModel.fetchDataResultSubject

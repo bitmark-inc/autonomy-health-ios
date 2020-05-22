@@ -28,7 +28,7 @@ protocol ReportedSurveyLayout {
 
     func bindData(with metrics: SurveyMetrics)
     func errorForGeneral(error: Error)
-    func gotoMainScreen()
+    func backOrGotoMainScreen()
     func setSkeleton(show: Bool)
     func setupLayoutViews()
 }
@@ -55,7 +55,13 @@ extension ReportedSurveyLayout where Self: ViewController {
 }
 
 extension ReportedSurveyLayout where Self: ViewController {
-    func gotoMainScreen() {
+    func backOrGotoMainScreen() {
+        let viewControllers = navigationController?.viewControllers.reversed() ?? []
+        if let target = viewControllers.first(where: { type(of: $0) == ProfileViewController.self }) {
+            navigator.popToViewController(target: target, animationType: .slide(direction: .up))
+            return
+        }
+
         let viewModel = MainViewModel()
         navigator.show(segue: .main(viewModel: viewModel), sender: self,
                        transition: .replace(type: .slide(direction: .up)))

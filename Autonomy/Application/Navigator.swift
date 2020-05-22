@@ -122,6 +122,12 @@ class Navigator {
         }
     }
 
+    func popToViewController(target: UIViewController, animationType: HeroDefaultAnimationType) {
+        guard let navVC = Self.getRootViewController() else { return }
+        navVC.hero.navigationAnimationType = animationType
+        navVC.popToViewController(target, animated: true)
+    }
+
     func dismiss(sender: UIViewController?) {
         sender?.navigationController?.dismiss(animated: true, completion: nil)
     }

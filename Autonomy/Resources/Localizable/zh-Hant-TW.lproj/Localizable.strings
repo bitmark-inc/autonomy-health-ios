@@ -67,6 +67,7 @@
 "atRistPopulation" = "危險群";
 
 "YourTotalForToday" = "您的今日加總";
+"SymptomsYouReportedToday" = "今天回報的症狀數";
 "CommunityAverageForToday" = "周圍社群今日平均";
 "FromYesterday" = "從昨天";
 "ReportSymptoms" = "已回報症狀";

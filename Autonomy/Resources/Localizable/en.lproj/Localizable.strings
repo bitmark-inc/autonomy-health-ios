@@ -67,6 +67,7 @@
 "atRistPopulation" = " At-risk Population";
 
 "YourTotalForToday" = "Your Total\nFor Today";
+"SymptomsYouReportedToday" = "Symptoms You\nReported Today";
 "CommunityAverageForToday" = "Community Average\nFor Today";
 "FromYesterday" = "From Yesterday";
 "ReportSymptoms" = "Report Symptoms";

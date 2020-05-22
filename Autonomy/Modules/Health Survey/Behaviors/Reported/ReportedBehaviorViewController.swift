@@ -52,7 +52,7 @@ class ReportedBehaviorViewController: ViewController, ReportedSurveyLayout {
         }.disposed(by: disposeBag)
 
         doneButton.rx.tap.bind { [weak self] in
-            self?.gotoMainScreen()
+            self?.backOrGotoMainScreen()
         }.disposed(by: disposeBag)
 
         thisViewModel.fetchDataResultSubject

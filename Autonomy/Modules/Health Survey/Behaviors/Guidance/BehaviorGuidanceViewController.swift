@@ -28,6 +28,16 @@ class BehaviorGuidanceViewController: ViewController, BackNavigator {
             }
         }
 
+        static var list: [Guidance] {
+            var allCases = Self.allCases
+            if Locale.current.languageCode == "zh" {
+                return allCases
+            } else {
+                _ = allCases.popLast()
+                return allCases
+            }
+        }
+
         var videoID: String {
             return videoIDSet[Locale.current.languageCode ?? ""] ?? videoIDSet["en"]!
         }
@@ -60,7 +70,7 @@ class BehaviorGuidanceViewController: ViewController, BackNavigator {
     fileprivate lazy var groupsButton: UIView = {
         ButtonGroupView(button1: backButton, button2: nil, hasGradient: false)
     }()
-    fileprivate let guidanceCases = Guidance.allCases
+    fileprivate let guidanceCases = Guidance.list
 
 
     override func setupViews() {

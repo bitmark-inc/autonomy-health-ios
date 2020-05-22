@@ -49,6 +49,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         Global.volumePressTrack = ""
+
+        // clear badge notification
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         if Global.current.cachedAccount != nil {
             TimezoneDataEngine.syncTimezone()
         }

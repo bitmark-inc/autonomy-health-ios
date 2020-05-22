@@ -171,6 +171,8 @@ class CustomMoyaSession: Alamofire.Session {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 10 // as seconds
         configuration.requestCachePolicy = .useProtocolCachePolicy
+        configuration.allowsCellularAccess = true
+        configuration.waitsForConnectivity = true
         return CustomMoyaSession(configuration: configuration)
     }()
 }
