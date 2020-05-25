@@ -133,6 +133,10 @@ class SurveyBehaviorsViewController: ViewController, BackNavigator, ReportSurvey
 
         for behavior in behaviorList.officialBehaviors {
             let tagView = commonTagViews.addTag(( behavior.id, behavior.name.lowercased()))
+            if thisViewModel.lastBehaviorKeys.contains(behavior.id) {
+                tagView.isSelected = true
+            }
+
             tagView.isSelectedRelay
                 .subscribe(onNext: { [weak self] (_) in
                     self?.checkSelectedState()
@@ -145,6 +149,9 @@ class SurveyBehaviorsViewController: ViewController, BackNavigator, ReportSurvey
 
         for behavior in behaviorList.neighborhoodBehaviors {
             let tagView = recentTagViews.addTag(( behavior.id, behavior.name.lowercased()))
+            if thisViewModel.lastBehaviorKeys.contains(behavior.id) {
+                tagView.isSelected = true
+            }
             tagView.isSelectedRelay
                 .subscribe(onNext: { [weak self] (_) in
                     self?.checkSelectedState()

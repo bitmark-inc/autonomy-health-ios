@@ -18,7 +18,6 @@ class SurveySymptomsViewModel: ViewModel {
     let fetchDataResultSubject = PublishSubject<Event<Void>>()
     let surveySubmitResultSubject = PublishSubject<Event<Never>>()
 
-
     init(lastSymptomKeys: [String] = []) {
         self.lastSymptomKeys = lastSymptomKeys
         super.init()
