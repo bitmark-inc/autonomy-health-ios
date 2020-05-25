@@ -79,15 +79,10 @@ class NotificationPermission {
     static func scheduleReminderNotificationIfNeeded() {
         let notificationCenter = UNUserNotificationCenter.current()
 
+        notificationCenter.removeAllPendingNotificationRequests()
+
         notificationCenter.getPendingNotificationRequests { (requests) in
-            let identifers = requests.map { $0.identifier }
-
-            if !identifers.contains(Constant.NotificationIdentifier.checkInSurvey1) {
-                let requests = makeScheduledCheckInSurveyRequest(awayFromNow: false)
-                requests.forEach { notificationCenter.add($0) }
-                Global.log.debug("[notification] schedules for checkInSurvey] notification")
-            }
-
+            let _ = requests.map { $0.identifier }
             resetNotifications() // only for updating locale for now
         }
     }
@@ -101,17 +96,6 @@ class NotificationPermission {
         let request = makeScheduledCleanAndDisinfectSurfacesRequest()
         notificationCenter.add(request)
         Global.log.debug("[notification] schedules for [clean And Disinfect Surfaces] notification")
-    }
-
-    static func restartScheduleReminderNotification() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: [
-            Constant.NotificationIdentifier.checkInSurvey1, Constant.NotificationIdentifier.checkInSurvey2
-        ])
-
-        let requests = makeScheduledCheckInSurveyRequest(awayFromNow: true)
-        requests.forEach { notificationCenter.add($0) }
-        Global.log.debug("[notification] reset schedules for checkInSurvey] notification")
     }
 
     static func random2NotificationTimes(awayFromNow: Bool = false) -> [Int] {
@@ -171,31 +155,6 @@ class NotificationPermission {
 }
 
 extension NotificationPermission {
-    fileprivate static func makeScheduledCheckInSurveyRequest(awayFromNow: Bool) -> [UNNotificationRequest] {
-        return random2NotificationTimes(awayFromNow: awayFromNow).enumerated().map { (index, notificationTime) -> UNNotificationRequest in
-            #if targetEnvironment(simulator)
-            var triggerDate = DateComponents()
-            triggerDate.second = Int.random(in: 0...59)
-
-            #else
-            var triggerDate = DateComponents()
-            triggerDate.hour = notificationTime
-            triggerDate.minute = Int.random(in: 0...59)
-
-            #endif
-
-            Global.log.debug("[setup checkInSurvey] in \(triggerDate)")
-
-            let content = makeCheckInSurveyNotification()
-            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
-
-            let identifier = index == 0 ?
-                Constant.NotificationIdentifier.checkInSurvey1 :
-                Constant.NotificationIdentifier.checkInSurvey2
-            return UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        }
-    }
-
     fileprivate static func makeScheduledCleanAndDisinfectSurfacesRequest() -> UNNotificationRequest {
         let content = makeCleanAndDisinfectSurfacesNotification()
         var triggerDate = DateComponents(); triggerDate.hour = 9 // 9 am everyday
@@ -208,15 +167,6 @@ extension NotificationPermission {
 }
 
 extension NotificationPermission {
-    fileprivate static func makeCheckInSurveyNotification() -> UNMutableNotificationContent {
-        let content = UNMutableNotificationContent()
-        content.title = R.string.phrase.notificationSurveyTitle()
-        content.body = R.string.phrase.notificationSurveyDesc()
-        content.sound = UNNotificationSound.default
-        content.badge = 1
-        return content
-    }
-
     fileprivate static func makeCleanAndDisinfectSurfacesNotification() -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.title = R.string.phrase.notificationCleanAndDisinfectSurfacesTitle()

@@ -43,7 +43,7 @@ enum AppLink: String {
         case .faq:              return URL(string: serverURL + "/faq.md")
         case .personalAPI:      return URL(string: "https://documenter.getpostman.com/view/59304/SzRw2rJn?version=latest")
         case .sourceCode:       return URL(string: "https://github.com/bitmark-inc/autonomy-ios")
-        case .digitalRights:    return URL(string: "https://bitmark.com")
+        case .digitalRights:    return URL(string: "https://bitmark.com/privacy")
         default:
             return nil
         }

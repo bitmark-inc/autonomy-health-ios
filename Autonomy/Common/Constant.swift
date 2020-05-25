@@ -24,9 +24,6 @@ public struct Constant {
         }
 
         struct TypeKey {
-            public static let broadCastNewHelp = "BROADCAST_NEW_HELP"
-            public static let notifyHelpSigned = "NOTIFY_HELP_ACCEPTED"
-            public static let notifyHelpExired = "NOTIFY_HELP_EXPIRED"
             public static let riskLevelChanged = "RISK_LEVEL_CHANGED"                  // NSC1-2
             public static let accountSymptomSpike = "ACCOUNT_SYMPTOM_SPIKE"            // NSY1
             public static let accountSymptomFollowUp = "ACCOUNT_SYMPTOM_FOLLOW_UP"     // NSY2
@@ -36,8 +33,6 @@ public struct Constant {
     }
 
     public struct NotificationIdentifier {
-        public static let checkInSurvey1 = "check-in-survey-1"
-        public static let checkInSurvey2 = "check-in-survey-2"
         public static let cleanAndDisinfectSurfaces = "clean-and-disinfect-surfaces";
     }
 

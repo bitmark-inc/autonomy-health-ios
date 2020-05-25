@@ -176,15 +176,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
         let notificationIdentifier = response.notification.request.identifier
 
-        if notificationIdentifier == Constant.NotificationIdentifier.checkInSurvey2 {
-            NotificationPermission.restartScheduleReminderNotification()
-        }
-
         guard Global.current.account != nil else { return }
         switch notificationIdentifier {
-        case Constant.NotificationIdentifier.checkInSurvey1, Constant.NotificationIdentifier.checkInSurvey2:
-            Navigator.goto(segue: .healthSurvey)
-
         case Constant.NotificationIdentifier.cleanAndDisinfectSurfaces:
             let behaviorKeys = ["clean_hand", "clean_surface"]
             let viewModel = SurveyBehaviorsViewModel(lastBehaviorKeys: behaviorKeys)

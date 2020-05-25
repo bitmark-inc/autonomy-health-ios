@@ -259,8 +259,6 @@
 		5B6E666F246D039C0068EC42 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E666E246D039C0068EC42 /* DonateViewController.swift */; };
 		5B6E6670246D039C0068EC42 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E666E246D039C0068EC42 /* DonateViewController.swift */; };
 		5B6E6671246D039C0068EC42 /* DonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E666E246D039C0068EC42 /* DonateViewController.swift */; };
-		5B7CE0B92430A458002CD923 /* HealthSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */; };
-		5B7CE0BA2430A458002CD923 /* HealthSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */; };
 		5B7CE0BD2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */; };
 		5B7CE0BE2430AA25002CD923 /* SurveyHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */; };
 		5B7CE0C92430BE91002CD923 /* AreaProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0C72430BE91002CD923 /* AreaProfileAPI.swift */; };
@@ -493,7 +491,6 @@
 		5BAE845C246A7985006E118D /* SurveySymptomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */; };
 		5BAE845E246A7985006E118D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577887242B45820028D3E3 /* Auth.swift */; };
 		5BAE845F246A7985006E118D /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8588242DDDE1002CC53B /* AppVersion.swift */; };
-		5BAE8460246A7985006E118D /* HealthSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */; };
 		5BAE8461246A7985006E118D /* ReviewHelpRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7F239D2434878F00F7A72E /* ReviewHelpRequestViewController.swift */; };
 		5BAE8462246A7985006E118D /* BehaviorHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA77132459640C003CCE92 /* BehaviorHistoryViewModel.swift */; };
 		5BAE8463246A7985006E118D /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DD224333E5700815828 /* Symptom.swift */; };
@@ -858,7 +855,6 @@
 		5B6E069E244D9FF500CC3DF6 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		5B6E069F244DA49E00CC3DF6 /* OneSignalNotificationServiceDevExtension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceDevExtension.entitlements; sourceTree = "<group>"; };
 		5B6E666E246D039C0068EC42 /* DonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateViewController.swift; sourceTree = "<group>"; };
-		5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthSurveyViewController.swift; sourceTree = "<group>"; };
 		5B7CE0BC2430AA25002CD923 /* SurveyHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyHelpViewController.swift; sourceTree = "<group>"; };
 		5B7CE0C72430BE91002CD923 /* AreaProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaProfileAPI.swift; sourceTree = "<group>"; };
 		5B7CE0C82430BE91002CD923 /* AreaProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaProfileService.swift; sourceTree = "<group>"; };
@@ -1474,7 +1470,6 @@
 			isa = PBXGroup;
 			children = (
 				5BCBBCE2246BB10100B735EE /* Common */,
-				5B7CE0B82430A458002CD923 /* HealthSurveyViewController.swift */,
 				5B7CE0BB2430A974002CD923 /* Help */,
 				5B7CE0BF2430AD7B002CD923 /* Symptoms */,
 				5B4EF6DC2446AE9B00BCB323 /* Behaviors */,
@@ -2701,7 +2696,6 @@
 				5B4EF6E22446AEF600BCB323 /* SurveySymptomsViewModel.swift in Sources */,
 				5B577889242B45830028D3E3 /* Auth.swift in Sources */,
 				5B2C858A242DDDE1002CC53B /* AppVersion.swift in Sources */,
-				5B7CE0BA2430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
 				5B7F23A62434878F00F7A72E /* ReviewHelpRequestViewController.swift in Sources */,
 				5BAA77172459640C003CCE92 /* BehaviorHistoryViewModel.swift in Sources */,
 				5BFC8DD424333E5700815828 /* Symptom.swift in Sources */,
@@ -2876,7 +2870,6 @@
 				5B4EF6E12446AEF600BCB323 /* SurveySymptomsViewModel.swift in Sources */,
 				5B577888242B45830028D3E3 /* Auth.swift in Sources */,
 				5B2C8589242DDDE1002CC53B /* AppVersion.swift in Sources */,
-				5B7CE0B92430A458002CD923 /* HealthSurveyViewController.swift in Sources */,
 				5B7F23A52434878F00F7A72E /* ReviewHelpRequestViewController.swift in Sources */,
 				5BAA77162459640C003CCE92 /* BehaviorHistoryViewModel.swift in Sources */,
 				5BFC8DD324333E5700815828 /* Symptom.swift in Sources */,
@@ -3047,7 +3040,6 @@
 				5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */,
 				5BAE845E246A7985006E118D /* Auth.swift in Sources */,
 				5BAE845F246A7985006E118D /* AppVersion.swift in Sources */,
-				5BAE8460246A7985006E118D /* HealthSurveyViewController.swift in Sources */,
 				5BAE8461246A7985006E118D /* ReviewHelpRequestViewController.swift in Sources */,
 				5B5563662476558C00AE4D3C /* SearchSymptomViewController.swift in Sources */,
 				5BAE8462246A7985006E118D /* BehaviorHistoryViewModel.swift in Sources */,
