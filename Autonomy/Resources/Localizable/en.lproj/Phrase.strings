@@ -34,13 +34,13 @@
 /// ====== End: Dont need this parts.  ======
 
 "survey.symptoms.title" = "Tap any symptoms you have or add new ones:";
-"survey.commonSymptoms" = "Common covid-19 symptoms";
+"survey.commonSymptoms" = "Common symptoms";
 "survey.recentSymptoms" = "Recent neighborhood symptoms";
 "survey.reportNewSymptom" = "Report other symptom ...";
 "survey.symptom.reporting" = "Reporting your symptoms to your neighborhood ...";
 
 "survey.behaviors.title" = "Tap any healthy behaviors you did today or add new ones:";
-"survey.commonBehaviors" = "Recommended covid-19 behaviors:";
+"survey.commonBehaviors" = "Recommended behaviors";
 "survey.recentBehaviors" = "Recent behaviors near you";
 "survey.reportNewBehavior" = "Report other behavior ...";
 "survey.behavior.reporting" = "Reporting your healthy behaviors to your neighborhood ...";
