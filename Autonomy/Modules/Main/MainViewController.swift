@@ -27,8 +27,9 @@ protocol LocationDelegate: class {
 }
 
 protocol ScoreSourceDelegate: class {
-    func explainData()
     func resetFormula()
+    func moveToJupyterNotebook()
+    func openSafari(with url: URL)
 }
 
 class MainViewController: ViewController {
@@ -333,9 +334,13 @@ extension MainViewController: ScoreSourceDelegate {
         thisViewModel.resetFormula()
     }
 
-    func explainData() {
-        guard let cdcURL = URL(string: "https://www.cdc.gov.tw") else { return }
-        navigator.show(segue: .safariController(cdcURL), sender: self, transition: .alert)
+    func moveToJupyterNotebook() {
+        guard let jupyterURL = AppLink.formulaJupyter.websiteURL else { return }
+        navigator.show(segue: .safariController(jupyterURL), sender: self, transition: .alert)
+    }
+
+    func openSafari(with url: URL) {
+        navigator.show(segue: .safariController(url), sender: self, transition: .alert)
     }
 }
 

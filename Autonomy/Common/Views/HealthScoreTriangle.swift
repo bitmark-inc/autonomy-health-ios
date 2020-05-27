@@ -21,7 +21,6 @@ class HealthScoreTriangle: UIView {
     var coloredSublayer: CAShapeLayer?
     var processingTimer: Timer?
 
-
     var currentScore: Int?
 
     init(score: Int?) {

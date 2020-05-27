@@ -42,8 +42,11 @@ class FormulaIndicatorView: UIView {
         setScore(score, in: scoreLabel)
     }
 
-    func setInitWeightValue(_ value: Float) {
-        weightRelay.accept(value)
+    func setInitWeightValue(_ value: Float, skipValueRelay: Bool = false) {
+        skipValueRelay ?
+            weightTextLabel.setText(String(format: "%.2f", value)) :
+            weightRelay.accept(value)
+
         weightSlider.value = value
     }
 
@@ -54,7 +57,7 @@ class FormulaIndicatorView: UIView {
             (makeLabel(text: ")"), 0)
         ], trailingConstraint: false)
 
-        let topInfoLabel = makeTopInfoLabel(text: topInfoText)
+        let topInfoLabel = makeTopInfoLabel(text: R.string.localizable.weightedCoefficient().localizedUppercase)
         addSubview(scoreLabel)
         addSubview(weightView)
         addSubview(topInfoLabel)
@@ -84,16 +87,6 @@ class FormulaIndicatorView: UIView {
         case .confirmedCases:   return "(\(R.string.localizable.cases_score()) * "
         case .healthyBehaviors: return "(\(R.string.localizable.behaviors_score()) * "
         case .reportedSymptoms: return "(\(R.string.localizable.symptoms_score()) * "
-        default:
-            return ""
-        }
-    }()
-
-    fileprivate lazy var topInfoText: String = {
-        switch scoreInfoType {
-        case .confirmedCases:   return R.string.localizable.casesWeight().localizedUppercase
-        case .healthyBehaviors: return R.string.localizable.behaviorsWeight().localizedUppercase
-        case .reportedSymptoms: return R.string.localizable.symptomsWeight().localizedUppercase
         default:
             return ""
         }

@@ -19,9 +19,10 @@ class CenterView: UIView {
 
         addSubview(contentView)
 
-        contentView.snp.makeConstraints { (make) in
-            let shrinkOffset = shrink ? -20 : 0
-            make.width.equalToSuperview().offset(shrinkOffset)
+        if shrink {
+            contentView.snp.makeConstraints { (make) in
+                make.width.equalToSuperview().offset(-20)
+            }
         }
 
         if let spacing = spacing {
@@ -32,7 +33,7 @@ class CenterView: UIView {
             }
         } else {
             contentView.snp.makeConstraints { (make) in
-                make.centerX.centerY.equalToSuperview()
+                make.top.bottom.centerX.centerY.equalToSuperview()
             }
         }
     }

@@ -69,7 +69,7 @@ class MainViewModel: ViewModel {
         observeAndSubmitProfileFormulaDisposable = FormulaSupporter.shared.coefficientRelay
             .filterNil()
             .filter { $0.actor != nil }.map { $0.v }
-            .debounce(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
+            .debounce(.seconds(3), scheduler: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] (coefficient) in
                 guard let disposeBag = self?.disposeBag else { return }
 

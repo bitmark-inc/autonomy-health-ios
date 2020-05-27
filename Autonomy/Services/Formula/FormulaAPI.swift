@@ -57,8 +57,7 @@ extension FormulaAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
             let coefficient: [String: Any] = [
                 "symptoms": coefficient.symptoms,
                 "behaviors": coefficient.behaviors,
-                "confirms": coefficient.confirms,
-                "symptom_weights": coefficient.symptomKeyWeights
+                "confirms": coefficient.confirms
             ]
 
             params = ["coefficient": coefficient]

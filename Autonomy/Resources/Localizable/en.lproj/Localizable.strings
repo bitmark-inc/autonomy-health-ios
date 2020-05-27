@@ -46,6 +46,7 @@
 "Added" = "Added";
 "ViewSource" = "View Source";
 "Reset" = "Reset";
+"JupyterNotebook" = "Jupyter Notebook";
 "Profile" = "Profile";
 "Report" = "Report";
 "History" = "History";
@@ -88,9 +89,7 @@
 "Contact_us" = "Contact us";
 "YourAuthorizationIsRequired" = "Your authorization is required.";
 
-"CasesWeight" = "Cases Weight";
-"BehaviorsWeight" = "Behaviors Weight";
-"SymptomsWeight" = "Symptoms Weight";
+"WeightedCoefficient" = "Weighted Coefficient";
 
 "cases_score" = "cases_score";
 "behaviors_score" = "behaviors_score";

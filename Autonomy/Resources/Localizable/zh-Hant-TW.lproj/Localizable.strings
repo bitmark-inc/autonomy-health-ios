@@ -46,6 +46,7 @@
 "Added" = "已增加";
 "ViewSource" = "檢視來源";
 "Reset" = "重置";
+"JupyterNotebook" = "Jupyter Notebook";
 "Profile" = "個人簡介";
 "Report" = "報告";
 "History" = "歷史";
@@ -88,9 +89,7 @@
 "Contact_us" = "聯絡我們";
 "YourAuthorizationIsRequired" = "需要您的授權。";
 
-"CasesWeight" = "確診權重";
-"BehaviorsWeight" = "行為權重";
-"SymptomsWeight" = "症狀權重";
+"WeightedCoefficient" = "Weighted Coefficient";
 
 "cases_score" = "確診評分";
 "behaviors_score" = "行為評分";

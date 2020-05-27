@@ -51,12 +51,13 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     fileprivate let healthViewHeight: CGFloat = HealthScoreTriangle.originalSize.height * HealthScoreTriangle.scale
 
     // Formula View
-    lazy var topSpacing: CGFloat = 270
-
     var formulaDragHeight: CGFloat {
         return formulaSourceView.frame.height
     }
     let formulaViewAnimateDuration: CGFloat = 0.9
+    lazy var topSpacing: CGFloat = {
+        return healthView.frame.height * 0.5 + healthView.frame.origin.y + Size.dh(30)
+    }()
     let bottomY = UIScreen.main.bounds.height + 10
     let topHealthView: CGFloat = Size.dh(70)
 
