@@ -5,7 +5,7 @@ platform :ios, '12.0'
 inhibit_all_warnings!
 
 def sharedPods
-  pod 'BitmarkSDK/RxSwift', git: 'https://github.com/bitmark-inc/bitmark-sdk-swift.git', branch: 'master'
+  pod 'BitmarkSDK/RxSwift'
   pod 'Intercom'
   pod 'OneSignal'
   pod 'GoogleMaps'

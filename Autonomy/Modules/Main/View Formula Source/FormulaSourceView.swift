@@ -23,7 +23,7 @@ class FormulaSourceView: UIView {
     fileprivate lazy var symptomFormulaIndicatorView = FormulaIndicatorView(for: .reportedSymptoms)
     fileprivate lazy var behaviorFormulaIndicatorView = FormulaIndicatorView(for: .healthyBehaviors)
     fileprivate lazy var resetButton = makeResetButton()
-    fileprivate lazy var sourceInfoLabel = makeSourceInfoLabel()
+    fileprivate lazy var sourceInfoTextView = makeSourceInfoTextView()
     fileprivate lazy var jupyterNotebookButton = makeJupyterNotebookButton()
 
     fileprivate var calculatorDisposable: Disposable?
@@ -135,7 +135,7 @@ class FormulaSourceView: UIView {
                 (makeLabel("+"), 0),
                 (behaviorFormulaIndicatorView, 0),
                 (CenterView(contentView: resetButton), 30),
-                (sourceInfoLabel, 30),
+                (sourceInfoTextView, 30),
                 (CenterView(contentView: jupyterNotebookButton), 30)
             ],
             bottomConstraint: true)
@@ -255,7 +255,7 @@ extension FormulaSourceView {
         return button
     }
 
-    fileprivate func makeSourceInfoLabel() -> UITextView {
+    fileprivate func makeSourceInfoTextView() -> UITextView {
         let styleGroup: StyleXML = {
             let style = Style {
                 $0.font = R.font.ibmPlexMonoLight(size: 18)
@@ -284,6 +284,7 @@ extension FormulaSourceView {
         }()
 
         let textView = UITextView()
+        textView.backgroundColor = .clear
         textView.delegate = self
         textView.translatesAutoresizingMaskIntoConstraints = true
         textView.sizeToFit()
