@@ -56,7 +56,7 @@ extension ReportedSurveyLayout where Self: ViewController {
 
 extension ReportedSurveyLayout where Self: ViewController {
     func backOrGotoMainScreen() {
-        let viewControllers = navigationController?.viewControllers.reversed() ?? []
+        let viewControllers = navigationController?.viewControllers ?? []
         if let target = viewControllers.first(where: { type(of: $0) == ProfileViewController.self }) {
             navigator.popToViewController(target: target, animationType: .slide(direction: .up))
             return

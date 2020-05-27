@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intercom
 
 class ProfileViewController: ViewController, BackNavigator {
 
@@ -57,6 +58,14 @@ class ProfileViewController: ViewController, BackNavigator {
 
         reportBehaviorsButton.rx.tap.bind { [weak self] in
             self?.gotoReportBehaviorsScreen()
+        }.disposed(by: disposeBag)
+
+        recoverykeyButton.rx.tap.bind { [weak self] in
+            self?.gotoViewRecoveryKeyFlow()
+        }.disposed(by: disposeBag)
+
+        contactButton.rx.tap.bind { [weak self] in
+            self?.showIntercomContact()
         }.disposed(by: disposeBag)
     }
 
@@ -177,6 +186,14 @@ extension ProfileViewController {
     fileprivate func gotoLocationHistoryScreen() {
         let viewModel = LocationHistoryViewModel()
         navigator.show(segue: .locationHistory(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoViewRecoveryKeyFlow() {
+        navigator.show(segue: .viewRecoveryKeyWarning, sender: self)
+    }
+
+    fileprivate func showIntercomContact() {
+        Intercom.presentMessenger()
     }
 }
 

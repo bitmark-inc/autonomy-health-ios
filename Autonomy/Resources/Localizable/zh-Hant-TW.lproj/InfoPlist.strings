@@ -14,3 +14,5 @@ NSLocationAlwaysAndWhenInUseUsageDescription = "您目前的位置會被使用�
 NSLocationWhenInUseUsageDescription = "您目前的位置會被使用於幫助您周圍社群的數據。您的位置資料永遠都是私密的，而分享您的位置不會使您本人被識別。";
 
 NSPhotoLibraryUsageDescription = "Autonomy 將使用您照片圖庫中的照片。";
+
+NSFaceIDUsageDescription = "Your authorization is required.";

@@ -41,6 +41,7 @@ def sharedPods
   pod 'SwiftDate'
   pod 'MGSwipeTableCell'
   pod 'MaterialProgressBar'
+  pod 'UPCarouselFlowLayout'
 end
 
 

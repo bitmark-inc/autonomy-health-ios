@@ -287,6 +287,21 @@
 		5B82FD0E245BE06400C81856 /* FormulaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0C245BE06400C81856 /* FormulaView.swift */; };
 		5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0F245C20AC00C81856 /* FigDataView.swift */; };
 		5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0F245C20AC00C81856 /* FigDataView.swift */; };
+		5B86A050247E117C008AA03D /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A04F247E117B008AA03D /* BiometricAuth.swift */; };
+		5B86A051247E117C008AA03D /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A04F247E117B008AA03D /* BiometricAuth.swift */; };
+		5B86A052247E117C008AA03D /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A04F247E117B008AA03D /* BiometricAuth.swift */; };
+		5B86A05A247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A055247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift */; };
+		5B86A05B247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A055247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift */; };
+		5B86A05C247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A055247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift */; };
+		5B86A06A247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A067247E11E9008AA03D /* ViewRecoveryKeyViewController.swift */; };
+		5B86A06B247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A067247E11E9008AA03D /* ViewRecoveryKeyViewController.swift */; };
+		5B86A06C247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A067247E11E9008AA03D /* ViewRecoveryKeyViewController.swift */; };
+		5B86A06D247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A068247E11E9008AA03D /* ViewRecoveryKeyViewModel.swift */; };
+		5B86A06E247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A068247E11E9008AA03D /* ViewRecoveryKeyViewModel.swift */; };
+		5B86A06F247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A068247E11E9008AA03D /* ViewRecoveryKeyViewModel.swift */; };
+		5B86A070247E11EA008AA03D /* RecoveryKeyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A069247E11E9008AA03D /* RecoveryKeyWordCell.swift */; };
+		5B86A071247E11EA008AA03D /* RecoveryKeyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A069247E11E9008AA03D /* RecoveryKeyWordCell.swift */; };
+		5B86A072247E11EA008AA03D /* RecoveryKeyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86A069247E11E9008AA03D /* RecoveryKeyWordCell.swift */; };
 		5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
 		5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F070242C85B90084B4F6 /* SeparateLine.swift */; };
 		5B87F074242C92DA0084B4F6 /* LinearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F073242C92DA0084B4F6 /* LinearView.swift */; };
@@ -869,6 +884,11 @@
 		5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalDelegate.swift; sourceTree = "<group>"; };
 		5B82FD0C245BE06400C81856 /* FormulaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaView.swift; sourceTree = "<group>"; };
 		5B82FD0F245C20AC00C81856 /* FigDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigDataView.swift; sourceTree = "<group>"; };
+		5B86A04F247E117B008AA03D /* BiometricAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
+		5B86A055247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRecoveryKeyWarningViewController.swift; sourceTree = "<group>"; };
+		5B86A067247E11E9008AA03D /* ViewRecoveryKeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRecoveryKeyViewController.swift; sourceTree = "<group>"; };
+		5B86A068247E11E9008AA03D /* ViewRecoveryKeyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRecoveryKeyViewModel.swift; sourceTree = "<group>"; };
+		5B86A069247E11E9008AA03D /* RecoveryKeyWordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryKeyWordCell.swift; sourceTree = "<group>"; };
 		5B87F070242C85B90084B4F6 /* SeparateLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparateLine.swift; sourceTree = "<group>"; };
 		5B87F073242C92DA0084B4F6 /* LinearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearView.swift; sourceTree = "<group>"; };
 		5B87F076242C99900084B4F6 /* OnboardingStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep3ViewController.swift; sourceTree = "<group>"; };
@@ -1332,6 +1352,7 @@
 			children = (
 				5B577898242B47670028D3E3 /* ServerAPIError.swift */,
 				5B62A3A8242C47CF00480A15 /* AppLink.swift */,
+				5B86A04F247E117B008AA03D /* BiometricAuth.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1551,6 +1572,41 @@
 			path = "Ask Info";
 			sourceTree = "<group>";
 		};
+		5B86A03B247E089B008AA03D /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				5B86A053247E11AF008AA03D /* View Recovery Key */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		5B86A053247E11AF008AA03D /* View Recovery Key */ = {
+			isa = PBXGroup;
+			children = (
+				5B86A054247E11AF008AA03D /* Warning */,
+				5B86A066247E11E9008AA03D /* View Recovery Key */,
+			);
+			path = "View Recovery Key";
+			sourceTree = "<group>";
+		};
+		5B86A054247E11AF008AA03D /* Warning */ = {
+			isa = PBXGroup;
+			children = (
+				5B86A055247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift */,
+			);
+			path = Warning;
+			sourceTree = "<group>";
+		};
+		5B86A066247E11E9008AA03D /* View Recovery Key */ = {
+			isa = PBXGroup;
+			children = (
+				5B86A067247E11E9008AA03D /* ViewRecoveryKeyViewController.swift */,
+				5B86A068247E11E9008AA03D /* ViewRecoveryKeyViewModel.swift */,
+				5B86A069247E11E9008AA03D /* RecoveryKeyWordCell.swift */,
+			);
+			path = "View Recovery Key";
+			sourceTree = "<group>";
+		};
 		5B87F079242CA00E0084B4F6 /* Permission */ = {
 			isa = PBXGroup;
 			children = (
@@ -1644,6 +1700,7 @@
 				5B97887E243F21A6005BADA9 /* Location */,
 				5B2661AE24583C3500163404 /* Profile */,
 				5B6E666D246D03860068EC42 /* Donate */,
+				5B86A03B247E089B008AA03D /* Account */,
 				5BAA76E824593A49003CCE92 /* History */,
 				5B4B60B624600AD800432151 /* Debug Location */,
 			);
@@ -2604,8 +2661,10 @@
 				5B87F085242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577895242B470A0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B92E3E92436E6E300E5949A /* BehaviorService.swift in Sources */,
+				5B86A051247E117C008AA03D /* BiometricAuth.swift in Sources */,
 				5B92E3E92436E6E300E5949A /* BehaviorService.swift in Sources */,
 				5B62A3A7242C45F500480A15 /* SignInWallViewController.swift in Sources */,
+				5B86A071247E11EA008AA03D /* RecoveryKeyWordCell.swift in Sources */,
 				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5BAA77002459603C003CCE92 /* DebugAPI.swift in Sources */,
 				5B213F002444133E0095BE18 /* HelpRequestService.swift in Sources */,
@@ -2636,6 +2695,7 @@
 				5BCBBD08246BD01600B735EE /* ReportedBehaviorViewController.swift in Sources */,
 				5B577878242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0CA2430BE91002CD923 /* AreaProfileAPI.swift in Sources */,
+				5B86A06B247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */,
 				5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */,
 				5BAA772F24599287003CCE92 /* LocationHistoryViewController.swift in Sources */,
 				5B4EF6E62446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
@@ -2676,6 +2736,7 @@
 				5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */,
 				5B2661AD2457DF8600163404 /* PointOfInterestService.swift in Sources */,
 				5BFC8DCD2433264A00815828 /* FeedTableCell.swift in Sources */,
+				5B86A06E247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */,
 				5B4B60BA24600B5600432151 /* LocationSearchViewController.swift in Sources */,
 				5BCBBCF3246BC59100B735EE /* SearchBehaviorViewModel.swift in Sources */,
 				5B7CE0D52430CB6C002CD923 /* TableViewCell.swift in Sources */,
@@ -2692,6 +2753,7 @@
 				5B577867242B42310028D3E3 /* Global+Log.swift in Sources */,
 				5BA808BC2440226A00B2733A /* SearchTextTableCell.swift in Sources */,
 				5B219BD3246907CB004FACEA /* SearchSymptomViewModel.swift in Sources */,
+				5B86A05B247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */,
 				5B2C8594242DDE51002CC53B /* AppInfo.swift in Sources */,
 				5B4EF6E22446AEF600BCB323 /* SurveySymptomsViewModel.swift in Sources */,
 				5B577889242B45830028D3E3 /* Auth.swift in Sources */,
@@ -2778,8 +2840,10 @@
 				5B87F084242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577890242B460E0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B92E3E82436E6E300E5949A /* BehaviorService.swift in Sources */,
+				5B86A050247E117C008AA03D /* BiometricAuth.swift in Sources */,
 				5B92E3E82436E6E300E5949A /* BehaviorService.swift in Sources */,
 				5B62A3A6242C45F500480A15 /* SignInWallViewController.swift in Sources */,
+				5B86A070247E11EA008AA03D /* RecoveryKeyWordCell.swift in Sources */,
 				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5BAA76FF2459603C003CCE92 /* DebugAPI.swift in Sources */,
 				5B213EFF2444133E0095BE18 /* HelpRequestService.swift in Sources */,
@@ -2810,6 +2874,7 @@
 				5BCBBD07246BD01600B735EE /* ReportedBehaviorViewController.swift in Sources */,
 				5B577877242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0C92430BE91002CD923 /* AreaProfileAPI.swift in Sources */,
+				5B86A06A247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */,
 				5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */,
 				5BAA772E24599287003CCE92 /* LocationHistoryViewController.swift in Sources */,
 				5B4EF6E52446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
@@ -2850,6 +2915,7 @@
 				5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */,
 				5B2661AB2457DF6B00163404 /* PointOfInterestService.swift in Sources */,
 				5BFC8DCC2433264A00815828 /* FeedTableCell.swift in Sources */,
+				5B86A06D247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */,
 				5B4B60B924600B5600432151 /* LocationSearchViewController.swift in Sources */,
 				5BCBBCF2246BC59100B735EE /* SearchBehaviorViewModel.swift in Sources */,
 				5B7CE0D42430CB6C002CD923 /* TableViewCell.swift in Sources */,
@@ -2866,6 +2932,7 @@
 				5B577866242B42310028D3E3 /* Global+Log.swift in Sources */,
 				5BA808BB2440226A00B2733A /* SearchTextTableCell.swift in Sources */,
 				5B219BD2246907CB004FACEA /* SearchSymptomViewModel.swift in Sources */,
+				5B86A05A247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */,
 				5B2C8593242DDE51002CC53B /* AppInfo.swift in Sources */,
 				5B4EF6E12446AEF600BCB323 /* SurveySymptomsViewModel.swift in Sources */,
 				5B577888242B45830028D3E3 /* Auth.swift in Sources */,
@@ -2952,8 +3019,10 @@
 				5BAE840C246A7985006E118D /* BehaviorService.swift in Sources */,
 				5BAE840C246A7985006E118D /* BehaviorService.swift in Sources */,
 				5BCBBCFF246BCE4200B735EE /* ReportedSurveyLayout.swift in Sources */,
+				5B86A052247E117C008AA03D /* BiometricAuth.swift in Sources */,
 				5BAE840D246A7985006E118D /* SignInWallViewController.swift in Sources */,
 				5BAE840E246A7985006E118D /* LocationPermission.swift in Sources */,
+				5B86A072247E11EA008AA03D /* RecoveryKeyWordCell.swift in Sources */,
 				5BAE840F246A7985006E118D /* DebugAPI.swift in Sources */,
 				5BAE8410246A7985006E118D /* HelpRequestService.swift in Sources */,
 				5BAE8411246A7985006E118D /* HealthScoreCollectionCell.swift in Sources */,
@@ -2984,6 +3053,7 @@
 				5BAE8429246A7985006E118D /* NetworkConnectionManager.swift in Sources */,
 				5BAE842A246A7985006E118D /* AreaProfileAPI.swift in Sources */,
 				5BAE842B246A7985006E118D /* HealthAPI.swift in Sources */,
+				5B86A06C247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */,
 				5BAE842C246A7985006E118D /* LocationHistoryViewController.swift in Sources */,
 				5BAE842D246A7985006E118D /* SurveyBehaviorsViewModel.swift in Sources */,
 				5BAE842E246A7985006E118D /* AppDelegate.swift in Sources */,
@@ -3024,6 +3094,7 @@
 				5BAE844F246A7985006E118D /* FeedTableCell.swift in Sources */,
 				5BAE8450246A7985006E118D /* LocationSearchViewController.swift in Sources */,
 				5BAE8451246A7985006E118D /* TableViewCell.swift in Sources */,
+				5B86A06F247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */,
 				5BAE8452246A7985006E118D /* RiskLevelViewController.swift in Sources */,
 				5BAE8453246A7985006E118D /* ButtonGroupView.swift in Sources */,
 				5BAE8454246A7985006E118D /* AccountService+Rx.swift in Sources */,
@@ -3040,6 +3111,7 @@
 				5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */,
 				5BAE845E246A7985006E118D /* Auth.swift in Sources */,
 				5BAE845F246A7985006E118D /* AppVersion.swift in Sources */,
+				5B86A05C247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */,
 				5BAE8461246A7985006E118D /* ReviewHelpRequestViewController.swift in Sources */,
 				5B5563662476558C00AE4D3C /* SearchSymptomViewController.swift in Sources */,
 				5BAE8462246A7985006E118D /* BehaviorHistoryViewModel.swift in Sources */,

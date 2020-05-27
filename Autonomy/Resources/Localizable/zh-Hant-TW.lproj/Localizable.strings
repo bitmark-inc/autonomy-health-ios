@@ -117,3 +117,8 @@
 "Applying Hand Sanitizer" = "使用手部消毒劑";
 "Wearing A Surgical Mask" = "佩戴醫用口罩";
 "Covering Coughs" = "注意咳嗽禮節";
+
+"biometric.touchID" = "Touch ID";
+"biometric.faceID" = "Face ID";
+"biometric.passcode" = "Passcode";
+"YourAuthorizationIsRequired" = "Your authorization is required.";

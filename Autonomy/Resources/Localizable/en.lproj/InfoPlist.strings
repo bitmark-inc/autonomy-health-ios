@@ -14,3 +14,5 @@ NSLocationAlwaysAndWhenInUseUsageDescription = "Your current location will be us
 NSLocationWhenInUseUsageDescription = "Your current location will be used to help improve your community’s data. Your location data is always private, and you cannot be personally identified by sharing your location.";
 
 NSPhotoLibraryUsageDescription = "Autonomy will use photos from your library.";
+
+NSFaceIDUsageDescription = "Your authorization is required.";

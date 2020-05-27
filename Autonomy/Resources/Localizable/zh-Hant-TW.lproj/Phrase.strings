@@ -99,6 +99,13 @@
 "donate.title" = "如果您認同Autonomy的理念，請考慮捐款：";
 "donate.message" = "您的大方貢獻將協助Autonomy可以維持開放給任何人免費地使用。任何金額都有幫助。";
 
+"viewRecoveryKey.title" = "Recovery key";
+"viewRecoveryKey.description" = "Your recovery key allows you to fully recover your Autonomy account even if your device is lost or damaged. It is the only way to recover your account. Autonomy does not have access to your recovery key or store it anywhere for you.\n\nPlease make sure you are in a safe location then write down your recovery key on a piece of paper and keep it safe.";
+
+"recoveryKey.title" = "Recovery key";
+"recoveryKey.message" = "Write down the following words in order:";
+"recoveryKey.index" = "Word %d of 13";
+
 "signIn.title" = "登入";
 "signIn.submitButton" = "提交»";
 

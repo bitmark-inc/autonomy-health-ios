@@ -48,6 +48,8 @@
 	<string>Your current location will be used to help improve your community’s data. Your location data is always private, and you cannot be personally identified by sharing your location.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) will use photos from your library.</string>
+    <key>NSFaceIDUsageDescription</key>
+    <string>Your authorization is required.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AtlasGrotesk-Black.otf</string>

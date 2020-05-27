@@ -45,6 +45,8 @@ class Navigator {
         case locationSearch(viewModel: LocationSearchViewModel)
         case profile
         case donate
+        case viewRecoveryKeyWarning
+        case viewRecoveryKey(viewModel: ViewRecoveryKeyViewModel)
         case symptomHistory(viewModel: SymptomHistoryViewModel)
         case behaviorHistory(viewModel: BehaviorHistoryViewModel)
         case locationHistory(viewModel: LocationHistoryViewModel)
@@ -94,6 +96,8 @@ class Navigator {
         case .locationSearch(let viewModel):    return LocationSearchViewController(viewModel: viewModel)
         case .profile:                          return ProfileViewController()
         case .donate:                           return DonateViewController()
+        case .viewRecoveryKeyWarning:           return ViewRecoveryKeyWarningViewController()
+        case .viewRecoveryKey(let viewModel):   return ViewRecoveryKeyViewController(viewModel: viewModel)
         case .symptomHistory(let viewModel):    return SymptomHistoryViewController(viewModel: viewModel)
         case .behaviorHistory(let viewModel):   return BehaviorHistoryViewController(viewModel: 
             viewModel)

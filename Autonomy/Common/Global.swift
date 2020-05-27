@@ -150,6 +150,8 @@ enum AppError: Error {
     case emptyJWT
     case noInternetConnection
     case requireAppUpdate(updateURL: URL)
+    case biometricNotConfigured
+    case biometricError
 
     static func errorByNetworkConnection(_ error: Error) -> Bool {
         guard let error = error as? Self else { return false }
