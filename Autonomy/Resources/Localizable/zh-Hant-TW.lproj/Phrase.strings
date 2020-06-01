@@ -23,7 +23,7 @@
 "riskLevel.yes.description" = "高危險群通常包含：\n• 65歲以上\n\n 痼疾，例如：\n• 血壓\n• 心血管疾病\n• 糖尿病\n• 慢性呼吸道疾病（如肺病或氣喘\n• 癌症\n• 過胖\n• 免疫系統受損";
 "riskLevel.no" = "不，我不屬於高危險群";
 
-"source.info" = "The <b>Autonomy Score</b> is a normalized score from 0-100 that forecasts the overall wellbeing of a neighborhood.\n\nThe score currently consists of 3 main inputs, each with a weighted coefficent that reflects each input’s relative importance to the overall score. You can adjust these coefficients above to assign different relative weights to the inputs.\n\nOur 3 data inputs are:\n\n1) A 14-day exponentially weighted average of the number of <b>daily confirmed infectious disease cases</b> in an area, as reported by the <corona-data-project>Corona Data Scraper project</corona-data-project>, which aggregates the latest public health data from verified sources around the world.\n\n2) A <b>symptoms score</b>, which is a normalized score calculated from the daily number of reported symptoms in a given neighborhood. Symptoms are assigned differential weights depending on whether they are known indicators of ongoing infectious disease outbreaks.\n\n3) A <b>behaviors score</b>, which is a normalized score calculated from the daily reported number of health-promoting behaviors in a given neighborhood.\n\nFor more information about exactly how we calculate our scores, please visit our <jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>.";
+"source.info" = "<b>Autonomy分數</b> 是一個經過標準化，範圍在0-100之間的數字。此數值用來預測附近社群的整體健康。\n\n此數值目前由3個主要的輸入資料，經過相關係數的加權計算而得出。每個相關係數反應了對於整體數值的重要程度。您可以調整這些相關係數來調整權重。\n\n我們使用的3個輸入資料為：\n\n1)  14-day exponentially weighted average of the number of <b>daily confirmed infectious disease cases</b> in an area, as reported by the <corona-data-project>Corona Data Scraper project</corona-data-project>, which aggregates the latest public health data from verified sources around the world.\n\n2) A <b>symptoms score</b>, which is a normalized score calculated from the daily number of reported symptoms in a given neighborhood. Symptoms are assigned differential weights depending on whether they are known indicators of ongoing infectious disease outbreaks.\n\n3) A <b>behaviors score</b>, which is a normalized score calculated from the daily reported number of health-promoting behaviors in a given neighborhood.\n\nFor more information about exactly how we calculate our scores, please visit our <jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>.";
 
 "survey.title" = "您現在感覺如何？";
 "survey.help.title" = "我們可以如何幫忙您？";
@@ -101,10 +101,10 @@
 "donate.title" = "如果您認同Autonomy的理念，請考慮捐款：";
 "donate.message" = "您的大方貢獻將協助Autonomy可以維持開放給任何人免費地使用。任何金額都有幫助。";
 
-"viewRecoveryKey.title" = "Recovery key";
+"viewRecoveryKey.title" = "復原金鑰";
 "viewRecoveryKey.description" = "您的復原金鑰讓您在設備遺失或損壞時依然可以復原您的Autonomy帳號。這是復原帳號的唯一方法。Autonomy無法存取也無法替您儲存您的復原金鑰。\n\n請確認您處於一個可以安全地寫下您的復原金鑰的環境，並將復原金鑰寫在一張紙上並妥善保管。";
 
-"recoveryKey.title" = "Recovery key";
+"recoveryKey.title" = "復原金鑰";
 "recoveryKey.message" = "請依序寫下下列文字：";
 "recoveryKey.index" = "第%d字，一共13字";
 
