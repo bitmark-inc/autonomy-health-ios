@@ -89,7 +89,7 @@
 "Contact_us" = "聯絡我們";
 "YourAuthorizationIsRequired" = "需要您的授權。";
 
-"WeightedCoefficient" = "Weighted Coefficient";
+"WeightedCoefficient" = "權重係數";
 
 "cases_score" = "確診評分";
 "behaviors_score" = "行為評分";
