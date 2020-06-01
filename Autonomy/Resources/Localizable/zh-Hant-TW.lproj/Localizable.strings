@@ -119,5 +119,5 @@
 
 "biometric.touchID" = "Touch ID";
 "biometric.faceID" = "Face ID";
-"biometric.passcode" = "Passcode";
-"YourAuthorizationIsRequired" = "Your authorization is required.";
+"biometric.passcode" = "密碼";
+"YourAuthorizationIsRequired" = "您的授權允許。";

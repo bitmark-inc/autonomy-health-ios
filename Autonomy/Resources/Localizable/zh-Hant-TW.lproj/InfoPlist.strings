@@ -15,4 +15,4 @@ NSLocationWhenInUseUsageDescription = "您目前的位置會被使用於幫助�
 
 NSPhotoLibraryUsageDescription = "Autonomy 將使用您照片圖庫中的照片。";
 
-NSFaceIDUsageDescription = "Your authorization is required.";
+NSFaceIDUsageDescription = "您的授權允許。";

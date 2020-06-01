@@ -29,7 +29,7 @@ class ButtonGroupView: UIView {
             buttonsLine.addSubview(button2)
             button2.snp.makeConstraints { (make) in
                 make.top.bottom.trailing.equalToSuperview()
-                make.width.equalToSuperview().multipliedBy(0.5)
+                make.width.lessThanOrEqualToSuperview().multipliedBy(0.5)
             }
         }
 
