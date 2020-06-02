@@ -23,7 +23,7 @@
 "riskLevel.yes.description" = "高危險群通常包含：\n• 65歲以上\n\n 痼疾，例如：\n• 血壓\n• 心血管疾病\n• 糖尿病\n• 慢性呼吸道疾病（如肺病或氣喘\n• 癌症\n• 過胖\n• 免疫系統受損";
 "riskLevel.no" = "不，我不屬於高危險群";
 
-"source.info" = "<b>Autonomy分數</b> 是一個經過標準化，範圍在0-100之間的數字。此數值用來預測附近社群的整體健康。\n\n此數值目前由3個主要的輸入資料，經過相關係數的加權計算而得出。每個相關係數反應了對於整體數值的重要程度。您可以調整這些相關係數來調整權重。\n\n我們使用的3個輸入資料為：\n\n1)  近14日該區域的<b>每日確診病例數</b>之指數加權平均值。病例數資料來源為<corona-data-project>Corona Data Scraper project</corona-data-project>，該服務統整每日經驗證的全球公開健康數據。\n\n2) A <b>症狀分數</b>是一個透過計算該區域每日通報症狀而得出的標準化數值。不同的症狀依照是否為當前流行傳染病的徵狀而給予不同的權重。 \n\n3) A <b>行為分數</b>是一個透過計算該區域每日通報健康行為而得出的標準化數值。 \n\n關於我們如何計算此數值，請瀏覽我們的<jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>。";
+"source.info" = "<b>Autonomy分數</b> 是一個經過標準化，範圍在0-100之間的數字。此數值用來預測附近社群的整體健康。\n\n此數值目前由3個主要的輸入資料，經過相關係數的加權計算而得出。每個相關係數反應了對於整體數值的重要程度。您可以調整這些相關係數來調整權重。\n\n我們使用的3個輸入資料為：\n\n1)近14日該區域的<b>每日確診病例數</b>之指數加權平均值。病例數資料來源為<corona-data-project>Corona Data Scraper project</corona-data-project>，該服務統整每日經驗證的全球公開健康數據。\n\n2)<b>症狀分數</b>是一個透過計算該區域每日通報症狀而得出的標準化數值。不同的症狀依照是否為當前流行傳染病的徵狀而給予不同的權重。 \n\n3)<b>行為分數</b>是一個透過計算該區域每日通報健康行為而得出的標準化數值。 \n\n關於我們如何計算此數值，請瀏覽我們的<jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>。";
 
 "survey.title" = "您現在感覺如何？";
 "survey.help.title" = "我們可以如何幫忙您？";
