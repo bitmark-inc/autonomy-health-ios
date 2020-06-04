@@ -11,12 +11,10 @@ import Foundation
 struct AppInfo: Decodable {
     let updateInfo: UpdateInfo
     let systemVersion: String
-    let docs: AppDocs
 
     enum CodingKeys: String, CodingKey {
         case updateInfo = "ios"
         case systemVersion = "system_version"
-        case docs
     }
 }
 
@@ -28,8 +26,4 @@ struct UpdateInfo: Decodable {
         case appUpdateURL = "app_update_url"
         case minimumClientVersion = "minimum_client_version"
     }
-}
-
-struct AppDocs: Decodable {
-    let eula: String
 }
