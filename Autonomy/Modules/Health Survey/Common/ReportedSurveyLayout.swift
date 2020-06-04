@@ -43,12 +43,7 @@ extension ReportedSurveyLayout where Self: ViewController {
     }
 
     func errorForGeneral(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !showIfRequireUpdateVersion(with: error),
-            !handleErrorIfAsAFError(error) else {
-                return
-        }
-
+        guard !handleIfGeneralError(error: error) else { return }
         Global.log.error(error)
         showErrorAlertWithSupport(message: R.string.error.system())
     }

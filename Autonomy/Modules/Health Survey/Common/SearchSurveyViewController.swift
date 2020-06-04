@@ -50,12 +50,7 @@ class SearchSurveyViewController: ViewController {
 
     // MARK: - Error Handlers
     func errorWhenSubmit(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !handleErrorIfAsAFError(error),
-            !showIfRequireUpdateVersion(with: error) else {
-                return
-        }
-
+        guard !handleIfGeneralError(error: error) else { return }
         Global.log.error(error)
         showErrorAlertWithSupport(message: R.string.error.system())
     }

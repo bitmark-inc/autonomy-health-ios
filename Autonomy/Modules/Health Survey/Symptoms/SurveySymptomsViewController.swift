@@ -68,7 +68,9 @@ class SurveySymptomsViewController: ViewController, BackNavigator, ReportSurveyL
                 guard let self = self else { return }
                 switch event {
                 case .error(let error):
-                    self.errorForGeneral(error: error)
+                    guard !self.handleIfGeneralError(error: error) else { return }
+                    Global.log.error(error)
+                    self.showErrorAlertWithSupport(message: R.string.error.system())
                 default:
                     break
                 }
@@ -99,7 +101,9 @@ class SurveySymptomsViewController: ViewController, BackNavigator, ReportSurveyL
                     case .completed:
                         self.gotoReportedScreen()
                     case .error(let error):
-                        self.errorForGeneral(error: error)
+                        guard !self.handleIfGeneralError(error: error) else { return }
+                        Global.log.error(error)
+                        self.showErrorAlertWithSupport(message: R.string.error.system())
                     }
                 })
             })

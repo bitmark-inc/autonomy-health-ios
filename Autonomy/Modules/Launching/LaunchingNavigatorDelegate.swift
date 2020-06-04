@@ -73,6 +73,7 @@ extension LaunchingNavigatorDelegate {
                 if let error = error as? ServerAPIError, error.isAccountHasTaken {
                     self.gotoRiskLevelScreen()
                 } else {
+                    guard !self.handleIfGeneralError(error: error) else { return }
                     Global.log.error(error)
                     self.gotoRiskLevelScreen()
                 }

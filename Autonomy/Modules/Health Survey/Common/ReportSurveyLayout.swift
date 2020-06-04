@@ -35,8 +35,6 @@ protocol ReportSurveyLayout: class {
     func checkSelectedState()
     func getSelectedKeys() -> [String]
     func gotoMainScreen()
-    func errorWhenReport(error: Error)
-    func errorForGeneral(error: Error)
 
     func setupLayoutViews()
     func makeScrollView() -> UIScrollView
@@ -52,29 +50,6 @@ extension ReportSurveyLayout where Self: ViewController {
         let tagViews = commonTagViews.tagViews + recentTagViews.tagViews
         let hasSelected = tagViews.contains(where: { $0.isSelected })
         doneButton.isEnabled = hasSelected
-    }
-
-    // MARK: - Error Handlers
-    func errorWhenReport(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !handleErrorIfAsAFError(error),
-            !showIfRequireUpdateVersion(with: error) else {
-                return
-        }
-
-        Global.log.error(error)
-        showErrorAlertWithSupport(message: R.string.error.system())
-    }
-
-    func errorForGeneral(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !showIfRequireUpdateVersion(with: error),
-            !handleErrorIfAsAFError(error) else {
-                return
-        }
-
-        Global.log.error(error)
-        showErrorAlertWithSupport(message: R.string.error.system())
     }
 
     func gotoMainScreen() {

@@ -50,11 +50,7 @@ class DebugLocationViewModel: ViewModel {
                 self.debugsRelay.accept(debugs)
 
             }, onError: { (error) in
-                guard !AppError.errorByNetworkConnection(error),
-                    !Global.handleErrorIfAsAFError(error) else {
-                        return
-                }
-                Global.log.error(error)
+                Global.backgroundErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }

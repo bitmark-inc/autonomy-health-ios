@@ -57,11 +57,27 @@ class ThemedViewController: UIViewController {
 
         Global.backgroundErrorSubject
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (error) in
-                guard !AppError.errorByNetworkConnection(error) else { return }
+            .subscribe(onNext: { [weak self] (error) in
+                guard let self = self,
+                    self == Navigator.getRootViewController()?.viewControllers.last,
+                    self.handleIfGeneralError(error: error)
+                else {
+                    Global.log.error(error)
+                    return
+                }
 
-                Global.log.error(error)
+                return // already show alert if needed when calling handleIfGeneralError
             })
             .disposed(by: disposeBag)
+    }
+
+    func handleIfGeneralError(error: Error) -> Bool {
+        guard !AppError.errorByNetworkConnection(error),
+            !showIfRequireUpdateVersion(with: error),
+            !handleErrorIfAsAFError(error) else {
+                return true
+        }
+
+        return false
     }
 }

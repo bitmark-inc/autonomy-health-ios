@@ -79,12 +79,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
 
     // MARK: - Error Handlers
     fileprivate func errorWhenSignUp(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !handleErrorIfAsAFError(error),
-            !showIfRequireUpdateVersion(with: error) else {
-                return
-        }
-
+        guard !handleIfGeneralError(error: error) else { return }
         Global.log.error(error)
         showErrorAlertWithSupport(message: R.string.error.system())
     }

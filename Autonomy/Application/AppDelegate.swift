@@ -160,11 +160,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                 .subscribe(onCompleted: {
                     Global.log.info("[reportHere] successfully")
                 }, onError: { (error) in
-                    guard !AppError.errorByNetworkConnection(error),
-                        !Global.handleErrorIfAsAFError(error) else {
-                            return
-                    }
-                    Global.log.error(error)
+                    Global.backgroundErrorSubject.onNext(error)
                 })
         }
     }

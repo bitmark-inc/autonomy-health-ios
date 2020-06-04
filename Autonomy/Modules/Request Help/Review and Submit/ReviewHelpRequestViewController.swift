@@ -73,11 +73,7 @@ class ReviewHelpRequestViewController: ViewController, BackNavigator {
 
     // MARK: - Error Handlers
     fileprivate func errorWhenSubmit(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !handleErrorIfAsAFError(error),
-            !showIfRequireUpdateVersion(with: error) else {
-                return
-        }
+        guard !handleIfGeneralError(error: error) else { return }
 
         if let error = error as? ServerAPIError {
             switch error.code {

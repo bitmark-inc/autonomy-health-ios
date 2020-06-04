@@ -73,11 +73,7 @@ class MainViewModel: ViewModel {
                 self.poisRelay.accept((pois: savedPOIs, source: source))
 
             }, onError: { (error) in
-                guard !AppError.errorByNetworkConnection(error),
-                    !Global.handleErrorIfAsAFError(error) else {
-                        return
-                }
-                Global.log.error(error)
+                Global.backgroundErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }
@@ -94,11 +90,7 @@ class MainViewModel: ViewModel {
                     .subscribe(onCompleted: {
                         Global.log.info("[formula] updates successfully")
                     }, onError: { (error) in
-                        guard !AppError.errorByNetworkConnection(error),
-                            !Global.handleErrorIfAsAFError(error) else {
-                                return
-                        }
-                        Global.log.error(error)
+                        Global.backgroundErrorSubject.onNext(error)
                     })
                     .disposed(by: disposeBag)
             })
@@ -123,11 +115,7 @@ class MainViewModel: ViewModel {
                     .accept((actor: nil, v: formulaWeight.coefficient))
                 FormulaSupporter.shared.defaultStateRelay.accept(formulaWeight.isDefault ? .default : .custom)
             }, onError: { (error) in
-                guard !AppError.errorByNetworkConnection(error),
-                    !Global.handleErrorIfAsAFError(error) else {
-                        return
-                }
-                Global.log.error(error)
+                Global.backgroundErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }
