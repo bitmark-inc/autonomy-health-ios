@@ -56,14 +56,28 @@ extension LaunchingNavigatorDelegate {
                 .subscribe(onSuccess: { [weak self] (isEnabled) in
                     guard let self = self else { return }
                     isEnabled ?
-                        self.gotoMainScreen() :
+                        self.signUpIfNeededOrGotoMainScreen() :
                         self.gotoPermissionScreen()
 
-                    Global.current.accountNumberRelay.accept(
-                        Global.current.account?.getAccountNumber())
                 })
                 .disposed(by: disposeBag)
         }
+    }
+
+    fileprivate func signUpIfNeededOrGotoMainScreen() {
+        ProfileService.getMe()
+            .subscribe(onSuccess: { [weak self] (_) in
+                self?.gotoMainScreen()
+            }, onError: { [weak self] (error) in
+                guard let self = self else { return }
+                if let error = error as? ServerAPIError, error.isAccountHasTaken {
+                    self.gotoRiskLevelScreen()
+                } else {
+                    Global.log.error(error)
+                    self.gotoRiskLevelScreen()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -81,5 +95,10 @@ extension LaunchingNavigatorDelegate {
 
     fileprivate func gotoPermissionScreen() {
         navigator.show(segue: .permission, sender: self, transition: .replace(type: .none) )
+    }
+
+    fileprivate func gotoRiskLevelScreen() {
+        let viewModel = RiskLevelViewModel()
+        navigator.show(segue: .riskLevel(viewModel: viewModel), sender: self, transition: .replace(type: .none) )
     }
 }

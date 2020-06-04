@@ -44,6 +44,14 @@ extension Data {
 struct ServerAPIError: Codable, Error {
     let code: APIErrorCode
     let message: String
+
+    var isAccountHasTaken: Bool {
+        switch code {
+        case .AccountHasTaken: return true
+        default:
+            return false
+        }
+    }
 }
 
 extension PrimitiveSequence where Trait == SingleTrait, Element == Response {

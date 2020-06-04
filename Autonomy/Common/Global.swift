@@ -31,7 +31,6 @@ class Global {
 
     var cachedAccount: Account?
 
-    lazy var accountNumberRelay = BehaviorRelay<String?>(value: account?.getAccountNumber())
     var userDefault: UserDefaults? {
         guard let accountNumber = account?.getAccountNumber()
             else { return nil }

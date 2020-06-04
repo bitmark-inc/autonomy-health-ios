@@ -73,7 +73,7 @@ struct LightTheme: Theme {
     let blackTextColor      = UIColor.Material.black
     let concordColor        = UIColor(hexString: "#828180")!
     let silverColor         = UIColor(hexString: "#BFBFBF")!
-    let silverC4TextColor   = UIColor(hexString: "#828180")!
+    let silverC4TextColor   = UIColor(hexString: "#C4C4C4")!
     let lightTextColor      = UIColor.Material.white
     let separateTextColor   = UIColor(hexString: "#828180")!
     let separateTableColor  = UIColor(hexString: "#C4C4C4")!
