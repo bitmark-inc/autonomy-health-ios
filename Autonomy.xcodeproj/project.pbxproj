@@ -57,8 +57,6 @@
 		5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857A242DD4CB002CC53B /* Profile.swift */; };
 		5B2C857F242DD885002CC53B /* ProfileDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */; };
 		5B2C8580242DD885002CC53B /* ProfileDataEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */; };
-		5B2C8583242DDBFB002CC53B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8582242DDBFB002CC53B /* MainViewController.swift */; };
-		5B2C8584242DDBFB002CC53B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8582242DDBFB002CC53B /* MainViewController.swift */; };
 		5B2C8586242DDC1E002CC53B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8585242DDC1E002CC53B /* MainViewModel.swift */; };
 		5B2C8587242DDC1E002CC53B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8585242DDC1E002CC53B /* MainViewModel.swift */; };
 		5B2C8589242DDDE1002CC53B /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8588242DDDE1002CC53B /* AppVersion.swift */; };
@@ -326,8 +324,6 @@
 		5B92E3E92436E6E300E5949A /* BehaviorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3E52436E6E300E5949A /* BehaviorService.swift */; };
 		5B92E3EB2437220D00E5949A /* HealthScoreTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */; };
 		5B92E3EC2437220D00E5949A /* HealthScoreTriangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */; };
-		5B93F703243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */; };
-		5B93F704243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */; };
 		5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B9542BF242AF8010072D933 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
 		5B9542C4242AF8010072D933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C2242AF8010072D933 /* Main.storyboard */; };
@@ -400,7 +396,6 @@
 		5BAE83EF246A7985006E118D /* ThemedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57790A242B4CB20028D3E3 /* ThemedViewController.swift */; };
 		5BAE83F0246A7985006E118D /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C856C242DAFC6002CC53B /* NotificationPermission.swift */; };
 		5BAE83F1246A7985006E118D /* HelpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51BF5E2431D63C00AD998B /* HelpRequest.swift */; };
-		5BAE83F2246A7985006E118D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8582242DDBFB002CC53B /* MainViewController.swift */; };
 		5BAE83F3246A7985006E118D /* SurveyBehaviorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6E42446AFE800BCB323 /* SurveyBehaviorsViewController.swift */; };
 		5BAE83F4246A7985006E118D /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CE0D02430C72E002CD923 /* TableView.swift */; };
 		5BAE83F5246A7985006E118D /* LinearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B87F073242C92DA0084B4F6 /* LinearView.swift */; };
@@ -431,7 +426,6 @@
 		5BAE840E246A7985006E118D /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8570242DB786002CC53B /* LocationPermission.swift */; };
 		5BAE840F246A7985006E118D /* DebugAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* DebugAPI.swift */; };
 		5BAE8410246A7985006E118D /* HelpRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213EFD2444133E0095BE18 /* HelpRequestService.swift */; };
-		5BAE8411246A7985006E118D /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */; };
 		5BAE8413246A7985006E118D /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57786C242B43140028D3E3 /* Credential.swift */; };
 		5BAE8414246A7985006E118D /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57792B242B4F6B0028D3E3 /* KeychainStore.swift */; };
 		5BAE8415246A7985006E118D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57793F242B62160028D3E3 /* HeaderView.swift */; };
@@ -600,6 +594,15 @@
 		5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */; };
 		5BB140A8242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */; };
 		5BB140A9242C821E009EFC59 /* OnboardingStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */; };
+		5BB560FB2487783E00008959 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB560FA2487783E00008959 /* MainViewController.swift */; };
+		5BB560FC2487783E00008959 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB560FA2487783E00008959 /* MainViewController.swift */; };
+		5BB560FD2487783E00008959 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB560FA2487783E00008959 /* MainViewController.swift */; };
+		5BB560FF24877A7B00008959 /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB560FE24877A7B00008959 /* HealthScoreCollectionCell.swift */; };
+		5BB5610024877A7B00008959 /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB560FE24877A7B00008959 /* HealthScoreCollectionCell.swift */; };
+		5BB5610124877A7B00008959 /* HealthScoreCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB560FE24877A7B00008959 /* HealthScoreCollectionCell.swift */; };
+		5BB561032487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */; };
+		5BB561042487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */; };
+		5BB561052487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */; };
 		5BBBE55F246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBBE55E246AC8AF003B6EE7 /* SearchSurveyTableCell.swift */; };
 		5BBBE560246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBBE55E246AC8AF003B6EE7 /* SearchSurveyTableCell.swift */; };
 		5BBBE561246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBBE55E246AC8AF003B6EE7 /* SearchSurveyTableCell.swift */; };
@@ -767,7 +770,6 @@
 		5B2C8575242DD42B002CC53B /* HistoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		5B2C857A242DD4CB002CC53B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5B2C857E242DD885002CC53B /* ProfileDataEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataEngine.swift; sourceTree = "<group>"; };
-		5B2C8582242DDBFB002CC53B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B2C8585242DDC1E002CC53B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		5B2C8588242DDDE1002CC53B /* AppVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersion.swift; sourceTree = "<group>"; };
 		5B2C858C242DDDFB002CC53B /* ServerAssetsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAssetsAPI.swift; sourceTree = "<group>"; };
@@ -904,7 +906,6 @@
 		5B92E3E42436E6E300E5949A /* BehaviorAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorAPI.swift; sourceTree = "<group>"; };
 		5B92E3E52436E6E300E5949A /* BehaviorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BehaviorService.swift; sourceTree = "<group>"; };
 		5B92E3EA2437220D00E5949A /* HealthScoreTriangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreTriangle.swift; sourceTree = "<group>"; };
-		5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreCollectionCell.swift; sourceTree = "<group>"; };
 		5B9542B9242AF8010072D933 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9542BC242AF8010072D933 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9542BE242AF8010072D933 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -956,6 +957,9 @@
 		5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGroupView.swift; sourceTree = "<group>"; };
 		5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewLayout.swift; sourceTree = "<group>"; };
 		5BB140A7242C821E009EFC59 /* OnboardingStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep2ViewController.swift; sourceTree = "<group>"; };
+		5BB560FA2487783E00008959 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		5BB560FE24877A7B00008959 /* HealthScoreCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreCollectionCell.swift; sourceTree = "<group>"; };
+		5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSingleLabelCollectionCell.swift; sourceTree = "<group>"; };
 		5BBBE55E246AC8AF003B6EE7 /* SearchSurveyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSurveyTableCell.swift; sourceTree = "<group>"; };
 		5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewModel.swift; sourceTree = "<group>"; };
 		5BC6AED9245A6F8C00F60AF2 /* AddRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRow.swift; sourceTree = "<group>"; };
@@ -1135,10 +1139,10 @@
 		5B2C8581242DDBE7002CC53B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				5B2C8582242DDBFB002CC53B /* MainViewController.swift */,
+				5BB560FA2487783E00008959 /* MainViewController.swift */,
 				5B2C8585242DDC1E002CC53B /* MainViewModel.swift */,
 				5BFC8DCB2433264A00815828 /* FeedTableCell.swift */,
-				5B93F702243DE04000D9C761 /* HealthScoreCollectionCell.swift */,
+				5BB560FE24877A7B00008959 /* HealthScoreCollectionCell.swift */,
 				5B978878243EFF71005BADA9 /* ScoreInfoView.swift */,
 				5BA808C0244081E300B2733A /* LocationListCell.swift */,
 				5B978886243F22B4005BADA9 /* LocationTableCell.swift */,
@@ -1303,6 +1307,7 @@
 				5B544E99245C3D7800B8003A /* FigLabel.swift */,
 				5B219BCE2468F2F3004FACEA /* TagListView.swift */,
 				5BCBBD1A246C0F8500B735EE /* HeaderCell.swift */,
+				5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2628,7 +2633,6 @@
 				5B2C856E242DAFC6002CC53B /* NotificationPermission.swift in Sources */,
 				5B51BF602431D63C00AD998B /* HelpRequest.swift in Sources */,
 				5B219BE224693894004FACEA /* LeftIconButton.swift in Sources */,
-				5B2C8584242DDBFB002CC53B /* MainViewController.swift in Sources */,
 				5B4EF6E82446AFE800BCB323 /* SurveyBehaviorsViewController.swift in Sources */,
 				5BD0D2BF246CE73000022AE1 /* TimezoneDataEngine.swift in Sources */,
 				5B7CE0D22430C72F002CD923 /* TableView.swift in Sources */,
@@ -2668,7 +2672,6 @@
 				5B2C8572242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5BAA77002459603C003CCE92 /* DebugAPI.swift in Sources */,
 				5B213F002444133E0095BE18 /* HelpRequestService.swift in Sources */,
-				5B93F704243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B57786E242B43140028D3E3 /* Credential.swift in Sources */,
 				5B577931242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B219BDF246910F1004FACEA /* ReportedSymptomViewController.swift in Sources */,
@@ -2698,6 +2701,7 @@
 				5B86A06B247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */,
 				5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */,
 				5BAA772F24599287003CCE92 /* LocationHistoryViewController.swift in Sources */,
+				5BB5610024877A7B00008959 /* HealthScoreCollectionCell.swift in Sources */,
 				5B4EF6E62446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
 				5B130BBE2451AD590031F176 /* FormulaIndicatorView.swift in Sources */,
@@ -2727,6 +2731,7 @@
 				5B4B60C32460462000432151 /* Debug.swift in Sources */,
 				5BCBBD18246BF09700B735EE /* VideoCell.swift in Sources */,
 				5B2661B424583C5700163404 /* ProfileViewController.swift in Sources */,
+				5BB561042487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B219BDC246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */,
@@ -2787,6 +2792,7 @@
 				5B577937242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5BC6AEE4245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift in Sources */,
 				5B577918242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
+				5BB560FC2487783E00008959 /* MainViewController.swift in Sources */,
 				5BCBBCF6246BC59100B735EE /* SearchBehaviorViewController.swift in Sources */,
 				5B577907242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
 				5BCBBD1C246C0F8500B735EE /* HeaderCell.swift in Sources */,
@@ -2807,7 +2813,6 @@
 				5B2C856D242DAFC6002CC53B /* NotificationPermission.swift in Sources */,
 				5B51BF5F2431D63C00AD998B /* HelpRequest.swift in Sources */,
 				5B219BE124693894004FACEA /* LeftIconButton.swift in Sources */,
-				5B2C8583242DDBFB002CC53B /* MainViewController.swift in Sources */,
 				5B4EF6E72446AFE800BCB323 /* SurveyBehaviorsViewController.swift in Sources */,
 				5BD0D2BE246CE73000022AE1 /* TimezoneDataEngine.swift in Sources */,
 				5B7CE0D12430C72E002CD923 /* TableView.swift in Sources */,
@@ -2847,7 +2852,6 @@
 				5B2C8571242DB786002CC53B /* LocationPermission.swift in Sources */,
 				5BAA76FF2459603C003CCE92 /* DebugAPI.swift in Sources */,
 				5B213EFF2444133E0095BE18 /* HelpRequestService.swift in Sources */,
-				5B93F703243DE04000D9C761 /* HealthScoreCollectionCell.swift in Sources */,
 				5B577893242B46230028D3E3 /* MoyaProviderType+Request.swift in Sources */,
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B219BDE246910F1004FACEA /* ReportedSymptomViewController.swift in Sources */,
@@ -2877,6 +2881,7 @@
 				5B86A06A247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */,
 				5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */,
 				5BAA772E24599287003CCE92 /* LocationHistoryViewController.swift in Sources */,
+				5BB560FF24877A7B00008959 /* HealthScoreCollectionCell.swift in Sources */,
 				5B4EF6E52446AFE800BCB323 /* SurveyBehaviorsViewModel.swift in Sources */,
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
 				5B130BBD2451AD590031F176 /* FormulaIndicatorView.swift in Sources */,
@@ -2906,6 +2911,7 @@
 				5B4B60C22460462000432151 /* Debug.swift in Sources */,
 				5BCBBD17246BF09700B735EE /* VideoCell.swift in Sources */,
 				5B2661B324583C5700163404 /* ProfileViewController.swift in Sources */,
+				5BB561032487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B219BDB246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */,
@@ -2966,6 +2972,7 @@
 				5B577936242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5BC6AEE3245A7B9C00F60AF2 /* AssistanceAskInfoViewModel.swift in Sources */,
 				5B577917242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
+				5BB560FB2487783E00008959 /* MainViewController.swift in Sources */,
 				5BCBBCF5246BC59100B735EE /* SearchBehaviorViewController.swift in Sources */,
 				5B577906242B4C6C0028D3E3 /* ThemeManager.swift in Sources */,
 				5BCBBD1B246C0F8500B735EE /* HeaderCell.swift in Sources */,
@@ -2986,7 +2993,6 @@
 				5BAE83EF246A7985006E118D /* ThemedViewController.swift in Sources */,
 				5BAE83F0246A7985006E118D /* NotificationPermission.swift in Sources */,
 				5BAE83F1246A7985006E118D /* HelpRequest.swift in Sources */,
-				5BAE83F2246A7985006E118D /* MainViewController.swift in Sources */,
 				5BAE83F3246A7985006E118D /* SurveyBehaviorsViewController.swift in Sources */,
 				5BAE83F4246A7985006E118D /* TableView.swift in Sources */,
 				5BAE83F5246A7985006E118D /* LinearView.swift in Sources */,
@@ -3025,7 +3031,6 @@
 				5B86A072247E11EA008AA03D /* RecoveryKeyWordCell.swift in Sources */,
 				5BAE840F246A7985006E118D /* DebugAPI.swift in Sources */,
 				5BAE8410246A7985006E118D /* HelpRequestService.swift in Sources */,
-				5BAE8411246A7985006E118D /* HealthScoreCollectionCell.swift in Sources */,
 				5BAE8413246A7985006E118D /* Credential.swift in Sources */,
 				5B5563682476559500AE4D3C /* ReportedSymptomViewController.swift in Sources */,
 				5BAE8414246A7985006E118D /* KeychainStore.swift in Sources */,
@@ -3056,6 +3061,7 @@
 				5B86A06C247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */,
 				5BAE842C246A7985006E118D /* LocationHistoryViewController.swift in Sources */,
 				5BAE842D246A7985006E118D /* SurveyBehaviorsViewModel.swift in Sources */,
+				5BB5610124877A7B00008959 /* HealthScoreCollectionCell.swift in Sources */,
 				5BAE842E246A7985006E118D /* AppDelegate.swift in Sources */,
 				5BAE842F246A7985006E118D /* FormulaIndicatorView.swift in Sources */,
 				5BAE8430246A7985006E118D /* SeparateLine.swift in Sources */,
@@ -3085,6 +3091,7 @@
 				5BAE8446246A7985006E118D /* Debug.swift in Sources */,
 				5BAE8447246A7985006E118D /* ProfileViewController.swift in Sources */,
 				5BAE8448246A7985006E118D /* LinkAttributedString.swift in Sources */,
+				5BB561052487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */,
 				5BAE8449246A7985006E118D /* FigDataView.swift in Sources */,
 				5BAE844A246A7985006E118D /* Application.swift in Sources */,
 				5BAE844B246A7985006E118D /* RiskLevelViewModel.swift in Sources */,
@@ -3145,6 +3152,7 @@
 				5BAE847A246A7985006E118D /* UIViewController+Error.swift in Sources */,
 				5BAE847B246A7985006E118D /* AssistanceAskInfoViewModel.swift in Sources */,
 				5BAE847C246A7985006E118D /* LaunchingViewController.swift in Sources */,
+				5BB560FD2487783E00008959 /* MainViewController.swift in Sources */,
 				5BAE847D246A7985006E118D /* ThemeManager.swift in Sources */,
 				5BAE847E246A7985006E118D /* HealthScoreTriangle.swift in Sources */,
 				5B5563652476558800AE4D3C /* SearchSymptomViewModel.swift in Sources */,
@@ -3300,7 +3308,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3326,7 +3334,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3354,7 +3362,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3380,7 +3388,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

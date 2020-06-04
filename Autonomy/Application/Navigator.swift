@@ -242,7 +242,8 @@ extension Navigator {
         Global.log.info("[notification] move to POI Screen: \(poiID ?? "nil")")
         if let currentVC = Navigator.getRootViewController()?.topViewController,
             let mainVC = currentVC as? MainViewController {
-            mainVC.gotoPOI(with: poiID)
+            // TODO: highlight POI?
+            // mainVC.gotoPOI(with: poiID)
         }
 
         let viewModel = MainViewModel(navigateToPoiID: poiID)

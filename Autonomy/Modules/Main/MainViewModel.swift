@@ -20,10 +20,10 @@ class MainViewModel: ViewModel {
 
     // MARK: - Outputs
     let poisRelay = BehaviorRelay<(pois: [PointOfInterest], source: POIFetchSource)>(value: (pois: [], source: .remote))
+    let yourAreaProfileRelay = BehaviorRelay<AreaProfile?>(value: nil)
     let fetchPOIStateRelay = BehaviorRelay<LoadState>(value: .hide)
 
     let addLocationSubject = PublishSubject<PointOfInterest?>()
-    let deleteLocationIndexSubject = PublishSubject<Int>()
     let orderLocationIndexSubject = PublishSubject<(from: Int, to: Int)>()
     let submitResultSubject = PublishSubject<Event<Never>>()
     var navigateToPoiID: String?
@@ -33,6 +33,7 @@ class MainViewModel: ViewModel {
     override init() {
         super.init()
 
+        fetchYourAreaProfile()
         fetchPOIs()
         FormulaSupporter.shared.pollingSyncFormula()
         observeAndSubmitProfileFormula()
@@ -44,6 +45,22 @@ class MainViewModel: ViewModel {
     }
 
     // MARK: - Handlers
+    fileprivate func fetchYourAreaProfile() {
+        AreaProfileService.get()
+            .subscribe(onSuccess: { [weak self] in
+                guard let self = self else { return }
+                self.yourAreaProfileRelay.accept($0)
+            }, onError: { (error) in
+                guard !AppError.errorByNetworkConnection(error),
+                    !Global.handleErrorIfAsAFError(error) else {
+                        return
+                }
+
+                Global.log.error(error)
+            })
+        .disposed(by: disposeBag)
+    }
+
     func fetchPOIs(source: POIFetchSource = .remote) {
         fetchPOIStateRelay.accept(.loading)
 
@@ -188,13 +205,8 @@ class MainViewModel: ViewModel {
             .subscribe(onCompleted: { [weak self] in
                 guard let self = self else { return }
                 var currentPOIs = self.poisRelay.value.pois
-                guard let deletedPOIIndex = currentPOIs.firstIndex(where: { $0.id == poiID }) else {
-                    Global.log.error("[incorrect data] can not find poiID")
-                    return
-                }
                 currentPOIs.removeAll(where: { $0.id == poiID })
                 self.poisRelay.accept((pois: currentPOIs, source: .userAdjust))
-                self.deleteLocationIndexSubject.onNext(deletedPOIIndex)
             }, onError: { [weak self] (error) in
                 self?.submitResultSubject.onNext(Event.error(error))
             })

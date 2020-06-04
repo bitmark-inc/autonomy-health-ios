@@ -12,9 +12,12 @@ import SwiftSVG
 class HealthScoreTriangle: UIView {
 
     // MARK: - Properties
+    let itemWidth: CGFloat!
     static let originalSize = CGSize(width: 312, height: 270)
-    static let scale = (UIScreen.main.bounds.size.width - 30) / originalSize.width
-    lazy var transformScale = CATransform3DMakeScale(Self.scale, Self.scale, 0)
+    lazy var scale: CGFloat = Self.getScale(from: itemWidth)
+    fileprivate lazy var transformScale: CATransform3D = {
+         return CATransform3DMakeScale(scale, scale, 0)
+    }()
 
     lazy var scoreLabel = makeScoreLabel()
     lazy var appNameLabel = makeAppNameLabel()
@@ -23,9 +26,11 @@ class HealthScoreTriangle: UIView {
 
     var currentScore: Int?
 
-    init(score: Int?) {
+    init(score: Int?, width: CGFloat? = nil) {
+        self.itemWidth = width ?? (UIScreen.main.bounds.size.width - 30)
         self.currentScore = score
         super.init(frame: CGRect.zero)
+
         let infillLayer = CAShapeLayer(pathString: backgroundPath)
         infillLayer.fillColor = UIColor(red: 43, green: 43, blue: 43)?.cgColor
         infillLayer.transform = transformScale
@@ -41,13 +46,26 @@ class HealthScoreTriangle: UIView {
 
         appNameLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-47 * Self.scale)
+            make.bottom.equalToSuperview().offset(-47 * scale)
         }
 
+        scoreLabel.transform = CGAffineTransform(scaleX: scale, y: scale)
+        appNameLabel.alpha = 0
+
         scoreLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(appNameLabel.snp.top).offset(10)
+            make.centerY.equalToSuperview().offset(15)
             make.centerX.equalToSuperview()
         }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // Handlers
+    // === Static Helpers ===
+    static func getScale(from width: CGFloat) -> CGFloat {
+        return width / Self.originalSize.width
     }
 
     func resetLayout() {
@@ -104,10 +122,6 @@ class HealthScoreTriangle: UIView {
         colored.transform = transformScale
 
         return colored
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
     }
 
     fileprivate let backgroundPath = "M156 0 L156 62.3538 L258 239.023 L54 239.023 L156 62.3538 L156 0 L0 270.2 L312 270.2 Z"

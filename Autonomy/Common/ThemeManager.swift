@@ -43,6 +43,7 @@ enum ThemeStyle {
     case separateTextColor
     case background
     case mineShaftBackground
+    case sharkColor
     case silverChaliceColor
     case textViewTextColor
     case blueRibbonColor
@@ -60,6 +61,7 @@ protocol Theme {
     var separateTableColor: UIColor { get }
     var background:         UIColor { get }
     var mineShaftBackground:  UIColor { get }
+    var sharkColor:         UIColor { get }
     var silverChaliceColor: UIColor { get }
     var textViewTextColor:  UIColor { get }
     var blueRibbonColor:    UIColor { get }
@@ -79,6 +81,7 @@ struct LightTheme: Theme {
     let separateTableColor  = UIColor(hexString: "#C4C4C4")!
     let background          = UIColor(hexString: "#000")!
     let mineShaftBackground   = UIColor(hexString: "#2B2B2B")!
+    let sharkColor          = UIColor(hexString: "#282B32")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
     let textViewTextColor   = UIColor(hexString: "#FFF")!
     let blueRibbonColor     = UIColor(hexString: "#0060F2")!
@@ -98,6 +101,7 @@ struct DarkTheme: Theme {
     let separateTableColor  = UIColor(hexString: "#828180")!
     let background          = UIColor(hexString: "#000")!
     let mineShaftBackground   = UIColor(hexString: "#2B2B2B")!
+    let sharkColor          = UIColor(hexString: "#282B32")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
     let textViewTextColor   = UIColor(hexString: "#FFF")!
     let blueRibbonColor     = UIColor(hexString: "#0060F2")!

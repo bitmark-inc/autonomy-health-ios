@@ -10,49 +10,32 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
-import SkeletonView
-import MediaPlayer
-import GoogleMaps
 
-protocol LocationDelegate: class {
-    var addLocationSubject: PublishSubject<PointOfInterest?> { get }
-
+protocol Location1Delegate: class {
     func updatePOI(poiID: String, alias: String)
     func deletePOI(poiID: String)
-    func orderPOI(from: Int, to: Int)
-
-    func gotoAddLocationScreen()
-    func gotoLastPOICell()
-    func gotoPOI(with poiID: String?)
-}
-
-protocol ScoreSourceDelegate: class {
-    func resetFormula()
-    func moveToJupyterNotebook()
-    func openSafari(with url: URL)
 }
 
 class MainViewController: ViewController {
 
     // MARK: - Properties
-    lazy var mainCollectionView = makeMainCollectionView()
-    lazy var pageControl = makePageControl()
-    lazy var currentLocationButton = makeVectorNavButton()
-    lazy var locationButton = makeLocationButton()
-    lazy var navButtons = makeNavButtons()
-    lazy var profileButton = makeProfileButton()
-    lazy var poiActivityIndicator = makeActivityIndicator()
-    lazy var debugButton = makeDebugButton()
+    fileprivate lazy var mainCollectionView = makeMainCollectionView()
+    fileprivate lazy var addPlaceGuideView = makeAddPlaceGuideView()
+    fileprivate lazy var addLocationBar = makeAddLocationBar()
 
-    lazy var thisViewModel: MainViewModel = {
+    fileprivate var pois = [PointOfInterest]()
+    fileprivate let poiLimitation = 10
+    fileprivate let poiSection = 2
+
+    fileprivate let columns: CGFloat = 3
+    fileprivate let sectionInsets = UIEdgeInsets(top: 29.0, left: 15.0, bottom: 0.0, right: 0.0)
+    fileprivate let collectionViewPadding: CGFloat = 30.0
+    fileprivate var addLocationBarHeightConstraint: Constraint?
+
+
+    fileprivate lazy var thisViewModel: MainViewModel = {
         return viewModel as! MainViewModel
     }()
-
-    var pois = [PointOfInterest]()
-    var areaProfiles = [String: AreaProfile]()
-    var currentUserLocationAddress: String?
-
-    let sectionIndexes = (currentLocation: 0, poi: 1, poiList: 2)
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -79,72 +62,9 @@ class MainViewController: ViewController {
         bindViewModelAfterViewAppear()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        NotificationCenter.default.addObserver (self, selector: #selector(volumeChanged(_:)),
-            name: NSNotification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
-            object: nil)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        removeNotificationsObserver()
-    }
-
-    // Properties for temporary shortcut to reset the onboarding
-    let audioSession = AVAudioSession.sharedInstance()
-    var audioLevel: Float? = nil
-
-    @objc func volumeChanged(_ notification: Notification) {
-        if let volumePressTime = Global.volumePressTime,
-            Date() >= volumePressTime.adding(.second, value: 5) {
-            Global.volumePressTrack = ""
-        }
-
-        Global.volumePressTime = Date()
-        guard let currentLevel = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as? Float,
-            let audioLevel = audioLevel else {
-                return
-        }
-
-        if currentLevel > audioLevel || currentLevel == 1 { // press volume up
-            Global.volumePressTrack.append("1")
-        }
-        if currentLevel < audioLevel || currentLevel == 0 { // press volume down
-            Global.volumePressTrack.append("0")
-        }
-
-        self.audioLevel = currentLevel
-        if Global.volumePressTrack.contains("00011") {
-            Global.volumePressTrack = ""
-            gotoOnboardingScreen()
-        }
-
-        if Global.volumePressTrack.contains("11000") {
-            Global.volumePressTrack = ""
-            Global.enableDebugRelay.accept(!Global.enableDebugRelay.value)
-        }
-    }
-
     // MARK: - bindViewModel
     override func bindViewModel() {
         super.bindViewModel()
-
-        thisViewModel.signOutAccountResultSubject
-            .subscribe(onNext: { [weak self] (event) in
-                guard let self = self else { return }
-                switch event {
-                case .error(let error):
-                    self.errorWhenSignOutAccount(error: error)
-                case .completed:
-                    Global.log.info("[done] signOut Account")
-                    self.gotoOnboardingScreen()
-                default:
-                    break
-                }
-            }).disposed(by: disposeBag)
 
         thisViewModel.submitResultSubject
             .subscribe(onNext: { [weak self] (event) in
@@ -162,7 +82,7 @@ class MainViewController: ViewController {
             })
             .disposed(by: disposeBag)
 
-        bindUserFriendlyAddress()
+        bindYourChangeEvent()
         bindPOIChangeEvents()
     }
 
@@ -172,58 +92,59 @@ class MainViewController: ViewController {
                 guard let self = self else { return }
                 self.pois = poisValue.pois
 
+                // limit number of pois
+                let reachLimit = self.pois.count >= self.poiLimitation
+                self.addLocationBar.isHidden = reachLimit
+                self.addLocationBarHeightConstraint?.update(offset: reachLimit ? 0 : 60)
+
                 guard poisValue.source == .remote else {
                     return
                 }
 
-                self.mainCollectionView.reloadSections(IndexSet(integer: 1))
-                self.pageControl.numberOfPages = poisValue.pois.count + 2
-
-                if self.pois.isNotEmpty, let navigatePoiID = self.thisViewModel.navigateToPoiID {
-                    self.thisViewModel.navigateToPoiID = nil
-                    self.gotoPOI(with: navigatePoiID)
-                }
+                self.mainCollectionView.reloadSections(IndexSet(integer: self.poiSection))
             })
             .disposed(by: disposeBag)
     }
 
-    fileprivate func bindUserFriendlyAddress() {
-        var previousLocation: CLLocation?
+    override func setupViews() {
+        super.setupViews()
 
-        Global.current.userLocationRelay
-            .filter({ (location) -> Bool in
-                guard let previousLocation = previousLocation, let location = location else { return true }
-                return previousLocation.distance(from: location) >= 50.0 // avoid to request reserve address too much; exceeds Apple's limitation.
-            })
-            .flatMap({ (location) -> Single<String?> in
-                previousLocation = location
-                guard let location = location else { return Single.just(nil) }
-                return LocationPermission.lookupAddress(from: location)
-            })
-            .subscribe(onNext: { [weak self] (userFriendlyAddress) in
-                guard let self = self else { return }
-                self.currentUserLocationAddress = userFriendlyAddress
+        let paddingContentView = UIView()
+        paddingContentView.addSubview(mainCollectionView)
 
-                guard let cellForCurrent = self.mainCollectionView.cellForItem(at: IndexPath(row: 0, section: self.sectionIndexes.currentLocation)) as? HealthScoreCollectionCell else {
+        mainCollectionView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+
+        contentView.addSubview(paddingContentView)
+        contentView.addSubview(addLocationBar)
+
+        paddingContentView.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+                .inset(OurTheme.paddingInset)
+        }
+
+        addLocationBar.snp.makeConstraints { (make) in
+            addLocationBarHeightConstraint = make.height.equalTo(60).constraint
+            make.top.equalTo(paddingContentView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+
+    fileprivate func bindYourChangeEvent() {
+        thisViewModel.yourAreaProfileRelay
+            .filterNil()
+            .subscribe(onNext: { [weak self] (areaProfile) in
+                guard let self = self,
+                    let yourHealthCell = self.mainCollectionView.cellForItem(at: IndexPath(row: 1, section: 1)) as? HealthScoreCollectionCell else {
                     return
                 }
-                cellForCurrent.locationLabel.setText(userFriendlyAddress)
-            }, onError: { (error) in
-                Global.log.error(error)
+                yourHealthCell.setData(score: areaProfile.score)
             })
             .disposed(by: disposeBag)
     }
 
     fileprivate func bindPOIChangeEvents() {
-        thisViewModel.fetchPOIStateRelay
-            .subscribe(onNext: { [weak self] (loadState) in
-                guard let self = self else { return }
-                loadState == .loading ?
-                    self.poiActivityIndicator.startAnimating() :
-                    self.poiActivityIndicator.stopAnimating()
-            })
-            .disposed(by: disposeBag)
-
         thisViewModel.addLocationSubject
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -234,26 +155,18 @@ class MainViewController: ViewController {
                     return
                 }
 
+                let newIndexPath = IndexPath(row: self.pois.count - 1, section: self.poiSection)
                 self.mainCollectionView.performBatchUpdates({
-                    self.mainCollectionView.insertItems(at: [IndexPath(row: self.pois.count - 1, section: 1)])
+                    self.mainCollectionView.insertItems(at: [newIndexPath])
 
                 }, completion: { [weak self] (_) in
                     guard let self = self else { return }
 
-                    self.gotoLocationListCell()
+                    self.mainCollectionView.scrollToItem(at: newIndexPath, at: .bottom, animated: true)
                     if let viewController = self.presentedViewController as? LocationSearchViewController {
                         viewController.dismiss(animated: true, completion: nil)
                     }
                 })
-                self.pageControl.numberOfPages = self.pois.count + 2
-            })
-            .disposed(by: disposeBag)
-
-        thisViewModel.deleteLocationIndexSubject
-            .subscribe(onNext: { [weak self] (deletedIndex) in
-                guard let self = self else { return }
-                self.mainCollectionView.deleteItems(at: [IndexPath(row: deletedIndex, section: self.sectionIndexes.poi)])
-                self.pageControl.numberOfPages -= 1
             })
             .disposed(by: disposeBag)
 
@@ -262,85 +175,11 @@ class MainViewController: ViewController {
                 guard let self = self else { return }
 
                 self.mainCollectionView.performBatchUpdates({
-                    self.mainCollectionView.deleteItems(at: [IndexPath(row: from, section: self.sectionIndexes.poi)])
-                    self.mainCollectionView.insertItems(at: [IndexPath(row: to, section: self.sectionIndexes.poi)])
+                    self.mainCollectionView.deleteItems(at: [IndexPath(row: from, section: 1)])
+                    self.mainCollectionView.insertItems(at: [IndexPath(row: to, section: 1)])
                 })
             })
             .disposed(by: disposeBag)
-    }
-
-    // MARK: - Error Handlers
-    func errorWhenFetchingData(error: Error) {
-        guard !AppError.errorByNetworkConnection(error),
-            !showIfRequireUpdateVersion(with: error),
-            !handleErrorIfAsAFError(error) else {
-                return
-        }
-
-        Global.log.error(error)
-        showErrorAlertWithSupport(message: R.string.error.system())
-    }
-
-    func errorWhenSignOutAccount(error: Error) {
-        Global.log.error(error)
-        showErrorAlertWithSupport(message: R.string.error.accountSignOutError())
-    }
-
-    override func setupViews() {
-        super.setupViews()
-
-        contentView.addSubview(profileButton)
-        contentView.addSubview(navButtons)
-        contentView.addSubview(mainCollectionView)
-        contentView.addSubview(poiActivityIndicator)
-        contentView.addSubview(debugButton)
-
-        profileButton.snp.makeConstraints { (make) in
-            make.top.leading.equalToSuperview()
-        }
-
-        debugButton.snp.makeConstraints { (make) in
-            make.top.trailing.equalToSuperview()
-                .inset(OurTheme.paddingInset)
-        }
-
-        navButtons.snp.makeConstraints { (make) in
-            make.top.centerX.equalToSuperview()
-        }
-
-        poiActivityIndicator.snp.makeConstraints { (make) in
-            make.top.trailing.equalToSuperview().offset(30)
-            make.width.height.equalTo(10)
-        }
-
-        mainCollectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(navButtons.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-
-        // temporary shortcut to reset the onboarding
-        let volumeView = MPVolumeView(frame: CGRect.zero)
-        volumeView.isHidden = true
-        view.addSubview(volumeView)
-        audioLevel = audioSession.outputVolume
-
-        FormulaSupporter.shared.mainCollectionView = mainCollectionView
-    }
-}
-
-// MARK: - ScoreSourceDelegate
-extension MainViewController: ScoreSourceDelegate {
-    func resetFormula() {
-        thisViewModel.resetFormula()
-    }
-
-    func moveToJupyterNotebook() {
-        guard let jupyterURL = AppLink.formulaJupyter.websiteURL else { return }
-        navigator.show(segue: .safariController(jupyterURL), sender: self, transition: .alert)
-    }
-
-    func openSafari(with url: URL) {
-        navigator.show(segue: .safariController(url), sender: self, transition: .alert)
     }
 }
 
@@ -352,139 +191,92 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case sectionIndexes.currentLocation:    return 1
-        case sectionIndexes.poi:                return pois.count
-        case sectionIndexes.poiList:            return 1
+        case 0:                 return 1 // Header Label
+        case 1:                 return 2
+        case 2:                 return pois.count
         default:
             return 0
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case sectionIndexes.currentLocation:
+        switch (indexPath.section, indexPath.row) {
+        case (0, _):
+            let headerCell = collectionView.dequeueReusableCell(withClass: HeaderSingleLabelCollectionCell.self, for: indexPath)
+            headerCell.label.apply(text: Constant.appName.localizedUppercase,
+                                        font: R.font.domaineSansTextLight(size: 14),
+                                        themeStyle: .lightTextColor)
+            return headerCell
+        case (1, 0): // make blank cell
+            return  collectionView.dequeueReusableCell(withClass: UICollectionViewCell.self, for: indexPath)
+        case (1, 1):
+            return collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
+
+        case (2, _):
             let cell = collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
-            cell.scoreSourceDelegate = self
-            cell.locationLabel.setText(currentUserLocationAddress)
-            cell.key = "current"
-            return cell
-
-        case sectionIndexes.poi:
-            let cell = collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
-            cell.scoreSourceDelegate = self
-            cell.key = pois[indexPath.row].id
-            return cell
-
-        case sectionIndexes.poiList:
-            let cell = collectionView.dequeueReusableCell(withClass: LocationListCell.self, for: indexPath)
-            cell.locationDelegate = self
-
-            thisViewModel.poisRelay
-                .filter { $0.source != .userAdjust }.map { $0.pois } // don't want to reload data when userAdjust; manually reload by action
-                .subscribe(onNext: {
-                    cell.setData(pois: $0)
-                })
-                .disposed(by: disposeBag)
-
+            cell.setData(poi: pois[indexPath.row])
+            cell.delegate = self
             return cell
         default:
             return UICollectionViewCell()
         }
     }
-
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        setupPageControl(with: indexPath)
-
-        handleWhenDisplayHealthCell(cell: cell, in: indexPath)
-        handleWhenDisplayLocationList(cell: cell)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? HealthScoreCollectionCell else { return }
-        cell.currentState = .collapsed
-        cell.slideBottomView(with: .collapsed)
-    }
-
-    fileprivate func handleWhenDisplayHealthCell(cell: UICollectionViewCell, in indexPath: IndexPath) {
-        guard let cell = cell as? HealthScoreCollectionCell else { return }
-
-        var areaProfileKey: String?
-        var locationName = ""
-
-        switch indexPath.section {
-        case sectionIndexes.currentLocation:
-            locationName = currentUserLocationAddress ?? ""
-        case sectionIndexes.poi:
-            let poi = pois[indexPath.row]
-            locationName = poi.alias
-            areaProfileKey = poi.id
-        default:
-            break
-        }
-
-        let cellKey = areaProfileKey ?? "current"
-        let areaProfile = areaProfiles[cellKey]
-        cell.setData(areaProfile: areaProfile)
-        cell.setData(locationName: locationName)
-        cell.key = cellKey
-
-        thisViewModel.fetchAreaProfile(poiID: areaProfileKey)
-            .subscribe(onSuccess: { [weak self] (areaProfile) in
-                guard let self = self else { return }
-                cell.setData(areaProfile: areaProfile)
-                self.areaProfiles[areaProfileKey ?? "current"] = areaProfile
-
-            }, onError: { (error) in
-                guard !AppError.errorByNetworkConnection(error),
-                    !Global.handleErrorIfAsAFError(error) else {
-                        return
-                }
-
-                Global.log.error(error)
-            })
-            .disposed(by: disposeBag)
-    }
-
-    fileprivate func handleWhenDisplayLocationList(cell: UICollectionViewCell) {
-        guard type(of: cell) == LocationListCell.self else { return }
-        thisViewModel.fetchPOIs(source: .userAdjustFormula)
-    }
-
-    fileprivate func setupPageControl(with indexPath: IndexPath) {
-        let isInCurrentLocation = indexPath.section == sectionIndexes.currentLocation
-        let isInPoiList = indexPath.section == sectionIndexes.poiList
-
-        currentLocationButton.isEnabled = !isInCurrentLocation
-        locationButton.isEnabled = !isInPoiList
-
-        switch indexPath.section {
-        case sectionIndexes.currentLocation: pageControl.currentPage = 0
-        case sectionIndexes.poi:             pageControl.currentPage = indexPath.row + 1
-        case sectionIndexes.poiList:         pageControl.currentPage = pois.count + 1
-        default:
-            break
-        }
-    }
 }
 
 // MARK: - LocationDelegate
-extension MainViewController: LocationDelegate {
-    var addLocationSubject: PublishSubject<PointOfInterest?> {
-        return thisViewModel.addLocationSubject
+extension MainViewController: Location1Delegate {
+    func deletePOI(poiID: String) {
+        guard let poiIDRow = pois.firstIndex(where: { $0.id == poiID }) else { return }
+        let indexPath = IndexPath(row: poiIDRow, section: poiSection)
+        pois.remove(at: poiIDRow)
+        mainCollectionView.deleteItems(at: [indexPath])
+        thisViewModel.deletePOI(poiID: poiID)
     }
 
     func updatePOI(poiID: String, alias: String) {
         thisViewModel.updatePOI(poiID: poiID, alias: alias)
     }
+}
 
-    func deletePOI(poiID: String) {
-        thisViewModel.deletePOI(poiID: poiID)
+// MARK: - UICollectionViewDelegateFlowLayout
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch indexPath.section {
+        case 0:
+            return CGSize(width: view.frame.width, height: Size.dh(45))
+        default:
+            let paddingSpace = sectionInsets.left * (columns - 1) + collectionViewPadding
+            let availableWidth = view.frame.width - paddingSpace
+            let widthPerItem = availableWidth / columns
+
+            // calculate heightForHealthCell
+            let heightForHealthCell = HealthScoreTriangle.getScale(from: widthPerItem) * HealthScoreTriangle.originalSize.height + HealthScoreCollectionCell.space
+
+            return CGSize(width: widthPerItem, height: heightForHealthCell)
+        }
     }
 
-    func orderPOI(from: Int, to: Int) {
-        thisViewModel.orderPOI(from: from, to: to)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.top
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch section {
+        case 1:
+            return UIEdgeInsets(top: 0, left: 0, bottom: Size.dh(40), right: 0)
+        default:
+            return UIEdgeInsets.zero
+        }
+    }
+}
+
+
+// MARK: - Navigation
+extension MainViewController {
     func gotoAddLocationScreen() {
         let viewModel = LocationSearchViewModel()
         viewModel.selectedPlaceIDSubject
@@ -499,198 +291,93 @@ extension MainViewController: LocationDelegate {
         navigator.show(segue: .locationSearch(viewModel: viewModel), sender: self,
                        transition: .customModal(type: .slide(direction: .up)))
     }
-
-    func gotoLastPOICell() {
-        gotoPOICell(selectedIndex: pois.count, animated: true)
-    }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.size
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-}
-
-// MARK: - Navigator
+// MARK: - Setup views
 extension MainViewController {
-    fileprivate func gotoCurrentLocationCell(animated: Bool = false) {
-        let indexPath = IndexPath(row: 0, section: sectionIndexes.currentLocation)
-        mainCollectionView.scrollToItem(at: indexPath, at: .left, animated: animated)
-        setupPageControl(with: indexPath)
+    fileprivate func makeMainCollectionView() -> UICollectionView {
+        let flowlayout = UICollectionViewFlowLayout()
+        flowlayout.scrollDirection = .vertical
+
+        let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: flowlayout)
+        collectionView.backgroundColor = .clear
+        collectionView.register(cellWithClass: HeaderSingleLabelCollectionCell.self)
+        collectionView.register(cellWithClass: UICollectionViewCell.self)
+        collectionView.register(cellWithClass: HealthScoreCollectionCell.self)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        return collectionView
     }
 
-    fileprivate func gotoLocationListCell() {
-        let indexPath = IndexPath(row: 0, section: sectionIndexes.poiList)
-        mainCollectionView.scrollToItem(at: indexPath, at: .right, animated: false)
-        setupPageControl(with: indexPath)
-    }
+    fileprivate func makeAddLocationBar() -> UIView {
+        let label = Label()
+        label.apply(text: R.string.phrase.locationPlaceholder(),
+                    font: R.font.atlasGroteskLight(size: 18),
+                    themeStyle: .concordColor)
 
-    func gotoPOI(with poiID: String?) {
-        let index = pois.firstIndex(where: { $0.id == poiID }) ?? 0
-        gotoPOICell(selectedIndex: index + 1)
-    }
+        let searchImageView = ImageView(image: R.image.search())
 
-    fileprivate func gotoPOICell(selectedIndex: Int, animated: Bool = false) {
-        switch selectedIndex {
-        case 0:
-            gotoCurrentLocationCell(animated: animated)
-        case pageControl.numberOfPages - 1:
-            gotoLocationListCell()
-        default:
-            let indexPath = IndexPath(row: selectedIndex - 1, section: sectionIndexes.poi)
-            mainCollectionView.scrollToItem(at: indexPath, at: .right, animated: animated)
-            setupPageControl(with: indexPath)
+        let labelCover = UIView()
+        labelCover.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.centerY.leading.equalToSuperview()
         }
-    }
-
-    fileprivate func gotoOnboardingScreen() {
-        navigator.show(segue: .signInWall, sender: self, transition: .replace(type: .none))
-    }
-
-    fileprivate func gotoProfileScreen() {
-        navigator.show(segue: .profile, sender: self, transition: .navigation(type: .slide(direction: .down)))
-    }
-
-    fileprivate func gotoDebugScreen() {
-        let viewModel = DebugLocationViewModel(pois: pois)
-        navigator.show(segue: .debugLocation(viewModel: viewModel), sender: self, transition: .customModal(type: .slide(direction: .up)))
-    }
-}
-
-// MARK: - Setup Views
-extension MainViewController {
-    fileprivate func makeProfileButton() -> UIButton {
-        let button = UIButton()
-        button.setImage(R.image.profileButton(), for: .normal)
-
-        button.rx.tap.bind { [weak self] in
-            self?.gotoProfileScreen()
-        }.disposed(by: disposeBag)
-
-        return button
-    }
-
-    fileprivate func makeNavButtons() -> UIView {
-        themeService.rx
-            .bind({ $0.background }, to: currentLocationButton.rx.backgroundColor)
-            .bind({ $0.background }, to: locationButton.rx.backgroundColor)
-            .disposed(by: disposeBag)
 
         let view = UIView()
-        view.addSubview(pageControl)
-        view.addSubview(currentLocationButton)
-        view.addSubview(locationButton)
-        pageControl.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 0, left: 35, bottom: 0, right: 35))
+        view.addSubview(searchImageView)
+        view.addSubview(labelCover)
+
+        searchImageView.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(15)
+            make.centerY.equalToSuperview().offset(-2)
         }
 
-        currentLocationButton.snp.makeConstraints { (make) in
-            make.trailing.equalTo(pageControl.snp.leading).offset(10)
-            make.top.bottom.equalToSuperview()
+        labelCover.snp.makeConstraints { (make) in
+            make.leading.equalTo(searchImageView.snp.trailing).offset(17)
+            make.top.trailing.bottom.equalToSuperview()
         }
 
-        locationButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(pageControl.snp.trailing).offset(-10)
-            make.top.bottom.equalToSuperview()
+        themeService.rx
+            .bind ({ $0.mineShaftBackground }, to: view.rx.backgroundColor)
+            .disposed(by: disposeBag)
+
+        labelCover.addGestureRecognizer(makeAddLocationTapGestureRecognizer())
+
+        return view
+    }
+
+    fileprivate func makeAddPlaceGuideView() -> UIView {
+        let label = Label()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.apply(text: R.string.phrase.locationAddGuidance(),
+                    font: R.font.atlasGroteskLight(size: 18),
+                    themeStyle: .silverColor, lineHeight: 1.25)
+
+        let arrowImageView = ImageView(image: R.image.doneCircleArrow())
+
+        let view = UIView()
+        view.isHidden = true
+        view.addSubview(label)
+        view.addSubview(arrowImageView)
+
+        label.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+        }
+
+        arrowImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(label.snp.bottom).offset(42)
+            make.centerX.bottom.equalToSuperview()
         }
 
         return view
     }
 
-    fileprivate func makeVectorNavButton() -> UIButton {
-        let button = UIButton()
-        button.setImage(R.image.vector(), for: .disabled)
-        button.setImage(R.image.unselected_vector(), for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 29, bottom: 10, right: 3)
-
-        button.rx.tap.bind { [weak self] in
-            self?.gotoCurrentLocationCell()
+    fileprivate func makeAddLocationTapGestureRecognizer() -> UITapGestureRecognizer {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoAddLocationScreen()
         }.disposed(by: disposeBag)
-
-        return button
-    }
-
-    fileprivate func makeLocationButton() -> UIButton {
-        let button = UIButton()
-        button.setImage(R.image.addLocation(), for: .normal)
-        button.setImage(R.image.selectedAddLocation(), for: .disabled)
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 3, bottom: 10, right: 29)
-
-        button.rx.tap.bind { [weak self] in
-            self?.gotoLocationListCell()
-        }.disposed(by: disposeBag)
-
-        return button
-    }
-
-    fileprivate func makePageControl() -> UIPageControl {
-        let pageControl = UIPageControl()
-        pageControl.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: { [weak self] in
-                guard let currentPage = self?.pageControl.currentPage else {
-                    return
-                }
-
-                self?.gotoPOICell(selectedIndex: currentPage)
-            })
-            .disposed(by: disposeBag)
-
-        defer {
-            pageControl.subviews.forEach {
-                $0.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-            }
-        }
-
-        return pageControl
-    }
-
-    fileprivate func makeMainCollectionView() -> UICollectionView {
-        let flowlayout = UICollectionViewFlowLayout()
-        flowlayout.scrollDirection = .horizontal
-
-        let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: flowlayout)
-        collectionView.backgroundColor = .clear
-        collectionView.isPagingEnabled = true
-        collectionView.register(cellWithClass: HealthScoreCollectionCell.self)
-        collectionView.register(cellWithClass: LocationListCell.self)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.bounces = false
-        collectionView.delaysContentTouches = true
-
-        return collectionView
-    }
-
-    fileprivate func makeActivityIndicator() -> UIActivityIndicatorView {
-        let indicator = UIActivityIndicatorView()
-        indicator.style = .white
-        return indicator
-    }
-
-    fileprivate func makeDebugButton() -> UIButton {
-        let button = UIButton()
-        button.setImage(R.image.gearIcon(), for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 29, bottom: 29, right: 0)
-
-        Global.enableDebugRelay
-            .map { !$0 }
-            .bind(to: button.rx.isHidden)
-            .disposed(by: disposeBag)
-
-        button.rx.tap.bind { [weak self] in
-            self?.gotoDebugScreen()
-        }.disposed(by: disposeBag)
-
-        return button
+        return tapGestureRecognizer
     }
 }
-
-

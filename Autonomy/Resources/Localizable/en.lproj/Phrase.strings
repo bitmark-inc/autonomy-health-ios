@@ -28,6 +28,11 @@
 "survey.title" = "How are you right now?";
 "survey.help.title" = "How can we help?";
 
+"location.placeholder" = "Enter name or address ...";
+"location.tapGuidance" = "Tap a place to add it to your monitoring screen";
+"location.addGuidance" = "You can monitor the health of specific places and places that can help you be healthy.";
+"location.editGuidance" = "Assign an alias, delete, or tap Done to save";
+
 /// ====== Begin: Dont need this parts ======
 "survey.help.symptoms" = "I have symptoms";
 "survey.help.symptoms.description" = "Let us if you are currently experiencing any of common COVID-19 symptoms.";

@@ -2,76 +2,26 @@
 //  HealthScoreCollectionCell.swift
 //  Autonomy
 //
-//  Created by Thuyen Truong on 4/8/20.
+//  Created by Thuyen Truong on 6/3/20.
 //  Copyright © 2020 Bitmark Inc. All rights reserved.
 //
 
 import UIKit
 import RxSwift
-import SkeletonView
-import PanModal
-import SnapKit
-
-enum BottomSlideViewState {
-    case expanded
-    case collapsed
-}
 
 class HealthScoreCollectionCell: UICollectionViewCell {
 
     // MARK: - Properties
-    lazy var healthView = makeHealthView()
-    lazy var guideDataView = makeGuideDataView()
-    lazy var locationLabel = makeLocationLabel()
-    lazy var scrollView = makeScrollView()
-    lazy var loadingSourceView = makeLoadingSourceView()
-    lazy var formulaSourceView = makeFormularSourceView()
-    lazy var tapHealthViewGesture = makeTapHealthViewGesture()
+    fileprivate lazy var healthTriangle = makeHealthTriangle()
+    fileprivate lazy var nameLabel = makeNameLabel()
+    fileprivate lazy var nameTextField = makeNameTextField()
+    fileprivate lazy var deleteButton = makeDeleteButton()
 
-    // Data Guide View
-    lazy var confirmedCasesView = ScoreInfoView(scoreInfoType: .confirmedCases)
-    lazy var reportedSymptomsView = ScoreInfoView(scoreInfoType: .reportedSymptoms)
-    lazy var healthyBehaviorsView = ScoreInfoView(scoreInfoType: .healthyBehaviors)
-    lazy var populationDensityView = ScoreInfoView(scoreInfoType: .populationDensity)
+    fileprivate var poiID: String?
+    weak var delegate: Location1Delegate?
 
-    var key: String? {
-        didSet {
-            formulaSourceView.key = key
-        }
-    }
-
-    weak var scoreSourceDelegate: ScoreSourceDelegate? {
-        didSet {
-            formulaSourceView.delegate = scoreSourceDelegate
-        }
-    }
-    fileprivate var disposeBag = DisposeBag()
-
-    // Constants
-    fileprivate let healthViewHeight: CGFloat = HealthScoreTriangle.originalSize.height * HealthScoreTriangle.scale
-
-    // Formula View
-    var formulaDragHeight: CGFloat {
-        return formulaSourceView.frame.height
-    }
-    let formulaViewAnimateDuration: CGFloat = 0.9
-    lazy var topSpacing: CGFloat = {
-        return healthView.frame.height * 0.5 + healthView.frame.origin.y + Size.dh(30)
-    }()
-    let bottomY = UIScreen.main.bounds.height + 10
-    let topHealthView: CGFloat = Size.dh(70)
-
-    var currentState: BottomSlideViewState = .collapsed
-    var nextState: BottomSlideViewState {
-        return currentState == .expanded ? .collapsed : .expanded
-    }
-
-    // Animation Supports
-    var animations:[UIViewPropertyAnimator] = []
-    var animationProgressWhenIntrupped:CGFloat = 0
-
-    var topFormulaViewConstraint: Constraint?
-    var topHealthViewConstraint: Constraint?
+    static let space: CGFloat = 45
+    fileprivate let disposeBag = DisposeBag()
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -81,381 +31,179 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         bindEvents()
     }
 
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
 
-        animations.removeAll()
-        animationProgressWhenIntrupped = 0
-        healthView.resetLayout()
-
-        disposeBag = DisposeBag()
-        bindEvents()
+        self.poiID = nil
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Handlers
     fileprivate func bindEvents() {
-        formulaSourceView.scoreRelay
-            .skip(1)
-            .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] (score) in
-                guard let self = self else { return }
-                setScore(score, in: self.formulaSourceView.scoreLabel)
-                self.healthView.updateLayout(score: score, animate: true)
-            })
-            .disposed(by: disposeBag)
+        addGestureRecognizer(makeLongPressGesture())
     }
 
-    func setData(locationName: String) {
-        guard locationName.isNotEmpty else { return }
-        locationLabel.setText(locationName)
+    func setData(poi: PointOfInterest) {
+        self.poiID = poi.id
+        healthTriangle.updateLayout(score: poi.score ?? 0, animate: false)
+        setName(poi.alias)
     }
 
-    func setData(areaProfile: AreaProfile?) {
-        guard let areaProfile = areaProfile else {
-            guideDataView.showAnimatedSkeleton(usingColor: Constant.skeletonColor)
-            return
-        }
-
-        guideDataView.hideSkeleton()
-        healthView.updateLayout(score: areaProfile.score.rounded(), animate: false)
-        bindInfo(for: .confirmedCases, number: areaProfile.confirm, delta: areaProfile.confirmDelta)
-        bindInfo(for: .reportedSymptoms, number: areaProfile.symptoms, delta: areaProfile.symptomsDelta)
-        bindInfo(for: .healthyBehaviors, number: areaProfile.behavior, delta: areaProfile.behaviorDelta)
-
-        formulaSourceView.setData(areaProfile: areaProfile)
+    func setData(score: Float) {
+        healthTriangle.updateLayout(score: score, animate: false)
+        nameLabel.setText(R.string.localizable.you())
     }
 
-    fileprivate func bindInfo(for scoreInfoType: ScoreInfoType, number: Int, delta: Float) {
-        let formattedNumber = number.formatNumber
-        let formattedDelta = "\(abs(delta).formatPercent)%"
-
-        switch scoreInfoType {
-        case .confirmedCases:
-            confirmedCasesView.currentNumberLabel.setText(formattedNumber)
-            confirmedCasesView.changeNumberLabel.setText(formattedDelta)
-            switch true {
-            case (delta > 0):
-                confirmedCasesView.changeStatusArrow.image = R.image.redUpArrow()
-                confirmedCasesView.changeNumberLabel.textColor = Constant.negativeColor
-            case (delta < 0):
-                confirmedCasesView.changeStatusArrow.image = R.image.greenDownArrow()
-                confirmedCasesView.changeNumberLabel.textColor = Constant.positiveColor
-            default:
-                confirmedCasesView.changeStatusArrow.image = nil
-                confirmedCasesView.changeNumberLabel.textColor = .white
-            }
-
-        case .reportedSymptoms:
-            reportedSymptomsView.currentNumberLabel.setText(formattedNumber)
-            reportedSymptomsView.changeNumberLabel.setText(formattedDelta)
-            switch true {
-            case (delta > 0):
-                reportedSymptomsView.changeStatusArrow.image = R.image.redUpArrow()
-                reportedSymptomsView.changeNumberLabel.textColor = Constant.negativeColor
-            case (delta < 0):
-                reportedSymptomsView.changeStatusArrow.image = R.image.greenDownArrow()
-                reportedSymptomsView.changeNumberLabel.textColor = Constant.positiveColor
-            default:
-                reportedSymptomsView.changeStatusArrow.image = nil
-                reportedSymptomsView.changeNumberLabel.textColor = .white
-            }
-
-        case .healthyBehaviors:
-            healthyBehaviorsView.currentNumberLabel.setText(formattedNumber)
-            healthyBehaviorsView.changeNumberLabel.setText(formattedDelta)
-            switch true {
-            case (delta > 0):
-                healthyBehaviorsView.changeStatusArrow.image = R.image.greenUpArrow()
-                healthyBehaviorsView.changeNumberLabel.textColor = Constant.positiveColor
-            case (delta < 0):
-                healthyBehaviorsView.changeStatusArrow.image = R.image.redDownArrow()
-                healthyBehaviorsView.changeNumberLabel.textColor = Constant.negativeColor
-            default:
-                healthyBehaviorsView.changeStatusArrow.image = nil
-                healthyBehaviorsView.changeNumberLabel.textColor = .white
-            }
-
-        case .populationDensity:
-            break
-        }
+    fileprivate func setName(_ name: String) {
+        nameLabel.setText(name)
+        nameTextField.text = name
     }
 
-    // MARK: - Setup Views
-    fileprivate func setupViews() {
-        let paddingContentView = UIView()
-        paddingContentView.addSubview(locationLabel)
-        paddingContentView.addSubview(healthView)
-        paddingContentView.addSubview(guideDataView)
+    func toggleEditMode(isOn: Bool) {
+        nameLabel.isHidden = isOn
+        nameTextField.isHidden = !isOn
+        deleteButton.isHidden = !isOn
 
-        locationLabel.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().multipliedBy(0.7)
-            make.top.centerX.equalToSuperview()
-            make.height.equalTo(16)
-        }
+        if isOn { nameTextField.becomeFirstResponder() }
+        else {    nameTextField.resignFirstResponder() }
+    }
 
-        healthView.snp.makeConstraints { (make) in
-            topHealthViewConstraint = make.top.equalTo(locationLabel.snp.bottom).offset(topHealthView).constraint
-            make.centerX.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(healthViewHeight)
-        }
-
-        guideDataView.snp.makeConstraints { (make) in
-            make.top.equalTo(healthView.snp.bottom).offset(45)
-            make.leading.trailing.equalToSuperview()
-        }
-
-        contentView.addSubview(paddingContentView)
-        contentView.addSubview(scrollView)
-        contentView.addSubview(loadingSourceView)
-
-        loadingSourceView.snp.makeConstraints { (make) in
-            make.edges.equalTo(scrollView)
-        }
-
-        scrollView.snp.makeConstraints { (make) in
-            make.width.bottom.leading.trailing.equalToSuperview()
-            topFormulaViewConstraint = make.top.equalToSuperview().offset(bottomY).constraint
-        }
-
-        paddingContentView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 0, left: OurTheme.horizontalPadding, bottom: 0, right: OurTheme.horizontalPadding))
-        }
-
-        healthView.addGestureRecognizer(tapHealthViewGesture)
+    fileprivate func makeLongPressGesture() -> UILongPressGestureRecognizer {
+        let longPress = UILongPressGestureRecognizer()
+        longPress.rx.event.bind { [weak self] (gesture) in
+            guard let self = self,
+                gesture.state == .began, self.poiID != nil else { return }
+            self.toggleEditMode(isOn: true)
+        }.disposed(by: disposeBag)
+        return longPress
     }
 }
 
-// MARK: - UIGestureRecognizerDelegate
-extension HealthScoreCollectionCell: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+// MARK: - UITextViewDelegate
+extension HealthScoreCollectionCell: UITextViewDelegate {
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        endEditing(textView: textView)
         return true
     }
 
-    // MARK: - Animation Slide Formula View
-    func createAnimation(state: BottomSlideViewState) {
-        guard animations.isEmpty else {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            endEditing(textView: textView)
+            return false
+        }
+        return true
+    }
+
+    fileprivate func endEditing(textView: UITextView) {
+        toggleEditMode(isOn: false)
+
+        guard let text = textView.text, text.isNotEmpty else {
+            textView.text = nameLabel.text
             return
         }
 
-        let moveUpAnimation = UIViewPropertyAnimator.init(duration: TimeInterval(formulaViewAnimateDuration), dampingRatio: 1.0) { [weak self] in
-            guard let self = self else  { return }
-            self.slideBottomView(with: state)
-            self.layoutIfNeeded()
-        }
-        moveUpAnimation.addCompletion { [weak self] _ in
-            guard let self = self else { return }
-            self.updateBottomSlideView(state: state)
-            self.animations.removeAll()
-        }
-
-        moveUpAnimation.startAnimation()
-        animations.append(moveUpAnimation)
-    }
-
-    func slideBottomView(with state: BottomSlideViewState) {
-        switch state {
-        case .collapsed:
-            scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-            topFormulaViewConstraint?.update(offset: bottomY)
-            healthView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            healthView.appNameLabel.transform = CGAffineTransform(translationX: 0, y: 0)
-            healthView.appNameLabel.alpha = 1
-            topHealthViewConstraint?.update(offset: topHealthView)
-
-        case .expanded:
-            topFormulaViewConstraint?.update(offset: topSpacing)
-            healthView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-            healthView.appNameLabel.transform = CGAffineTransform(translationX: 300, y: 250)
-            healthView.appNameLabel.alpha = 0
-            topHealthViewConstraint?.update(offset: -50)
-        }
-    }
-
-    @objc func wasDragged(gestureRecognizer: UIPanGestureRecognizer) {
-        guard gestureRecognizer.state == .ended || scrollView.contentOffset.y <= 0 else {
+        guard let poiID = poiID, text != nameLabel.text else {
             return
         }
 
-        switch gestureRecognizer.state {
-        case .began:
-            scrollView.isUserInteractionEnabled = false
-            startIntractiveAnimation(state: nextState)
-
-        case .changed:
-            let translation = gestureRecognizer.translation(in: scrollView)
-            let fractionCompleted = translation.y / formulaDragHeight
-            let fraction = currentState == .expanded ? fractionCompleted : -fractionCompleted
-            updateIntractiveAnimation(animationProgress: fraction)
-
-        case .ended:
-            scrollView.isUserInteractionEnabled = true
-            let translation = gestureRecognizer.translation(in: scrollView)
-            var finalVelocity = gestureRecognizer.velocity(in: scrollView)
-            if translation.y <= 50 { // keep bottomSlideView is expanded when scrolling horizontal (slider)
-                finalVelocity.y = -20.0
-            }
-            continueAnimation(finalVelocity: finalVelocity)
-
-        default:
-            break
-        }
+        setName(text)
+        delegate?.updatePOI(poiID: poiID, alias: text)
     }
 
-    func startIntractiveAnimation(state:BottomSlideViewState) {
-        if animations.isEmpty {
-            createAnimation(state: state)
-        }
-        // Here we are pause the animation and get fraction Complete value and store it.
-        // so when use change the animation we can update animation.fractionComplete in next method
-        for animation in animations {
-            animation.pauseAnimation()
-            animationProgressWhenIntrupped = animation.fractionComplete
-        }
-    }
-
-    func updateIntractiveAnimation(animationProgress:CGFloat)  {
-        for animation in animations {
-            animation.fractionComplete = animationProgress + animationProgressWhenIntrupped
-        }
-    }
-
-    func continueAnimation (finalVelocity:CGPoint) {
-        if (currentState == .expanded) == (finalVelocity.y < 0) {
-            for animation in animations {
-                animation.stopAnimation(true)
-            }
-            animations.removeAll()
-            updateBottomSlideView(state: nextState)
-            createAnimation(state: nextState)
-
-        } else {
-            for animation in animations {
-                animation.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-            }
-        }
-    }
-
-    func updateBottomSlideView(state: BottomSlideViewState) {
-        currentState = state
-    }
-
-    @objc func tapHealthView(_ sender: UITapGestureRecognizer) {
-        createAnimation(state: nextState)
-    }
 }
 
-// MARK: - Setup views
+// MARK: - setup views
 extension HealthScoreCollectionCell {
-    fileprivate func makeHealthView() -> HealthScoreTriangle {
-        return HealthScoreTriangle(score: nil)
+    fileprivate func setupViews() {
+        contentView.addSubview(healthTriangle)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(nameTextField)
+        contentView.addSubview(deleteButton)
+
+        healthTriangle.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-Self.space)
+        }
+
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(healthTriangle.snp.bottom).offset(15)
+            make.leading.trailing.equalToSuperview()
+        }
+
+        nameTextField.snp.makeConstraints { (make) in
+            make.edges.equalTo(nameLabel)
+                .inset(UIEdgeInsets(top: -8, left: 0, bottom: -6, right: 0))
+        }
+
+        deleteButton.snp.makeConstraints { (make) in
+            make.top.trailing.equalToSuperview()
+        }
     }
 
-    fileprivate func makeLocationLabel() -> Label {
+    fileprivate func makeHealthTriangle() -> HealthScoreTriangle {
+        return HealthScoreTriangle(score: nil, width: frame.width)
+    }
+
+    fileprivate func makeNameLabel() -> Label {
         let label = Label()
+        label.numberOfLines = 2
         label.textAlignment = .center
-        label.apply(font: R.font.atlasGroteskLight(size: 16),
-                    themeStyle: .silverColor)
+        label.apply(font: R.font.atlasGroteskLight(size: 14),
+                    themeStyle: .lightTextColor)
         return label
     }
 
-    fileprivate func makeGuideDataView() -> UIView {
-        let row1 = makeScoreInfosRow(view1: confirmedCasesView, view2: reportedSymptomsView)
-        let row2 = makeScoreInfosRow(view1: healthyBehaviorsView)
+    fileprivate func makeNameTextField() -> UITextView {
+        let textView = UITextView()
+        textView.font = R.font.atlasGroteskLight(size: 14)
+        textView.autocorrectionType = .no
+        textView.isHidden = true
+        textView.returnKeyType = .done
+        textView.delegate = self
+        textView.textAlignment = .center
+        textView.inputAccessoryView = makeInputAccessoryView()
 
-        let view = UIView()
-        view.isSkeletonable = true
-        view.addSubview(row1)
-        view.addSubview(row2)
-
-        row1.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-        }
-
-        row2.snp.makeConstraints { (make) in
-            make.top.equalTo(row1.snp.bottom).offset(25)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-
-        return view
+        themeService.rx
+            .bind( { $0.silverColor }, to: textView.rx.tintColor)
+            .bind( { $0.lightTextColor }, to: textView.rx.textColor)
+            .bind({ $0.sharkColor }, to: textView.rx.backgroundColor)
+            .disposed(by: disposeBag)
+        return textView
     }
 
-    fileprivate func makeScoreInfosRow(view1: UIView, view2: UIView? = nil) -> UIView {
-        let view = UIView()
-        view.addSubview(view1)
-        view1.snp.makeConstraints { (make) in
-            make.top.leading.bottom.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.5).offset(Size.dw(10) / 2)
-        }
+    fileprivate func makeInputAccessoryView() -> UIView {
+        let label = Label()
+        label.apply(text: R.string.phrase.locationEditGuidance(),
+                    font: R.font.atlasGroteskLight(size: 14),
+                    themeStyle: .silverColor)
+        label.textAlignment = .center
 
-        if let view2 = view2 {
-            view.addSubview(view2)
-            view2.snp.makeConstraints { (make) in
-                make.top.equalToSuperview()
-                make.leading.equalTo(view1.snp.trailing).offset(Size.dw(10))
-                make.width.equalTo(view1)
-            }
-        }
-        return view
-    }
-
-    fileprivate func makeScrollView() -> UIScrollView {
-        let scrollView = UIScrollView()
-        scrollView.addSubview(formulaSourceView)
-        formulaSourceView.snp.makeConstraints { (make) in
-            make.edges.centerX.equalToSuperview()
-        }
-        scrollView.backgroundColor = .white
-        scrollView.bounces = false
-
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(wasDragged(gestureRecognizer:)))
-        scrollView.addGestureRecognizer(gesture)
-        gesture.delegate = self
-        return scrollView
-    }
-
-    fileprivate func makeFormularSourceView() -> FormulaSourceView {
-        return FormulaSourceView()
-    }
-
-    fileprivate func makeTapHealthViewGesture() -> UITapGestureRecognizer {
-        return UITapGestureRecognizer(target: self, action: #selector(tapHealthView(_:)))
-    }
-
-    fileprivate func makeLoadingSourceView() -> UIView {
-        let loadingIndicator = makeLoadingIndicatorInSourceView()
-
-        let view = UIView()
-        view.alpha = 0.3
-        view.addSubview(loadingIndicator)
-
-        loadingIndicator.snp.makeConstraints { (make) in
-            make.centerX.centerY.equalToSuperview()
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 44))
+        view.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
 
         themeService.rx
             .bind({ $0.background }, to: view.rx.backgroundColor)
             .disposed(by: disposeBag)
 
-        FormulaSupporter.shared.defaultStateRelay
-            .map { $0 != .isReseting }
-            .subscribe(onNext: { (notIsReseting) in
-                view.isHidden = notIsReseting
-                notIsReseting ? loadingIndicator.stopAnimating() : loadingIndicator.startAnimating()
-            })
-            .disposed(by: disposeBag)
-
         return view
     }
 
-    fileprivate func makeLoadingIndicatorInSourceView() -> UIActivityIndicatorView {
-        let indicator = UIActivityIndicatorView()
-        indicator.style = .whiteLarge
-        return indicator
+    fileprivate func makeDeleteButton() -> UIButton {
+        let button = UIButton()
+        button.setImage(R.image.deleteLocationCell(), for: .normal)
+        button.isHidden = true
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 15, right: 0)
+
+        button.rx.tap.bind { [weak self] in
+            guard let self = self, let poiID = self.poiID else { return }
+            self.delegate?.deletePOI(poiID: poiID)
+        }.disposed(by: disposeBag)
+
+        return button
     }
 }

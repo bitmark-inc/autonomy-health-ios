@@ -17,13 +17,13 @@ import GooglePlaces
 class LocationSearchViewController: ViewController {
 
     // MARK: - Properties
-    lazy var searchBar = makeSearchBar()
-    lazy var searchTextField = makeSearchTextField()
-    lazy var closeButton = makeCloseButton()
-    lazy var resultTableView = makeResultTableView()
+    fileprivate lazy var searchBar = makeSearchBar()
+    fileprivate lazy var searchTextField = makeSearchTextField()
+    fileprivate lazy var resultTableView = makeResultTableView()
+    fileprivate lazy var tapGuideLabel = makeTapGuideLabel()
 
-    var bottomConstraint: Constraint?
-    lazy var thisViewModel: LocationSearchViewModel = {
+    fileprivate var bottomConstraint: Constraint?
+    fileprivate lazy var thisViewModel: LocationSearchViewModel = {
         return viewModel as! LocationSearchViewModel
     }()
 
@@ -31,7 +31,7 @@ class LocationSearchViewController: ViewController {
         return .lightContent
     }
 
-    var autoCompleteLocations = [GMSAutocompletePrediction]()
+    fileprivate var autoCompleteLocations = [GMSAutocompletePrediction]()
 
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -62,8 +62,10 @@ class LocationSearchViewController: ViewController {
 
         thisViewModel.locationsResultRelay
             .subscribe(onNext: { [weak self] in
-                self?.autoCompleteLocations = $0
-                self?.resultTableView.reloadData()
+                guard let self = self else { return }
+                self.autoCompleteLocations = $0
+                self.tapGuideLabel.isHidden = $0.count <= 0
+                self.resultTableView.reloadData()
             })
             .disposed(by: disposeBag)
     }
@@ -73,21 +75,23 @@ class LocationSearchViewController: ViewController {
 
         let paddingContentView = UIView()
         paddingContentView.addSubview(searchBar)
+        paddingContentView.addSubview(tapGuideLabel)
         paddingContentView.addSubview(resultTableView)
 
         searchBar.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
         }
 
+        tapGuideLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(searchBar.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview()
+        }
+
         resultTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBar.snp.bottom).offset(15)
+            make.top.equalTo(tapGuideLabel.snp.bottom).offset(15)
             make.leading.trailing.equalToSuperview()
             bottomConstraint = make.bottom.equalToSuperview().constraint
         }
-
-        closeButton.rx.tap.bind { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
-        }.disposed(by: disposeBag)
 
         contentView.addSubview(paddingContentView)
         paddingContentView.snp.makeConstraints { (make) in
@@ -149,26 +153,42 @@ extension LocationSearchViewController {
 // MARK: - Setup views
 extension LocationSearchViewController {
     fileprivate func makeSearchBar() -> UIView {
+        let closeButton = makeCloseButton()
+        let searchImageView = ImageView(image: R.image.search())
         let separateLine = SeparateLine(height: 1)
 
-        let view = UIView()
-        view.addSubview(searchTextField)
-        view.addSubview(closeButton)
-        view.addSubview(separateLine)
+        let searchBar = UIView()
+        searchBar.addSubview(searchImageView)
+        searchBar.addSubview(searchTextField)
+        searchBar.addSubview(closeButton)
+
+        searchImageView.snp.makeConstraints { (make) in
+            make.leading.equalToSuperview().offset(15)
+            make.centerY.equalToSuperview().offset(-2)
+        }
 
         searchTextField.snp.makeConstraints { (make) in
-            make.leading.centerY.equalToSuperview()
-            make.width.equalToSuperview().offset(-100)
+            make.leading.equalTo(searchImageView.snp.trailing).offset(17)
+            make.top.bottom.equalToSuperview()
+            make.width.equalToSuperview().offset(-90)
         }
 
         closeButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(searchTextField.snp.trailing).offset(5)
-            make.top.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().offset(43)
+            make.leading.lessThanOrEqualTo(searchTextField.snp.trailing).offset(15)
+            make.trailing.equalToSuperview().offset(-15)
+            make.centerY.equalToSuperview().offset(-2)
+        }
+
+        let view = UIView()
+        view.addSubview(searchBar)
+        view.addSubview(separateLine)
+
+        searchBar.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
         }
 
         separateLine.snp.makeConstraints { (make) in
-            make.top.equalTo(closeButton.snp.bottom).offset(15)
+            make.top.equalTo(searchBar.snp.bottom).offset(15)
             make.leading.trailing.bottom.equalToSuperview()
         }
 
@@ -177,13 +197,13 @@ extension LocationSearchViewController {
 
     fileprivate func makeSearchTextField() -> UITextField {
         let textField = UITextField()
-        textField.font = R.font.atlasGroteskLight(size: 24)
-        textField.placeholder = R.string.localizable.addNewLocation()
+        textField.font = R.font.atlasGroteskLight(size: 18)
+        textField.placeholder = R.string.phrase.locationPlaceholder()
         textField.returnKeyType = .done
 
         themeService.rx
             .bind({ $0.lightTextColor  }, to: textField.rx.textColor)
-            .bind({ $0.silverColor }, to: textField.rx.placeholderColor)
+            .bind({ $0.concordColor }, to: textField.rx.placeholderColor)
             .disposed(by: disposeBag)
 
         return textField
@@ -191,8 +211,12 @@ extension LocationSearchViewController {
 
     fileprivate func makeCloseButton() -> UIButton {
         let button = UIButton()
-        button.setImage(R.image.concordPlusCircle(), for: .normal)
-        button.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 4)
+        button.setImage(R.image.closeIcon(), for: .normal)
+
+        button.rx.tap.bind { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }.disposed(by: disposeBag)
+
         return button
     }
 
@@ -204,5 +228,15 @@ extension LocationSearchViewController {
 
         tableView.register(cellWithClass: SearchTextTableCell.self)
         return tableView
+    }
+
+    fileprivate func makeTapGuideLabel() -> Label {
+        let label = Label()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.apply(text: R.string.phrase.locationTapGuidance(),
+                    font: R.font.atlasGroteskLight(size: 14),
+                    themeStyle: .silverColor)
+        return label
     }
 }

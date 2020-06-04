@@ -60,6 +60,7 @@
 "SignOut" = "登出";
 "RecoveryKey" = "恢復金鑰";
 "None" = "無";
+"You" = "You";
 
 "RawData" = "原始資料";
 "from_last_24_hours" = "從過去24小時";
