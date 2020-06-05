@@ -11,17 +11,17 @@ import RxSwift
 import Moya
 
 class HealthService {
-    static var provider = MoyaProvider<HealthAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<HealthAPI>(stubClosure: MoyaProvider.immediatelyStub, session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
-    static func getScore() -> Single<Double> {
-        Global.log.info("[start] HealthService.getScore")
+    static func getScores(places: [String]) -> Single<[Float]> {
+        Global.log.info("[start] HealthService.getScores(places:)")
+        Global.log.debug("places: \(places)")
 
         return provider.rx
-            .requestWithRefreshJwt(.score)
+            .requestWithRefreshJwt(.scores(places: places))
             .filterSuccess()
             .retryWhenTransientError()
             .asSingle()
-            .map([String: Double].self)
-            .map { $0["score"] ?? 0}
+            .map([Float].self, atKeyPath: "results")
     }
 }

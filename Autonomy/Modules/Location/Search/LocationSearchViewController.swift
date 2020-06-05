@@ -27,6 +27,8 @@ class LocationSearchViewController: ViewController {
         return viewModel as! LocationSearchViewModel
     }()
 
+    fileprivate var scores = [Float]()
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -68,6 +70,20 @@ class LocationSearchViewController: ViewController {
                 self.resultTableView.reloadData()
             })
             .disposed(by: disposeBag)
+
+        thisViewModel.healthScoreRelay
+            .filterEmpty()
+            .subscribe(onNext: { [weak self] (scores) in
+                guard let self = self else { return }
+                self.scores = scores
+
+                for (index, score) in scores.enumerated() {
+                    let indexPath = IndexPath(row: index, section: 0)
+                    guard let cell = self.resultTableView.cellForRow(at: indexPath) as? LocationSearchTableCell else { return }
+                    cell.setData(score: score)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     override func setupViews() {
@@ -107,7 +123,7 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withClass: SearchTextTableCell.self)
+        let cell = tableView.dequeueReusableCell(withClass: LocationSearchTableCell.self)
         cell.separatorInset = .zero
 
         let autoCompleteLocation = autoCompleteLocations[indexPath.row]
@@ -119,6 +135,11 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
         cell.setData(
             placeAttributedText: makeAttributedText(searchText, in: placeText),
             secondaryAttributedText: makeAttributedText(searchText, in: secondaryText))
+
+        if indexPath.row < scores.count {
+            cell.setData(score: scores[indexPath.row])
+        }
+
         return cell
     }
 
@@ -226,7 +247,7 @@ extension LocationSearchViewController {
         tableView.delegate = self
         tableView.separatorStyle = .singleLine
 
-        tableView.register(cellWithClass: SearchTextTableCell.self)
+        tableView.register(cellWithClass: LocationSearchTableCell.self)
         return tableView
     }
 

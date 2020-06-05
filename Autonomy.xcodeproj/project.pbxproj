@@ -369,8 +369,8 @@
 		5BA808B6244010E100B2733A /* DebugLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B4244010E100B2733A /* DebugLocationViewController.swift */; };
 		5BA808B8244010EC00B2733A /* DebugLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* DebugLocationViewModel.swift */; };
 		5BA808B9244010EC00B2733A /* DebugLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808B7244010EC00B2733A /* DebugLocationViewModel.swift */; };
-		5BA808BB2440226A00B2733A /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
-		5BA808BC2440226A00B2733A /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
+		5BA808BB2440226A00B2733A /* LocationSearchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* LocationSearchTableCell.swift */; };
+		5BA808BC2440226A00B2733A /* LocationSearchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* LocationSearchTableCell.swift */; };
 		5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
 		5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
 		5BAA76FA24595CA3003CCE92 /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
@@ -495,7 +495,7 @@
 		5BAE8457246A7985006E118D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577862242B421B0028D3E3 /* Constant.swift */; };
 		5BAE8458246A7985006E118D /* SuccessPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B130BAD2451A1C00031F176 /* SuccessPanViewController.swift */; };
 		5BAE8459246A7985006E118D /* Global+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577865242B42310028D3E3 /* Global+Log.swift */; };
-		5BAE845A246A7985006E118D /* SearchTextTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */; };
+		5BAE845A246A7985006E118D /* LocationSearchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* LocationSearchTableCell.swift */; };
 		5BAE845B246A7985006E118D /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8592242DDE51002CC53B /* AppInfo.swift */; };
 		5BAE845C246A7985006E118D /* SurveySymptomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DE2446AEF600BCB323 /* SurveySymptomsViewModel.swift */; };
 		5BAE845E246A7985006E118D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577887242B45820028D3E3 /* Auth.swift */; };
@@ -603,6 +603,9 @@
 		5BB561032487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */; };
 		5BB561042487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */; };
 		5BB561052487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */; };
+		5BB561072488E88A00008959 /* calculated-scores.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BB561062488E88A00008959 /* calculated-scores.json */; };
+		5BB561082488EB7900008959 /* calculated-scores.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BB561062488E88A00008959 /* calculated-scores.json */; };
+		5BB561092488EB7A00008959 /* calculated-scores.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BB561062488E88A00008959 /* calculated-scores.json */; };
 		5BBBE55F246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBBE55E246AC8AF003B6EE7 /* SearchSurveyTableCell.swift */; };
 		5BBBE560246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBBE55E246AC8AF003B6EE7 /* SearchSurveyTableCell.swift */; };
 		5BBBE561246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBBE55E246AC8AF003B6EE7 /* SearchSurveyTableCell.swift */; };
@@ -933,7 +936,7 @@
 		5BA4B135245A8DAD00B125ED /* auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = auth.json; sourceTree = "<group>"; };
 		5BA808B4244010E100B2733A /* DebugLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLocationViewController.swift; sourceTree = "<group>"; };
 		5BA808B7244010EC00B2733A /* DebugLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLocationViewModel.swift; sourceTree = "<group>"; };
-		5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextTableCell.swift; sourceTree = "<group>"; };
+		5BA808BA2440226A00B2733A /* LocationSearchTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableCell.swift; sourceTree = "<group>"; };
 		5BA808C0244081E300B2733A /* LocationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListCell.swift; sourceTree = "<group>"; };
 		5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsHistory.swift; sourceTree = "<group>"; };
 		5BAA76FD2459603C003CCE92 /* DebugAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugAPI.swift; sourceTree = "<group>"; };
@@ -960,6 +963,7 @@
 		5BB560FA2487783E00008959 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5BB560FE24877A7B00008959 /* HealthScoreCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthScoreCollectionCell.swift; sourceTree = "<group>"; };
 		5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSingleLabelCollectionCell.swift; sourceTree = "<group>"; };
+		5BB561062488E88A00008959 /* calculated-scores.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "calculated-scores.json"; sourceTree = "<group>"; };
 		5BBBE55E246AC8AF003B6EE7 /* SearchSurveyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSurveyTableCell.swift; sourceTree = "<group>"; };
 		5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskLevelViewModel.swift; sourceTree = "<group>"; };
 		5BC6AED9245A6F8C00F60AF2 /* AddRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRow.swift; sourceTree = "<group>"; };
@@ -1771,6 +1775,7 @@
 				5BA4B132245A89AC00B125ED /* symptoms-list.json */,
 				5B4B60AD245FB95200432151 /* area-profile.json */,
 				5B4B60CA24604A7E00432151 /* debug-data.json */,
+				5BB561062488E88A00008959 /* calculated-scores.json */,
 			);
 			path = "Stubbed Responses";
 			sourceTree = "<group>";
@@ -1780,7 +1785,7 @@
 			children = (
 				5B4B60B724600B5600432151 /* LocationSearchViewController.swift */,
 				5B4B60B824600B5600432151 /* LocationSearchViewModel.swift */,
-				5BA808BA2440226A00B2733A /* SearchTextTableCell.swift */,
+				5BA808BA2440226A00B2733A /* LocationSearchTableCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -2191,6 +2196,7 @@
 				5B5778BA242B48230028D3E3 /* AtlasGrotesk-ThinItalic.otf in Resources */,
 				5B5778DA242B48230028D3E3 /* DomaineSansText-RegularItalic.otf in Resources */,
 				5B5778F5242B49140028D3E3 /* Phrase.strings in Resources */,
+				5BB561082488EB7900008959 /* calculated-scores.json in Resources */,
 				5B5778CC242B48230028D3E3 /* DomaineSansText-BlackItalic.otf in Resources */,
 				5B5778C8242B48230028D3E3 /* AtlasGrotesk-Bold.otf in Resources */,
 				5B5778BE242B48230028D3E3 /* AtlasGrotesk-Regular.otf in Resources */,
@@ -2245,6 +2251,7 @@
 				5B5778B7242B48230028D3E3 /* AtlasGrotesk-Medium.otf in Resources */,
 				5B5778C3242B48230028D3E3 /* AtlasGrotesk-RegularItalic.otf in Resources */,
 				5B978860243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf in Resources */,
+				5BB561072488E88A00008959 /* calculated-scores.json in Resources */,
 				5B5778C1242B48230028D3E3 /* AtlasGrotesk-Black.otf in Resources */,
 				5B978862243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf in Resources */,
 				5B5778D7242B48230028D3E3 /* DomaineSansText-Black.otf in Resources */,
@@ -2299,6 +2306,7 @@
 				5BAE84B0246A7985006E118D /* AtlasGrotesk-ThinItalic.otf in Resources */,
 				5BAE84B1246A7985006E118D /* DomaineSansText-RegularItalic.otf in Resources */,
 				5BAE84B2246A7985006E118D /* Phrase.strings in Resources */,
+				5BB561092488EB7A00008959 /* calculated-scores.json in Resources */,
 				5BAE84B3246A7985006E118D /* DomaineSansText-BlackItalic.otf in Resources */,
 				5BAE84B4246A7985006E118D /* AtlasGrotesk-Bold.otf in Resources */,
 				5BAE84B5246A7985006E118D /* AtlasGrotesk-Regular.otf in Resources */,
@@ -2756,7 +2764,7 @@
 				5BBBE560246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */,
 				5B130BB12451A1E30031F176 /* SuccessPanViewController.swift in Sources */,
 				5B577867242B42310028D3E3 /* Global+Log.swift in Sources */,
-				5BA808BC2440226A00B2733A /* SearchTextTableCell.swift in Sources */,
+				5BA808BC2440226A00B2733A /* LocationSearchTableCell.swift in Sources */,
 				5B219BD3246907CB004FACEA /* SearchSymptomViewModel.swift in Sources */,
 				5B86A05B247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */,
 				5B2C8594242DDE51002CC53B /* AppInfo.swift in Sources */,
@@ -2936,7 +2944,7 @@
 				5BBBE55F246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */,
 				5B130BAF2451A1C00031F176 /* SuccessPanViewController.swift in Sources */,
 				5B577866242B42310028D3E3 /* Global+Log.swift in Sources */,
-				5BA808BB2440226A00B2733A /* SearchTextTableCell.swift in Sources */,
+				5BA808BB2440226A00B2733A /* LocationSearchTableCell.swift in Sources */,
 				5B219BD2246907CB004FACEA /* SearchSymptomViewModel.swift in Sources */,
 				5B86A05A247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */,
 				5B2C8593242DDE51002CC53B /* AppInfo.swift in Sources */,
@@ -3112,7 +3120,7 @@
 				5BD0D2C0246CE73000022AE1 /* TimezoneDataEngine.swift in Sources */,
 				5BAE8458246A7985006E118D /* SuccessPanViewController.swift in Sources */,
 				5BAE8459246A7985006E118D /* Global+Log.swift in Sources */,
-				5BAE845A246A7985006E118D /* SearchTextTableCell.swift in Sources */,
+				5BAE845A246A7985006E118D /* LocationSearchTableCell.swift in Sources */,
 				5BAE845B246A7985006E118D /* AppInfo.swift in Sources */,
 				5BAE845C246A7985006E118D /* SurveySymptomsViewModel.swift in Sources */,
 				5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */,

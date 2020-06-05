@@ -14,6 +14,7 @@ class LocationSearchViewModel: ViewModel {
 
     // MARK: - Input
     let searchLocationTextRelay = BehaviorRelay<String>(value: "")
+    let healthScoreRelay = BehaviorRelay<[Float]>(value: [])
 
     // MARK: - Output
     let locationsResultRelay = BehaviorRelay<[GMSAutocompletePrediction]>(value: [])
@@ -25,11 +26,13 @@ class LocationSearchViewModel: ViewModel {
         autoCompleteFilter.type = .address
         return autoCompleteFilter
     }()
+    var scoresObserver: Disposable?
 
     override init() {
         super.init()
 
         observeLocationTextInput()
+        observeSearchToFetchScores()
     }
 
     fileprivate func observeLocationTextInput() {
@@ -37,6 +40,8 @@ class LocationSearchViewModel: ViewModel {
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] (searchText) in
                 guard let self = self else { return }
+                self.scoresObserver?.dispose() // cancel the scores request
+                self.healthScoreRelay.accept([])
 
                 guard searchText.isNotEmpty else {
                     self.locationsResultRelay.accept([])
@@ -53,6 +58,31 @@ class LocationSearchViewModel: ViewModel {
                     guard let results = results else { return }
                     self.locationsResultRelay.accept(results)
                 }
+            })
+            .disposed(by: disposeBag)
+    }
+
+    fileprivate func observeSearchToFetchScores() {
+        locationsResultRelay
+            .subscribe(onNext: { [weak self] (places) in
+                guard let self = self else { return }
+                self.scoresObserver?.dispose()
+
+                if places.count == 0 {
+                    self.healthScoreRelay.accept([])
+                    return
+                }
+
+                let placeInfos = places.map { $0.attributedFullText.string }
+                self.scoresObserver = HealthService.getScores(places: placeInfos)
+                    .subscribe(onSuccess: { [weak self] (scores) in
+                        guard let self = self else { return }
+                        self.healthScoreRelay.accept(scores)
+                    }, onError: { (error) in
+                        Global.backgroundErrorSubject.onNext(error)
+                    })
+
+                self.scoresObserver?.disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
     }

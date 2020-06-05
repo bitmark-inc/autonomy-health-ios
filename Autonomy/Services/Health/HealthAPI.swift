@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum HealthAPI {
-    case score
+    case scores(places: [String])
 }
 
 extension HealthAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -21,29 +21,34 @@ extension HealthAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType
 
     var path: String {
         switch self {
-        case .score: return "score"
+        case .scores: return "scores"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .score:   return .get
+        case .scores:   return .post
         }
     }
 
     var sampleData: Data {
+        if let dataURL = R.file.calculatedScoresJson(), let data = try? Data(contentsOf: dataURL) {
+            return data
+        }
+
         return Data()
     }
 
-    var parameters: [String: Any]? {
-        return nil
-    }
-
     var task: Task {
-        if let parameters = parameters {
-            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        var params: [String: Any] = [:]
+
+        switch self {
+        case .scores(let places):
+            let placesParam = places.map { ["address": $0] }
+            params = ["places": placesParam]
+
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         }
-        return .requestPlain
     }
 
     var headers: [String: String]? {
