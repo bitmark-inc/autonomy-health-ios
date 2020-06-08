@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import MediaPlayer
 
 protocol Location1Delegate: class {
     func updatePOI(poiID: String, alias: String)
@@ -64,6 +65,55 @@ class MainViewController: ViewController {
         }
 
         bindViewModelAfterViewAppear()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver (self, selector: #selector(volumeChanged(_:)),
+            name: NSNotification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
+            object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        removeNotificationsObserver()
+    }
+
+    // Properties for temporary shortcut to reset the onboarding
+    let audioSession = AVAudioSession.sharedInstance()
+    var audioLevel: Float? = nil
+
+    @objc func volumeChanged(_ notification: Notification) {
+        if let volumePressTime = Global.volumePressTime,
+            Date() >= volumePressTime.adding(.second, value: 5) {
+            Global.volumePressTrack = ""
+        }
+
+        Global.volumePressTime = Date()
+        guard let currentLevel = notification.userInfo!["AVSystemController_AudioVolumeNotificationParameter"] as? Float,
+            let audioLevel = audioLevel else {
+                return
+        }
+
+        if currentLevel > audioLevel || currentLevel == 1 { // press volume up
+            Global.volumePressTrack.append("1")
+        }
+        if currentLevel < audioLevel || currentLevel == 0 { // press volume down
+            Global.volumePressTrack.append("0")
+        }
+
+        self.audioLevel = currentLevel
+        if Global.volumePressTrack.contains("00011") {
+            Global.volumePressTrack = ""
+            gotoOnboardingScreen()
+        }
+
+        if Global.volumePressTrack.contains("11000") {
+            Global.volumePressTrack = ""
+            Global.enableDebugRelay.accept(!Global.enableDebugRelay.value)
+        }
     }
 
     // MARK: - bindViewModel
@@ -133,6 +183,12 @@ class MainViewController: ViewController {
             make.top.equalTo(paddingContentView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
+
+        // shortcut to reset the onboarding or debug
+        let volumeView = MPVolumeView(frame: CGRect.zero)
+        volumeView.isHidden = true
+        view.addSubview(volumeView)
+        audioLevel = audioSession.outputVolume
     }
 
     fileprivate func bindYourChangeEvent() {
@@ -325,6 +381,10 @@ extension MainViewController: DashboardDelegate {
     func gotoDebugScreen() {
         let viewModel = DebugLocationViewModel(pois: pois)
         navigator.show(segue: .debugLocation(viewModel: viewModel), sender: self, transition: .customModal(type: .slide(direction: .up)))
+    }
+
+    fileprivate func gotoOnboardingScreen() {
+        navigator.show(segue: .signInWall, sender: self, transition: .replace(type: .none))
     }
 }
 
