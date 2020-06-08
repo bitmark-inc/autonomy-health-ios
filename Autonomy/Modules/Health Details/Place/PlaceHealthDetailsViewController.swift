@@ -227,7 +227,7 @@ extension PlaceHealthDetailsViewController {
             title: R.string.localizable.more().localizedUppercase,
             icon: R.image.moreIcon(),
             spacing: 7)
-        button.apply(font: R.font.atlasGroteskLight(size: 14), textTheme: .silverColor)
+        button.apply(font: R.font.atlasGroteskLight(size: 14), textStyle: .silverColor)
         return button
     }
 
@@ -236,7 +236,7 @@ extension PlaceHealthDetailsViewController {
             title: R.string.localizable.addRating().localizedUppercase,
             icon: R.image.addIcon(),
             spacing: 7)
-        button.apply(font: R.font.atlasGroteskLight(size: 14), textTheme: .silverColor)
+        button.apply(font: R.font.atlasGroteskLight(size: 14), textStyle: .silverColor)
         return button
     }
 

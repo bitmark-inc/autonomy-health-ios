@@ -30,6 +30,7 @@ struct OurTheme {
     static var paddingOverBottomInset = UIEdgeInsets(top: 14, left: 15, bottom: 0, right: 15)
 
     static let titleHeight: CGFloat = Size.dw(190)
+    static let largeTitleHeight: CGFloat = Size.dw(250)
 }
 
 enum ThemeStyle {
@@ -42,6 +43,7 @@ enum ThemeStyle {
     case lightTextColor
     case separateTextColor
     case background
+    case codGrayBackground
     case mineShaftBackground
     case sharkColor
     case silverChaliceColor
@@ -60,6 +62,7 @@ protocol Theme {
     var separateTextColor:  UIColor { get }
     var separateTableColor: UIColor { get }
     var background:         UIColor { get }
+    var codGrayBackground:  UIColor { get }
     var mineShaftBackground:  UIColor { get }
     var sharkColor:         UIColor { get }
     var silverChaliceColor: UIColor { get }
@@ -80,6 +83,7 @@ struct LightTheme: Theme {
     let separateTextColor   = UIColor(hexString: "#828180")!
     let separateTableColor  = UIColor(hexString: "#C4C4C4")!
     let background          = UIColor(hexString: "#000")!
+    let codGrayBackground   = UIColor(hexString: "#1B1B1B")!
     let mineShaftBackground   = UIColor(hexString: "#2B2B2B")!
     let sharkColor          = UIColor(hexString: "#282B32")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!
@@ -100,6 +104,7 @@ struct DarkTheme: Theme {
     let separateTextColor   = UIColor(hexString: "#828180")!
     let separateTableColor  = UIColor(hexString: "#828180")!
     let background          = UIColor(hexString: "#000")!
+    let codGrayBackground   = UIColor(hexString: "#1B1B1B")!
     let mineShaftBackground   = UIColor(hexString: "#2B2B2B")!
     let sharkColor          = UIColor(hexString: "#282B32")!
     let silverChaliceColor  = UIColor(hexString: "#9E9E9E")!

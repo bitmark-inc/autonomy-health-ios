@@ -31,11 +31,11 @@ class LeftIconButton: UIButton {
 }
 
 extension LeftIconButton {
-    func apply(font: UIFont?, textTheme: ThemeStyle? = nil, backgroundTheme: ThemeStyle? = nil) {
+    func apply(font: UIFont?, textStyle: ThemeStyle? = nil, backgroundStyle: ThemeStyle? = nil) {
         titleLabel?.font = font
 
-        if let textTheme = textTheme {
-            switch textTheme {
+        if let textStyle = textStyle {
+            switch textStyle {
             case .silverColor:
                 themeService.rx
                     .bind({ $0.silverColor }, to: rx.tintColor)
@@ -45,8 +45,8 @@ extension LeftIconButton {
             }
         }
 
-        if let backgroundTheme = backgroundTheme {
-            switch backgroundTheme {
+        if let backgroundStyle = backgroundStyle {
+            switch backgroundStyle {
             case .blueRibbonColor:
                 themeService.rx
                     .bind({ $0.blueRibbonColor }, to: rx.backgroundColor)

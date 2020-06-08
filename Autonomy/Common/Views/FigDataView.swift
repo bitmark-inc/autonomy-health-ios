@@ -81,7 +81,7 @@ extension FigDataView {
         let button = RightIconButton(icon: R.image.crossCircleArrow(), spacing: 6, edgeSpacing: 8)
         button.cornerRadius = 15
         button.apply(font: R.font.ibmPlexMonoLight(size: 18),
-                     backgroundTheme: .blueRibbonColor)
+                     backgroundStyle: .blueRibbonColor)
         button.snp.makeConstraints { (make) in
             make.height.equalTo(30)
         }

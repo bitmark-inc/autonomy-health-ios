@@ -42,6 +42,7 @@ def sharedPods
   pod 'MGSwipeTableCell'
   pod 'MaterialProgressBar'
   pod 'UPCarouselFlowLayout'
+  pod 'Cosmos'
 end
 
 

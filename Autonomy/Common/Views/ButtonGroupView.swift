@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import RxSwift
 
 class ButtonGroupView: UIView {
 
     fileprivate lazy var gradientLayerView = makeGradientLayerView()
     let viewHeightWithGradient: CGFloat = 117
     fileprivate let defaultBackgroundColor = UIColor(hexString: "#000")!
+    fileprivate let disposeBag = DisposeBag()
 
     init(button1: UIView, button2: UIView? = nil, hasGradient: Bool = false) {
         super.init(frame: CGRect.zero)
@@ -85,5 +87,17 @@ extension ButtonGroupView {
         view.backgroundColor = .clear
         view.layer.insertSublayer(gradient, at: 0)
         return view
+    }
+
+    func apply(backgroundStyle: ThemeStyle) {
+        switch backgroundStyle {
+        case .codGrayBackground:
+            themeService.rx
+                .bind({ $0.codGrayBackground }, to: rx.backgroundColor)
+                .disposed(by: disposeBag)
+
+        default:
+            break
+        }
     }
 }

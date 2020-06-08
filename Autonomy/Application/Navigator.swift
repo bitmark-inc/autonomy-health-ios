@@ -44,6 +44,7 @@ class Navigator {
         case assistanceAskInfo(viewModel: AssistanceAskInfoViewModel)
         case reviewHelpRequest(viewModel: ReviewHelpRequestViewModel)
         case giveHelp(viewModel: GiveHelpViewModel)
+        case resourceRating(viewModel: ResourceRatingViewModel)
         case locationSearch(viewModel: LocationSearchViewModel)
         case profile
         case donate
@@ -97,6 +98,7 @@ class Navigator {
         case .assistanceAskInfo(let viewModel): return AssistanceAskInfoViewController(viewModel: viewModel)
         case .reviewHelpRequest(let viewModel): return ReviewHelpRequestViewController(viewModel: viewModel)
         case .giveHelp(let viewModel):          return GiveHelpViewController(viewModel: viewModel)
+        case .resourceRating(let viewModel):            return ResourceRatingViewController(viewModel: viewModel)
         case .locationSearch(let viewModel):    return LocationSearchViewController(viewModel: viewModel)
         case .profile:                          return ProfileViewController()
         case .donate:                           return DonateViewController()

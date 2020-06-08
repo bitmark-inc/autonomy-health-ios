@@ -100,6 +100,9 @@
 "behaviors.guidance.title" = "How to correctly perform healthy behaviors:";
 
 "resources.emptyGuide" = "You can be the first to add resources provided by this place by tapping below.";
+"resources.rating.title" = "Your ratings will be anonymously pooled with others for this place.\n\nTap to rate health resources provided by this place or add others:";
+"resouces.add.title" = "Your resource suggestions will be anonymously pooled with others for this place.\n\nTap any health-promoting resources this place provides:";
+"resouces.recommendation.message" = "Important Resources For This Neighborhood";
 
 "history.symptom.title" = "Symptom History";
 "history.behavior.title" = "Behavior History";
