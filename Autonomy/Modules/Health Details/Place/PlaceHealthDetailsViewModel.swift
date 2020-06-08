@@ -11,10 +11,10 @@ import RxCocoa
 
 class PlaceHealthDetailsViewModel: ViewModel {
 
-    let poi: PointOfInterest!
+    let poiID: String!
 
-    init(poi: PointOfInterest) {
-        self.poi = poi
+    init(poiID: String) {
+        self.poiID = poiID
         super.init()
     }
 }

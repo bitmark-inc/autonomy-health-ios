@@ -1,8 +1,8 @@
 //
-//  SearchSymptomViewController.swift
+//  SearchResourceVieController.swift
 //  Autonomy
 //
-//  Created by Thuyen Truong on 5/11/20.
+//  Created by Thuyen Truong on 6/8/20.
 //  Copyright © 2020 Bitmark Inc. All rights reserved.
 //
 
@@ -12,13 +12,13 @@ import RxCocoa
 import SnapKit
 import SwiftRichString
 
-class SearchSymptomViewController: SearchSurveyViewController {
+class SearchResourceVieController: SearchSurveyViewController {
 
-    lazy var thisViewModel: SearchSymptomViewModel = {
-        return viewModel as! SearchSymptomViewModel
+    lazy var thisViewModel: SearchResourceViewModel = {
+        return viewModel as! SearchResourceViewModel
     }()
 
-    var filteredRecords = [Symptom]()
+    var filteredRecords = [Resource]()
 
     override func bindViewModel() {
         super.bindViewModel()
@@ -32,7 +32,7 @@ class SearchSymptomViewController: SearchSurveyViewController {
             })
             .disposed(by: disposeBag)
 
-        thisViewModel.submitSymptomResultSubject
+        thisViewModel.submitResourceResultSubject
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] (event) in
                 guard let self = self else { return }
@@ -40,9 +40,9 @@ class SearchSymptomViewController: SearchSurveyViewController {
                 switch event {
                 case .error(let error):
                     self.errorWhenSubmit(error: error)
-                case .next(let symptom):
-                    Global.log.info("[done] added new symptom")
-                    self.thisViewModel.newSymptomSubject.onNext(symptom)
+                case .next(let resource):
+                    Global.log.info("[done] added new resource")
+                    self.thisViewModel.newResourceSubject.onNext(resource)
                     self.dismiss(animated: true, completion: nil)
                 default:
                     break
@@ -60,7 +60,7 @@ class SearchSymptomViewController: SearchSurveyViewController {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate
-extension SearchSymptomViewController: UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+extension SearchResourceVieController: UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredRecords.count
     }
@@ -77,7 +77,7 @@ extension SearchSymptomViewController: UITableViewDataSource, UITableViewDelegat
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let record = filteredRecords[indexPath.row]
-        thisViewModel.newSymptomSubject.onNext(record)
+        thisViewModel.newResourceSubject.onNext(record)
         dismiss(animated: true, completion: nil)
     }
 
@@ -87,7 +87,7 @@ extension SearchSymptomViewController: UITableViewDataSource, UITableViewDelegat
             return true
         }
 
-        thisViewModel.submitSymptom(name: text)
+        thisViewModel.submitResouce(name: text)
         return false
     }
 }

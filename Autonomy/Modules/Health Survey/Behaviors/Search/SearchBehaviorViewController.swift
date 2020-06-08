@@ -76,8 +76,8 @@ extension SearchBehaviorViewController: UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let behavior = filteredRecords[indexPath.row]
-        thisViewModel.newBehaviorSubject.onNext(behavior)
+        let record = filteredRecords[indexPath.row]
+        thisViewModel.newBehaviorSubject.onNext(record)
         dismiss(animated: true, completion: nil)
     }
 

@@ -33,10 +33,12 @@ class SurveySymptomsViewController: ViewController, BackNavigator, ReportSurveyL
         title: R.string.localizable.submit().localizedUppercase,
         icon: R.image.upCircleArrow()!)
     lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: doneButton, hasGradient: false)
+        groupView.apply(backgroundStyle: .codGrayBackground)
+        return groupView
     }()
 
-    var surveyTitleText = R.string.phrase.surveySymptomsTitle()
+    var surveyTitleText = R.string.phrase.symptomsReportTitle()
     var commonSurveyText = R.string.phrase.surveyCommonSymptoms().localizedUppercase
     var recentSurveyText = R.string.phrase.surveyRecentSymptoms().localizedUppercase
 

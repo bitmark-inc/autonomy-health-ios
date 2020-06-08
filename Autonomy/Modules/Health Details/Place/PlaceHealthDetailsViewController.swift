@@ -37,6 +37,13 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
 
     override func bindViewModel() {
         super.bindViewModel()
+
+        ratingResourceButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+
+            self.gotoResourceRatingScreen()
+
+        }.disposed(by: disposeBag)
     }
 
     override func setupViews() {
@@ -91,10 +98,20 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
 extension PlaceHealthDetailsViewController {
     fileprivate func linkMap() {
         var address = "" // TODO: put address
-        if address.isEmpty { address = thisViewModel.poi.alias }
+//        if address.isEmpty { address = thisViewModel.poi.alias }
         print(address)
         guard let targetURL = URL(string: "https://www.google.com/maps?q=\(address.urlEncoded)") else { return }
         navigator.show(segue: .safariController(targetURL), sender: self, transition: .alert)
+    }
+
+    fileprivate func gotoAddResourceScreen() {
+        let viewModel = AddResourceViewModel(poiID: thisViewModel.poiID)
+        navigator.show(segue: .addResource(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoResourceRatingScreen() {
+        let viewModel = ResourceRatingViewModel(poiID: thisViewModel.poiID)
+        navigator.show(segue: .resourceRating(viewModel: viewModel), sender: self)
     }
 }
 

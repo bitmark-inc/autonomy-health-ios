@@ -230,7 +230,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             gotoYouHealthDetailsScreen()
         case poiSection:
             let poi = pois[indexPath.row]
-            gotoPlaceHealthDetailsScreen(poi: poi)
+            gotoPlaceHealthDetailsScreen(poiID: poi.id)
         default:
             break
         }
@@ -312,8 +312,8 @@ extension MainViewController: DashboardDelegate {
                        sender: self, transition: .navigation(type: .slide(direction: .up)))
     }
 
-    fileprivate func gotoPlaceHealthDetailsScreen(poi: PointOfInterest) {
-        let viewModel = PlaceHealthDetailsViewModel(poi: poi)
+    fileprivate func gotoPlaceHealthDetailsScreen(poiID: String) {
+        let viewModel = PlaceHealthDetailsViewModel(poiID: poiID)
         navigator.show(segue: .placeHealthDetails(viewModel: viewModel),
                        sender: self, transition: .navigation(type: .slide(direction: .up)))
     }

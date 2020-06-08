@@ -21,20 +21,21 @@ class AddRow: UIView {
 
         addNewLabel.setText(title)
 
-        let addImageView = ImageView(image: R.image.plusCircle())
+        let addImageView = ImageView(image: R.image.search())
 
         addSubview(addImageView)
         addSubview(addNewLabel)
 
         addImageView.snp.makeConstraints { (make) in
-            make.top.leading.bottom.equalToSuperview()
-                .inset(UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 0))
-            make.width.height.equalTo(30)
+            make.width.height.equalTo(15)
+            make.leading.equalToSuperview().offset(15)
+            make.centerY.equalToSuperview()
         }
 
         addNewLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(addImageView.snp.trailing).offset(15)
-            make.top.trailing.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+                .inset(UIEdgeInsets(top: 22, left: 0, bottom: 20, right: 0))
             make.centerY.equalToSuperview()
         }
 
@@ -53,7 +54,7 @@ extension AddRow {
         let label = Label()
         label.apply(
             font: R.font.atlasGroteskLight(size: 18),
-            themeStyle: .silverColor)
+            themeStyle: .concordColor)
         return label
     }
 }

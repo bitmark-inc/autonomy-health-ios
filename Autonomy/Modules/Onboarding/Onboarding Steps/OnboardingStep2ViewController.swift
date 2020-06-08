@@ -80,7 +80,7 @@ extension OnboardingStep2ViewController {
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.apply(
-            text: R.string.phrase.surveySymptomsTitle(),
+            text: R.string.phrase.onboardingSymptomsTitle(),
             font: R.font.atlasGroteskLight(size: Size.ds(24)),
             themeStyle: .lightTextColor, lineHeight: 1.2)
 

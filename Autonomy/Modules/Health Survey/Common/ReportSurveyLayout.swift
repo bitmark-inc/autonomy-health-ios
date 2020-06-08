@@ -91,7 +91,7 @@ extension ReportSurveyLayout where Self: ViewController {
         contentView.addSubview(groupsButton)
 
         titleScreen.snp.makeConstraints { (make) in
-            make.height.equalTo(OurTheme.titleHeight)
+            make.height.equalTo(OurTheme.largeTitleHeight)
         }
 
         scrollView.snp.makeConstraints { (make) in
@@ -121,7 +121,7 @@ extension ReportSurveyLayout where Self: ViewController {
         let label = Label()
         label.numberOfLines = 0
         label.apply(text: surveyTitleText,
-                    font: R.font.atlasGroteskLight(size: Size.ds(36)),
+                    font: R.font.atlasGroteskLight(size: 24),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
         return CenterView(contentView: label, shrink: true)
@@ -129,6 +129,7 @@ extension ReportSurveyLayout where Self: ViewController {
 
     func makeTitleLabel(text: String) -> Label {
         let label = Label()
+        label.numberOfLines = 0
         label.apply(text: text.localizedUppercase,
                     font: R.font.domaineSansTextLight(size: 14),
                     themeStyle: .silverColor)

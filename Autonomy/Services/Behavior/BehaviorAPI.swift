@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import BitmarkSDK
 import Moya
 
 enum BehaviorAPI {

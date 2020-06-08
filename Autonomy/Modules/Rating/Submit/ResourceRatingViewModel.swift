@@ -10,4 +10,12 @@ import RxSwift
 import RxCocoa
 
 class ResourceRatingViewModel: ViewModel {
+
+    // MARK: - Properties
+    let poiID: String!
+
+    init(poiID: String) {
+        self.poiID = poiID
+        super.init()
+    }
 }

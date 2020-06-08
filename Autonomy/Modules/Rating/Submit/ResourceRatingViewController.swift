@@ -84,7 +84,7 @@ class ResourceRatingViewController: ViewController, BackNavigator {
 // MARK: - Navigator
 extension ResourceRatingViewController {
     fileprivate func gotoAddResourceScreen() {
-        let viewModel = AddResourceViewModel()
+        let viewModel = AddResourceViewModel(poiID: thisViewModel.poiID)
         navigator.show(segue: .addResource(viewModel: viewModel), sender: self)
     }
 }

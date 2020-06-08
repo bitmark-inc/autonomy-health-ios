@@ -14,6 +14,8 @@
 "onboarding.2.description" = "Your data is always kept 100% confidential.\n(Even to us.)";
 "onboarding.3.description" = "We’ll help your neighborhood grow healthier together.";
 
+"onboarding.symptoms.title" = "Tap any symptoms you have or add new ones:";
+
 "permission.description" = "Autonomy requires access to the following:";
 "permission.notification.description" = "We’ll remind you to report symptoms and practice healthy behaviors. When your neighborhood’s health changes, we’ll send you alerts.";
 "permission.location.description" = "Your data will be used to help improve your neighborhood’s health. Your own location will be kept private.";
@@ -40,13 +42,13 @@
 "survey.help.assistance.description" = "Let people in your local community know that you need help.";
 /// ====== End: Dont need this parts.  ======
 
-"survey.symptoms.title" = "Tap any symptoms you have or add new ones:";
+"symptoms.report.title" = "Your symptoms will be anonymously pooled with others in this neighborhood.\n\nTap any symptoms you are experiencing or add new ones:";
 "survey.commonSymptoms" = "Common symptoms";
 "survey.recentSymptoms" = "Recent neighborhood symptoms";
 "survey.reportNewSymptom" = "Report other symptom ...";
 "survey.symptom.reporting" = "Reporting your symptoms to your neighborhood ...";
 
-"survey.behaviors.title" = "Tap any healthy behaviors you did today or add new ones:";
+"behaviors.report.title" = "Your behaviors will be anonymously pooled with others in this neighborhood.\n\nTap any healthy behaviors you did today or add new ones:";
 "survey.commonBehaviors" = "Recommended behaviors";
 "survey.recentBehaviors" = "Recent behaviors near you";
 "survey.reportNewBehavior" = "Report other behavior ...";
@@ -101,8 +103,9 @@
 
 "resources.emptyGuide" = "You can be the first to add resources provided by this place by tapping below.";
 "resources.rating.title" = "Your ratings will be anonymously pooled with others for this place.\n\nTap to rate health resources provided by this place or add others:";
-"resouces.add.title" = "Your resource suggestions will be anonymously pooled with others for this place.\n\nTap any health-promoting resources this place provides:";
-"resouces.recommendation.message" = "Important Resources For This Neighborhood";
+"resources.add.title" = "Your resource suggestions will be anonymously pooled with others for this place.\n\nTap any health-promoting resources this place provides:";
+"resources.suggest.message" = "Important Resources For This Neighborhood";
+"resources.suggest.add.placeholder" = "Suggest other resource ...";
 
 "history.symptom.title" = "Symptom History";
 "history.behavior.title" = "Behavior History";
