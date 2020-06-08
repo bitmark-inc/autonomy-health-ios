@@ -12,17 +12,19 @@ import SwiftSVG
 class HealthScoreTriangle: UIView {
 
     // MARK: - Properties
-    let itemWidth: CGFloat!
+    fileprivate let itemWidth: CGFloat!
     static let originalSize = CGSize(width: 312, height: 270)
-    lazy var scale: CGFloat = Self.getScale(from: itemWidth)
+    fileprivate lazy var scale: CGFloat = Self.getScale(from: itemWidth)
     fileprivate lazy var transformScale: CATransform3D = {
          return CATransform3DMakeScale(scale, scale, 0)
     }()
 
-    lazy var scoreLabel = makeScoreLabel()
-    lazy var appNameLabel = makeAppNameLabel()
-    var coloredSublayer: CAShapeLayer?
-    var processingTimer: Timer?
+    fileprivate lazy var scoreLabel = makeScoreLabel()
+    fileprivate lazy var deltaView = makeDeltaView()
+    fileprivate lazy var deltaImageView = makeDeltaImageView()
+    fileprivate lazy var deltaLabel = makeDeltaLabel()
+    fileprivate var coloredSublayer: CAShapeLayer?
+    fileprivate var processingTimer: Timer?
 
     var currentScore: Int?
 
@@ -42,19 +44,22 @@ class HealthScoreTriangle: UIView {
         }
 
         addSubview(scoreLabel)
-        addSubview(appNameLabel)
-
-        appNameLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-47 * scale)
-        }
-
+        addSubview(deltaView)
         scoreLabel.transform = CGAffineTransform(scaleX: scale, y: scale)
-        appNameLabel.alpha = 0
 
         scoreLabel.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview().offset(15)
             make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(42 * scale)
+        }
+
+        deltaView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(scoreLabel.snp.bottom).offset(Size.dh(16))
+        }
+
+        snp.makeConstraints { (make) in
+            make.height.equalTo(Self.originalSize.height * scale)
+            make.width.equalTo(itemWidth)
         }
     }
     
@@ -236,11 +241,20 @@ class HealthScoreTriangle: UIView {
         return label
     }
 
-    fileprivate func makeAppNameLabel() -> Label {
+    fileprivate func makeDeltaView() -> UIView {
+        return RowView(items: [
+            (deltaImageView, 0),
+            (deltaLabel, 2)
+        ], trailingConstraint: true)
+    }
+
+    fileprivate func makeDeltaImageView() -> UIImageView {
+        return UIImageView()
+    }
+
+    fileprivate func makeDeltaLabel() -> Label {
         let label = Label()
-        label.apply(text: Constant.appName.localizedUppercase,
-                    font: R.font.domaineSansTextLight(size: 18),
-                    themeStyle: .lightTextColor)
+        label.font = R.font.ibmPlexMonoLight(size: 18)
         return label
     }
 }

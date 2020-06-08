@@ -26,6 +26,10 @@
 "DigitalRights" = "Digital Rights";
 
 "Survey" = "Survey";
+"Address" = "Address";
+"AddRating" = "Add Rating";
+"AddResource" = "Add Resource";
+"ActiveCases" = "Active Cases";
 "Symptoms" = "Symptoms";
 "Symptom" = "Symptom";
 "Behaviors" = "Behaviors";
@@ -33,6 +37,7 @@
 "Assistance" = "Assistance";
 "Request" = "Request";
 "Requests" = "Requests";
+"ReportCard" = "Report Card";
 "Review" = "Review";
 "GotIt" = "Got It";
 "Guidance" = "Guidance";
@@ -48,10 +53,13 @@
 "Reset" = "Reset";
 "JupyterNotebook" = "Jupyter Notebook";
 "Profile" = "Profile";
+"Ratings" = "Ratings";
+"Resource" = "Resource";
 "Report" = "Report";
 "History" = "History";
 "Locations" = "Locations";
 "Data" = "Data";
+"Score_(0_5)" = "Score (0-5)";
 "Security" = "Security";
 "Support" = "Support";
 "FAQ" = "FAQ";
@@ -59,14 +67,17 @@
 "Delete" = "Delete";
 "SignOut" = "Sign Out";
 "RecoveryKey" = "Recovery Key";
+"Neighborhood" = "Neighborhood";
 "None" = "None";
+"More" = "More";
+"ViewYourRating" = "View Your Rating";
 "You" = "You";
 
 "RawData" = "Raw Data";
 "from_last_24_hours" = "from last 24 hours ";
 "ConfirmedInfections" = "Confirmed Infections";
-"HealthyBehaviors" = " Healthy Behaviors";
-"atRistPopulation" = " At-risk Population";
+"HealthyBehaviors" = "Healthy Behaviors";
+"atRistPopulation" = "At-risk Population";
 
 "YourTotalForToday" = "Your Total\nFor Today";
 "SymptomsYouReportedToday" = "Symptoms You\nReported Today";

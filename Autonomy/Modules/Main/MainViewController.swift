@@ -16,6 +16,11 @@ protocol Location1Delegate: class {
     func deletePOI(poiID: String)
 }
 
+protocol DashboardDelegate: class {
+    func gotoProfileScreen()
+    func gotoDebugScreen()
+}
+
 class MainViewController: ViewController {
 
     // MARK: - Properties
@@ -31,7 +36,6 @@ class MainViewController: ViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 29.0, left: 15.0, bottom: 0.0, right: 0.0)
     fileprivate let collectionViewPadding: CGFloat = 30.0
     fileprivate var addLocationBarHeightConstraint: Constraint?
-
 
     fileprivate lazy var thisViewModel: MainViewModel = {
         return viewModel as! MainViewModel
@@ -202,10 +206,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch (indexPath.section, indexPath.row) {
         case (0, _):
-            let headerCell = collectionView.dequeueReusableCell(withClass: HeaderSingleLabelCollectionCell.self, for: indexPath)
-            headerCell.label.apply(text: Constant.appName.localizedUppercase,
-                                        font: R.font.domaineSansTextLight(size: 14),
-                                        themeStyle: .lightTextColor)
+            let headerCell = collectionView.dequeueReusableCell(withClass: DashboardHeaderCollectionCell.self, for: indexPath)
+            headerCell.delegate = self
             return headerCell
         case (1, 0): // make blank cell
             return  collectionView.dequeueReusableCell(withClass: UICollectionViewCell.self, for: indexPath)
@@ -219,6 +221,18 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         default:
             return UICollectionViewCell()
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 1:
+            gotoYouHealthDetailsScreen()
+        case poiSection:
+            let poi = pois[indexPath.row]
+            gotoPlaceHealthDetailsScreen(poi: poi)
+        default:
+            break
         }
     }
 }
@@ -276,7 +290,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 
 // MARK: - Navigation
-extension MainViewController {
+extension MainViewController: DashboardDelegate {
     func gotoAddLocationScreen() {
         let viewModel = LocationSearchViewModel()
         viewModel.selectedPlaceIDSubject
@@ -291,6 +305,27 @@ extension MainViewController {
         navigator.show(segue: .locationSearch(viewModel: viewModel), sender: self,
                        transition: .customModal(type: .slide(direction: .up)))
     }
+
+    fileprivate func gotoYouHealthDetailsScreen() {
+        let viewModel = YouHealthDetailsViewModel()
+        navigator.show(segue: .youHealthDetails(viewModel: viewModel),
+                       sender: self, transition: .navigation(type: .slide(direction: .up)))
+    }
+
+    fileprivate func gotoPlaceHealthDetailsScreen(poi: PointOfInterest) {
+        let viewModel = PlaceHealthDetailsViewModel(poi: poi)
+        navigator.show(segue: .placeHealthDetails(viewModel: viewModel),
+                       sender: self, transition: .navigation(type: .slide(direction: .up)))
+    }
+
+    func gotoProfileScreen() {
+        navigator.show(segue: .profile, sender: self, transition: .navigation(type: .slide(direction: .down)))
+    }
+
+    func gotoDebugScreen() {
+        let viewModel = DebugLocationViewModel(pois: pois)
+        navigator.show(segue: .debugLocation(viewModel: viewModel), sender: self, transition: .customModal(type: .slide(direction: .up)))
+    }
 }
 
 // MARK: - Setup views
@@ -301,7 +336,7 @@ extension MainViewController {
 
         let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: flowlayout)
         collectionView.backgroundColor = .clear
-        collectionView.register(cellWithClass: HeaderSingleLabelCollectionCell.self)
+        collectionView.register(cellWithClass: DashboardHeaderCollectionCell.self)
         collectionView.register(cellWithClass: UICollectionViewCell.self)
         collectionView.register(cellWithClass: HealthScoreCollectionCell.self)
         collectionView.dataSource = self

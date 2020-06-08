@@ -43,24 +43,37 @@ class RightIconButton: UIButton {
 }
 
 extension RightIconButton {
-    func apply(font: UIFont?, backgroundTheme: ThemeStyle? = nil) {
+    func apply(font: UIFont?, textTheme: ThemeStyle? = nil, backgroundTheme: ThemeStyle? = nil) {
         titleLabel?.font = font
 
-        switch backgroundTheme {
-        case .blueRibbonColor:
-            themeService.rx
-                .bind({ $0.blueRibbonColor }, to: rx.backgroundColor)
-                .bind({ $0.lightTextColor }, to: rx.tintColor)
-                .disposed(by: disposeBag)
+        if let textTheme = textTheme {
+            switch textTheme {
+            case .silverColor:
+                themeService.rx
+                    .bind({ $0.silverColor }, to: rx.tintColor)
+                    .disposed(by: disposeBag)
+            default:
+                break
+            }
+        }
 
-        case .silverColor:
-            themeService.rx
-                .bind({ $0.silverColor }, to: rx.backgroundColor)
-                .bind({ $0.lightTextColor }, to: rx.tintColor)
-                .disposed(by: disposeBag)
+        if let backgroundTheme = backgroundTheme {
+            switch backgroundTheme {
+            case .blueRibbonColor:
+                themeService.rx
+                    .bind({ $0.blueRibbonColor }, to: rx.backgroundColor)
+                    .bind({ $0.lightTextColor }, to: rx.tintColor)
+                    .disposed(by: disposeBag)
 
-        default:
-            break
+            case .silverColor:
+                themeService.rx
+                    .bind({ $0.silverColor }, to: rx.backgroundColor)
+                    .bind({ $0.lightTextColor }, to: rx.tintColor)
+                    .disposed(by: disposeBag)
+
+            default:
+                break
+            }
         }
     }
 }

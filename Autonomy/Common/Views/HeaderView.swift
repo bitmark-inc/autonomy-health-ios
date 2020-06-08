@@ -18,6 +18,7 @@ class HeaderView: UIView {
             headerLabel.attributedText = header.set(style: styleGroup)
         }
     }
+    let lineWidth: CGFloat!
     let disposeBag = DisposeBag()
     lazy var headerLabel = Label()
     fileprivate lazy var styleGroup: StyleXML = {
@@ -33,7 +34,8 @@ class HeaderView: UIView {
         return StyleXML(base: style, ["b": highlight])
     }()
 
-    init(header: String) {
+    init(header: String, lineWidth: CGFloat = Size.dw(120)) {
+        self.lineWidth = lineWidth
         super.init(frame: CGRect.zero)
 
         headerLabel.attributedText = header.set(style: styleGroup)
@@ -54,7 +56,7 @@ class HeaderView: UIView {
 
         doubleLine1.snp.makeConstraints { (make) in
             make.leading.centerY.equalToSuperview()
-            make.width.equalTo(Size.dw(120))
+            make.width.equalTo(lineWidth)
         }
 
         headerLabel.snp.makeConstraints { (make) in

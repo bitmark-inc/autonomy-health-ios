@@ -99,6 +99,8 @@
 
 "behaviors.guidance.title" = "How to correctly perform healthy behaviors:";
 
+"resources.emptyGuide" = "You can be the first to add resources provided by this place by tapping below.";
+
 "history.symptom.title" = "Symptom History";
 "history.behavior.title" = "Behavior History";
 "history.location.title" = "Location History";

@@ -22,7 +22,7 @@ class LeftIconButton: UIButton {
         setImage(icon, for: .normal)
 
         contentHorizontalAlignment = .leading
-        titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
+        titleEdgeInsets = UIEdgeInsets(top: 2, left: spacing, bottom: 0, right: -spacing)
     }
 
     required init?(coder: NSCoder) {
@@ -31,24 +31,37 @@ class LeftIconButton: UIButton {
 }
 
 extension LeftIconButton {
-    func apply(font: UIFont?, backgroundTheme: ThemeStyle) {
+    func apply(font: UIFont?, textTheme: ThemeStyle? = nil, backgroundTheme: ThemeStyle? = nil) {
         titleLabel?.font = font
 
-        switch backgroundTheme {
-        case .blueRibbonColor:
-            themeService.rx
-                .bind({ $0.blueRibbonColor }, to: rx.backgroundColor)
-                .bind({ $0.lightTextColor }, to: rx.tintColor)
-                .disposed(by: disposeBag)
+        if let textTheme = textTheme {
+            switch textTheme {
+            case .silverColor:
+                themeService.rx
+                    .bind({ $0.silverColor }, to: rx.tintColor)
+                    .disposed(by: disposeBag)
+            default:
+                break
+            }
+        }
 
-        case .silverColor:
-            themeService.rx
-                .bind({ $0.silverColor }, to: rx.backgroundColor)
-                .bind({ $0.lightTextColor }, to: rx.tintColor)
-                .disposed(by: disposeBag)
+        if let backgroundTheme = backgroundTheme {
+            switch backgroundTheme {
+            case .blueRibbonColor:
+                themeService.rx
+                    .bind({ $0.blueRibbonColor }, to: rx.backgroundColor)
+                    .bind({ $0.lightTextColor }, to: rx.tintColor)
+                    .disposed(by: disposeBag)
 
-        default:
-            break
+            case .silverColor:
+                themeService.rx
+                    .bind({ $0.silverColor }, to: rx.backgroundColor)
+                    .bind({ $0.lightTextColor }, to: rx.tintColor)
+                    .disposed(by: disposeBag)
+
+            default:
+                break
+            }
         }
     }
 }

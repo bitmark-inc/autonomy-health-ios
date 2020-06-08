@@ -30,6 +30,8 @@ class Navigator {
         case permission
         case riskLevel(viewModel: RiskLevelViewModel)
         case main(viewModel: MainViewModel)
+        case youHealthDetails(viewModel: YouHealthDetailsViewModel)
+        case placeHealthDetails(viewModel: PlaceHealthDetailsViewModel)
         case surveyHelp
         case surveySymptoms(viewModel: SurveySymptomsViewModel)
         case searchSymptom(viewModel: SearchSymptomViewModel)
@@ -81,6 +83,8 @@ class Navigator {
         case .permission:                       return PermissionViewController()
         case .riskLevel(let viewModel):         return RiskLevelViewController(viewModel: viewModel)
         case .main(let viewModel):              return MainViewController(viewModel: viewModel)
+        case .youHealthDetails(let viewModel):     return YouHealthDetailsViewController(viewModel: viewModel)
+        case .placeHealthDetails(let viewModel):   return PlaceHealthDetailsViewController(viewModel: viewModel)
         case .surveyHelp:                       return SurveyHelpViewController()
         case .surveySymptoms(let viewModel):    return SurveySymptomsViewController(viewModel: viewModel)
         case .searchSymptom(let viewModel):      return SearchSymptomViewController(viewModel: viewModel)

@@ -130,7 +130,8 @@ class MainViewModel: ViewModel {
 
     func addNewPOI(placeID: String) {
         let gmsPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-            UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))!
+            UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue) |
+            UInt(GMSPlaceField.formattedAddress.rawValue))!
 
         let token = GMSAutocompleteSessionToken()
 
