@@ -16,7 +16,7 @@ class SurveySymptomsViewModel: ViewModel {
     // MARK: - Output
     let symptomListRelay = BehaviorRelay<SymptomList?>(value: nil)
     let fetchDataResultSubject = PublishSubject<Event<Void>>()
-    let surveySubmitResultSubject = PublishSubject<Event<Never>>()
+    let surveySubmitResultSubject = PublishSubject<Event<HealthDetection>>()
 
     init(lastSymptomKeys: [String] = []) {
         self.lastSymptomKeys = lastSymptomKeys
@@ -43,12 +43,13 @@ class SurveySymptomsViewModel: ViewModel {
         Observable.zip(
             Observable.just(()).delay(.seconds(3), scheduler: MainScheduler.instance).asObservable(),
             SymptomService.report(symptomKeys: symptomKeys).asObservable()
-        ).subscribe(onError: { [weak self] (error) in
-            self?.surveySubmitResultSubject.onNext(Event.error(error))
-        }, onCompleted: { [weak self] in
+        )
+        .subscribe(onNext: { [weak self] (_, healthDetection) in
             guard let self = self else { return }
-            self.surveySubmitResultSubject.onNext(Event.completed)
+            self.surveySubmitResultSubject.onNext(Event.next(healthDetection))
             self.surveySubmitResultSubject.onCompleted()
+        }, onError: { [weak self] (error) in
+             self?.surveySubmitResultSubject.onNext(Event.error(error))
         })
         .disposed(by: disposeBag)
     }

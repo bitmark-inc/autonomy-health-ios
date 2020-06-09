@@ -15,19 +15,19 @@ import SkeletonView
 class ReportedSymptomViewController: ViewController, ReportedSurveyLayout {
 
     // MARK: - Properties
-    lazy  var headerScreen: UIView = {
+    lazy var headerScreen: UIView = {
         HeaderView(header: R.string.localizable.reported().localizedUppercase)
     }()
-    lazy  var scrollView = makeScrollView()
-    lazy  var titleScreen = makeTitleScreen(text: R.string.phrase.symptomsReportedTitle())
-    lazy  var totalDataView = ColumnDataView(title: R.string.localizable.symptomsYouReportedToday().localizedUppercase, .bad)
-    lazy  var communityAverageDataView = ColumnDataView(title: R.string.localizable.communityAverageForToday().localizedUppercase, .bad)
-    lazy  var subInfoButton = makeLearnToKeepOthersSafeButton()
-    lazy  var reportOtherButton = makeReportOtherButton()
-    lazy  var doneButton = RightIconButton(
+    lazy var scrollView = makeScrollView()
+    lazy var titleScreen = makeTitleScreen(text: R.string.phrase.symptomsReportedTitle())
+    lazy var totalDataView = ColumnDataView(title: R.string.localizable.symptomsYouReportedToday().localizedUppercase, .bad)
+    lazy var communityAverageDataView = ColumnDataView(title: R.string.localizable.communityAverageForToday().localizedUppercase, .bad)
+    lazy var subInfoButton = makeLearnToKeepOthersSafeButton()
+    lazy var reportOtherButton = makeReportOtherButton()
+    lazy var doneButton = RightIconButton(
         title: R.string.localizable.done().localizedUppercase,
         icon: R.image.doneCircleArrow())
-    lazy  var groupsButton: UIView = {
+    lazy var groupsButton: UIView = {
         let groupView = ButtonGroupView(button1: reportOtherButton, button2: doneButton, hasGradient: false)
         groupView.attachSeparateLine()
         return groupView

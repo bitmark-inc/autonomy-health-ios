@@ -100,12 +100,19 @@ class SurveySymptomsViewController: ViewController, BackNavigator, ReportSurveyL
                 self?.panModalVC?.dismiss(animated: true, completion: { [weak self] in
                     guard let self = self else { return }
                     switch event {
-                    case .completed:
-                        self.gotoReportedScreen()
+                    case .next(let healthDetection):
+                        if healthDetection.official <= 0 {
+                            self.gotoReportedScreen()
+                        } else {
+                            self.gotoSymptomGuidanceScreen(healthCenters: healthDetection.guide)
+                        }
                     case .error(let error):
                         guard !self.handleIfGeneralError(error: error) else { return }
                         Global.log.error(error)
                         self.showErrorAlertWithSupport(message: R.string.error.system())
+
+                    default:
+                        break
                     }
                 })
             })
@@ -182,6 +189,11 @@ extension SurveySymptomsViewController {
     fileprivate func gotoReportedScreen() {
         let viewModel = ReportedSymptomViewModel()
         navigator.show(segue: .reportedSymptoms(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoSymptomGuidanceScreen(healthCenters: [HealthCenter]) {
+        let viewModel = SymptomGuidanceViewModel(healthCenters: healthCenters)
+        navigator.show(segue: .symptomGuidance(viewModel: viewModel), sender: self)
     }
 
     fileprivate func gotoAddNewSymptom() {

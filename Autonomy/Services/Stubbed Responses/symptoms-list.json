@@ -1,59 +1,63 @@
 {
-   "symptoms":[
-      {
-         "id":"fever",
-         "name":"Fever",
-         "desc":"Body temperature above 100ºF (38ºC)"
-      },
-      {
-         "id":"cough",
-         "name":"Dry cough",
-         "desc":"Without mucous or phlegm (rattling)"
-      },
-      {
-         "id":"fatigue",
-         "name":"Fatigue or tiredness",
-         "desc":"Unusual lack of energy or feeling run down"
-      },
-      {
-         "id":"breath",
-         "name":"Shortness of breath",
-         "desc":"Constriction or difficulty inhaling fully"
-      },
-      {
-         "id":"nasal",
-         "name":"Nasal congestion",
-         "desc":"Stuffy or blocked nose"
-      },
-      {
-         "id":"throat",
-         "name":"Sore throat",
-         "desc":"Throat pain, scratchiness, or irritation"
-      },
-      {
-         "id":"chest",
-         "name":"Chest pain",
-         "desc":"Persistent pain or pressure in the chest"
-      },
-      {
-         "id":"face",
-         "name":"Bluish lips or face",
-         "desc":"Not caused by cold exposure"
-      },
-      {
-         "id":"face",
-         "name":"Bluish lips or face",
-         "desc":"Not caused by cold exposure caused by cold exposure caused by cold exposure caused by cold exposure"
-      },
-      {
-         "id":"face",
-         "name":"Bluish lips or face",
-         "desc":"Not caused by cold exposure"
-      },
-      {
-         "id":"face",
-         "name":"Bluish lips or face",
-         "desc":"Not caused by cold exposure"
-      }
-   ]
+  "customized_symptoms": [
+    {
+      "id": "0110ba538859cffd641aa676bf076178b97e62d121ca071492e45878c11cfa10",
+      "name": "Amnesia",
+      "desc": ""
+    },
+    {
+      "id": "3b085468cdad64619a877199fbdee5b9e7c5d6200443ccb99b826175d283c40d",
+      "name": "Weight loss",
+      "desc": ""
+    }
+  ],
+  "official_symptoms": [
+    {
+      "id": "breath",
+      "name": "Shortness of breath",
+      "desc": "Constriction or difficulty inhaling fully"
+    },
+    {
+      "id": "chest",
+      "name": "Chest pain",
+      "desc": "Persistent pain or pressure in the chest"
+    },
+    {
+      "id": "cough",
+      "name": "Dry cough",
+      "desc": "Without mucous or phlegm (rattling)"
+    },
+    {
+      "id": "face",
+      "name": "Bluish lips or face",
+      "desc": "Not caused by cold exposure"
+    },
+    {
+      "id": "fatigue",
+      "name": "Fatigue or tiredness",
+      "desc": "Unusual lack of energy or feeling run down"
+    },
+    {
+      "id": "fever",
+      "name": "Fever",
+      "desc": "Body temperature above 100ºF (38ºC)"
+    },
+    {
+      "id": "nasal",
+      "name": "Nasal congestion",
+      "desc": "Stuffy or blocked nose"
+    },
+    {
+      "id": "throat",
+      "name": "Sore throat",
+      "desc": "Throat pain, scratchiness, or irritation"
+    }
+  ],
+  "suggested_symptoms": [
+    {
+      "id": "insomnia",
+      "name": "Insomnia",
+      "desc": ""
+    }
+  ]
 }

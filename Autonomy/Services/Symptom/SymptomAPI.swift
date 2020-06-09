@@ -53,7 +53,8 @@ extension SymptomAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTyp
     var sampleData: Data {
         var dataURL: URL?
         switch self {
-        case .list: dataURL = R.file.symptomsListJson()
+        case .list:     dataURL = R.file.symptomsListJson()
+        case .report:   dataURL = R.file.healthDetectionJson()
         default:
             break
         }

@@ -47,6 +47,8 @@
 "survey.recentSymptoms" = "Recent neighborhood symptoms";
 "survey.reportNewSymptom" = "Report other symptom ...";
 "survey.symptom.reporting" = "Reporting your symptoms to your neighborhood ...";
+"symptoms.reported.guidance.title" = "At least one of the symptoms you reported is a common COVID-19 symptom.";
+"symptoms.reported.guidance.subTitle" = "To protect the health of you and your neighborhood, the Taiwan CDC encourages you to get tested for COVID-19 as soon as possible at one of the following testing centers:";
 
 "behaviors.report.title" = "Your behaviors will be anonymously pooled with others in this neighborhood.\n\nTap any healthy behaviors you did today or add new ones:";
 "survey.commonBehaviors" = "Recommended behaviors";

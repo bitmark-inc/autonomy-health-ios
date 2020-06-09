@@ -47,14 +47,15 @@ class SymptomService {
             .map { Symptom(id: $0, name: name) }
     }
 
-    static func report(symptomKeys: [String]) -> Completable {
+    static func report(symptomKeys: [String]) -> Single<HealthDetection> {
         Global.log.info("[start] SymptomService.report(symptomKeys:)")
 
         return provider.rx
             .requestWithRefreshJwt(.report(symptomKeys: symptomKeys))
             .filterSuccess()
             .retryWhenTransientError()
-            .ignoreElements()
+            .asSingle()
+            .map(HealthDetection.self)
     }
 
     static func getMetrics() -> Single<SurveyMetrics> {
