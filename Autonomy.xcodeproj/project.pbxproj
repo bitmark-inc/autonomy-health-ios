@@ -75,6 +75,15 @@
 		5B219BDF246910F1004FACEA /* ReportedSymptomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B219BDD246910F1004FACEA /* ReportedSymptomViewController.swift */; };
 		5B219BE124693894004FACEA /* LeftIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B219BE024693893004FACEA /* LeftIconButton.swift */; };
 		5B219BE224693894004FACEA /* LeftIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B219BE024693893004FACEA /* LeftIconButton.swift */; };
+		5B242DA5248F715600143519 /* AutonomyTrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B242DA4248F715600143519 /* AutonomyTrendingViewController.swift */; };
+		5B242DA6248F715600143519 /* AutonomyTrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B242DA4248F715600143519 /* AutonomyTrendingViewController.swift */; };
+		5B242DA7248F715600143519 /* AutonomyTrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B242DA4248F715600143519 /* AutonomyTrendingViewController.swift */; };
+		5B242DA9248F716100143519 /* AutonomyTrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B242DA8248F716100143519 /* AutonomyTrendingViewModel.swift */; };
+		5B242DAA248F716100143519 /* AutonomyTrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B242DA8248F716100143519 /* AutonomyTrendingViewModel.swift */; };
+		5B242DAB248F716100143519 /* AutonomyTrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B242DA8248F716100143519 /* AutonomyTrendingViewModel.swift */; };
+		5B242DAE248F721500143519 /* TimeFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B242DAD248F721500143519 /* TimeFilterView.swift */; };
+		5B242DAF248F721500143519 /* TimeFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B242DAD248F721500143519 /* TimeFilterView.swift */; };
+		5B242DB0248F721500143519 /* TimeFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B242DAD248F721500143519 /* TimeFilterView.swift */; };
 		5B2661AA2457DF6B00163404 /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */; };
 		5B2661AB2457DF6B00163404 /* PointOfInterestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A92457DF6B00163404 /* PointOfInterestService.swift */; };
 		5B2661AC2457DF8600163404 /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */; };
@@ -848,6 +857,9 @@
 		5B219BDA246910E2004FACEA /* ReportedSymptomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportedSymptomViewModel.swift; sourceTree = "<group>"; };
 		5B219BDD246910F1004FACEA /* ReportedSymptomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportedSymptomViewController.swift; sourceTree = "<group>"; };
 		5B219BE024693893004FACEA /* LeftIconButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftIconButton.swift; sourceTree = "<group>"; };
+		5B242DA4248F715600143519 /* AutonomyTrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutonomyTrendingViewController.swift; sourceTree = "<group>"; };
+		5B242DA8248F716100143519 /* AutonomyTrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutonomyTrendingViewModel.swift; sourceTree = "<group>"; };
+		5B242DAD248F721500143519 /* TimeFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFilterView.swift; sourceTree = "<group>"; };
 		5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestAPI.swift; sourceTree = "<group>"; };
 		5B2661A92457DF6B00163404 /* PointOfInterestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestService.swift; sourceTree = "<group>"; };
 		5B2661B224583C5700163404 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -1247,6 +1259,24 @@
 				5B219BDD246910F1004FACEA /* ReportedSymptomViewController.swift */,
 			);
 			path = Reported;
+			sourceTree = "<group>";
+		};
+		5B242DA3248F713800143519 /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				5B242DAD248F721500143519 /* TimeFilterView.swift */,
+				5B242DAC248F716500143519 /* Autonomy */,
+			);
+			path = Trending;
+			sourceTree = "<group>";
+		};
+		5B242DAC248F716500143519 /* Autonomy */ = {
+			isa = PBXGroup;
+			children = (
+				5B242DA4248F715600143519 /* AutonomyTrendingViewController.swift */,
+				5B242DA8248F716100143519 /* AutonomyTrendingViewModel.swift */,
+			);
+			path = Autonomy;
 			sourceTree = "<group>";
 		};
 		5B2661A72457DBBF00163404 /* Formula */ = {
@@ -1893,6 +1923,7 @@
 				5B2C8581242DDBE7002CC53B /* Main */,
 				5B4B3198248A035200B9D4AC /* Health Details */,
 				5B7CE0B72430A458002CD923 /* Health Survey */,
+				5B242DA3248F713800143519 /* Trending */,
 				5B7F239B2434878F00F7A72E /* Request Help */,
 				5B7F2394243482BF00F7A72E /* Give Help */,
 				5B12D5C2248DFC95002C73E9 /* Rating */,
@@ -2926,6 +2957,7 @@
 				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B213F08244413FC0095BE18 /* Location.swift in Sources */,
 				5B7F239A243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
+				5B242DAF248F721500143519 /* TimeFilterView.swift in Sources */,
 				5B7F23B62434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
 				5B7F2397243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5BB7DBA1248F3117008B5642 /* HeaderTableCell.swift in Sources */,
@@ -2949,6 +2981,7 @@
 				5BCBBD18246BF09700B735EE /* VideoCell.swift in Sources */,
 				5B2661B424583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB561042487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */,
+				5B242DA6248F715600143519 /* AutonomyTrendingViewController.swift in Sources */,
 				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B219BDC246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */,
@@ -3002,6 +3035,7 @@
 				5B2C858F242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
+				5B242DAA248F716100143519 /* AutonomyTrendingViewModel.swift in Sources */,
 				5B2C8577242DD42B002CC53B /* HistoryAPI.swift in Sources */,
 				5BC6AEDB245A6F8C00F60AF2 /* AddRow.swift in Sources */,
 				5B49574D2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
@@ -3129,6 +3163,7 @@
 				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B213F07244413FC0095BE18 /* Location.swift in Sources */,
 				5B7F2399243482EF00F7A72E /* GiveHelpViewController.swift in Sources */,
+				5B242DAE248F721500143519 /* TimeFilterView.swift in Sources */,
 				5B7F23B52434CC3B00F7A72E /* PanModalDelegate.swift in Sources */,
 				5B7F2396243482E500F7A72E /* GiveHelpViewModel.swift in Sources */,
 				5BB7DBA0248F3117008B5642 /* HeaderTableCell.swift in Sources */,
@@ -3152,6 +3187,7 @@
 				5BCBBD17246BF09700B735EE /* VideoCell.swift in Sources */,
 				5B2661B324583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB561032487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */,
+				5B242DA5248F715600143519 /* AutonomyTrendingViewController.swift in Sources */,
 				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B219BDB246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */,
@@ -3205,6 +3241,7 @@
 				5B2C858E242DDDFB002CC53B /* ServerAssetsAPI.swift in Sources */,
 				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
 				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
+				5B242DA9248F716100143519 /* AutonomyTrendingViewModel.swift in Sources */,
 				5B2C8576242DD42B002CC53B /* HistoryAPI.swift in Sources */,
 				5BC6AEDA245A6F8C00F60AF2 /* AddRow.swift in Sources */,
 				5B49574C2449A0E60012D6E1 /* AreaProfile.swift in Sources */,
@@ -3332,6 +3369,7 @@
 				5BCBBD1D246C0F8500B735EE /* HeaderCell.swift in Sources */,
 				5B5563632476551600AE4D3C /* LeftIconButton.swift in Sources */,
 				5BAE8433246A7985006E118D /* PanModalDelegate.swift in Sources */,
+				5B242DB0248F721500143519 /* TimeFilterView.swift in Sources */,
 				5BAE8434246A7985006E118D /* GiveHelpViewModel.swift in Sources */,
 				5BAE8435246A7985006E118D /* ServerAssetsService.swift in Sources */,
 				5BB7DBA2248F3117008B5642 /* HeaderTableCell.swift in Sources */,
@@ -3355,6 +3393,7 @@
 				5BAE8447246A7985006E118D /* ProfileViewController.swift in Sources */,
 				5BAE8448246A7985006E118D /* LinkAttributedString.swift in Sources */,
 				5BB561052487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */,
+				5B242DA7248F715600143519 /* AutonomyTrendingViewController.swift in Sources */,
 				5BAE8449246A7985006E118D /* FigDataView.swift in Sources */,
 				5BAE844A246A7985006E118D /* Application.swift in Sources */,
 				5BAE844B246A7985006E118D /* RiskLevelViewModel.swift in Sources */,
@@ -3408,6 +3447,7 @@
 				5BAE8470246A7985006E118D /* OptionBoxView.swift in Sources */,
 				5BAE8471246A7985006E118D /* HistoryAPI.swift in Sources */,
 				5B6E6671246D039C0068EC42 /* DonateViewController.swift in Sources */,
+				5B242DAB248F716100143519 /* AutonomyTrendingViewModel.swift in Sources */,
 				5BAE8472246A7985006E118D /* AddRow.swift in Sources */,
 				5BAE8473246A7985006E118D /* AreaProfile.swift in Sources */,
 				5BAE8474246A7985006E118D /* AssistanceViewModel.swift in Sources */,

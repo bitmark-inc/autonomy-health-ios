@@ -92,9 +92,9 @@
 
 "WeightedCoefficient" = "權重係數";
 
-"cases_score" = "確診評分";
-"behaviors_score" = "行為評分";
-"symptoms_score" = "症狀評分";
+"CasesScore" = "確診評分";
+"BehaviorsScore" = "行為評分";
+"SymptomsScore" = "症狀評分";
 "ConfirmedCasesScore" = "確診評分";
 "ReportedBehaviorsScore" = "已回報行為評分";
 "ReportedSymptomsScore" = "已回報症狀評分";

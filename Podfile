@@ -43,6 +43,7 @@ def sharedPods
   pod 'MaterialProgressBar'
   pod 'UPCarouselFlowLayout'
   pod 'Cosmos'
+  pod 'BetterSegmentedControl', '~> 1.3'
 end
 
 

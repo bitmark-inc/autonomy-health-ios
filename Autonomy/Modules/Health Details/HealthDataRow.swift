@@ -12,6 +12,7 @@ class HealthDataRow: UIView {
 
     // MARK: - Properties
     fileprivate let info: String!
+    fileprivate let hasDot: Bool!
 
     fileprivate lazy var infoLabel = makeInfoLabel()
     fileprivate lazy var numberLabel = makeNumberLabel()
@@ -19,8 +20,9 @@ class HealthDataRow: UIView {
     fileprivate lazy var deltaImageView = makeDeltaImageView()
     fileprivate lazy var numberInfoLabel = makeNumberInfoLabel()
 
-    init(info: String) {
+    init(info: String, hasDot: Bool = false) {
         self.info = info
+        self.hasDot = hasDot
         super.init(frame: CGRect.zero)
         setupViews()
     }
@@ -30,7 +32,6 @@ class HealthDataRow: UIView {
     }
 
     fileprivate func setupViews() {
-
         let numberView = UIView()
         numberView.addSubview(numberLabel)
         numberView.addSubview(deltaView)
@@ -42,7 +43,7 @@ class HealthDataRow: UIView {
         }
 
         deltaView.snp.makeConstraints { (make) in
-            make.width.equalTo(Size.dw(73))
+            make.width.equalTo(Size.dw(105))
             make.top.bottom.trailing.equalToSuperview()
         }
 
@@ -50,8 +51,24 @@ class HealthDataRow: UIView {
         addSubview(numberLabel)
         addSubview(deltaView)
 
+        if hasDot {
+            let dotImageView = ImageView(image: R.image.lineDot())
+            addSubview(dotImageView)
+            dotImageView.snp.makeConstraints { (make) in
+                make.leading.centerY.equalToSuperview()
+            }
+
+            infoLabel.snp.makeConstraints { (make) in
+                make.leading.equalTo(dotImageView.snp.trailing).offset(15)
+            }
+        } else {
+            infoLabel.snp.makeConstraints { (make) in
+                make.leading.equalToSuperview()
+            }
+        }
+
         infoLabel.snp.makeConstraints { (make) in
-            make.top.leading.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview()
             make.trailing.equalTo(numberLabel.snp.leading)
         }
 

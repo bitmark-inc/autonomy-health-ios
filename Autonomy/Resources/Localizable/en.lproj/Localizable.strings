@@ -51,7 +51,7 @@
 "Added" = "Added";
 "ViewSource" = "View Source";
 "Reset" = "Reset";
-"JupyterNotebook" = "Jupyter Notebook";
+"ViewOnJupyter" = "View on Jupyter";
 "Profile" = "Profile";
 "Ratings" = "Ratings";
 "Resource" = "Resource";
@@ -74,7 +74,7 @@
 "You" = "You";
 
 "distanceKm" = "%@ km";
-
+"Graphs_coming_soon" = "Graphs coming soon";
 "RawData" = "Raw Data";
 "from_last_24_hours" = "from last 24 hours ";
 "ConfirmedInfections" = "Confirmed Infections";
@@ -105,9 +105,9 @@
 
 "WeightedCoefficient" = "Weighted Coefficient";
 
-"cases_score" = "cases_score";
-"behaviors_score" = "behaviors_score";
-"symptoms_score" = "symptoms_score";
+"CasesScore" = "Cases Score";
+"BehaviorsScore" = "Behaviors Score";
+"SymptomsScore" = "Symptoms Score";
 "ConfirmedCasesScore" = "Confirmed Cases Score";
 "ReportedBehaviorsScore" = "Reported Behaviors Score";
 "ReportedSymptomsScore" = "Reported Symptoms Score";
@@ -125,6 +125,9 @@
 "Yesterday" = "Yesterday";
 "Today" = "Today";
 "now" = "now";
+"Week" = "Week";
+"Month" = "Month";
+"Year" = "Year";
 
 "HandWashing" = "Hand Washing";
 "Applying Hand Sanitizer" = "Applying Hand Sanitizer";
