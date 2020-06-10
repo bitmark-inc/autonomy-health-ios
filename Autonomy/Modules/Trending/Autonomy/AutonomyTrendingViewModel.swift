@@ -8,11 +8,25 @@
 
 import RxSwift
 import RxCocoa
-import SwiftDate
 
 enum AutonomyObject {
     case individual
-    case place(poiID: String)
+    case neighbor
+    case poi(poiID: String)
+}
+
+enum ReportItemObject {
+    case cases
+    case symptoms
+    case behaviors
+
+    var title: String {
+        switch self {
+        case .cases:    return R.string.localizable.cases().localizedUppercase
+        case .symptoms: return R.string.localizable.symptoms().localizedUppercase
+        case .behaviors: return R.string.localizable.behaviors().localizedUppercase
+        }
+    }
 }
 
 class AutonomyTrendingViewModel: ViewModel {

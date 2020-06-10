@@ -1,0 +1,29 @@
+{
+  "report_items": [
+    {
+      "name": "washing hands often",
+      "value": 5,
+      "change_rate": -1.23
+    },
+    {
+      "name": "avoiding close contact",
+      "value": 3,
+      "change_rate": 2.34
+    },
+    {
+      "name": "wearing face covering",
+      "value": 2,
+      "change_rate": 0
+    },
+    {
+      "name": "disinfecting surfaces",
+      "value": 1,
+      "change_rate": -0.12
+    },
+    {
+      "name": "covering coughs & sneezes",
+      "value": 0,
+      "change_rate": -2
+    }
+  ]
+}

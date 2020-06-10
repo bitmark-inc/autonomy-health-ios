@@ -79,7 +79,7 @@ class HealthDataRow: UIView {
 
         deltaView.snp.makeConstraints { (make) in
             make.leading.equalTo(numberLabel.snp.trailing)
-            make.top.trailing.equalToSuperview()
+            make.top.bottom.trailing.equalToSuperview()
         }
     }
 
@@ -140,7 +140,7 @@ extension HealthDataRow {
 
         deltaImageView.snp.makeConstraints { (make) in
             make.trailing.equalTo(numberInfoLabel.snp.leading).offset(-3)
-            make.top.bottom.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
 
         return view

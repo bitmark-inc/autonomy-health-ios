@@ -33,6 +33,7 @@ class Navigator {
         case youHealthDetails(viewModel: YouHealthDetailsViewModel)
         case placeHealthDetails(viewModel: PlaceHealthDetailsViewModel)
         case autonomyTrending(viewModel: AutonomyTrendingViewModel)
+        case dataItemTrending(viewModel: ItemTrendingViewModel)
         case surveyHelp
         case surveySymptoms(viewModel: SurveySymptomsViewModel)
         case searchSymptom(viewModel: SearchSymptomViewModel)
@@ -90,7 +91,8 @@ class Navigator {
         case .main(let viewModel):              return MainViewController(viewModel: viewModel)
         case .youHealthDetails(let viewModel):     return YouHealthDetailsViewController(viewModel: viewModel)
         case .placeHealthDetails(let viewModel):   return PlaceHealthDetailsViewController(viewModel: viewModel)
-        case .autonomyTrending(let viewModel): return AutonomyTrendingViewController(viewModel: viewModel)
+        case .autonomyTrending(let viewModel):  return AutonomyTrendingViewController(viewModel: viewModel)
+        case .dataItemTrending(let viewModel):  return ItemTrendingViewController(viewModel: viewModel)
         case .surveyHelp:                       return SurveyHelpViewController()
         case .surveySymptoms(let viewModel):    return SurveySymptomsViewController(viewModel: viewModel)
         case .searchSymptom(let viewModel):      return SearchSymptomViewController(viewModel: viewModel)

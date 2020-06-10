@@ -20,15 +20,19 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
         ButtonGroupView(button1: backButton, button2: nil)
     }()
 
-    fileprivate lazy var youSymptomsView = HealthDataRow(info: R.string.localizable.symptoms().localizedUppercase)
-    fileprivate lazy var youBehaviorsView = HealthDataRow(info: R.string.localizable.healthyBehaviors().localizedUppercase)
-    fileprivate lazy var activeCasesView = HealthDataRow(info: R.string.localizable.activeCases().localizedUppercase)
-    fileprivate lazy var symptomsView = HealthDataRow(info: R.string.localizable.symptoms().localizedUppercase)
-    fileprivate lazy var behaviorsView = HealthDataRow(info: R.string.localizable.healthyBehaviors().localizedUppercase)
+    fileprivate lazy var youSymptomsView = makeYouSymptomsView()
+    fileprivate lazy var youBehaviorsView = makeYouBehaviorsView()
+    fileprivate lazy var activeCasesView = makeNeighborCasesView()
+    fileprivate lazy var symptomsView = makeNeighborSymptomsView()
+    fileprivate lazy var behaviorsView = makeNeighborBehaviorsView()
 
     fileprivate lazy var thisViewModel: YouHealthDetailsViewModel = {
         return viewModel as! YouHealthDetailsViewModel
     }()
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override func setupViews() {
         super.setupViews()
@@ -79,6 +83,31 @@ extension YouHealthDetailsViewController {
         let viewModel = AutonomyTrendingViewModel(autonomyObject: .individual)
         navigator.show(segue: .autonomyTrending(viewModel: viewModel), sender: self)
     }
+
+    fileprivate func gotoYouSymptomsTrendingScreen() {
+        let viewModel = ItemTrendingViewModel(autonomyObject: .individual, reportItemObject: .symptoms)
+        navigator.show(segue: .dataItemTrending(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoYouBehaviorsTrendingScreen() {
+        let viewModel = ItemTrendingViewModel(autonomyObject: .individual, reportItemObject: .behaviors)
+        navigator.show(segue: .dataItemTrending(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoNeighborSymptomsTrendingScreen() {
+        let viewModel = ItemTrendingViewModel(autonomyObject: .neighbor, reportItemObject: .symptoms)
+        navigator.show(segue: .dataItemTrending(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoNeighborBehaviorsTrendingScreen() {
+        let viewModel = ItemTrendingViewModel(autonomyObject: .neighbor, reportItemObject: .behaviors)
+        navigator.show(segue: .dataItemTrending(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoNeighborCasesTrendingScreen() {
+        let viewModel = ItemTrendingViewModel(autonomyObject: .neighbor, reportItemObject: .cases)
+        navigator.show(segue: .dataItemTrending(viewModel: viewModel), sender: self)
+    }
 }
 
 // MARK: - Setup views
@@ -105,5 +134,60 @@ extension YouHealthDetailsViewController {
             self?.gotoAutonomyTrendingScreen()
         }.disposed(by: disposeBag)
         return tapGestureRecognizer
+    }
+
+    fileprivate func makeYouSymptomsView() -> UIView {
+        let dataRow = HealthDataRow(info: R.string.localizable.symptoms().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoYouSymptomsTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        return dataRow
+    }
+
+    fileprivate func makeYouBehaviorsView() -> UIView {
+        let dataRow = HealthDataRow(info: R.string.localizable.healthyBehaviors().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoYouBehaviorsTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        return dataRow
+    }
+
+    fileprivate func makeNeighborCasesView() -> UIView {
+        let dataRow = HealthDataRow(info: R.string.localizable.activeCases().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoNeighborCasesTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        return dataRow
+    }
+
+    fileprivate func makeNeighborSymptomsView() -> UIView {
+        let dataRow = HealthDataRow(info: R.string.localizable.symptoms().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoNeighborSymptomsTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        return dataRow
+    }
+
+    fileprivate func makeNeighborBehaviorsView() -> UIView {
+        let dataRow = HealthDataRow(info: R.string.localizable.healthyBehaviors().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoNeighborBehaviorsTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        return dataRow
     }
 }

@@ -27,13 +27,17 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     fileprivate lazy var moreResourceButton = makeMoreResourceButton()
     fileprivate lazy var ratingResourceButton = makeRatingResourceButton()
 
-    fileprivate lazy var activeCasesView = HealthDataRow(info: R.string.localizable.activeCases().localizedUppercase)
-    fileprivate lazy var symptomsView = HealthDataRow(info: R.string.localizable.symptoms().localizedUppercase)
-    fileprivate lazy var behaviorsView = HealthDataRow(info: R.string.localizable.healthyBehaviors().localizedUppercase)
+    fileprivate lazy var activeCasesView = makePOICasesView()
+    fileprivate lazy var symptomsView = makePOISymptomsView()
+    fileprivate lazy var behaviorsView = makePOIBehaviorsView()
 
     fileprivate lazy var thisViewModel: PlaceHealthDetailsViewModel = {
         return viewModel as! PlaceHealthDetailsViewModel
     }()
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override func bindViewModel() {
         super.bindViewModel()
@@ -115,8 +119,29 @@ extension PlaceHealthDetailsViewController {
     }
 
     fileprivate func gotoAutonomyTrendingScreen() {
-        let viewModel = AutonomyTrendingViewModel(autonomyObject: .place(poiID: thisViewModel.poiID))
+        let viewModel = AutonomyTrendingViewModel(autonomyObject: .poi(poiID: thisViewModel.poiID))
         navigator.show(segue: .autonomyTrending(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoPOISymptomsTrendingScreen() {
+        let viewModel = ItemTrendingViewModel(
+            autonomyObject: .poi(poiID: thisViewModel.poiID),
+            reportItemObject: .symptoms)
+        navigator.show(segue: .dataItemTrending(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoPOIBehaviorsTrendingScreen() {
+        let viewModel = ItemTrendingViewModel(
+            autonomyObject: .poi(poiID: thisViewModel.poiID),
+            reportItemObject: .behaviors)
+        navigator.show(segue: .dataItemTrending(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func gotoPOICasesTrendingScreen() {
+        let viewModel = ItemTrendingViewModel(
+            autonomyObject: .poi(poiID: thisViewModel.poiID),
+            reportItemObject: .cases)
+        navigator.show(segue: .dataItemTrending(viewModel: viewModel), sender: self)
     }
 }
 
@@ -309,5 +334,38 @@ extension PlaceHealthDetailsViewController {
             self?.gotoAutonomyTrendingScreen()
         }.disposed(by: disposeBag)
         return tapGestureRecognizer
+    }
+
+    fileprivate func makePOICasesView() -> UIView {
+        let dataRow = HealthDataRow(info: R.string.localizable.activeCases().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoPOICasesTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        return dataRow
+    }
+
+    fileprivate func makePOISymptomsView() -> UIView {
+        let dataRow = HealthDataRow(info: R.string.localizable.symptoms().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoPOISymptomsTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        return dataRow
+    }
+
+    fileprivate func makePOIBehaviorsView() -> UIView {
+        let dataRow = HealthDataRow(info: R.string.localizable.healthyBehaviors().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoPOIBehaviorsTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        return dataRow
     }
 }

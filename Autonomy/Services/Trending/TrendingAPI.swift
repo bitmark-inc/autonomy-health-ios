@@ -11,6 +11,9 @@ import Moya
 
 enum TrendingAPI {
     case autonomyTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod)
+    case symptomsTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod)
+    case behaviorsTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod)
+    case casesTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod)
 }
 
 extension TrendingAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -30,8 +33,10 @@ extension TrendingAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
     var sampleData: Data {
         var dataURL: URL?
         switch self {
-        case .autonomyTrending:
-            dataURL = R.file.trendingAutonomyJson()
+        case .autonomyTrending: dataURL = R.file.trendingAutonomyJson()
+        case .symptomsTrending: dataURL = R.file.trendingSymptomsJson()
+        case .behaviorsTrending:    dataURL = R.file.trendingBehaviorsJson()
+        case .casesTrending:    dataURL = R.file.trendingCasesJson()
         }
 
         if let dataURL = dataURL, let data = try? Data(contentsOf: dataURL) {
@@ -44,7 +49,17 @@ extension TrendingAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
         var params: [String: Any] = [:]
 
         switch self {
-        case .autonomyTrending(let autonomyObject, let datePeriod):
+        case .autonomyTrending: params["type"] = "score"
+        case .symptomsTrending: params["type"] = "symptom"
+        case .behaviorsTrending: params["type"] = "behavior"
+        case .casesTrending:    params["type"] = "case"
+        }
+
+        switch self {
+        case .autonomyTrending(let autonomyObject, let datePeriod),
+             .symptomsTrending(let autonomyObject, let datePeriod),
+             .behaviorsTrending(let autonomyObject, let datePeriod),
+             .casesTrending(let autonomyObject, let datePeriod):
             if let localeCode = Locale.current.languageCode {
                 params["lang"] = localeCode
             }
@@ -52,8 +67,10 @@ extension TrendingAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
             switch autonomyObject {
             case .individual:
                 params["scope"] = "individual"
-            case .place(let poiID):
-                params["scope"] = "neighbor"
+            case .neighbor:
+                params["scope"] = "neighborhood"
+            case .poi(let poiID):
+                params["scope"] = "poi"
                 params["poi_id"] = poiID
             }
 

@@ -25,4 +25,37 @@ class TrendingService {
             .asSingle()
             .map([ReportItem].self, atKeyPath: "report_items")
     }
+
+    static func getSymptomsTrending(autonomyObject: AutonomyObject, in datePeriod: DatePeriod) -> Single<[ReportItem]> {
+        Global.log.info("[start] TrendingService.getSymptomsTrending(autonomyObject:, in:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.symptomsTrending(autonomyObject: autonomyObject, datePeriod: datePeriod))
+            .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
+            .map([ReportItem].self, atKeyPath: "report_items")
+    }
+
+    static func getBehaviorsTrending(autonomyObject: AutonomyObject, in datePeriod: DatePeriod) -> Single<[ReportItem]> {
+        Global.log.info("[start] TrendingService.getBehaviorsTrending(autonomyObject:, in:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.behaviorsTrending(autonomyObject: autonomyObject, datePeriod: datePeriod))
+            .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
+            .map([ReportItem].self, atKeyPath: "report_items")
+    }
+
+    static func getCasesTrending(autonomyObject: AutonomyObject, in datePeriod: DatePeriod) -> Single<[ReportItem]> {
+        Global.log.info("[start] TrendingService.getCasesTrending(autonomyObject:, in:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.casesTrending(autonomyObject: autonomyObject, datePeriod: datePeriod))
+            .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
+            .map([ReportItem].self, atKeyPath: "report_items")
+    }
 }

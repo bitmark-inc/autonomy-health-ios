@@ -1,0 +1,29 @@
+{
+  "report_items": [
+    {
+      "name": "difficulty breathing",
+      "value": 5,
+      "change_rate": -1.23
+    },
+    {
+      "name": "cough",
+      "value": 3,
+      "change_rate": 2.34
+    },
+    {
+      "name": "fever",
+      "value": 2,
+      "change_rate": 0
+    },
+    {
+      "name": "insomnia",
+      "value": 1,
+      "change_rate": -0.12
+    },
+    {
+      "name": "nausea",
+      "value": 0,
+      "change_rate": -2
+    }
+  ]
+}

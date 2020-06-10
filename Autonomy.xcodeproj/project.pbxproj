@@ -766,6 +766,21 @@
 		5BFC539424909BE30096B14E /* trending-autonomy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC539324909BE30096B14E /* trending-autonomy.json */; };
 		5BFC539524909BE30096B14E /* trending-autonomy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC539324909BE30096B14E /* trending-autonomy.json */; };
 		5BFC539624909BE30096B14E /* trending-autonomy.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC539324909BE30096B14E /* trending-autonomy.json */; };
+		5BFC53992490B1D00096B14E /* ItemTrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC53982490B1D00096B14E /* ItemTrendingViewController.swift */; };
+		5BFC539A2490B1D00096B14E /* ItemTrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC53982490B1D00096B14E /* ItemTrendingViewController.swift */; };
+		5BFC539B2490B1D00096B14E /* ItemTrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC53982490B1D00096B14E /* ItemTrendingViewController.swift */; };
+		5BFC539D2490B1DB0096B14E /* ItemTrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC539C2490B1DB0096B14E /* ItemTrendingViewModel.swift */; };
+		5BFC539E2490B1DB0096B14E /* ItemTrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC539C2490B1DB0096B14E /* ItemTrendingViewModel.swift */; };
+		5BFC539F2490B1DB0096B14E /* ItemTrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC539C2490B1DB0096B14E /* ItemTrendingViewModel.swift */; };
+		5BFC53A52490B8D70096B14E /* trending-symptoms.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53A42490B8D70096B14E /* trending-symptoms.json */; };
+		5BFC53A62490B8D70096B14E /* trending-symptoms.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53A42490B8D70096B14E /* trending-symptoms.json */; };
+		5BFC53A72490B8D70096B14E /* trending-symptoms.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53A42490B8D70096B14E /* trending-symptoms.json */; };
+		5BFC53A92490BED70096B14E /* trending-behaviors.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53A82490BED70096B14E /* trending-behaviors.json */; };
+		5BFC53AA2490BED70096B14E /* trending-behaviors.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53A82490BED70096B14E /* trending-behaviors.json */; };
+		5BFC53AB2490BED70096B14E /* trending-behaviors.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53A82490BED70096B14E /* trending-behaviors.json */; };
+		5BFC53AD2490BEF10096B14E /* trending-cases.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53AC2490BEF10096B14E /* trending-cases.json */; };
+		5BFC53AE2490BEF10096B14E /* trending-cases.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53AC2490BEF10096B14E /* trending-cases.json */; };
+		5BFC53AF2490BEF10096B14E /* trending-cases.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53AC2490BEF10096B14E /* trending-cases.json */; };
 		5BFC8DC02433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC12433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
@@ -1121,6 +1136,11 @@
 		5BFC5387249081A70096B14E /* ReportItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportItem.swift; sourceTree = "<group>"; };
 		5BFC538B2490848D0096B14E /* DatePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePeriod.swift; sourceTree = "<group>"; };
 		5BFC539324909BE30096B14E /* trending-autonomy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "trending-autonomy.json"; sourceTree = "<group>"; };
+		5BFC53982490B1D00096B14E /* ItemTrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTrendingViewController.swift; sourceTree = "<group>"; };
+		5BFC539C2490B1DB0096B14E /* ItemTrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTrendingViewModel.swift; sourceTree = "<group>"; };
+		5BFC53A42490B8D70096B14E /* trending-symptoms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "trending-symptoms.json"; sourceTree = "<group>"; };
+		5BFC53A82490BED70096B14E /* trending-behaviors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "trending-behaviors.json"; sourceTree = "<group>"; };
+		5BFC53AC2490BEF10096B14E /* trending-cases.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "trending-cases.json"; sourceTree = "<group>"; };
 		5BFC8DBE2433081400815828 /* HealthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		5BFC8DBF2433081400815828 /* HealthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAPI.swift; sourceTree = "<group>"; };
 		5BFC8DCB2433264A00815828 /* FeedTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableCell.swift; sourceTree = "<group>"; };
@@ -1294,6 +1314,7 @@
 			children = (
 				5B242DAD248F721500143519 /* TimeFilterView.swift */,
 				5B242DAC248F716500143519 /* Autonomy */,
+				5BFC53972490B1B70096B14E /* Item */,
 			);
 			path = Trending;
 			sourceTree = "<group>";
@@ -2032,6 +2053,9 @@
 				5BB561062488E88A00008959 /* calculated-scores.json */,
 				5BB7DBAF248F3F48008B5642 /* health-detection.json */,
 				5BFC539324909BE30096B14E /* trending-autonomy.json */,
+				5BFC53A42490B8D70096B14E /* trending-symptoms.json */,
+				5BFC53A82490BED70096B14E /* trending-behaviors.json */,
+				5BFC53AC2490BEF10096B14E /* trending-cases.json */,
 			);
 			path = "Stubbed Responses";
 			sourceTree = "<group>";
@@ -2161,6 +2185,15 @@
 				5BFC538324907EDA0096B14E /* TrendingAPI.swift */,
 			);
 			path = Trending;
+			sourceTree = "<group>";
+		};
+		5BFC53972490B1B70096B14E /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				5BFC53982490B1D00096B14E /* ItemTrendingViewController.swift */,
+				5BFC539C2490B1DB0096B14E /* ItemTrendingViewModel.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 		5BFC8DBD243307BE00815828 /* Help Request */ = {
@@ -2430,8 +2463,10 @@
 				5B97886F243EDFED005BADA9 /* IBMPlexMono-Light.ttf in Resources */,
 				5B5778D4242B48230028D3E3 /* DomaineSansText-LightItalic.otf in Resources */,
 				5B5778B8242B48230028D3E3 /* AtlasGrotesk-Medium.otf in Resources */,
+				5BFC53AE2490BEF10096B14E /* trending-cases.json in Resources */,
 				5B97885D243EDFED005BADA9 /* IBMPlexMono-Thin.ttf in Resources */,
 				5B4B60CC24604A7E00432151 /* debug-data.json in Resources */,
+				5BFC53AA2490BED70096B14E /* trending-behaviors.json in Resources */,
 				5B5778CA242B48230028D3E3 /* AtlasGrotesk-Thin.otf in Resources */,
 				5B5778D0242B48230028D3E3 /* DomaineSansText-BoldItalic.otf in Resources */,
 				5B5778DC242B48230028D3E3 /* DomaineSansText-Regular.otf in Resources */,
@@ -2467,6 +2502,7 @@
 				5BB561082488EB7900008959 /* calculated-scores.json in Resources */,
 				5B5778CC242B48230028D3E3 /* DomaineSansText-BlackItalic.otf in Resources */,
 				5B5778C8242B48230028D3E3 /* AtlasGrotesk-Bold.otf in Resources */,
+				5BFC53A62490B8D70096B14E /* trending-symptoms.json in Resources */,
 				5B5778BE242B48230028D3E3 /* AtlasGrotesk-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2487,8 +2523,10 @@
 				5B5778F4242B49140028D3E3 /* Phrase.strings in Resources */,
 				5B5778D9242B48230028D3E3 /* DomaineSansText-RegularItalic.otf in Resources */,
 				5B97885E243EDFED005BADA9 /* IBMPlexMono-Bold.ttf in Resources */,
+				5BFC53AD2490BEF10096B14E /* trending-cases.json in Resources */,
 				5B5778F2242B49140028D3E3 /* Error.strings in Resources */,
 				5B978864243EDFED005BADA9 /* IBMPlexMono-Medium.ttf in Resources */,
+				5BFC53A92490BED70096B14E /* trending-behaviors.json in Resources */,
 				5B4B60CB24604A7E00432151 /* debug-data.json in Resources */,
 				5B5778CD242B48230028D3E3 /* DomaineSansText-Light.otf in Resources */,
 				5B5778D3242B48230028D3E3 /* DomaineSansText-LightItalic.otf in Resources */,
@@ -2524,6 +2562,7 @@
 				5BB561072488E88A00008959 /* calculated-scores.json in Resources */,
 				5B5778C1242B48230028D3E3 /* AtlasGrotesk-Black.otf in Resources */,
 				5B978862243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf in Resources */,
+				5BFC53A52490B8D70096B14E /* trending-symptoms.json in Resources */,
 				5B5778D7242B48230028D3E3 /* DomaineSansText-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2544,8 +2583,10 @@
 				5BAE848F246A7985006E118D /* IBMPlexMono-Light.ttf in Resources */,
 				5BAE8490246A7985006E118D /* DomaineSansText-LightItalic.otf in Resources */,
 				5BAE8491246A7985006E118D /* AtlasGrotesk-Medium.otf in Resources */,
+				5BFC53AF2490BEF10096B14E /* trending-cases.json in Resources */,
 				5BAE8492246A7985006E118D /* IBMPlexMono-Thin.ttf in Resources */,
 				5BAE8493246A7985006E118D /* debug-data.json in Resources */,
+				5BFC53AB2490BED70096B14E /* trending-behaviors.json in Resources */,
 				5BAE8494246A7985006E118D /* AtlasGrotesk-Thin.otf in Resources */,
 				5BAE8495246A7985006E118D /* DomaineSansText-BoldItalic.otf in Resources */,
 				5BAE8496246A7985006E118D /* DomaineSansText-Regular.otf in Resources */,
@@ -2581,6 +2622,7 @@
 				5BB561092488EB7A00008959 /* calculated-scores.json in Resources */,
 				5BAE84B3246A7985006E118D /* DomaineSansText-BlackItalic.otf in Resources */,
 				5BAE84B4246A7985006E118D /* AtlasGrotesk-Bold.otf in Resources */,
+				5BFC53A72490B8D70096B14E /* trending-symptoms.json in Resources */,
 				5BAE84B5246A7985006E118D /* AtlasGrotesk-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2948,6 +2990,7 @@
 				5BFC538524907EDA0096B14E /* TrendingAPI.swift in Sources */,
 				5B87F078242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B12D5D0248E1A51002C73E9 /* ResourceRatingView.swift in Sources */,
+				5BFC539A2490B1D00096B14E /* ItemTrendingViewController.swift in Sources */,
 				5B4B60B2245FC2F000432151 /* Float+Formatter.swift in Sources */,
 				5B7F23AC2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
 				5BAA772424596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */,
@@ -3087,6 +3130,7 @@
 				5B2C857C242DD4CB002CC53B /* Profile.swift in Sources */,
 				5BFC538D2490848D0096B14E /* DatePeriod.swift in Sources */,
 				5B87F088242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
+				5BFC539E2490B1DB0096B14E /* ItemTrendingViewModel.swift in Sources */,
 				5B242DAA248F716100143519 /* AutonomyTrendingViewModel.swift in Sources */,
 				5B2C8577242DD42B002CC53B /* HistoryAPI.swift in Sources */,
 				5BC6AEDB245A6F8C00F60AF2 /* AddRow.swift in Sources */,
@@ -3160,6 +3204,7 @@
 				5BFC538424907EDA0096B14E /* TrendingAPI.swift in Sources */,
 				5B87F077242C99900084B4F6 /* OnboardingStep3ViewController.swift in Sources */,
 				5B12D5CF248E1A51002C73E9 /* ResourceRatingView.swift in Sources */,
+				5BFC53992490B1D00096B14E /* ItemTrendingViewController.swift in Sources */,
 				5B4B60B1245FC2F000432151 /* Float+Formatter.swift in Sources */,
 				5B7F23AB2434878F00F7A72E /* AssistanceViewController.swift in Sources */,
 				5BAA772324596498003CCE92 /* SurveyHistoryTableCell.swift in Sources */,
@@ -3299,6 +3344,7 @@
 				5B2C857B242DD4CB002CC53B /* Profile.swift in Sources */,
 				5BFC538C2490848D0096B14E /* DatePeriod.swift in Sources */,
 				5B87F087242CB7C40084B4F6 /* OptionBoxView.swift in Sources */,
+				5BFC539D2490B1DB0096B14E /* ItemTrendingViewModel.swift in Sources */,
 				5B242DA9248F716100143519 /* AutonomyTrendingViewModel.swift in Sources */,
 				5B2C8576242DD42B002CC53B /* HistoryAPI.swift in Sources */,
 				5BC6AEDA245A6F8C00F60AF2 /* AddRow.swift in Sources */,
@@ -3372,6 +3418,7 @@
 				5BFC538624907EDA0096B14E /* TrendingAPI.swift in Sources */,
 				5BAE8407246A7985006E118D /* AssistanceViewController.swift in Sources */,
 				5B12D5D1248E1A51002C73E9 /* ResourceRatingView.swift in Sources */,
+				5BFC539B2490B1D00096B14E /* ItemTrendingViewController.swift in Sources */,
 				5BAE8408246A7985006E118D /* SurveyHistoryTableCell.swift in Sources */,
 				5BAE8409246A7985006E118D /* MoyaProviderType+Request.swift in Sources */,
 				5BAE840A246A7985006E118D /* PermissionViewController.swift in Sources */,
@@ -3511,6 +3558,7 @@
 				5BAE8471246A7985006E118D /* HistoryAPI.swift in Sources */,
 				5BFC538E2490848D0096B14E /* DatePeriod.swift in Sources */,
 				5B6E6671246D039C0068EC42 /* DonateViewController.swift in Sources */,
+				5BFC539F2490B1DB0096B14E /* ItemTrendingViewModel.swift in Sources */,
 				5B242DAB248F716100143519 /* AutonomyTrendingViewModel.swift in Sources */,
 				5BAE8472246A7985006E118D /* AddRow.swift in Sources */,
 				5BAE8473246A7985006E118D /* AreaProfile.swift in Sources */,
