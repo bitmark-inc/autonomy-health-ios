@@ -9,31 +9,12 @@
 import RxSwift
 import RxCocoa
 
-enum AutonomyObject {
-    case individual
-    case neighbor
-    case poi(poiID: String)
-}
-
-enum ReportItemObject {
-    case cases
-    case symptoms
-    case behaviors
-
-    var title: String {
-        switch self {
-        case .cases:    return R.string.localizable.cases().localizedUppercase
-        case .symptoms: return R.string.localizable.symptoms().localizedUppercase
-        case .behaviors: return R.string.localizable.behaviors().localizedUppercase
-        }
-    }
-}
-
 class AutonomyTrendingViewModel: ViewModel {
 
     // MARK: - Properties
     let autonomyObject: AutonomyObject!
     let reportItemsRelay = BehaviorRelay<[ReportItem]?>(value: nil)
+    let fetchTrendingStateRelay = BehaviorRelay<LoadState>(value: .hide)
 
     // MARK: - Inits
     init(autonomyObject: AutonomyObject) {
@@ -41,7 +22,12 @@ class AutonomyTrendingViewModel: ViewModel {
     }
 
     func fetchTrending(in datePeriod: DatePeriod) {
+        fetchTrendingStateRelay.accept(.loading)
+
         TrendingService.getAutonomyTrending(autonomyObject: autonomyObject, in: datePeriod)
+            .do(onDispose: { [weak self] in
+                self?.fetchTrendingStateRelay.accept(.hide)
+            })
             .subscribe(onSuccess: { [weak self] in
                 self?.reportItemsRelay.accept($0)
             }, onError: { (error) in

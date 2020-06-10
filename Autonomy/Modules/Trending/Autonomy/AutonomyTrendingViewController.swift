@@ -29,6 +29,7 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
         groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()
+    fileprivate lazy var loadIndicator = makeLoadIndicator()
 
     fileprivate lazy var thisViewModel: AutonomyTrendingViewModel = {
         return viewModel as! AutonomyTrendingViewModel
@@ -75,6 +76,12 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
         paddingContentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
             make.width.equalToSuperview().offset(-30)
+        }
+
+        paddingContentView.addSubview(loadIndicator)
+        loadIndicator.snp.makeConstraints { (make) in
+            make.top.equalTo(timelineView.snp.bottom).offset(15)
+            make.leading.equalToSuperview()
         }
 
         contentView.addSubview(scrollView)
@@ -240,5 +247,17 @@ extension AutonomyTrendingViewController {
             self?.moveToJupyterNotebook()
         }.disposed(by: disposeBag)
         return button
+    }
+
+    fileprivate func makeLoadIndicator() -> UIActivityIndicatorView {
+        let indicator = UIActivityIndicatorView()
+        indicator.style = .white
+
+        thisViewModel.fetchTrendingStateRelay
+            .map { $0 == .loading }
+            .bind(to: indicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+
+        return indicator
     }
 }

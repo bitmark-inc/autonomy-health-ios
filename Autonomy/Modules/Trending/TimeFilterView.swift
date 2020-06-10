@@ -63,6 +63,8 @@ class TimeFilterView: UIView {
         guard let timeUnit = TimeUnit(index: segmentView.index),
             let distance = segmentDistances[timeUnit] else { return }
 
+        nextPeriodButton.isEnabled = distance < 0 // disable next period to the future
+
         startDate = defaultStartDate.dateAtStartOf(timeUnit.dateComponent)
                                     .dateByAdding(distance, timeUnit.dateComponent)
                                     .date
@@ -149,6 +151,7 @@ extension TimeFilterView {
     fileprivate func makeNextPeriodButton() -> UIButton {
         let button = UIButton()
         button.setImage(R.image.nextTimePeriod(), for: .normal)
+        button.setImage(R.image.disabledNextPeriod(), for: .disabled)
         button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 30, bottom: 15, right: 0)
         button.rx.tap.bind { [weak self] in
             self?.adjustSegmentDistance(step: 1)

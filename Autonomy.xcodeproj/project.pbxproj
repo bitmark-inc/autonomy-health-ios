@@ -781,6 +781,9 @@
 		5BFC53AD2490BEF10096B14E /* trending-cases.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53AC2490BEF10096B14E /* trending-cases.json */; };
 		5BFC53AE2490BEF10096B14E /* trending-cases.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53AC2490BEF10096B14E /* trending-cases.json */; };
 		5BFC53AF2490BEF10096B14E /* trending-cases.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BFC53AC2490BEF10096B14E /* trending-cases.json */; };
+		5BFC53B12490C8270096B14E /* Trending+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC53B02490C8270096B14E /* Trending+Helpers.swift */; };
+		5BFC53B22490C8270096B14E /* Trending+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC53B02490C8270096B14E /* Trending+Helpers.swift */; };
+		5BFC53B32490C8270096B14E /* Trending+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC53B02490C8270096B14E /* Trending+Helpers.swift */; };
 		5BFC8DC02433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC12433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
@@ -1141,6 +1144,7 @@
 		5BFC53A42490B8D70096B14E /* trending-symptoms.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "trending-symptoms.json"; sourceTree = "<group>"; };
 		5BFC53A82490BED70096B14E /* trending-behaviors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "trending-behaviors.json"; sourceTree = "<group>"; };
 		5BFC53AC2490BEF10096B14E /* trending-cases.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "trending-cases.json"; sourceTree = "<group>"; };
+		5BFC53B02490C8270096B14E /* Trending+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trending+Helpers.swift"; sourceTree = "<group>"; };
 		5BFC8DBE2433081400815828 /* HealthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		5BFC8DBF2433081400815828 /* HealthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAPI.swift; sourceTree = "<group>"; };
 		5BFC8DCB2433264A00815828 /* FeedTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableCell.swift; sourceTree = "<group>"; };
@@ -1313,6 +1317,7 @@
 			isa = PBXGroup;
 			children = (
 				5B242DAD248F721500143519 /* TimeFilterView.swift */,
+				5BFC53B02490C8270096B14E /* Trending+Helpers.swift */,
 				5B242DAC248F716500143519 /* Autonomy */,
 				5BFC53972490B1B70096B14E /* Item */,
 			);
@@ -3223,6 +3228,7 @@
 				5B577930242B4F6B0028D3E3 /* KeychainStore.swift in Sources */,
 				5B219BDE246910F1004FACEA /* ReportedSymptomViewController.swift in Sources */,
 				5B577940242B62160028D3E3 /* HeaderView.swift in Sources */,
+				5BFC53B12490C8270096B14E /* Trending+Helpers.swift in Sources */,
 				5B87F08A242CC01C0084B4F6 /* CheckboxView.swift in Sources */,
 				5B4B31AC248A3E0000B9D4AC /* PlaceHealthDetailsViewModel.swift in Sources */,
 				5BCBBD0E246BD72600B735EE /* SurveyMetrics.swift in Sources */,
@@ -3437,6 +3443,7 @@
 				5BAE8414246A7985006E118D /* KeychainStore.swift in Sources */,
 				5BAE8415246A7985006E118D /* HeaderView.swift in Sources */,
 				5BAE8416246A7985006E118D /* CheckboxView.swift in Sources */,
+				5BFC53B32490C8270096B14E /* Trending+Helpers.swift in Sources */,
 				5BAE8417246A7985006E118D /* RightIconButton.swift in Sources */,
 				5B4B31AE248A3E0000B9D4AC /* PlaceHealthDetailsViewModel.swift in Sources */,
 				5BAE8418246A7985006E118D /* FormulaSupporter.swift in Sources */,

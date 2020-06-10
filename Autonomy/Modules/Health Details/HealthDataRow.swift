@@ -56,6 +56,7 @@ class HealthDataRow: UIView {
             addSubview(dotImageView)
             dotImageView.snp.makeConstraints { (make) in
                 make.leading.centerY.equalToSuperview()
+                make.width.height.equalTo(15)
             }
 
             infoLabel.snp.makeConstraints { (make) in

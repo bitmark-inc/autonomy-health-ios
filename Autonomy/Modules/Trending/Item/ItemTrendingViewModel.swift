@@ -15,6 +15,7 @@ class ItemTrendingViewModel: ViewModel {
     let autonomyObject: AutonomyObject!
     let reportItemObject: ReportItemObject!
     let reportItemsRelay = BehaviorRelay<[ReportItem]?>(value: nil)
+    let fetchTrendingStateRelay = BehaviorRelay<LoadState>(value: .hide)
 
     // MARK: - Inits
     init(autonomyObject: AutonomyObject, reportItemObject: ReportItemObject) {
@@ -23,8 +24,9 @@ class ItemTrendingViewModel: ViewModel {
     }
 
     func fetchTrending(in datePeriod: DatePeriod) {
-        let fetchDataItemsSingle: Single<[ReportItem]>!
+        fetchTrendingStateRelay.accept(.loading)
 
+        let fetchDataItemsSingle: Single<[ReportItem]>!
         switch reportItemObject {
         case .symptoms:
             fetchDataItemsSingle = TrendingService.getSymptomsTrending(autonomyObject: autonomyObject, in: datePeriod)
@@ -37,6 +39,9 @@ class ItemTrendingViewModel: ViewModel {
         }
 
         fetchDataItemsSingle
+            .do(onDispose: { [weak self] in
+                self?.fetchTrendingStateRelay.accept(.hide)
+            })
             .subscribe(onSuccess: { [weak self] in
                 self?.reportItemsRelay.accept($0)
             }, onError: { (error) in
