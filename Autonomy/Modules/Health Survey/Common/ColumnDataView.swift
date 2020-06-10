@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ColumnDataView: UIView {
+enum ThingType {
+    case good
+    case bad
+}
 
-    enum ThingType {
-        case good
-        case bad
-    }
+class ColumnDataView: UIView {
 
     // MARK: - Properties
     fileprivate let title: String!

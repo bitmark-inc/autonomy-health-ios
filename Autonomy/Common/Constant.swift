@@ -46,6 +46,11 @@ public struct Constant {
 
     struct TimeFormat {
         static let history = "MMM d 'at' h:mm a"
+        static let monthDay = "MMM d"
+        static let month = "MMM"
+        static let day = "d"
+        static let year = "yyyy"
+        static let monthYear = "yyyy MMM"
     }
 
     static let fieldPlaceholder = "---"

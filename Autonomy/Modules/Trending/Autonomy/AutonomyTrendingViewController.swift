@@ -17,6 +17,7 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
     fileprivate lazy var scrollView = makeScrollView()
     fileprivate lazy var headerScreen: UIView = { HeaderView(header: "AUTONOMY") }()
     fileprivate lazy var timelineView = TimeFilterView()
+    fileprivate lazy var dataStackView = makeDataStackView()
     fileprivate lazy var casesScoreDataView = HealthDataRow(info: R.string.localizable.casesScore().localizedUppercase, hasDot: true)
     fileprivate lazy var symptomsScoreDataView = HealthDataRow(info: R.string.localizable.symptomsScore().localizedUppercase, hasDot: true)
     fileprivate lazy var behaviorsScoreDataView = HealthDataRow(info: R.string.localizable.behaviorsScore().localizedUppercase, hasDot: true)
@@ -24,15 +25,35 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
     fileprivate lazy var backButton = makeLightBackItem()
     fileprivate lazy var jupyterButton = makeViewOnJupyterButton()
     fileprivate lazy var groupsButton: UIView = {
-           ButtonGroupView(button1: backButton, button2: jupyterButton, hasGradient: false)
-       }()
+        let groupView = ButtonGroupView(button1: backButton, button2: jupyterButton, hasGradient: false)
+        groupView.apply(backgroundStyle: .codGrayBackground)
+        return groupView
+    }()
 
-    fileprivate lazy var thisViewModel: MainViewModel = {
-        return viewModel as! MainViewModel
+    fileprivate lazy var thisViewModel: AutonomyTrendingViewModel = {
+        return viewModel as! AutonomyTrendingViewModel
     }()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    override func bindViewModel() {
+        super.bindViewModel()
+
+        timelineView.datePeriodRelay
+            .filterNil()
+            .subscribe(onNext: { [weak self] in
+                self?.thisViewModel.fetchTrending(in: $0)
+            })
+            .disposed(by: disposeBag)
+
+        thisViewModel.reportItemsRelay
+            .filterNil()
+            .subscribe(onNext: { [weak self] (reportItems) in
+                self?.rebuildScoreView(with: reportItems)
+            })
+            .disposed(by: disposeBag)
     }
 
     override func setupViews() {
@@ -45,7 +66,7 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
                 (timelineView, 10),
                 (makeGraphsComingSoonView(), 0),
                 (SeparateLine(height: 1), 0),
-                (makeScoreView(), Size.dh(74)),
+                (dataStackView, Size.dh(74)),
                 (SeparateLine(height: 1), Size.dh(45)),
                 (makeSourceInfoView(), Size.dh(44))
             ], bottomConstraint: true)
@@ -67,6 +88,33 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
         groupsButton.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
         }
+    }
+
+    fileprivate func rebuildScoreView(with reportItems: [ReportItem]) {
+        dataStackView.removeArrangedSubviews()
+        dataStackView.removeSubviews()
+
+        let reportItemsCount = reportItems.count
+
+        let newArrangedSubviews = reportItems.enumerated().map { (index, reportItem) -> UIView in
+            let healthDataRow = HealthDataRow(info: reportItem.name.localizedUppercase, hasDot: true)
+
+            var thingType = ThingType.bad
+            if reportItem.name.lowercased() == R.string.localizable.behaviorsScore().lowercased() {
+                thingType = .good
+            }
+            healthDataRow.setData(reportItem: reportItem, thingType: thingType)
+
+            if index == reportItemsCount - 1 { // not add separateLine to last row
+                return healthDataRow
+            } else {
+                return LinearView(
+                    items: [(healthDataRow, 0), (SeparateLine(height: 1, themeStyle: .mineShaftBackground), 15)],
+                    bottomConstraint: true)
+            }
+        }
+
+        dataStackView.addArrangedSubviews(newArrangedSubviews)
     }
 }
 
@@ -109,14 +157,8 @@ extension AutonomyTrendingViewController {
         return view
     }
 
-    fileprivate func makeScoreView() -> UIView {
-        return LinearView(items: [
-            (casesScoreDataView, 0),
-            (SeparateLine(height: 1, themeStyle: .mineShaftBackground), 15),
-            (symptomsScoreDataView, 15),
-            (SeparateLine(height: 1, themeStyle: .mineShaftBackground), 15),
-            (behaviorsScoreDataView, 15)
-        ], bottomConstraint: true)
+    fileprivate func makeDataStackView() -> UIStackView {
+        return UIStackView(arrangedSubviews: [], axis: .vertical, spacing: 15)
     }
 
     fileprivate func makeSourceInfoView() -> UIView {

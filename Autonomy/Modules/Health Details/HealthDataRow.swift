@@ -79,7 +79,36 @@ class HealthDataRow: UIView {
 
         deltaView.snp.makeConstraints { (make) in
             make.leading.equalTo(numberLabel.snp.trailing)
-            make.top.bottom.trailing.equalToSuperview()
+            make.top.trailing.equalToSuperview()
+        }
+    }
+
+    func setData(reportItem: ReportItem, thingType: ThingType) {
+        let delta = reportItem.changeRate
+
+        numberLabel.setText("\(Int(reportItem.value.rounded()))")
+        numberInfoLabel.setText("\(abs(delta))%")
+
+        switch (delta, thingType) {
+        case _ where delta > 0 && thingType == .good:
+            deltaImageView.image = R.image.greenUpArrow()
+            numberInfoLabel.textColor = Constant.positiveColor
+
+        case _ where delta > 0 && thingType == .bad:
+            deltaImageView.image = R.image.redUpArrow()
+            numberInfoLabel.textColor = Constant.negativeColor
+
+        case _ where delta < 0 && thingType == .good:
+            deltaImageView.image = R.image.redDownArrow()
+            numberInfoLabel.textColor = Constant.negativeColor
+
+        case _ where delta < 0 && thingType == .bad:
+            deltaImageView.image = R.image.greenDownArrow()
+            numberInfoLabel.textColor = Constant.positiveColor
+
+        default:
+            deltaImageView.image = nil
+            numberInfoLabel.textColor = UIColor(hexString: "#828180")
         }
     }
 }
@@ -96,7 +125,7 @@ extension HealthDataRow {
     fileprivate func makeNumberLabel() -> Label {
         let label = Label()
         label.textAlignment = .right
-        label.font = R.font.ibmPlexMonoLight(size: 14)
+        label.apply(font: R.font.ibmPlexMonoLight(size: 14), themeStyle: .lightTextColor)
         return label
     }
 
@@ -110,7 +139,7 @@ extension HealthDataRow {
         }
 
         deltaImageView.snp.makeConstraints { (make) in
-            make.trailing.equalTo(numberInfoLabel.snp.leading).offset(-2)
+            make.trailing.equalTo(numberInfoLabel.snp.leading).offset(-3)
             make.top.bottom.equalToSuperview()
         }
 
@@ -118,7 +147,11 @@ extension HealthDataRow {
     }
 
     fileprivate func makeDeltaImageView() -> UIImageView {
-        return UIImageView()
+        let imageView = UIImageView()
+        imageView.snp.makeConstraints { (make) in
+            make.width.height.equalTo(10)
+        }
+        return imageView
     }
 
     fileprivate func makeNumberInfoLabel() -> Label { // delta / rating

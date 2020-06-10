@@ -113,6 +113,11 @@ extension PlaceHealthDetailsViewController {
         let viewModel = ResourceRatingViewModel(poiID: thisViewModel.poiID)
         navigator.show(segue: .resourceRating(viewModel: viewModel), sender: self)
     }
+
+    fileprivate func gotoAutonomyTrendingScreen() {
+        let viewModel = AutonomyTrendingViewModel(autonomyObject: .place(poiID: thisViewModel.poiID))
+        navigator.show(segue: .autonomyTrending(viewModel: viewModel), sender: self)
+    }
 }
 
 // MARK: - Setup views
@@ -125,7 +130,9 @@ extension PlaceHealthDetailsViewController {
     }
 
     fileprivate func makeHealthView() -> HealthScoreTriangle {
-        return HealthScoreTriangle(score: nil)
+        let triangle = HealthScoreTriangle(score: nil)
+        triangle.addGestureRecognizer(makeTriangleGestureRecognizer())
+        return triangle
     }
 
     fileprivate func makeSeparateLine() -> UIView {
@@ -294,5 +301,13 @@ extension PlaceHealthDetailsViewController {
         label.numberOfLines = 0
         label.apply(font: R.font.atlasGroteskLight(size: 18), themeStyle: .lightTextColor)
         return label
+    }
+
+    fileprivate func makeTriangleGestureRecognizer() -> UITapGestureRecognizer {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoAutonomyTrendingScreen()
+        }.disposed(by: disposeBag)
+        return tapGestureRecognizer
     }
 }

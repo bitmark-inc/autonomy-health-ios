@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SwiftDate
 import BetterSegmentedControl
 
 class TimeFilterView: UIView {
@@ -19,6 +20,13 @@ class TimeFilterView: UIView {
     fileprivate lazy var previousPeriodButton = makePrevPeriodButton()
     fileprivate lazy var nextPeriodButton = makeNextPeriodButton()
     fileprivate lazy var periodLabel = makePeriodLabel()
+
+    fileprivate let defaultStartDate = Date().in(Locales.english).date
+    var segmentDistances: [TimeUnit: Int] = [
+        .week: 0, .month: 0, .year: 0
+    ]
+    lazy var startDate = defaultStartDate
+    let datePeriodRelay = BehaviorRelay<DatePeriod?>(value: nil)
 
     // MARK: - Init
     override init(frame: CGRect) {
@@ -43,10 +51,33 @@ class TimeFilterView: UIView {
             make.top.equalTo(segmentView.snp.bottom).offset(15)
             make.leading.trailing.bottom.equalToSuperview()
         }
+
+        computeDatePeriod()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    fileprivate func computeDatePeriod() {
+        guard let timeUnit = TimeUnit(index: segmentView.index),
+            let distance = segmentDistances[timeUnit] else { return }
+
+        startDate = defaultStartDate.dateAtStartOf(timeUnit.dateComponent)
+                                    .dateByAdding(distance, timeUnit.dateComponent)
+                                    .date
+
+        let endDate = startDate.dateAtEndOf(timeUnit.dateComponent)
+        let datePeriod = DatePeriod(startDate: startDate, endDate: endDate)
+        datePeriodRelay.accept(datePeriod)
+        periodLabel.setText(datePeriod.humanize(in: timeUnit).localizedUppercase)
+    }
+
+    fileprivate func adjustSegmentDistance(step: Int) { // step = -1 or +1
+        guard let timeUnit = TimeUnit(index: segmentView.index) else { return }
+        segmentDistances[timeUnit]! += step
+
+        computeDatePeriod()
     }
 }
 
@@ -67,6 +98,13 @@ extension TimeFilterView {
             frame: CGRect(), segments: labelSegments,
             options: [.backgroundColor(.clear),
                       .indicatorViewBackgroundColor(themeService.attrs.sharkColor)])
+
+        control.rx.controlEvent(.valueChanged)
+            .subscribe(onNext: { [weak self] (_) in
+                self?.computeDatePeriod()
+            })
+            .disposed(by: disposeBag)
+
         return control
     }
 
@@ -102,6 +140,9 @@ extension TimeFilterView {
         let button = UIButton()
         button.setImage(R.image.previousTimePeriod(), for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 30)
+        button.rx.tap.bind { [weak self] in
+            self?.adjustSegmentDistance(step: -1)
+        }.disposed(by: disposeBag)
         return button
     }
 
@@ -109,6 +150,9 @@ extension TimeFilterView {
         let button = UIButton()
         button.setImage(R.image.nextTimePeriod(), for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 30, bottom: 15, right: 0)
+        button.rx.tap.bind { [weak self] in
+            self?.adjustSegmentDistance(step: 1)
+        }.disposed(by: disposeBag)
         return button
     }
 }

@@ -73,6 +73,14 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
     }
 }
 
+// MARK: - Navigator
+extension YouHealthDetailsViewController {
+    fileprivate func gotoAutonomyTrendingScreen() {
+        let viewModel = AutonomyTrendingViewModel(autonomyObject: .individual)
+        navigator.show(segue: .autonomyTrending(viewModel: viewModel), sender: self)
+    }
+}
+
 // MARK: - Setup views
 extension YouHealthDetailsViewController {
     fileprivate func makeScrollView() -> UIScrollView {
@@ -82,10 +90,20 @@ extension YouHealthDetailsViewController {
     }
 
     fileprivate func makeHealthView() -> HealthScoreTriangle {
-        return HealthScoreTriangle(score: nil)
+        let triangle = HealthScoreTriangle(score: nil)
+        triangle.addGestureRecognizer(makeTriangleGestureRecognizer())
+        return triangle
     }
 
     fileprivate func makeSeparateLine() -> UIView {
         return SeparateLine(height: 1, themeStyle: .mineShaftBackground)
+    }
+
+    fileprivate func makeTriangleGestureRecognizer() -> UITapGestureRecognizer {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoAutonomyTrendingScreen()
+        }.disposed(by: disposeBag)
+        return tapGestureRecognizer
     }
 }
