@@ -88,7 +88,7 @@ class LocationSearchTableCell: TableViewCell {
     }
 
     func setData(score: Float) {
-        healthScoreLabel.setText(score.formatScoreInt)
+        healthScoreLabel.setText(score.formatInt)
         healthScoreView.backgroundColor = HealthRisk(from: score)?.color
     }
 

@@ -87,9 +87,30 @@ class HealthDataRow: UIView {
     func setData(reportItem: ReportItem, thingType: ThingType) {
         let delta = reportItem.changeRate
 
-        numberLabel.setText("\(Int(reportItem.value.rounded()))")
-        numberInfoLabel.setText("\(abs(delta))%")
+        numberLabel.setText(reportItem.value.formatInt)
+        numberInfoLabel.setText("\(abs(delta).formatPercent)%")
 
+        buildDeltaView(delta: delta, thingType: thingType)
+    }
+
+    func setData(number: Int, delta: Float, thingType: ThingType) {
+        numberLabel.setText("\(number)")
+        numberInfoLabel.setText("\(abs(delta).formatPercent)%")
+
+        buildDeltaView(delta: delta, thingType: thingType)
+    }
+
+    func setData(resourceReportItem: ResourceReportItem) {
+        let score = resourceReportItem.score
+
+        numberLabel.setText(score.formatRatingScore)
+        numberLabel.textColor = Rating(from: score).color
+        numberInfoLabel.setText(resourceReportItem.ratings.simple)
+        numberInfoLabel.textColor = .white
+
+    }
+
+    fileprivate func buildDeltaView(delta: Float, thingType: ThingType) {
         switch (delta, thingType) {
         case _ where delta > 0 && thingType == .good:
             deltaImageView.image = R.image.greenUpArrow()
@@ -126,7 +147,8 @@ extension HealthDataRow {
     fileprivate func makeNumberLabel() -> Label {
         let label = Label()
         label.textAlignment = .right
-        label.apply(font: R.font.ibmPlexMonoLight(size: 14), themeStyle: .lightTextColor)
+        label.font = R.font.ibmPlexMonoLight(size: 14)
+        label.textColor = .white
         return label
     }
 
@@ -158,6 +180,7 @@ extension HealthDataRow {
     fileprivate func makeNumberInfoLabel() -> Label { // delta / rating
         let label = Label()
         label.font = R.font.ibmPlexMonoLight(size: 14)
+        label.textColor = .white
         return label
     }
 }

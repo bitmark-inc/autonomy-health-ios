@@ -1,0 +1,45 @@
+{
+  "id": "2",
+  "alias": "Tonghua (Linjiang) Street Night Market",
+  "address": "106台北市大安區臨江街",
+  "rating": true,
+  "location": {
+    "latitude": 25.03043,
+    "longitude": 121.554241
+  },
+  "resources": [
+    {
+      "name": "PLANT-BASED food",
+      "score": 4.5,
+      "ratings": 5678
+    },
+    {
+      "name": "WEARING FACE COVERING",
+      "score": 4.2,
+      "ratings": 5432
+    }
+  ],
+  "neighbor": {
+    "confirm": 18,
+    "confirm_delta": 100,
+    "symptoms": 0,
+    "symptoms_delta": -100,
+    "behavior": 0,
+    "behavior_delta": -100,
+    "score": 60,
+    "last_update": 0,
+    "details": {
+      "confirm": {
+        "score": 71.74483983148951
+      },
+      "behaviors": {
+        "score": 0
+      },
+      "symptoms": {
+        "score": 100
+      }
+    }
+  },
+  "autonomy_score": 92,
+  "autonomy_score_delta": 3
+}

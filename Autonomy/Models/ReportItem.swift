@@ -11,7 +11,7 @@ import Foundation
 struct ReportItem: Codable {
     let name: String
     let value: Float
-    let changeRate: Double
+    let changeRate: Float
 
     enum CodingKeys: String, CodingKey {
         case name, value

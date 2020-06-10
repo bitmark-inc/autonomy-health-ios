@@ -54,7 +54,7 @@ class HealthScoreTriangle: UIView {
 
         deltaView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(scoreLabel.snp.bottom).offset(Size.dh(16))
+            make.top.equalTo(scoreLabel.snp.bottom).offset(-8)
         }
 
         snp.makeConstraints { (make) in
@@ -79,6 +79,24 @@ class HealthScoreTriangle: UIView {
         processingTimer?.invalidate()
         coloredSublayer?.removeFromSuperlayer()
         coloredSublayer = nil
+    }
+
+    func set(delta: Float) {
+        deltaLabel.setText("\(abs(delta).formatPercent)%")
+
+        switch (delta) {
+        case _ where delta > 0:
+            deltaImageView.image = R.image.greenUpArrow()
+            deltaLabel.textColor = Constant.positiveColor
+
+        case _ where delta < 0:
+            deltaImageView.image = R.image.redDownArrow()
+            deltaLabel.textColor = Constant.negativeColor
+
+        default:
+            deltaImageView.image = nil
+            deltaLabel.textColor = UIColor(hexString: "#828180")
+        }
     }
 
     func updateLayout(score: Float, animate: Bool) {
@@ -242,14 +260,28 @@ class HealthScoreTriangle: UIView {
     }
 
     fileprivate func makeDeltaView() -> UIView {
-        return RowView(items: [
-            (deltaImageView, 0),
-            (deltaLabel, 2)
-        ], trailingConstraint: true)
+        let view = UIView()
+        view.addSubview(deltaImageView)
+        view.addSubview(deltaLabel)
+
+        deltaImageView.snp.makeConstraints { (make) in
+            make.leading.centerY.equalToSuperview()
+        }
+
+        deltaLabel.snp.makeConstraints { (make) in
+            make.leading.equalTo(deltaImageView.snp.trailing).offset(3)
+            make.top.bottom.trailing.equalToSuperview()
+        }
+
+        return view
     }
 
     fileprivate func makeDeltaImageView() -> UIImageView {
-        return UIImageView()
+        let imageView = UIImageView()
+        imageView.snp.makeConstraints { (make) in
+            make.width.height.equalTo(12)
+        }
+        return imageView
     }
 
     fileprivate func makeDeltaLabel() -> Label {

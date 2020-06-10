@@ -9,12 +9,16 @@
 import Foundation
 
 extension Float {
-    var formatScoreInt: String {
+    var formatInt: String {
         return "\(Int(self.rounded()))"
     }
 
     var formatPercent: String {
         return String(format: "%.2f", self)
+    }
+
+    var formatRatingScore: String {
+        return String(format: "%.1f", self)
     }
 
     var simple: String {

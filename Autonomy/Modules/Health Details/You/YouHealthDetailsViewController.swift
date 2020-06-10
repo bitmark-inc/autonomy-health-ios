@@ -22,9 +22,9 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
 
     fileprivate lazy var youSymptomsView = makeYouSymptomsView()
     fileprivate lazy var youBehaviorsView = makeYouBehaviorsView()
-    fileprivate lazy var activeCasesView = makeNeighborCasesView()
-    fileprivate lazy var symptomsView = makeNeighborSymptomsView()
-    fileprivate lazy var behaviorsView = makeNeighborBehaviorsView()
+    fileprivate lazy var neighborCasesView = makeNeighborCasesView()
+    fileprivate lazy var neighborSymptomsView = makeNeighborSymptomsView()
+    fileprivate lazy var neighborBehaviorsView = makeNeighborBehaviorsView()
 
     fileprivate lazy var thisViewModel: YouHealthDetailsViewModel = {
         return viewModel as! YouHealthDetailsViewModel
@@ -32,6 +32,31 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+
+    override func bindViewModel() {
+        super.bindViewModel()
+
+        thisViewModel.youAutonomyProfileRelay
+            .filterNil()
+            .subscribe(onNext: { [weak self] in
+                self?.setData(autonomyProfile: $0)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    fileprivate func setData(autonomyProfile: YouAutonomyProfile) {
+        healthTriangleView.updateLayout(score: autonomyProfile.autonomyScore, animate: false)
+        healthTriangleView.set(delta: autonomyProfile.autonomyScoreDelta)
+
+        let you = autonomyProfile.individual
+        youSymptomsView.setData(number: you.symptoms, delta: you.symptomsDelta, thingType: .bad)
+        youBehaviorsView.setData(number: you.behaviors, delta: you.behaviorsDelta, thingType: .good)
+
+        let neighbor = autonomyProfile.neighbor
+        neighborCasesView.setData(number: neighbor.cases, delta: neighbor.casesDelta, thingType: .bad)
+        neighborSymptomsView.setData(number: neighbor.symptoms, delta: neighbor.symptomsDelta, thingType: .bad)
+        neighborBehaviorsView.setData(number: neighbor.behaviors, delta: neighbor.behaviorsDelta, thingType: .good)
     }
 
     override func setupViews() {
@@ -68,11 +93,11 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
             (makeSeparateLine(), 14),
             (youBehaviorsView, 15),
             (HeaderView(header: R.string.localizable.neighborhood().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 38),
-            (activeCasesView, 30),
+            (neighborCasesView, 30),
             (makeSeparateLine(), 14),
-            (symptomsView, 15),
+            (neighborSymptomsView, 15),
             (makeSeparateLine(), 14),
-            (behaviorsView, 15)
+            (neighborBehaviorsView, 15)
         ], bottomConstraint: true)
     }
 }
@@ -136,7 +161,7 @@ extension YouHealthDetailsViewController {
         return tapGestureRecognizer
     }
 
-    fileprivate func makeYouSymptomsView() -> UIView {
+    fileprivate func makeYouSymptomsView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.symptoms().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.rx.event.bind { [weak self] (_) in
@@ -147,7 +172,7 @@ extension YouHealthDetailsViewController {
         return dataRow
     }
 
-    fileprivate func makeYouBehaviorsView() -> UIView {
+    fileprivate func makeYouBehaviorsView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.healthyBehaviors().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.rx.event.bind { [weak self] (_) in
@@ -158,7 +183,7 @@ extension YouHealthDetailsViewController {
         return dataRow
     }
 
-    fileprivate func makeNeighborCasesView() -> UIView {
+    fileprivate func makeNeighborCasesView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.activeCases().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.rx.event.bind { [weak self] (_) in
@@ -169,7 +194,7 @@ extension YouHealthDetailsViewController {
         return dataRow
     }
 
-    fileprivate func makeNeighborSymptomsView() -> UIView {
+    fileprivate func makeNeighborSymptomsView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.symptoms().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.rx.event.bind { [weak self] (_) in
@@ -180,7 +205,7 @@ extension YouHealthDetailsViewController {
         return dataRow
     }
 
-    fileprivate func makeNeighborBehaviorsView() -> UIView {
+    fileprivate func makeNeighborBehaviorsView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.healthyBehaviors().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.rx.event.bind { [weak self] (_) in

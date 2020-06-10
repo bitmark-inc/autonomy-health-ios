@@ -20,7 +20,7 @@ class MainViewModel: ViewModel {
 
     // MARK: - Outputs
     let poisRelay = BehaviorRelay<(pois: [PointOfInterest], source: POIFetchSource)>(value: (pois: [], source: .remote))
-    let yourAreaProfileRelay = BehaviorRelay<AreaProfile?>(value: nil)
+    let youAutonomyProfileRelay = BehaviorRelay<YouAutonomyProfile?>(value: nil)
     let fetchPOIStateRelay = BehaviorRelay<LoadState>(value: .hide)
 
     let addLocationSubject = PublishSubject<PointOfInterest?>()
@@ -33,7 +33,7 @@ class MainViewModel: ViewModel {
     override init() {
         super.init()
 
-        fetchYourAreaProfile()
+        fetchYouAutonomyProfile()
         fetchPOIs()
         FormulaSupporter.shared.pollingSyncFormula()
         observeAndSubmitProfileFormula()
@@ -45,18 +45,13 @@ class MainViewModel: ViewModel {
     }
 
     // MARK: - Handlers
-    fileprivate func fetchYourAreaProfile() {
-        AreaProfileService.get()
+    fileprivate func fetchYouAutonomyProfile() {
+        AutonomyProfileService.get()
             .subscribe(onSuccess: { [weak self] in
                 guard let self = self else { return }
-                self.yourAreaProfileRelay.accept($0)
+                self.youAutonomyProfileRelay.accept($0)
             }, onError: { (error) in
-                guard !AppError.errorByNetworkConnection(error),
-                    !Global.handleErrorIfAsAFError(error) else {
-                        return
-                }
-
-                Global.log.error(error)
+                Global.backgroundErrorSubject.onNext(error)
             })
         .disposed(by: disposeBag)
     }
@@ -118,14 +113,6 @@ class MainViewModel: ViewModel {
                 Global.backgroundErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
-    }
-
-    func fetchAreaProfile(poiID: String?) -> Single<AreaProfile> {
-        if let poiID = poiID {
-            return AreaProfileService.get(poiID: poiID)
-        } else {
-            return AreaProfileService.get()
-        }
     }
 
     func addNewPOI(placeID: String) {

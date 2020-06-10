@@ -127,7 +127,7 @@ class Global {
 }
 
 func setScore(_ score: Float, in label: Label) {
-    label.setText(score.formatScoreInt)
+    label.setText(score.formatInt)
     label.textColor = HealthRisk(from: score)?.color
 }
 

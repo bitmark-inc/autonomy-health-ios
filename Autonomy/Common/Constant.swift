@@ -95,3 +95,26 @@ enum HealthRisk {
         }
     }
 }
+
+enum Rating {
+    case good
+    case medium
+    case low
+
+    init(from score: Float) {
+        switch (score) {
+        case _ where score >= 3.3:  self = .good
+        case _ where score <= 1.6:  self = .low
+        default:
+            self = .medium
+        }
+    }
+
+    var color: UIColor {
+        switch self {
+        case .good:    return UIColor(hexString: "#2DC937")!
+        case .medium:  return UIColor(hexString: "#E7B416")!
+        case .low:     return UIColor(hexString: "#CC3232")!
+        }
+    }
+}

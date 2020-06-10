@@ -53,7 +53,7 @@ class ColumnDataView: UIView {
         let number = number ?? 0
         let delta = delta ?? 0
 
-        numberLabel.setText("\(Int(number.rounded()))")
+        numberLabel.setText(number.formatInt)
         changeStatusArrow.image = R.image.redDownArrowReported()
         deltaLabel.setText("\(abs(delta).formatPercent)%")
 

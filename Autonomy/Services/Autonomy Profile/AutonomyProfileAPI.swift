@@ -1,5 +1,5 @@
 //
-//  AreaProfileAPI.swift
+//  AutonomyProfileAPI.swift
 //  Autonomy
 //
 //  Created by thuyentruong on 11/26/19.
@@ -10,21 +10,21 @@ import Foundation
 import BitmarkSDK
 import Moya
 
-enum AreaProfileAPI {
+enum AutonomyProfileAPI {
     case get
     case getPOI(poiID: String)
 }
 
-extension AreaProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
+extension AutonomyProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
 
     var baseURL: URL {
-        return URL(string: Constant.apiServerURL + "/api/area_profile")!
+        return URL(string: Constant.apiServerURL + "/api/autonomy-profile")!
     }
 
     var path: String {
         switch self {
         case .get:
-            return "/"
+            return "me"
         case .getPOI(let poiID):
             return poiID
         }
@@ -37,7 +37,8 @@ extension AreaProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTarge
     var sampleData: Data {
         var dataURL: URL?
         switch self {
-        case .get: dataURL = R.file.areaProfileJson()
+        case .get:      dataURL = R.file.youAutonomyProfileJson()
+        case .getPOI:   dataURL = R.file.placeAutonomyProfileJson()
         default:
             break
         }

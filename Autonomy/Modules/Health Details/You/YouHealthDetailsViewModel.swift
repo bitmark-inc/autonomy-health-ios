@@ -10,4 +10,24 @@ import RxSwift
 import RxCocoa
 
 class YouHealthDetailsViewModel: ViewModel {
+
+    // MARK: - Properties
+    let youAutonomyProfileRelay = BehaviorRelay<YouAutonomyProfile?>(value: nil)
+
+    override init() {
+        super.init()
+
+        fetchYouAutonomyProfile()
+    }
+
+    fileprivate func fetchYouAutonomyProfile() {
+        AutonomyProfileService.get()
+            .subscribe(onSuccess: { [weak self] in
+                guard let self = self else { return }
+                self.youAutonomyProfileRelay.accept($0)
+            }, onError: { (error) in
+                Global.backgroundErrorSubject.onNext(error)
+            })
+            .disposed(by: disposeBag)
+    }
 }

@@ -42,12 +42,65 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     override func bindViewModel() {
         super.bindViewModel()
 
+        thisViewModel.poiAutonomyProfileRelay
+            .filterNil()
+            .subscribe(onNext: { [weak self] in
+                self?.setData(autonomyProfile: $0)
+            })
+            .disposed(by: disposeBag)
+
         ratingResourceButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
 
             self.gotoResourceRatingScreen()
 
         }.disposed(by: disposeBag)
+    }
+
+    fileprivate func setData(autonomyProfile: PlaceAutonomyProfile) {
+        healthTriangleView.updateLayout(score: autonomyProfile.autonomyScore, animate: false)
+        healthTriangleView.set(delta: autonomyProfile.autonomyScoreDelta)
+
+        addressLabel.setText(autonomyProfile.address)
+
+        let neighbor = autonomyProfile.neighbor
+        activeCasesView.setData(number: neighbor.cases, delta: neighbor.casesDelta, thingType: .bad)
+        symptomsView.setData(number: neighbor.symptoms, delta: neighbor.symptomsDelta, thingType: .bad)
+        behaviorsView.setData(number: neighbor.behaviors, delta: neighbor.behaviorsDelta, thingType: .good)
+
+        if autonomyProfile.resourceReportItems.count == 0 {
+            ratingResourceButton.setTitle(R.string.localizable.addResource().localizedUppercase, for: .normal)
+            presentResourceView.isHidden = true
+            emptyResourceView.isHidden = false
+        } else {
+            presentResourceView.isHidden = false
+            emptyResourceView.isHidden = true
+
+            if autonomyProfile.rating {
+                ratingResourceButton.setTitle(R.string.localizable.viewYourRating().localizedUppercase,
+                                              for: .normal)
+            } else {
+                ratingResourceButton.setTitle(R.string.localizable.addRating(), for: .normal)
+            }
+
+            rebuildResourceListStackView(resourceReportItems: autonomyProfile.resourceReportItems)
+        }
+    }
+
+    fileprivate func rebuildResourceListStackView(resourceReportItems: [ResourceReportItem]) {
+        resourceListView.removeArrangedSubviews()
+        resourceListView.removeSubviews()
+
+        let newArrangedSubviews = resourceReportItems.map { (resourceReportItem) -> UIView in
+            let healthDataRow = HealthDataRow(info: resourceReportItem.name.localizedUppercase, hasDot: true)
+            healthDataRow.setData(resourceReportItem: resourceReportItem)
+
+            return LinearView(
+                items: [(healthDataRow, 0), (SeparateLine(height: 1, themeStyle: .mineShaftBackground), 14)],
+                bottomConstraint: true)
+        }
+
+        resourceListView.addArrangedSubviews(newArrangedSubviews)
     }
 
     override func setupViews() {
@@ -74,10 +127,12 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         groupsButton.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
         }
+
+        // hide presentResourceView at first
+        presentResourceView.isHidden = true
     }
 
     fileprivate func makePaddingContentView() -> UIView {
-
         let resourceView = makeResourceView()
 
         let view = LinearView(items: [
@@ -101,10 +156,8 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
 
 extension PlaceHealthDetailsViewController {
     fileprivate func linkMap() {
-        var address = "" // TODO: put address
-//        if address.isEmpty { address = thisViewModel.poi.alias }
-        print(address)
-        guard let targetURL = URL(string: "https://www.google.com/maps?q=\(address.urlEncoded)") else { return }
+        guard let poiAutonomyProfile = thisViewModel.poiAutonomyProfileRelay.value else { return }
+        guard let targetURL = URL(string: "https://www.google.com/maps?q=\(poiAutonomyProfile.address.urlEncoded)") else { return }
         navigator.show(segue: .safariController(targetURL), sender: self, transition: .alert)
     }
 
@@ -183,7 +236,7 @@ extension PlaceHealthDetailsViewController {
 
     fileprivate func makePresentResourceView() -> UIView {
         return LinearView(
-            items: [(makeResourceHeaderView(), 0), (resourceListView, 0)],
+            items: [(makeResourceHeaderView(), 0), (resourceListView, 15)],
             bottomConstraint: true
         )
     }
@@ -251,8 +304,8 @@ extension PlaceHealthDetailsViewController {
         return view
     }
 
-    fileprivate func makeResourceListView() -> UIView {
-        return UIView()
+    fileprivate func makeResourceListView() -> UIStackView {
+        return UIStackView(arrangedSubviews: [], axis: .vertical, spacing: 15)
     }
 
     fileprivate func makeResourceButtonGroupView() -> UIView {
@@ -336,7 +389,7 @@ extension PlaceHealthDetailsViewController {
         return tapGestureRecognizer
     }
 
-    fileprivate func makePOICasesView() -> UIView {
+    fileprivate func makePOICasesView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.activeCases().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.rx.event.bind { [weak self] (_) in
@@ -347,7 +400,7 @@ extension PlaceHealthDetailsViewController {
         return dataRow
     }
 
-    fileprivate func makePOISymptomsView() -> UIView {
+    fileprivate func makePOISymptomsView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.symptoms().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.rx.event.bind { [weak self] (_) in
@@ -358,7 +411,7 @@ extension PlaceHealthDetailsViewController {
         return dataRow
     }
 
-    fileprivate func makePOIBehaviorsView() -> UIView {
+    fileprivate func makePOIBehaviorsView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.healthyBehaviors().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.rx.event.bind { [weak self] (_) in
