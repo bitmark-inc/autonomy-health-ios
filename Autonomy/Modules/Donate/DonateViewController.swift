@@ -14,6 +14,7 @@ import BEMCheckBox
 class DonateViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
+    fileprivate lazy var scrollView = makeScrollView()
     fileprivate  lazy var headerScreen: UIView = {
         HeaderView(header: R.string.phrase.donateHeader().localizedUppercase)
     }()
@@ -38,7 +39,9 @@ class DonateViewController: ViewController, BackNavigator {
     fileprivate lazy var nextButton = RightIconButton(title: R.string.localizable.next().localizedUppercase,
                                                       icon: R.image.nextCircleArrow())
     fileprivate lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: false)
+        groupView.apply(backgroundStyle: .codGrayBackground)
+        return groupView
     }()
 
     override func bindViewModel() {
@@ -76,13 +79,20 @@ class DonateViewController: ViewController, BackNavigator {
                 (donateOptionsView, 30),
                 (SeparateLine(height: 1), 30),
                 (messageLabel, 30)
-        ])
+            ], bottomConstraint: true)
 
-        contentView.addSubview(paddingContentView)
+        scrollView.addSubview(paddingContentView)
+        paddingContentView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview().offset(-30)
+        }
+
+        contentView.addSubview(scrollView)
         contentView.addSubview(groupsButton)
 
-        paddingContentView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(OurTheme.paddingInset)
+        scrollView.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(groupsButton.snp.top).offset(-5)
         }
 
         groupsButton.snp.makeConstraints { (make) in
@@ -112,6 +122,12 @@ extension DonateViewController: BEMCheckBoxDelegate {
 
 // MARK: - Setup views
 extension DonateViewController {
+    fileprivate func makeScrollView() -> UIScrollView {
+        let scrollView = UIScrollView()
+        scrollView.contentInset = OurTheme.paddingInset
+        return scrollView
+    }
+
     func makeTitleScreen() -> CenterView {
         let label = Label()
         label.numberOfLines = 0

@@ -20,7 +20,9 @@ class ViewRecoveryKeyViewController: ViewController, BackNavigator {
     fileprivate lazy var indexViewLabel = makeIndexViewLabel()
     fileprivate lazy var backButton = makeLightBackItem(withHandler: false)
     fileprivate lazy var groupsButton: UIView = {
-       ButtonGroupView(button1: backButton)
+        let groupView = ButtonGroupView(button1: backButton)
+        groupView.apply(backgroundStyle: .codGrayBackground)
+        return groupView
     }()
 
     fileprivate var recoveryKey = [String]()

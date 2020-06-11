@@ -183,7 +183,7 @@ extension LocationSearchViewController {
         searchBar.addSubview(closeButton)
 
         searchImageView.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().offset(15)
+            make.leading.equalToSuperview()
             make.centerY.equalToSuperview().offset(-2)
         }
 
@@ -195,7 +195,7 @@ extension LocationSearchViewController {
 
         closeButton.snp.makeConstraints { (make) in
             make.leading.lessThanOrEqualTo(searchTextField.snp.trailing).offset(15)
-            make.trailing.equalToSuperview().offset(-15)
+            make.trailing.equalToSuperview()
             make.centerY.equalToSuperview().offset(-2)
         }
 
@@ -245,8 +245,12 @@ extension LocationSearchViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .singleLine
-
         tableView.register(cellWithClass: LocationSearchTableCell.self)
+
+        themeService.rx
+            .bind({ $0.separateTextColor }, to: tableView.rx.separatorColor)
+            .disposed(by: disposeBag)
+
         return tableView
     }
 

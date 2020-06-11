@@ -19,7 +19,9 @@ class ViewRecoveryKeyWarningViewController: ViewController, BackNavigator {
     fileprivate lazy var nextButton = RightIconButton(title:R.string.localizable.next().localizedUppercase,
                                                       icon: R.image.nextCircleArrow())
     fileprivate lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: false)
+        groupView.apply(backgroundStyle: .codGrayBackground)
+        return groupView
     }()
 
     override func bindViewModel() {
