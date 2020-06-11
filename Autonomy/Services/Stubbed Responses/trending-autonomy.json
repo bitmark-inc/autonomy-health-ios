@@ -1,19 +1,9 @@
 {
   "report_items": [
     {
-      "name": "cases score",
-      "value": 97,
+      "name": "autonomy score",
+      "value": 65,
       "change_rate": 2.34
-    },
-    {
-      "name": "symptoms score",
-      "value": 86,
-      "change_rate": 0
-    },
-    {
-      "name": "behaviors score",
-      "value": 92,
-      "change_rate": -1.23
     }
   ]
 }

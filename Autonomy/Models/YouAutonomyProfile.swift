@@ -28,8 +28,8 @@ struct IndividualHealthDetails: Codable {
     enum CodingKeys: String, CodingKey {
         case symptoms
         case symptomsDelta = "symptoms_delta"
-        case behaviors = "behavior"
-        case behaviorsDelta = "behavior_delta"
+        case behaviors
+        case behaviorsDelta = "behaviors_delta"
     }
 }
 
@@ -43,7 +43,7 @@ struct NeighborHealthDetails: Codable {
         case casesDelta = "confirm_delta"
         case symptoms
         case symptomsDelta = "symptoms_delta"
-        case behaviors = "behavior"
-        case behaviorsDelta = "behavior_delta"
+        case behaviors
+        case behaviorsDelta = "behaviors_delta"
     }
 }

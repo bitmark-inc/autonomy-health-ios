@@ -11,7 +11,8 @@ import RxSwift
 import Moya
 
 class SymptomService {
-    static var provider = MoyaProvider<SymptomAPI>(stubClosure: MoyaProvider.immediatelyStub, session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<SymptomAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
+    static var stubProvider = MoyaProvider<SymptomAPI>(stubClosure: MoyaProvider.immediatelyStub, session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func getList() -> Single<SymptomList> {
         Global.log.info("[start] SymptomService.getList")
@@ -50,7 +51,7 @@ class SymptomService {
     static func report(symptomKeys: [String]) -> Single<HealthDetection> {
         Global.log.info("[start] SymptomService.report(symptomKeys:)")
 
-        return provider.rx
+        return stubProvider.rx
             .requestWithRefreshJwt(.report(symptomKeys: symptomKeys))
             .filterSuccess()
             .retryWhenTransientError()

@@ -65,8 +65,8 @@
     "confirm_delta": 100,
     "symptoms": 0,
     "symptoms_delta": -100,
-    "behavior": 0,
-    "behavior_delta": -100,
+    "behaviors": 0,
+    "behaviors_delta": -100,
     "score": 60,
     "last_update": 0,
     "details": {

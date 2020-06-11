@@ -32,6 +32,8 @@ class AddResourceViewController: ViewController, BackNavigator {
         return viewModel as! AddResourceViewModel
     }()
 
+    weak var panModalVC: ProgressPanViewController?
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -60,17 +62,19 @@ class AddResourceViewController: ViewController, BackNavigator {
         thisViewModel.addResourcesResultSubject
             .subscribe(onNext: { [weak self] (event) in
                 loadingState.onNext(.hide)
-                guard let self = self else { return }
-                switch event {
-                case .next:
-                    self.backResourceRatingsScreen()
-                case .error(let error):
-                    guard !self.handleIfGeneralError(error: error) else { return }
-                    Global.log.error(error)
-                    self.showErrorAlertWithSupport(message: R.string.error.system())
-                default:
-                    break
-                }
+                self?.panModalVC?.dismiss(animated: true, completion: { [weak self] in
+                    guard let self = self else { return }
+                    switch event {
+                    case .next:
+                        self.backResourceRatingsScreen()
+                    case .error(let error):
+                        guard !self.handleIfGeneralError(error: error) else { return }
+                        Global.log.error(error)
+                        self.showErrorAlertWithSupport(message: R.string.error.system())
+                    default:
+                        break
+                    }
+                })
             })
             .disposed(by: disposeBag)
 
@@ -78,6 +82,7 @@ class AddResourceViewController: ViewController, BackNavigator {
             guard let self = self else { return }
             let selectedResources = self.getSelectedResources()
             self.thisViewModel.add(resources: selectedResources)
+            self.showProgressPanModal()
         }.disposed(by: disposeBag)
     }
 
@@ -101,6 +106,19 @@ class AddResourceViewController: ViewController, BackNavigator {
         importantTagViews.rearrangeViews()
     }
 
+    fileprivate func showProgressPanModal() {
+        let viewController = ProgressPanViewController()
+        viewController.headerScreen.header = R.string.localizable.submitting().localizedUppercase
+        viewController.titleLabel.setText(R.string.phrase.resourcesAddSubmitting())
+        presentPanModal(viewController)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            viewController.indeterminateProgressBar.startAnimating()
+        }
+
+        panModalVC = viewController
+    }
+
     fileprivate func checkSelectedState() {
         let hasSelected = importantTagViews.tagViews.contains(where: { $0.isSelected })
         submitButton.isEnabled = hasSelected
@@ -115,7 +133,7 @@ class AddResourceViewController: ViewController, BackNavigator {
                 (titleScreen, 0),
                 (SeparateLine(height: 1), 3),
                 (makeTitleLabel(text: R.string.phrase.resourcesSuggestMessage()), 23),
-                (importantTagViews, 30)
+                (importantTagViews, 15)
             ],
             bottomConstraint: true)
 

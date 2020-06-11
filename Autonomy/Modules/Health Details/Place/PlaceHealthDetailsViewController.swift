@@ -17,9 +17,12 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     fileprivate lazy var healthTriangleView = makeHealthView()
     fileprivate lazy var backButton = makeLightBackItem()
     fileprivate lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nil)
+        let groupView = ButtonGroupView(button1: backButton, button2: nil, hasGradient: false)
+        groupView.apply(backgroundStyle: .codGrayBackground)
+        return groupView
     }()
 
+    fileprivate lazy var nameLabel = makeNameLabel()
     fileprivate lazy var addressLabel = makeAddressLabel()
     fileprivate lazy var emptyResourceView = makeEmptyResourceView()
     fileprivate lazy var presentResourceView = makePresentResourceView()
@@ -30,6 +33,8 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     fileprivate lazy var activeCasesView = makePOICasesView()
     fileprivate lazy var symptomsView = makePOISymptomsView()
     fileprivate lazy var behaviorsView = makePOIBehaviorsView()
+
+    var isButtonAddResource: Bool = true
 
     fileprivate lazy var thisViewModel: PlaceHealthDetailsViewModel = {
         return viewModel as! PlaceHealthDetailsViewModel
@@ -51,9 +56,9 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
 
         ratingResourceButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
-
-            self.gotoResourceRatingScreen()
-
+            self.isButtonAddResource ?
+                self.gotoAddResourceScreen() :
+                self.gotoResourceRatingScreen()
         }.disposed(by: disposeBag)
 
         moreResourceButton.rx.tap.bind { [weak self] in
@@ -62,6 +67,7 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     }
 
     fileprivate func setData(autonomyProfile: PlaceAutonomyProfile) {
+        nameLabel.setText(autonomyProfile.alias.localizedUppercase)
         healthTriangleView.updateLayout(score: autonomyProfile.autonomyScore, animate: false)
         healthTriangleView.set(delta: autonomyProfile.autonomyScoreDelta)
 
@@ -78,15 +84,21 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
             ratingResourceButton.setTitle(R.string.localizable.addResource().localizedUppercase, for: .normal)
             presentResourceView.isHidden = true
             emptyResourceView.isHidden = false
+            moreResourceButton.isHidden = true
+            isButtonAddResource = true
         } else {
             presentResourceView.isHidden = false
             emptyResourceView.isHidden = true
+            isButtonAddResource = false
 
             if autonomyProfile.rating {
-                ratingResourceButton.setTitle(R.string.localizable.viewYourRating().localizedUppercase,
-                                              for: .normal)
+                ratingResourceButton.setTitle(
+                    R.string.localizable.viewYourRating().localizedUppercase,
+                    for: .normal)
             } else {
-                ratingResourceButton.setTitle(R.string.localizable.addRating(), for: .normal)
+                ratingResourceButton.setTitle(
+                    R.string.localizable.addRating().localizedUppercase,
+                    for: .normal)
             }
 
             rebuildResourceListStackView(resourceReportItems: autonomyProfile.resourceReportItems)
@@ -142,7 +154,8 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         let resourceView = makeResourceView()
 
         let view = LinearView(items: [
-            (healthTriangleView, 0),
+            (nameLabel, 0),
+            (healthTriangleView, 42),
             (makeDataHeaderLabel(text: R.string.localizable.address().localizedUppercase), 30),
             (makeAddressView(), 0),
             (HeaderView(header: R.string.localizable.reportCard().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 38),
@@ -211,6 +224,15 @@ extension PlaceHealthDetailsViewController {
         scrollView.isUserInteractionEnabled = true
         scrollView.contentInset = OurTheme.paddingInset
         return scrollView
+    }
+
+    fileprivate func makeNameLabel() -> Label {
+        let label = Label()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.apply(font: R.font.domaineSansTextLight(size: 18),
+                    themeStyle: .lightTextColor)
+        return label
     }
 
     fileprivate func makeHealthView() -> HealthScoreTriangle {

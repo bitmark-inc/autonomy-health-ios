@@ -24,7 +24,7 @@ class SymptomGuidanceViewController: ViewController {
         icon: R.image.doneCircleArrow())
     fileprivate lazy var groupsButton: UIView = {
         let groupView = ButtonGroupView(button1: reportOtherButton, button2: doneButton, hasGradient: false)
-        groupView.attachSeparateLine()
+        groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()
 
@@ -42,6 +42,10 @@ class SymptomGuidanceViewController: ViewController {
         super.bindViewModel()
 
         centers = thisViewModel.healthCenters
+
+        doneButton.rx.tap.bind { [weak self] in
+            self?.backOrGotoMainScreen()
+        }.disposed(by: disposeBag)
     }
 
     override func setupViews() {
@@ -104,6 +108,18 @@ extension SymptomGuidanceViewController: MapDelegate {
         let viewModel = SurveyBehaviorsViewModel()
         navigator.show(segue: .surveyBehaviors(viewModel: viewModel), sender: self,
                        transition: .navigation(type: .slide(direction: .up)))
+    }
+
+    fileprivate func backOrGotoMainScreen() {
+        let viewControllers = navigationController?.viewControllers ?? []
+        if let target = viewControllers.first(where: { type(of: $0) == ProfileViewController.self }) {
+            navigator.popToViewController(target: target, animationType: .slide(direction: .up))
+            return
+        }
+
+        let viewModel = MainViewModel()
+        navigator.show(segue: .main(viewModel: viewModel), sender: self,
+                       transition: .replace(type: .slide(direction: .up)))
     }
 }
 

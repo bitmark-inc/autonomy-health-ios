@@ -1,21 +1,21 @@
 {
-  "autonomy_score": 9.934553097191282,
-  "autonomy_score_delta": -89.22201387207387,
+  "autonomy_score": 67.934553097191282,
+  "autonomy_score_delta": 4.41,
   "individual": {
     "score": 0,
     "score_yesterday": 100,
-    "symptoms": 1,
-    "symptoms_delta": 100,
-    "behavior": 0,
-    "behavior_delta": 0
+    "symptoms": 2,
+    "symptoms_delta": -1.23,
+    "behaviors": 5,
+    "behaviors_delta": -2.34
   },
   "neighbor": {
-    "confirm": 7,
-    "confirm_delta": -61.111111111111114,
-    "symptoms": 0,
-    "symptoms_delta": 0,
-    "behavior": 0,
-    "behavior_delta": 0,
+    "confirm": 1,
+    "confirm_delta": 0,
+    "symptoms": 2,
+    "symptoms_delta": 1.23,
+    "behaviors": 5,
+    "behaviors_delta": 2.34,
     "score": 49.672765485956404,
     "score_yesterday": 60.87241991574476,
     "last_update": 1591594611,

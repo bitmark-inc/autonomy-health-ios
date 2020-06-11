@@ -68,10 +68,11 @@ class BehaviorGuidanceViewController: ViewController, BackNavigator {
     fileprivate lazy var tableView = makeTableView()
     fileprivate lazy var backButton = makeLightBackItem()
     fileprivate lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nil, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: nil, hasGradient: false)
+        groupView.apply(backgroundStyle: .codGrayBackground)
+        return groupView
     }()
     fileprivate let guidanceCases = Guidance.list
-
 
     override func setupViews() {
         super.setupViews()

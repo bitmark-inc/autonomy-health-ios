@@ -108,6 +108,7 @@
 "resources.rating.title" = "Your ratings will be anonymously pooled with others for this place.\n\nTap to rate health resources provided by this place or add others:";
 "resource.ratings.submitting" = "Reporting your ratings for this place ...";
 "resources.add.title" = "Your resource suggestions will be anonymously pooled with others for this place.\n\nTap any health-promoting resources this place provides:";
+"resources.add.submitting" = "Adding your resources for this place ...";
 "resources.suggest.message" = "Important Resources For This Neighborhood";
 "resources.suggest.add.placeholder" = "Suggest other resource ...";
 

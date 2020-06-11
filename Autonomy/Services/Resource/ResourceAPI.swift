@@ -10,6 +10,7 @@ import Foundation
 import Moya
 
 enum ResourceAPI {
+    case shortList(poiID: String)
     case fullList(poiID: String)
     case add(poiID: String, resources: [Resource])
     case ratings(poiID: String)
@@ -20,7 +21,8 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
 
     var baseURL: URL {
         switch self {
-        case .fullList(let poiID), .add(let poiID, _),
+        case .shortList(let poiID), .fullList(let poiID),
+             .add(let poiID, _),
              .ratings(let poiID), .rate(let poiID, _):
             return URL(string: Constant.apiServerURL + "/api/points-of-interest/\(poiID)")!
         }
@@ -28,7 +30,8 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
 
     var path: String {
         switch self {
-        case .fullList, .add: return "resources"
+        case .shortList, .fullList, .add:
+            return "resources"
         case .ratings:           return "resource-ratings"
         case .rate:              return "resource-rating"
 
@@ -37,7 +40,7 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
 
     var method: Moya.Method {
         switch self {
-        case .fullList, .ratings:
+        case .shortList, .fullList, .ratings:
             return .get
         case .add:
             return .post
@@ -49,6 +52,7 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
     var sampleData: Data {
         var dataURL: URL?
         switch self {
+        case .shortList: dataURL = R.file.resourcesShortJson()
         case .fullList: dataURL = R.file.resourcesFullJson()
         case .add:      dataURL = R.file.resourcesAddPoiJson()
         case .ratings:  dataURL = R.file.resourceRatingsJson()
@@ -66,9 +70,15 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
         var params: [String: Any] = [:]
 
         switch self {
-        case .fullList:
-            params["all"] = true
+        case .shortList:
+            params["important"] = true
 
+            if let localeCode = Locale.current.languageCode {
+                params["lang"] = localeCode
+            }
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+
+        case .fullList:
             if let localeCode = Locale.current.languageCode {
                 params["lang"] = localeCode
             }

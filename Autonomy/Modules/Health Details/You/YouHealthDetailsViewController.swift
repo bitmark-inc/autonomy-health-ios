@@ -14,12 +14,15 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
     fileprivate lazy var scrollView = makeScrollView()
-    fileprivate lazy var healthTriangleView = makeHealthView()
     fileprivate lazy var backButton = makeLightBackItem()
     fileprivate lazy var groupsButton: UIView = {
-        ButtonGroupView(button1: backButton, button2: nil)
+        let groupView = ButtonGroupView(button1: backButton, button2: nil, hasGradient: false)
+        groupView.apply(backgroundStyle: .codGrayBackground)
+        return groupView
     }()
 
+    fileprivate lazy var nameLabel = makeNameLabel()
+    fileprivate lazy var healthTriangleView = makeHealthView()
     fileprivate lazy var youSymptomsView = makeYouSymptomsView()
     fileprivate lazy var youBehaviorsView = makeYouBehaviorsView()
     fileprivate lazy var neighborCasesView = makeNeighborCasesView()
@@ -87,7 +90,8 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
 
     fileprivate func makePaddingContentView() -> UIView {
         return LinearView(items: [
-            (healthTriangleView, 0),
+            (nameLabel, 0),
+            (healthTriangleView, 42),
             (HeaderView(header: R.string.localizable.you().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 45),
             (youSymptomsView, 30),
             (makeSeparateLine(), 14),
@@ -141,6 +145,16 @@ extension YouHealthDetailsViewController {
         let scrollView = UIScrollView()
         scrollView.contentInset = OurTheme.paddingInset
         return scrollView
+    }
+
+    fileprivate func makeNameLabel() -> Label {
+        let label = Label()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.apply(text: R.string.localizable.you().localizedUppercase,
+                    font: R.font.domaineSansTextLight(size: 18),
+                    themeStyle: .lightTextColor)
+        return label
     }
 
     fileprivate func makeHealthView() -> HealthScoreTriangle {

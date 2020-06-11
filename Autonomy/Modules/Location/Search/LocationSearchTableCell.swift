@@ -12,8 +12,8 @@ import SwiftRichString
 class LocationSearchTableCell: TableViewCell {
 
     // MARK: - Properties
-    fileprivate lazy var placeTextLabel = Label()
-    fileprivate lazy var secondaryTextLabel = Label()
+    fileprivate lazy var placeTextLabel = makeLabel()
+    fileprivate lazy var secondaryTextLabel = makeLabel()
     fileprivate lazy var healthScoreLabel = makeHealthScoreLabel()
     fileprivate lazy var healthScoreView = makeHealthScoreView()
 
@@ -87,9 +87,14 @@ class LocationSearchTableCell: TableViewCell {
         secondaryTextLabel.attributedText = secondaryAttributedText.set(style: secondaryStyleGroup)
     }
 
-    func setData(score: Float) {
-        healthScoreLabel.setText(score.formatInt)
-        healthScoreView.backgroundColor = HealthRisk(from: score)?.color
+    func setData(score: Float?) {
+        if let score = score {
+            healthScoreLabel.setText(score.formatInt)
+            healthScoreView.backgroundColor = HealthRisk(from: score)?.color
+        } else {
+            healthScoreLabel.setText("?")
+            healthScoreView.backgroundColor = HealthRisk.zero.color
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -118,6 +123,12 @@ extension LocationSearchTableCell {
         label.apply(text: "?",
                     font: R.font.domaineSansTextLight(size: 24),
                     themeStyle: .lightTextColor)
+        return label
+    }
+
+    fileprivate func makeLabel() -> Label {
+        let label = Label()
+        label.numberOfLines = 0
         return label
     }
 }

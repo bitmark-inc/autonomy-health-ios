@@ -27,7 +27,7 @@ class LocationSearchViewController: ViewController {
         return viewModel as! LocationSearchViewModel
     }()
 
-    fileprivate var scores = [Float]()
+    fileprivate var scores = [Float?]()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -88,6 +88,10 @@ class LocationSearchViewController: ViewController {
 
     override func setupViews() {
         super.setupViews()
+
+        themeService.rx
+            .bind({ $0.mineShaftBackground }, to: contentView.rx.backgroundColor)
+            .disposed(by: disposeBag)
 
         let paddingContentView = UIView()
         paddingContentView.addSubview(searchBar)

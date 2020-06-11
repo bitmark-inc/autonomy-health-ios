@@ -15,6 +15,17 @@ class ResourceService {
         stubClosure: MoyaProvider.immediatelyStub,
         session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
+    static func getImportantList(poiID: String) -> Single<[Resource]> {
+        Global.log.info("[start] ResourceService.getImportantList(poiID:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.shortList(poiID: poiID))
+            .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
+            .map([Resource].self, atKeyPath: "resources")
+    }
+
     static func getFullList(poiID: String) -> Single<[Resource]> {
         Global.log.info("[start] ResourceService.getList(poiID:)")
 

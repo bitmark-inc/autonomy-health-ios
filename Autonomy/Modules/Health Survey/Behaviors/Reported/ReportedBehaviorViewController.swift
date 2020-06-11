@@ -29,7 +29,7 @@ class ReportedBehaviorViewController: ViewController, ReportedSurveyLayout {
         icon: R.image.doneCircleArrow())
     lazy  var groupsButton: UIView = {
         let groupView = ButtonGroupView(button1: reportOtherButton, button2: doneButton, hasGradient: false)
-        groupView.attachSeparateLine()
+        groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()
 

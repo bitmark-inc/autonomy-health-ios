@@ -454,6 +454,9 @@
 		5BA98B15249214E0002E8678 /* place-autonomy-profile-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B14249214E0002E8678 /* place-autonomy-profile-full.json */; };
 		5BA98B16249214E0002E8678 /* place-autonomy-profile-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B14249214E0002E8678 /* place-autonomy-profile-full.json */; };
 		5BA98B17249214E0002E8678 /* place-autonomy-profile-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B14249214E0002E8678 /* place-autonomy-profile-full.json */; };
+		5BA98B1924922BD5002E8678 /* resources-short.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B1824922BD5002E8678 /* resources-short.json */; };
+		5BA98B1A24922BD5002E8678 /* resources-short.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B1824922BD5002E8678 /* resources-short.json */; };
+		5BA98B1B24922BD5002E8678 /* resources-short.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B1824922BD5002E8678 /* resources-short.json */; };
 		5BAA76FA24595CA3003CCE92 /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
 		5BAA76FB24595CA3003CCE92 /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
 		5BAA76FF2459603C003CCE92 /* DebugAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* DebugAPI.swift */; };
@@ -2104,6 +2107,7 @@
 				5BFC53C02490DA8F0096B14E /* place-autonomy-profile.json */,
 				5BA98B14249214E0002E8678 /* place-autonomy-profile-full.json */,
 				5BA98B002491D6A1002E8678 /* resource-ratings.json */,
+				5BA98B1824922BD5002E8678 /* resources-short.json */,
 				5BA98B082491E514002E8678 /* resources-full.json */,
 				5BA98B1024920E0B002E8678 /* resources-add-poi.json */,
 			);
@@ -2505,6 +2509,7 @@
 				5B5778DE242B48230028D3E3 /* DomaineSansText-MediumItalic.otf in Resources */,
 				5B978869243EDFED005BADA9 /* IBMPlexMono-ExtraLightItalic.ttf in Resources */,
 				5B5778CE242B48230028D3E3 /* DomaineSansText-Light.otf in Resources */,
+				5BA98B1A24922BD5002E8678 /* resources-short.json in Resources */,
 				5B5778F3242B49140028D3E3 /* Error.strings in Resources */,
 				5BB7DBB1248F3F48008B5642 /* health-detection.json in Resources */,
 				5B5778B4242B48230028D3E3 /* AtlasGrotesk-MediumItalic.otf in Resources */,
@@ -2571,6 +2576,7 @@
 				5B5778DB242B48230028D3E3 /* DomaineSansText-Regular.otf in Resources */,
 				5B5778CB242B48230028D3E3 /* DomaineSansText-BlackItalic.otf in Resources */,
 				5B97885C243EDFED005BADA9 /* IBMPlexMono-Thin.ttf in Resources */,
+				5BA98B1924922BD5002E8678 /* resources-short.json in Resources */,
 				5B5778BD242B48230028D3E3 /* AtlasGrotesk-Regular.otf in Resources */,
 				5BB7DBB0248F3F48008B5642 /* health-detection.json in Resources */,
 				5B5778BB242B48230028D3E3 /* AtlasGrotesk-Light.otf in Resources */,
@@ -2637,6 +2643,7 @@
 				5BAE8488246A7985006E118D /* DomaineSansText-MediumItalic.otf in Resources */,
 				5BAE8489246A7985006E118D /* IBMPlexMono-ExtraLightItalic.ttf in Resources */,
 				5BAE848A246A7985006E118D /* DomaineSansText-Light.otf in Resources */,
+				5BA98B1B24922BD5002E8678 /* resources-short.json in Resources */,
 				5BAE848B246A7985006E118D /* Error.strings in Resources */,
 				5BB7DBB2248F3F48008B5642 /* health-detection.json in Resources */,
 				5BAE848C246A7985006E118D /* AtlasGrotesk-MediumItalic.otf in Resources */,

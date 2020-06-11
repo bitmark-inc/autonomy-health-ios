@@ -25,7 +25,7 @@ class AddResourceViewModel: ViewModel {
 
     // MARK: - Handlers
     func fetchImportantResources() {
-        ResourceService.getFullList(poiID: poiID)
+        ResourceService.getImportantList(poiID: poiID)
             .subscribe(onSuccess: { [weak self] in
                 self?.importantResourcesRelay.accept($0)
             }, onError: { (error) in
@@ -35,7 +35,7 @@ class AddResourceViewModel: ViewModel {
     }
 
     func add(resources: [Resource]) {
-        loadingState.onNext(.loading)
+        loadingState.onNext(.processing)
 
         Observable.zip(
             Observable.just(()).delay(.seconds(3), scheduler: MainScheduler.instance).asObservable(),

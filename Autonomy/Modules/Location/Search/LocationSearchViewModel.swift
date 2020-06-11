@@ -14,7 +14,7 @@ class LocationSearchViewModel: ViewModel {
 
     // MARK: - Input
     let searchLocationTextRelay = BehaviorRelay<String>(value: "")
-    let healthScoreRelay = BehaviorRelay<[Float]>(value: [])
+    let healthScoreRelay = BehaviorRelay<[Float?]>(value: [])
 
     // MARK: - Output
     let locationsResultRelay = BehaviorRelay<[GMSAutocompletePrediction]>(value: [])

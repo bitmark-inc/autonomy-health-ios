@@ -65,10 +65,6 @@ extension LaunchingNavigatorDelegate {
     }
 
     fileprivate func signUpIfNeededOrGotoMainScreen() {
-        let viewModel = AutonomyTrendingViewModel()
-        navigator.show(segue: .autonomyTrending(viewModel: viewModel), sender: self,
-                       transition: .replace(type: .slide(direction: .down)))
-
         ProfileService.getMe()
             .subscribe(onSuccess: { [weak self] (_) in
                 self?.gotoMainScreen()

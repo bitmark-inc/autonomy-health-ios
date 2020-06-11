@@ -66,7 +66,7 @@ enum HealthRisk {
 
     var color: UIColor {
         switch self {
-        case .zero:     return UIColor(hexString: "#2B2B2B")!
+        case .zero:     return UIColor(hexString: "#000")!
         case .high:     return UIColor(red: 204, green: 50, blue: 50)!
         case .moderate: return UIColor(red: 241, green: 180, blue: 22)!
         case .low:      return UIColor(red: 45, green: 201, blue: 55)!

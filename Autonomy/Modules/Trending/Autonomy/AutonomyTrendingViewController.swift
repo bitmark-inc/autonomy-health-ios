@@ -101,27 +101,12 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
         dataStackView.removeArrangedSubviews()
         dataStackView.removeSubviews()
 
-        let reportItemsCount = reportItems.count
+        guard let reportItem = reportItems.first else { return }
 
-        let newArrangedSubviews = reportItems.enumerated().map { (index, reportItem) -> UIView in
-            let healthDataRow = HealthDataRow(info: reportItem.name.localizedUppercase, hasDot: true)
+        let healthDataRow = HealthDataRow(info: reportItem.name.localizedUppercase, hasDot: true)
+        healthDataRow.setData(autonomyReportItem: reportItem)
 
-            var thingType = ThingType.bad
-            if reportItem.name.lowercased() == R.string.localizable.behaviorsScore().lowercased() {
-                thingType = .good
-            }
-            healthDataRow.setData(reportItem: reportItem, thingType: thingType)
-
-            if index == reportItemsCount - 1 { // not add separateLine to last row
-                return healthDataRow
-            } else {
-                return LinearView(
-                    items: [(healthDataRow, 0), (SeparateLine(height: 1, themeStyle: .mineShaftBackground), 15)],
-                    bottomConstraint: true)
-            }
-        }
-
-        dataStackView.addArrangedSubviews(newArrangedSubviews)
+        dataStackView.addArrangedSubview(healthDataRow)
     }
 }
 

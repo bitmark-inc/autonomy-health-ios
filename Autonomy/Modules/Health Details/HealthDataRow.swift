@@ -84,6 +84,16 @@ class HealthDataRow: UIView {
         }
     }
 
+    func setData(autonomyReportItem reportItem: ReportItem) {
+        let delta = reportItem.changeRate
+
+        numberLabel.setText(reportItem.value.formatInt)
+        numberLabel.textColor = HealthRisk(from: reportItem.value)?.color
+        numberInfoLabel.setText("\(abs(delta).formatPercent)%")
+
+        buildDeltaView(delta: delta, thingType: .good)
+    }
+
     func setData(reportItem: ReportItem, thingType: ThingType) {
         let delta = reportItem.changeRate
 
@@ -107,7 +117,6 @@ class HealthDataRow: UIView {
         numberLabel.textColor = Rating(from: score).color
         numberInfoLabel.setText(resourceReportItem.ratings.simple)
         numberInfoLabel.textColor = .white
-
     }
 
     fileprivate func buildDeltaView(delta: Float, thingType: ThingType) {

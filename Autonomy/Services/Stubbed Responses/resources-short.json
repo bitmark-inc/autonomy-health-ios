@@ -1,0 +1,28 @@
+{
+  "resources": [
+    {
+      "id": "resource_3",
+      "name": "Temperature checks"
+    },
+    {
+      "id": "resource_4",
+      "name": "Hand sanitizer"
+    },
+    {
+      "id": "resource_5",
+      "name": "Surfaces disinfected"
+    },
+    {
+      "id": "resource_6",
+      "name": "Hand-washing facilities"
+    },
+    {
+      "id": "resource_7",
+      "name": "Clean restrooms"
+    },
+    {
+      "id": "resource_8",
+      "name": "Social distancing measures"
+    }
+  ]
+}
