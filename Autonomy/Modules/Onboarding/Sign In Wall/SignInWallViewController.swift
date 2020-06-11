@@ -21,10 +21,6 @@ class SignInWallViewController: ViewController {
     lazy var termsAndPolicyView = makeTermsAndPolicyView()
     lazy var getStartedButton = makeGetStartedButton()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     // MARK: Handlers
     override func bindViewModel() {
         super.bindViewModel()

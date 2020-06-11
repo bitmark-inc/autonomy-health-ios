@@ -14,74 +14,76 @@
 "Next" = "Next";
 "Today" = "Today";
 "Enable" = "Enable";
+"Delete" = "Delete";
 
 "Permission" = "Permission";
 "Notifications" = "Notifications";
 "Location_data" = "Location data";
 
-"RiskLevel" = "Risk Level";
-"LowRisk" = "Low Risk";
-"ModerateRisk" = "Moderate Risk";
-"HighRisk" = "High Risk";
-"DigitalRights" = "Digital Rights";
-
-"Survey" = "Survey";
-"Address" = "Address";
+"ActiveCases" = "Active Cases";
+"Added" = "Added";
+"addNewLocation..." = "Add new location ...";
 "AddRating" = "Add Rating";
 "AddResource" = "Add Resource";
-"ActiveCases" = "Active Cases";
-"Cases" = "Cases";
-"Symptoms" = "Symptoms";
-"Symptom" = "Symptom";
-"Behaviors" = "Behaviors";
-"Behavior" = "Behavior";
+"Address" = "Address";
 "Assistance" = "Assistance";
-"Request" = "Request";
-"Requests" = "Requests";
-"ReportCard" = "Report Card";
-"Review" = "Review";
-"GotIt" = "Got It";
-"Guidance" = "Guidance";
-"Submit" = "Submit";
-"SignUp" = "Sign Up";
-"Submitted" = "Submitted";
-"Submitting" = "Submitting";
-"SignedUp" = "Signed Up";
+"Behavior" = "Behavior";
+"Behaviors" = "Behaviors";
+"BehaviorsScore" = "Behaviors Score";
+"Cases" = "Cases";
+"CasesScore" = "Cases Score";
 "Copied" = "Copied";
-"Reported" = "Reported";
-"Added" = "Added";
-"ViewSource" = "View Source";
-"Reset" = "Reset";
-"ViewOnJupyter" = "View on Jupyter";
-"Profile" = "Profile";
-"Ratings" = "Ratings";
-"Resource" = "Resource";
-"Report" = "Report";
-"History" = "History";
-"Locations" = "Locations";
 "Data" = "Data";
-"Score_(0_5)" = "Score (0-5)";
-"Security" = "Security";
-"Support" = "Support";
-"FAQ" = "FAQ";
+"DigitalRights" = "Digital Rights";
+"distanceKm" = "%@ km";
 "Export" = "Export";
-"Delete" = "Delete";
-"SignOut" = "Sign Out";
-"RecoveryKey" = "Recovery Key";
+"FAQ" = "FAQ";
+"GotIt" = "Got It";
+"Graphs_coming_soon" = "Graphs coming soon";
+"Guidance" = "Guidance";
+"HealthyBehaviors" = "Healthy Behaviors";
+"HighRisk" = "High Risk";
+"Locations" = "Locations";
+"LowRisk" = "Low Risk";
+"ModerateRisk" = "Moderate Risk";
+"More" = "More";
 "Neighborhood" = "Neighborhood";
 "None" = "None";
-"More" = "More";
+"Profile" = "Profile";
+"Ratings" = "Ratings";
+"RecoveryKey" = "Recovery Key";
+"Report" = "Report";
+"ReportCard" = "Report Card";
+"Reported" = "Reported";
+"Request" = "Request";
+"Requests" = "Requests";
+"Reset" = "Reset";
+"Resource" = "Resource";
+"Review" = "Review";
+"RiskLevel" = "Risk Level";
+"Score_(0_5)" = "Score (0-5)";
+"Security" = "Security";
+"SignedUp" = "Signed Up";
+"SignOut" = "Sign Out";
+"SignUp" = "Sign Up";
+"Submit" = "Submit";
+"Submitted" = "Submitted";
+"Submitting" = "Submitting";
+"Support" = "Support";
+"Survey" = "Survey";
+"Symptom" = "Symptom";
+"Symptoms" = "Symptoms";
+"SymptomsScore" = "Symptoms Score";
+"ViewOnJupyter" = "View on Jupyter";
+"ViewSource" = "View Source";
 "ViewYourRating" = "View Your Rating";
 "You" = "You";
 
-"distanceKm" = "%@ km";
-"Graphs_coming_soon" = "Graphs coming soon";
-"RawData" = "Raw Data";
-"from_last_24_hours" = "from last 24 hours ";
-"ConfirmedInfections" = "Confirmed Infections";
-"HealthyBehaviors" = "Healthy Behaviors";
-"atRistPopulation" = "At-risk Population";
+// Donate
+"HelpKeepAutonomyFree" = "Help Keep Autonomy Free";
+"Other_amount" = "Other amount";
 
+// Metrics / Guidance
 "YourTotalForToday" = "Your Total\nFor Today";
 "SymptomsYouReportedToday" = "Symptoms You\nReported Today";
 "CommunityAverageForToday" = "Community Average\nFor Today";
@@ -92,36 +94,20 @@
 "AreYouDoingThemCorrectly" = "Are you doing them correctly?";
 "HowWeKeepYourDataPrivate" = "How we keep your data private";
 
-"addNewLocation..." = "Add new location ...";
-"VersionWithNumber" = "Version %@";
-"HelpKeepAutonomyFree" = "Help Keep Autonomy Free";
-"Other_amount" = "Other amount";
+// Behavior Guidance
+"HandWashing" = "Hand Washing";
+"Applying Hand Sanitizer" = "Applying Hand Sanitizer";
+"Wearing A Surgical Mask" = "Wearing A Surgical Mask";
+"Covering Coughs" = "Covering Coughs";
 
+// App General
 "supportMessage" = "\n%@\n\nWould you like to contact with support team?";
 "Contact" = "Contact";
 "Cancel" = "Cancel";
 "TryAgain" = "Try Again";
 "Contact_us" = "Contact us";
 "YourAuthorizationIsRequired" = "Your authorization is required.";
-
-"WeightedCoefficient" = "Weighted Coefficient";
-
-"CasesScore" = "Cases Score";
-"BehaviorsScore" = "Behaviors Score";
-"SymptomsScore" = "Symptoms Score";
-"ConfirmedCasesScore" = "Confirmed Cases Score";
-"ReportedBehaviorsScore" = "Reported Behaviors Score";
-"ReportedSymptomsScore" = "Reported Symptoms Score";
-"ReportedBehaviorsScore.desc" = "The score is calculated for all people reporting behaviors in a 1km radius.";
-"ReportedSymptomsScore.desc" = "Each reported symptom is given a score of 1 to 3, depending on the likelihood of it being a predictor of COVID-19. The overall symptoms score is calculated for all symptoms in a 1km radius. Current symptoms and scores are:";
-
-"BehaviorsTotal" = "Behaviors Total";
-"TotalPeople" = "Total People";
-"MaxScorePerPerson" = "Max Score Per Person";
-"TotalCustomized" = "Total Customized";
-"TotalWeight" = "Total Weight";
-"MaxWeight" = "Max Weight";
-"CustomizedWeight" = "Customized Weight";
+"VersionWithNumber" = "Version %@";
 
 "Yesterday" = "Yesterday";
 "Today" = "Today";
@@ -129,11 +115,6 @@
 "Week" = "Week";
 "Month" = "Month";
 "Year" = "Year";
-
-"HandWashing" = "Hand Washing";
-"Applying Hand Sanitizer" = "Applying Hand Sanitizer";
-"Wearing A Surgical Mask" = "Wearing A Surgical Mask";
-"Covering Coughs" = "Covering Coughs";
 
 "biometric.touchID" = "Touch ID";
 "biometric.faceID" = "Face ID";

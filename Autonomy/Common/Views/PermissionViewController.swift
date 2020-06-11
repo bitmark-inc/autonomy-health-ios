@@ -30,10 +30,6 @@ class PermissionViewController: ViewController, BackNavigator {
         ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: false)
     }()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

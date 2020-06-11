@@ -28,96 +28,38 @@
 "source.info.title" = "How The Autonomy Score Is Computed";
 "source.info" = "The Autonomy Score is a normalized score from 0-100 that forecasts the overall wellbeing of a neighborhood.\n\nThe score currently consists of 3 main inputs, each with a weighted coefficent that reflects each input’s relative importance to the overall score. You can adjust these coefficients above to assign different relative weights to the inputs.\n\nOur 3 data inputs are:\n\n1) A 14-day exponentially weighted average of the number of daily confirmed medical conditions in an area, as reported by the <corona-data-project>Corona Data Scraper project</corona-data-project>, which aggregates the latest public health data from verified sources around the world.\n\n2) A symptoms score, which is a normalized score calculated from the daily number of reported symptoms in a given neighborhood. Symptoms are assigned differential weights depending on whether they are known indicators of ongoing infectious disease outbreaks.\n\n3) A behaviors score, which is a normalized score calculated from the daily reported number of health-promoting behaviors in a given neighborhood.\n\nFor more information about exactly how we calculate our scores, please visit our <jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>.";
 
-"survey.title" = "How are you right now?";
-"survey.help.title" = "How can we help?";
-
 "location.placeholder" = "Enter name or address ...";
 "location.tapGuidance" = "Tap a place to add it to your monitoring screen";
-"location.addGuidance" = "You can monitor the health of specific places and places that can help you be healthy.";
 "location.editGuidance" = "Assign an alias, delete, or tap Done to save";
 
-/// ====== Begin: Dont need this parts ======
-"survey.help.symptoms" = "I have symptoms";
-"survey.help.symptoms.description" = "Let us if you are currently experiencing any of common COVID-19 symptoms.";
-"survey.help.assistance" = "I need assistance";
-"survey.help.assistance.description" = "Let people in your local community know that you need help.";
-/// ====== End: Dont need this parts.  ======
-
 "symptoms.report.title" = "Your symptoms will be anonymously pooled with others in this neighborhood.\n\nTap any symptoms you are experiencing or add new ones:";
-"survey.commonSymptoms" = "Common symptoms";
-"survey.recentSymptoms" = "Recent neighborhood symptoms";
-"survey.reportNewSymptom" = "Report other symptom ...";
-"survey.symptom.reporting" = "Reporting your symptoms to your neighborhood ...";
-"symptoms.reported.guidance.title" = "At least one of the symptoms you reported is a common COVID-19 symptom.";
-"symptoms.reported.guidance.subTitle" = "To protect the health of you and your neighborhood, the Taiwan CDC encourages you to get tested for COVID-19 as soon as possible at one of the following testing centers:";
-
-"behaviors.report.title" = "Your behaviors will be anonymously pooled with others in this neighborhood.\n\nTap any healthy behaviors you did today or add new ones:";
-"survey.commonBehaviors" = "Recommended behaviors";
-"survey.recentBehaviors" = "Recent behaviors near you";
-"survey.reportNewBehavior" = "Report other behavior ...";
-"survey.behavior.reporting" = "Reporting your healthy behaviors to your neighborhood ...";
-
-/// ====== Begin: Dont need this parts ======
-"assistance.title" = "What kind of assistance do you need?";
-"assistance.foodAndWater" = "Access to food or water";
-"assistance.foodAndWater.desc" = "I need help getting food and water.";
-"assistance.foodAndWater.requestTitle" = "Need access to food or water";
-"assistance.medicine" = "Access to medicine";
-"assistance.medicine.desc" = "I need help getting essential medications.";
-"assistance.medicine.requestTitle" = "Need access to medicine";
-"assistance.transport" = "Transport to healthcare";
-"assistance.transport.desc" = "I need help traveling to get medical care.";
-"assistance.transport.requestTitle" = "Need transport to healthcare";
-"assistance.unsafeHome" = "My home is unsafe";
-"assistance.unsafeHome.desc" = "I need help traveling to a safe location.";
-"assistance.unsafeHome.requestTitle" = "Need transport from an unsafe home";
-
-"assistance.needItems.title" = "What exactly do you need?";
-"assistance.needItems.placeholder" = "Enter description of desired items or destination here";
-
-"assistance.place.title" = "Where is a safe place to meet your helper?";
-"assistance.place.placeholder" = "Enter a physical address other safe location description here";
-
-"assistance.contact.title" = "How should your helper contact you?";
-"assistance.contact.placeholder" = "Enter contact info here. For example, a Line ID, WhatsApp ID, or phone number.";
-
-"review.title" = "Please review your request for assistance:";
-"assistance.info.exactNeeds" = "Exact Needs";
-"assistance.info.meetingLocation" = "Meeting Location";
-"assistance.info.contactInfo" = "Contact Info";
-
-"requestHelp.submitted.title" = "Your request for assistance has been broadcast to your LOCAL community";
-"requestHelp.submitted.desc" = "You will receive a notification when someone has volunteered to help.";
-"requestHelp.generalTitle" = "Community request for assistance";
-
-"giveHelp.signUp.title" = "Thank You For Signing Up To Fulfill This Community Request";
-"giveHelp.signUp.desc" = "The community member in need has been notified of your response. Please write down or take a screenshot of the request details now then contact the community member.";
-
-"giveHelp.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
-"giveHelp.helper.submitted" = "You are currently signed up to fulfill this community request. If you are unable to complete it, please contact the community member to let them know.";
-"giveHelp.helper.otherSubmitted" = "Someone has already signed up to fulfill this community request.";
-"giveHelp.requester.submitted" = "Someone has signed up to fulfill your community request. Please wait for them to contact you.";
-/// ====== End: Dont need this parts.  ======
+"symptoms.report.common" = "Common symptoms";
+"symptoms.report.recent" = "Recent neighborhood symptoms";
+"symptoms.report.addNew" = "Report other symptom ...";
+"symptoms.report.submitting" = "Reporting your symptoms to your neighborhood ...";
 
 "symptoms.reported.title" = "Thanks for sharing your symptoms with your neighborhood!";
+
+"symptoms.guidance.title" = "At least one of the symptoms you reported is a common COVID-19 symptom.";
+"symptoms.guidance.subTitle" = "To protect the health of you and your neighborhood, the Taiwan CDC encourages you to get tested for COVID-19 as soon as possible at one of the following testing centers:";
+
+"behaviors.report.title" = "Your behaviors will be anonymously pooled with others in this neighborhood.\n\nTap any healthy behaviors you did today or add new ones:";
+"behaviors.report.common" = "Recommended behaviors";
+"behaviors.report.recent" = "Recent behaviors near you";
+"behaviors.report.addNew" = "Report other behavior ...";
+"behaviors.report.submitting" = "Reporting your healthy behaviors to your neighborhood ...";
+
 "behaviors.reported.title" = "Thanks for making your neighborhood healthier!";
 
 "behaviors.guidance.title" = "How to correctly perform healthy behaviors:";
 
 "resources.emptyGuide" = "You can be the first to add resources provided by this place by tapping below.";
-"resources.rating.title" = "Your ratings will be anonymously pooled with others for this place.\n\nTap to rate health resources provided by this place or add others:";
-"resource.ratings.submitting" = "Reporting your ratings for this place ...";
+"resources.ratings.title" = "Your ratings will be anonymously pooled with others for this place.\n\nTap to rate health resources provided by this place or add others:";
+"resources.ratings.submitting" = "Reporting your ratings for this place ...";
 "resources.add.title" = "Your resource suggestions will be anonymously pooled with others for this place.\n\nTap any health-promoting resources this place provides:";
 "resources.add.submitting" = "Adding your resources for this place ...";
 "resources.suggest.message" = "Important Resources For This Neighborhood";
 "resources.suggest.add.placeholder" = "Suggest other resource ...";
-
-"history.symptom.title" = "Symptom History";
-"history.behavior.title" = "Behavior History";
-"history.location.title" = "Location History";
-
-"history.symptom.empty.desc" = "You haven’t reported any symptoms yet.";
-"history.behavior.empty.desc" = "You haven’t reported any healthy behaviors yet.";
 
 "donate.header" = "Donate";
 "donate.title" = "If you believe in Autonomy, please consider donating:";

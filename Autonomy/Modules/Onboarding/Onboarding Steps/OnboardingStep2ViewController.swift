@@ -29,10 +29,6 @@ class OnboardingStep2ViewController: ViewController, BackNavigator, OnboardingVi
 
     lazy var sampleSymptomsTagView = makeSampleSymptomTagListView()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 

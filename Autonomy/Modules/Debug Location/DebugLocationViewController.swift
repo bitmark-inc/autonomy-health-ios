@@ -27,10 +27,6 @@ class DebugLocationViewController: ViewController, GMSMapViewDelegate {
     var markers: [String?: GMSMarker] = [:]
     var currentFocus = 0
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     override func bindViewModel() {
         super.bindViewModel()
 

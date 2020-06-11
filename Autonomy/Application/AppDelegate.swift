@@ -102,8 +102,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 Global.log.error("[notification] missing symptoms in \(notifityType)")
             }
 
-            let viewModel = SurveySymptomsViewModel(lastSymptomKeys: symptomKeys ?? [])
-            Navigator.goto(segue: .surveySymptoms(viewModel: viewModel))
+            let viewModel = ReportSymptomsViewModel(lastSymptomKeys: symptomKeys ?? [])
+            Navigator.goto(segue: .reportSymptoms(viewModel: viewModel))
 
         case TypeKey.behaviorOnRiskArea, TypeKey.behaviorSelfRiskArea:
             let behaviorKeys = additionalData["behaviors"] as? [String]
@@ -111,8 +111,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 Global.log.error("[notification] missing behaviors in \(notifityType)")
             }
 
-            let viewModel = SurveyBehaviorsViewModel(lastBehaviorKeys: behaviorKeys ?? [])
-            Navigator.goto(segue: .surveyBehaviors(viewModel: viewModel))
+            let viewModel = ReportBehaviorsViewModel(lastBehaviorKeys: behaviorKeys ?? [])
+            Navigator.goto(segue: .reportBehaviors(viewModel: viewModel))
 
         default:
             return
@@ -176,8 +176,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         switch notificationIdentifier {
         case Constant.NotificationIdentifier.cleanAndDisinfectSurfaces:
             let behaviorKeys = ["clean_hand", "clean_surface"]
-            let viewModel = SurveyBehaviorsViewModel(lastBehaviorKeys: behaviorKeys)
-            Navigator.goto(segue: .surveyBehaviors(viewModel: viewModel))
+            let viewModel = ReportBehaviorsViewModel(lastBehaviorKeys: behaviorKeys)
+            Navigator.goto(segue: .reportBehaviors(viewModel: viewModel))
 
         default:
             return

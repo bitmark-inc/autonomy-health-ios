@@ -29,10 +29,6 @@ class ViewRecoveryKeyViewController: ViewController, BackNavigator {
         return viewModel as! ViewRecoveryKeyViewModel
     }()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     fileprivate var pageSize: CGSize {
         let layout = self.recoveryKeyCollectionView.collectionViewLayout as! UPCarouselFlowLayout
         var pageSize = layout.itemSize

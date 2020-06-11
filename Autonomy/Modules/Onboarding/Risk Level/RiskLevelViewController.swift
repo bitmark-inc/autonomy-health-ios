@@ -45,10 +45,6 @@ class RiskLevelViewController: ViewController, BackNavigator {
         return viewModel as! RiskLevelViewModel
     }()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     // MARK: - bindViewModel
     override func bindViewModel() {
         super.bindViewModel()

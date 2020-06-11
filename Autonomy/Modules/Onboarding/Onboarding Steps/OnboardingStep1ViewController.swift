@@ -27,10 +27,6 @@ class OnboardingStep1ViewController: ViewController, BackNavigator, OnboardingVi
         ButtonGroupView(button1: backButton, button2: nextButton, hasGradient: true)
     }()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     // MARK: bindViewModel
     override func bindViewModel() {
         super.bindViewModel()

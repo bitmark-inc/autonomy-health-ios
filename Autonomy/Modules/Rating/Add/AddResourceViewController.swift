@@ -34,10 +34,6 @@ class AddResourceViewController: ViewController, BackNavigator {
 
     weak var panModalVC: ProgressPanViewController?
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 

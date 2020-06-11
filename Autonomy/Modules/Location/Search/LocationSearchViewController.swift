@@ -28,11 +28,6 @@ class LocationSearchViewController: ViewController {
     }()
 
     fileprivate var scores = [Float?]()
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     fileprivate var autoCompleteLocations = [GMSAutocompletePrediction]()
 
     // MARK: - Life Cycle

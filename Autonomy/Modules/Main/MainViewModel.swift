@@ -27,16 +27,12 @@ class MainViewModel: ViewModel {
     let orderLocationIndexSubject = PublishSubject<(from: Int, to: Int)>()
     let submitResultSubject = PublishSubject<Event<Never>>()
     var navigateToPoiID: String?
-    let signOutAccountResultSubject = PublishSubject<Event<Never>>()
-    var observeAndSubmitProfileFormulaDisposable: Disposable?
 
     override init() {
         super.init()
 
         fetchYouAutonomyProfile()
         fetchPOIs()
-        FormulaSupporter.shared.pollingSyncFormula()
-        observeAndSubmitProfileFormula()
     }
 
     convenience init(navigateToPoiID: String?) {
@@ -67,48 +63,6 @@ class MainViewModel: ViewModel {
                 guard let self = self else { return }
                 self.poisRelay.accept((pois: savedPOIs, source: source))
 
-            }, onError: { (error) in
-                Global.backgroundErrorSubject.onNext(error)
-            })
-            .disposed(by: disposeBag)
-    }
-
-    fileprivate func observeAndSubmitProfileFormula() {
-        observeAndSubmitProfileFormulaDisposable = FormulaSupporter.shared.coefficientRelay
-            .filterNil()
-            .filter { $0.actor != nil }.map { $0.v }
-            .debounce(.seconds(3), scheduler: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] (coefficient) in
-                guard let disposeBag = self?.disposeBag else { return }
-
-                FormulaService.update(coefficient: coefficient)
-                    .subscribe(onCompleted: {
-                        Global.log.info("[formula] updates successfully")
-                    }, onError: { (error) in
-                        Global.backgroundErrorSubject.onNext(error)
-                    })
-                    .disposed(by: disposeBag)
-            })
-
-        observeAndSubmitProfileFormulaDisposable?
-            .disposed(by: disposeBag)
-    }
-
-    func resetFormula() {
-        observeAndSubmitProfileFormulaDisposable?.dispose() // ensure update with debounce 3s don't call after deleting
-
-        FormulaSupporter.shared.defaultStateRelay.accept(.isReseting)
-
-        FormulaService.delete()
-            .andThen(FormulaService.get())
-            .do(onDispose: { [weak self] in
-                self?.observeAndSubmitProfileFormula()
-            })
-            .subscribe(onSuccess: { (formulaWeight) in
-                Global.log.info("[formula] resets successfully")
-                FormulaSupporter.shared.coefficientRelay
-                    .accept((actor: nil, v: formulaWeight.coefficient))
-                FormulaSupporter.shared.defaultStateRelay.accept(formulaWeight.isDefault ? .default : .custom)
             }, onError: { (error) in
                 Global.backgroundErrorSubject.onNext(error)
             })
@@ -208,14 +162,5 @@ class MainViewModel: ViewModel {
                 self?.submitResultSubject.onNext(Event.error(error))
             })
             .disposed(by: disposeBag)
-    }
-
-    func signOutAccount() {
-        do {
-            try Global.current.removeCurrentAccount()
-            signOutAccountResultSubject.onNext(.completed)
-        } catch {
-            signOutAccountResultSubject.onNext(.error(error))
-        }
     }
 }

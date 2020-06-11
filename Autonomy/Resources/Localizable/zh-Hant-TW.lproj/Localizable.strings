@@ -14,60 +14,76 @@
 "Next" = "下一步";
 "Today" = "今日";
 "Enable" = "啟用";
+"Delete" = "刪除";
 
 "Permission" = "允許";
 "Notifications" = "通知";
 "Location_data" = "位置資料";
 
-"RiskLevel" = "風險水平";
+"ActiveCases" = "Active Cases";
+"Added" = "已增加";
+"addNewLocation..." = "新增位置...";
+"AddRating" = "Add Rating";
+"AddResource" = "Add Resource";
+"Address" = "Address";
+"Assistance" = "協助";
+"Behavior" = "行為";
+"Behaviors" = "行為";
+"BehaviorsScore" = "行為評分";
+"Cases" = "Cases";
+"CasesScore" = "確診評分";
+"Copied" = "已複製";
+"Data" = "資料";
+"DigitalRights" = "數位權利";
+"distanceKm" = "%@ km";
+"Export" = "匯出";
+"FAQ" = "FAQ";
+"GotIt" = "了解";
+"Graphs_coming_soon" = "Graphs coming soon";
+"Guidance" = "指引";
+"HealthyBehaviors" = "健康行為";
+"HighRisk" = "高風險";
+"Locations" = "位置";
 "LowRisk" = "低風險";
 "ModerateRisk" = "中等風險";
-"HighRisk" = "高風險";
-"DigitalRights" = "數位權利";
-
-"Survey" = "問卷";
-"Symptoms" = "症狀";
-"Symptom" = "症狀";
-"Behaviors" = "行為";
-"Behavior" = "行為";
-"Assistance" = "協助";
+"More" = "More";
+"Neighborhood" = "Neighborhood";
+"None" = "無";
+"Profile" = "個人簡介";
+"Ratings" = "Ratings";
+"RecoveryKey" = "恢復金鑰";
+"Report" = "報告";
+"ReportCard" = "Report Card";
+"Reported" = "已提交報告";
 "Request" = "請求";
 "Requests" = "請求";
+"Reset" = "重置";
+"Resource" = "Resource";
 "Review" = "審閱";
-"GotIt" = "了解";
-"Guidance" = "指引";
-"Submit" = "提交";
+"RiskLevel" = "風險水平";
+"Score_(0_5)" = "Score (0-5)";
+"Security" = "安全";
+"SignedUp" = "已註冊";
+"SignOut" = "登出";
 "SignUp" = "註冊";
+"Submit" = "提交";
 "Submitted" = "已提交";
 "Submitting" = "提交中";
-"SignedUp" = "已註冊";
-"Copied" = "已複製";
-"Reported" = "已提交報告";
-"Added" = "已增加";
-"ViewSource" = "檢視來源";
-"Reset" = "重置";
-"JupyterNotebook" = "Jupyter Notebook";
-"Profile" = "個人簡介";
-"Report" = "報告";
-"History" = "歷史";
-"Locations" = "位置";
-"Data" = "資料";
-"Security" = "安全";
 "Support" = "支援";
-"FAQ" = "FAQ";
-"Export" = "匯出";
-"Delete" = "刪除";
-"SignOut" = "登出";
-"RecoveryKey" = "恢復金鑰";
-"None" = "無";
+"Survey" = "問卷";
+"Symptom" = "症狀";
+"Symptoms" = "症狀";
+"SymptomsScore" = "症狀評分";
+"ViewOnJupyter" = "View on Jupyter";
+"ViewSource" = "檢視來源";
+"ViewYourRating" = "View Your Rating";
 "You" = "You";
 
-"RawData" = "原始資料";
-"from_last_24_hours" = "從過去24小時";
-"ConfirmedInfections" = "確診數";
-"HealthyBehaviors" = "健康行為";
-"atRistPopulation" = "危險群";
+// Donate
+"HelpKeepAutonomyFree" = "協助維護Autonomy的免費服務";
+"Other_amount" = "其他金額";
 
+// Metrics / Guidance
 "YourTotalForToday" = "您的今日加總";
 "SymptomsYouReportedToday" = "今天回報的症狀數";
 "CommunityAverageForToday" = "周圍社群今日平均";
@@ -78,45 +94,27 @@
 "AreYouDoingThemCorrectly" = "您的方法正確嗎？";
 "HowWeKeepYourDataPrivate" = "我們如何保護您的資料";
 
-"addNewLocation..." = "新增位置...";
-"VersionWithNumber" = "版本 %@";
-"HelpKeepAutonomyFree" = "協助維護Autonomy的免費服務";
-"Other_amount" = "其他金額";
+// Behavior Guidance
+"HandWashing" = "洗手";
+"Applying Hand Sanitizer" = "使用手部消毒劑";
+"Wearing A Surgical Mask" = "佩戴醫用口罩";
+"Covering Coughs" = "注意咳嗽禮節";
 
+// App General
 "supportMessage" = "\n%@\n\n您要聯絡支援團隊嗎？";
 "Contact" = "聯絡";
 "Cancel" = "取消";
 "TryAgain" = "再試一次";
 "Contact_us" = "聯絡我們";
 "YourAuthorizationIsRequired" = "需要您的授權。";
-
-"WeightedCoefficient" = "權重係數";
-
-"CasesScore" = "確診評分";
-"BehaviorsScore" = "行為評分";
-"SymptomsScore" = "症狀評分";
-"ConfirmedCasesScore" = "確診評分";
-"ReportedBehaviorsScore" = "已回報行為評分";
-"ReportedSymptomsScore" = "已回報症狀評分";
-"ReportedBehaviorsScore.desc" = "評分經由周圍1公里內所有使用者回報的行為來計算。";
-"ReportedSymptomsScore.desc" = "針對每個回報的證據，依據其為新冠肺炎徵狀的可能性給予 1 至 3 不等的評分。綜合症狀評分是依據 1 公里距離內的所有症狀綜合計算。目前的症狀及評分為：";
-
-"BehaviorsTotal" = "綜合行為";
-"TotalPeople" = "所有人";
-"MaxScorePerPerson" = "每個人的最高分";
-"TotalCustomized" = "總自定義";
-"TotalWeight" = "總權重";
-"MaxWeight" = "每人最大權重";
-"CustomizedWeight" = "自定義總重";
+"VersionWithNumber" = "版本 %@";
 
 "Yesterday" = "昨日";
 "Today" = "今日";
 "now" = "現在";
-
-"HandWashing" = "洗手";
-"Applying Hand Sanitizer" = "使用手部消毒劑";
-"Wearing A Surgical Mask" = "佩戴醫用口罩";
-"Covering Coughs" = "注意咳嗽禮節";
+"Week" = "Week";
+"Month" = "Month";
+"Year" = "Year";
 
 "biometric.touchID" = "Touch ID";
 "biometric.faceID" = "Face ID";

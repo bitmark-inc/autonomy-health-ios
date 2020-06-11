@@ -37,10 +37,6 @@ class ItemTrendingViewController: ViewController, BackNavigator {
         return viewModel as! ItemTrendingViewModel
     }()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     override func bindViewModel() {
         super.bindViewModel()
 
@@ -135,12 +131,12 @@ extension ItemTrendingViewController: UITextViewDelegate {
     fileprivate func gotoReportScreen() {
         switch thisViewModel.reportItemObject {
         case .symptoms:
-            let viewModel = SurveySymptomsViewModel()
-            navigator.show(segue: .surveySymptoms(viewModel: viewModel), sender: self)
+            let viewModel = ReportSymptomsViewModel()
+            navigator.show(segue: .reportSymptoms(viewModel: viewModel), sender: self)
 
         case .behaviors:
-            let viewModel = SurveyBehaviorsViewModel()
-            navigator.show(segue: .surveyBehaviors(viewModel: viewModel), sender: self)
+            let viewModel = ReportBehaviorsViewModel()
+            navigator.show(segue: .reportBehaviors(viewModel: viewModel), sender: self)
 
         default:
             return

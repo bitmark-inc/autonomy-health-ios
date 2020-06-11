@@ -33,10 +33,6 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
         return viewModel as! YouHealthDetailsViewModel
     }()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     override func bindViewModel() {
         super.bindViewModel()
 

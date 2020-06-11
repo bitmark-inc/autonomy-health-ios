@@ -19,6 +19,10 @@ class ViewController: ThemedViewController, Navigatable {
 
     lazy var contentView: UIView = makeContentView()
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     init(viewModel: ViewModel? = nil) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

@@ -36,10 +36,6 @@ class ResourceRatingViewController: ViewController, BackNavigator {
 
     weak var panModalVC: ProgressPanViewController?
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     override func bindViewModel() {
         super.bindViewModel()
 
@@ -88,7 +84,7 @@ class ResourceRatingViewController: ViewController, BackNavigator {
     fileprivate func showProgressPanModal() {
         let viewController = ProgressPanViewController()
         viewController.headerScreen.header = R.string.localizable.submitting().localizedUppercase
-        viewController.titleLabel.setText(R.string.phrase.resourceRatingsSubmitting())
+        viewController.titleLabel.setText(R.string.phrase.resourcesRatingsSubmitting())
         presentPanModal(viewController)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -199,7 +195,7 @@ extension ResourceRatingViewController {
     fileprivate func makeTitleScreen() -> UIView {
         let label = Label()
         label.numberOfLines = 0
-        label.apply(text: R.string.phrase.resourcesRatingTitle(),
+        label.apply(text: R.string.phrase.resourcesRatingsTitle(),
                     font: R.font.atlasGroteskLight(size: 24),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center

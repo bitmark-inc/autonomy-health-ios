@@ -37,10 +37,6 @@ class ProfileViewController: ViewController, BackNavigator {
     fileprivate lazy var versionLabel = makeVersionLabel()
     fileprivate lazy var bitmarkCertView = makeBitmarkCertView()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     override func bindViewModel() {
         super.bindViewModel()
 
@@ -164,28 +160,13 @@ extension ProfileViewController {
     }
 
     fileprivate func gotoReportSymptomsScreen() {
-        let viewModel = SurveySymptomsViewModel()
-        navigator.show(segue: .surveySymptoms(viewModel: viewModel), sender: self)
-    }
-
-    fileprivate func gotoSymptomHistoryScreen() {
-        let viewModel = SymptomHistoryViewModel()
-        navigator.show(segue: .symptomHistory(viewModel: viewModel), sender: self)
+        let viewModel = ReportSymptomsViewModel()
+        navigator.show(segue: .reportSymptoms(viewModel: viewModel), sender: self)
     }
 
     fileprivate func gotoReportBehaviorsScreen() {
-        let viewModel = SurveyBehaviorsViewModel()
-        navigator.show(segue: .surveyBehaviors(viewModel: viewModel), sender: self)
-    }
-
-    fileprivate func gotoBehaviorHistoryScreen() {
-        let viewModel = BehaviorHistoryViewModel()
-        navigator.show(segue: .behaviorHistory(viewModel: viewModel), sender: self)
-    }
-
-    fileprivate func gotoLocationHistoryScreen() {
-        let viewModel = LocationHistoryViewModel()
-        navigator.show(segue: .locationHistory(viewModel: viewModel), sender: self)
+        let viewModel = ReportBehaviorsViewModel()
+        navigator.show(segue: .reportBehaviors(viewModel: viewModel), sender: self)
     }
 
     fileprivate func gotoViewRecoveryKeyFlow() {

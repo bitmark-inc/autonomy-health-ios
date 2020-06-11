@@ -35,10 +35,6 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
         return viewModel as! AutonomyTrendingViewModel
     }()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
     override func bindViewModel() {
         super.bindViewModel()
 

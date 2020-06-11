@@ -26,7 +26,6 @@ class MainViewController: ViewController {
 
     // MARK: - Properties
     fileprivate lazy var mainCollectionView = makeMainCollectionView()
-    fileprivate lazy var addPlaceGuideView = makeAddPlaceGuideView()
     fileprivate lazy var addLocationBar = makeAddLocationBar()
 
     fileprivate var pois = [PointOfInterest]()
@@ -41,10 +40,6 @@ class MainViewController: ViewController {
     fileprivate lazy var thisViewModel: MainViewModel = {
         return viewModel as! MainViewModel
     }()
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 
     /// setup onesignal notification
     override func viewDidAppear(_ animated: Bool) {
@@ -192,14 +187,14 @@ class MainViewController: ViewController {
     }
 
     fileprivate func bindYourChangeEvent() {
-        thisViewModel.yourAreaProfileRelay
+        thisViewModel.youAutonomyProfileRelay
             .filterNil()
-            .subscribe(onNext: { [weak self] (areaProfile) in
+            .subscribe(onNext: { [weak self] (autonomyProfile) in
                 guard let self = self,
                     let yourHealthCell = self.mainCollectionView.cellForItem(at: IndexPath(row: 1, section: 1)) as? HealthScoreCollectionCell else {
                     return
                 }
-                yourHealthCell.setData(score: areaProfile.score)
+                yourHealthCell.setData(score: autonomyProfile.autonomyScore)
             })
             .disposed(by: disposeBag)
     }
@@ -268,7 +263,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         case (1, 0): // make blank cell
             return  collectionView.dequeueReusableCell(withClass: UICollectionViewCell.self, for: indexPath)
         case (1, 1):
-            return collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
+            if let autonomyProfile = thisViewModel.youAutonomyProfileRelay.value {
+                cell.setData(score: autonomyProfile.autonomyScore)
+            }
+            return cell
 
         case (2, _):
             let cell = collectionView.dequeueReusableCell(withClass: HealthScoreCollectionCell.self, for: indexPath)
@@ -437,33 +436,6 @@ extension MainViewController {
             .disposed(by: disposeBag)
 
         labelCover.addGestureRecognizer(makeAddLocationTapGestureRecognizer())
-
-        return view
-    }
-
-    fileprivate func makeAddPlaceGuideView() -> UIView {
-        let label = Label()
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.apply(text: R.string.phrase.locationAddGuidance(),
-                    font: R.font.atlasGroteskLight(size: 18),
-                    themeStyle: .silverColor, lineHeight: 1.25)
-
-        let arrowImageView = ImageView(image: R.image.doneCircleArrow())
-
-        let view = UIView()
-        view.isHidden = true
-        view.addSubview(label)
-        view.addSubview(arrowImageView)
-
-        label.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-        }
-
-        arrowImageView.snp.makeConstraints { (make) in
-            make.top.equalTo(label.snp.bottom).offset(42)
-            make.centerX.bottom.equalToSuperview()
-        }
 
         return view
     }

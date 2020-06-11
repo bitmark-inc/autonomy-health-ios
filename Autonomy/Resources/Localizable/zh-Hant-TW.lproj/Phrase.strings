@@ -14,6 +14,8 @@
 "onboarding.2.description" = "您的資料將永遠的維持100%保密\n（我們也無法存取）";
 "onboarding.3.description" = "我們會幫助您周圍的人一起變得更健康。";
 
+"onboarding.symptoms.title" = "點選或新增任何您有的症狀：";
+
 "permission.description" = "Autonomy需要存取以下項目：";
 "permission.notification.description" = "我們會提醒您回報症狀以及保持良好的健康習慣。當您周圍的人群健康狀況有改變時，我們會寄警訊給您。";
 "permission.location.description" = "您目前的位置會被用於增進您周圍人群的健康。您的位置資料永遠都是私密的。";
@@ -23,83 +25,41 @@
 "riskLevel.yes.description" = "高危險群通常包含：\n• 65歲以上\n\n 痼疾，例如：\n• 血壓\n• 心血管疾病\n• 糖尿病\n• 慢性呼吸道疾病（如肺病或氣喘\n• 癌症\n• 過胖\n• 免疫系統受損";
 "riskLevel.no" = "不，我不屬於高危險群";
 
-"source.info" = "<b>Autonomy分數</b> 是一個經過標準化，範圍在0-100之間的數字。此數值用來預測附近社群的整體健康。\n\n此數值目前由3個主要的輸入資料，經過相關係數的加權計算而得出。每個相關係數反應了對於整體數值的重要程度。您可以調整這些相關係數來調整權重。\n\n我們使用的3個輸入資料為：\n\n1)近14日該區域的<b>每日確診病例數</b>之指數加權平均值。病例數資料來源為<corona-data-project>Corona Data Scraper project</corona-data-project>，該服務統整每日經驗證的全球公開健康數據。\n\n2)<b>症狀分數</b>是一個透過計算該區域每日通報症狀而得出的標準化數值。不同的症狀依照是否為當前流行傳染病的徵狀而給予不同的權重。 \n\n3)<b>行為分數</b>是一個透過計算該區域每日通報健康行為而得出的標準化數值。 \n\n關於我們如何計算此數值，請瀏覽我們的<jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>。";
+"source.info.title" = "How The Autonomy Score Is Computed";
+"source.info" = "The Autonomy Score is a normalized score from 0-100 that forecasts the overall wellbeing of a neighborhood.\n\nThe score currently consists of 3 main inputs, each with a weighted coefficent that reflects each input’s relative importance to the overall score. You can adjust these coefficients above to assign different relative weights to the inputs.\n\nOur 3 data inputs are:\n\n1) A 14-day exponentially weighted average of the number of daily confirmed medical conditions in an area, as reported by the <corona-data-project>Corona Data Scraper project</corona-data-project>, which aggregates the latest public health data from verified sources around the world.\n\n2) A symptoms score, which is a normalized score calculated from the daily number of reported symptoms in a given neighborhood. Symptoms are assigned differential weights depending on whether they are known indicators of ongoing infectious disease outbreaks.\n\n3) A behaviors score, which is a normalized score calculated from the daily reported number of health-promoting behaviors in a given neighborhood.\n\nFor more information about exactly how we calculate our scores, please visit our <jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>.";
 
 "location.placeholder" = "Enter name or address ...";
 "location.tapGuidance" = "Tap a place to add it to your monitoring screen";
 "location.editGuidance" = "Assign an alias, delete, or tap Done to save";
 
-"survey.title" = "您現在感覺如何？";
-"survey.help.title" = "我們可以如何幫忙您？";
-"survey.help.symptoms" = "我有出現症狀";
-"survey.help.symptoms.description" = "如果您有常見的新冠肺炎症狀，請讓我們知道。";
-"survey.help.assistance" = "我需要協助";
-"survey.help.assistance.description" = "讓您當地的社群知道您需要幫助。";
-
-"survey.symptoms.title" = "點選或新增任何您有的症狀：";
-"survey.commonSymptoms" = "常見症狀";
-"survey.recentSymptoms" = "近期周圍社群的症狀";
-"survey.reportNewSymptom" = "回報其他症狀...";
-"survey.symptom.reporting" = "正在回報您的症狀至您周圍的社群...";
-
-"survey.behaviors.title" = "點選或新增任何您今天有執行的健康行為：";
-"survey.commonBehaviors" = "建議的應對行為";
-"survey.recentBehaviors" = "你附近的人的行為";
-"survey.reportNewBehavior" = "回報其他行為...";
-"survey.behavior.reporting" = "正在回報您的健康行為給您周圍的社群...";
-
-"assistance.title" = "您需要哪一類的協助？";
-"assistance.foodAndWater" = "取得食物或飲水";
-"assistance.foodAndWater.desc" = "我需要他人協助我取得食物及飲水。";
-"assistance.foodAndWater.requestTitle" = "需要取得食物或飲水";
-"assistance.medicine" = "取得醫療物資";
-"assistance.medicine.desc" = "我需要他人協助我取得必要的醫療物資。";
-"assistance.medicine.requestTitle" = "我需要取得醫療物資。";
-"assistance.transport" = "前往醫療院所";
-"assistance.transport.desc" = "我需要他人協助帶我去醫療院所接受照護。";
-"assistance.transport.requestTitle" = "需要前往醫療院所";
-"assistance.unsafeHome" = "我的住所不安全";
-"assistance.unsafeHome.desc" = "我需要他人協助帶我去安全的地點。";
-"assistance.unsafeHome.requestTitle" = "需要離開不安全的住所";
-
-"assistance.needItems.title" = "您確切需要些什麼？";
-"assistance.needItems.placeholder" = "請輸入需要的品項或是前往目的地的詳細資訊";
-
-"assistance.place.title" = "可以安全地與您的協助者見面的地點為？";
-"assistance.place.placeholder" = "請輸入地址或是其他安全地點的描述";
-
-"assistance.contact.title" = "您的協助者應該如何聯絡您？";
-"assistance.contact.placeholder" = "請輸入聯絡資訊。例如，Line ID，WhatsApp ID，或是電話號碼。";
-/*
-"review.title" = "請確認您提出的協助需求：";
-"assistance.info.exactNeeds" = "確切需要的協助";
-"assistance.info.meetingLocation" = "碰面地點";
-"assistance.info.contactInfo" = "聯絡方式";
-
-"requestHelp.submitted.title" = "您的協助需求已經廣播至您周圍的社群";
-"requestHelp.submitted.desc" = "如果有人自願協助，您將會收到通知。";
-"requestHelp.generalTitle" = "社群中有人提出協助需求";
-
-"giveHelp.signUp.title" = "感謝您報名來達成此項來自社群的請求";
-"giveHelp.signUp.desc" = "提出請求的社群成員已被告知您回覆。請現在寫下或是擷取螢幕畫面請求的細節，然後聯絡該位社群成員。";
-
-"giveHelp.submitted" = "您現已報名來達成此項來自社群的請求。若您無法完成任務，請聯絡並告知社群成員。";
-"giveHelp.helper.submitted" = "您現已報名來達成此項來自社群的請求。若您無法完成任務，請聯絡並告知社群成員。";
-"giveHelp.helper.otherSubmitted" = "已經有人報名來達成此項來自社群的請求。";
-"giveHelp.requester.submitted" = "有人報名來達成您對社群發出的請求。請靜候聯絡。";
-*/
+"symptoms.report.title" = "Your symptoms will be anonymously pooled with others in this neighborhood.\n\nTap any symptoms you are experiencing or add new ones:";
+"symptoms.report.common" = "常見症狀";
+"symptoms.report.recent" = "近期周圍社群的症狀";
+"symptoms.report.addNew" = "回報其他症狀...";
+"symptoms.report.submitting" = "正在回報您的症狀至您周圍的社群...";
 
 "symptoms.reported.title" = "感謝您分享您的症狀給周圍的社群！";
+
+"symptoms.guidance.title" = "At least one of the symptoms you reported is a common COVID-19 symptom.";
+"symptoms.guidance.subTitle" = "To protect the health of you and your neighborhood, the Taiwan CDC encourages you to get tested for COVID-19 as soon as possible at one of the following testing centers:";
+
+"behaviors.report.title" = "Your behaviors will be anonymously pooled with others in this neighborhood.\n\nTap any healthy behaviors you did today or add new ones:";
+"behaviors.report.common" = "建議的應對行為";
+"behaviors.report.recent" = "你附近的人的行為";
+"behaviors.report.addNew" = "回報其他行為...";
+"behaviors.report.submitting" = "正在回報您的健康行為給您周圍的社群...";
+
 "behaviors.reported.title" = "感謝您讓您周圍的社群更健康！";
 
 "behaviors.guidance.title" = "如何正確施行健康行為：";
 
-"history.symptom.title" = "症狀歷史";
-"history.behavior.title" = "行為歷史";
-"history.location.title" = "位置歷史";
-
-"history.symptom.empty.desc" = "您尚未回報任何症狀。";
-"history.behavior.empty.desc" = "您尚未回報任何健康行為。";
+"resources.emptyGuide" = "You can be the first to add resources provided by this place by tapping below.";
+"resources.ratings.title" = "Your ratings will be anonymously pooled with others for this place.\n\nTap to rate health resources provided by this place or add others:";
+"resources.ratings.submitting" = "Reporting your ratings for this place ...";
+"resources.add.title" = "Your resource suggestions will be anonymously pooled with others for this place.\n\nTap any health-promoting resources this place provides:";
+"resources.add.submitting" = "Adding your resources for this place ...";
+"resources.suggest.message" = "Important Resources For This Neighborhood";
+"resources.suggest.add.placeholder" = "Suggest other resource ...";
 
 "donate.header" = "捐款";
 "donate.title" = "如果您認同Autonomy的理念，請考慮捐款：";
