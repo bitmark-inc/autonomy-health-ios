@@ -19,7 +19,7 @@ class ResourceRatingViewController: ViewController, BackNavigator {
     }()
     fileprivate lazy var scrollView = makeScrollView()
     fileprivate lazy var titleScreen = makeTitleScreen()
-    fileprivate lazy var resouceRatingListView = makeResourceRatingListView()
+    fileprivate lazy var resourceRatingListView = makeResourceRatingListView()
     fileprivate lazy var addResourceView = makeAddResourceView()
     fileprivate lazy var backButton = makeLightBackItem()
     fileprivate lazy var submitButton = RightIconButton(title: R.string.localizable.submit().localizedUppercase,
@@ -34,6 +34,8 @@ class ResourceRatingViewController: ViewController, BackNavigator {
         return viewModel as! ResourceRatingViewModel
     }()
 
+    weak var panModalVC: ProgressPanViewController?
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -41,7 +43,59 @@ class ResourceRatingViewController: ViewController, BackNavigator {
     override func bindViewModel() {
         super.bindViewModel()
 
-        buildResourceRatingListView()
+        thisViewModel.resourceRatingsRelay
+            .filterNil()
+            .subscribe(onNext: { [weak self] (resourceRatings) in
+                self?.buildResourceRatingListView(resourceRatings: resourceRatings)
+            })
+            .disposed(by: disposeBag)
+
+        submitButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            let updatedRatings = self.getUpdatedRatings()
+            self.thisViewModel.submitRatings(ratings: updatedRatings)
+            self.showProgressPanModal()
+        }.disposed(by: disposeBag)
+
+        thisViewModel.submitRatingsResultSubject
+            .subscribe(onNext: { [weak self] (event) in
+                loadingState.onNext(.hide)
+                self?.panModalVC?.dismiss(animated: true, completion: { [weak self] in
+                    guard let self = self else { return }
+                    switch event {
+                    case .completed:
+                        self.backPlaceAutonomyProfileScreen()
+                    case .error(let error):
+                        guard !self.handleIfGeneralError(error: error) else { return }
+                        Global.log.error(error)
+                        self.showErrorAlertWithSupport(message: R.string.error.system())
+                    }
+                })
+            })
+            .disposed(by: disposeBag)
+    }
+
+    fileprivate func getUpdatedRatings() -> [ResourceRating] {
+        guard let resourceRatingView = resourceRatingListView.arrangedSubviews as? [ResourceRatingView] else { return [] }
+        return resourceRatingView.compactMap { (view) -> ResourceRating? in
+            guard let thisResource = view.resource else { return nil }
+            let thisRating = view.currentRating
+
+            return ResourceRating(resource: thisResource, score: Int(thisRating.rounded()))
+        }
+    }
+
+    fileprivate func showProgressPanModal() {
+        let viewController = ProgressPanViewController()
+        viewController.headerScreen.header = R.string.localizable.submitting().localizedUppercase
+        viewController.titleLabel.setText(R.string.phrase.resourceRatingsSubmitting())
+        presentPanModal(viewController)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            viewController.indeterminateProgressBar.startAnimating()
+        }
+
+        panModalVC = viewController
     }
 
     override func setupViews() {
@@ -52,7 +106,7 @@ class ResourceRatingViewController: ViewController, BackNavigator {
                 (headerScreen, 0),
                 (titleScreen, 0),
                 (SeparateLine(height: 1), 3),
-                (resouceRatingListView, 0),
+                (resourceRatingListView, 17),
                 (addResourceView, 15)
             ],
             bottomConstraint: true)
@@ -85,7 +139,52 @@ class ResourceRatingViewController: ViewController, BackNavigator {
 extension ResourceRatingViewController {
     fileprivate func gotoAddResourceScreen() {
         let viewModel = AddResourceViewModel(poiID: thisViewModel.poiID)
+
+        viewModel.addResourcesResultSubject
+            .subscribe(onNext: { [weak self] (event) in
+                guard let self = self else { return }
+                switch event {
+                case .next(let resources):
+                    self.addNewResourceIntoRatingListView(resources: resources)
+
+                default:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
+
         navigator.show(segue: .addResource(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func backPlaceAutonomyProfileScreen() {
+        navigator.pop(sender: self)
+    }
+}
+
+extension ResourceRatingViewController {
+    fileprivate func addNewResourceIntoRatingListView(resources: [Resource]) {
+        guard let currentResourceRatings = resourceRatingListView.arrangedSubviews as? [ResourceRatingView] else { return }
+
+        // filter resources already in the ratings list
+        let filteredResources = resources.filter { (resource) in
+            !currentResourceRatings.contains(where: { $0.resource.id == resource.id })
+        }
+
+        for resource in filteredResources {
+            let newView = ResourceRatingView(resource: resource)
+            resourceRatingListView.addArrangedSubview(newView)
+        }
+    }
+
+    fileprivate func buildResourceRatingListView(resourceRatings: [ResourceRating]) {
+        resourceRatingListView.removeArrangedSubviews()
+        resourceRatingListView.removeSubviews()
+
+        let newArrangedSubviews = resourceRatings.map {
+            ResourceRatingView(resource: $0.resource, initValue: $0.score)
+        }
+
+        resourceRatingListView.addArrangedSubviews(newArrangedSubviews)
     }
 }
 
@@ -97,7 +196,7 @@ extension ResourceRatingViewController {
         return scrollView
     }
 
-    func makeTitleScreen() -> UIView {
+    fileprivate func makeTitleScreen() -> UIView {
         let label = Label()
         label.numberOfLines = 0
         label.apply(text: R.string.phrase.resourcesRatingTitle(),
@@ -107,14 +206,7 @@ extension ResourceRatingViewController {
         return CenterView(contentView: label, shrink: true)
     }
 
-    func buildResourceRatingListView() {
-        ["Plant-based food", "Wearning HAND-WASHING FACILITIES"].forEach { (resource) in
-            let ratingView = ResourceRatingView(resource: resource)
-            resouceRatingListView.addArrangedSubview(ratingView)
-        }
-    }
-
-    func makeResourceRatingListView() -> UIStackView {
+    fileprivate func makeResourceRatingListView() -> UIStackView {
         return UIStackView(arrangedSubviews: [], axis: .vertical)
     }
 

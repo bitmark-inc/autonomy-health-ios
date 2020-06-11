@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 class SymptomService {
-    static var provider = MoyaProvider<SymptomAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<SymptomAPI>(stubClosure: MoyaProvider.immediatelyStub, session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func getList() -> Single<SymptomList> {
         Global.log.info("[start] SymptomService.getList")

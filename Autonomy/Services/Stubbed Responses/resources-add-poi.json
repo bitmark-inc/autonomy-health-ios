@@ -1,0 +1,20 @@
+{
+  "resources": [
+    {
+      "id": "1bb65b9767a055d0b898372a2f4011ccc03d23b9f241dc3f67a68c970d0a422b",
+      "name": "Climbing"
+    },
+    {
+      "id": "5fe2393a761c82e8a078124062167e6ce845cc349bf782f1d4be0e9719989a44",
+      "name": "Cross-Country Skiing"
+    },
+    {
+       "id":"1",
+       "name":"Climbing"
+    },
+    {
+      "id": "55dfc99f94b2bdcac0f860fb59ff34ef91911070843cf43610f496ba2f190221",
+      "name": "Nice Chef"
+    }
+  ]
+}

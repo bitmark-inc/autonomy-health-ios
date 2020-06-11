@@ -12,7 +12,7 @@ import Moya
 
 enum AutonomyProfileAPI {
     case get
-    case getPOI(poiID: String)
+    case getPOI(poiID: String, allResources: Bool)
 }
 
 extension AutonomyProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -25,7 +25,7 @@ extension AutonomyProfileAPI: AuthorizedTargetType, VersionTargetType, LocationT
         switch self {
         case .get:
             return "me"
-        case .getPOI(let poiID):
+        case .getPOI(let poiID, _):
             return poiID
         }
     }
@@ -38,9 +38,8 @@ extension AutonomyProfileAPI: AuthorizedTargetType, VersionTargetType, LocationT
         var dataURL: URL?
         switch self {
         case .get:      dataURL = R.file.youAutonomyProfileJson()
-        case .getPOI:   dataURL = R.file.placeAutonomyProfileJson()
-        default:
-            break
+        case .getPOI(_, let allResources):
+            dataURL = allResources ? R.file.placeAutonomyProfileFullJson() : R.file.placeAutonomyProfileJson()
         }
 
         if let dataURL = dataURL, let data = try? Data(contentsOf: dataURL) {
@@ -49,15 +48,16 @@ extension AutonomyProfileAPI: AuthorizedTargetType, VersionTargetType, LocationT
         return Data()
     }
 
-    var parameters: [String: Any]? {
-        return nil
-    }
-
     var task: Task {
-        if let parameters = parameters {
-            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        var params: [String: Any] = [:]
+
+        switch self {
+        case .get:
+            return .requestPlain
+        case .getPOI(_, let allResources):
+            if allResources { params["all_resources"] = true }
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         }
-        return .requestPlain
     }
 
     var headers: [String: String]? {

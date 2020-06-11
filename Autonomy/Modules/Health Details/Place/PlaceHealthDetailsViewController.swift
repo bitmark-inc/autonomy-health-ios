@@ -55,6 +55,10 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
             self.gotoResourceRatingScreen()
 
         }.disposed(by: disposeBag)
+
+        moreResourceButton.rx.tap.bind { [weak self] in
+            self?.thisViewModel.fetchPOIAutonomyProfile(allResources: true)
+        }.disposed(by: disposeBag)
     }
 
     fileprivate func setData(autonomyProfile: PlaceAutonomyProfile) {
@@ -67,6 +71,8 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         activeCasesView.setData(number: neighbor.cases, delta: neighbor.casesDelta, thingType: .bad)
         symptomsView.setData(number: neighbor.symptoms, delta: neighbor.symptomsDelta, thingType: .bad)
         behaviorsView.setData(number: neighbor.behaviors, delta: neighbor.behaviorsDelta, thingType: .good)
+
+        moreResourceButton.isHidden = !autonomyProfile.hasMoreResources
 
         if autonomyProfile.resourceReportItems.count == 0 {
             ratingResourceButton.setTitle(R.string.localizable.addResource().localizedUppercase, for: .normal)

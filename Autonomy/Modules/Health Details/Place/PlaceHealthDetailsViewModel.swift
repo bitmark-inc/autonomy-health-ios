@@ -19,11 +19,11 @@ class PlaceHealthDetailsViewModel: ViewModel {
         self.poiID = poiID
         super.init()
 
-        fetchPOIAutonomyProfile()
+        fetchPOIAutonomyProfile(allResources: false)
     }
 
-    fileprivate func fetchPOIAutonomyProfile() {
-        AutonomyProfileService.get(poiID: poiID)
+    func fetchPOIAutonomyProfile(allResources: Bool) {
+        AutonomyProfileService.get(poiID: poiID, allResources: allResources)
             .subscribe(onSuccess: { [weak self] in
                 guard let self = self else { return }
                 self.poiAutonomyProfileRelay.accept($0)

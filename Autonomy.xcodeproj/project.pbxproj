@@ -26,9 +26,9 @@
 		5B12D5D7248E24F6002C73E9 /* AddResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5D6248E24F6002C73E9 /* AddResourceViewModel.swift */; };
 		5B12D5D8248E24F6002C73E9 /* AddResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5D6248E24F6002C73E9 /* AddResourceViewModel.swift */; };
 		5B12D5D9248E24F6002C73E9 /* AddResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5D6248E24F6002C73E9 /* AddResourceViewModel.swift */; };
-		5B12D5DB248E323B002C73E9 /* SearchResourceVieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5DA248E323B002C73E9 /* SearchResourceVieController.swift */; };
-		5B12D5DC248E323B002C73E9 /* SearchResourceVieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5DA248E323B002C73E9 /* SearchResourceVieController.swift */; };
-		5B12D5DD248E323B002C73E9 /* SearchResourceVieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5DA248E323B002C73E9 /* SearchResourceVieController.swift */; };
+		5B12D5DB248E323B002C73E9 /* SearchResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5DA248E323B002C73E9 /* SearchResourceViewController.swift */; };
+		5B12D5DC248E323B002C73E9 /* SearchResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5DA248E323B002C73E9 /* SearchResourceViewController.swift */; };
+		5B12D5DD248E323B002C73E9 /* SearchResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5DA248E323B002C73E9 /* SearchResourceViewController.swift */; };
 		5B12D5DF248E3247002C73E9 /* SearchResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5DE248E3247002C73E9 /* SearchResourceViewModel.swift */; };
 		5B12D5E0248E3247002C73E9 /* SearchResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5DE248E3247002C73E9 /* SearchResourceViewModel.swift */; };
 		5B12D5E1248E3247002C73E9 /* SearchResourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B12D5DE248E3247002C73E9 /* SearchResourceViewModel.swift */; };
@@ -439,6 +439,21 @@
 		5BA808BC2440226A00B2733A /* LocationSearchTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808BA2440226A00B2733A /* LocationSearchTableCell.swift */; };
 		5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
 		5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA808C0244081E300B2733A /* LocationListCell.swift */; };
+		5BA98AF92491D3C6002E8678 /* ResourceRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA98AF82491D3C6002E8678 /* ResourceRating.swift */; };
+		5BA98AFA2491D3C6002E8678 /* ResourceRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA98AF82491D3C6002E8678 /* ResourceRating.swift */; };
+		5BA98AFB2491D3C6002E8678 /* ResourceRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA98AF82491D3C6002E8678 /* ResourceRating.swift */; };
+		5BA98B012491D6A1002E8678 /* resource-ratings.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B002491D6A1002E8678 /* resource-ratings.json */; };
+		5BA98B022491D6A1002E8678 /* resource-ratings.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B002491D6A1002E8678 /* resource-ratings.json */; };
+		5BA98B032491D6A1002E8678 /* resource-ratings.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B002491D6A1002E8678 /* resource-ratings.json */; };
+		5BA98B092491E514002E8678 /* resources-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B082491E514002E8678 /* resources-full.json */; };
+		5BA98B0A2491E514002E8678 /* resources-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B082491E514002E8678 /* resources-full.json */; };
+		5BA98B0B2491E514002E8678 /* resources-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B082491E514002E8678 /* resources-full.json */; };
+		5BA98B1124920E0B002E8678 /* resources-add-poi.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B1024920E0B002E8678 /* resources-add-poi.json */; };
+		5BA98B1224920E0B002E8678 /* resources-add-poi.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B1024920E0B002E8678 /* resources-add-poi.json */; };
+		5BA98B1324920E0B002E8678 /* resources-add-poi.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B1024920E0B002E8678 /* resources-add-poi.json */; };
+		5BA98B15249214E0002E8678 /* place-autonomy-profile-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B14249214E0002E8678 /* place-autonomy-profile-full.json */; };
+		5BA98B16249214E0002E8678 /* place-autonomy-profile-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B14249214E0002E8678 /* place-autonomy-profile-full.json */; };
+		5BA98B17249214E0002E8678 /* place-autonomy-profile-full.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA98B14249214E0002E8678 /* place-autonomy-profile-full.json */; };
 		5BAA76FA24595CA3003CCE92 /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
 		5BAA76FB24595CA3003CCE92 /* SymptomsHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */; };
 		5BAA76FF2459603C003CCE92 /* DebugAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA76FD2459603C003CCE92 /* DebugAPI.swift */; };
@@ -887,7 +902,7 @@
 		5B12D5CE248E1A51002C73E9 /* ResourceRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceRatingView.swift; sourceTree = "<group>"; };
 		5B12D5D2248E24EC002C73E9 /* AddResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResourceViewController.swift; sourceTree = "<group>"; };
 		5B12D5D6248E24F6002C73E9 /* AddResourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResourceViewModel.swift; sourceTree = "<group>"; };
-		5B12D5DA248E323B002C73E9 /* SearchResourceVieController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResourceVieController.swift; sourceTree = "<group>"; };
+		5B12D5DA248E323B002C73E9 /* SearchResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResourceViewController.swift; sourceTree = "<group>"; };
 		5B12D5DE248E3247002C73E9 /* SearchResourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResourceViewModel.swift; sourceTree = "<group>"; };
 		5B12D5E2248E32B4002C73E9 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		5B12D5E7248E3358002C73E9 /* ResourceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceAPI.swift; sourceTree = "<group>"; };
@@ -1092,6 +1107,11 @@
 		5BA808B7244010EC00B2733A /* DebugLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLocationViewModel.swift; sourceTree = "<group>"; };
 		5BA808BA2440226A00B2733A /* LocationSearchTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableCell.swift; sourceTree = "<group>"; };
 		5BA808C0244081E300B2733A /* LocationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListCell.swift; sourceTree = "<group>"; };
+		5BA98AF82491D3C6002E8678 /* ResourceRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceRating.swift; sourceTree = "<group>"; };
+		5BA98B002491D6A1002E8678 /* resource-ratings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "resource-ratings.json"; sourceTree = "<group>"; };
+		5BA98B082491E514002E8678 /* resources-full.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "resources-full.json"; sourceTree = "<group>"; };
+		5BA98B1024920E0B002E8678 /* resources-add-poi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "resources-add-poi.json"; sourceTree = "<group>"; };
+		5BA98B14249214E0002E8678 /* place-autonomy-profile-full.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "place-autonomy-profile-full.json"; sourceTree = "<group>"; };
 		5BAA76F924595CA3003CCE92 /* SymptomsHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsHistory.swift; sourceTree = "<group>"; };
 		5BAA76FD2459603C003CCE92 /* DebugAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugAPI.swift; sourceTree = "<group>"; };
 		5BAA76FE2459603C003CCE92 /* DebugService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugService.swift; sourceTree = "<group>"; };
@@ -1265,7 +1285,7 @@
 		5B12D5CD248DFCEF002C73E9 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				5B12D5DA248E323B002C73E9 /* SearchResourceVieController.swift */,
+				5B12D5DA248E323B002C73E9 /* SearchResourceViewController.swift */,
 				5B12D5DE248E3247002C73E9 /* SearchResourceViewModel.swift */,
 			);
 			path = Search;
@@ -1615,6 +1635,7 @@
 				5BFC8DD224333E5700815828 /* Symptom.swift */,
 				5B4EF6E92446B06000BCB323 /* Behavior.swift */,
 				5B12D5E2248E32B4002C73E9 /* Resource.swift */,
+				5BA98AF82491D3C6002E8678 /* ResourceRating.swift */,
 				5BB7DBAB248F3F08008B5642 /* HealthDetection.swift */,
 				5BB7DBA7248F3B90008B5642 /* HealthCenter.swift */,
 				5BFC5387249081A70096B14E /* ReportItem.swift */,
@@ -2081,6 +2102,10 @@
 				5BFC53AC2490BEF10096B14E /* trending-cases.json */,
 				5BFC53B42490CE100096B14E /* you-autonomy-profile.json */,
 				5BFC53C02490DA8F0096B14E /* place-autonomy-profile.json */,
+				5BA98B14249214E0002E8678 /* place-autonomy-profile-full.json */,
+				5BA98B002491D6A1002E8678 /* resource-ratings.json */,
+				5BA98B082491E514002E8678 /* resources-full.json */,
+				5BA98B1024920E0B002E8678 /* resources-add-poi.json */,
 			);
 			path = "Stubbed Responses";
 			sourceTree = "<group>";
@@ -2493,6 +2518,7 @@
 				5B4B60CC24604A7E00432151 /* debug-data.json in Resources */,
 				5BFC53B62490CE100096B14E /* you-autonomy-profile.json in Resources */,
 				5BFC53AA2490BED70096B14E /* trending-behaviors.json in Resources */,
+				5BA98B16249214E0002E8678 /* place-autonomy-profile-full.json in Resources */,
 				5B5778CA242B48230028D3E3 /* AtlasGrotesk-Thin.otf in Resources */,
 				5B5778D0242B48230028D3E3 /* DomaineSansText-BoldItalic.otf in Resources */,
 				5B5778DC242B48230028D3E3 /* DomaineSansText-Regular.otf in Resources */,
@@ -2518,6 +2544,7 @@
 				5B5778D8242B48230028D3E3 /* DomaineSansText-Black.otf in Resources */,
 				5B577859242B330E0028D3E3 /* Main.storyboard in Resources */,
 				5BFC53C22490DA8F0096B14E /* place-autonomy-profile.json in Resources */,
+				5BA98B1224920E0B002E8678 /* resources-add-poi.json in Resources */,
 				5B97886D243EDFED005BADA9 /* IBMPlexMono-Regular.ttf in Resources */,
 				5B978877243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf in Resources */,
 				5B4B60AF245FB95200432151 /* area-profile.json in Resources */,
@@ -2526,6 +2553,8 @@
 				5B5778DA242B48230028D3E3 /* DomaineSansText-RegularItalic.otf in Resources */,
 				5BFC539524909BE30096B14E /* trending-autonomy.json in Resources */,
 				5B5778F5242B49140028D3E3 /* Phrase.strings in Resources */,
+				5BA98B0A2491E514002E8678 /* resources-full.json in Resources */,
+				5BA98B022491D6A1002E8678 /* resource-ratings.json in Resources */,
 				5BB561082488EB7900008959 /* calculated-scores.json in Resources */,
 				5B5778CC242B48230028D3E3 /* DomaineSansText-BlackItalic.otf in Resources */,
 				5B5778C8242B48230028D3E3 /* AtlasGrotesk-Bold.otf in Resources */,
@@ -2555,6 +2584,7 @@
 				5B978864243EDFED005BADA9 /* IBMPlexMono-Medium.ttf in Resources */,
 				5BFC53B52490CE100096B14E /* you-autonomy-profile.json in Resources */,
 				5BFC53A92490BED70096B14E /* trending-behaviors.json in Resources */,
+				5BA98B15249214E0002E8678 /* place-autonomy-profile-full.json in Resources */,
 				5B4B60CB24604A7E00432151 /* debug-data.json in Resources */,
 				5B5778CD242B48230028D3E3 /* DomaineSansText-Light.otf in Resources */,
 				5B5778D3242B48230028D3E3 /* DomaineSansText-LightItalic.otf in Resources */,
@@ -2580,6 +2610,7 @@
 				5B5778F6242B49140028D3E3 /* Localizable.strings in Resources */,
 				5B5778BF242B48230028D3E3 /* AtlasGrotesk-LightItalic.otf in Resources */,
 				5BFC53C12490DA8F0096B14E /* place-autonomy-profile.json in Resources */,
+				5BA98B1124920E0B002E8678 /* resources-add-poi.json in Resources */,
 				5B97886E243EDFED005BADA9 /* IBMPlexMono-Light.ttf in Resources */,
 				5B5778D1242B48230028D3E3 /* DomaineSansText-Bold.otf in Resources */,
 				5B978874243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf in Resources */,
@@ -2588,6 +2619,8 @@
 				5B5778C3242B48230028D3E3 /* AtlasGrotesk-RegularItalic.otf in Resources */,
 				5BFC539424909BE30096B14E /* trending-autonomy.json in Resources */,
 				5B978860243EDFED005BADA9 /* IBMPlexMono-MediumItalic.ttf in Resources */,
+				5BA98B092491E514002E8678 /* resources-full.json in Resources */,
+				5BA98B012491D6A1002E8678 /* resource-ratings.json in Resources */,
 				5BB561072488E88A00008959 /* calculated-scores.json in Resources */,
 				5B5778C1242B48230028D3E3 /* AtlasGrotesk-Black.otf in Resources */,
 				5B978862243EDFED005BADA9 /* IBMPlexMono-BoldItalic.ttf in Resources */,
@@ -2617,6 +2650,7 @@
 				5BAE8493246A7985006E118D /* debug-data.json in Resources */,
 				5BFC53B72490CE100096B14E /* you-autonomy-profile.json in Resources */,
 				5BFC53AB2490BED70096B14E /* trending-behaviors.json in Resources */,
+				5BA98B17249214E0002E8678 /* place-autonomy-profile-full.json in Resources */,
 				5BAE8494246A7985006E118D /* AtlasGrotesk-Thin.otf in Resources */,
 				5BAE8495246A7985006E118D /* DomaineSansText-BoldItalic.otf in Resources */,
 				5BAE8496246A7985006E118D /* DomaineSansText-Regular.otf in Resources */,
@@ -2642,6 +2676,7 @@
 				5BAE84AA246A7985006E118D /* DomaineSansText-Black.otf in Resources */,
 				5BAE84AB246A7985006E118D /* Main.storyboard in Resources */,
 				5BFC53C32490DA8F0096B14E /* place-autonomy-profile.json in Resources */,
+				5BA98B1324920E0B002E8678 /* resources-add-poi.json in Resources */,
 				5BAE84AC246A7985006E118D /* IBMPlexMono-Regular.ttf in Resources */,
 				5BAE84AD246A7985006E118D /* IBMPlexMono-LightItalic.ttf in Resources */,
 				5BAE84AE246A7985006E118D /* area-profile.json in Resources */,
@@ -2650,6 +2685,8 @@
 				5BAE84B1246A7985006E118D /* DomaineSansText-RegularItalic.otf in Resources */,
 				5BFC539624909BE30096B14E /* trending-autonomy.json in Resources */,
 				5BAE84B2246A7985006E118D /* Phrase.strings in Resources */,
+				5BA98B0B2491E514002E8678 /* resources-full.json in Resources */,
+				5BA98B032491D6A1002E8678 /* resource-ratings.json in Resources */,
 				5BB561092488EB7A00008959 /* calculated-scores.json in Resources */,
 				5BAE84B3246A7985006E118D /* DomaineSansText-BlackItalic.otf in Resources */,
 				5BAE84B4246A7985006E118D /* AtlasGrotesk-Bold.otf in Resources */,
@@ -3069,6 +3106,7 @@
 				5BCBBD08246BD01600B735EE /* ReportedBehaviorViewController.swift in Sources */,
 				5B577878242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0CA2430BE91002CD923 /* AutonomyProfileAPI.swift in Sources */,
+				5BA98AFA2491D3C6002E8678 /* ResourceRating.swift in Sources */,
 				5B86A06B247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */,
 				5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */,
 				5BAA772F24599287003CCE92 /* LocationHistoryViewController.swift in Sources */,
@@ -3112,7 +3150,7 @@
 				5B219BDC246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
-				5B12D5DC248E323B002C73E9 /* SearchResourceVieController.swift in Sources */,
+				5B12D5DC248E323B002C73E9 /* SearchResourceViewController.swift in Sources */,
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EB2446B06000BCB323 /* Behavior.swift in Sources */,
 				5BA808C2244081E300B2733A /* LocationListCell.swift in Sources */,
@@ -3286,6 +3324,7 @@
 				5BCBBD07246BD01600B735EE /* ReportedBehaviorViewController.swift in Sources */,
 				5B577877242B43A30028D3E3 /* NetworkConnectionManager.swift in Sources */,
 				5B7CE0C92430BE91002CD923 /* AutonomyProfileAPI.swift in Sources */,
+				5BA98AF92491D3C6002E8678 /* ResourceRating.swift in Sources */,
 				5B86A06A247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */,
 				5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */,
 				5BAA772E24599287003CCE92 /* LocationHistoryViewController.swift in Sources */,
@@ -3329,7 +3368,7 @@
 				5B219BDB246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
-				5B12D5DB248E323B002C73E9 /* SearchResourceVieController.swift in Sources */,
+				5B12D5DB248E323B002C73E9 /* SearchResourceViewController.swift in Sources */,
 				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EA2446B06000BCB323 /* Behavior.swift in Sources */,
 				5BA808C1244081E300B2733A /* LocationListCell.swift in Sources */,
@@ -3503,6 +3542,7 @@
 				5BAE8429246A7985006E118D /* NetworkConnectionManager.swift in Sources */,
 				5BAE842A246A7985006E118D /* AutonomyProfileAPI.swift in Sources */,
 				5BAE842B246A7985006E118D /* HealthAPI.swift in Sources */,
+				5BA98AFB2491D3C6002E8678 /* ResourceRating.swift in Sources */,
 				5B86A06C247E11EA008AA03D /* ViewRecoveryKeyViewController.swift in Sources */,
 				5BAE842C246A7985006E118D /* LocationHistoryViewController.swift in Sources */,
 				5BAE842D246A7985006E118D /* SurveyBehaviorsViewModel.swift in Sources */,
@@ -3546,7 +3586,7 @@
 				5BAE844A246A7985006E118D /* Application.swift in Sources */,
 				5BAE844B246A7985006E118D /* RiskLevelViewModel.swift in Sources */,
 				5BAE844C246A7985006E118D /* Behavior.swift in Sources */,
-				5B12D5DD248E323B002C73E9 /* SearchResourceVieController.swift in Sources */,
+				5B12D5DD248E323B002C73E9 /* SearchResourceViewController.swift in Sources */,
 				5BAE844D246A7985006E118D /* LocationListCell.swift in Sources */,
 				5BAE844E246A7985006E118D /* PointOfInterestService.swift in Sources */,
 				5BAE844F246A7985006E118D /* FeedTableCell.swift in Sources */,

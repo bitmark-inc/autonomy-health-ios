@@ -108,7 +108,7 @@ class Navigator {
         case .giveHelp(let viewModel):          return GiveHelpViewController(viewModel: viewModel)
         case .resourceRating(let viewModel):            return ResourceRatingViewController(viewModel: viewModel)
         case .addResource(let viewModel):       return AddResourceViewController(viewModel: viewModel)
-        case .searchResource(let viewModel):    return SearchResourceVieController(viewModel: viewModel)
+        case .searchResource(let viewModel):    return SearchResourceViewController(viewModel: viewModel)
         case .locationSearch(let viewModel):    return LocationSearchViewController(viewModel: viewModel)
         case .profile:                          return ProfileViewController()
         case .donate:                           return DonateViewController()

@@ -11,33 +11,54 @@ import Moya
 
 enum ResourceAPI {
     case fullList(poiID: String)
-    case create(poiID: String, name: String)
+    case add(poiID: String, resources: [Resource])
+    case ratings(poiID: String)
+    case rate(poiID: String, ratings: [ResourceRating])
 }
 
 extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
 
     var baseURL: URL {
         switch self {
-        case .fullList(let poiID), .create(let poiID, _):
-            return URL(string: Constant.apiServerURL + "/api/points-of-interest/\(poiID)/resources")!
-
+        case .fullList(let poiID), .add(let poiID, _),
+             .ratings(let poiID), .rate(let poiID, _):
+            return URL(string: Constant.apiServerURL + "/api/points-of-interest/\(poiID)")!
         }
     }
 
     var path: String {
-        return ""
+        switch self {
+        case .fullList, .add: return "resources"
+        case .ratings:           return "resource-ratings"
+        case .rate:              return "resource-rating"
+
+        }
     }
 
     var method: Moya.Method {
         switch self {
-        case .fullList:
+        case .fullList, .ratings:
             return .get
-        case .create:
+        case .add:
             return .post
+        case .rate:
+            return .put
         }
     }
 
     var sampleData: Data {
+        var dataURL: URL?
+        switch self {
+        case .fullList: dataURL = R.file.resourcesFullJson()
+        case .add:      dataURL = R.file.resourcesAddPoiJson()
+        case .ratings:  dataURL = R.file.resourceRatingsJson()
+        default:
+            break
+        }
+
+        if let dataURL = dataURL, let data = try? Data(contentsOf: dataURL) {
+            return data
+        }
         return Data()
     }
 
@@ -53,8 +74,30 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
             }
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
 
-        case .create(_, let name):
-            params["name"] = name
+        case .add(_, let resources):
+            var resourceIDs = [String]()
+            var newResourceNames = [String]()
+            resources.forEach {
+                $0.id.isNotEmpty ? resourceIDs.append($0.id) :newResourceNames.append($0.name)
+            }
+
+            params["resource_ids"] = resourceIDs
+            params["new_resource_names"] = newResourceNames
+
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+
+        case .ratings:
+            return .requestPlain
+
+        case .rate(_, let ratings):
+            let ratingsParam = ratings.map {
+                ["resource":
+                    ["id" : $0.resource.id],
+                 "score": $0.score
+                ]
+            }
+
+            params["ratings"] = ratingsParam
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         }
     }

@@ -1,0 +1,40 @@
+{
+   "resources":[
+      {
+         "id":"1",
+         "name":"Climbing"
+      },
+      {
+         "id":"2",
+         "name":"Core training"
+      },
+      {
+         "id":"3",
+         "name":"Cricket"
+      },
+      {
+         "id":"4",
+         "name":"Cross-country skiing"
+      },
+      {
+         "id":"5",
+         "name":"Cross training"
+      },
+      {
+         "id":"6",
+         "name":"Cricket"
+      },
+      {
+         "id":"7",
+         "name":"Curling"
+      },
+      {
+         "id":"8",
+         "name":"Cycling "
+      },
+      {
+         "id":"9",
+         "name":"Dance"
+      }
+   ]
+}

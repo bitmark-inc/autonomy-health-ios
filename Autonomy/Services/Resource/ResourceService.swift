@@ -11,7 +11,9 @@ import RxSwift
 import Moya
 
 class ResourceService {
-    static var provider = MoyaProvider<ResourceAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
+    static var provider = MoyaProvider<ResourceAPI>(
+        stubClosure: MoyaProvider.immediatelyStub,
+        session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func getFullList(poiID: String) -> Single<[Resource]> {
         Global.log.info("[start] ResourceService.getList(poiID:)")
@@ -21,18 +23,38 @@ class ResourceService {
             .filterSuccess()
             .retryWhenTransientError()
             .asSingle()
-            .map([Resource].self)
+            .map([Resource].self, atKeyPath: "resources")
     }
 
-    static func create(poiID: String, name: String) -> Single<Resource> {
-        Global.log.info("[start] ResourceService.create(poiID:, name:)")
+    static func add(poiID: String, resources: [Resource]) -> Single<[Resource]> {
+        Global.log.info("[start] ResourceService.add(poiID:, resources:)")
 
         return provider.rx
-            .requestWithRefreshJwt(.create(poiID: poiID, name: name))
+            .requestWithRefreshJwt(.add(poiID: poiID, resources: resources))
             .filterSuccess()
             .retryWhenTransientError()
             .asSingle()
-            .map(String.self, atKeyPath: "id")
-            .map { Resource(id: $0, name: name) }
+            .map([Resource].self, atKeyPath: "resources")
+    }
+
+    static func getRatings(poiID: String) -> Single<[ResourceRating]> {
+        Global.log.info("[start] ResourceService.getRatings(poiID:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.ratings(poiID: poiID))
+            .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
+            .map([ResourceRating].self, atKeyPath: "ratings")
+    }
+
+    static func rate(poiID: String, ratings: [ResourceRating]) -> Completable {
+        Global.log.info("[start] ResourceService.rate(poiID:, ratings:)")
+
+        return provider.rx
+            .requestWithRefreshJwt(.rate(poiID: poiID, ratings: ratings))
+            .filterSuccess()
+            .retryWhenTransientError()
+            .ignoreElements()
     }
 }

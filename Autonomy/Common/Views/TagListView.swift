@@ -98,9 +98,9 @@ class TagView: UIView {
 
     // MARK: - Properties
     let id: String!
+    let title: String!
 
     fileprivate lazy var titleLabel = makeTitleLabel()
-    fileprivate let title: String!
     fileprivate let disposeBag = DisposeBag()
 
     let isSelectedRelay = BehaviorRelay<Bool>(value: false)

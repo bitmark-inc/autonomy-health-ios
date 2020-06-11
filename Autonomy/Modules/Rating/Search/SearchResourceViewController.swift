@@ -1,5 +1,5 @@
 //
-//  SearchResourceVieController.swift
+//  SearchResourceViewController.swift
 //  Autonomy
 //
 //  Created by Thuyen Truong on 6/8/20.
@@ -12,7 +12,7 @@ import RxCocoa
 import SnapKit
 import SwiftRichString
 
-class SearchResourceVieController: SearchSurveyViewController {
+class SearchResourceViewController: SearchSurveyViewController {
 
     lazy var thisViewModel: SearchResourceViewModel = {
         return viewModel as! SearchResourceViewModel
@@ -32,22 +32,11 @@ class SearchResourceVieController: SearchSurveyViewController {
             })
             .disposed(by: disposeBag)
 
-        thisViewModel.submitResourceResultSubject
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] (event) in
-                guard let self = self else { return }
-                loadingState.onNext(.hide)
-                switch event {
-                case .error(let error):
-                    self.errorWhenSubmit(error: error)
-                case .next(let resource):
-                    Global.log.info("[done] added new resource")
-                    self.thisViewModel.newResourceSubject.onNext(resource)
-                    self.dismiss(animated: true, completion: nil)
-                default:
-                    break
-                }
-            }).disposed(by: disposeBag)
+        thisViewModel.newResourceSubject
+            .subscribe(onNext: { [weak self] (_) in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
 
     override func setupViews() {
@@ -60,7 +49,7 @@ class SearchResourceVieController: SearchSurveyViewController {
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate
-extension SearchResourceVieController: UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+extension SearchResourceViewController: UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredRecords.count
     }
@@ -87,7 +76,8 @@ extension SearchResourceVieController: UITableViewDataSource, UITableViewDelegat
             return true
         }
 
-        thisViewModel.submitResouce(name: text)
+        let localResource = thisViewModel.extractResource(name: text)
+        thisViewModel.newResourceSubject.onNext(localResource)
         return false
     }
 }

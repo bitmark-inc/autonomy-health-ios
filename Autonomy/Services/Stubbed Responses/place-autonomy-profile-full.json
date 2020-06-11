@@ -7,7 +7,7 @@
     "latitude": 25.03043,
     "longitude": 121.554241
   },
-  "has_more_resources": true,
+  "has_more_resources": false,
   "resources": [
     {
       "name": "PLANT-BASED food",
@@ -56,6 +56,16 @@
     },
     {
       "name": "WEARING FACE COVERING",
+      "score": 4.2,
+      "ratings": 5432
+    },
+    {
+      "name": "PLANT-BASED food",
+      "score": 4.5,
+      "ratings": 5678
+    },
+    {
+      "name": "Climbing",
       "score": 4.2,
       "ratings": 5432
     }

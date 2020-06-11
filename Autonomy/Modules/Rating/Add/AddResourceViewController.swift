@@ -42,6 +42,70 @@ class AddResourceViewController: ViewController, BackNavigator {
         importantTagViews.rearrangeViews()
     }
 
+    override func bindViewModel() {
+        super.bindViewModel()
+
+        thisViewModel.importantResourcesRelay
+            .filterNil()
+            .subscribe(onNext: { [weak self] (resources) in
+                self?.rebuildResourcesListView(resources: resources)
+
+            }, onError: { [weak self] (error) in
+                guard let self = self, !self.handleIfGeneralError(error: error) else { return }
+                Global.log.error(error)
+                self.showErrorAlertWithSupport(message: R.string.error.system())
+            })
+            .disposed(by: disposeBag)
+
+        thisViewModel.addResourcesResultSubject
+            .subscribe(onNext: { [weak self] (event) in
+                loadingState.onNext(.hide)
+                guard let self = self else { return }
+                switch event {
+                case .next:
+                    self.backResourceRatingsScreen()
+                case .error(let error):
+                    guard !self.handleIfGeneralError(error: error) else { return }
+                    Global.log.error(error)
+                    self.showErrorAlertWithSupport(message: R.string.error.system())
+                default:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
+
+        submitButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            let selectedResources = self.getSelectedResources()
+            self.thisViewModel.add(resources: selectedResources)
+        }.disposed(by: disposeBag)
+    }
+
+    fileprivate func getSelectedResources() -> [Resource] {
+        let tagViews = importantTagViews.tagViews
+        return tagViews.filter { $0.isSelected }
+                       .map { Resource(id: $0.id, name: $0.title) }
+    }
+
+    fileprivate func rebuildResourcesListView(resources: [Resource]) {
+        importantTagViews.reset()
+
+        for resource in resources {
+            let tagView = importantTagViews.addTag((resource.id, resource.name.lowercased()))
+            tagView.isSelectedRelay
+                .subscribe(onNext: { [weak self] (_) in
+                    self?.checkSelectedState()
+                })
+                .disposed(by: disposeBag)
+        }
+        importantTagViews.rearrangeViews()
+    }
+
+    fileprivate func checkSelectedState() {
+        let hasSelected = importantTagViews.tagViews.contains(where: { $0.isSelected })
+        submitButton.isEnabled = hasSelected
+    }
+
     override func setupViews() {
         super.setupViews()
 
@@ -88,9 +152,40 @@ class AddResourceViewController: ViewController, BackNavigator {
 extension AddResourceViewController {
     fileprivate func gotoSearchResourceScreen() {
         let viewModel = SearchResourceViewModel(poiID: thisViewModel.poiID)
+        viewModel.newResourceSubject
+            .subscribe(onNext: { [weak self] (resource) in
+                guard let self = self else { return }
+                self.selectIfExistingOrAdd(with: resource)
+            })
+            .disposed(by: disposeBag)
+
         navigator.show(segue: .searchResource(viewModel: viewModel),
                        sender: self,
                        transition: .customModal(type: .slide(direction: .up)))
+    }
+
+    fileprivate func selectIfExistingOrAdd(with resource: Resource) {
+        for tagView in importantTagViews.tagViews {
+            if tagView.id.isNotEmpty && tagView.id == resource.id {
+                tagView.isSelected = true
+                return
+            }
+        }
+
+        let newTagView = importantTagViews.addTag((id: resource.id, value: resource.name.lowercased()))
+        newTagView.isSelected = true
+        submitButton.isEnabled = true
+        importantTagViews.rearrangeViews()
+
+        newTagView.isSelectedRelay
+            .subscribe(onNext: { [weak self] (_) in
+                self?.checkSelectedState()
+            })
+            .disposed(by: disposeBag)
+    }
+
+    fileprivate func backResourceRatingsScreen() {
+        navigator.pop(sender: self)
     }
 }
 

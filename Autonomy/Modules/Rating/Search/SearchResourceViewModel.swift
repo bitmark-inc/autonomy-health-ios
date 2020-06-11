@@ -63,20 +63,14 @@ class SearchResourceViewModel: ViewModel {
             .disposed(by: disposeBag)
     }
 
-
-    func submitResouce(name: String) {
-        loadingState.onNext(.processing)
+    func extractResource(name: String) -> Resource {
         var name = name
         let cleanName = name.trim().lowercased()
 
         if let existingResource = fullResourcesRelay.value.first(where: { $0.name.lowercased() == cleanName }) {
-            submitResourceResultSubject.onNext(Event.next(existingResource))
-            return
+            return existingResource
         }
 
-        ResourceService.create(poiID: poiID, name: name)
-            .asObservable()
-            .materializeWithCompleted(to: submitResourceResultSubject)
-            .disposed(by: disposeBag)
+        return Resource(id: "", name: name)
     }
 }

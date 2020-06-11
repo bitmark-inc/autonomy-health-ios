@@ -17,14 +17,21 @@ class ResourceRatingView: UIView {
     fileprivate lazy var ratingView = makeRatingView()
     fileprivate let disposeBag = DisposeBag()
 
-    fileprivate let resource: String!
+    let resource: Resource!
+    fileprivate let initValue: Int!
+
 
     // MARK: - Inits
-    init(resource: String) {
+    init(resource: Resource, initValue: Int = 0) {
         self.resource = resource
+        self.initValue = initValue
         super.init(frame: CGRect.zero)
 
         setupViews()
+    }
+
+    var currentRating: Double {
+        return ratingView.rating
     }
 
     required init?(coder: NSCoder) {
@@ -53,6 +60,9 @@ class ResourceRatingView: UIView {
             make.top.equalTo(resourceLabel.snp.bottom).offset(15)
             make.leading.trailing.bottom.equalToSuperview()
         }
+
+        ratingView.rating = Double(initValue)
+        adjustRatingColor(rating: Double(initValue))
     }
 }
 
@@ -61,27 +71,31 @@ extension ResourceRatingView {
         let label = Label()
         label.numberOfLines = 0
         label.apply(
-            text: resource.localizedUppercase,
+            text: resource.name.localizedUppercase,
             font: R.font.atlasGroteskLight(size: 14), themeStyle: .lightTextColor)
         return label
     }
 
-    fileprivate func makeRatingView() -> UIView {
+    fileprivate func makeRatingView() -> CosmosView {
         let ratingView = CosmosView()
         ratingView.settings.emptyImage = R.image.emptyRatingImg()
         ratingView.settings.filledImage = R.image.yellowRatingImg()
         ratingView.settings.starMargin = 15
         ratingView.settings.totalStars = 5
-        ratingView.didTouchCosmos = { (rating) in
-            switch rating {
-            case 4...5: ratingView.settings.filledImage = R.image.greenRatingImg()
-            case 3...3.9:     ratingView.settings.filledImage = R.image.yellowRatingImg()
-            case 0.1...2.9: ratingView.settings.filledImage = R.image.redRatingImg()
-            default:
-                break
-            }
+        ratingView.didTouchCosmos = { [weak self] (rating) in
+            self?.adjustRatingColor(rating: rating)
         }
 
         return ratingView
+    }
+
+    fileprivate func adjustRatingColor(rating: Double) {
+        switch rating {
+           case 4...5: ratingView.settings.filledImage = R.image.greenRatingImg()
+           case 3...3.9:     ratingView.settings.filledImage = R.image.yellowRatingImg()
+           case 0.1...2.9: ratingView.settings.filledImage = R.image.redRatingImg()
+           default:
+               break
+        }
     }
 }
