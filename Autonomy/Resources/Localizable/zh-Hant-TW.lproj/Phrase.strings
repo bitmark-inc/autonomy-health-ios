@@ -25,14 +25,14 @@
 "riskLevel.yes.description" = "高危險群通常包含：\n• 65歲以上\n\n 痼疾，例如：\n• 血壓\n• 心血管疾病\n• 糖尿病\n• 慢性呼吸道疾病（如肺病或氣喘\n• 癌症\n• 過胖\n• 免疫系統受損";
 "riskLevel.no" = "不，我不屬於高危險群";
 
-"source.info.title" = "How The Autonomy Score Is Computed";
-"source.info" = "The Autonomy Score is a normalized score from 0-100 that forecasts the overall wellbeing of a neighborhood.\n\nThe score currently consists of 3 main inputs, each with a weighted coefficent that reflects each input’s relative importance to the overall score. You can adjust these coefficients above to assign different relative weights to the inputs.\n\nOur 3 data inputs are:\n\n1) A 14-day exponentially weighted average of the number of daily confirmed medical conditions in an area, as reported by the <corona-data-project>Corona Data Scraper project</corona-data-project>, which aggregates the latest public health data from verified sources around the world.\n\n2) A symptoms score, which is a normalized score calculated from the daily number of reported symptoms in a given neighborhood. Symptoms are assigned differential weights depending on whether they are known indicators of ongoing infectious disease outbreaks.\n\n3) A behaviors score, which is a normalized score calculated from the daily reported number of health-promoting behaviors in a given neighborhood.\n\nFor more information about exactly how we calculate our scores, please visit our <jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>.";
+"source.info.title" = "Autonomy分數的計算方式";
+"source.info" = "Autonomy分數為一從0至100經過標準化的數值。此數值用於預測鄰近社區整體的健康程度。\n\n此數值目前由3個主要的輸入資料，經過相關係數的加權計算而得出。每個相關係數反應了對於整體數值的重要程度。您可以調整這些相關係數來調整權重。\n\n我們使用的3個輸入資料為：\n\n1)近14日該區域的每日確診病例數之指數加權平均值。病例數資料來源為<corona-data-project>Corona Data Scraper project</corona-data-project>，該服務統整每日經驗證的全球公開健康數據。\n\n2)<b>症狀分數</b>是一個透過計算該區域每日通報症狀而得出的標準化數值。不同的症狀依照是否為當前爆發的傳染病的已知徵狀而給予不同的權重。\n\n3)<b>行為分數</b>是一個透過計算該區域每日通報健康行為而得出的標準化數值。\n\n欲了解更多有關我們如何計算此數值，請瀏覽我們的<jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>。";
 
-"location.placeholder" = "Enter name or address ...";
-"location.tapGuidance" = "Tap a place to add it to your monitoring screen";
-"location.editGuidance" = "Assign an alias, delete, or tap Done to save";
+"location.placeholder" = "輸入地名或地址...";
+"location.tapGuidance" = "點擊地點來新增至您的觀察頁面";
+"location.editGuidance" = "填寫別名，刪除，或是點擊「完成」來儲存delete";
 
-"symptoms.report.title" = "Your symptoms will be anonymously pooled with others in this neighborhood.\n\nTap any symptoms you are experiencing or add new ones:";
+"symptoms.report.title" = "您的症狀將會與周圍社群的其他人一起匿名加入資料池中。\n\n請點擊以下任何您有的症狀，或新增症狀項目：";
 "symptoms.report.common" = "常見症狀";
 "symptoms.report.recent" = "近期周圍社群的症狀";
 "symptoms.report.addNew" = "回報其他症狀...";
@@ -40,10 +40,10 @@
 
 "symptoms.reported.title" = "感謝您分享您的症狀給周圍的社群！";
 
-"symptoms.guidance.title" = "At least one of the symptoms you reported is a common COVID-19 symptom.";
-"symptoms.guidance.subTitle" = "To protect the health of you and your neighborhood, the Taiwan CDC encourages you to get tested for COVID-19 as soon as possible at one of the following testing centers:";
+"symptoms.guidance.title" = "您所通報的症狀中，至少有一項為常見的COVID-19症狀。";
+"symptoms.guidance.subTitle" = "為了保護您以及您周圍社群的健康，台灣疾管署建議您儘快至以下的測試單位做COVID-19檢驗：";
 
-"behaviors.report.title" = "Your behaviors will be anonymously pooled with others in this neighborhood.\n\nTap any healthy behaviors you did today or add new ones:";
+"behaviors.report.title" = "您的行為將會與周圍社群的其他人一起匿名加入資料池中。\n\n請點擊以下任何您今天有執行的行為，或新增行為項目：";
 "behaviors.report.common" = "建議的應對行為";
 "behaviors.report.recent" = "你附近的人的行為";
 "behaviors.report.addNew" = "回報其他行為...";
@@ -53,13 +53,13 @@
 
 "behaviors.guidance.title" = "如何正確施行健康行為：";
 
-"resources.emptyGuide" = "You can be the first to add resources provided by this place by tapping below.";
-"resources.ratings.title" = "Your ratings will be anonymously pooled with others for this place.\n\nTap to rate health resources provided by this place or add others:";
-"resources.ratings.submitting" = "Reporting your ratings for this place ...";
-"resources.add.title" = "Your resource suggestions will be anonymously pooled with others for this place.\n\nTap any health-promoting resources this place provides:";
-"resources.add.submitting" = "Adding your resources for this place ...";
-"resources.suggest.message" = "Important Resources For This Neighborhood";
-"resources.suggest.add.placeholder" = "Suggest other resource ...";
+"resources.emptyGuide" = "您可以點擊下方並成為第一位為此位置新增資源的人。";
+"resources.ratings.title" = "您的評分將會與周圍社群的其他人一起匿名加入資料池中。\n\n請點擊來為此位置的資源評分，或新增資源項目：";
+"resources.ratings.submitting" = "正在回報您對此位置的評分...";
+"resources.add.title" = "您的資源將會與周圍社群的其他人一起匿名加入資料池中。\n\n請點擊此位置所提供的任何增進健康的資源：";
+"resources.add.submitting" = "正在新增您的資源至此位置...";
+"resources.suggest.message" = "此周圍社群的重要資源";
+"resources.suggest.add.placeholder" = "建議其他資源...";
 
 "donate.header" = "捐款";
 "donate.title" = "如果您認同Autonomy的理念，請考慮捐款：";
