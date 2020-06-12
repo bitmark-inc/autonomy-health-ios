@@ -56,18 +56,19 @@ extension BehaviorAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
         var params: [String: Any] = [:]
 
         switch self {
-        case .list:
+        case .list, .fullList:
             if let localeCode = Locale.current.languageCode {
                 params["lang"] = localeCode
             }
+        default: break
+        }
+
+        switch self {
+        case .list:
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
 
         case .fullList:
             params["all"] = true
-
-            if let localeCode = Locale.current.languageCode {
-                params["lang"] = localeCode
-            }
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
 
         case .create(let name):

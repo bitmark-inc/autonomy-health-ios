@@ -23,6 +23,8 @@ class ItemTrendingViewController: ViewController, BackNavigator {
     fileprivate lazy var casesScoreDataView = HealthDataRow(info: R.string.localizable.casesScore().localizedUppercase, hasDot: true)
     fileprivate lazy var symptomsScoreDataView = HealthDataRow(info: R.string.localizable.symptomsScore().localizedUppercase, hasDot: true)
     fileprivate lazy var behaviorsScoreDataView = HealthDataRow(info: R.string.localizable.behaviorsScore().localizedUppercase, hasDot: true)
+    fileprivate lazy var graphComingSoonLabel = makeGraphComingSoonLabel()
+    fileprivate lazy var emptyDataLabel = makeEmptyDataLabel()
 
     fileprivate lazy var backButton = makeLightBackItem()
     fileprivate lazy var reportButton = makeReportButton()
@@ -112,6 +114,11 @@ class ItemTrendingViewController: ViewController, BackNavigator {
             }
         }
 
+        if reportItemsCount == 1 && reportItems.first?.value == nil {
+            emptyDataLabel.isHidden = false
+            graphComingSoonLabel.isHidden = true
+        }
+
         dataStackView.addArrangedSubviews(newArrangedSubviews)
     }
 
@@ -153,20 +160,42 @@ extension ItemTrendingViewController {
     }
 
     fileprivate func makeGraphsComingSoonView() -> UIView {
+        let view = UIView()
+        view.addSubview(graphComingSoonLabel)
+        view.addSubview(emptyDataLabel)
+
+        view.snp.makeConstraints { (make) in
+            make.height.equalTo(255)
+        }
+
+        graphComingSoonLabel.snp.makeConstraints { (make) in
+            make.centerX.centerY.width.equalToSuperview()
+        }
+
+        emptyDataLabel.snp.makeConstraints { (make) in
+            make.centerX.centerY.width.equalToSuperview()
+        }
+        return view
+    }
+
+    fileprivate func makeGraphComingSoonLabel() -> Label {
         let label = Label()
         label.textAlignment = .center
         label.apply(text: R.string.localizable.graphs_coming_soon(),
                     font: R.font.atlasGroteskLight(size: 18),
                     themeStyle: .concordColor, lineHeight: 1.25)
+        return label
+    }
 
-        let view = UIView()
-        view.addSubview(label)
-        label.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: Size.dh(106), left: 0, bottom: Size.dh(106), right: 0))
-        }
-
-        return view
+    fileprivate func makeEmptyDataLabel() -> Label {
+        let label = Label()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.isHidden = true
+        label.apply(text: R.string.phrase.trendingNoData(),
+                    font: R.font.atlasGroteskLight(size: 18),
+                    themeStyle: .concordColor, lineHeight: 1.25)
+        return label
     }
 
     fileprivate func makeDataStackView() -> UIStackView {

@@ -97,7 +97,7 @@ class ReportSymptomsViewController: ViewController, BackNavigator, ReportSurveyL
                     guard let self = self else { return }
                     switch event {
                     case .next(let healthDetection):
-                        if healthDetection.official <= 0 {
+                        if healthDetection.official <= 0 || healthDetection.guide.count == 0 {
                             self.gotoReportedScreen()
                         } else {
                             self.gotoSymptomGuidanceScreen(healthCenters: healthDetection.guide)
@@ -117,8 +117,8 @@ class ReportSymptomsViewController: ViewController, BackNavigator, ReportSurveyL
         doneButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             let selectedSymptomKeys = self.getSelectedKeys()
-            self.thisViewModel.report(with: selectedSymptomKeys)
             self.showProgressPanModal()
+            self.thisViewModel.report(with: selectedSymptomKeys)
         }.disposed(by: disposeBag)
     }
 

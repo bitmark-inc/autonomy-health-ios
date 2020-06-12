@@ -73,7 +73,8 @@ class LocationSearchViewModel: ViewModel {
                     return
                 }
 
-                let placeInfos = places.map { $0.attributedFullText.string }
+                let placeInfos = places.map { $0.attributedSecondaryText?.string ?? $0.attributedFullText.string }
+
                 self.scoresObserver = HealthService.getScores(places: placeInfos)
                     .subscribe(onSuccess: { [weak self] (scores) in
                         guard let self = self else { return }

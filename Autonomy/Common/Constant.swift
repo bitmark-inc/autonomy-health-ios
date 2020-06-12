@@ -58,7 +58,7 @@ public struct Constant {
     static let callHistoryLimit = 20
     static let negativeColor = UIColor(hexString: "#CC3232")
     static let positiveColor = UIColor(hexString: "#2DC937")
-    static let lineHealthDataWidth: CGFloat = 105
+    static let lineHealthDataWidth: CGFloat = Size.dw(105)
 }
 
 enum HealthRisk {
@@ -66,7 +66,7 @@ enum HealthRisk {
 
     var color: UIColor {
         switch self {
-        case .zero:     return UIColor(hexString: "#000")!
+        case .zero:     return UIColor(hexString: "#828180")!
         case .high:     return UIColor(red: 204, green: 50, blue: 50)!
         case .moderate: return UIColor(red: 241, green: 180, blue: 22)!
         case .low:      return UIColor(red: 45, green: 201, blue: 55)!

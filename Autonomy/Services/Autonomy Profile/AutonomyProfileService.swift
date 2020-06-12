@@ -12,6 +12,8 @@ import Moya
 
 class AutonomyProfileService {
     static var provider = MoyaProvider<AutonomyProfileAPI>(
+        session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
+    static var stubProvider = MoyaProvider<AutonomyProfileAPI>(
         stubClosure: MoyaProvider.immediatelyStub,
         session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
@@ -29,7 +31,7 @@ class AutonomyProfileService {
     static func get(poiID: String, allResources: Bool) -> Single<PlaceAutonomyProfile> {
         Global.log.info("[start] AutonomyProfileService.get(poiID:)")
 
-        return provider.rx
+        return stubProvider.rx
             .requestWithRefreshJwt(.getPOI(poiID: poiID, allResources: allResources))
             .filterSuccess()
             .retryWhenTransientError()

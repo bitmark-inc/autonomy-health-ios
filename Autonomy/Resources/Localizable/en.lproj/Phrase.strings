@@ -61,6 +61,8 @@
 "resources.suggest.message" = "Important Resources For This Neighborhood";
 "resources.suggest.add.placeholder" = "Suggest other resource ...";
 
+"trending.noData" = "Sorry, we currently don’t have active cases data for this location. We’re working hard to support more regions.";
+
 "donate.header" = "Donate";
 "donate.title" = "If you believe in Autonomy, please consider donating:";
 "donate.message" = "Your generosity helps keep Autonomy free and open for everyone. Every little bit helps.";

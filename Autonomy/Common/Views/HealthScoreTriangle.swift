@@ -286,7 +286,7 @@ class HealthScoreTriangle: UIView {
 
     fileprivate func makeDeltaLabel() -> Label {
         let label = Label()
-        label.font = R.font.ibmPlexMonoLight(size: 18)
+        label.font = R.font.ibmPlexMonoLight(size: Size.ds(18))
         return label
     }
 }

@@ -53,7 +53,7 @@ extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationT
         switch self {
         case .create(let pointOfInterest):
             params["alias"] = pointOfInterest.alias
-            params["addess"] = pointOfInterest.alias
+            params["address"] = pointOfInterest.address
             let location = pointOfInterest.location
             params["location"] = [
                 "latitude" : location.latitude,

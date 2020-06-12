@@ -24,7 +24,9 @@ class LaunchingViewController: ViewController, LaunchingNavigatorDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        loadAndNavigate()
+        NetworkConnectionManager.shared.doActionWhenConnecting { [weak self] in
+            self?.loadAndNavigate()
+        }
     }
 
     override func setupViews() {

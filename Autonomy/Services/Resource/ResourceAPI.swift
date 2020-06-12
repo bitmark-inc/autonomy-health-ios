@@ -32,9 +32,8 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
         switch self {
         case .shortList, .fullList, .add:
             return "resources"
-        case .ratings:           return "resource-ratings"
-        case .rate:              return "resource-rating"
-
+        case .ratings, .rate:
+            return "resource-ratings"
         }
     }
 
@@ -70,18 +69,19 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
         var params: [String: Any] = [:]
 
         switch self {
-        case .shortList:
-            params["important"] = true
-
+        case .shortList, .fullList, .add, .ratings:
             if let localeCode = Locale.current.languageCode {
                 params["lang"] = localeCode
             }
+        default: break
+        }
+
+        switch self {
+        case .shortList:
+            params["important"] = true
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
 
         case .fullList:
-            if let localeCode = Locale.current.languageCode {
-                params["lang"] = localeCode
-            }
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
 
         case .add(_, let resources):

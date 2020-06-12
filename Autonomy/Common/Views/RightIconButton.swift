@@ -34,7 +34,7 @@ class RightIconButton: UIButton {
         titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
         imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
 
-        titleLabel?.font = R.font.domaineSansTextLight(size: 24)
+        titleLabel?.font = R.font.domaineSansTextLight(size: Size.ds(24))
     }
 
     required init?(coder: NSCoder) {

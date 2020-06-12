@@ -49,13 +49,13 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
         healthTriangleView.set(delta: autonomyProfile.autonomyScoreDelta)
 
         let you = autonomyProfile.individual
-        youSymptomsView.setData(number: you.symptoms, delta: you.symptomsDelta, thingType: .bad)
-        youBehaviorsView.setData(number: you.behaviors, delta: you.behaviorsDelta, thingType: .good)
+        youSymptomsView.setData(number: you.symptom, delta: you.symptomDelta, thingType: .bad)
+        youBehaviorsView.setData(number: you.behavior, delta: you.behaviorDelta, thingType: .good)
 
         let neighbor = autonomyProfile.neighbor
-        neighborCasesView.setData(number: neighbor.cases, delta: neighbor.casesDelta, thingType: .bad)
-        neighborSymptomsView.setData(number: neighbor.symptoms, delta: neighbor.symptomsDelta, thingType: .bad)
-        neighborBehaviorsView.setData(number: neighbor.behaviors, delta: neighbor.behaviorsDelta, thingType: .good)
+        neighborCasesView.setData(number: neighbor.activeCase, delta: neighbor.activeCaseDelta, thingType: .bad)
+        neighborSymptomsView.setData(number: neighbor.symptom, delta: neighbor.symptomDelta, thingType: .bad)
+        neighborBehaviorsView.setData(number: neighbor.behavior, delta: neighbor.behaviorDelta, thingType: .good)
     }
 
     override func setupViews() {

@@ -236,18 +236,6 @@ extension Navigator {
 
         Navigator.default.show(segue: segue, sender: currentVC)
     }
-
-    static func gotoPOIScreen(poiID: String?) {
-        Global.log.info("[notification] move to POI Screen: \(poiID ?? "nil")")
-        if let currentVC = Navigator.getRootViewController()?.topViewController,
-            let mainVC = currentVC as? MainViewController {
-            // TODO: highlight POI?
-            // mainVC.gotoPOI(with: poiID)
-        }
-
-        let viewModel = MainViewModel(navigateToPoiID: poiID)
-        goto(segue: .main(viewModel: viewModel))
-    }
 }
 
 enum ButtonItemType {

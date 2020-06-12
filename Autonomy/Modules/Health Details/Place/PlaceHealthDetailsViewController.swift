@@ -35,10 +35,17 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     fileprivate lazy var behaviorsView = makePOIBehaviorsView()
 
     var isButtonAddResource: Bool = true
+    var isFullResources: Bool = false
 
     fileprivate lazy var thisViewModel: PlaceHealthDetailsViewModel = {
         return viewModel as! PlaceHealthDetailsViewModel
     }()
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        thisViewModel.fetchPOIAutonomyProfile(allResources: isFullResources)
+    }
 
     override func bindViewModel() {
         super.bindViewModel()
@@ -58,7 +65,9 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         }.disposed(by: disposeBag)
 
         moreResourceButton.rx.tap.bind { [weak self] in
-            self?.thisViewModel.fetchPOIAutonomyProfile(allResources: true)
+            guard let self = self else { return }
+            self.isFullResources = true
+            self.thisViewModel.fetchPOIAutonomyProfile(allResources: true)
         }.disposed(by: disposeBag)
     }
 
@@ -70,9 +79,9 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         addressLabel.setText(autonomyProfile.address)
 
         let neighbor = autonomyProfile.neighbor
-        activeCasesView.setData(number: neighbor.cases, delta: neighbor.casesDelta, thingType: .bad)
-        symptomsView.setData(number: neighbor.symptoms, delta: neighbor.symptomsDelta, thingType: .bad)
-        behaviorsView.setData(number: neighbor.behaviors, delta: neighbor.behaviorsDelta, thingType: .good)
+        activeCasesView.setData(number: neighbor.activeCase, delta: neighbor.activeCaseDelta, thingType: .bad)
+        symptomsView.setData(number: neighbor.symptom, delta: neighbor.symptomDelta, thingType: .bad)
+        behaviorsView.setData(number: neighbor.behavior, delta: neighbor.behaviorDelta, thingType: .good)
 
         moreResourceButton.isHidden = !autonomyProfile.hasMoreResources
 
@@ -354,12 +363,13 @@ extension PlaceHealthDetailsViewController {
             icon: R.image.moreIcon(),
             spacing: 7)
         button.apply(font: R.font.atlasGroteskLight(size: 14), textStyle: .silverColor)
+        button.isHidden = true
         return button
     }
 
     fileprivate func makeRatingResourceButton() -> UIButton {
         let button = RightIconButton(
-            title: R.string.localizable.addRating().localizedUppercase,
+            title: R.string.localizable.addResource().localizedUppercase,
             icon: R.image.addIcon(),
             spacing: 7)
         button.apply(font: R.font.atlasGroteskLight(size: 14), textStyle: .silverColor)

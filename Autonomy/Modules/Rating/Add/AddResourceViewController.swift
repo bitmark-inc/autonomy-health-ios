@@ -77,8 +77,8 @@ class AddResourceViewController: ViewController, BackNavigator {
         submitButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             let selectedResources = self.getSelectedResources()
-            self.thisViewModel.add(resources: selectedResources)
             self.showProgressPanModal()
+            self.thisViewModel.add(resources: selectedResources)
         }.disposed(by: disposeBag)
     }
 
@@ -199,7 +199,16 @@ extension AddResourceViewController {
     }
 
     fileprivate func backResourceRatingsScreen() {
-        navigator.pop(sender: self)
+        guard let viewControllers = navigationController?.viewControllers else { return }
+        let parentVC = viewControllers[viewControllers.count - 2]
+        if type(of: parentVC) == PlaceHealthDetailsViewController.self {
+            let viewModel = ResourceRatingViewModel(poiID: thisViewModel.poiID)
+
+            navigator.pop(sender: self, toRoot: false, animated: false)
+            navigator.show(segue: .resourceRating(viewModel: viewModel), sender: parentVC)
+        } else {
+            navigator.pop(sender: self)
+        }
     }
 }
 

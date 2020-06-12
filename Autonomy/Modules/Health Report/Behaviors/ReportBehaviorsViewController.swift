@@ -93,6 +93,7 @@ class ReportBehaviorsViewController: ViewController, BackNavigator, ReportSurvey
         thisViewModel.surveySubmitResultSubject
             .subscribe(onNext: { [weak self] (event) in
                 loadingState.onNext(.hide)
+
                 self?.panModalVC?.dismiss(animated: true, completion: { [weak self] in
                     guard let self = self else { return }
                     switch event {
@@ -110,8 +111,9 @@ class ReportBehaviorsViewController: ViewController, BackNavigator, ReportSurvey
         doneButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             let selectedBehaviorKeys = self.getSelectedKeys()
-            self.thisViewModel.report(with: selectedBehaviorKeys)
             self.showProgressPanModal()
+            self.thisViewModel.report(with: selectedBehaviorKeys)
+
         }.disposed(by: disposeBag)
     }
 

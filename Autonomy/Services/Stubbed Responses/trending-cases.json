@@ -2,7 +2,7 @@
   "report_items": [
     {
       "name": "COVID-19",
-      "value": 100,
+      "value": null,
       "change_rate": 2.34
     }
   ]

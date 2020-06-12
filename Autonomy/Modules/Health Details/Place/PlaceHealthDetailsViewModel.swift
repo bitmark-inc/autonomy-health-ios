@@ -18,8 +18,6 @@ class PlaceHealthDetailsViewModel: ViewModel {
     init(poiID: String) {
         self.poiID = poiID
         super.init()
-
-        fetchPOIAutonomyProfile(allResources: false)
     }
 
     func fetchPOIAutonomyProfile(allResources: Bool) {

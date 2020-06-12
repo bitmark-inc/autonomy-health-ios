@@ -11,7 +11,8 @@ import RxSwift
 import Moya
 
 class ResourceService {
-    static var provider = MoyaProvider<ResourceAPI>(
+    static var provider = MoyaProvider<ResourceAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
+    static var stubProvider = MoyaProvider<ResourceAPI>(
         stubClosure: MoyaProvider.immediatelyStub,
         session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 

@@ -13,6 +13,10 @@ extension Float {
         return "\(Int(self.rounded()))"
     }
 
+    var roundInt: Int {
+        return Int(self.rounded())
+    }
+
     var formatPercent: String {
         return String(format: "%.2f", self)
     }
@@ -33,6 +37,12 @@ extension Float {
 
 extension Int {
     var formatNumber: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: self)) ?? ""
+    }
+
+    var polish: String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         return numberFormatter.string(from: NSNumber(value: self)) ?? ""

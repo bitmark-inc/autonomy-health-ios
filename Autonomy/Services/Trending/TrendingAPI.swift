@@ -48,6 +48,10 @@ extension TrendingAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
     var task: Task {
         var params: [String: Any] = [:]
 
+        if let localeCode = Locale.current.languageCode {
+            params["lang"] = localeCode
+        }
+
         switch self {
         case .autonomyTrending: params["type"] = "score"
         case .symptomsTrending: params["type"] = "symptom"
@@ -60,9 +64,6 @@ extension TrendingAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
              .symptomsTrending(let autonomyObject, let datePeriod),
              .behaviorsTrending(let autonomyObject, let datePeriod),
              .casesTrending(let autonomyObject, let datePeriod):
-            if let localeCode = Locale.current.languageCode {
-                params["lang"] = localeCode
-            }
 
             switch autonomyObject {
             case .individual:

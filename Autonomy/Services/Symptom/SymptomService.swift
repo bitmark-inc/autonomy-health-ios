@@ -51,7 +51,7 @@ class SymptomService {
     static func report(symptomKeys: [String]) -> Single<HealthDetection> {
         Global.log.info("[start] SymptomService.report(symptomKeys:)")
 
-        return stubProvider.rx
+        return provider.rx
             .requestWithRefreshJwt(.report(symptomKeys: symptomKeys))
             .filterSuccess()
             .retryWhenTransientError()

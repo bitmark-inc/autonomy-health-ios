@@ -154,6 +154,14 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
     }
 }
 
+// MARK: - UITextFieldDelegate
+extension LocationSearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dismiss(animated: true, completion: nil)
+        return true
+    }
+}
+
 // MARK: - KeyboardObserver
 extension LocationSearchViewController {
     @objc func keyboardWillBeShow(notification: Notification) {
@@ -220,6 +228,7 @@ extension LocationSearchViewController {
         textField.font = R.font.atlasGroteskLight(size: 18)
         textField.placeholder = R.string.phrase.locationPlaceholder()
         textField.returnKeyType = .done
+        textField.delegate = self
 
         themeService.rx
             .bind({ $0.lightTextColor  }, to: textField.rx.textColor)

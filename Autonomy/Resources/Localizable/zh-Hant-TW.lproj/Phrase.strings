@@ -61,6 +61,8 @@
 "resources.suggest.message" = "此周圍社群的重要資源";
 "resources.suggest.add.placeholder" = "建議其他資源...";
 
+"trending.noData" = "抱歉，我們目前沒有此位置的在院病例數。我們正在努力擴大支援更多地區。";
+
 "donate.header" = "捐款";
 "donate.title" = "如果您認同Autonomy的理念，請考慮捐款：";
 "donate.message" = "您的大方貢獻將協助Autonomy可以維持開放給任何人免費地使用。任何金額都有幫助。";

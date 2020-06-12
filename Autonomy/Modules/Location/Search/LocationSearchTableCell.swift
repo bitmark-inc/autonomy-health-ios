@@ -93,7 +93,7 @@ class LocationSearchTableCell: TableViewCell {
             healthScoreView.backgroundColor = HealthRisk(from: score)?.color
         } else {
             healthScoreLabel.setText("?")
-            healthScoreView.backgroundColor = HealthRisk.zero.color
+            healthScoreView.backgroundColor = .black
         }
     }
 

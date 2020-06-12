@@ -18,7 +18,7 @@ enum AutonomyProfileAPI {
 extension AutonomyProfileAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
 
     var baseURL: URL {
-        return URL(string: Constant.apiServerURL + "/api/autonomy-profile")!
+        return URL(string: Constant.apiServerURL + "/api/autonomy_profile")!
     }
 
     var path: String {
@@ -50,6 +50,14 @@ extension AutonomyProfileAPI: AuthorizedTargetType, VersionTargetType, LocationT
 
     var task: Task {
         var params: [String: Any] = [:]
+
+        switch self {
+        case .getPOI:
+            if let localeCode = Locale.current.languageCode {
+                params["lang"] = localeCode
+            }
+        default: break
+        }
 
         switch self {
         case .get:

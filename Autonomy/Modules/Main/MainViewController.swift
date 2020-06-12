@@ -68,6 +68,9 @@ class MainViewController: ViewController {
         NotificationCenter.default.addObserver (self, selector: #selector(volumeChanged(_:)),
             name: NSNotification.Name("AVSystemController_SystemVolumeDidChangeNotification"),
             object: nil)
+
+        thisViewModel.fetchYouAutonomyProfile()
+        thisViewModel.fetchPOIs()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -139,6 +142,7 @@ class MainViewController: ViewController {
         thisViewModel.poisRelay
             .subscribe(onNext: { [weak self] (poisValue) in
                 guard let self = self else { return }
+                let oldPOIs = self.pois
                 self.pois = poisValue.pois
 
                 // limit number of pois
@@ -150,7 +154,18 @@ class MainViewController: ViewController {
                     return
                 }
 
-                self.mainCollectionView.reloadSections(IndexSet(integer: self.poiSection))
+                if oldPOIs.count != self.pois.count {
+                    self.mainCollectionView.reloadSections(IndexSet(integer: self.poiSection))
+                    return
+                }
+
+                for (index, newPOI) in self.pois.enumerated() {
+                    let oldPOI = oldPOIs[index]
+
+                    if oldPOI.score != newPOI.score {
+                        self.mainCollectionView.reloadItems(at: [IndexPath(row: index, section: self.poiSection)])
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }

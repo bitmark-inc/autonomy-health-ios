@@ -24,7 +24,7 @@ extension BackNavigator where Self: ViewController {
             }.disposed(by: disposeBag)
         }
 
-        backItem.apply(font: R.font.domaineSansTextLight(size: 24),
+        backItem.apply(font: R.font.domaineSansTextLight(size: Size.ds(24)),
                        backgroundStyle: .lightTextColor)
 
         return backItem

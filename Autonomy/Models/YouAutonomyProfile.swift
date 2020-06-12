@@ -22,28 +22,28 @@ struct YouAutonomyProfile: Codable {
 
 // MARK: - IndividualHealthDetails
 struct IndividualHealthDetails: Codable {
-    let symptoms, behaviors: Int
-    let symptomsDelta, behaviorsDelta: Float
+    let symptom, behavior: Int
+    let symptomDelta, behaviorDelta: Float
 
     enum CodingKeys: String, CodingKey {
-        case symptoms
-        case symptomsDelta = "symptoms_delta"
-        case behaviors
-        case behaviorsDelta = "behaviors_delta"
+        case symptom
+        case symptomDelta = "symptom_delta"
+        case behavior
+        case behaviorDelta = "behavior_delta"
     }
 }
 
 // MARK: - NeighborHealthDetails
 struct NeighborHealthDetails: Codable {
-    let cases, symptoms, behaviors: Int
-    let casesDelta, symptomsDelta, behaviorsDelta: Float
+    let activeCase, symptom, behavior: Int
+    let activeCaseDelta, symptomDelta, behaviorDelta: Float
 
     enum CodingKeys: String, CodingKey {
-        case cases = "confirm"
-        case casesDelta = "confirm_delta"
-        case symptoms
-        case symptomsDelta = "symptoms_delta"
-        case behaviors
-        case behaviorsDelta = "behaviors_delta"
+        case activeCase = "confirm"
+        case activeCaseDelta = "confirm_delta"
+        case symptom
+        case symptomDelta = "symptom_delta"
+        case behavior = "behavior"
+        case behaviorDelta = "behavior_delta"
     }
 }

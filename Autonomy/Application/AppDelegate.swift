@@ -93,8 +93,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let TypeKey = Constant.OneSignal.TypeKey.self
         switch notifityType {
         case TypeKey.riskLevelChanged:
-            let poiID = additionalData["poi_id"] as? String
-            Navigator.gotoPOIScreen(poiID: poiID)
+            // --: goto AutonomyProfile Screen
+            if let poiID = additionalData["poi_id"] as? String {
+                let viewModel = PlaceHealthDetailsViewModel(poiID: poiID)
+                Navigator.goto(segue: .placeHealthDetails(viewModel: viewModel))
+            } else {
+                let viewModel = YouHealthDetailsViewModel()
+                Navigator.goto(segue: .youHealthDetails(viewModel: viewModel))
+            }
 
         case TypeKey.accountSymptomFollowUp, TypeKey.accountSymptomSpike:
             let symptomKeys = additionalData["symptoms"] as? [String]

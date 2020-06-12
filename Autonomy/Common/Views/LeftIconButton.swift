@@ -23,6 +23,8 @@ class LeftIconButton: UIButton {
 
         contentHorizontalAlignment = .leading
         titleEdgeInsets = UIEdgeInsets(top: 2, left: spacing, bottom: 0, right: -spacing)
+
+        titleLabel?.font = R.font.domaineSansTextLight(size: Size.ds(24))
     }
 
     required init?(coder: NSCoder) {

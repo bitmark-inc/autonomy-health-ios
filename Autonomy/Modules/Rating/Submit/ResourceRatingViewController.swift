@@ -49,8 +49,8 @@ class ResourceRatingViewController: ViewController, BackNavigator {
         submitButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             let updatedRatings = self.getUpdatedRatings()
-            self.thisViewModel.submitRatings(ratings: updatedRatings)
             self.showProgressPanModal()
+            self.thisViewModel.submitRatings(ratings: updatedRatings)
         }.disposed(by: disposeBag)
 
         thisViewModel.submitRatingsResultSubject

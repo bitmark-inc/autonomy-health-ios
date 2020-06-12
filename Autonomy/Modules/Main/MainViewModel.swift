@@ -26,22 +26,9 @@ class MainViewModel: ViewModel {
     let addLocationSubject = PublishSubject<PointOfInterest?>()
     let orderLocationIndexSubject = PublishSubject<(from: Int, to: Int)>()
     let submitResultSubject = PublishSubject<Event<Never>>()
-    var navigateToPoiID: String?
-
-    override init() {
-        super.init()
-
-        fetchYouAutonomyProfile()
-        fetchPOIs()
-    }
-
-    convenience init(navigateToPoiID: String?) {
-        self.init()
-        self.navigateToPoiID = navigateToPoiID
-    }
 
     // MARK: - Handlers
-    fileprivate func fetchYouAutonomyProfile() {
+    func fetchYouAutonomyProfile() {
         AutonomyProfileService.get()
             .subscribe(onSuccess: { [weak self] in
                 guard let self = self else { return }

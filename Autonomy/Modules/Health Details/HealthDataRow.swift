@@ -87,8 +87,14 @@ class HealthDataRow: UIView {
     func setData(autonomyReportItem reportItem: ReportItem) {
         let delta = reportItem.changeRate
 
-        numberLabel.setText(reportItem.value.formatInt)
-        numberLabel.textColor = HealthRisk(from: reportItem.value)?.color
+        if let value = reportItem.value {
+            numberLabel.setText(value.roundInt.polish)
+            numberLabel.textColor = HealthRisk(from: value)?.color
+        } else {
+            numberLabel.setText("--")
+            numberLabel.textColor = .white
+        }
+
         numberInfoLabel.setText("\(abs(delta).formatPercent)%")
 
         buildDeltaView(delta: delta, thingType: .good)
@@ -97,14 +103,14 @@ class HealthDataRow: UIView {
     func setData(reportItem: ReportItem, thingType: ThingType) {
         let delta = reportItem.changeRate
 
-        numberLabel.setText(reportItem.value.formatInt)
+        numberLabel.setText(reportItem.value?.roundInt.polish ?? "--")
         numberInfoLabel.setText("\(abs(delta).formatPercent)%")
 
         buildDeltaView(delta: delta, thingType: thingType)
     }
 
     func setData(number: Int, delta: Float, thingType: ThingType) {
-        numberLabel.setText("\(number)")
+        numberLabel.setText("\(number.polish)")
         numberInfoLabel.setText("\(abs(delta).formatPercent)%")
 
         buildDeltaView(delta: delta, thingType: thingType)
@@ -148,6 +154,7 @@ extension HealthDataRow {
     fileprivate func makeInfoLabel() -> Label {
         let label = Label()
         label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
         label.apply(text: info, font: R.font.atlasGroteskLight(size: 14),
                     themeStyle: .lightTextColor)
         return label
@@ -158,6 +165,7 @@ extension HealthDataRow {
         label.textAlignment = .right
         label.font = R.font.ibmPlexMonoLight(size: 14)
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         return label
     }
 
@@ -190,6 +198,7 @@ extension HealthDataRow {
         let label = Label()
         label.font = R.font.ibmPlexMonoLight(size: 14)
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         return label
     }
 }
