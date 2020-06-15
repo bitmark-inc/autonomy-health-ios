@@ -31,7 +31,7 @@ class AutonomyProfileService {
     static func get(poiID: String, allResources: Bool) -> Single<PlaceAutonomyProfile> {
         Global.log.info("[start] AutonomyProfileService.get(poiID:)")
 
-        return stubProvider.rx
+        return provider.rx
             .requestWithRefreshJwt(.getPOI(poiID: poiID, allResources: allResources))
             .filterSuccess()
             .retryWhenTransientError()

@@ -16,7 +16,7 @@ class ButtonGroupView: UIView {
     fileprivate let defaultBackgroundColor = UIColor(hexString: "#000")!
     fileprivate let disposeBag = DisposeBag()
 
-    init(button1: UIView, button2: UIView? = nil, hasGradient: Bool = false) {
+    init(button1: UIView, button2: UIView? = nil, hasGradient: Bool = false, button1SpacePercent: Float = 0.5) {
         super.init(frame: CGRect.zero)
 
         let buttonsLine = UIView()
@@ -24,14 +24,14 @@ class ButtonGroupView: UIView {
 
         button1.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.5)
+            make.width.equalToSuperview().multipliedBy(button1SpacePercent)
         }
 
         if let button2 = button2 {
             buttonsLine.addSubview(button2)
             button2.snp.makeConstraints { (make) in
                 make.top.bottom.trailing.equalToSuperview()
-                make.width.lessThanOrEqualToSuperview().multipliedBy(0.5)
+                make.width.lessThanOrEqualToSuperview().multipliedBy(1 - button1SpacePercent)
             }
         }
 

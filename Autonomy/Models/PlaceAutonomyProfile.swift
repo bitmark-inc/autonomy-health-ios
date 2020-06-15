@@ -27,7 +27,7 @@ struct PlaceAutonomyProfile: Codable {
 
 // MARK: - Resource
 struct ResourceReportItem: Codable {
-    let name: String
+    let resource: Resource
     let score: Float
     let ratings: Float
 }

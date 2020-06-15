@@ -32,21 +32,6 @@ class HealthDataRow: UIView {
     }
 
     fileprivate func setupViews() {
-        let numberView = UIView()
-        numberView.addSubview(numberLabel)
-        numberView.addSubview(deltaView)
-
-        numberLabel.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().offset(5)
-            make.top.bottom.equalToSuperview()
-            make.trailing.equalTo(deltaView.snp.leading).offset(Size.dw(15))
-        }
-
-        deltaView.snp.makeConstraints { (make) in
-            make.width.equalTo(Size.dw(105))
-            make.top.bottom.trailing.equalToSuperview()
-        }
-
         addSubview(infoLabel)
         addSubview(numberLabel)
         addSubview(deltaView)
@@ -79,6 +64,7 @@ class HealthDataRow: UIView {
         }
 
         deltaView.snp.makeConstraints { (make) in
+            make.width.equalTo(Size.dw(105))
             make.leading.equalTo(numberLabel.snp.trailing)
             make.top.bottom.trailing.equalToSuperview()
         }
@@ -119,8 +105,14 @@ class HealthDataRow: UIView {
     func setData(resourceReportItem: ResourceReportItem) {
         let score = resourceReportItem.score
 
-        numberLabel.setText(score.formatRatingScore)
-        numberLabel.textColor = Rating(from: score).color
+        if score == 0 {
+            numberLabel.setText("--")
+            numberLabel.textColor = .white
+        } else {
+            numberLabel.setText(score.formatRatingScore)
+            numberLabel.textColor = Rating(from: score).color
+        }
+
         numberInfoLabel.setText(resourceReportItem.ratings.simple)
         numberInfoLabel.textColor = .white
     }
@@ -155,6 +147,7 @@ extension HealthDataRow {
         let label = Label()
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
+        label.lineBreakMode = .byWordWrapping
         label.apply(text: info, font: R.font.atlasGroteskLight(size: 14),
                     themeStyle: .lightTextColor)
         return label

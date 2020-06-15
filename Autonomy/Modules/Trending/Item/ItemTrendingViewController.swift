@@ -93,6 +93,9 @@ class ItemTrendingViewController: ViewController, BackNavigator {
         groupsButton.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
         }
+
+        view.addGestureRecognizer(makeLeftSwipeGesture())
+        view.addGestureRecognizer(makeRightSwipeGesture())
     }
 
     fileprivate func rebuildScoreView(with reportItems: [ReportItem]) {
@@ -226,5 +229,26 @@ extension ItemTrendingViewController {
             .disposed(by: disposeBag)
 
         return indicator
+    }
+
+    fileprivate func makeLeftSwipeGesture() -> UISwipeGestureRecognizer {
+        let swipeGesture = UISwipeGestureRecognizer()
+        swipeGesture.direction = .left
+        swipeGesture.rx.event.bind { [weak self] (gesture) in
+            guard let self = self else { return }
+            self.timelineView.adjustSegment(isNext: true)
+        }.disposed(by: disposeBag)
+        return swipeGesture
+    }
+
+    fileprivate func makeRightSwipeGesture() -> UISwipeGestureRecognizer {
+        let swipeGesture = UISwipeGestureRecognizer()
+        swipeGesture.direction = .right
+        swipeGesture.rx.event.bind { [weak self] (gesture) in
+            guard let self = self else { return }
+            self.timelineView.adjustSegment(isNext: false)
+
+        }.disposed(by: disposeBag)
+        return swipeGesture
     }
 }

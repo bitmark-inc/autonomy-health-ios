@@ -11,10 +11,12 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import MediaPlayer
+import RxAppState
 
-protocol Location1Delegate: class {
+protocol LocationDelegate: class {
     func updatePOI(poiID: String, alias: String)
     func deletePOI(poiID: String)
+    func toggleEditMode(isOn: Bool)
 }
 
 protocol DashboardDelegate: class {
@@ -117,6 +119,14 @@ class MainViewController: ViewController {
     // MARK: - bindViewModel
     override func bindViewModel() {
         super.bindViewModel()
+
+        UIApplication.shared.rx.didOpenApp
+            .subscribe(onNext: { [weak thisViewModel] _ in
+                guard let thisViewModel = thisViewModel else { return }
+                thisViewModel.fetchYouAutonomyProfile()
+                thisViewModel.fetchPOIs()
+            })
+            .disposed(by: disposeBag)
 
         thisViewModel.submitResultSubject
             .subscribe(onNext: { [weak self] (event) in
@@ -308,7 +318,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 }
 
 // MARK: - LocationDelegate
-extension MainViewController: Location1Delegate {
+extension MainViewController: LocationDelegate {
     func deletePOI(poiID: String) {
         guard let poiIDRow = pois.firstIndex(where: { $0.id == poiID }) else { return }
         let indexPath = IndexPath(row: poiIDRow, section: poiSection)
@@ -319,6 +329,10 @@ extension MainViewController: Location1Delegate {
 
     func updatePOI(poiID: String, alias: String) {
         thisViewModel.updatePOI(poiID: poiID, alias: alias)
+    }
+
+    func toggleEditMode(isOn: Bool) {
+        mainCollectionView.delaysContentTouches = isOn
     }
 }
 

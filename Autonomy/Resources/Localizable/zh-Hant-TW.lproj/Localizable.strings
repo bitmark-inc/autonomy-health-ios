@@ -61,7 +61,7 @@
 "Resource" = "資源";
 "Review" = "審閱";
 "RiskLevel" = "風險水平";
-"Score_(0_5)" = "分數 (0-5)";
+"Score_(1_5)" = "分數 (1-5)";
 "Security" = "安全";
 "SignedUp" = "已註冊";
 "SignOut" = "登出";
@@ -74,7 +74,7 @@
 "Symptom" = "症狀";
 "Symptoms" = "症狀";
 "SymptomsScore" = "症狀評分";
-"ViewOnJupyter" = "View on Jupyter";
+"ViewOnJupyter" = "在Jupyter上檢視";
 "ViewSource" = "檢視來源";
 "ViewYourRating" = "檢視您的評分";
 "You" = "您";

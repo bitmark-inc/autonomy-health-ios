@@ -28,7 +28,7 @@ class ReportedSymptomViewController: ViewController, ReportedSurveyLayout {
         title: R.string.localizable.done().localizedUppercase,
         icon: R.image.doneCircleArrow())
     lazy var groupsButton: UIView = {
-        let groupView = ButtonGroupView(button1: reportOtherButton, button2: doneButton, hasGradient: false)
+        let groupView = ButtonGroupView(button1: reportOtherButton, button2: doneButton, hasGradient: false, button1SpacePercent: 0.6)
         groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()

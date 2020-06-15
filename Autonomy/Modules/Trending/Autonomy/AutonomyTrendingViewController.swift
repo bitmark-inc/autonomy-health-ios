@@ -25,7 +25,7 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
     fileprivate lazy var backButton = makeLightBackItem()
     fileprivate lazy var jupyterButton = makeViewOnJupyterButton()
     fileprivate lazy var groupsButton: UIView = {
-        let groupView = ButtonGroupView(button1: backButton, button2: jupyterButton, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: jupyterButton, hasGradient: false, button1SpacePercent: 0.45)
         groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()
@@ -91,6 +91,9 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
         groupsButton.snp.makeConstraints { (make) in
             make.leading.trailing.bottom.equalToSuperview()
         }
+
+        view.addGestureRecognizer(makeLeftSwipeGesture())
+        view.addGestureRecognizer(makeRightSwipeGesture())
     }
 
     fileprivate func rebuildScoreView(with reportItems: [ReportItem]) {
@@ -221,9 +224,13 @@ extension AutonomyTrendingViewController {
     fileprivate func makeViewOnJupyterButton() -> UIButton {
         let button = RightIconButton(
             title: R.string.localizable.viewOnJupyter().localizedUppercase,
-            icon: R.image.mapLocation()!)
+            icon: R.image.crossCircleArrow()!)
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.numberOfLines = 0
+        let spacing = Size.dw(15)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: -15, bottom: 5, right: 15)
+
         button.rx.tap.bind { [weak self] in
             self?.moveToJupyterNotebook()
         }.disposed(by: disposeBag)
@@ -240,5 +247,25 @@ extension AutonomyTrendingViewController {
             .disposed(by: disposeBag)
 
         return indicator
+    }
+
+    fileprivate func makeLeftSwipeGesture() -> UISwipeGestureRecognizer {
+        let swipeGesture = UISwipeGestureRecognizer()
+        swipeGesture.direction = .left
+        swipeGesture.rx.event.bind { [weak self] (gesture) in
+            guard let self = self else { return }
+            self.timelineView.adjustSegment(isNext: true)
+        }.disposed(by: disposeBag)
+        return swipeGesture
+    }
+
+    fileprivate func makeRightSwipeGesture() -> UISwipeGestureRecognizer {
+        let swipeGesture = UISwipeGestureRecognizer()
+        swipeGesture.direction = .right
+        swipeGesture.rx.event.bind { [weak self] (gesture) in
+            guard let self = self else { return }
+            self.timelineView.adjustSegment(isNext: false)
+        }.disposed(by: disposeBag)
+        return swipeGesture
     }
 }

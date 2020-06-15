@@ -254,7 +254,7 @@ class HealthScoreTriangle: UIView {
     fileprivate func makeScoreLabel() -> Label {
         let label = Label()
         label.apply(
-            font: R.font.domaineSansTextLight(size: 64),
+            font: R.font.ibmPlexMonoLight(size: 64),
             themeStyle: .lightTextColor)
         return label
     }

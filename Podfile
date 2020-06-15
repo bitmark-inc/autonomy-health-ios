@@ -18,6 +18,7 @@ def sharedPods
   pod 'Moya/RxSwift'
   pod 'RxTheme'
   pod 'RxSwiftExt'
+  pod 'RxAppState'
 
   pod 'IQKeyboardManagerSwift'
   pod 'Hero'

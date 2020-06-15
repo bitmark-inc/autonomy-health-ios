@@ -21,7 +21,7 @@ class TimeFilterView: UIView {
     fileprivate lazy var nextPeriodButton = makeNextPeriodButton()
     fileprivate lazy var periodLabel = makePeriodLabel()
 
-    fileprivate let defaultStartDate = Date().in(Locales.english).date
+    fileprivate let defaultStartDate = Date()
     var segmentDistances: [TimeUnit: Int] = [
         .week: 0, .month: 0, .year: 0
     ]
@@ -73,6 +73,18 @@ class TimeFilterView: UIView {
         let datePeriod = DatePeriod(startDate: startDate, endDate: endDate)
         datePeriodRelay.accept(datePeriod)
         periodLabel.setText(datePeriod.humanize(in: timeUnit).localizedUppercase)
+    }
+
+    func adjustSegment(isNext: Bool) {
+        var index = segmentView.index
+        if isNext {
+            guard index != 2 else { return }
+            index = index + 1
+        } else {
+            guard index != 0 else { return }
+            index = index - 1
+        }
+        segmentView.setIndex(index)
     }
 
     fileprivate func adjustSegmentDistance(step: Int) { // step = -1 or +1

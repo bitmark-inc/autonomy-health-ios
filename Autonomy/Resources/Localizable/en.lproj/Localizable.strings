@@ -61,7 +61,7 @@
 "Resource" = "Resource";
 "Review" = "Review";
 "RiskLevel" = "Risk Level";
-"Score_(0_5)" = "Score (0-5)";
+"Score_(1_5)" = "Score (1-5)";
 "Security" = "Security";
 "SignedUp" = "Signed Up";
 "SignOut" = "Sign Out";

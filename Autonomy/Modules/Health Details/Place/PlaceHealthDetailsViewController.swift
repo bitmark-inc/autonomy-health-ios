@@ -115,7 +115,7 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         resourceListView.removeSubviews()
 
         let newArrangedSubviews = resourceReportItems.map { (resourceReportItem) -> UIView in
-            let healthDataRow = HealthDataRow(info: resourceReportItem.name.localizedUppercase, hasDot: true)
+            let healthDataRow = HealthDataRow(info: resourceReportItem.resource.name.localizedUppercase, hasDot: true)
             healthDataRow.setData(resourceReportItem: resourceReportItem)
 
             return LinearView(
@@ -128,8 +128,6 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
 
     override func setupViews() {
         super.setupViews()
-
-        healthTriangleView.updateLayout(score: 28, animate: false)
 
         let paddingContentView = makePaddingContentView()
 
@@ -162,7 +160,7 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
             (nameLabel, 0),
             (healthTriangleView, 42),
             (makeDataHeaderLabel(text: R.string.localizable.address().localizedUppercase), 30),
-            (makeAddressView(), 0),
+            (makeAddressView(), 8),
             (HeaderView(header: R.string.localizable.reportCard().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 38),
             (resourceView, 15),
             (makeResourceButtonGroupView(), 17),
@@ -308,7 +306,7 @@ extension PlaceHealthDetailsViewController {
 
     fileprivate func makeResourceHeaderView() -> UIView {
         let resourceHeaderLabel = makeDataHeaderLabel(text: R.string.localizable.resource().localizedUppercase)
-        let scoreHeaderLabel = makeDataHeaderLabel(text: R.string.localizable.score_0_5().localizedUppercase)
+        let scoreHeaderLabel = makeDataHeaderLabel(text: R.string.localizable.score_1_5().localizedUppercase)
         let ratingsHeaderLabel = makeDataHeaderLabel(text: R.string.localizable.ratings().localizedUppercase)
 
         let view = UIView()
@@ -321,7 +319,6 @@ extension PlaceHealthDetailsViewController {
 
         resourceHeaderLabel.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.58)
             make.trailing.equalTo(scoreHeaderLabel.snp.leading)
         }
 
@@ -331,6 +328,7 @@ extension PlaceHealthDetailsViewController {
         }
 
         ratingsHeaderLabel.snp.makeConstraints { (make) in
+            make.width.equalTo(Size.dw(105))
             make.leading.equalTo(scoreHeaderLabel.snp.trailing)
             make.top.bottom.trailing.equalToSuperview()
         }
@@ -385,8 +383,8 @@ extension PlaceHealthDetailsViewController {
 
     fileprivate func makeAddressView() -> UIView {
         let mapIconButton = UIButton()
-        mapIconButton.setImage(R.image.linkMap(), for: .normal)
-        mapIconButton.contentEdgeInsets = UIEdgeInsets(top: 15, left: 29, bottom: 14, right: 0)
+        mapIconButton.setImage(R.image.crossCircleArrowIcon(), for: .normal)
+        mapIconButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 29, bottom: 29, right: 0)
 
         mapIconButton.rx.tap.bind { [weak self] in
             self?.linkMap()
@@ -398,11 +396,11 @@ extension PlaceHealthDetailsViewController {
 
         addressLabel.snp.makeConstraints { (make) in
             make.leading.top.bottom.equalToSuperview()
-            make.trailing.equalTo(mapIconButton.snp.leading).offset(-15)
+            make.trailing.equalToSuperview().offset(-59)
         }
 
         mapIconButton.snp.makeConstraints { (make) in
-            make.top.trailing.bottom.equalToSuperview()
+            make.top.trailing.equalToSuperview()
         }
 
         return view

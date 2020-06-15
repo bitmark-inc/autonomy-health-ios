@@ -61,8 +61,6 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
     override func setupViews() {
         super.setupViews()
 
-        healthTriangleView.updateLayout(score: 28, animate: false)
-
         let paddingContentView = makePaddingContentView()
 
         scrollView.addSubview(paddingContentView)

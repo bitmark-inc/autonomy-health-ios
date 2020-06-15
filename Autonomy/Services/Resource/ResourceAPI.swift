@@ -68,12 +68,8 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
     var task: Task {
         var params: [String: Any] = [:]
 
-        switch self {
-        case .shortList, .fullList, .add, .ratings:
-            if let localeCode = Locale.current.languageCode {
-                params["lang"] = localeCode
-            }
-        default: break
+        if let localeCode = Locale.current.languageCode {
+            params["lang"] = localeCode
         }
 
         switch self {
@@ -97,13 +93,13 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
 
         case .ratings:
-            return .requestPlain
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
 
         case .rate(_, let ratings):
             let ratingsParam = ratings.map {
-                ["resource":
-                    ["id" : $0.resource.id],
-                 "score": $0.score
+                [
+                    "resource": ["id" : $0.resource.id],
+                    "score": $0.score
                 ]
             }
 

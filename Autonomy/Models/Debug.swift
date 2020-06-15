@@ -15,14 +15,14 @@ class Debug: Decodable {
 
 // MARK: - Metrics
 struct DebugMetrics: Codable {
-    let confirm, behavior, symptoms: Int
-    let score, confirmDelta, symptomsDelta, behaviorDelta: Float
+    let confirm, behavior, symptom: Int
+    let score, confirmDelta, symptomDelta, behaviorDelta: Float
 
     enum CodingKeys: String, CodingKey {
         case score, confirm
         case confirmDelta = "confirm_delta"
-        case symptoms
-        case symptomsDelta = "symptoms_delta"
+        case symptom
+        case symptomDelta = "symptom_delta"
         case behavior
         case behaviorDelta = "behavior_delta"
     }

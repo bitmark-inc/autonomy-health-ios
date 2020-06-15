@@ -25,6 +25,7 @@ class ResourceService {
             .retryWhenTransientError()
             .asSingle()
             .map([Resource].self, atKeyPath: "resources")
+            .map { $0.filter { $0.name.isNotEmpty } }
     }
 
     static func getFullList(poiID: String) -> Single<[Resource]> {
@@ -36,6 +37,7 @@ class ResourceService {
             .retryWhenTransientError()
             .asSingle()
             .map([Resource].self, atKeyPath: "resources")
+            .map { $0.filter { $0.name.isNotEmpty } }
     }
 
     static func add(poiID: String, resources: [Resource]) -> Single<[Resource]> {
@@ -58,6 +60,7 @@ class ResourceService {
             .retryWhenTransientError()
             .asSingle()
             .map([ResourceRating].self, atKeyPath: "ratings")
+            .map { $0.filter { $0.resource.name.isNotEmpty } }
     }
 
     static func rate(poiID: String, ratings: [ResourceRating]) -> Completable {

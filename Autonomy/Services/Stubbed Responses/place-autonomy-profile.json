@@ -1,86 +1,27 @@
 {
-  "id": "2",
-  "alias": "Tonghua (Linjiang) Street Night Market",
-  "address": "106台北市大安區臨江街",
-  "rating": true,
-  "location": {
-    "latitude": 25.03043,
-    "longitude": 121.554241
-  },
-  "has_more_resources": true,
-  "resources": [
-    {
-      "name": "PLANT-BASED food",
-      "score": 4.5,
-      "ratings": 5678
-    },
-    {
-      "name": "WEARING FACE COVERING",
-      "score": 4.2,
-      "ratings": 5432
-    },
-    {
-      "name": "TEMPERATURE CHECKS",
-      "score": 1.5,
-      "ratings": 4321
-    },
-    {
-      "name": "low-glycemic index diet",
-      "score": 4.9,
-      "ratings": 3456
-    },
-    {
-      "name": "equipment disinfected",
-      "score": 2.1,
-      "ratings": 987
-    },
-    {
-      "name": "SOCIAL DISTANCING",
-      "score": 4.3,
-      "ratings": 890
-    },
-    {
-      "name": "PLANT-BASED food",
-      "score": 4.5,
-      "ratings": 5678
-    },
-    {
-      "name": "GOOD AIR CIRCULATION",
-      "score": 1.3,
-      "ratings": 765
-    },
-    {
-      "name": "FLEXITARIAN FOOD",
-      "score": 1.2,
-      "ratings": 123
-    },
-    {
-      "name": "WEARING FACE COVERING",
-      "score": 4.2,
-      "ratings": 5432
-    }
-  ],
-  "neighbor": {
-    "confirm": 18000,
-    "confirm_delta": 1000.225231,
-    "symptom": 0,
-    "symptom_delta": -100,
-    "behavior": 0,
-    "behavior_delta": -100,
-    "score": 60,
-    "last_update": 0,
-    "details": {
-      "confirm": {
-        "score": 71.74483983148951
-      },
-      "behaviors": {
-        "score": 0
-      },
-      "symptoms": {
-        "score": 100
+   "id":"2",
+   "alias":"Tonghua (Linjiang) Street Night Market",
+   "address":"106台北市大安區臨江街",
+   "rating":true,
+   "has_more_resources":false,
+   "resources":[
+      {
+         "resource":{
+            "id":"xxx",
+            "name":"PLANT-BASED food"
+         },
+         "score":4.5,
+         "ratings":5678
       }
-    }
-  },
-  "autonomy_score": 92,
-  "autonomy_score_delta": 3
+   ],
+   "neighbor":{
+      "confirm":18,
+      "confirm_delta":100,
+      "symptom":0,
+      "symptom_delta":-100,
+      "behavior":0,
+      "behavior_delta":-100
+   },
+   "autonomy_score":92,
+   "autonomy_score_delta":3
 }

@@ -30,7 +30,8 @@ class AutonomyTrendingViewModel: ViewModel {
             })
             .subscribe(onSuccess: { [weak self] in
                 self?.reportItemsRelay.accept($0)
-            }, onError: { (error) in
+            }, onError: { [weak self] (error) in
+                self?.reportItemsRelay.accept([])
                 Global.backgroundErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)

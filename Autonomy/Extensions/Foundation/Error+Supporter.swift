@@ -19,7 +19,14 @@ extension Error {
         case .underlying(let error, _):
             guard let error = error.asAFError else { return false }
             switch error {
-            case .sessionTaskFailed(_):
+            case .sessionTaskFailed(let error):
+
+                // TODO: temporary fix
+                if error.localizedDescription.contains("HTTP") {
+                    Global.log.error(error)
+                    return false
+                }
+
                 return true
 
             default:

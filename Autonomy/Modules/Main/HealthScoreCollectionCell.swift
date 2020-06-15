@@ -18,7 +18,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
     fileprivate lazy var deleteButton = makeDeleteButton()
 
     fileprivate var poiID: String?
-    weak var delegate: Location1Delegate?
+    weak var delegate: LocationDelegate?
 
     static let space: CGFloat = 45
     fileprivate let disposeBag = DisposeBag()
@@ -65,6 +65,7 @@ class HealthScoreCollectionCell: UICollectionViewCell {
         nameLabel.isHidden = isOn
         nameTextField.isHidden = !isOn
         deleteButton.isHidden = !isOn
+        delegate?.toggleEditMode(isOn: isOn)
 
         if isOn { nameTextField.becomeFirstResponder() }
         else {    nameTextField.resignFirstResponder() }

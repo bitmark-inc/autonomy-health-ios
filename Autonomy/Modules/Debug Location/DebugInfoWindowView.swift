@@ -34,7 +34,7 @@ class DebugInfoWindowView: UIView {
 coordinate: (\(coordinate.latitude), \(coordinate.longitude))
 score: \(debug.metrics.score)
 24h_confirms_count/delta: \(debug.metrics.confirm)/\(debug.metrics.confirmDelta)
-24h_symptom_count/delta: \(debug.metrics.symptoms)/\(debug.metrics.symptomsDelta)
+24h_symptom_count/delta: \(debug.metrics.symptom)/\(debug.metrics.symptomDelta)
 24h_behavior_count/delta: \(debug.metrics.behavior)/\(debug.metrics.behaviorDelta)
 users_count: \(debug.users)
 aqi: \(debug.aqi)
