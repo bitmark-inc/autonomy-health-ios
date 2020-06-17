@@ -50,6 +50,8 @@ class Navigator {
         case donate
         case viewRecoveryKeyWarning
         case viewRecoveryKey(viewModel: ViewRecoveryKeyViewModel)
+        case signOutWarning
+        case signOut(viewModel: SignOutViewModel)
         case debugLocation(viewModel: DebugLocationViewModel)
         case safariController(URL)
     }
@@ -101,6 +103,8 @@ class Navigator {
         case .donate:                           return DonateViewController()
         case .viewRecoveryKeyWarning:           return ViewRecoveryKeyWarningViewController()
         case .viewRecoveryKey(let viewModel):   return ViewRecoveryKeyViewController(viewModel: viewModel)
+        case .signOutWarning:                   return WarningSignOutViewController()
+        case .signOut(let viewModel):           return SignOutViewController(viewModel: viewModel)
         case .debugLocation(let viewModel):     return DebugLocationViewController(viewModel: viewModel)
 
         case .safariController(let url):

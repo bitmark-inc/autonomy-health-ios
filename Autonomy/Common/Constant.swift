@@ -59,6 +59,7 @@ public struct Constant {
     static let negativeColor = UIColor(hexString: "#CC3232")
     static let positiveColor = UIColor(hexString: "#2DC937")
     static let lineHealthDataWidth: CGFloat = Size.dw(105)
+    static let numberOfPhrases = 13
 }
 
 enum HealthRisk {

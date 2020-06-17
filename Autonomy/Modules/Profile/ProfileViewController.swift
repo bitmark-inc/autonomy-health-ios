@@ -60,6 +60,10 @@ class ProfileViewController: ViewController, BackNavigator {
             self?.gotoViewRecoveryKeyFlow()
         }.disposed(by: disposeBag)
 
+        signOutButton.rx.tap.bind { [weak self] in
+            self?.gotoSignOutWarningFlow()
+        }.disposed(by: disposeBag)
+
         contactButton.rx.tap.bind { [weak self] in
             self?.showIntercomContact()
         }.disposed(by: disposeBag)
@@ -171,6 +175,10 @@ extension ProfileViewController {
 
     fileprivate func gotoViewRecoveryKeyFlow() {
         navigator.show(segue: .viewRecoveryKeyWarning, sender: self)
+    }
+
+    fileprivate func gotoSignOutWarningFlow() {
+        navigator.show(segue: .signOutWarning, sender: self)
     }
 
     fileprivate func showIntercomContact() {

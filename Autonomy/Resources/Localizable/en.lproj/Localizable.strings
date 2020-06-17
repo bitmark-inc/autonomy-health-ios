@@ -15,6 +15,7 @@
 "Today" = "Today";
 "Enable" = "Enable";
 "Delete" = "Delete";
+"Error" = "Error";
 
 "Permission" = "Permission";
 "Notifications" = "Notifications";
@@ -32,6 +33,7 @@
 "BehaviorsScore" = "Behaviors Score";
 "Cases" = "Cases";
 "CasesScore" = "Cases Score";
+"CheckKey" = "Check Key";
 "Copied" = "Copied";
 "Data" = "Data";
 "DigitalRights" = "Digital Rights";
@@ -64,6 +66,7 @@
 "Score_(1_5)" = "Score (1-5)";
 "Security" = "Security";
 "SignedUp" = "Signed Up";
+"SigningOut" = "Signing Out";
 "SignOut" = "Sign Out";
 "SignUp" = "Sign Up";
 "Submit" = "Submit";

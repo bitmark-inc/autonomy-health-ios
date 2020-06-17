@@ -117,6 +117,13 @@ extension ViewRecoveryKeyViewController: UICollectionViewDataSource, UICollectio
 extension ViewRecoveryKeyViewController {
     fileprivate func doneViewRecoveryKey() {
         let viewControllers = navigationController?.viewControllers ?? []
+
+        let parentVCType = type(of: viewControllers[viewControllers.count - 2])
+        if parentVCType == WarningSignOutViewController.self || parentVCType == SignOutViewController.self {
+            navigator.pop(sender: self)
+            return
+        }
+
         guard let target = viewControllers.first(where: { type(of: $0) == ProfileViewController.self }) else {
             return
         }

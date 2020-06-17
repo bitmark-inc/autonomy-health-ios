@@ -660,6 +660,21 @@
 		5BE08D54247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
 		5BE08D55247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
 		5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
+		5BF2E9812499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */; };
+		5BF2E9822499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */; };
+		5BF2E9832499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */; };
+		5BF2E9852499DBA100CCD7E9 /* SignOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9842499DBA100CCD7E9 /* SignOutViewModel.swift */; };
+		5BF2E9862499DBA100CCD7E9 /* SignOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9842499DBA100CCD7E9 /* SignOutViewModel.swift */; };
+		5BF2E9872499DBA100CCD7E9 /* SignOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9842499DBA100CCD7E9 /* SignOutViewModel.swift */; };
+		5BF2E9892499DBAB00CCD7E9 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9882499DBAB00CCD7E9 /* SignOutViewController.swift */; };
+		5BF2E98A2499DBAB00CCD7E9 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9882499DBAB00CCD7E9 /* SignOutViewController.swift */; };
+		5BF2E98B2499DBAB00CCD7E9 /* SignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9882499DBAB00CCD7E9 /* SignOutViewController.swift */; };
+		5BF2E98D2499F25500CCD7E9 /* String+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E98C2499F25500CCD7E9 /* String+Account.swift */; };
+		5BF2E98E2499F25500CCD7E9 /* String+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E98C2499F25500CCD7E9 /* String+Account.swift */; };
+		5BF2E98F2499F25500CCD7E9 /* String+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E98C2499F25500CCD7E9 /* String+Account.swift */; };
+		5BF2E9912499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9902499F5B100CCD7E9 /* ActionPanViewController.swift */; };
+		5BF2E9922499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9902499F5B100CCD7E9 /* ActionPanViewController.swift */; };
+		5BF2E9932499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9902499F5B100CCD7E9 /* ActionPanViewController.swift */; };
 		5BFC537724907C510096B14E /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC537624907C510096B14E /* TimeUnit.swift */; };
 		5BFC537824907C510096B14E /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC537624907C510096B14E /* TimeUnit.swift */; };
 		5BFC537924907C510096B14E /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC537624907C510096B14E /* TimeUnit.swift */; };
@@ -1029,6 +1044,11 @@
 		5BD0D2BD246CE73000022AE1 /* TimezoneDataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneDataEngine.swift; sourceTree = "<group>"; };
 		5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceInhouseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE08D53247261D4006A3034 /* Error+Supporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Supporter.swift"; sourceTree = "<group>"; };
+		5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSignOutViewController.swift; sourceTree = "<group>"; };
+		5BF2E9842499DBA100CCD7E9 /* SignOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewModel.swift; sourceTree = "<group>"; };
+		5BF2E9882499DBAB00CCD7E9 /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
+		5BF2E98C2499F25500CCD7E9 /* String+Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Account.swift"; sourceTree = "<group>"; };
+		5BF2E9902499F5B100CCD7E9 /* ActionPanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPanViewController.swift; sourceTree = "<group>"; };
 		5BFC537624907C510096B14E /* TimeUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUnit.swift; sourceTree = "<group>"; };
 		5BFC537A24907D6B0096B14E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		5BFC537F24907ED00096B14E /* TrendingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingService.swift; sourceTree = "<group>"; };
@@ -1595,6 +1615,7 @@
 			children = (
 				5B57791F242B4E830028D3E3 /* AssetService+Rx.swift */,
 				5B577920242B4E830028D3E3 /* AccountService+Rx.swift */,
+				5BF2E98C2499F25500CCD7E9 /* String+Account.swift */,
 			);
 			path = Bitmark;
 			sourceTree = "<group>";
@@ -1677,6 +1698,7 @@
 			isa = PBXGroup;
 			children = (
 				5B86A053247E11AF008AA03D /* View Recovery Key */,
+				5BF2E97D2499D3E700CCD7E9 /* Sign Out */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1953,6 +1975,32 @@
 			path = Behavior;
 			sourceTree = "<group>";
 		};
+		5BF2E97D2499D3E700CCD7E9 /* Sign Out */ = {
+			isa = PBXGroup;
+			children = (
+				5BF2E97E2499D3F600CCD7E9 /* Warning */,
+				5BF2E97F2499D3FD00CCD7E9 /* Sign Out */,
+			);
+			path = "Sign Out";
+			sourceTree = "<group>";
+		};
+		5BF2E97E2499D3F600CCD7E9 /* Warning */ = {
+			isa = PBXGroup;
+			children = (
+				5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */,
+			);
+			path = Warning;
+			sourceTree = "<group>";
+		};
+		5BF2E97F2499D3FD00CCD7E9 /* Sign Out */ = {
+			isa = PBXGroup;
+			children = (
+				5BF2E9842499DBA100CCD7E9 /* SignOutViewModel.swift */,
+				5BF2E9882499DBAB00CCD7E9 /* SignOutViewController.swift */,
+			);
+			path = "Sign Out";
+			sourceTree = "<group>";
+		};
 		5BFC537E24907EAF0096B14E /* Trending */ = {
 			isa = PBXGroup;
 			children = (
@@ -1976,6 +2024,7 @@
 			children = (
 				5B130BAD2451A1C00031F176 /* SuccessPanViewController.swift */,
 				5BCBBCDE246B8DCA00B735EE /* ProgressPanViewController.swift */,
+				5BF2E9902499F5B100CCD7E9 /* ActionPanViewController.swift */,
 				5B7F23B42434CC3B00F7A72E /* PanModalDelegate.swift */,
 			);
 			path = "Pan Modals";
@@ -2773,6 +2822,7 @@
 				5BFC539A2490B1D00096B14E /* ItemTrendingViewController.swift in Sources */,
 				5B4B60B2245FC2F000432151 /* Float+Formatter.swift in Sources */,
 				5B577894242B47060028D3E3 /* MoyaProviderType+Request.swift in Sources */,
+				5BF2E9822499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */,
 				5B87F085242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577895242B470A0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B92E3E92436E6E300E5949A /* BehaviorService.swift in Sources */,
@@ -2803,6 +2853,7 @@
 				5BFC537C24907D6B0096B14E /* Date+Extension.swift in Sources */,
 				5B5778E3242B48AA0028D3E3 /* R.generated.swift in Sources */,
 				5B57787D242B43B70028D3E3 /* AuthAPI.swift in Sources */,
+				5BF2E98E2499F25500CCD7E9 /* String+Account.swift in Sources */,
 				5B577883242B43DC0028D3E3 /* NoInternetBanner.swift in Sources */,
 				5B49574A2449A0CD0012D6E1 /* ProfileService.swift in Sources */,
 				5B57787F242B43B70028D3E3 /* AuthService.swift in Sources */,
@@ -2846,8 +2897,10 @@
 				5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
 				5B12D5DC248E323B002C73E9 /* SearchResourceViewController.swift in Sources */,
+				5BF2E9922499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */,
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EB2446B06000BCB323 /* Behavior.swift in Sources */,
+				5BF2E98A2499DBAB00CCD7E9 /* SignOutViewController.swift in Sources */,
 				5B2661AD2457DF8600163404 /* PointOfInterestService.swift in Sources */,
 				5B86A06E247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */,
 				5B4B60BA24600B5600432151 /* LocationSearchViewController.swift in Sources */,
@@ -2899,6 +2952,7 @@
 				5B577916242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5BB7DBAD248F3F08008B5642 /* HealthDetection.swift in Sources */,
 				5B7CE0CC2430BE91002CD923 /* AutonomyProfileService.swift in Sources */,
+				5BF2E9862499DBA100CCD7E9 /* SignOutViewModel.swift in Sources */,
 				5B577937242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5B577918242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5BB560FC2487783E00008959 /* MainViewController.swift in Sources */,
@@ -2956,6 +3010,7 @@
 				5BFC53992490B1D00096B14E /* ItemTrendingViewController.swift in Sources */,
 				5B4B60B1245FC2F000432151 /* Float+Formatter.swift in Sources */,
 				5B57786D242B43140028D3E3 /* Credential.swift in Sources */,
+				5BF2E9812499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */,
 				5B87F084242CAE9E0084B4F6 /* PermissionViewController.swift in Sources */,
 				5B577890242B460E0028D3E3 /* RxOptional+Single+Optional.swift in Sources */,
 				5B92E3E82436E6E300E5949A /* BehaviorService.swift in Sources */,
@@ -2986,6 +3041,7 @@
 				5BFC537B24907D6B0096B14E /* Date+Extension.swift in Sources */,
 				5B5778E2242B48AA0028D3E3 /* R.generated.swift in Sources */,
 				5B57787C242B43B70028D3E3 /* AuthAPI.swift in Sources */,
+				5BF2E98D2499F25500CCD7E9 /* String+Account.swift in Sources */,
 				5B577882242B43DC0028D3E3 /* NoInternetBanner.swift in Sources */,
 				5B4957492449A0CD0012D6E1 /* ProfileService.swift in Sources */,
 				5B57787E242B43B70028D3E3 /* AuthService.swift in Sources */,
@@ -3029,8 +3085,10 @@
 				5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
 				5B12D5DB248E323B002C73E9 /* SearchResourceViewController.swift in Sources */,
+				5BF2E9912499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */,
 				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EA2446B06000BCB323 /* Behavior.swift in Sources */,
+				5BF2E9892499DBAB00CCD7E9 /* SignOutViewController.swift in Sources */,
 				5B2661AB2457DF6B00163404 /* PointOfInterestService.swift in Sources */,
 				5B86A06D247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */,
 				5B4B60B924600B5600432151 /* LocationSearchViewController.swift in Sources */,
@@ -3082,6 +3140,7 @@
 				5B577915242B4D5A0028D3E3 /* LaunchingNavigatorDelegate.swift in Sources */,
 				5BB7DBAC248F3F08008B5642 /* HealthDetection.swift in Sources */,
 				5B7CE0CB2430BE91002CD923 /* AutonomyProfileService.swift in Sources */,
+				5BF2E9852499DBA100CCD7E9 /* SignOutViewModel.swift in Sources */,
 				5B577936242B503E0028D3E3 /* UIViewController+Error.swift in Sources */,
 				5B577917242B4D5A0028D3E3 /* LaunchingViewController.swift in Sources */,
 				5BB560FB2487783E00008959 /* MainViewController.swift in Sources */,
@@ -3139,6 +3198,7 @@
 				5BAE8409246A7985006E118D /* MoyaProviderType+Request.swift in Sources */,
 				5BAE840A246A7985006E118D /* PermissionViewController.swift in Sources */,
 				5BAE840B246A7985006E118D /* RxOptional+Single+Optional.swift in Sources */,
+				5BF2E9832499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */,
 				5BAE840C246A7985006E118D /* BehaviorService.swift in Sources */,
 				5BAE840C246A7985006E118D /* BehaviorService.swift in Sources */,
 				5BCBBCFF246BCE4200B735EE /* ReportedSurveyLayout.swift in Sources */,
@@ -3169,6 +3229,7 @@
 				5BFC537D24907D6B0096B14E /* Date+Extension.swift in Sources */,
 				5BAE8425246A7985006E118D /* AuthAPI.swift in Sources */,
 				5BAE8426246A7985006E118D /* NoInternetBanner.swift in Sources */,
+				5BF2E98F2499F25500CCD7E9 /* String+Account.swift in Sources */,
 				5BAE8427246A7985006E118D /* ProfileService.swift in Sources */,
 				5BAE8428246A7985006E118D /* AuthService.swift in Sources */,
 				5BCBBD19246BF09700B735EE /* VideoCell.swift in Sources */,
@@ -3212,8 +3273,10 @@
 				5BAE844B246A7985006E118D /* RiskLevelViewModel.swift in Sources */,
 				5BAE844C246A7985006E118D /* Behavior.swift in Sources */,
 				5B12D5DD248E323B002C73E9 /* SearchResourceViewController.swift in Sources */,
+				5BF2E9932499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */,
 				5BAE844E246A7985006E118D /* PointOfInterestService.swift in Sources */,
 				5BAE8450246A7985006E118D /* LocationSearchViewController.swift in Sources */,
+				5BF2E98B2499DBAB00CCD7E9 /* SignOutViewController.swift in Sources */,
 				5BAE8451246A7985006E118D /* TableViewCell.swift in Sources */,
 				5B86A06F247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */,
 				5BAE8452246A7985006E118D /* RiskLevelViewController.swift in Sources */,
@@ -3265,6 +3328,7 @@
 				5BAE8478246A7985006E118D /* AutonomyProfileService.swift in Sources */,
 				5BB7DBAE248F3F08008B5642 /* HealthDetection.swift in Sources */,
 				5B5563672476559000AE4D3C /* ReportedSymptomViewModel.swift in Sources */,
+				5BF2E9872499DBA100CCD7E9 /* SignOutViewModel.swift in Sources */,
 				5BAE847A246A7985006E118D /* UIViewController+Error.swift in Sources */,
 				5BAE847C246A7985006E118D /* LaunchingViewController.swift in Sources */,
 				5BB560FD2487783E00008959 /* MainViewController.swift in Sources */,

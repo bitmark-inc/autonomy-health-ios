@@ -77,6 +77,11 @@
 "signIn.title" = "Sign In";
 "signIn.submitButton" = "Submit »";
 
+"signOut.title" = "Enter your 13-word recovery key:";
+"signOut.message" = "When you sign out, you will need your 13-word recovery key to unlock your data vault on this device again.\n\nTo ensure that you have recorded your recovery key correctly, you will be asked to enter it before you can sign out. If you haven’t already written down your recovery key, <view-recovery-key>please do so now</view-recovery-key>.";
+"signOut.placeholder" = "Enter your recovery key here ...";
+"signOut.processing" = "Please wait while we sign you out of Autonomy ...";
+
 "eula" = "EULA";
 "privacyPolicy" = "Privacy Policy";
 "termsAndPolicyPhrase" = "%@ and %@.";
