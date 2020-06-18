@@ -29,7 +29,7 @@ class ProfileViewController: ViewController, BackNavigator {
     fileprivate lazy var exportDataButton = makeButton(title: R.string.localizable.export().localizedUppercase)
     fileprivate lazy var deleteDataButton = makeButton(title: R.string.localizable.delete().localizedUppercase)
 
-    fileprivate lazy var signOutButton = makeButton(title: R.string.localizable.signOut().localizedUppercase)
+    fileprivate lazy var signOutButton = makeButton(title: R.string.localizable.sign_out().localizedUppercase)
     fileprivate lazy var recoverykeyButton = makeButton(title: R.string.localizable.recoveryKey().localizedUppercase)
 
     fileprivate lazy var faqButton = makeButton(title: R.string.localizable.faQ().localizedUppercase)

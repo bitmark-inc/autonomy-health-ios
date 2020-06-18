@@ -21,12 +21,12 @@ class ActionPanViewController: ViewController, PanModalPresentable {
 
     var shortFormHeight: PanModalHeight {
         view.layoutIfNeeded()
-        return .contentHeight(paddingContentView.frame.size.height)
+        return .contentHeight(paddingContentView.frame.size.height + 30.0)
     }
 
     var longFormHeight: PanModalHeight {
         view.layoutIfNeeded()
-        return .contentHeight(paddingContentView.frame.size.height)
+        return .contentHeight(paddingContentView.frame.size.height + 30.0)
     }
 
     var cornerRadius: CGFloat = 0.0

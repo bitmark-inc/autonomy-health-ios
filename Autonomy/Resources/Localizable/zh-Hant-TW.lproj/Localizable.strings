@@ -72,7 +72,7 @@
 "SignIn" = "Sign In";
 "SigningIn" = "Signing In";
 "SigningOut" = "Signing Out";
-"SignOut" = "登出";
+"Sign_out" = "登出";
 "SignUp" = "註冊";
 "Submit" = "提交";
 "Submitted" = "已提交";

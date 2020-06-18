@@ -87,7 +87,7 @@ extension WarningSignOutViewController {
 extension WarningSignOutViewController {
     fileprivate func makeScreenTitle() -> Label {
         let label = Label()
-        label.apply(text: R.string.localizable.signOut(),
+        label.apply(text: R.string.localizable.sign_out(),
                     font: R.font.atlasGroteskLight(size: 24),
                     themeStyle: .lightTextColor)
         return label

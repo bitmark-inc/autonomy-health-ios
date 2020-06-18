@@ -25,7 +25,7 @@ class SignInViewController: ViewController, BackNavigator, LaunchingNavigatorDel
     fileprivate lazy var signInButton = RightIconButton(title:R.string.localizable.signIn().localizedUppercase,
                                                       icon: R.image.signinButton())
     fileprivate lazy var groupsButton: UIView = {
-        let groupView = ButtonGroupView(button1: backButton, button2: signInButton, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: signInButton, hasGradient: false, button1SpacePercent: 0.4)
         groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()
@@ -199,7 +199,7 @@ extension SignInViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.apply(text: R.string.phrase.signInTitle(),
-                    font: R.font.atlasGroteskLight(size: 24),
+                    font: R.font.atlasGroteskLight(size: Size.ds(24)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         return label
     }

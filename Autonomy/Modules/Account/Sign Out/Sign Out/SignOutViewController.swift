@@ -16,16 +16,16 @@ class SignOutViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
     fileprivate lazy var headerScreen: UIView = {
-        HeaderView(header: R.string.localizable.signOut().localizedUppercase)
+        HeaderView(header: R.string.localizable.sign_out().localizedUppercase)
     }()
     fileprivate lazy var titleLabel = makeTitleLabel()
     fileprivate lazy var textView = makeTextView()
 
     fileprivate lazy var backButton = makeLightBackItem()
-    fileprivate lazy var signOutButton = RightIconButton(title:R.string.localizable.signOut().localizedUppercase,
+    fileprivate lazy var signOutButton = RightIconButton(title:R.string.localizable.sign_out().localizedUppercase,
                                                       icon: R.image.signoutButton())
     fileprivate lazy var groupsButton: UIView = {
-        let groupView = ButtonGroupView(button1: backButton, button2: signOutButton, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: signOutButton, hasGradient: false, button1SpacePercent: 0.4)
         groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()
@@ -210,7 +210,7 @@ extension SignOutViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.apply(text: R.string.phrase.signOutTitle(),
-                    font: R.font.atlasGroteskLight(size: 36),
+                    font: R.font.atlasGroteskLight(size: Size.ds(36)),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         return label
     }
