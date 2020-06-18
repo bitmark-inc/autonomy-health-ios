@@ -9,6 +9,7 @@
 import Foundation
 
 enum AppLink: String {
+    case signIn = "sign-in"
     case eula
     case privacyOfPolicy = "legal-privacy"
     case incomeQuestion = "income-question"
@@ -26,14 +27,8 @@ enum AppLink: String {
         return Constant.appName + "://\(rawValue)"
     }
 
-    var generalText: String {
-        switch self {
-        case .eula:                 return R.string.phrase.eula()
-        case .privacyOfPolicy:      return R.string.phrase.privacyPolicy()
-        case .digitalRights:        return R.string.localizable.digitalRights()
-        default:
-            return ""
-        }
+    var appURL: URL? {
+        return URL(string: path)
     }
 
     var websiteURL: URL? {

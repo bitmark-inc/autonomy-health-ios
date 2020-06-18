@@ -24,6 +24,7 @@ class Navigator {
     enum Scene {
         case launchingNavigation
         case signInWall
+        case signIn(viewModel: SignInViewModel)
         case onboardingStep1
         case onboardingStep2
         case onboardingStep3
@@ -77,6 +78,7 @@ class Navigator {
             return navigationController
 
         case .signInWall:                       return SignInWallViewController()
+        case .signIn(let viewModel):            return SignInViewController(viewModel: viewModel)
         case .onboardingStep1:                  return OnboardingStep1ViewController()
         case .onboardingStep2:                  return OnboardingStep2ViewController()
         case .onboardingStep3:                  return OnboardingStep3ViewController()

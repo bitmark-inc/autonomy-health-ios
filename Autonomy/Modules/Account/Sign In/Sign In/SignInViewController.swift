@@ -1,5 +1,5 @@
 //
-//  SignOutViewController.swift
+//  SignInViewController.swift
 //  Autonomy
 //
 //  Created by Thuyen Truong on 6/17/20.
@@ -12,20 +12,20 @@ import RxCocoa
 import SnapKit
 import KMPlaceholderTextView
 
-class SignOutViewController: ViewController, BackNavigator {
+class SignInViewController: ViewController, BackNavigator, LaunchingNavigatorDelegate {
 
     // MARK: - Properties
     fileprivate lazy var headerScreen: UIView = {
-        HeaderView(header: R.string.localizable.signOut().localizedUppercase)
+        HeaderView(header: R.string.localizable.signIn().localizedUppercase)
     }()
     fileprivate lazy var titleLabel = makeTitleLabel()
     fileprivate lazy var textView = makeTextView()
 
     fileprivate lazy var backButton = makeLightBackItem()
-    fileprivate lazy var signOutButton = RightIconButton(title:R.string.localizable.signOut().localizedUppercase,
-                                                      icon: R.image.signoutButton())
+    fileprivate lazy var signInButton = RightIconButton(title:R.string.localizable.signIn().localizedUppercase,
+                                                      icon: R.image.signinButton())
     fileprivate lazy var groupsButton: UIView = {
-        let groupView = ButtonGroupView(button1: backButton, button2: signOutButton, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: signInButton, hasGradient: false)
         groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()
@@ -34,8 +34,8 @@ class SignOutViewController: ViewController, BackNavigator {
     fileprivate weak var errorPanModalVC: ActionPanViewController?
     fileprivate weak var panModalVC: ProgressPanViewController?
 
-    fileprivate lazy var thisViewModel: SignOutViewModel = {
-        return viewModel as! SignOutViewModel
+    fileprivate lazy var thisViewModel: SignInViewModel = {
+        return viewModel as! SignInViewModel
     }()
 
     var didAutoFocusTextField: Bool = false
@@ -70,54 +70,66 @@ class SignOutViewController: ViewController, BackNavigator {
         _ = textView.rx.textInput => thisViewModel.phrasesTextRelay
 
         thisViewModel.submitEnabled
-            .drive(signOutButton.rx.isEnabled)
+            .drive(signInButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
-        thisViewModel.signOutResultSubject
+        thisViewModel.signInResultSubject
             .subscribe(onNext: { [weak self] (event) in
+                guard let self = self else { return }
                 loadingState.onNext(.hide)
-                self?.panModalVC?.dismiss(animated: true, completion: { [weak self] in
-                    guard let self = self else { return }
 
-                    switch event {
-                    case .error(_):
-                        self.errorWhenSignOut()
-                    case .completed:
-                        Global.log.info("[done] signOut Account")
-                        self.gotoOnboardingScreen()
-                    default:
-                        break
-                    }
-                })
+                switch event {
+                case .error:
+                    self.panModalVC?.dismiss(animated: true, completion: { [weak self] in
+                        self?.errorWhenSignIn()
+                    })
+                case .next:
+                    Global.log.info("[done] signIn Account")
+                    self.navigate()
+                default:
+                    break
+                }
             }).disposed(by: disposeBag)
 
-        signOutButton.rx.tap.bind { [weak self] in
+        signInButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
-            guard self.thisViewModel.validRecoveryKey() else {
-                self.errorWhenSignOut()
-                return
-            }
-
             self.showProgressPanModal()
-            self.thisViewModel.signOut()
+            self.thisViewModel.signIn()
         }.disposed(by: disposeBag)
     }
 
-    fileprivate func errorWhenSignOut() {
+    func gotoMainScreen() {
+        panModalVC?.dismiss(animated: true, completion: { [weak self] in
+            guard let self = self else { return }
+            let viewModel = MainViewModel()
+            self.navigator.show(segue: .main(viewModel: viewModel), sender: self,
+                           transition: .replace(type: .slide(direction: .down)))
+        })
+    }
+
+    deinit {
+        panModalVC?.dismiss(animated: false, completion: nil)
+        errorPanModalVC?.dismiss(animated: false, completion: nil)
+    }
+
+    fileprivate func errorWhenSignIn() {
         textView.resignFirstResponder()
 
         let viewController = ActionPanViewController()
         viewController.headerScreen.header = R.string.localizable.error().localizedUppercase
-        viewController.titleLabel.setText(R.string.error.signOutTitle().localizedUppercase)
-        viewController.messageLabel.setText(R.string.error.signOutMessage())
+        viewController.titleLabel.setText(R.string.error.signInTitle().localizedUppercase)
+        viewController.messageLabel.setText(R.string.error.signInMessage())
 
-        viewController.action1Button.setTitle(R.string.localizable.checkKey().localizedUppercase, for: .normal)
+        viewController.action1Button.setTitle(R.string.localizable.cancel().localizedUppercase, for: .normal)
         viewController.action1Button.rx.tap.bind { [weak self] in
-            self?.authAndGotoViewRecoveryKeyScreen()
+            viewController.dismiss(animated: true) { [weak self] in
+                self?.navigator.pop(sender: self)
+            }
         }.disposed(by: disposeBag)
 
         viewController.action2Button.setTitle(R.string.localizable.tryAgain().localizedUppercase, for: .normal)
         viewController.action2Button.rx.tap.bind { [weak self] in
+
             viewController.dismiss(animated: true) { [weak self] in
                 guard let self = self else { return }
                 self.textView.text = nil
@@ -126,7 +138,6 @@ class SignOutViewController: ViewController, BackNavigator {
         }.disposed(by: disposeBag)
 
         presentPanModal(viewController)
-
         errorPanModalVC = viewController
     }
 
@@ -134,8 +145,8 @@ class SignOutViewController: ViewController, BackNavigator {
         textView.resignFirstResponder()
 
         let viewController = ProgressPanViewController()
-        viewController.headerScreen.header = R.string.localizable.signingOut().localizedUppercase
-        viewController.titleLabel.setText(R.string.phrase.signOutProcessing())
+        viewController.headerScreen.header = R.string.localizable.signingIn().localizedUppercase
+        viewController.titleLabel.setText(R.string.phrase.signInProcessing())
         presentPanModal(viewController)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -149,10 +160,11 @@ class SignOutViewController: ViewController, BackNavigator {
         super.setupViews()
 
         // *** Setup subviews ***
+        let titleCenterView = CenterView(contentView: titleLabel, shrink: true)
         let paddingContentView = LinearView(
             items: [
                 (headerScreen, 0),
-                (titleLabel, 0),
+                (titleCenterView, 0),
                 (SeparateLine(height: 1), 3),
                 (textView, Size.dh(44))
             ],
@@ -164,7 +176,7 @@ class SignOutViewController: ViewController, BackNavigator {
         contentView.addSubview(paddingContentView)
         contentView.addSubview(groupsButton)
 
-        titleLabel.snp.makeConstraints { (make) in
+        titleCenterView.snp.makeConstraints { (make) in
             make.height.equalTo(OurTheme.titleHeight)
         }
 
@@ -180,44 +192,21 @@ class SignOutViewController: ViewController, BackNavigator {
     }
 }
 
-// MARK: - Navigator
-extension SignOutViewController {
-    fileprivate func authAndGotoViewRecoveryKeyScreen() {
-        BiometricAuth.authorizeAccess()
-            .observeOn(MainScheduler.instance)
-            .subscribe(onCompleted: { [weak self] in
-                guard let self = self else { return }
-                self.errorPanModalVC?.dismiss(animated: true, completion: nil)
-                self.gotoViewRecoveryKeyScreen()
-            })
-            .disposed(by: disposeBag)
-    }
-
-    fileprivate func gotoViewRecoveryKeyScreen() {
-        let viewModel = ViewRecoveryKeyViewModel()
-        navigator.show(segue: .viewRecoveryKey(viewModel: viewModel), sender: self)
-    }
-
-    fileprivate func gotoOnboardingScreen() {
-        navigator.show(segue: .signInWall, sender: self, transition: .replace(type: .none))
-    }
-}
-
 // MARK: - Setup views
-extension SignOutViewController {
+extension SignInViewController {
     fileprivate func makeTitleLabel() -> Label {
         let label = Label()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.apply(text: R.string.phrase.signOutTitle(),
-                    font: R.font.atlasGroteskLight(size: 36),
+        label.apply(text: R.string.phrase.signInTitle(),
+                    font: R.font.atlasGroteskLight(size: 24),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         return label
     }
 
     fileprivate func makeTextView() -> PlaceholderTextView {
         let textView = PlaceholderTextView()
-        textView.apply(placeholder: R.string.phrase.signOutPlaceholder(),
+        textView.apply(placeholder: R.string.phrase.signInPlaceholder(),
                        font: R.font.atlasGroteskLight(size: 18))
         textView.autocorrectionType = .no
         textView.autocapitalizationType = .none
@@ -226,7 +215,7 @@ extension SignOutViewController {
 }
 
 // MARK: - KeyboardObserver
-extension SignOutViewController {
+extension SignInViewController {
     @objc func keyboardWillBeShow(notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }

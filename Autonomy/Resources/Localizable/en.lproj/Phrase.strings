@@ -8,12 +8,13 @@
 
 "launch.name" = "Autonomy";
 "launch.description" = "Get better.\nTogether.";
-"launch.policyTerm" = "We protect your %@.";
+"launch.digitalRights" = "We protect your <digital-rights>Digital Rights</digital-rights>.";
 
 "onboarding.1.description" = "We’ll forecast the public health of your neighborhood.";
 "onboarding.2.description" = "Your data is always kept 100% confidential.\n(Even to us.)";
 "onboarding.3.description" = "We’ll help your neighborhood grow healthier together.";
 
+"onboarding.signIn" = "Or <sign-in>sign back in »</sign-in>";
 "onboarding.symptoms.title" = "Tap any symptoms you have or add new ones:";
 
 "permission.description" = "Autonomy requires access to the following:";
@@ -74,8 +75,9 @@
 "recoveryKey.message" = "Write down the following words in order:";
 "recoveryKey.index" = "Word %d of 13";
 
-"signIn.title" = "Sign In";
-"signIn.submitButton" = "Submit »";
+"signIn.title" = "Welcome back! To sign in, please enter your 13-word recovery key:";
+"signIn.placeholder" = "Enter your recovery key here ...";
+"SignIn.processing" = "Please wait while we sign you in to Autonomy and recover your account ... ";
 
 "signOut.title" = "Enter your 13-word recovery key:";
 "signOut.message" = "When you sign out, you will need your 13-word recovery key to unlock your data vault on this device again.\n\nTo ensure that you have recorded your recovery key correctly, you will be asked to enter it before you can sign out. If you haven’t already written down your recovery key, <view-recovery-key>please do so now</view-recovery-key>.";

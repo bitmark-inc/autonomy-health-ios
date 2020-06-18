@@ -291,7 +291,6 @@ extension LocationSearchViewController {
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.rx.event.bind { (event) in
             guard let selectedTagView = event.view as? TagView else { return }
-            print(selectedTagView)
 
         }.disposed(by: disposeBag)
         return tapGestureRecognizer

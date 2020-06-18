@@ -8,6 +8,7 @@
 
 import UIKit
 import Intercom
+import SwiftRichString
 
 class ProfileViewController: ViewController, BackNavigator {
 
@@ -149,7 +150,7 @@ extension ProfileViewController: UITextViewDelegate {
         guard let appLink = AppLink(rawValue: host),
             let appLinkURL = appLink.websiteURL
         else {
-            return true
+            return false
         }
 
         navigator.show(segue: .safariController(appLinkURL), sender: self, transition: .alert)
@@ -352,12 +353,12 @@ extension ProfileViewController {
     }
 
     fileprivate func makeBitmarkCertView() -> UIView {
-        let eulaAndPolicyTextView = makeEulaAndPolicyTextView()
+        let digitalRightsTextView = makeDigitalRightsTextView()
         let securedByBitmarkImage = ImageView(image: R.image.securedByBitmark())
 
         let view = UIView()
         view.addSubview(versionLabel)
-        view.addSubview(eulaAndPolicyTextView)
+        view.addSubview(digitalRightsTextView)
         view.addSubview(securedByBitmarkImage)
 
         versionLabel.snp.makeConstraints { (make) in
@@ -365,13 +366,13 @@ extension ProfileViewController {
             make.centerX.equalToSuperview()
         }
 
-        eulaAndPolicyTextView.snp.makeConstraints { (make) in
+        digitalRightsTextView.snp.makeConstraints { (make) in
             make.top.equalTo(versionLabel.snp.bottom).offset(13)
             make.centerX.equalToSuperview()
         }
 
         securedByBitmarkImage.snp.makeConstraints { (make) in
-            make.top.equalTo(eulaAndPolicyTextView.snp.bottom).offset(17)
+            make.top.equalTo(digitalRightsTextView.snp.bottom).offset(17)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-30)
         }
@@ -397,27 +398,37 @@ extension ProfileViewController {
         return label
     }
 
-    fileprivate func makeEulaAndPolicyTextView() -> UITextView {
-        let textView = ReadingTextView()
-        textView.isScrollEnabled = false
-        textView.delegate = self
-        textView.linkTextAttributes = [
-          .foregroundColor: themeService.attrs.lightTextColor
-        ]
-        textView.attributedText = LinkAttributedString.make(
-            string: R.string.phrase.launchPolicyTerm(AppLink.digitalRights.generalText),
-            lineHeight: 1.3,
-            attributes: [
-                .font: R.font.atlasGroteskLight(size: 14)!,
-                .foregroundColor: themeService.attrs.lightTextColor
-            ], links: [
-                (text: AppLink.digitalRights.generalText, url: AppLink.digitalRights.path)
-            ], linkAttributes: [
-                .font: R.font.atlasGroteskLight(size: 14)!,
-                .underlineColor: themeService.attrs.lightTextColor,
-                .underlineStyle: NSUnderlineStyle.single.rawValue
-            ])
+    fileprivate func makeDigitalRightsTextView() -> UITextView {
+        let textColor = themeService.attrs.concordColor
 
+        let styleGroup: StyleXML = {
+            let style = Style {
+                $0.font = R.font.atlasGroteskLight(size: 14)
+                $0.color = textColor
+            }
+
+            let digitalRights = Style {
+                $0.linkURL = AppLink.digitalRights.websiteURL
+                $0.underline = (NSUnderlineStyle.single, textColor)
+            }
+
+            return StyleXML(base: style, [
+                "digital-rights": digitalRights
+            ])
+        }()
+
+        let textView = UITextView()
+        textView.backgroundColor = .clear
+        textView.delegate = self
+        textView.translatesAutoresizingMaskIntoConstraints = true
+        textView.sizeToFit()
+        textView.isScrollEnabled = false
+        textView.isEditable = false
+        textView.linkTextAttributes = [
+            .foregroundColor: textColor
+        ]
+        textView.attributedText = R.string.phrase.launchDigitalRights()
+                                   .set(style: styleGroup)
         return textView
     }
 }

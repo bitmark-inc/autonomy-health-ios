@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 import SwifterSwift
+import SwiftRichString
 
 class SignInWallViewController: ViewController {
 
@@ -18,8 +19,9 @@ class SignInWallViewController: ViewController {
     lazy var headerScreen = HeaderView(header: R.string.phrase.launchName().localizedUppercase)
     lazy var titleScreen = makeTitleScreen()
     lazy var launchPolygonImage = ImageView(image: R.image.onboardingLaunch())
-    lazy var termsAndPolicyView = makeTermsAndPolicyView()
+    lazy var digitalRightsView = makeDigitalRightsView()
     lazy var getStartedButton = makeGetStartedButton()
+    lazy var signInTextView = makeSignInTextView()
 
     // MARK: Handlers
     override func bindViewModel() {
@@ -34,37 +36,52 @@ class SignInWallViewController: ViewController {
     override func setupViews() {
         super.setupViews()
 
+        let bottomView = UIView()
+        bottomView.addSubview(signInTextView)
+        bottomView.addSubview(digitalRightsView)
+
+        signInTextView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+        }
+
+        digitalRightsView.snp.makeConstraints { (make) in
+            make.top.equalTo(signInTextView.snp.bottom)
+            make.centerX.bottom.equalToSuperview()
+        }
+
         // *** Setup subviews ***
         let paddingContentView = UIView()
         paddingContentView.addSubview(headerScreen)
         paddingContentView.addSubview(titleScreen)
         paddingContentView.addSubview(launchPolygonImage)
-        paddingContentView.addSubview(termsAndPolicyView)
         paddingContentView.addSubview(getStartedButton)
+        paddingContentView.addSubview(bottomView)
 
         headerScreen.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
 
         titleScreen.snp.makeConstraints { (make) in
-            make.top.equalTo(headerScreen.snp.bottom).offset(10)
+            make.top.equalTo(headerScreen.snp.bottom).offset(Size.dh(35))
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(launchPolygonImage.snp.top).offset(-10)
         }
 
         launchPolygonImage.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(view.height * 0.33)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.32)
+            make.top.equalTo(titleScreen.snp.bottom).offset(Size.dh(35))
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(getStartedButton.snp.top).offset(-Size.dh(30))
         }
 
         getStartedButton.snp.makeConstraints { (make) in
-            make.centerX.bottom.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(bottomView.snp.top)
+            make.height.equalTo(Size.dh(60))
         }
 
-        termsAndPolicyView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(getStartedButton.snp.top).offset(-29)
+        bottomView.snp.makeConstraints { (make) in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(Size.dh(102))
         }
 
         contentView.addSubview(paddingContentView)
@@ -81,13 +98,16 @@ extension SignInWallViewController: UITextViewDelegate {
             return false
         }
 
-        guard let appLink = AppLink(rawValue: host),
-            let appLinkURL = appLink.websiteURL
-        else {
-            return true
+        guard let appLink = AppLink(rawValue: host) else { return false }
+        switch appLink {
+        case .signIn:
+            gotoSignInScreen()
+
+        default:
+            guard let appLinkURL = appLink.websiteURL else { return false }
+            navigator.show(segue: .safariController(appLinkURL), sender: self, transition: .alert)
         }
 
-        navigator.show(segue: .safariController(appLinkURL), sender: self, transition: .alert)
         return true
     }
 }
@@ -97,13 +117,23 @@ extension SignInWallViewController {
     fileprivate func gotoOnboardingScreen() {
         navigator.show(segue: .onboardingStep1, sender: self)
     }
+
+    fileprivate func gotoSignInScreen() {
+        let viewModel = SignInViewModel()
+        navigator.show(segue: .signIn(viewModel: viewModel), sender: self)
+    }
+
 }
 
 extension SignInWallViewController {
     fileprivate func makeGetStartedButton() -> RightIconButton {
-        return RightIconButton(
+        let button = RightIconButton(
             title: R.string.localizable.start().localizedUppercase,
             icon: R.image.nextCircleArrow()!)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.apply(font: R.font.domaineSansTextLight(size: Size.ds(36)))
+        return button
     }
 
     fileprivate func makeTitleScreen() -> CenterView {
@@ -116,27 +146,58 @@ extension SignInWallViewController {
         return CenterView(contentView: label)
     }
 
-    fileprivate func makeTermsAndPolicyView() -> ReadingTextView {
-        let textView = ReadingTextView()
-        textView.isScrollEnabled = false
-        textView.delegate = self
-        textView.linkTextAttributes = [
-          .foregroundColor: themeService.attrs.lightTextColor
-        ]
-        textView.attributedText = LinkAttributedString.make(
-            string: R.string.phrase.launchPolicyTerm(AppLink.digitalRights.generalText),
-            lineHeight: 1.3,
-            attributes: [
-                .font: R.font.atlasGroteskLight(size: 14)!,
-                .foregroundColor: themeService.attrs.lightTextColor
-            ], links: [
-                (text: AppLink.digitalRights.generalText, url: AppLink.digitalRights.path)
-            ], linkAttributes: [
-                .font: R.font.atlasGroteskLight(size: 14)!,
-                .underlineColor: themeService.attrs.lightTextColor,
-                .underlineStyle: NSUnderlineStyle.single.rawValue
-            ])
-
+    fileprivate func makeDigitalRightsView() -> UITextView {
+        let textView = makeTextView()
+        textView.attributedText = R.string.phrase.launchDigitalRights()
+                                   .set(style: styleGroup)
         return textView
+    }
+
+    fileprivate func makeSignInTextView() -> UITextView {
+        let textView = makeTextView()
+        textView.attributedText = R.string.phrase.onboardingSignIn()
+                                   .set(style: styleGroup)
+        return textView
+    }
+
+    fileprivate func makeTextView() -> UITextView {
+        let textColor = themeService.attrs.concordColor
+        let textView = UITextView()
+        textView.backgroundColor = .clear
+        textView.delegate = self
+        textView.translatesAutoresizingMaskIntoConstraints = true
+        textView.sizeToFit()
+        textView.isScrollEnabled = false
+        textView.isEditable = false
+        textView.linkTextAttributes = [
+            .foregroundColor: textColor
+        ]
+        return textView
+    }
+
+    var styleGroup: StyleXML {
+        let textColor = themeService.attrs.concordColor
+
+        return {
+            let style = Style {
+                $0.font = R.font.atlasGroteskLight(size: 14)
+                $0.color = textColor
+            }
+
+            let signIn = Style {
+                $0.linkURL = AppLink.signIn.appURL
+                $0.underline = (NSUnderlineStyle.single, textColor)
+            }
+
+            let digitalRights = Style {
+                $0.linkURL = AppLink.digitalRights.appURL
+                $0.underline = (NSUnderlineStyle.single, textColor)
+            }
+
+            return StyleXML(base: style, [
+                "sign-in": signIn,
+                "digital-rights": digitalRights
+            ])
+        }()
     }
 }

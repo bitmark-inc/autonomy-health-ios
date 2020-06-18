@@ -66,6 +66,8 @@
 "Score_(1_5)" = "Score (1-5)";
 "Security" = "Security";
 "SignedUp" = "Signed Up";
+"SignIn" = "Sign In";
+"SigningIn" = "Signing In";
 "SigningOut" = "Signing Out";
 "SignOut" = "Sign Out";
 "SignUp" = "Sign Up";

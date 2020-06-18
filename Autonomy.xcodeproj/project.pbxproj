@@ -381,6 +381,12 @@
 		5B978875243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885A243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf */; };
 		5B978876243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */; };
 		5B978877243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */; };
+		5BA2D5B0249B469D00341F33 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA2D5AE249B469D00341F33 /* SignInViewModel.swift */; };
+		5BA2D5B1249B469D00341F33 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA2D5AF249B469D00341F33 /* SignInViewController.swift */; };
+		5BA2D5B2249B4C2B00341F33 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA2D5AF249B469D00341F33 /* SignInViewController.swift */; };
+		5BA2D5B3249B4C2C00341F33 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA2D5AF249B469D00341F33 /* SignInViewController.swift */; };
+		5BA2D5B4249B4C2E00341F33 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA2D5AE249B469D00341F33 /* SignInViewModel.swift */; };
+		5BA2D5B5249B4C2E00341F33 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA2D5AE249B469D00341F33 /* SignInViewModel.swift */; };
 		5BA4B133245A89AC00B125ED /* symptoms-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B132245A89AC00B125ED /* symptoms-list.json */; };
 		5BA4B134245A89AC00B125ED /* symptoms-list.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B132245A89AC00B125ED /* symptoms-list.json */; };
 		5BA4B136245A8DAD00B125ED /* auth.json in Resources */ = {isa = PBXBuildFile; fileRef = 5BA4B135245A8DAD00B125ED /* auth.json */; };
@@ -464,7 +470,6 @@
 		5BAE8435246A7985006E118D /* ServerAssetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C858D242DDDFB002CC53B /* ServerAssetsService.swift */; };
 		5BAE8437246A7985006E118D /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B213F03244413E90095BE18 /* PointOfInterest.swift */; };
 		5BAE8438246A7985006E118D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577868242B424C0028D3E3 /* Global.swift */; };
-		5BAE8439246A7985006E118D /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
 		5BAE843B246A7985006E118D /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577939242B50E30028D3E3 /* ImageView.swift */; };
 		5BAE843F246A7985006E118D /* ReportSymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4EF6DD2446AEF600BCB323 /* ReportSymptomsViewController.swift */; };
 		5BAE8440246A7985006E118D /* OnboardingViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB140A4242C7F64009EFC59 /* OnboardingViewLayout.swift */; };
@@ -473,7 +478,6 @@
 		5BAE8445246A7985006E118D /* PointOfInterestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661A82457DF6B00163404 /* PointOfInterestAPI.swift */; };
 		5BAE8446246A7985006E118D /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B60C12460462000432151 /* Debug.swift */; };
 		5BAE8447246A7985006E118D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2661B224583C5700163404 /* ProfileViewController.swift */; };
-		5BAE8448246A7985006E118D /* LinkAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */; };
 		5BAE8449246A7985006E118D /* FigDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0F245C20AC00C81856 /* FigDataView.swift */; };
 		5BAE844A246A7985006E118D /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5778FF242B4C010028D3E3 /* Application.swift */; };
 		5BAE844B246A7985006E118D /* RiskLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBFCDE7242DA0DF009A8798 /* RiskLevelViewModel.swift */; };
@@ -565,10 +569,6 @@
 		5BAE84B3246A7985006E118D /* DomaineSansText-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A9242B48230028D3E3 /* DomaineSansText-BlackItalic.otf */; };
 		5BAE84B4246A7985006E118D /* AtlasGrotesk-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A6242B48220028D3E3 /* AtlasGrotesk-Bold.otf */; };
 		5BAE84B5246A7985006E118D /* AtlasGrotesk-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5778A1242B48220028D3E3 /* AtlasGrotesk-Regular.otf */; };
-		5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
-		5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */; };
-		5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */; };
-		5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */; };
 		5BB1409C242C6087009EFC59 /* OnboardingStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1409B242C6087009EFC59 /* OnboardingStep1ViewController.swift */; };
 		5BB1409D242C6087009EFC59 /* OnboardingStep1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1409B242C6087009EFC59 /* OnboardingStep1ViewController.swift */; };
 		5BB1409F242C6138009EFC59 /* BackNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB1409E242C6138009EFC59 /* BackNavigator.swift */; };
@@ -991,6 +991,8 @@
 		5B978859243EDFED005BADA9 /* IBMPlexMono-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-SemiBold.ttf"; sourceTree = "<group>"; };
 		5B97885A243EDFED005BADA9 /* IBMPlexMono-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		5B97885B243EDFED005BADA9 /* IBMPlexMono-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexMono-LightItalic.ttf"; sourceTree = "<group>"; };
+		5BA2D5AE249B469D00341F33 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		5BA2D5AF249B469D00341F33 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		5BA4B132245A89AC00B125ED /* symptoms-list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "symptoms-list.json"; sourceTree = "<group>"; };
 		5BA4B135245A8DAD00B125ED /* auth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = auth.json; sourceTree = "<group>"; };
 		5BA808B4244010E100B2733A /* DebugLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLocationViewController.swift; sourceTree = "<group>"; };
@@ -1009,8 +1011,6 @@
 		5BAA772724598D50003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Error.strings"; sourceTree = "<group>"; };
 		5BAA772824598D50003CCE92 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5BAE84BD246A7985006E118D /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingTextView.swift; sourceTree = "<group>"; };
-		5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAttributedString.swift; sourceTree = "<group>"; };
 		5BB1409B242C6087009EFC59 /* OnboardingStep1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStep1ViewController.swift; sourceTree = "<group>"; };
 		5BB1409E242C6138009EFC59 /* BackNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigator.swift; sourceTree = "<group>"; };
 		5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGroupView.swift; sourceTree = "<group>"; };
@@ -1454,8 +1454,6 @@
 				5B87F070242C85B90084B4F6 /* SeparateLine.swift */,
 				5B57793F242B62160028D3E3 /* HeaderView.swift */,
 				5B87F080242CA2D80084B4F6 /* CenterView.swift */,
-				5BB14094242C4CF9009EFC59 /* ReadingTextView.swift */,
-				5BB14097242C4D2A009EFC59 /* LinkAttributedString.swift */,
 				5BB140A1242C6296009EFC59 /* ButtonGroupView.swift */,
 				5B87F073242C92DA0084B4F6 /* LinearView.swift */,
 				5B87F086242CB7C40084B4F6 /* OptionBoxView.swift */,
@@ -1699,6 +1697,7 @@
 			children = (
 				5B86A053247E11AF008AA03D /* View Recovery Key */,
 				5BF2E97D2499D3E700CCD7E9 /* Sign Out */,
+				5BA2D5AC249B469D00341F33 /* Sign In */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1880,6 +1879,23 @@
 				5BA808B3244010CE00B2733A /* Search */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		5BA2D5AC249B469D00341F33 /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				5BA2D5AD249B469D00341F33 /* Sign In */,
+			);
+			path = "Sign In";
+			sourceTree = "<group>";
+		};
+		5BA2D5AD249B469D00341F33 /* Sign In */ = {
+			isa = PBXGroup;
+			children = (
+				5BA2D5AE249B469D00341F33 /* SignInViewModel.swift */,
+				5BA2D5AF249B469D00341F33 /* SignInViewController.swift */,
+			);
+			path = "Sign In";
 			sourceTree = "<group>";
 		};
 		5BA4B131245A898C00B125ED /* Stubbed Responses */ = {
@@ -2855,6 +2871,7 @@
 				5B57787D242B43B70028D3E3 /* AuthAPI.swift in Sources */,
 				5BF2E98E2499F25500CCD7E9 /* String+Account.swift in Sources */,
 				5B577883242B43DC0028D3E3 /* NoInternetBanner.swift in Sources */,
+				5BA2D5B2249B4C2B00341F33 /* SignInViewController.swift in Sources */,
 				5B49574A2449A0CD0012D6E1 /* ProfileService.swift in Sources */,
 				5B57787F242B43B70028D3E3 /* AuthService.swift in Sources */,
 				5B12D5F2248E4948002C73E9 /* SymptomGuidanceViewController.swift in Sources */,
@@ -2879,7 +2896,6 @@
 				5B2C8591242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
 				5B213F05244413E90095BE18 /* PointOfInterest.swift in Sources */,
 				5B57786A242B424C0028D3E3 /* Global.swift in Sources */,
-				5BB14096242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
 				5B57793B242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B4EF6E02446AEF600BCB323 /* ReportSymptomsViewController.swift in Sources */,
 				5BB140A6242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
@@ -2892,7 +2908,6 @@
 				5B2661B424583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB561042487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */,
 				5B242DA6248F715600143519 /* AutonomyTrendingViewController.swift in Sources */,
-				5BB14099242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
 				5B219BDC246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
@@ -2924,6 +2939,7 @@
 				5B577867242B42310028D3E3 /* Global+Log.swift in Sources */,
 				5BA808BC2440226A00B2733A /* LocationSearchTableCell.swift in Sources */,
 				5B219BD3246907CB004FACEA /* SearchSymptomViewModel.swift in Sources */,
+				5BA2D5B4249B4C2E00341F33 /* SignInViewModel.swift in Sources */,
 				5B86A05B247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */,
 				5B2C8594242DDE51002CC53B /* AppInfo.swift in Sources */,
 				5B4EF6E22446AEF600BCB323 /* ReportSymptomsViewModel.swift in Sources */,
@@ -3067,7 +3083,7 @@
 				5B2C8590242DDDFB002CC53B /* ServerAssetsService.swift in Sources */,
 				5B213F04244413E90095BE18 /* PointOfInterest.swift in Sources */,
 				5B577869242B424C0028D3E3 /* Global.swift in Sources */,
-				5BB14095242C4CF9009EFC59 /* ReadingTextView.swift in Sources */,
+				5BA2D5B1249B469D00341F33 /* SignInViewController.swift in Sources */,
 				5B57793A242B50E30028D3E3 /* ImageView.swift in Sources */,
 				5B4EF6DF2446AEF600BCB323 /* ReportSymptomsViewController.swift in Sources */,
 				5BB140A5242C7F64009EFC59 /* OnboardingViewLayout.swift in Sources */,
@@ -3080,7 +3096,7 @@
 				5B2661B324583C5700163404 /* ProfileViewController.swift in Sources */,
 				5BB561032487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */,
 				5B242DA5248F715600143519 /* AutonomyTrendingViewController.swift in Sources */,
-				5BB14098242C4D2A009EFC59 /* LinkAttributedString.swift in Sources */,
+				5BA2D5B0249B469D00341F33 /* SignInViewModel.swift in Sources */,
 				5B219BDB246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
@@ -3231,6 +3247,7 @@
 				5BAE8426246A7985006E118D /* NoInternetBanner.swift in Sources */,
 				5BF2E98F2499F25500CCD7E9 /* String+Account.swift in Sources */,
 				5BAE8427246A7985006E118D /* ProfileService.swift in Sources */,
+				5BA2D5B3249B4C2C00341F33 /* SignInViewController.swift in Sources */,
 				5BAE8428246A7985006E118D /* AuthService.swift in Sources */,
 				5BCBBD19246BF09700B735EE /* VideoCell.swift in Sources */,
 				5B12D5F3248E4948002C73E9 /* SymptomGuidanceViewController.swift in Sources */,
@@ -3254,7 +3271,6 @@
 				5BB7DBA2248F3117008B5642 /* HeaderTableCell.swift in Sources */,
 				5BAE8437246A7985006E118D /* PointOfInterest.swift in Sources */,
 				5BAE8438246A7985006E118D /* Global.swift in Sources */,
-				5BAE8439246A7985006E118D /* ReadingTextView.swift in Sources */,
 				5BAE843B246A7985006E118D /* ImageView.swift in Sources */,
 				5BAE843F246A7985006E118D /* ReportSymptomsViewController.swift in Sources */,
 				5BAE8440246A7985006E118D /* OnboardingViewLayout.swift in Sources */,
@@ -3265,7 +3281,6 @@
 				5BAE8445246A7985006E118D /* PointOfInterestAPI.swift in Sources */,
 				5BAE8446246A7985006E118D /* Debug.swift in Sources */,
 				5BAE8447246A7985006E118D /* ProfileViewController.swift in Sources */,
-				5BAE8448246A7985006E118D /* LinkAttributedString.swift in Sources */,
 				5BB561052487A1D900008959 /* HeaderSingleLabelCollectionCell.swift in Sources */,
 				5B242DA7248F715600143519 /* AutonomyTrendingViewController.swift in Sources */,
 				5BAE8449246A7985006E118D /* FigDataView.swift in Sources */,
@@ -3300,6 +3315,7 @@
 				5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */,
 				5BAE845E246A7985006E118D /* Auth.swift in Sources */,
 				5BAE845F246A7985006E118D /* AppVersion.swift in Sources */,
+				5BA2D5B5249B4C2E00341F33 /* SignInViewModel.swift in Sources */,
 				5B86A05C247E11AF008AA03D /* ViewRecoveryKeyWarningViewController.swift in Sources */,
 				5B5563662476558C00AE4D3C /* SearchSymptomViewController.swift in Sources */,
 				5BCBBCFB246BC5B100B735EE /* SearchSurveyViewController.swift in Sources */,

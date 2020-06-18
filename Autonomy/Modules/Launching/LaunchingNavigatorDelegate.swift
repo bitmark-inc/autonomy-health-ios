@@ -15,6 +15,7 @@ import CoreLocation
 protocol LaunchingNavigatorDelegate: ViewController {
     func loadAndNavigate()
     func navigate()
+    func gotoMainScreen()
 }
 
 extension LaunchingNavigatorDelegate {
@@ -84,7 +85,7 @@ extension LaunchingNavigatorDelegate {
 
 // MARK: - Navigator
 extension LaunchingNavigatorDelegate {
-    fileprivate func gotoMainScreen() {
+    func gotoMainScreen() {
         let viewModel = MainViewModel()
         navigator.show(segue: .main(viewModel: viewModel), sender: self,
                        transition: .replace(type: .slide(direction: .down)))

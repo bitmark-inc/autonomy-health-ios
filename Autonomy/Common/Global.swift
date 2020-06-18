@@ -63,22 +63,7 @@ class Global {
         return decoder
     }()
 
-    func setupCoreData() -> Completable {
-        return Completable.create { (event) -> Disposable in
-            guard let currentAccount = Global.current.account else {
-                event(.error(AppError.emptyCurrentAccount))
-                return Disposables.create()
-            }
 
-            do {
-                try KeychainStore.saveToKeychain(currentAccount.seed.core, isSecured: false)
-                event(.completed)
-            } catch {
-                event(.error(error))
-            }
-            return Disposables.create()
-        }
-    }
 
     let networkLoggerPlugin: [PluginType] = [
         NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(output: { (_, items) in
@@ -106,6 +91,14 @@ class Global {
                 gradation: customGradation,
                 allowedUnits: [.day, .week, .month, .year])
     }()
+
+    func setupCurrentAccount() throws {
+        guard let currentAccount = self.account else {
+            throw AppError.emptyCurrentAccount
+        }
+        AccountService.registerIntercom(for: currentAccount.getAccountNumber())
+        try KeychainStore.saveToKeychain(currentAccount.seed.core, isSecured: false)
+    }
 
     func removeCurrentAccount() throws {
         guard Global.current.account != nil else {

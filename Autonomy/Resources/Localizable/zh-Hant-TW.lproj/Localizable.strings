@@ -15,6 +15,7 @@
 "Today" = "今日";
 "Enable" = "啟用";
 "Delete" = "刪除";
+"Error" = "Error";
 
 "Permission" = "允許";
 "Notifications" = "通知";
@@ -32,6 +33,7 @@
 "BehaviorsScore" = "行為評分";
 "Cases" = "確診";
 "CasesScore" = "確診評分";
+"CheckKey" = "Check Key";
 "Copied" = "已複製";
 "Data" = "資料";
 "DigitalRights" = "數位權利";
@@ -64,6 +66,9 @@
 "Score_(1_5)" = "分數 (1-5)";
 "Security" = "安全";
 "SignedUp" = "已註冊";
+"SignIn" = "Sign In";
+"SigningIn" = "Signing In";
+"SigningOut" = "Signing Out";
 "SignOut" = "登出";
 "SignUp" = "註冊";
 "Submit" = "提交";

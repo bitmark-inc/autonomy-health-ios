@@ -13,9 +13,10 @@ import RxCocoa
 
 class LaunchingViewController: ViewController, LaunchingNavigatorDelegate {
 
-    lazy var titleScreen = makeTitleScreen()
-    lazy var launchPolygonImage = ImageView(image: R.image.onboardingLaunch())
-    lazy var securedByBitmarkImage = ImageView(image: R.image.securedByBitmark())
+    fileprivate lazy var headerScreen = HeaderView(header: R.string.phrase.launchName().localizedUppercase)
+    fileprivate lazy var titleScreen = makeTitleScreen()
+    fileprivate lazy var launchPolygonImage = ImageView(image: R.image.onboardingLaunch())
+    fileprivate lazy var securedByBitmarkImage = ImageView(image: R.image.securedByBitmark())
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -32,25 +33,39 @@ class LaunchingViewController: ViewController, LaunchingNavigatorDelegate {
     override func setupViews() {
         super.setupViews()
 
+        let securedByBitmarkImageCover = UIView()
+        securedByBitmarkImageCover.addSubview(securedByBitmarkImage)
+        securedByBitmarkImage.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+        }
+
         // *** Setup subviews ***
         let paddingContentView = UIView()
+        paddingContentView.addSubview(headerScreen)
         paddingContentView.addSubview(titleScreen)
         paddingContentView.addSubview(launchPolygonImage)
-        paddingContentView.addSubview(securedByBitmarkImage)
+        paddingContentView.addSubview(securedByBitmarkImageCover)
+
+        headerScreen.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+        }
 
         titleScreen.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(24)
+            make.top.equalTo(headerScreen.snp.bottom).offset(Size.dh(35))
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(launchPolygonImage.snp.top).offset(-10)
         }
 
         launchPolygonImage.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(view.height * 0.33)
-            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(titleScreen.snp.bottom).offset(Size.dh(35))
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(securedByBitmarkImageCover.snp.top).offset(-Size.dh(30))
         }
 
-        securedByBitmarkImage.snp.makeConstraints { (make) in
-            make.centerX.bottom.equalToSuperview()
+        securedByBitmarkImageCover.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(Size.dh(60))
+            make.bottom.equalToSuperview().offset(-Size.dh(102))
         }
 
         contentView.addSubview(paddingContentView)

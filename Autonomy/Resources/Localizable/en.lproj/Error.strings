@@ -26,5 +26,8 @@
 "giveHelp.alreadySigned.message" = "Thanks so much for your eagerness to help out, but another community member just signed up for this request!";
 
 "account.signOut.error" = "There was an error while signing your account out from this device.";
+
 "signOut.title" = "Incorrect Recovery Key";
 "signOut.message" = "You are unable to sign out because you entered an incorrect recovery key for your account. Please try again or double check your recovery key.";
+"signIn.title" = "Incorrect Recovery Key";
+"signIn.message" = "You are unable to sign in because you entered an incorrect recovery key. Please double check your recovery key and try again.";

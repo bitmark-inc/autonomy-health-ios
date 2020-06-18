@@ -31,11 +31,11 @@ extension AccountServiceDelegate {
                 return Completable.empty()
             }
             return rxCreateNewAccount()
-                .flatMapCompletable({
+                .map {
                     Global.current.cachedAccount = $0
-                    registerIntercom(for: $0.getAccountNumber())
-                    return Global.current.setupCoreData()
-                })
+                    try Global.current.setupCurrentAccount()
+                }
+                .asCompletable()
         }
     }
 }

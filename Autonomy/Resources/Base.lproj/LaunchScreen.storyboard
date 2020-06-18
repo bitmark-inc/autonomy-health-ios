@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,15 +19,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding-launch" translatesAutoresizingMaskIntoConstraints="NO" id="Vem-bI-WkL">
                                 <rect key="frame" x="41.5" y="320.5" width="331" height="255"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="securedByBitmark" translatesAutoresizingMaskIntoConstraints="NO" id="Ce8-Hj-dbD">
-                                <rect key="frame" x="76" y="813" width="262" height="39"/>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Vem-bI-WkL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="81o-z2-kaZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ce8-Hj-dbD" secondAttribute="bottom" constant="10" id="BM7-qg-uUM"/>
-                            <constraint firstItem="Ce8-Hj-dbD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DJE-0f-JtV"/>
                             <constraint firstItem="Vem-bI-WkL" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.8" id="Unp-bC-qDt"/>
                             <constraint firstItem="Vem-bI-WkL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lR3-MT-qc1"/>
                         </constraints>
@@ -41,6 +36,5 @@
     </scenes>
     <resources>
         <image name="onboarding-launch" width="295" height="255"/>
-        <image name="securedByBitmark" width="262" height="39"/>
     </resources>
 </document>
