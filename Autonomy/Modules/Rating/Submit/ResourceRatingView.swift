@@ -62,7 +62,7 @@ class ResourceRatingView: UIView {
         }
 
         ratingView.rating = Double(initValue)
-        adjustRatingColor(rating: Double(initValue))
+        ratingView.customImage(rating: Double(initValue))
     }
 }
 
@@ -80,22 +80,24 @@ extension ResourceRatingView {
         let ratingView = CosmosView()
         ratingView.settings.emptyImage = R.image.emptyRatingImg()
         ratingView.settings.filledImage = R.image.yellowRatingImg()
+        ratingView.settings.starSize = 15
         ratingView.settings.starMargin = 15
         ratingView.settings.totalStars = 5
         ratingView.didTouchCosmos = { [weak self] (rating) in
-            self?.adjustRatingColor(rating: rating)
+            self?.ratingView.customImage(rating: rating)
         }
-
         return ratingView
     }
+}
 
-    fileprivate func adjustRatingColor(rating: Double) {
+extension CosmosView {
+    func customImage(rating: Double) {
         switch rating {
-           case 4...5: ratingView.settings.filledImage = R.image.greenRatingImg()
-           case 3...3.9:     ratingView.settings.filledImage = R.image.yellowRatingImg()
-           case 0.1...2.9: ratingView.settings.filledImage = R.image.redRatingImg()
-           default:
-               break
+            case 4...5:      settings.filledImage = R.image.greenRatingImg()
+            case 3...3.9:    settings.filledImage = R.image.yellowRatingImg()
+            case 0.1...2.9:  settings.filledImage = R.image.redRatingImg()
+            default:
+                break
         }
     }
 }

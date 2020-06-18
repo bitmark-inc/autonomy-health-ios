@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-
 class ResourceRatingViewController: ViewController, BackNavigator {
 
     // MARK: - Properties

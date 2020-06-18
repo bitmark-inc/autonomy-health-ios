@@ -8,14 +8,15 @@
 
 import UIKit
 import SwiftRichString
+import Cosmos
 
 class LocationSearchTableCell: TableViewCell {
 
     // MARK: - Properties
     fileprivate lazy var placeTextLabel = makeLabel()
     fileprivate lazy var secondaryTextLabel = makeLabel()
-    fileprivate lazy var healthScoreLabel = makeHealthScoreLabel()
-    fileprivate lazy var healthScoreView = makeHealthScoreView()
+    fileprivate lazy var ratingView = makeRatingView()
+    fileprivate lazy var ratingLabel = makeRatingLabel()
 
     fileprivate lazy var placeStyleGroup: StyleXML = {
         let style = Style {
@@ -31,7 +32,7 @@ class LocationSearchTableCell: TableViewCell {
     }()
     fileprivate lazy var secondaryStyleGroup: StyleXML = {
         let style = Style {
-            $0.font = R.font.atlasGroteskLight(size: 14)
+            $0.font = R.font.atlasGroteskLight(size: 12)
             $0.color = themeService.attrs.silverColor
         }
 
@@ -41,6 +42,13 @@ class LocationSearchTableCell: TableViewCell {
 
         return StyleXML(base: style, ["b": highlight])
     }()
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        ratingView.isHidden = true
+        ratingLabel.setText(nil)
+    }
 
     // MARK: - Inits
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -54,9 +62,11 @@ class LocationSearchTableCell: TableViewCell {
                 .inset(UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
         }
 
-        let textView = UIView()
-        textView.addSubview(placeTextLabel)
-        textView.addSubview(secondaryTextLabel)
+        let ratingRowView = makeRatingRowView()
+
+        contentCell.addSubview(placeTextLabel)
+        contentCell.addSubview(secondaryTextLabel)
+        contentCell.addSubview(ratingRowView)
 
         placeTextLabel.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
@@ -64,21 +74,12 @@ class LocationSearchTableCell: TableViewCell {
 
         secondaryTextLabel.snp.makeConstraints { (make) in
             make.top.equalTo(placeTextLabel.snp.bottom).offset(8)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
 
-        contentView.addSubview(healthScoreView)
-        contentView.addSubview(textView)
-
-        healthScoreView.snp.makeConstraints { (make) in
-            make.top.leading.bottom.equalToSuperview()
-                .inset(UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
-        }
-
-        textView.snp.makeConstraints { (make) in
-            make.leading.equalTo(healthScoreView.snp.trailing).offset(15)
-            make.top.equalTo(healthScoreView)
-            make.trailing.equalToSuperview()
+        ratingRowView.snp.makeConstraints { (make) in
+            make.top.equalTo(secondaryTextLabel.snp.bottom).offset(17)
+            make.leading.bottom.equalToSuperview()
         }
     }
 
@@ -87,13 +88,16 @@ class LocationSearchTableCell: TableViewCell {
         secondaryTextLabel.attributedText = secondaryAttributedText.set(style: secondaryStyleGroup)
     }
 
-    func setData(score: Float?) {
-        if let score = score {
-            healthScoreLabel.setText(score.formatInt)
-            healthScoreView.backgroundColor = HealthRisk(from: score)?.color
+    func setData(rating: Float) {
+        ratingView.isHidden = false
+        ratingView.rating = Double(rating)
+        ratingView.customImage(rating: Double(rating))
+        if rating == 0 {
+            ratingLabel.isHidden = true
         } else {
-            healthScoreLabel.setText("?")
-            healthScoreView.backgroundColor = .black
+            ratingLabel.setText(rating.formatRatingScore)
+            ratingLabel.isHidden = false
+            ratingLabel.textColor = Rating(from: rating).color
         }
     }
 
@@ -103,32 +107,43 @@ class LocationSearchTableCell: TableViewCell {
 }
 
 extension LocationSearchTableCell {
-    fileprivate func makeHealthScoreView() -> UIView {
-        let view = UIView()
-        view.addSubview(healthScoreLabel)
-        view.layer.cornerRadius = 30
-        view.backgroundColor = themeService.attrs.mineShaftBackground
-        view.snp.makeConstraints { (make) in
-            make.height.width.equalTo(60)
-        }
-
-        healthScoreLabel.snp.makeConstraints { (make) in
-            make.centerX.centerY.equalToSuperview()
-        }
-        return view
-    }
-
-    fileprivate func makeHealthScoreLabel() -> Label {
-        let label = Label()
-        label.apply(text: "?",
-                    font: R.font.domaineSansTextLight(size: 24),
-                    themeStyle: .lightTextColor)
-        return label
-    }
-
     fileprivate func makeLabel() -> Label {
         let label = Label()
         label.numberOfLines = 0
+        return label
+    }
+
+    fileprivate func makeRatingRowView() -> UIView {
+        let view = UIView()
+        view.addSubview(ratingView)
+        view.addSubview(ratingLabel)
+
+        ratingView.snp.makeConstraints { (make) in
+            make.leading.centerY.equalToSuperview()
+        }
+
+        ratingLabel.snp.makeConstraints { (make) in
+            make.leading.equalTo(ratingView.snp.trailing).offset(8)
+            make.top.trailing.bottom.equalToSuperview()
+        }
+
+        return view
+    }
+
+    fileprivate func makeRatingView() -> CosmosView {
+        let ratingView = CosmosView()
+        ratingView.isHidden = true
+        ratingView.settings.starSize = 5
+        ratingView.settings.emptyImage = R.image.miniEmptyRatingImg()
+        ratingView.settings.starMargin = 5
+        ratingView.settings.totalStars = 5
+        ratingView.isUserInteractionEnabled = false
+        return ratingView
+    }
+
+    fileprivate func makeRatingLabel() -> Label {
+        let label = Label()
+        label.font = R.font.ibmPlexMonoLight(size: 14)
         return label
     }
 }

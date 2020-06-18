@@ -105,9 +105,12 @@ class TagView: UIView {
 
     let isSelectedRelay = BehaviorRelay<Bool>(value: false)
 
+    var selectedBackgroundColor = UIColor(hexString: "#0060F2")
+    var unselectedBackgroundColor = UIColor(hexString: "#282B32")
+
     var isSelected: Bool = false {
         didSet {
-            backgroundColor = isSelected ? UIColor(hexString: "#0060F2") : UIColor(hexString: "#282B32")
+            backgroundColor = isSelected ? selectedBackgroundColor : unselectedBackgroundColor
             isSelectedRelay.accept(isSelected)
         }
     }

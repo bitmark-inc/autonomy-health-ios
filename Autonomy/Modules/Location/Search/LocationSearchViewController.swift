@@ -20,7 +20,8 @@ class LocationSearchViewController: ViewController {
     fileprivate lazy var searchBar = makeSearchBar()
     fileprivate lazy var searchTextField = makeSearchTextField()
     fileprivate lazy var resultTableView = makeResultTableView()
-    fileprivate lazy var tapGuideLabel = makeTapGuideLabel()
+    fileprivate lazy var resourceTagsView = TagListView()
+    fileprivate lazy var resourceView = makeResourceView()
 
     fileprivate var bottomConstraint: Constraint?
     fileprivate lazy var thisViewModel: LocationSearchViewModel = {
@@ -31,6 +32,12 @@ class LocationSearchViewController: ViewController {
     fileprivate var autoCompleteLocations = [GMSAutocompletePrediction]()
 
     // MARK: - Life Cycle
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        resourceTagsView.rearrangeViews()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -57,26 +64,24 @@ class LocationSearchViewController: ViewController {
 
         _ = searchTextField.rx.textInput => thisViewModel.searchLocationTextRelay
 
+        BehaviorRelay.combineLatest(thisViewModel.locationsResultRelay, thisViewModel.resourcesResultRelay)
+            .map { (locations, resources) in
+                return locations.isNotEmpty || resources.isEmpty
+            }
+            .bind(to: resourceView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        thisViewModel.resourcesResultRelay
+            .subscribe(onNext: { [weak self] in
+                self?.rebuildResourcesListView(resources: $0)
+            })
+            .disposed(by: disposeBag)
+
         thisViewModel.locationsResultRelay
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.autoCompleteLocations = $0
-                self.tapGuideLabel.isHidden = $0.count <= 0
                 self.resultTableView.reloadData()
-            })
-            .disposed(by: disposeBag)
-
-        thisViewModel.healthScoreRelay
-            .filterEmpty()
-            .subscribe(onNext: { [weak self] (scores) in
-                guard let self = self else { return }
-                self.scores = scores
-
-                for (index, score) in scores.enumerated() {
-                    let indexPath = IndexPath(row: index, section: 0)
-                    guard let cell = self.resultTableView.cellForRow(at: indexPath) as? LocationSearchTableCell else { return }
-                    cell.setData(score: score)
-                }
             })
             .disposed(by: disposeBag)
     }
@@ -90,22 +95,22 @@ class LocationSearchViewController: ViewController {
 
         let paddingContentView = UIView()
         paddingContentView.addSubview(searchBar)
-        paddingContentView.addSubview(tapGuideLabel)
         paddingContentView.addSubview(resultTableView)
+        paddingContentView.addSubview(resourceView)
 
         searchBar.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
         }
 
-        tapGuideLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBar.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview()
-        }
-
         resultTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(tapGuideLabel.snp.bottom).offset(15)
+            make.top.equalTo(searchBar.snp.bottom).offset(6)
             make.leading.trailing.equalToSuperview()
             bottomConstraint = make.bottom.equalToSuperview().constraint
+        }
+
+        resourceView.snp.makeConstraints { (make) in
+            make.top.equalTo(searchBar.snp.bottom).offset(29)
+            make.leading.trailing.equalToSuperview()
         }
 
         contentView.addSubview(paddingContentView)
@@ -135,10 +140,6 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
             placeAttributedText: makeAttributedText(searchText, in: placeText),
             secondaryAttributedText: makeAttributedText(searchText, in: secondaryText))
 
-        if indexPath.row < scores.count {
-            cell.setData(score: scores[indexPath.row])
-        }
-
         return cell
     }
 
@@ -151,6 +152,17 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
         let placeID = autoCompleteLocations[indexPath.row].placeID
         tableView.isUserInteractionEnabled = false
         thisViewModel.selectedPlaceIDSubject.onNext(placeID)
+    }
+
+    fileprivate func rebuildResourcesListView(resources: [Resource]) {
+        resourceTagsView.reset()
+
+        for resource in resources {
+            let tagView = resourceTagsView.addTag((resource.id, resource.name.lowercased()))
+            tagView.backgroundColor = .black
+            tagView.addGestureRecognizer(makeTapGestureRecognizer())
+        }
+        resourceTagsView.rearrangeViews()
     }
 }
 
@@ -263,13 +275,25 @@ extension LocationSearchViewController {
         return tableView
     }
 
-    fileprivate func makeTapGuideLabel() -> Label {
-        let label = Label()
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.apply(text: R.string.phrase.locationTapGuidance(),
-                    font: R.font.atlasGroteskLight(size: 14),
-                    themeStyle: .silverColor)
-        return label
+    fileprivate func makeResourceView() -> UIView {
+        let headerLabel = Label()
+        headerLabel.numberOfLines = 0
+        headerLabel.apply(text: R.string.phrase.locationSearchResource().localizedUppercase,
+                          font: R.font.domaineSansTextLight(size: 14),
+                          themeStyle: .silverColor)
+
+        return LinearView(
+            items: [(headerLabel, 0), (resourceTagsView, 34)],
+            bottomConstraint: true)
+    }
+
+    fileprivate func makeTapGestureRecognizer() -> UITapGestureRecognizer {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { (event) in
+            guard let selectedTagView = event.view as? TagView else { return }
+            print(selectedTagView)
+
+        }.disposed(by: disposeBag)
+        return tapGestureRecognizer
     }
 }
