@@ -20,11 +20,6 @@
 "requireAppUpdate.message" = "您裝置上的 Autonomy app 不是最新版本。請立即更新以繼續使用。";
 "requireAppUpdate.action" = "立即更新";
 
-"requestHelp.duplicate" = "Only One Help Request Allowed";
-"requestHelp.duplicate.message" = "Sorry, but you already have an outstanding help request to your community. Currently, our system only supports one request at a time for each community member.";
-"giveHelp.alreadySigned" = "Someone Just Signed Up";
-"giveHelp.alreadySigned.message" = "Thanks so much for your eagerness to help out, but another community member just signed up for this request!";
-
 "account.signOut.error" = "登出裝置的過程中出現錯誤。";
 
 "signOut.title" = "Incorrect Recovery Key";

@@ -15,12 +15,13 @@
 "Today" = "今日";
 "Enable" = "啟用";
 "Delete" = "刪除";
-"Error" = "Error";
+"Error" = "錯誤";
 
 "Permission" = "允許";
 "Notifications" = "通知";
 "Location_data" = "位置資料";
 
+"Average" = "Average";
 "ActiveCases" = "在院病例數";
 "Added" = "已增加";
 "addNewLocation..." = "新增位置...";
@@ -33,9 +34,11 @@
 "BehaviorsScore" = "行為評分";
 "Cases" = "確診";
 "CasesScore" = "確診評分";
+"Change" = "Change";
 "CheckKey" = "Check Key";
 "Copied" = "已複製";
 "Data" = "資料";
+"Days" = "Days";
 "DigitalRights" = "數位權利";
 "distanceKm" = "%@ 公里";
 "Export" = "匯出";
@@ -79,6 +82,7 @@
 "Symptom" = "症狀";
 "Symptoms" = "症狀";
 "SymptomsScore" = "症狀評分";
+"Times" = "Times";
 "ViewOnJupyter" = "在Jupyter上檢視";
 "ViewSource" = "檢視來源";
 "ViewYourRating" = "檢視您的評分";

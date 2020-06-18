@@ -21,6 +21,7 @@
 "Notifications" = "Notifications";
 "Location_data" = "Location data";
 
+"Average" = "Average";
 "ActiveCases" = "Active Cases";
 "Added" = "Added";
 "addNewLocation..." = "Add new location ...";
@@ -33,9 +34,11 @@
 "BehaviorsScore" = "Behaviors Score";
 "Cases" = "Cases";
 "CasesScore" = "Cases Score";
+"Change" = "Change";
 "CheckKey" = "Check Key";
 "Copied" = "Copied";
 "Data" = "Data";
+"Days" = "Days";
 "DigitalRights" = "Digital Rights";
 "distanceKm" = "%@ km";
 "Export" = "Export";
@@ -79,6 +82,7 @@
 "Symptom" = "Symptom";
 "Symptoms" = "Symptoms";
 "SymptomsScore" = "Symptoms Score";
+"Times" = "Times";
 "ViewOnJupyter" = "View on Jupyter";
 "ViewSource" = "View Source";
 "ViewYourRating" = "View Your Rating";

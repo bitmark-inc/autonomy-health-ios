@@ -20,11 +20,6 @@
 "requireAppUpdate.message" = "The Autonomy app on your device is out of date. Please update Autonomy to continue using it.";
 "requireAppUpdate.action" = "Update now";
 
-"requestHelp.duplicate" = "Only One Help Request Allowed";
-"requestHelp.duplicate.message" = "Sorry, but you already have an outstanding help request to your community. Currently, our system only supports one request at a time for each community member.";
-"giveHelp.alreadySigned" = "Someone Just Signed Up";
-"giveHelp.alreadySigned.message" = "Thanks so much for your eagerness to help out, but another community member just signed up for this request!";
-
 "account.signOut.error" = "There was an error while signing your account out from this device.";
 
 "signOut.title" = "Incorrect Recovery Key";
