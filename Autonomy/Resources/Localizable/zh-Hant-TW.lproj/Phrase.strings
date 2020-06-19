@@ -14,7 +14,7 @@
 "onboarding.2.description" = "您的資料將永遠的維持100%保密\n（我們也無法存取）";
 "onboarding.3.description" = "我們會幫助您周圍的人一起變得更健康。";
 
-"onboarding.signIn" = "Or <sign-in>sign back in »</sign-in>";
+"onboarding.signIn" = "或 <sign-in>重新登入 »</sign-in>";
 "onboarding.symptoms.title" = "點選或新增任何您有的症狀：";
 
 "permission.description" = "Autonomy需要存取以下項目：";
@@ -31,7 +31,7 @@
 
 "location.placeholder" = "輸入地名或地址...";
 "location.editGuidance" = "填寫別名，刪除，或是點擊「完成」來儲存";
-"location.search.resource" = "or tap to find a specific resource:";
+"location.search.resource" = "或點擊來尋找特定資源：";
 
 "symptoms.report.title" = "您的症狀將會與周圍社群的其他人一起匿名加入資料池中。\n\n請點擊以下任何您有的症狀，或新增症狀項目：";
 "symptoms.report.common" = "常見症狀";
@@ -75,14 +75,14 @@
 "recoveryKey.message" = "請依序寫下下列文字：";
 "recoveryKey.index" = "第%d字，一共13字";
 
-"signIn.title" = "Welcome back! To sign in, please enter your 13-word recovery key:";
-"signIn.placeholder" = "Enter your recovery key here ...";
-"SignIn.processing" = "Please wait while we sign you in to Autonomy and recover your account ... ";
+"signIn.title" = "歡迎回來！請輸入您的13字復原金鑰來登入：";
+"signIn.placeholder" = "在此輸入您的復原金鑰...";
+"SignIn.processing" = "我們正在將您登入Autonomy中，並且復原您的帳號，請稍等... ";
 
-"signOut.title" = "Enter your 13-word recovery key:";
-"signOut.message" = "When you sign out, you will need your 13-word recovery key to unlock your data vault on this device again.\n\nTo ensure that you have recorded your recovery key correctly, you will be asked to enter it before you can sign out. If you haven’t already written down your recovery key, <view-recovery-key>please do so now</view-recovery-key>.";
-"signOut.placeholder" = "Enter your recovery key here ...";
-"signOut.processing" = "Please wait while we sign you out of Autonomy ...";
+"signOut.title" = "輸入您的13字復原金鑰：";
+"signOut.message" = "一旦您登出，您將會需要您的13字復原金鑰來再次解開您在此裝置上的資料保險庫。\n\n為了確保您有正確記錄您的復原金鑰，在您登出時您將被要求輸入復原金鑰。若您尚未寫下您的復原金鑰，<view-recovery-key>請現在就寫下</view-recovery-key>。";
+"signOut.placeholder" = "在此輸入您的復原金鑰...";
+"signOut.processing" = "我們正在將您登出Autonomy中，請稍等...";
 
 "eula" = "終端使用者授權協定(EULA)";
 "privacyPolicy" = "隱私權政策";
