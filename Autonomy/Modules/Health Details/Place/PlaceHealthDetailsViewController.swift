@@ -156,6 +156,10 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     fileprivate func makePaddingContentView() -> UIView {
         let resourceView = makeResourceView()
 
+        nameLabel.snp.makeConstraints { (make) in
+            make.height.equalTo(18)
+        }
+
         let view = LinearView(items: [
             (nameLabel, 0),
             (healthTriangleView, 42),
@@ -409,7 +413,7 @@ extension PlaceHealthDetailsViewController {
     fileprivate func makeAddressLabel() -> Label {
         let label = Label()
         label.numberOfLines = 0
-        label.apply(font: R.font.atlasGroteskLight(size: 18), themeStyle: .lightTextColor)
+        label.apply(text: " ", font: R.font.atlasGroteskLight(size: 18), themeStyle: .lightTextColor)
         return label
     }
 

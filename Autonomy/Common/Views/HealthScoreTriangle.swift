@@ -260,20 +260,13 @@ class HealthScoreTriangle: UIView {
     }
 
     fileprivate func makeDeltaView() -> UIView {
-        let view = UIView()
-        view.addSubview(deltaImageView)
-        view.addSubview(deltaLabel)
-
+        let deltaImageViewCover = UIView()
+        deltaImageViewCover.addSubview(deltaImageView)
         deltaImageView.snp.makeConstraints { (make) in
-            make.leading.centerY.equalToSuperview()
+            make.centerY.leading.trailing.equalToSuperview()
         }
 
-        deltaLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(deltaImageView.snp.trailing).offset(3)
-            make.top.bottom.trailing.equalToSuperview()
-        }
-
-        return view
+        return UIStackView(arrangedSubviews: [deltaImageViewCover, deltaLabel], axis: .horizontal, spacing: 3)
     }
 
     fileprivate func makeDeltaImageView() -> UIImageView {

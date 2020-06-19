@@ -18,6 +18,9 @@ extension Float {
     }
 
     var formatPercent: String {
+        if self < 0.01 && self > 0 {
+            return "0.01"
+        }
         return String(format: "%.2f", self)
     }
 
