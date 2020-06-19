@@ -26,6 +26,15 @@ class HealthScoreTriangle: UIView {
     fileprivate var coloredSublayer: CAShapeLayer?
     fileprivate var processingTimer: Timer?
 
+    var deltaSpace: CGFloat {
+        switch UIScreen.main.bounds.size.height {
+        case let x where x <= 568: return -12
+        case let x where x >= 736: return -3
+        default:
+            return -8
+        }
+    }
+
     var currentScore: Int?
 
     init(score: Int?, width: CGFloat? = nil) {
@@ -54,7 +63,8 @@ class HealthScoreTriangle: UIView {
 
         deltaView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(scoreLabel.snp.bottom).offset(-8)
+            make.top.equalTo(scoreLabel.snp.bottom).offset(deltaSpace)
+            make.height.equalTo(18)
         }
 
         snp.makeConstraints { (make) in
@@ -270,11 +280,7 @@ class HealthScoreTriangle: UIView {
     }
 
     fileprivate func makeDeltaImageView() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(12)
-        }
-        return imageView
+        return UIImageView()
     }
 
     fileprivate func makeDeltaLabel() -> Label {

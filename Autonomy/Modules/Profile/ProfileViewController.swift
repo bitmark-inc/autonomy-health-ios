@@ -408,7 +408,7 @@ extension ProfileViewController {
             }
 
             let digitalRights = Style {
-                $0.linkURL = AppLink.digitalRights.websiteURL
+                $0.linkURL = AppLink.digitalRights.appURL
                 $0.underline = (NSUnderlineStyle.single, textColor)
             }
 

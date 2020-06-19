@@ -47,7 +47,6 @@ class ResourceRatingView: UIView {
 
         ratingView.snp.makeConstraints { (make) in
             make.centerY.trailing.equalToSuperview()
-            make.width.equalTo(160)
         }
 
         resourceLabel.snp.makeConstraints { (make) in

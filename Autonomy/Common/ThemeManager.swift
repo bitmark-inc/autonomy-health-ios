@@ -31,6 +31,7 @@ struct OurTheme {
 
     static let titleHeight: CGFloat = Size.dw(190)
     static let largeTitleHeight: CGFloat = Size.dw(250)
+    static let largeTitleFontSize: CGFloat = Size.ds(24)
 }
 
 enum ThemeStyle {

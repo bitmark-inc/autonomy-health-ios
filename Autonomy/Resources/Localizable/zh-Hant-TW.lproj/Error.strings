@@ -14,7 +14,7 @@
 "notification.message" = "我們將會適時的詢問您當下的狀況以及推送重要的健康建議。";
 
 "location.title" = "啟用定位";
-"location.message" = "我們會使用您的位置資料來提供您所在周圍最新的新冠肺炎疫情資訊，並且讓您知道您可以如何幫助周遭的人。";
+"location.message" = "您目前的位置會被使用於幫助您周圍社群的數據。您的位置資料永遠都是私密的，而分享您的位置不會使您本人被識別。";
 
 "requireAppUpdate.title" = "請立即進行軟體更新";
 "requireAppUpdate.message" = "您裝置上的 Autonomy app 不是最新版本。請立即更新以繼續使用。";

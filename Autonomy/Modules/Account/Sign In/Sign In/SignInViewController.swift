@@ -132,7 +132,6 @@ class SignInViewController: ViewController, BackNavigator, LaunchingNavigatorDel
 
             viewController.dismiss(animated: true) { [weak self] in
                 guard let self = self else { return }
-                self.textView.text = nil
                 self.textView.becomeFirstResponder()
             }
         }.disposed(by: disposeBag)

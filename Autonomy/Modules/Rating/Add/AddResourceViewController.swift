@@ -224,7 +224,7 @@ extension AddResourceViewController {
         let label = Label()
         label.numberOfLines = 0
         label.apply(text: R.string.phrase.resourcesAddTitle(),
-                    font: R.font.atlasGroteskLight(size: 24),
+                    font: R.font.atlasGroteskLight(size: OurTheme.largeTitleFontSize),
                     themeStyle: .lightTextColor, lineHeight: 1.2)
         label.textAlignment = .center
         return CenterView(contentView: label, shrink: true)
