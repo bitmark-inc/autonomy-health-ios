@@ -23,7 +23,7 @@ class PermissionViewController: ViewController, BackNavigator {
     lazy var scrollView = makeScrollView()
     lazy var notificationOptionBox = makeNotificationOptionBox()
     lazy var locationOptionBox = makeLocationOptionBox()
-    lazy var backButton = makeLightBackItem()
+    lazy var backButton = makeBackButton()
     lazy var nextButton = RightIconButton(title: R.string.localizable.next().localizedUppercase,
                      icon: R.image.nextCircleArrow()!)
     lazy var groupsButton: UIView = {
@@ -130,6 +130,21 @@ extension PermissionViewController {
 
 // MARK: - Setup views
 extension PermissionViewController {
+    fileprivate func makeBackButton() -> UIButton? {
+        guard let viewControllers = navigationController?.viewControllers,
+            viewControllers.count >= 2 else {
+            return nil
+        }
+
+        let prevVC = viewControllers[viewControllers.count - 2]
+
+        if type(of: prevVC) == OnboardingStep3ViewController.self {
+            return makeLightBackItem()
+        } else {
+            return nil
+        }
+    }
+
     fileprivate func makeScrollView() -> UIScrollView {
         let scrollView = UIScrollView()
         scrollView.contentInset = UIEdgeInsets(top: 14, left: 15, bottom: 25, right: 15)

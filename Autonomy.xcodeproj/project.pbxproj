@@ -3454,7 +3454,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3480,7 +3480,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3506,7 +3506,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3532,7 +3532,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3560,7 +3560,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3586,7 +3586,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 35;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3728,7 +3728,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3754,7 +3754,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3780,7 +3780,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Inhouse.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = A52M7AQ8B2;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Inhouse-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3806,7 +3806,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Inhouse.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = A52M7AQ8B2;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Inhouse-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3830,7 +3830,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceInhouseExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = A52M7AQ8B2;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -3856,7 +3856,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceInhouseExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = A52M7AQ8B2;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;

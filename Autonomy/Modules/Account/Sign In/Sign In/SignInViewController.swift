@@ -32,7 +32,7 @@ class SignInViewController: ViewController, BackNavigator, LaunchingNavigatorDel
     fileprivate var groupBottomConstraint: Constraint?
 
     fileprivate weak var errorPanModalVC: ActionPanViewController?
-    fileprivate weak var panModalVC: ProgressPanViewController?
+    weak var processingPanModal: ProgressPanViewController?
 
     fileprivate lazy var thisViewModel: SignInViewModel = {
         return viewModel as! SignInViewModel
@@ -80,7 +80,7 @@ class SignInViewController: ViewController, BackNavigator, LaunchingNavigatorDel
 
                 switch event {
                 case .error:
-                    self.panModalVC?.dismiss(animated: true, completion: { [weak self] in
+                    self.processingPanModal?.dismiss(animated: true, completion: { [weak self] in
                         self?.errorWhenSignIn()
                     })
                 case .next:
@@ -96,20 +96,6 @@ class SignInViewController: ViewController, BackNavigator, LaunchingNavigatorDel
             self.showProgressPanModal()
             self.thisViewModel.signIn()
         }.disposed(by: disposeBag)
-    }
-
-    func gotoMainScreen() {
-        panModalVC?.dismiss(animated: true, completion: { [weak self] in
-            guard let self = self else { return }
-            let viewModel = MainViewModel()
-            self.navigator.show(segue: .main(viewModel: viewModel), sender: self,
-                           transition: .replace(type: .slide(direction: .down)))
-        })
-    }
-
-    deinit {
-        panModalVC?.dismiss(animated: false, completion: nil)
-        errorPanModalVC?.dismiss(animated: false, completion: nil)
     }
 
     fileprivate func errorWhenSignIn() {
@@ -152,7 +138,7 @@ class SignInViewController: ViewController, BackNavigator, LaunchingNavigatorDel
             viewController.indeterminateProgressBar.startAnimating()
         }
 
-        panModalVC = viewController
+        processingPanModal = viewController
     }
 
     override func setupViews() {

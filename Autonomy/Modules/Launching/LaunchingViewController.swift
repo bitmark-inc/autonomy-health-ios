@@ -13,10 +13,13 @@ import RxCocoa
 
 class LaunchingViewController: ViewController, LaunchingNavigatorDelegate {
 
+    // MARK: - Properties
     fileprivate lazy var headerScreen = HeaderView(header: R.string.phrase.launchName().localizedUppercase)
     fileprivate lazy var titleScreen = makeTitleScreen()
     fileprivate lazy var launchPolygonImage = ImageView(image: R.image.onboardingLaunch())
     fileprivate lazy var securedByBitmarkImage = ImageView(image: R.image.securedByBitmark())
+
+    weak var processingPanModal: ProgressPanViewController?
 
     override var prefersStatusBarHidden: Bool {
         return true

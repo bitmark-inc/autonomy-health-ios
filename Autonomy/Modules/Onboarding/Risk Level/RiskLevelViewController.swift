@@ -30,7 +30,7 @@ class RiskLevelViewController: ViewController, BackNavigator {
         }
     }()
 
-    lazy var backButton = makeLightBackItem()
+    lazy var backButton = makeBackButton()
     lazy var doneButton = RightIconButton(title: R.string.localizable.done().localizedUppercase,
                      icon: R.image.doneCircleArrow()!)
     lazy var groupsButton: UIView = {
@@ -142,6 +142,21 @@ extension RiskLevelViewController {
 
 // MARK: - Setup views
 extension RiskLevelViewController {
+    fileprivate func makeBackButton() -> UIButton? {
+        guard let viewControllers = navigationController?.viewControllers,
+            viewControllers.count >= 2 else {
+            return nil
+        }
+
+        let prevVC = viewControllers[viewControllers.count - 2]
+
+        if type(of: prevVC) == PermissionViewController.self {
+            return makeLightBackItem()
+        } else {
+            return nil
+        }
+    }
+
     fileprivate func makeScrollView() -> UIScrollView {
         let scrollView = UIScrollView()
         scrollView.contentInset = UIEdgeInsets(top: 14, left: 15, bottom: 25, right: 15)

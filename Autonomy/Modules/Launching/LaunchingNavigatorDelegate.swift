@@ -13,9 +13,10 @@ import RxCocoa
 import CoreLocation
 
 protocol LaunchingNavigatorDelegate: ViewController {
+    var processingPanModal: ProgressPanViewController? { get set }
+
     func loadAndNavigate()
     func navigate()
-    func gotoMainScreen()
 }
 
 extension LaunchingNavigatorDelegate {
@@ -49,7 +50,8 @@ extension LaunchingNavigatorDelegate {
 
         // *** user logged in
         if LocationPermission.isEnabled() != true {
-            gotoPermissionScreen()
+            dismissAndNavigate { [weak self] in self?.gotoPermissionScreen() }
+
         } else {
             NotificationPermission.isEnabled()
                 .map { $0 == true }
@@ -58,7 +60,7 @@ extension LaunchingNavigatorDelegate {
                     guard let self = self else { return }
                     isEnabled ?
                         self.signUpIfNeededOrGotoMainScreen() :
-                        self.gotoPermissionScreen()
+                        self.dismissAndNavigate { [weak self] in self?.gotoPermissionScreen() }
 
                 })
                 .disposed(by: disposeBag)
@@ -68,16 +70,25 @@ extension LaunchingNavigatorDelegate {
     fileprivate func signUpIfNeededOrGotoMainScreen() {
         ProfileService.getMe()
             .subscribe(onSuccess: { [weak self] (_) in
-                self?.gotoMainScreen()
-            }, onError: { [weak self] (error) in
-                guard let self = self else { return }
-                if let error = error as? ServerAPIError, error.isAccountHasTaken {
-                    self.gotoRiskLevelScreen()
-                } else {
-                    guard !self.handleIfGeneralError(error: error) else { return }
-                    Global.log.error(error)
-                    self.gotoRiskLevelScreen()
+
+                self?.dismissAndNavigate { [weak self] in
+                    self?.gotoMainScreen()
                 }
+
+            }, onError: { [weak self] (error) in
+
+                self?.dismissAndNavigate { [weak self] in
+                    guard let self = self else { return }
+
+                    if let error = error as? ServerAPIError, error.isAccountHasTaken {
+                        self.gotoRiskLevelScreen()
+                    } else {
+                        guard !self.handleIfGeneralError(error: error) else { return }
+                        Global.log.error(error)
+                        self.gotoRiskLevelScreen()
+                    }
+                }
+
             })
             .disposed(by: disposeBag)
     }
@@ -85,6 +96,17 @@ extension LaunchingNavigatorDelegate {
 
 // MARK: - Navigator
 extension LaunchingNavigatorDelegate {
+    func dismissAndNavigate(handler: @escaping () -> Void) {
+        if let panModal = processingPanModal {
+            panModal.dismiss(animated: true) { [weak self] in
+                handler()
+                self?.processingPanModal = nil
+            }
+        } else {
+            handler()
+        }
+    }
+
     func gotoMainScreen() {
         let viewModel = MainViewModel()
         navigator.show(segue: .main(viewModel: viewModel), sender: self,
@@ -96,11 +118,13 @@ extension LaunchingNavigatorDelegate {
     }
 
     fileprivate func gotoPermissionScreen() {
-        navigator.show(segue: .permission, sender: self, transition: .replace(type: .none) )
+        navigator.show(segue: .permission, sender: self,
+                       transition: .replace(type: .slide(direction: .left)))
     }
 
     fileprivate func gotoRiskLevelScreen() {
         let viewModel = RiskLevelViewModel()
-        navigator.show(segue: .riskLevel(viewModel: viewModel), sender: self, transition: .replace(type: .none) )
+        navigator.show(segue: .riskLevel(viewModel: viewModel), sender: self,
+                       transition: .replace(type: .slide(direction: .left)))
     }
 }
