@@ -22,7 +22,7 @@
 
 "account.signOut.error" = "登出裝置的過程中出現錯誤。";
 
-"signOut.title" = "Incorrect Recovery Key";
-"signOut.message" = "You are unable to sign out because you entered an incorrect recovery key for your account. Please try again or double check your recovery key.";
-"signIn.title" = "Incorrect Recovery Key";
-"signIn.message" = "You are unable to sign in because you entered an incorrect recovery key. Please double check your recovery key and try again.";
+"signOut.title" = "恢復金鑰錯誤";
+"signOut.message" = "無法登出，因為您輸入了錯誤的恢復金鑰。請再試著輸入一遍，或再次確認您的恢復金鑰。";
+"signIn.title" = "恢復金鑰錯誤";
+"signIn.message" = "無法登入，因為您輸入了錯誤的恢復金鑰。請再試著輸入一遍，或再次確認您的恢復金鑰。";
