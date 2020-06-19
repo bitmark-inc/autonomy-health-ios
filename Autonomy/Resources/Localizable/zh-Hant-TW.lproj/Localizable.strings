@@ -21,7 +21,7 @@
 "Notifications" = "通知";
 "Location_data" = "位置資料";
 
-"Average" = "Average";
+"Average" = "平均";
 "ActiveCases" = "在院病例數";
 "Added" = "已增加";
 "addNewLocation..." = "新增位置...";
@@ -34,11 +34,11 @@
 "BehaviorsScore" = "行為評分";
 "Cases" = "確診";
 "CasesScore" = "確診評分";
-"Change" = "Change";
-"CheckKey" = "Check Key";
+"Change" = "修改";
+"CheckKey" = "確認密鑰";
 "Copied" = "已複製";
 "Data" = "資料";
-"Days" = "Days";
+"Days" = "日";
 "DigitalRights" = "數位權利";
 "distanceKm" = "%@ 公里";
 "Export" = "匯出";
@@ -69,9 +69,9 @@
 "Score_(1_5)" = "分數 (1-5)";
 "Security" = "安全";
 "SignedUp" = "已註冊";
-"SignIn" = "Sign In";
-"SigningIn" = "Signing In";
-"SigningOut" = "Signing Out";
+"SignIn" = "登入";
+"SigningIn" = "正在登入";
+"SigningOut" = "正在登出";
 "Sign_out" = "登出";
 "SignUp" = "註冊";
 "Submit" = "提交";
@@ -82,7 +82,7 @@
 "Symptom" = "症狀";
 "Symptoms" = "症狀";
 "SymptomsScore" = "症狀評分";
-"Times" = "Times";
+"Times" = "次";
 "ViewOnJupyter" = "在Jupyter上檢視";
 "ViewSource" = "檢視來源";
 "ViewYourRating" = "檢視您的評分";
