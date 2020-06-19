@@ -18,7 +18,7 @@
 "onboarding.symptoms.title" = "Tap any symptoms you have or add new ones:";
 
 "permission.description" = "Autonomy requires access to the following:";
-"permission.notification.description" = "We’ll remind you to report symptoms and practice healthy behaviors. When your neighborhood’s health changes, we’ll send you alerts.";
+"permission.notification.description" = "We’ll request that you report symptoms and remind you to practice healthy behaviors. When your neighborhood’s health changes, we’ll send you alerts.";
 "permission.location.description" = "Your data will be used to help improve your neighborhood’s health. Your own location will be kept private.";
 
 "riskLevel.description" = "Are you at higher risk for severe illness?";
@@ -27,13 +27,13 @@
 "riskLevel.no" = "No, I’m not at higher risk";
 
 "source.info.title" = "How The Autonomy Score Is Computed";
-"source.info" = "The Autonomy Score is a normalized score from 0-100 that forecasts the overall wellbeing of a neighborhood.\n\nThe score currently consists of 3 main inputs, each with a weighted coefficent that reflects each input’s relative importance to the overall score. You can adjust these coefficients above to assign different relative weights to the inputs.\n\nOur 3 data inputs are:\n\n1) A 14-day exponentially weighted average of the number of daily confirmed medical conditions in an area, as reported by the <corona-data-project>Corona Data Scraper project</corona-data-project>, which aggregates the latest public health data from verified sources around the world.\n\n2) A symptoms score, which is a normalized score calculated from the daily number of reported symptoms in a given neighborhood. Symptoms are assigned differential weights depending on whether they are known indicators of ongoing infectious disease outbreaks.\n\n3) A behaviors score, which is a normalized score calculated from the daily reported number of health-promoting behaviors in a given neighborhood.\n\nFor more information about exactly how we calculate our scores, please visit our <jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>.";
+"source.info" = "The Autonomy Score is a normalized score from 0-100 that forecasts the overall wellbeing of a neighborhood.\n\nThe score currently consists of 3 main inputs, each weighted to reflect the input’s relative importance to the overall score. You can adjust the values above to assign different relative weights to the inputs.\n\nOur 3 data inputs are:\n\n1) A 14-day exponentially weighted average of the number of daily confirmed medical conditions in an area, as reported by the <corona-data-project>Corona Data Scraper project</corona-data-project>, which aggregates the latest public health data from verified sources around the world.\n\n2) A symptoms score, which is a normalized score calculated from the daily number of reported symptoms in a given neighborhood. Symptoms are assigned differential weights depending on whether they are known indicators of ongoing infectious disease outbreaks.\n\n3) A behaviors score, which is a normalized score calculated from the daily reported number of health-promoting behaviors in a given neighborhood.\n\nFor more information about exactly how we calculate our scores, please visit our <jupyter-notebook>Autonomy Score Jupyter notebook</jupyter-notebook>.";
 
 "location.placeholder" = "Enter name or address ...";
 "location.editGuidance" = "Assign an alias, delete, or tap Done to save";
 "location.search.resource" = "or tap to find a specific resource:";
 
-"symptoms.report.title" = "Your symptoms will be anonymously pooled with others in this neighborhood.\n\nTap any symptoms you are experiencing or add new ones:";
+"symptoms.report.title" = "Tap any symptoms you are experiencing or add new ones.\n\nYour symptoms will be anonymously pooled with others in this neighborhood.";
 "symptoms.report.common" = "Common symptoms";
 "symptoms.report.recent" = "Recent neighborhood symptoms";
 "symptoms.report.addNew" = "Report other symptom ...";
@@ -44,7 +44,7 @@
 "symptoms.guidance.title" = "At least one of the symptoms you reported is a common COVID-19 symptom.";
 "symptoms.guidance.subTitle" = "To protect the health of you and your neighborhood, the Taiwan CDC encourages you to get tested for COVID-19 as soon as possible at one of the following testing centers:";
 
-"behaviors.report.title" = "Your behaviors will be anonymously pooled with others in this neighborhood.\n\nTap any healthy behaviors you did today or add new ones:";
+"behaviors.report.title" = "Tap any healthy behaviors you performed today or add new ones.\n\nYour behaviors will be anonymously pooled with others in this neighborhood.";
 "behaviors.report.common" = "Recommended behaviors";
 "behaviors.report.recent" = "Recent behaviors near you";
 "behaviors.report.addNew" = "Report other behavior ...";
@@ -54,10 +54,10 @@
 
 "behaviors.guidance.title" = "How to correctly perform healthy behaviors:";
 
-"resources.emptyGuide" = "You can be the first to add resources provided by this place by tapping below.";
-"resources.ratings.title" = "Your ratings will be anonymously pooled with others for this place.\n\nTap to rate health resources provided by this place or add others:";
+"resources.emptyGuide" = "You can be the first to record health resources provided at this place by tapping below.";
+"resources.ratings.title" = "Tap to rate health resources provided at this place or add new ones.\n\nYour ratings will be anonymously pooled with others for this place.";
 "resources.ratings.submitting" = "Reporting your ratings for this place ...";
-"resources.add.title" = "Your resource suggestions will be anonymously pooled with others for this place.\n\nTap any health-promoting resources this place provides:";
+"resources.add.title" = "Tap to add health-promoting resources to this place.\n\nYour resource suggestions will be anonymously pooled with others for this place.";
 "resources.add.submitting" = "Adding your resources for this place ...";
 "resources.suggest.message" = "Important Resources For This Neighborhood";
 "resources.suggest.add.placeholder" = "Suggest other resource ...";
@@ -89,7 +89,7 @@
 "termsAndPolicyPhrase" = "%@ and %@.";
 
 "notification.cleanAndDisinfectSurfaces.title" = "Clean and disinfect surfaces";
-"notification.cleanAndDisinfectSurfaces.desc" = "Have you cleaned and disinfected frequently touched surfaces today to prevent virus transmission? Tap if you did this.";
+"notification.cleanAndDisinfectSurfaces.desc" = "Were you able to clean and disinfect frequently touched surfaces today? If so, tap to anonymously report this.";
 
 "sampleSymptom.fever" = "fever";
 "sampleSymtom.dryCough" = "dry cough";
@@ -99,5 +99,5 @@
 "sampleSymptom.difficultyBreathing" = "difficulty breathing";
 "sampleSymptom.lossOfSenseOfTasteOrSmell" = "loss of sense of taste or smell";
 
-"sample.notification.title" = "Wash your hands while you’re up!";
-"sample.notification.message" = "This is a great chance to wash your hands for at least 20 seconds or apply hand sanitizer. Tap if you did this.";
+"sample.notification.title" = "Consider washing your hands while you’re up";
+"sample.notification.message" = "This is a great chance to wash your hands for at least 20 seconds or to apply hand sanitizer. Tap to anonymously report if you did this.";
