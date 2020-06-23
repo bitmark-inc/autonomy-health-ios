@@ -12,6 +12,9 @@ import Moya
 
 class TrendingService {
     static var provider = MoyaProvider<TrendingAPI>(session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
+    static var stubProvider = MoyaProvider<TrendingAPI>(
+        stubClosure: MoyaProvider.immediatelyStub,
+        session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
     static func getAutonomyTrending(autonomyObject: AutonomyObject, in datePeriod: DatePeriod) -> Single<[ReportItem]> {
         Global.log.info("[start] TrendingService.getAutonomyTrending(autonomyObject:, in:)")
@@ -27,7 +30,7 @@ class TrendingService {
     static func getSymptomsTrending(autonomyObject: AutonomyObject, in datePeriod: DatePeriod) -> Single<[ReportItem]> {
         Global.log.info("[start] TrendingService.getSymptomsTrending(autonomyObject:, in:)")
 
-        return provider.rx
+        return stubProvider.rx
             .requestWithRefreshJwt(.symptomsTrending(autonomyObject: autonomyObject, datePeriod: datePeriod))
             .filterSuccess()
             .retryWhenTransientError()

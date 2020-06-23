@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SwiftRichString
+import Charts
 
 class ItemTrendingViewController: ViewController, BackNavigator {
 
@@ -19,10 +20,10 @@ class ItemTrendingViewController: ViewController, BackNavigator {
         HeaderView(header: thisViewModel.reportItemObject.title)
     }()
     fileprivate lazy var timelineView = TimeFilterView()
+    fileprivate lazy var chart = makeChart()
+    fileprivate lazy var chartView = makeChartView()
+    fileprivate lazy var dataStackHeader = makeDataStackHeader()
     fileprivate lazy var dataStackView = makeDataStackView()
-    fileprivate lazy var casesScoreDataView = HealthDataRow(info: R.string.localizable.casesScore().localizedUppercase, hasDot: true)
-    fileprivate lazy var symptomsScoreDataView = HealthDataRow(info: R.string.localizable.symptomsScore().localizedUppercase, hasDot: true)
-    fileprivate lazy var behaviorsScoreDataView = HealthDataRow(info: R.string.localizable.behaviorsScore().localizedUppercase, hasDot: true)
     fileprivate lazy var graphComingSoonLabel = makeGraphComingSoonLabel()
     fileprivate lazy var emptyDataLabel = makeEmptyDataLabel()
 
@@ -38,6 +39,27 @@ class ItemTrendingViewController: ViewController, BackNavigator {
     fileprivate lazy var thisViewModel: ItemTrendingViewModel = {
         return viewModel as! ItemTrendingViewModel
     }()
+
+    var items = [String]()
+    var itemGraphColors = [UIColor]()
+    var currentColorIndex = 0 {
+        didSet {
+            if currentColorIndex >= 6 || currentColorIndex <= -1 {
+                self.currentColorIndex = 0
+            }
+        }
+    }
+
+    let graphLabelTextColor = UIColor(hexString: "#BFBFBF")!
+    let grayColor = UIColor(hexString: "#2B2B2B")!
+    let graphColors = [
+            UIColor(hexString: "#81CFFA"),
+            UIColor(hexString: "#E3C878"),
+            UIColor(hexString: "#E688A1"),
+            UIColor(hexString: "#BBEAA6"),
+            UIColor(hexString: "#ED9A73"),
+            UIColor(hexString: "#E29AF4")
+        ]
 
     override func bindViewModel() {
         super.bindViewModel()
@@ -55,6 +77,8 @@ class ItemTrendingViewController: ViewController, BackNavigator {
                 self?.rebuildScoreView(with: reportItems)
             })
             .disposed(by: disposeBag)
+
+        observeReportItemToDrawChart()
     }
 
     override func setupViews() {
@@ -65,9 +89,9 @@ class ItemTrendingViewController: ViewController, BackNavigator {
             items: [
                 (headerScreen, 0),
                 (timelineView, 10),
-                (makeGraphsComingSoonView(), 0),
-                (SeparateLine(height: 1), 0),
-                (dataStackView, Size.dh(74))
+                (chartView, 12),
+                (dataStackHeader, 30),
+                (dataStackView, 0)
             ], bottomConstraint: true)
 
         scrollView.addSubview(paddingContentView)
@@ -108,13 +132,15 @@ class ItemTrendingViewController: ViewController, BackNavigator {
             let healthDataRow = HealthDataRow(info: reportItem.name.localizedUppercase, hasDot: true)
             healthDataRow.setData(reportItem: reportItem, thingType: parseThing())
 
-            if index == reportItemsCount - 1 { // not add separateLine to last row
-                return healthDataRow
-            } else {
-                return LinearView(
-                    items: [(healthDataRow, 0), (SeparateLine(height: 1, themeStyle: .mineShaftBackground), 15)],
-                    bottomConstraint: true)
+            if let reportItemValue = reportItem.value, reportItemValue > 0 {
+                healthDataRow.addGestureRecognizer(makeTapItemGesture())
             }
+
+            if index < reportItemsCount - 1 { // not add separateLine to last row
+                healthDataRow.addSeparateLine()
+            }
+
+            return healthDataRow
         }
 
         if reportItemsCount == 1 && reportItems.first?.value == nil {
@@ -201,8 +227,21 @@ extension ItemTrendingViewController {
         return label
     }
 
+    fileprivate func makeDataStackHeader() -> UIView {
+        switch thisViewModel.reportItemObject {
+        case .symptoms:
+            return HealthDataHeaderView(
+                R.string.localizable.symptom().localizedUppercase,
+                R.string.localizable.days().localizedUppercase,
+                R.string.localizable.change().localizedUppercase,
+                hasDot: true)
+        default:
+            return UIView()
+        }
+    }
+
     fileprivate func makeDataStackView() -> UIStackView {
-        return UIStackView(arrangedSubviews: [], axis: .vertical, spacing: 15)
+        return UIStackView(arrangedSubviews: [], axis: .vertical, spacing: 0)
     }
 
     fileprivate func makeReportButton() -> UIButton? {
@@ -250,5 +289,166 @@ extension ItemTrendingViewController {
 
         }.disposed(by: disposeBag)
         return swipeGesture
+    }
+
+    fileprivate func makeChartView() -> UIView {
+        let label = Label()
+        label.apply(font: R.font.domaineSansTextLight(size: 10), themeStyle: .silverColor)
+        switch thisViewModel.reportItemObject {
+        case .symptoms:
+            label.text = R.string.localizable.symptoms().localizedUppercase
+        case .behaviors:
+            label.text = R.string.localizable.behaviors().localizedUppercase
+        default:
+            break
+        }
+
+        let view = UIView()
+        view.addSubview(label)
+        view.addSubview(chart)
+
+        label.snp.makeConstraints { (make) in
+            make.top.leading.equalToSuperview()
+        }
+
+        chart.snp.makeConstraints { (make) in
+            make.top.equalTo(label.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(233)
+        }
+
+        return view
+    }
+
+    fileprivate func makeChart() -> BarChartView {
+        let chartView = BarChartView()
+        chartView.drawBarShadowEnabled = false
+        chartView.drawValueAboveBarEnabled = true
+
+        chartView.maxVisibleCount = 60
+        chartView.pinchZoomEnabled = false
+        chartView.doubleTapToZoomEnabled = false
+        chartView.dragEnabled = false
+        chartView.highlightFullBarEnabled = false
+
+        let xAxis = chartView.xAxis
+        xAxis.labelFont = R.font.ibmPlexMonoLight(size: 14)!
+        xAxis.labelTextColor = graphLabelTextColor
+        xAxis.drawGridLinesEnabled = false
+        xAxis.axisLineColor = UIColor(hexString: "#828180")!
+        xAxis.axisLineWidth = 1
+        xAxis.labelPosition = .bottom
+        xAxis.granularity = 1
+        xAxis.spaceMax = 0
+        xAxis.spaceMin = 0
+
+        let leftAxis = chartView.leftAxis
+        leftAxis.labelFont = R.font.ibmPlexMonoLight(size: 14)!
+        leftAxis.labelTextColor = graphLabelTextColor
+        leftAxis.drawGridLinesEnabled = false
+        leftAxis.drawAxisLineEnabled = false
+        leftAxis.labelPosition = .outsideChart
+        leftAxis.labelTextColor = graphLabelTextColor
+        leftAxis.granularity = 1
+        leftAxis.spaceBottom = 0
+
+        chartView.legend.enabled = false
+        chartView.rightAxis.enabled = false
+
+        return chartView
+    }
+}
+
+// MARK: - Chart Handlers
+extension ItemTrendingViewController {
+    fileprivate func observeReportItemToDrawChart() {
+        thisViewModel.reportItemsRelay.filterNil()
+            .subscribe(onNext: { [weak self] (reportItems) in
+                guard let self = self else { return }
+                let timeUnit = self.timelineView.timeUnit
+
+                guard let datePeriod = self.timelineView.datePeriodRelay.value else { return }
+                let dataGroupByDay = GraphDataConverter.getDataGroupByDay(
+                    with: reportItems,
+                    timeUnit: timeUnit,
+                    datePeriod: datePeriod)
+
+                let sortedDataGroupByDay = dataGroupByDay.sorted(by: { $0.0 < $1.0 })
+
+                var labels = [String]()
+                var barChartDataEntries = [BarChartDataEntry]()
+
+                for (index, dataByDay) in sortedDataGroupByDay.enumerated() {
+                    labels.append(dataByDay.key.dayName(ofStyle: .oneLetter))
+
+                    let barChartDataEntry = BarChartDataEntry(x: Double(index), yValues: dataByDay.value)
+                    barChartDataEntries.append(barChartDataEntry)
+                }
+
+                self.chart.xAxis.valueFormatter = IndexAxisValueFormatter(values: labels)
+                self.setChartData(entries: barChartDataEntries)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    fileprivate func setChartData(entries: [BarChartDataEntry]) {
+        refreshGraphColor()
+
+        let set = BarChartDataSet(entries: entries, label: "")
+        set.drawValuesEnabled = false
+        set.colors = itemGraphColors
+        set.barBorderColor = .black
+        set.barBorderWidth = 1.0
+
+        let data = BarChartData(dataSet: set)
+        data.barWidth = 1.0
+        chart.fitBars = true
+        chart.data = data
+    }
+
+    fileprivate func refreshGraphColor() {
+        guard let reportItems = thisViewModel.reportItemsRelay.value else {
+            items.removeAll()
+            itemGraphColors.removeAll()
+            return
+        }
+
+        items = reportItems.map { $0.name }
+        itemGraphColors = Array(repeating: grayColor, count: reportItems.count)
+    }
+
+    fileprivate func makeTapItemGesture() -> UITapGestureRecognizer {
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.rx.event.bind { (event) in
+            guard let dataRow = event.view as? HealthDataRow else { return }
+            self.tapRow(dataRow: dataRow)
+
+        }.disposed(by: disposeBag)
+        return tapGesture
+    }
+
+    fileprivate func tapRow(dataRow: HealthDataRow) {
+        guard let itemIndex = items.firstIndex(of: dataRow.key),
+            let dataSet = self.chart.barData?.dataSets.first as? ChartBaseDataSet else { return }
+
+        if !dataRow.selected {
+            let color = graphColors[currentColorIndex]
+            currentColorIndex += 1
+
+            if let index = itemGraphColors.firstIndex(of: color) {
+                itemGraphColors[index] = grayColor
+
+                if let healthDataRow = dataStackView.arrangedSubviews[index] as? HealthDataRow {
+                    healthDataRow.toggleSelected(color: grayColor)
+                }
+            }
+
+            itemGraphColors[itemIndex] = color
+            dataRow.toggleSelected(color: color)
+        }
+
+        // Refresh chart
+        dataSet.colors = itemGraphColors
+        chart.setNeedsDisplay()
     }
 }

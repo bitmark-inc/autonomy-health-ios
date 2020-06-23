@@ -1,29 +1,92 @@
 {
   "report_items": [
     {
-      "name": "difficulty breathing",
-      "value": 5,
-      "change_rate": -1.23
+      "name": "fever",
+      "value": 4,
+      "change_rate": -1.23,
+      "distribution": {
+        "2020-06-21": 1,
+        "2020-06-22": 1,
+        "2020-06-23": 1,
+        "2020-06-24": 1
+      }
     },
     {
       "name": "cough",
       "value": 3,
-      "change_rate": 2.34
+      "change_rate": 2.34,
+      "distribution": {
+        "2020-06-22": 1,
+        "2020-06-23": 1,
+        "2020-06-24": 1
+      }
+
     },
     {
-      "name": "fever",
+      "name": "difficulty breathing",
       "value": 2,
-      "change_rate": 0
+      "change_rate": 0,
+      "distribution": {
+        "2020-06-23": 1,
+        "2020-06-24": 1,
+      }
+
     },
     {
-      "name": "insomnia",
+      "name": "fatigue",
       "value": 1,
-      "change_rate": -0.12
+      "change_rate": -0.12,
+      "distribution": {
+        "2020-06-23": 1
+      }
+
     },
     {
-      "name": "nausea",
+      "name": "sore throat",
+      "value": 1,
+      "change_rate": -2,
+      "distribution": {
+        "2020-06-24": 1
+      }
+
+    },
+    {
+      "name": "loss of sense of taste",
+      "value": 1,
+      "change_rate": -2,
+      "distribution": {
+        "2020-06-25": 1
+      }
+
+    },
+    {
+      "name": "insommia",
+      "value": 1,
+      "change_rate": -2,
+      "distribution": {
+        "2020-06-27": 1
+      }
+    },
+    {
+      "name": "rash",
       "value": 0,
-      "change_rate": -2
+      "change_rate": -2,
+      "distribution": {
+      }
+    },
+    {
+      "name": "chills",
+      "value": 0,
+      "change_rate": -2,
+      "distribution": {
+      }
+    },
+    {
+      "name": "muscle aches",
+      "value": 0,
+      "change_rate": -2,
+      "distribution": {
+      }
     }
   ]
 }

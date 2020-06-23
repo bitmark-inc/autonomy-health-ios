@@ -33,6 +33,7 @@ def sharedPods
   pod 'SkeletonView'
   pod 'SwiftSVG'
   pod 'YoutubePlayerView'
+  pod 'Charts'
 
   pod 'SwifterSwift'
 

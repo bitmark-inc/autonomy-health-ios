@@ -167,6 +167,12 @@
 		5B5563662476558C00AE4D3C /* SearchSymptomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B219BD5246907E6004FACEA /* SearchSymptomViewController.swift */; };
 		5B5563672476559000AE4D3C /* ReportedSymptomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B219BDA246910E2004FACEA /* ReportedSymptomViewModel.swift */; };
 		5B5563682476559500AE4D3C /* ReportedSymptomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B219BDD246910F1004FACEA /* ReportedSymptomViewController.swift */; };
+		5B5671E524A0721F0035957B /* GraphDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5671E424A0721F0035957B /* GraphDataConverter.swift */; };
+		5B5671E624A0721F0035957B /* GraphDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5671E424A0721F0035957B /* GraphDataConverter.swift */; };
+		5B5671E724A0721F0035957B /* GraphDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5671E424A0721F0035957B /* GraphDataConverter.swift */; };
+		5B5671E924A0C2920035957B /* HealthDataHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5671E824A0C2920035957B /* HealthDataHeaderView.swift */; };
+		5B5671EA24A0C2920035957B /* HealthDataHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5671E824A0C2920035957B /* HealthDataHeaderView.swift */; };
+		5B5671EB24A0C2920035957B /* HealthDataHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5671E824A0C2920035957B /* HealthDataHeaderView.swift */; };
 		5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BC242AF8010072D933 /* AppDelegate.swift */; };
 		5B577853242B330E0028D3E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9542BE242AF8010072D933 /* SceneDelegate.swift */; };
 		5B577857242B330E0028D3E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B9542C7242AF8040072D933 /* LaunchScreen.storyboard */; };
@@ -878,6 +884,8 @@
 		5B4EF6E92446B06000BCB323 /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
 		5B51BF552431CA8B00AD998B /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		5B544E99245C3D7800B8003A /* FigLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigLabel.swift; sourceTree = "<group>"; };
+		5B5671E424A0721F0035957B /* GraphDataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphDataConverter.swift; sourceTree = "<group>"; };
+		5B5671E824A0C2920035957B /* HealthDataHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataHeaderView.swift; sourceTree = "<group>"; };
 		5B57785D242B330E0028D3E3 /* Autonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B57785F242B3FC10028D3E3 /* Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Dev-Info.plist"; sourceTree = "<group>"; };
 		5B577862242B421B0028D3E3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -1334,6 +1342,7 @@
 			children = (
 				5B4B31A5248A3DA400B9D4AC /* You */,
 				5B4B31A6248A3DDD00B9D4AC /* Place */,
+				5B5671E824A0C2920035957B /* HealthDataHeaderView.swift */,
 				5B4B31A1248A299F00B9D4AC /* HealthDataRow.swift */,
 				5B4B31AF248A434600B9D4AC /* RatingDataRow.swift */,
 			);
@@ -1526,6 +1535,7 @@
 				5B86A04F247E117B008AA03D /* BiometricAuth.swift */,
 				5BFC537624907C510096B14E /* TimeUnit.swift */,
 				5BFC538B2490848D0096B14E /* DatePeriod.swift */,
+				5B5671E424A0721F0035957B /* GraphDataConverter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2916,6 +2926,7 @@
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EB2446B06000BCB323 /* Behavior.swift in Sources */,
 				5BF2E98A2499DBAB00CCD7E9 /* SignOutViewController.swift in Sources */,
+				5B5671EA24A0C2920035957B /* HealthDataHeaderView.swift in Sources */,
 				5B2661AD2457DF8600163404 /* PointOfInterestService.swift in Sources */,
 				5B86A06E247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */,
 				5B4B60BA24600B5600432151 /* LocationSearchViewController.swift in Sources */,
@@ -2936,6 +2947,7 @@
 				5B130BB12451A1E30031F176 /* SuccessPanViewController.swift in Sources */,
 				5B12D5E0248E3247002C73E9 /* SearchResourceViewModel.swift in Sources */,
 				5BFC5389249081A70096B14E /* ReportItem.swift in Sources */,
+				5B5671E624A0721F0035957B /* GraphDataConverter.swift in Sources */,
 				5B577867242B42310028D3E3 /* Global+Log.swift in Sources */,
 				5BA808BC2440226A00B2733A /* LocationSearchTableCell.swift in Sources */,
 				5B219BD3246907CB004FACEA /* SearchSymptomViewModel.swift in Sources */,
@@ -3104,6 +3116,7 @@
 				5BF2E9912499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */,
 				5BBFCDE8242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
 				5B4EF6EA2446B06000BCB323 /* Behavior.swift in Sources */,
+				5B5671E924A0C2920035957B /* HealthDataHeaderView.swift in Sources */,
 				5BF2E9892499DBAB00CCD7E9 /* SignOutViewController.swift in Sources */,
 				5B2661AB2457DF6B00163404 /* PointOfInterestService.swift in Sources */,
 				5B86A06D247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */,
@@ -3124,6 +3137,7 @@
 				5BBBE55F246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */,
 				5B130BAF2451A1C00031F176 /* SuccessPanViewController.swift in Sources */,
 				5B12D5DF248E3247002C73E9 /* SearchResourceViewModel.swift in Sources */,
+				5B5671E524A0721F0035957B /* GraphDataConverter.swift in Sources */,
 				5BFC5388249081A70096B14E /* ReportItem.swift in Sources */,
 				5B577866242B42310028D3E3 /* Global+Log.swift in Sources */,
 				5BA808BB2440226A00B2733A /* LocationSearchTableCell.swift in Sources */,
@@ -3292,6 +3306,7 @@
 				5BAE844E246A7985006E118D /* PointOfInterestService.swift in Sources */,
 				5BAE8450246A7985006E118D /* LocationSearchViewController.swift in Sources */,
 				5BF2E98B2499DBAB00CCD7E9 /* SignOutViewController.swift in Sources */,
+				5B5671EB24A0C2920035957B /* HealthDataHeaderView.swift in Sources */,
 				5BAE8451246A7985006E118D /* TableViewCell.swift in Sources */,
 				5B86A06F247E11EA008AA03D /* ViewRecoveryKeyViewModel.swift in Sources */,
 				5BAE8452246A7985006E118D /* RiskLevelViewController.swift in Sources */,
@@ -3312,6 +3327,7 @@
 				5BAE845C246A7985006E118D /* ReportSymptomsViewModel.swift in Sources */,
 				5B12D5E1248E3247002C73E9 /* SearchResourceViewModel.swift in Sources */,
 				5BFC538A249081A70096B14E /* ReportItem.swift in Sources */,
+				5B5671E724A0721F0035957B /* GraphDataConverter.swift in Sources */,
 				5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */,
 				5BAE845E246A7985006E118D /* Auth.swift in Sources */,
 				5BAE845F246A7985006E118D /* AppVersion.swift in Sources */,

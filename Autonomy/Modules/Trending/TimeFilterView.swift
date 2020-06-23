@@ -25,6 +25,7 @@ class TimeFilterView: UIView {
     var segmentDistances: [TimeUnit: Int] = [
         .week: 0, .month: 0, .year: 0
     ]
+    var timeUnit: TimeUnit = .week
     lazy var startDate = defaultStartDate
     let datePeriodRelay = BehaviorRelay<DatePeriod?>(value: nil)
 
@@ -63,6 +64,7 @@ class TimeFilterView: UIView {
         guard let timeUnit = TimeUnit(index: segmentView.index),
             let distance = segmentDistances[timeUnit] else { return }
 
+        self.timeUnit = timeUnit
         nextPeriodButton.isEnabled = distance < 0 // disable next period to the future
 
         startDate = defaultStartDate.dateAtStartOf(timeUnit.dateComponent)

@@ -11,6 +11,7 @@ import UIKit
 class HealthDataRow: UIView {
 
     // MARK: - Properties
+    var key: String = ""
     fileprivate let info: String!
     fileprivate let hasDot: Bool!
 
@@ -19,6 +20,9 @@ class HealthDataRow: UIView {
     fileprivate lazy var deltaView = makeDeltaView()
     fileprivate lazy var deltaImageView = makeDeltaImageView()
     fileprivate lazy var numberInfoLabel = makeNumberInfoLabel()
+    fileprivate lazy var dotView = makeDotView()
+
+    var selected: Bool = false
 
     init(info: String, hasDot: Bool = false) {
         self.info = info
@@ -32,20 +36,20 @@ class HealthDataRow: UIView {
     }
 
     fileprivate func setupViews() {
-        addSubview(infoLabel)
-        addSubview(numberLabel)
-        addSubview(deltaView)
+        let contentView = UIView()
+
+        contentView.addSubview(infoLabel)
+        contentView.addSubview(numberLabel)
+        contentView.addSubview(deltaView)
 
         if hasDot {
-            let dotImageView = ImageView(image: R.image.lineDot())
-            addSubview(dotImageView)
-            dotImageView.snp.makeConstraints { (make) in
+            contentView.addSubview(dotView)
+            dotView.snp.makeConstraints { (make) in
                 make.leading.centerY.equalToSuperview()
-                make.width.height.equalTo(15)
             }
 
             infoLabel.snp.makeConstraints { (make) in
-                make.leading.equalTo(dotImageView.snp.trailing).offset(15)
+                make.leading.equalTo(dotView.snp.trailing).offset(15)
             }
         } else {
             infoLabel.snp.makeConstraints { (make) in
@@ -68,6 +72,26 @@ class HealthDataRow: UIView {
             make.leading.equalTo(numberLabel.snp.trailing)
             make.top.bottom.trailing.equalToSuperview()
         }
+
+        addSubview(contentView)
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+                .inset(UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
+        }
+    }
+
+    func addSeparateLine() {
+        let separateLine = SeparateLine(height: 1, themeStyle: .mineShaftBackground)
+        addSubview(separateLine)
+
+        separateLine.snp.makeConstraints { (make) in
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+
+    func toggleSelected(color: UIColor) {
+        selected = !selected
+        dotView.backgroundColor = color
     }
 
     func setData(autonomyReportItem reportItem: ReportItem) {
@@ -87,10 +111,15 @@ class HealthDataRow: UIView {
     }
 
     func setData(reportItem: ReportItem, thingType: ThingType) {
+        self.key = reportItem.name
         let delta = reportItem.changeRate
 
         numberLabel.setText(reportItem.value?.roundInt.polish ?? "--")
         numberInfoLabel.setText("\(abs(delta).formatPercent)%")
+
+        if let reportItemValue = reportItem.value, reportItemValue <= 0 {
+            dotView.backgroundColor = .clear
+        }
 
         buildDeltaView(delta: delta, thingType: thingType)
     }
@@ -193,5 +222,15 @@ extension HealthDataRow {
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
         return label
+    }
+
+    fileprivate func makeDotView() -> UIView {
+        let view = UIView()
+        view.cornerRadius = 8
+        view.snp.makeConstraints { (make) in
+            make.width.height.equalTo(15)
+        }
+        view.backgroundColor = UIColor(hexString: "#2B2B2B")
+        return view
     }
 }

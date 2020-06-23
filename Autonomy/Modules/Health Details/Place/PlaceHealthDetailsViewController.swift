@@ -309,34 +309,10 @@ extension PlaceHealthDetailsViewController {
     }
 
     fileprivate func makeResourceHeaderView() -> UIView {
-        let resourceHeaderLabel = makeDataHeaderLabel(text: R.string.localizable.resource().localizedUppercase)
-        let scoreHeaderLabel = makeDataHeaderLabel(text: R.string.localizable.score_1_5().localizedUppercase)
-        let ratingsHeaderLabel = makeDataHeaderLabel(text: R.string.localizable.ratings().localizedUppercase)
-
-        let view = UIView()
-        view.addSubview(resourceHeaderLabel)
-        view.addSubview(scoreHeaderLabel)
-        view.addSubview(ratingsHeaderLabel)
-
-        scoreHeaderLabel.textAlignment = .right
-        ratingsHeaderLabel.textAlignment = .right
-
-        resourceHeaderLabel.snp.makeConstraints { (make) in
-            make.top.leading.bottom.equalToSuperview()
-            make.trailing.equalTo(scoreHeaderLabel.snp.leading)
-        }
-
-        scoreHeaderLabel.snp.makeConstraints { (make) in
-            make.width.equalTo(70)
-            make.top.bottom.equalTo(resourceHeaderLabel)
-        }
-
-        ratingsHeaderLabel.snp.makeConstraints { (make) in
-            make.width.equalTo(Size.dw(105))
-            make.leading.equalTo(scoreHeaderLabel.snp.trailing)
-            make.top.bottom.trailing.equalToSuperview()
-        }
-        return view
+        return HealthDataHeaderView(
+            R.string.localizable.resource().localizedUppercase,
+            R.string.localizable.score_1_5().localizedUppercase,
+            R.string.localizable.ratings().localizedUppercase)
     }
 
     fileprivate func makeResourceListView() -> UIStackView {
