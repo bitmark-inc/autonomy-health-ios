@@ -47,7 +47,9 @@ class AccountService: AccountServiceDelegate {
             Intercom.logout()
 
             if let accountNumber = accountNumber {
-                let intercomUserID = "\(Constant.appName)_ios_\(accountNumber.hexDecodedData.sha3(length: 256).hexEncodedString)"
+                let sha3_256AccountNumber = accountNumber.data(using: .utf8)?.sha3(length: 256).hexEncodedString ?? ""
+                let intercomUserID = "\(Constant.appName)_ios_\(sha3_256AccountNumber)"
+
                 Intercom.registerUser(withUserId: intercomUserID)
             } else {
                 Intercom.registerUnidentifiedUser()
@@ -57,6 +59,7 @@ class AccountService: AccountServiceDelegate {
 
             var metadata = metadata
             metadata["Service"] = (Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String) ?? ""
+
             userAttributes.customAttributes = metadata
 
             Intercom.updateUser(userAttributes)
