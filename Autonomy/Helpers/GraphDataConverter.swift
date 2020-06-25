@@ -13,11 +13,31 @@ class GraphDataConverter {
 
     // MARK: - Properties
     static let formatInDay = "yyyy-MM-dd"
+    static let formatInMonth = "yyyy-MM"
+
+    typealias ChartInfo = (object: ReportItemObject, timeUnit: TimeUnit, datePeriod: DatePeriod)
 
     // MARK: - Handlers
-    static func getDataGroupByDay(with reportItems: [ReportItem], timeUnit: TimeUnit, datePeriod: DatePeriod) -> [Date: [Double]] {
+    static func getDataGroupByDay(with reportItems: [ReportItem], chartInfo: ChartInfo) -> [Date: [Double]] {
+        let (reportItemObject, timeUnit, datePeriod) = (chartInfo.object, chartInfo.timeUnit, chartInfo.datePeriod)
+        let base: Double = 1
+
         let dates: [Date] = getDates(datePeriod: datePeriod, with: timeUnit)
         var graphData = [Date: [Double]]()
+
+        if reportItems.count == 0 {
+            dates.forEach { graphData[$0] = [0.0] }
+            return graphData
+        }
+
+        // init graph
+        dates.forEach { graphData[$0] = [] }
+
+        let format: String!
+        switch timeUnit {
+        case .week, .month: format = formatInDay
+        case .year:         format = formatInMonth
+        }
 
         for reportItem in reportItems {
             let distribution = reportItem.distribution
@@ -25,8 +45,9 @@ class GraphDataConverter {
             dates.forEach { (date) in
                 var dataInIndex = graphData[date] ?? []
 
-                let dateIndex = date.toFormat(formatInDay)
-                dataInIndex.append(distribution[dateIndex] ?? 0)
+                let dateIndex = date.toFormat(format)
+                let baseDistribution = ((distribution[dateIndex] ?? 0) / base).rounded(.down)
+                dataInIndex.append(baseDistribution)
 
                 graphData[date] = dataInIndex
             }

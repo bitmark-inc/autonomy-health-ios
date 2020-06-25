@@ -7,20 +7,21 @@
 //
 
 import UIKit
+import Hero
 
 protocol BackNavigator {
-    func makeLightBackItem(withHandler: Bool) -> LeftIconButton
+    func makeLightBackItem(withHandler: Bool, animationType: HeroDefaultAnimationType?) -> LeftIconButton
 }
 
 extension BackNavigator where Self: ViewController {
-    func makeLightBackItem(withHandler: Bool = true) -> LeftIconButton {
+    func makeLightBackItem(withHandler: Bool = true, animationType: HeroDefaultAnimationType? = nil) -> LeftIconButton {
         let backItem = LeftIconButton(
             title: R.string.localizable.back().localizedUppercase,
             icon: R.image.backCircleArrow()!)
 
         if withHandler {
             backItem.rx.tap.bind { [weak self] in
-                self?.tapToBack()
+                self?.tapToBack(animationType: animationType)
             }.disposed(by: disposeBag)
         }
 
@@ -30,9 +31,10 @@ extension BackNavigator where Self: ViewController {
         return backItem
     }
 
-    func tapToBack() {
+    func tapToBack(animationType: HeroDefaultAnimationType?) {
         if (parent as? NavigationController)?.viewControllers.count ?? 0 > 1 {
-            Navigator.default.pop(sender: self)
+            Navigator.default.pop(sender: self, animationType: animationType)
+
         } else {
             let viewModel = MainViewModel()
             navigator.show(segue: .main(viewModel: viewModel), sender: self,

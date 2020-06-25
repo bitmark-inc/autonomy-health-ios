@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftDate
 
 struct DatePeriod: Codable {
     let startDate: Date
@@ -32,5 +31,14 @@ struct DatePeriod: Codable {
         case .year:
             return startDate.toFormat(Constant.TimeFormat.year)
         }
+    }
+}
+
+extension Date {
+    func toFormat(_ dateFormat: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = .current
+        dateFormatter.dateFormat = dateFormat
+        return dateFormatter.string(from: self)
     }
 }

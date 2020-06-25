@@ -21,10 +21,10 @@ class AutonomyTrendingViewModel: ViewModel {
         self.autonomyObject = autonomyObject
     }
 
-    func fetchTrending(in datePeriod: DatePeriod) {
+    func fetchTrending(in datePeriod: DatePeriod, timeUnit: TimeUnit) {
         fetchTrendingStateRelay.accept(.loading)
 
-        TrendingService.getAutonomyTrending(autonomyObject: autonomyObject, in: datePeriod)
+        TrendingService.getAutonomyTrending(autonomyObject: autonomyObject, in: datePeriod, granularity: timeUnit.granularity)
             .do(onDispose: { [weak self] in
                 self?.fetchTrendingStateRelay.accept(.hide)
             })

@@ -104,6 +104,12 @@
 		5B2C85A0242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B2C8599242DEDBB002CC53B /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B2C85B0242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B2C85B5242DEE92002CC53B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C859B242DEDBB002CC53B /* NotificationService.swift */; };
+		5B44065724A1AA6C00C7872C /* PlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44065524A1AA6C00C7872C /* PlaceAPI.swift */; };
+		5B44065824A1AA6C00C7872C /* PlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44065524A1AA6C00C7872C /* PlaceAPI.swift */; };
+		5B44065924A1AA6C00C7872C /* PlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44065524A1AA6C00C7872C /* PlaceAPI.swift */; };
+		5B44065A24A1AA6C00C7872C /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44065624A1AA6C00C7872C /* PlaceService.swift */; };
+		5B44065B24A1AA6C00C7872C /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44065624A1AA6C00C7872C /* PlaceService.swift */; };
+		5B44065C24A1AA6C00C7872C /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44065624A1AA6C00C7872C /* PlaceService.swift */; };
 		5B4957402449938E0012D6E1 /* SymptomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49573E2449938E0012D6E1 /* SymptomAPI.swift */; };
 		5B4957412449938E0012D6E1 /* SymptomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49573E2449938E0012D6E1 /* SymptomAPI.swift */; };
 		5B4957422449938E0012D6E1 /* SymptomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49573F2449938E0012D6E1 /* SymptomService.swift */; };
@@ -666,6 +672,9 @@
 		5BE08D54247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
 		5BE08D55247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
 		5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
+		5BE0DAFE24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */; };
+		5BE0DAFF24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */; };
+		5BE0DB0024A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */; };
 		5BF2E9812499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */; };
 		5BF2E9822499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */; };
 		5BF2E9832499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */; };
@@ -859,6 +868,8 @@
 		5B2C85A9242DEE33002CC53B /* OneSignalNotificationServiceDevExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceDevExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2C85B8242DFC78002CC53B /* Autonomy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Autonomy.entitlements; sourceTree = "<group>"; };
 		5B2C85B9242DFC78002CC53B /* Autonomy Dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Autonomy Dev.entitlements"; sourceTree = "<group>"; };
+		5B44065524A1AA6C00C7872C /* PlaceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAPI.swift; sourceTree = "<group>"; };
+		5B44065624A1AA6C00C7872C /* PlaceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
 		5B49573E2449938E0012D6E1 /* SymptomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomAPI.swift; sourceTree = "<group>"; };
 		5B49573F2449938E0012D6E1 /* SymptomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomService.swift; sourceTree = "<group>"; };
 		5B4957452449A0CD0012D6E1 /* ProfileAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAPI.swift; sourceTree = "<group>"; };
@@ -1052,6 +1063,7 @@
 		5BD0D2BD246CE73000022AE1 /* TimezoneDataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneDataEngine.swift; sourceTree = "<group>"; };
 		5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceInhouseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE08D53247261D4006A3034 /* Error+Supporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Supporter.swift"; sourceTree = "<group>"; };
+		5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenZeroAxisValueFormatter.swift; sourceTree = "<group>"; };
 		5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSignOutViewController.swift; sourceTree = "<group>"; };
 		5BF2E9842499DBA100CCD7E9 /* SignOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewModel.swift; sourceTree = "<group>"; };
 		5BF2E9882499DBAB00CCD7E9 /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
@@ -1328,6 +1340,15 @@
 			path = Entitlements;
 			sourceTree = "<group>";
 		};
+		5B44065424A1AA6C00C7872C /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				5B44065524A1AA6C00C7872C /* PlaceAPI.swift */,
+				5B44065624A1AA6C00C7872C /* PlaceService.swift */,
+			);
+			path = Place;
+			sourceTree = "<group>";
+		};
 		5B4957442449A0870012D6E1 /* Autonomy Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1437,6 +1458,7 @@
 				5BDA94E2244991BB00BE829A /* Behavior */,
 				5B12D5E6248E3338002C73E9 /* Resource */,
 				5BFC537E24907EAF0096B14E /* Trending */,
+				5B44065424A1AA6C00C7872C /* Place */,
 				5B213EFC244412EB0095BE18 /* Points Of Interest */,
 				5B4B60C02460444400432151 /* Debug */,
 				5BA4B131245A898C00B125ED /* Stubbed Responses */,
@@ -1480,6 +1502,7 @@
 				5B219BCE2468F2F3004FACEA /* TagListView.swift */,
 				5BCBBD1A246C0F8500B735EE /* HeaderCell.swift */,
 				5BB561022487A1D900008959 /* HeaderSingleLabelCollectionCell.swift */,
+				5BE0DAFC24A479AB00A23C8B /* Chart */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1999,6 +2022,14 @@
 				5B92E3E52436E6E300E5949A /* BehaviorService.swift */,
 			);
 			path = Behavior;
+			sourceTree = "<group>";
+		};
+		5BE0DAFC24A479AB00A23C8B /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		5BF2E97D2499D3E700CCD7E9 /* Sign Out */ = {
@@ -2896,6 +2927,7 @@
 				5B4EF6E62446AFE800BCB323 /* ReportBehaviorsViewModel.swift in Sources */,
 				5B577852242B330E0028D3E3 /* AppDelegate.swift in Sources */,
 				5BCBBD0B246BD01600B735EE /* ReportedBehaviorViewModel.swift in Sources */,
+				5B44065B24A1AA6C00C7872C /* PlaceService.swift in Sources */,
 				5BFC537824907C510096B14E /* TimeUnit.swift in Sources */,
 				5BCBBD14246BEECE00B735EE /* BehaviorGuidanceViewController.swift in Sources */,
 				5B87F072242C85B90084B4F6 /* SeparateLine.swift in Sources */,
@@ -2921,6 +2953,7 @@
 				5B219BDC246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD11245C20AC00C81856 /* FigDataView.swift in Sources */,
 				5B577903242B4C010028D3E3 /* Application.swift in Sources */,
+				5B44065824A1AA6C00C7872C /* PlaceAPI.swift in Sources */,
 				5B12D5DC248E323B002C73E9 /* SearchResourceViewController.swift in Sources */,
 				5BF2E9922499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */,
 				5BBFCDE9242DA0DF009A8798 /* RiskLevelViewModel.swift in Sources */,
@@ -2963,6 +2996,7 @@
 				5BFC8DC12433081400815828 /* HealthService.swift in Sources */,
 				5B219BD02468F2F3004FACEA /* TagListView.swift in Sources */,
 				5B82FD0E245BE06400C81856 /* FormulaView.swift in Sources */,
+				5BE0DAFF24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */,
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791D242B4E290028D3E3 /* Label.swift in Sources */,
@@ -3086,6 +3120,7 @@
 				5B9542BD242AF8010072D933 /* AppDelegate.swift in Sources */,
 				5BCBBD0A246BD01600B735EE /* ReportedBehaviorViewModel.swift in Sources */,
 				5BFC537724907C510096B14E /* TimeUnit.swift in Sources */,
+				5B44065A24A1AA6C00C7872C /* PlaceService.swift in Sources */,
 				5BCBBD13246BEECE00B735EE /* BehaviorGuidanceViewController.swift in Sources */,
 				5B87F071242C85B90084B4F6 /* SeparateLine.swift in Sources */,
 				5B213F07244413FC0095BE18 /* Location.swift in Sources */,
@@ -3111,6 +3146,7 @@
 				5BA2D5B0249B469D00341F33 /* SignInViewModel.swift in Sources */,
 				5B219BDB246910E2004FACEA /* ReportedSymptomViewModel.swift in Sources */,
 				5B82FD10245C20AC00C81856 /* FigDataView.swift in Sources */,
+				5B44065724A1AA6C00C7872C /* PlaceAPI.swift in Sources */,
 				5B577902242B4C010028D3E3 /* Application.swift in Sources */,
 				5B12D5DB248E323B002C73E9 /* SearchResourceViewController.swift in Sources */,
 				5BF2E9912499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */,
@@ -3153,6 +3189,7 @@
 				5BFC8DC02433081400815828 /* HealthService.swift in Sources */,
 				5B219BCF2468F2F3004FACEA /* TagListView.swift in Sources */,
 				5B82FD0D245BE06400C81856 /* FormulaView.swift in Sources */,
+				5BE0DAFE24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */,
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791C242B4E290028D3E3 /* Label.swift in Sources */,
@@ -3276,6 +3313,7 @@
 				5BAE842E246A7985006E118D /* AppDelegate.swift in Sources */,
 				5BAE8430246A7985006E118D /* SeparateLine.swift in Sources */,
 				5BAE8431246A7985006E118D /* Location.swift in Sources */,
+				5B44065C24A1AA6C00C7872C /* PlaceService.swift in Sources */,
 				5BFC537924907C510096B14E /* TimeUnit.swift in Sources */,
 				5BCBBD1D246C0F8500B735EE /* HeaderCell.swift in Sources */,
 				5B5563632476551600AE4D3C /* LeftIconButton.swift in Sources */,
@@ -3301,6 +3339,7 @@
 				5BAE844A246A7985006E118D /* Application.swift in Sources */,
 				5BAE844B246A7985006E118D /* RiskLevelViewModel.swift in Sources */,
 				5BAE844C246A7985006E118D /* Behavior.swift in Sources */,
+				5B44065924A1AA6C00C7872C /* PlaceAPI.swift in Sources */,
 				5B12D5DD248E323B002C73E9 /* SearchResourceViewController.swift in Sources */,
 				5BF2E9932499F5B100CCD7E9 /* ActionPanViewController.swift in Sources */,
 				5BAE844E246A7985006E118D /* PointOfInterestService.swift in Sources */,
@@ -3343,6 +3382,7 @@
 				5BAE8466246A7985006E118D /* FormulaView.swift in Sources */,
 				5BAE8467246A7985006E118D /* BitmarkSDKService.swift in Sources */,
 				5BAE8468246A7985006E118D /* MoyaAuthPlugin.swift in Sources */,
+				5BE0DB0024A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */,
 				5BAE846C246A7985006E118D /* Label.swift in Sources */,
 				5BAE846D246A7985006E118D /* SymptomAPI.swift in Sources */,
 				5BAE846E246A7985006E118D /* ServerAssetsAPI.swift in Sources */,

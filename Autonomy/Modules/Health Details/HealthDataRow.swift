@@ -111,7 +111,7 @@ class HealthDataRow: UIView {
     }
 
     func setData(reportItem: ReportItem, thingType: ThingType) {
-        self.key = reportItem.name
+        self.key = reportItem.id
         let delta = reportItem.changeRate
 
         numberLabel.setText(reportItem.value?.roundInt.polish ?? "--")
@@ -132,6 +132,7 @@ class HealthDataRow: UIView {
     }
 
     func setData(resourceReportItem: ResourceReportItem) {
+        self.key = resourceReportItem.resource.id
         let score = resourceReportItem.score
 
         if score == 0 {

@@ -10,10 +10,10 @@ import Foundation
 import Moya
 
 enum TrendingAPI {
-    case autonomyTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod)
-    case symptomsTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod)
-    case behaviorsTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod)
-    case casesTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod)
+    case autonomyTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod, granularity: String)
+    case symptomsTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod, granularity: String)
+    case behaviorsTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod, granularity: String)
+    case casesTrending(autonomyObject: AutonomyObject, datePeriod: DatePeriod, granularity: String)
 }
 
 extension TrendingAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
@@ -60,10 +60,10 @@ extension TrendingAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
         }
 
         switch self {
-        case .autonomyTrending(let autonomyObject, let datePeriod),
-             .symptomsTrending(let autonomyObject, let datePeriod),
-             .behaviorsTrending(let autonomyObject, let datePeriod),
-             .casesTrending(let autonomyObject, let datePeriod):
+        case .autonomyTrending(let autonomyObject, let datePeriod, let granularity),
+             .symptomsTrending(let autonomyObject, let datePeriod, let granularity),
+             .behaviorsTrending(let autonomyObject, let datePeriod, let granularity),
+             .casesTrending(let autonomyObject, let datePeriod, let granularity):
 
             switch autonomyObject {
             case .individual:
@@ -75,8 +75,9 @@ extension TrendingAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
                 params["poi_id"] = poiID
             }
 
-            params["start"] = datePeriod.startDate.appTimeFormat
-            params["end"] = datePeriod.endDate.appTimeFormat
+            params["granularity"] = granularity
+            params["start"] = Constant.TimeFormat.iso8601Formatter.string(from: datePeriod.startDate)
+            params["end"] = Constant.TimeFormat.iso8601Formatter.string(from: datePeriod.endDate)
 
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         }

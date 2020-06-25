@@ -38,10 +38,10 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
     override func bindViewModel() {
         super.bindViewModel()
 
-        timelineView.datePeriodRelay
+        timelineView.timeInfoRelay
             .filterNil()
             .subscribe(onNext: { [weak self] in
-                self?.thisViewModel.fetchTrending(in: $0)
+                self?.thisViewModel.fetchTrending(in: $0.period, timeUnit: $0.unit)
             })
             .disposed(by: disposeBag)
 

@@ -23,17 +23,31 @@ class ItemTrendingViewModel: ViewModel {
         self.reportItemObject = reportItemObject
     }
 
-    func fetchTrending(in datePeriod: DatePeriod) {
+    func fetchTrending(in datePeriod: DatePeriod, timeUnit: TimeUnit) {
         fetchTrendingStateRelay.accept(.loading)
 
         let fetchDataItemsSingle: Single<[ReportItem]>!
+        let granularity = timeUnit.granularity
+
         switch reportItemObject {
         case .symptoms:
-            fetchDataItemsSingle = TrendingService.getSymptomsTrending(autonomyObject: autonomyObject, in: datePeriod)
+            fetchDataItemsSingle = TrendingService.getSymptomsTrending(
+                autonomyObject: autonomyObject,
+                in: datePeriod,
+                granularity: granularity)
+
         case .behaviors:
-            fetchDataItemsSingle = TrendingService.getBehaviorsTrending(autonomyObject: autonomyObject, in: datePeriod)
+            fetchDataItemsSingle = TrendingService.getBehaviorsTrending(
+                autonomyObject: autonomyObject,
+                in: datePeriod,
+                granularity: granularity)
+
         case .cases:
-            fetchDataItemsSingle = TrendingService.getCasesTrending(autonomyObject: autonomyObject, in: datePeriod)
+            fetchDataItemsSingle = TrendingService.getCasesTrending(
+                autonomyObject: autonomyObject,
+                in: datePeriod,
+                granularity: granularity)
+
         default:
             return
         }

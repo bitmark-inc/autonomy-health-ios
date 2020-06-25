@@ -30,4 +30,13 @@ enum TimeUnit: String {
         case .year:     return .year
         }
     }
+
+    var granularity: String {
+        switch self {
+        case .week, .month:
+            return "day"
+        case .year:
+            return "month"
+        }
+    }
 }

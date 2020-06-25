@@ -64,6 +64,8 @@
 "resources.suggest.add.placeholder" = "Suggest other resource ...";
 
 "trending.noData" = "Sorry, we currently don’t have active cases data for this location. We’re working hard to support more regions.";
+"trending.noReport.symptoms" = "You didn’t report any symptoms for this period or for the previous period.";
+"trending.noReport.behaviors" = "You didn’t report any healthy behaviors for this period or for the previous period.";
 
 "donate.header" = "Donate";
 "donate.title" = "If you believe in Autonomy, please consider donating:";

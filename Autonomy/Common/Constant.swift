@@ -45,6 +45,12 @@ public struct Constant {
     }
 
     struct TimeFormat {
+        static var iso8601Formatter: ISO8601DateFormatter = {
+            let formatter = ISO8601DateFormatter()
+            formatter.timeZone = .current
+            return formatter
+        }()
+
         static let history = "MMM d 'at' h:mm a"
         static let monthDay = "MMM d"
         static let month = "MMM"
