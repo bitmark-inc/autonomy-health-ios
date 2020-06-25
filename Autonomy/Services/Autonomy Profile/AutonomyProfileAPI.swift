@@ -22,12 +22,7 @@ extension AutonomyProfileAPI: AuthorizedTargetType, VersionTargetType, LocationT
     }
 
     var path: String {
-        switch self {
-        case .get:
-            return "me"
-        case .getPOI(let poiID, _):
-            return poiID
-        }
+        return ""
     }
 
     var method: Moya.Method {
@@ -61,8 +56,11 @@ extension AutonomyProfileAPI: AuthorizedTargetType, VersionTargetType, LocationT
 
         switch self {
         case .get:
-            return .requestPlain
-        case .getPOI(_, let allResources):
+            params["me"] = true
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+
+        case .getPOI(let poiID, let allResources):
+            params["poi_id"] = poiID
             if allResources { params["all_resources"] = true }
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
         }

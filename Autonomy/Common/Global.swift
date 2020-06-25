@@ -64,7 +64,6 @@ class Global {
     }()
 
 
-
     let networkLoggerPlugin: [PluginType] = [
         NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(output: { (_, items) in
             for item in items {

@@ -36,10 +36,6 @@ class SignInViewModel: ViewModel {
             .map { $0.toRecoveryPhrases() }
             .bind(to: phrasesRelay)
             .disposed(by: disposeBag)
-
-        signInResultSubject
-            .subscribe { print($0) }
-        .disposed(by: disposeBag)
     }
 
     func signIn() {

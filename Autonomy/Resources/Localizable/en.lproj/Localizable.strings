@@ -51,8 +51,10 @@
 "Locations" = "Locations";
 "LowRisk" = "Low Risk";
 "ModerateRisk" = "Moderate Risk";
+"Monitor" = "Monitor";
 "More" = "More";
 "Neighborhood" = "Neighborhood";
+"NeighborhoodScore" = "Neighborhood Score";
 "None" = "None";
 "Profile" = "Profile";
 "Ratings" = "Ratings";

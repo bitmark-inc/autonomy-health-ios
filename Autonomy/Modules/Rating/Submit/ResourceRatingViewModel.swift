@@ -13,14 +13,16 @@ class ResourceRatingViewModel: ViewModel {
 
     // MARK: - Properties
     let poiID: String!
+    let highlightResourceID: String?
     let resourceRatingsRelay = BehaviorRelay<[ResourceRating]?>(value: nil)
     let submitRatingsResultSubject = PublishSubject<Event<Never>>()
 
     // MARK: - Inits
-    init(poiID: String) {
+    init(poiID: String, highlightResourceID: String? = nil) {
         self.poiID = poiID
-        super.init()
+        self.highlightResourceID = highlightResourceID
 
+        super.init()
         fetchRatings()
     }
 

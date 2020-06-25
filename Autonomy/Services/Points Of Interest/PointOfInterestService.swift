@@ -24,15 +24,14 @@ class PointOfInterestService {
             .map([PointOfInterest].self)
     }
 
-    static func create(pointOfInterest: PointOfInterest) -> Single<PointOfInterest> {
-        Global.log.info("[start] PointOfInterestService.create(pointOfInterest:)")
+    static func monitor(poiID: String) -> Completable {
+        Global.log.info("[start] PointOfInterestService.monitor(poiID:)")
 
         return provider.rx
-            .requestWithRefreshJwt(.create(pointOfInterest: pointOfInterest))
+            .requestWithRefreshJwt(.monitor(poiID: poiID))
             .filterSuccess()
             .retryWhenTransientError()
-            .asSingle()
-            .map(PointOfInterest.self)
+            .ignoreElements()
     }
 
     static func update(poiID: String, alias: String) -> Completable {

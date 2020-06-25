@@ -10,6 +10,7 @@ import Foundation
 
 struct PlaceAutonomyProfile: Codable {
     let id, alias, address: String
+    var owned: Bool
     let rating: Bool
     let hasMoreResources: Bool
     let resourceReportItems: [ResourceReportItem]
@@ -17,7 +18,7 @@ struct PlaceAutonomyProfile: Codable {
     let autonomyScore, autonomyScoreDelta: Float
 
     enum CodingKeys: String, CodingKey {
-        case id, alias, address, rating, neighbor
+        case id, alias, address, owned, rating, neighbor
         case hasMoreResources = "has_more_resources"
         case resourceReportItems = "resources"
         case autonomyScore = "autonomy_score"

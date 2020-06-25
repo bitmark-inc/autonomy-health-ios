@@ -8,7 +8,6 @@
 
 import RxSwift
 import RxCocoa
-import GooglePlaces
 
 enum POIFetchSource {
     case remote
@@ -54,46 +53,6 @@ class MainViewModel: ViewModel {
                 Global.backgroundErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
-    }
-
-    func addNewPOI(placeID: String) {
-        let gmsPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-            UInt(GMSPlaceField.placeID.rawValue) | UInt(GMSPlaceField.coordinate.rawValue) |
-            UInt(GMSPlaceField.formattedAddress.rawValue))!
-
-        let token = GMSAutocompleteSessionToken()
-
-        GMSPlacesClient.shared().fetchPlace(fromPlaceID: placeID, placeFields: gmsPlaceField, sessionToken: token) { [weak self] (place, error) in
-            guard let self = self else { return }
-            if let error = error {
-                Global.log.error(error)
-            }
-
-            guard let place = place else {
-                Global.log.error("empty place when fetchPlace with placeID: \(placeID)")
-                return
-            }
-
-            if self.poisRelay.value.pois.contains(where: {
-                $0.location.latitude == place.coordinate.latitude && $0.location.longitude == place.coordinate.longitude }) {
-                Global.log.info("[addLocation] duplicated location")
-                self.addLocationSubject.onNext(nil)
-                return
-            }
-
-            let pointOfInterest = PointOfInterest(place: place)
-            PointOfInterestService.create(pointOfInterest: pointOfInterest)
-                .subscribe(onSuccess: { [weak self] (newPOI) in
-                    guard let self = self else { return }
-                    var newPOIs = self.poisRelay.value.pois; newPOIs.append(newPOI)
-                    self.poisRelay.accept((pois: newPOIs, source: .userAdjust))
-                    self.addLocationSubject.onNext(newPOI)
-
-                }, onError: { [weak self] (error) in
-                    self?.submitResultSubject.onNext(Event.error(error))
-                })
-                .disposed(by: self.disposeBag)
-        }
     }
 
     func updatePOI(poiID: String, alias: String) {

@@ -12,7 +12,7 @@ import Moya
 
 enum PointOfInterestAPI {
     case get
-    case create(pointOfInterest: PointOfInterest)
+    case monitor(poiID: String)
     case update(poiID: String, alias: String)
     case delete(poiID: String)
     case order(poiIDs: [String])
@@ -21,12 +21,12 @@ enum PointOfInterestAPI {
 extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationTargetType {
 
     var baseURL: URL {
-        return URL(string: Constant.apiServerURL + "/api/points-of-interest")!
+        return URL(string: Constant.apiServerURL + "/api/accounts/me/pois")!
     }
 
     var path: String {
         switch self {
-        case .get, .create: return ""
+        case .get, .monitor: return ""
         case .update(let poiID, _), .delete(let poiID):
             return poiID
         case .order:
@@ -37,7 +37,7 @@ extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationT
     var method: Moya.Method {
         switch self {
         case .get:      return .get
-        case .create:   return .post
+        case .monitor:  return .post
         case .update:   return .patch
         case .delete:   return .delete
         case .order:    return .put
@@ -48,36 +48,25 @@ extension PointOfInterestAPI: AuthorizedTargetType, VersionTargetType, LocationT
         return Data()
     }
 
-    var parameters: [String: Any]? {
+    var task: Task {
         var params: [String: Any] = [:]
+
         switch self {
-        case .create(let pointOfInterest):
-            params["alias"] = pointOfInterest.alias
-            params["address"] = pointOfInterest.address
-            let location = pointOfInterest.location
-            params["location"] = [
-                "latitude" : location.latitude,
-                "longitude": location.longitude
-            ]
+        case .monitor(let poiID):
+            params["poi_id"] = poiID
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
 
         case .update(_, let alias):
             params["alias"] = alias
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
 
         case .order(let poiIDs):
             params["order"] = poiIDs
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
 
         case .get, .delete:
-            return nil
+            return .requestPlain
         }
-
-        return params
-    }
-
-    var task: Task {
-        if let parameters = parameters {
-            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-        }
-        return .requestPlain
     }
 
     var headers: [String: String]? {

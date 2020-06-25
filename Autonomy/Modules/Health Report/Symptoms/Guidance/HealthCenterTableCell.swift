@@ -66,7 +66,7 @@ class HealthCenterTableCell: TableViewCell {
 
     func setData(healthCenter: HealthCenter) {
         nameLabel.setText(healthCenter.name)
-        distanceLabel.setText(R.string.localizable.distanceKm("\(healthCenter.distance)"))
+        distanceLabel.setText(healthCenter.distance.formatDistance)
         addressLabel.setText(healthCenter.address)
         self.healthCenter = healthCenter
     }

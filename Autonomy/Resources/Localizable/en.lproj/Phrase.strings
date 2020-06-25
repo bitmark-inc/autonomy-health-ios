@@ -32,6 +32,7 @@
 "location.placeholder" = "Enter name or address ...";
 "location.editGuidance" = "Assign an alias, delete, or tap Done to save";
 "location.search.resource" = "or tap to find a specific resource:";
+"location.search.noPlacesMessage" = "Sorry, there aren’t currently any places in our system offering that resource. Be the first to add it for places you know!";
 
 "symptoms.report.title" = "Your symptoms will be anonymously pooled with others in this neighborhood.\n\nTap any symptoms you are experiencing or add new ones:";
 "symptoms.report.common" = "Common symptoms";

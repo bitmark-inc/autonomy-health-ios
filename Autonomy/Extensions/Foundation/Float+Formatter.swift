@@ -28,6 +28,11 @@ extension Float {
         return String(format: "%.1f", self)
     }
 
+    var formatDistance: String {
+        let distanceStr = String(format: "%.1f", self)
+        return R.string.localizable.distanceKm("\(distanceStr)")
+    }
+
     var simple: String {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0

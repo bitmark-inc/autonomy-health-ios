@@ -8,12 +8,14 @@
 
 import RxSwift
 import RxCocoa
+import Hero
 
 class PlaceHealthDetailsViewModel: ViewModel {
 
     // MARK: - Properties
     let poiID: String!
     let poiAutonomyProfileRelay = BehaviorRelay<PlaceAutonomyProfile?>(value: nil)
+    var backAnimationType: HeroDefaultAnimationType = .slide(direction: .down)
 
     init(poiID: String) {
         self.poiID = poiID
@@ -25,6 +27,25 @@ class PlaceHealthDetailsViewModel: ViewModel {
             .subscribe(onSuccess: { [weak self] in
                 guard let self = self else { return }
                 self.poiAutonomyProfileRelay.accept($0)
+            }, onError: { (error) in
+                Global.backgroundErrorSubject.onNext(error)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func monitor() {
+        guard let poiID = poiAutonomyProfileRelay.value?.id else { return }
+        PointOfInterestService.monitor(poiID: poiID)
+            .subscribe(onCompleted: { [weak self] in
+                guard let self = self,
+                    let currentAutonomyProfile = self.poiAutonomyProfileRelay.value else {
+                        return
+                }
+
+                var ownedAutonomyProfile = currentAutonomyProfile
+                ownedAutonomyProfile.owned = true
+                self.poiAutonomyProfileRelay.accept(ownedAutonomyProfile)
+
             }, onError: { (error) in
                 Global.backgroundErrorSubject.onNext(error)
             })

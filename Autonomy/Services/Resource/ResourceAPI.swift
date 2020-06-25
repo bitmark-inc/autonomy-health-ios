@@ -10,6 +10,7 @@ import Foundation
 import Moya
 
 enum ResourceAPI {
+    case suggestion
     case shortList(poiID: String)
     case fullList(poiID: String)
     case add(poiID: String, resources: [Resource])
@@ -21,15 +22,22 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
 
     var baseURL: URL {
         switch self {
+        case .suggestion:
+            return URL(string: Constant.apiServerURL + "/api/resources")!
+
         case .shortList(let poiID), .fullList(let poiID),
              .add(let poiID, _),
              .ratings(let poiID), .rate(let poiID, _):
+
             return URL(string: Constant.apiServerURL + "/api/points-of-interest/\(poiID)")!
+
         }
     }
 
     var path: String {
         switch self {
+        case .suggestion:
+            return ""
         case .shortList, .fullList, .add:
             return "resources"
         case .ratings, .rate:
@@ -45,6 +53,8 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
             return .post
         case .rate:
             return .put
+        case .suggestion:
+            return .get
         }
     }
 
@@ -73,6 +83,10 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
         }
 
         switch self {
+        case .suggestion:
+            params["suggestion"] = true
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+
         case .shortList:
             params["important"] = true
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)

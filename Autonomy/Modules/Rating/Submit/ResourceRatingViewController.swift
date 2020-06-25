@@ -100,16 +100,29 @@ class ResourceRatingViewController: ViewController, BackNavigator {
             items: [
                 (headerScreen, 0),
                 (titleScreen, 0),
-                (SeparateLine(height: 1), 3),
-                (resourceRatingListView, 17),
-                (addResourceView, 15)
+                (SeparateLine(height: 1), 3)
             ],
             bottomConstraint: true)
 
         scrollView.addSubview(paddingContentView)
+        scrollView.addSubview(resourceRatingListView)
+        scrollView.addSubview(addResourceView)
+
         paddingContentView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(OurTheme.paddingInset)
             make.width.equalToSuperview().offset(-30)
+        }
+
+        resourceRatingListView.snp.makeConstraints { (make) in
+            make.top.equalTo(paddingContentView.snp.bottom).offset(17)
+            make.leading.trailing.equalToSuperview()
+        }
+
+        addResourceView.snp.makeConstraints { (make) in
+            make.top.equalTo(resourceRatingListView.snp.bottom).offset(15)
+            make.leading.trailing.equalTo(paddingContentView)
+            make.bottom.equalToSuperview()
         }
 
         contentView.addSubview(scrollView)
@@ -175,8 +188,12 @@ extension ResourceRatingViewController {
         resourceRatingListView.removeArrangedSubviews()
         resourceRatingListView.removeSubviews()
 
-        let newArrangedSubviews = resourceRatings.map {
-            ResourceRatingView(resource: $0.resource, initValue: $0.score)
+        let newArrangedSubviews = resourceRatings.map { (resourceRating) -> ResourceRatingView in
+            let resourceRatingView = ResourceRatingView(resource: resourceRating.resource, initValue: resourceRating.score)
+            if resourceRating.resource.id == thisViewModel.highlightResourceID {
+                resourceRatingView.highlight()
+            }
+            return resourceRatingView
         }
 
         resourceRatingListView.addArrangedSubviews(newArrangedSubviews)
@@ -187,7 +204,8 @@ extension ResourceRatingViewController {
 extension ResourceRatingViewController {
     fileprivate func makeScrollView() -> UIScrollView {
         let scrollView = UIScrollView()
-        scrollView.contentInset = OurTheme.paddingInset
+        var edgeInset = OurTheme.paddingInset; edgeInset.left = 0; edgeInset.right = 0
+        scrollView.contentInset = edgeInset
         return scrollView
     }
 
@@ -214,7 +232,6 @@ extension ResourceRatingViewController {
         button.rx.tap.bind { [weak self] in
             self?.gotoAddResourceScreen()
         }.disposed(by: disposeBag)
-
 
         let view = UIView()
         view.addSubview(button)

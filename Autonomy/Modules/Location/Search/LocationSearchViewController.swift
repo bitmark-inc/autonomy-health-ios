@@ -17,11 +17,14 @@ import GooglePlaces
 class LocationSearchViewController: ViewController {
 
     // MARK: - Properties
+    fileprivate lazy var scrollView = makeScrollView()
     fileprivate lazy var searchBar = makeSearchBar()
     fileprivate lazy var searchTextField = makeSearchTextField()
+    fileprivate lazy var clearButton = makeClearButton()
     fileprivate lazy var resultTableView = makeResultTableView()
     fileprivate lazy var resourceTagsView = TagListView()
-    fileprivate lazy var resourceView = makeResourceView()
+    fileprivate lazy var resourcesView = makeResourcesView()
+    fileprivate lazy var noPlacesMessageLabel = makeNoPlacesMessageLabel()
 
     fileprivate var bottomConstraint: Constraint?
     fileprivate lazy var thisViewModel: LocationSearchViewModel = {
@@ -29,7 +32,10 @@ class LocationSearchViewController: ViewController {
     }()
 
     fileprivate var scores = [Float?]()
-    fileprivate var autoCompleteLocations = [GMSAutocompletePrediction]()
+    fileprivate var autoCompleteLocations: [GMSAutocompletePrediction]?
+    fileprivate var autoCompletePlaces: [PointOfInterest]?
+
+    fileprivate var textInputEnableRelay = BehaviorRelay<Bool>(value: true)
 
     // MARK: - Life Cycle
     override func viewWillLayoutSubviews() {
@@ -62,13 +68,31 @@ class LocationSearchViewController: ViewController {
     override func bindViewModel() {
         super.bindViewModel()
 
-        _ = searchTextField.rx.textInput => thisViewModel.searchLocationTextRelay
+        thisViewModel.selectedPlaceIDSubject
+            .subscribe(onNext: { [weak self] (placeID) in
+                self?.gotoPlaceAutonomyProfileScreen(poiID: placeID)
+            })
+            .disposed(by: disposeBag)
 
-        BehaviorRelay.combineLatest(thisViewModel.locationsResultRelay, thisViewModel.resourcesResultRelay)
-            .map { (locations, resources) in
-                return locations.isNotEmpty || resources.isEmpty
+        searchTextField.rx.controlEvent(.editingChanged)
+            .subscribe(onNext: { [weak self] (_) in
+                guard let self = self else { return }
+                let changedText = self.searchTextField.text
+                self.clearButton.isHidden = changedText?.isEmpty ?? true
+                self.noPlacesMessageLabel.isHidden = true
+                self.thisViewModel.searchLocationTextRelay.accept(changedText ?? "")
+            })
+            .disposed(by: disposeBag)
+
+        BehaviorRelay.combineLatest(
+            thisViewModel.locationsResultRelay,
+            thisViewModel.placesResultRelay,
+            thisViewModel.resourcesResultRelay
+        )
+            .map { (locations, places, resources) in
+                return locations != nil || places != nil || resources.isEmpty
             }
-            .bind(to: resourceView.rx.isHidden)
+            .bind(to: resourcesView.rx.isHidden)
             .disposed(by: disposeBag)
 
         thisViewModel.resourcesResultRelay
@@ -78,10 +102,23 @@ class LocationSearchViewController: ViewController {
             .disposed(by: disposeBag)
 
         thisViewModel.locationsResultRelay
-            .subscribe(onNext: { [weak self] in
+            .filterNil()
+            .subscribe(onNext: { [weak self] (locations) in
                 guard let self = self else { return }
-                self.autoCompleteLocations = $0
+                self.autoCompletePlaces = nil
+                self.autoCompleteLocations = locations
                 self.resultTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+
+        thisViewModel.placesResultRelay
+            .filterNil()
+            .subscribe(onNext: { [weak self] (places) in
+                guard let self = self else { return }
+                self.autoCompleteLocations = nil
+                self.autoCompletePlaces = places
+                self.resultTableView.reloadData()
+                self.noPlacesMessageLabel.isHidden = places.isNotEmpty
             })
             .disposed(by: disposeBag)
     }
@@ -93,13 +130,30 @@ class LocationSearchViewController: ViewController {
             .bind({ $0.mineShaftBackground }, to: contentView.rx.backgroundColor)
             .disposed(by: disposeBag)
 
+        scrollView.addSubview(resourcesView)
+        resourcesView.snp.makeConstraints { (make) in
+            make.edges.width.equalToSuperview()
+        }
+
         let paddingContentView = UIView()
         paddingContentView.addSubview(searchBar)
+        paddingContentView.addSubview(noPlacesMessageLabel)
+        paddingContentView.addSubview(scrollView)
         paddingContentView.addSubview(resultTableView)
-        paddingContentView.addSubview(resourceView)
 
         searchBar.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
+        }
+
+        noPlacesMessageLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(searchBar.snp.bottom).offset(30)
+            make.leading.trailing.equalToSuperview()
+        }
+
+        scrollView.snp.makeConstraints { (make) in
+            make.top.equalTo(searchBar.snp.bottom).offset(29)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(resultTableView)
         }
 
         resultTableView.snp.makeConstraints { (make) in
@@ -108,37 +162,46 @@ class LocationSearchViewController: ViewController {
             bottomConstraint = make.bottom.equalToSuperview().constraint
         }
 
-        resourceView.snp.makeConstraints { (make) in
-            make.top.equalTo(searchBar.snp.bottom).offset(29)
-            make.leading.trailing.equalToSuperview()
-        }
-
         contentView.addSubview(paddingContentView)
         paddingContentView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview().inset(OurTheme.paddingOverBottomInset)
         }
+
+        view.addGestureRecognizer(makeSwipeGesture())
     }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension LocationSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return autoCompleteLocations.count
+        let numberOfRecords = (autoCompleteLocations?.count ?? autoCompletePlaces?.count) ?? 0
+        tableView.isHidden = numberOfRecords <= 0
+        return numberOfRecords
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: LocationSearchTableCell.self)
         cell.separatorInset = .zero
+        cell.selectionStyle = .none
 
-        let autoCompleteLocation = autoCompleteLocations[indexPath.row]
+        if let autoCompleteLocations = autoCompleteLocations {
+            let autoCompleteLocation = autoCompleteLocations[indexPath.row]
 
-        let searchText = thisViewModel.searchLocationTextRelay.value
-        let placeText = autoCompleteLocation.attributedPrimaryText.string
-        let secondaryText = autoCompleteLocation.attributedSecondaryText?.string ?? autoCompleteLocation.attributedFullText.string
+            let searchText = thisViewModel.searchLocationTextRelay.value
+            let placeText = autoCompleteLocation.attributedPrimaryText.string
+            let secondaryText = autoCompleteLocation.attributedSecondaryText?.string ?? autoCompleteLocation.attributedFullText.string
 
-        cell.setData(
-            placeAttributedText: makeAttributedText(searchText, in: placeText),
-            secondaryAttributedText: makeAttributedText(searchText, in: secondaryText))
+            cell.setData(
+                placeAttributedText: makeAttributedText(searchText, in: placeText),
+                secondaryAttributedText: makeAttributedText(searchText, in: secondaryText))
+
+            return cell
+
+        } else if let autoCompletePlaces = autoCompletePlaces {
+            let place = autoCompletePlaces[indexPath.row]
+            cell.setData(place: place)
+            return cell
+        }
 
         return cell
     }
@@ -149,9 +212,14 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let placeID = autoCompleteLocations[indexPath.row].placeID
-        tableView.isUserInteractionEnabled = false
-        thisViewModel.selectedPlaceIDSubject.onNext(placeID)
+        if let autoCompleteLocations = autoCompleteLocations {
+            let googlePlaceID = autoCompleteLocations[indexPath.row].placeID
+            thisViewModel.addNewPlace(googlePlaceID: googlePlaceID)
+
+        } else if let autoCompletePlaces = autoCompletePlaces {
+            let placeID = autoCompletePlaces[indexPath.row].id
+            thisViewModel.selectedPlaceIDSubject.onNext(placeID)
+        }
     }
 
     fileprivate func rebuildResourcesListView(resources: [Resource]) {
@@ -169,8 +237,21 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
 // MARK: - UITextFieldDelegate
 extension LocationSearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dismiss(animated: true, completion: nil)
+        dismiss()
         return true
+    }
+}
+
+// MARK: - LocationSearchViewController
+extension LocationSearchViewController {
+    fileprivate func gotoPlaceAutonomyProfileScreen(poiID: String) {
+        let viewModel = PlaceHealthDetailsViewModel(poiID: poiID)
+        viewModel.backAnimationType = .slide(direction: .right)
+        navigator.show(segue: .placeHealthDetails(viewModel: viewModel), sender: self)
+    }
+
+    fileprivate func dismiss() {
+        navigator.pop(sender: self, animated: true, animationType: .pageOut(direction: .down))
     }
 }
 
@@ -192,15 +273,22 @@ extension LocationSearchViewController {
 
 // MARK: - Setup views
 extension LocationSearchViewController {
+    fileprivate func makeScrollView() -> UIScrollView {
+        let scrollView = UIScrollView()
+        scrollView.isUserInteractionEnabled = true
+        scrollView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }
+
     fileprivate func makeSearchBar() -> UIView {
-        let closeButton = makeCloseButton()
         let searchImageView = ImageView(image: R.image.search())
         let separateLine = SeparateLine(height: 1)
 
         let searchBar = UIView()
         searchBar.addSubview(searchImageView)
         searchBar.addSubview(searchTextField)
-        searchBar.addSubview(closeButton)
+        searchBar.addSubview(clearButton)
 
         searchImageView.snp.makeConstraints { (make) in
             make.leading.equalToSuperview()
@@ -213,7 +301,7 @@ extension LocationSearchViewController {
             make.width.equalToSuperview().offset(-90)
         }
 
-        closeButton.snp.makeConstraints { (make) in
+        clearButton.snp.makeConstraints { (make) in
             make.leading.lessThanOrEqualTo(searchTextField.snp.trailing).offset(15)
             make.trailing.equalToSuperview()
             make.centerY.equalToSuperview().offset(-2)
@@ -250,12 +338,22 @@ extension LocationSearchViewController {
         return textField
     }
 
-    fileprivate func makeCloseButton() -> UIButton {
+    fileprivate func makeClearButton() -> UIButton {
         let button = UIButton()
+        button.isHidden = true
         button.setImage(R.image.closeIcon(), for: .normal)
 
         button.rx.tap.bind { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
+            guard let self = self else { return }
+            self.searchTextField.text = nil
+            self.thisViewModel.placesResultRelay.accept(nil)
+            self.thisViewModel.locationsResultRelay.accept(nil)
+            self.autoCompleteLocations = nil
+            self.autoCompletePlaces = nil
+            self.resultTableView.reloadData()
+            self.noPlacesMessageLabel.isHidden = true
+            button.isHidden = true
+
         }.disposed(by: disposeBag)
 
         return button
@@ -267,6 +365,7 @@ extension LocationSearchViewController {
         tableView.delegate = self
         tableView.separatorStyle = .singleLine
         tableView.register(cellWithClass: LocationSearchTableCell.self)
+        tableView.isHidden = true
 
         themeService.rx
             .bind({ $0.separateTextColor }, to: tableView.rx.separatorColor)
@@ -275,7 +374,7 @@ extension LocationSearchViewController {
         return tableView
     }
 
-    fileprivate func makeResourceView() -> UIView {
+    fileprivate func makeResourcesView() -> UIView {
         let headerLabel = Label()
         headerLabel.numberOfLines = 0
         headerLabel.apply(text: R.string.phrase.locationSearchResource().localizedUppercase,
@@ -289,10 +388,35 @@ extension LocationSearchViewController {
 
     fileprivate func makeTapGestureRecognizer() -> UITapGestureRecognizer {
         let tapGestureRecognizer = UITapGestureRecognizer()
-        tapGestureRecognizer.rx.event.bind { (event) in
-            guard let selectedTagView = event.view as? TagView else { return }
+        tapGestureRecognizer.rx.event.bind { [weak self] (event) in
+            guard let self = self,
+                let selectedTagView = event.view as? TagView else { return }
 
+            self.searchTextField.text = selectedTagView.title
+            self.clearButton.isHidden = false
+            self.thisViewModel.fetchPlacesBy(resourceID: selectedTagView.id)
         }.disposed(by: disposeBag)
         return tapGestureRecognizer
+    }
+
+    fileprivate func makeSwipeGesture() -> UISwipeGestureRecognizer {
+        let swipeGesture = UISwipeGestureRecognizer()
+        swipeGesture.direction = .down
+        swipeGesture.rx.event.bind { [weak self] (gesture) in
+            guard let self = self else { return }
+            self.dismiss()
+        }.disposed(by: disposeBag)
+        return swipeGesture
+    }
+
+    fileprivate func makeNoPlacesMessageLabel() -> Label {
+        let label = Label()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.isHidden = true
+        label.apply(text: R.string.phrase.locationSearchNoPlacesMessage(),
+                    font: R.font.atlasGroteskLight(size: 18),
+                    themeStyle: .silverColor, lineHeight: 1.25)
+        return label
     }
 }

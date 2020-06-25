@@ -88,16 +88,29 @@ class LocationSearchTableCell: TableViewCell {
         secondaryTextLabel.attributedText = secondaryAttributedText.set(style: secondaryStyleGroup)
     }
 
-    func setData(rating: Float) {
-        ratingView.isHidden = false
-        ratingView.rating = Double(rating)
-        ratingView.customImage(rating: Double(rating))
-        if rating == 0 {
-            ratingLabel.isHidden = true
+    func setData(place: PointOfInterest) {
+        secondaryTextLabel.text = place.address
+
+        placeTextLabel.textColor = .white
+        secondaryTextLabel.textColor = .white
+
+        if let distance = place.distance {
+            placeTextLabel.text = place.alias + " (\(distance.formatDistance))"
         } else {
-            ratingLabel.setText(rating.formatRatingScore)
-            ratingLabel.isHidden = false
-            ratingLabel.textColor = Rating(from: rating).color
+            placeTextLabel.text = place.alias
+        }
+
+        if let rating = place.resourceScore {
+            ratingView.isHidden = false
+            ratingView.rating = Double(rating)
+            ratingView.customImage(rating: Double(rating))
+            if rating == 0 {
+                ratingLabel.isHidden = true
+            } else {
+                ratingLabel.setText(rating.formatRatingScore)
+                ratingLabel.isHidden = false
+                ratingLabel.textColor = Rating(from: rating).color
+            }
         }
     }
 

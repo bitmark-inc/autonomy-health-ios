@@ -14,7 +14,15 @@ struct PointOfInterest: Codable {
     var alias: String
     var address: String = ""
     let location: Location
-    var score: Float? = nil
+    var score: Float?
+    var distance: Float?
+    var resourceScore: Float?
+
+    enum CodingKeys: String, CodingKey {
+        case id, alias, address, location, score
+        case distance
+        case resourceScore = "resource_score"
+    }
 
     init(place: GMSPlace) {
         self.alias = place.name ?? ""
@@ -30,5 +38,7 @@ struct PointOfInterest: Codable {
         address = try values.decode(String.self, forKey: .address)
         location = try values.decode(Location.self, forKey: .location)
         score = try values.decode(Float.self, forKey: .score)
+        distance = try values.decodeIfPresent(Float.self, forKey: .distance)
+        resourceScore = try values.decodeIfPresent(Float.self, forKey: .resourceScore)
     }
 }

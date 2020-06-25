@@ -12,6 +12,7 @@ import RxCocoa
 import SnapKit
 import MediaPlayer
 import RxAppState
+import SwiftDate
 
 protocol LocationDelegate: class {
     func updatePOI(poiID: String, alias: String)
@@ -377,17 +378,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 extension MainViewController: DashboardDelegate {
     func gotoAddLocationScreen() {
         let viewModel = LocationSearchViewModel()
-        viewModel.selectedPlaceIDSubject
-            .filterNil()
-            .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] (selectedPlaceID) in
-                guard let self = self else { return }
-                self.thisViewModel.addNewPOI(placeID: selectedPlaceID)
-            })
-            .disposed(by: disposeBag)
-
-        navigator.show(segue: .locationSearch(viewModel: viewModel), sender: self,
-                       transition: .customModal(type: .slide(direction: .up)))
+        navigator.show(segue: .locationSearch(viewModel: viewModel), sender: self, transition: .navigation(type: .pageIn(direction: .up)))
     }
 
     fileprivate func gotoYouHealthDetailsScreen() {

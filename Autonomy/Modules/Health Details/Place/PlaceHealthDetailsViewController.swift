@@ -15,9 +15,11 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     // MARK: - Properties
     fileprivate lazy var scrollView = makeScrollView()
     fileprivate lazy var healthTriangleView = makeHealthView()
-    fileprivate lazy var backButton = makeLightBackItem()
+    fileprivate lazy var backButton = makeLightBackItem(animationType: thisViewModel.backAnimationType)
+    fileprivate lazy var monitorButton = RightIconButton(title: R.string.localizable.monitor().localizedUppercase,
+                                                         icon: R.image.plusCircle())
     fileprivate lazy var groupsButton: UIView = {
-        let groupView = ButtonGroupView(button1: backButton, button2: nil, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: monitorButton, hasGradient: false)
         groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()
@@ -28,13 +30,13 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     fileprivate lazy var presentResourceView = makePresentResourceView()
     fileprivate lazy var resourceListView = makeResourceListView()
     fileprivate lazy var moreResourceButton = makeMoreResourceButton()
-    fileprivate lazy var ratingResourceButton = makeRatingResourceButton()
+    fileprivate lazy var addResourceButton = makeAddResourceButton()
 
+    fileprivate lazy var scoreView = makePOIScoreView()
     fileprivate lazy var activeCasesView = makePOICasesView()
     fileprivate lazy var symptomsView = makePOISymptomsView()
     fileprivate lazy var behaviorsView = makePOIBehaviorsView()
 
-    var isButtonAddResource: Bool = true
     var isFullResources: Bool = false
 
     fileprivate lazy var thisViewModel: PlaceHealthDetailsViewModel = {
@@ -57,17 +59,14 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
             })
             .disposed(by: disposeBag)
 
-        ratingResourceButton.rx.tap.bind { [weak self] in
-            guard let self = self else { return }
-            self.isButtonAddResource ?
-                self.gotoAddResourceScreen() :
-                self.gotoResourceRatingScreen()
-        }.disposed(by: disposeBag)
-
         moreResourceButton.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             self.isFullResources = true
             self.thisViewModel.fetchPOIAutonomyProfile(allResources: true)
+        }.disposed(by: disposeBag)
+
+        monitorButton.rx.tap.bind { [weak self] in
+            self?.thisViewModel.monitor()
         }.disposed(by: disposeBag)
     }
 
@@ -75,10 +74,12 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         nameLabel.setText(autonomyProfile.alias.localizedUppercase)
         healthTriangleView.updateLayout(score: autonomyProfile.autonomyScore, animate: false)
         healthTriangleView.set(delta: autonomyProfile.autonomyScoreDelta)
+        monitorButton.isHidden = autonomyProfile.owned
 
         addressLabel.setText(autonomyProfile.address)
 
         let neighbor = autonomyProfile.neighbor
+        scoreView.setData(number: neighbor.score.roundInt, delta: neighbor.scoreDelta, thingType: .good)
         activeCasesView.setData(number: neighbor.activeCase, delta: neighbor.activeCaseDelta, thingType: .bad)
         symptomsView.setData(number: neighbor.symptom, delta: neighbor.symptomDelta, thingType: .bad)
         behaviorsView.setData(number: neighbor.behavior, delta: neighbor.behaviorDelta, thingType: .good)
@@ -86,26 +87,12 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         moreResourceButton.isHidden = !autonomyProfile.hasMoreResources
 
         if autonomyProfile.resourceReportItems.count == 0 {
-            ratingResourceButton.setTitle(R.string.localizable.addResource().localizedUppercase, for: .normal)
             presentResourceView.isHidden = true
             emptyResourceView.isHidden = false
             moreResourceButton.isHidden = true
-            isButtonAddResource = true
         } else {
             presentResourceView.isHidden = false
             emptyResourceView.isHidden = true
-            isButtonAddResource = false
-
-            if autonomyProfile.rating {
-                ratingResourceButton.setTitle(
-                    R.string.localizable.viewYourRating().localizedUppercase,
-                    for: .normal)
-            } else {
-                ratingResourceButton.setTitle(
-                    R.string.localizable.addRating().localizedUppercase,
-                    for: .normal)
-            }
-
             rebuildResourceListStackView(resourceReportItems: autonomyProfile.resourceReportItems)
         }
     }
@@ -117,10 +104,19 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         let newArrangedSubviews = resourceReportItems.map { (resourceReportItem) -> UIView in
             let healthDataRow = HealthDataRow(info: resourceReportItem.resource.name.localizedUppercase, hasDot: true)
             healthDataRow.setData(resourceReportItem: resourceReportItem)
+            healthDataRow.addSeparateLine()
 
-            return LinearView(
-                items: [(healthDataRow, 0), (SeparateLine(height: 1, themeStyle: .mineShaftBackground), 14)],
-                bottomConstraint: true)
+            let tapGestureRecognizer = UITapGestureRecognizer()
+            tapGestureRecognizer.rx.event.bind { [weak self] (event) in
+                guard let self = self,
+                    let selectedResourceView = event.view as? HealthDataRow else { return }
+
+                self.gotoResourceRatingScreen(resourceID: selectedResourceView.key)
+
+            }.disposed(by: disposeBag)
+
+            healthDataRow.addGestureRecognizer(tapGestureRecognizer)
+            return healthDataRow
         }
 
         resourceListView.addArrangedSubviews(newArrangedSubviews)
@@ -151,6 +147,7 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
 
         // hide presentResourceView at first
         presentResourceView.isHidden = true
+        monitorButton.isHidden = true
     }
 
     fileprivate func makePaddingContentView() -> UIView {
@@ -169,11 +166,10 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
             (resourceView, 15),
             (makeResourceButtonGroupView(), 17),
             (HeaderView(header: R.string.localizable.neighborhood().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 45),
-            (activeCasesView, 30),
-            (makeSeparateLine(), 14),
-            (symptomsView, 15),
-            (makeSeparateLine(), 14),
-            (behaviorsView, 15)
+            (scoreView, 15),
+            (activeCasesView, 0),
+            (symptomsView, 0),
+            (behaviorsView, 0)
         ], bottomConstraint: true)
 
         return view
@@ -192,8 +188,8 @@ extension PlaceHealthDetailsViewController {
         navigator.show(segue: .addResource(viewModel: viewModel), sender: self)
     }
 
-    fileprivate func gotoResourceRatingScreen() {
-        let viewModel = ResourceRatingViewModel(poiID: thisViewModel.poiID)
+    fileprivate func gotoResourceRatingScreen(resourceID: String) {
+        let viewModel = ResourceRatingViewModel(poiID: thisViewModel.poiID, highlightResourceID: resourceID)
         navigator.show(segue: .resourceRating(viewModel: viewModel), sender: self)
     }
 
@@ -271,7 +267,7 @@ extension PlaceHealthDetailsViewController {
 
     fileprivate func makePresentResourceView() -> UIView {
         return LinearView(
-            items: [(makeResourceHeaderView(), 0), (resourceListView, 15)],
+            items: [(makeResourceHeaderView(), 0), (resourceListView, 0)],
             bottomConstraint: true
         )
     }
@@ -316,19 +312,19 @@ extension PlaceHealthDetailsViewController {
     }
 
     fileprivate func makeResourceListView() -> UIStackView {
-        return UIStackView(arrangedSubviews: [], axis: .vertical, spacing: 15)
+        return UIStackView(arrangedSubviews: [], axis: .vertical, spacing: 0)
     }
 
     fileprivate func makeResourceButtonGroupView() -> UIView {
         let view = UIView()
         view.addSubview(moreResourceButton)
-        view.addSubview(ratingResourceButton)
+        view.addSubview(addResourceButton)
 
         moreResourceButton.snp.makeConstraints { (make) in
             make.top.leading.bottom.equalToSuperview()
         }
 
-        ratingResourceButton.snp.makeConstraints { (make) in
+        addResourceButton.snp.makeConstraints { (make) in
             make.top.trailing.bottom.equalToSuperview()
         }
 
@@ -345,12 +341,17 @@ extension PlaceHealthDetailsViewController {
         return button
     }
 
-    fileprivate func makeRatingResourceButton() -> UIButton {
+    fileprivate func makeAddResourceButton() -> UIButton {
         let button = RightIconButton(
             title: R.string.localizable.addResource().localizedUppercase,
             icon: R.image.addIcon(),
             spacing: 7)
         button.apply(font: R.font.atlasGroteskLight(size: 14), textStyle: .silverColor)
+        button.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.gotoAddResourceScreen()
+        }.disposed(by: disposeBag)
+
         return button
     }
 
@@ -401,6 +402,18 @@ extension PlaceHealthDetailsViewController {
         return tapGestureRecognizer
     }
 
+    fileprivate func makePOIScoreView() -> HealthDataRow {
+        let dataRow = HealthDataRow(info: R.string.localizable.neighborhoodScore().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoAutonomyTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        dataRow.addSeparateLine()
+        return dataRow
+    }
+
     fileprivate func makePOICasesView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.activeCases().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
@@ -409,6 +422,7 @@ extension PlaceHealthDetailsViewController {
         }.disposed(by: disposeBag)
 
         dataRow.addGestureRecognizer(tapGestureRecognizer)
+        dataRow.addSeparateLine()
         return dataRow
     }
 
@@ -420,6 +434,7 @@ extension PlaceHealthDetailsViewController {
         }.disposed(by: disposeBag)
 
         dataRow.addGestureRecognizer(tapGestureRecognizer)
+        dataRow.addSeparateLine()
         return dataRow
     }
 

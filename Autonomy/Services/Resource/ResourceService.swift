@@ -16,6 +16,18 @@ class ResourceService {
         stubClosure: MoyaProvider.immediatelyStub,
         session: CustomMoyaSession.shared, plugins: Global.default.networkLoggerPlugin)
 
+    static func getSuggestionList() -> Single<[Resource]> {
+        Global.log.info("[start] ResourceService.getSuggestionList()")
+
+        return provider.rx
+            .requestWithRefreshJwt(.suggestion)
+            .filterSuccess()
+            .retryWhenTransientError()
+            .asSingle()
+            .map([Resource].self, atKeyPath: "resources")
+            .map { $0.filter { $0.name.isNotEmpty } }
+    }
+
     static func getImportantList(poiID: String) -> Single<[Resource]> {
         Global.log.info("[start] ResourceService.getImportantList(poiID:)")
 

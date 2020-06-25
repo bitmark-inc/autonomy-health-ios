@@ -14,7 +14,7 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
     fileprivate lazy var scrollView = makeScrollView()
-    fileprivate lazy var backButton = makeLightBackItem()
+    fileprivate lazy var backButton = makeLightBackItem(animationType: .slide(direction: .down))
     fileprivate lazy var groupsButton: UIView = {
         let groupView = ButtonGroupView(button1: backButton, button2: nil, hasGradient: false)
         groupView.apply(backgroundStyle: .codGrayBackground)
@@ -25,6 +25,7 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
     fileprivate lazy var healthTriangleView = makeHealthView()
     fileprivate lazy var youSymptomsView = makeYouSymptomsView()
     fileprivate lazy var youBehaviorsView = makeYouBehaviorsView()
+    fileprivate lazy var neighborScoreView = makeNeighborScoreView()
     fileprivate lazy var neighborCasesView = makeNeighborCasesView()
     fileprivate lazy var neighborSymptomsView = makeNeighborSymptomsView()
     fileprivate lazy var neighborBehaviorsView = makeNeighborBehaviorsView()
@@ -53,6 +54,7 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
         youBehaviorsView.setData(number: you.behavior, delta: you.behaviorDelta, thingType: .good)
 
         let neighbor = autonomyProfile.neighbor
+        neighborScoreView.setData(number: neighbor.score.roundInt, delta: neighbor.scoreDelta, thingType: .good)
         neighborCasesView.setData(number: neighbor.activeCase, delta: neighbor.activeCaseDelta, thingType: .bad)
         neighborSymptomsView.setData(number: neighbor.symptom, delta: neighbor.symptomDelta, thingType: .bad)
         neighborBehaviorsView.setData(number: neighbor.behavior, delta: neighbor.behaviorDelta, thingType: .good)
@@ -87,15 +89,13 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
             (nameLabel, 0),
             (healthTriangleView, 42),
             (HeaderView(header: R.string.localizable.you().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 45),
-            (youSymptomsView, 30),
-            (makeSeparateLine(), 14),
-            (youBehaviorsView, 15),
-            (HeaderView(header: R.string.localizable.neighborhood().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 38),
-            (neighborCasesView, 30),
-            (makeSeparateLine(), 14),
-            (neighborSymptomsView, 15),
-            (makeSeparateLine(), 14),
-            (neighborBehaviorsView, 15)
+            (youSymptomsView, 15),
+            (youBehaviorsView, 0),
+            (HeaderView(header: R.string.localizable.neighborhood().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 30),
+            (neighborScoreView, 15),
+            (neighborCasesView, 0),
+            (neighborSymptomsView, 0),
+            (neighborBehaviorsView, 0)
         ], bottomConstraint: true)
     }
 }
@@ -177,6 +177,7 @@ extension YouHealthDetailsViewController {
         }.disposed(by: disposeBag)
 
         dataRow.addGestureRecognizer(tapGestureRecognizer)
+        dataRow.addSeparateLine()
         return dataRow
     }
 
@@ -191,6 +192,18 @@ extension YouHealthDetailsViewController {
         return dataRow
     }
 
+    fileprivate func makeNeighborScoreView() -> HealthDataRow {
+        let dataRow = HealthDataRow(info: R.string.localizable.neighborhoodScore().localizedUppercase)
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.rx.event.bind { [weak self] (_) in
+            self?.gotoNeighborCasesTrendingScreen()
+        }.disposed(by: disposeBag)
+
+        dataRow.addGestureRecognizer(tapGestureRecognizer)
+        dataRow.addSeparateLine()
+        return dataRow
+    }
+
     fileprivate func makeNeighborCasesView() -> HealthDataRow {
         let dataRow = HealthDataRow(info: R.string.localizable.activeCases().localizedUppercase)
         let tapGestureRecognizer = UITapGestureRecognizer()
@@ -199,6 +212,7 @@ extension YouHealthDetailsViewController {
         }.disposed(by: disposeBag)
 
         dataRow.addGestureRecognizer(tapGestureRecognizer)
+        dataRow.addSeparateLine()
         return dataRow
     }
 
@@ -210,6 +224,7 @@ extension YouHealthDetailsViewController {
         }.disposed(by: disposeBag)
 
         dataRow.addGestureRecognizer(tapGestureRecognizer)
+        dataRow.addSeparateLine()
         return dataRow
     }
 

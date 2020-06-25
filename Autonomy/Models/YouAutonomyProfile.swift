@@ -37,13 +37,16 @@ struct IndividualHealthDetails: Codable {
 struct NeighborHealthDetails: Codable {
     let activeCase, symptom, behavior: Int
     let activeCaseDelta, symptomDelta, behaviorDelta: Float
+    let score, scoreDelta: Float
 
     enum CodingKeys: String, CodingKey {
         case activeCase = "confirm"
         case activeCaseDelta = "confirm_delta"
         case symptom
         case symptomDelta = "symptom_delta"
-        case behavior = "behavior"
+        case behavior
         case behaviorDelta = "behavior_delta"
+        case score
+        case scoreDelta = "score_delta"
     }
 }

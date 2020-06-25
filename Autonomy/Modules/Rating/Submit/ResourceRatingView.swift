@@ -13,6 +13,7 @@ import Cosmos
 class ResourceRatingView: UIView {
 
     // MARK: - Properties
+    fileprivate lazy var resourceLabelCover = makeResourceLabelCover()
     fileprivate lazy var resourceLabel = makeResourceLabel()
     fileprivate lazy var ratingView = makeRatingView()
     fileprivate let disposeBag = DisposeBag()
@@ -34,29 +35,43 @@ class ResourceRatingView: UIView {
         return ratingView.rating
     }
 
+    func highlight() {
+        backgroundColor = themeService.attrs.sharkColor
+        ratingView.settings.emptyImage = R.image.highlightEmptyRatingImg()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     fileprivate func setupViews() {
+        backgroundColor = .clear
+
         let separateLine = SeparateLine(height: 1, themeStyle: .mineShaftBackground)
 
-        addSubview(resourceLabel)
-        addSubview(ratingView)
-        addSubview(separateLine)
+        let paddingView = UIView()
+        paddingView.addSubview(resourceLabel)
+        paddingView.addSubview(ratingView)
+        paddingView.addSubview(separateLine)
 
         ratingView.snp.makeConstraints { (make) in
             make.centerY.trailing.equalToSuperview()
         }
 
         resourceLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(15)
-            make.leading.equalToSuperview()
+            make.top.leading.bottom.equalToSuperview()
             make.trailing.equalTo(ratingView.snp.leading).offset(-15)
         }
 
+        addSubview(paddingView)
+        addSubview(separateLine)
+
+        paddingView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+                .inset(UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
+        }
+
         separateLine.snp.makeConstraints { (make) in
-            make.top.equalTo(resourceLabel.snp.bottom).offset(15)
             make.leading.trailing.bottom.equalToSuperview()
         }
 
@@ -66,6 +81,17 @@ class ResourceRatingView: UIView {
 }
 
 extension ResourceRatingView {
+    fileprivate func makeResourceLabelCover() -> UIView {
+        let view = UIView()
+        view.addSubview(resourceLabel)
+        resourceLabel.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+                .inset(UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
+            make.centerY.equalToSuperview()
+        }
+        return view
+    }
+
     fileprivate func makeResourceLabel() -> Label {
         let label = Label()
         label.numberOfLines = 0
@@ -84,6 +110,9 @@ extension ResourceRatingView {
         ratingView.settings.totalStars = 5
         ratingView.didTouchCosmos = { [weak self] (rating) in
             self?.ratingView.customImage(rating: rating)
+        }
+        ratingView.snp.makeConstraints { (make) in
+            make.width.equalTo(15 * 9)
         }
         return ratingView
     }
