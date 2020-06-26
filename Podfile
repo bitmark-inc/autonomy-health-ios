@@ -40,7 +40,6 @@ def sharedPods
   pod 'XCGLogger', '~> 7.0.0'
 
   pod 'SwiftRichString'
-  pod 'SwiftDate'
   pod 'MGSwipeTableCell'
   pod 'MaterialProgressBar'
   pod 'UPCarouselFlowLayout'

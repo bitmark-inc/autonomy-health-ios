@@ -9,8 +9,12 @@
 import Foundation
 
 struct DatePeriod: Codable {
-    let startDate: Date
+    var startDate: Date
     var endDate: Date
+
+    var fullWeekDate: Date {
+        return startDate.beginning(of: .weekOfYear) ?? startDate
+    }
 
     func humanize(in timeUnit: TimeUnit) -> String {
         switch timeUnit {
@@ -22,23 +26,15 @@ struct DatePeriod: Codable {
             }
 
         case .month:
-            if startDate.isInCurrentYear {
-                return startDate.toFormat(Constant.TimeFormat.month)
+            let middleOfMonth = startDate.adding(.day, value: 10) // to ignore when making startDate is full of week
+            if middleOfMonth.isInCurrentYear {
+                return middleOfMonth.toFormat(Constant.TimeFormat.month)
             } else {
-                return startDate.toFormat(Constant.TimeFormat.monthYear)
+                return middleOfMonth.toFormat(Constant.TimeFormat.monthYear)
             }
 
         case .year:
             return startDate.toFormat(Constant.TimeFormat.year)
         }
-    }
-}
-
-extension Date {
-    func toFormat(_ dateFormat: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = .current
-        dateFormatter.dateFormat = dateFormat
-        return dateFormatter.string(from: self)
     }
 }

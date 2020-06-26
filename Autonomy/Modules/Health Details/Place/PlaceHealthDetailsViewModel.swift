@@ -17,6 +17,9 @@ class PlaceHealthDetailsViewModel: ViewModel {
     let poiAutonomyProfileRelay = BehaviorRelay<PlaceAutonomyProfile?>(value: nil)
     var backAnimationType: HeroDefaultAnimationType = .slide(direction: .down)
 
+    // MARK: - Outputs
+    let monitorResultSubject = PublishSubject<Event<Void>>()
+
     init(poiID: String) {
         self.poiID = poiID
         super.init()
@@ -45,8 +48,10 @@ class PlaceHealthDetailsViewModel: ViewModel {
                 var ownedAutonomyProfile = currentAutonomyProfile
                 ownedAutonomyProfile.owned = true
                 self.poiAutonomyProfileRelay.accept(ownedAutonomyProfile)
+                self.monitorResultSubject.onCompleted()
 
-            }, onError: { (error) in
+            }, onError: { [weak self] (error) in
+                self?.monitorResultSubject.onNext(Event.error(error))
                 Global.backgroundErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)

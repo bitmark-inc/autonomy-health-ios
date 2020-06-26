@@ -91,11 +91,11 @@ class YouHealthDetailsViewController: ViewController, BackNavigator {
             (HeaderView(header: R.string.localizable.you().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 45),
             (youSymptomsView, 15),
             (youBehaviorsView, 0),
-            (HeaderView(header: R.string.localizable.neighborhood().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 30),
-            (neighborScoreView, 15),
-            (neighborCasesView, 0),
-            (neighborSymptomsView, 0),
-            (neighborBehaviorsView, 0)
+//            (HeaderView(header: R.string.localizable.neighborhood().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 30),
+//            (neighborScoreView, 15),
+//            (neighborCasesView, 0),
+//            (neighborSymptomsView, 0),
+//            (neighborBehaviorsView, 0)
         ], bottomConstraint: true)
     }
 }

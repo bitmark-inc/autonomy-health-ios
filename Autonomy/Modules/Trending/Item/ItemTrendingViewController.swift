@@ -406,7 +406,8 @@ extension ItemTrendingViewController {
 
         chart.snp.makeConstraints { (make) in
             make.top.equalTo(label.snp.bottom).offset(-5)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(-10)
+            make.trailing.bottom.equalToSuperview()
             make.height.equalTo(233)
         }
 
@@ -423,6 +424,7 @@ extension ItemTrendingViewController {
         chartView.doubleTapToZoomEnabled = false
         chartView.dragEnabled = false
         chartView.highlightPerTapEnabled = false
+        chartView.isUserInteractionEnabled = false
 
         let xAxis = chartView.xAxis
         xAxis.labelFont = R.font.ibmPlexMonoLight(size: 14)!
@@ -432,8 +434,8 @@ extension ItemTrendingViewController {
         xAxis.axisLineWidth = 1
         xAxis.labelPosition = .bottom
         xAxis.granularity = 1
-        xAxis.spaceMax = 0
-        xAxis.spaceMin = 0
+        xAxis.spaceMin = 0.3
+        xAxis.centerAxisLabelsEnabled = false
 
         let leftAxis = chartView.leftAxis
         leftAxis.labelFont = R.font.ibmPlexMonoLight(size: 14)!
@@ -444,6 +446,7 @@ extension ItemTrendingViewController {
         leftAxis.labelTextColor = graphLabelTextColor
         leftAxis.granularity = 1
         leftAxis.spaceBottom = 0
+        leftAxis.labelXOffset = 5
 
         chartView.legend.enabled = false
         chartView.rightAxis.enabled = false
@@ -484,7 +487,7 @@ extension ItemTrendingViewController {
                     let currentSum = Int(values.sum())
                     let extraSum = 5 - currentSum % 5
 
-                    if currentSum <= 0 {
+                    if currentSum <= 0 && maxValue > 0 {
                         values.append(0)
                     } else {
                         values.append(1 / (22 / (Double(multipleOf5MaxValue) / 5)))
@@ -577,7 +580,7 @@ extension ItemTrendingViewController {
             } while i < dates.count
 
         case .year:
-            labels = dates.map { $0.monthName(ofStyle: .oneLetter)}
+            labels = dates.map { $0.toFormat(Constant.TimeFormat.oneLetterMonth) }
         }
 
         return labels

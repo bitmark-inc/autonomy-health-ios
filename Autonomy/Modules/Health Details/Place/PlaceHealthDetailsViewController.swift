@@ -16,8 +16,7 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     fileprivate lazy var scrollView = makeScrollView()
     fileprivate lazy var healthTriangleView = makeHealthView()
     fileprivate lazy var backButton = makeLightBackItem(animationType: thisViewModel.backAnimationType)
-    fileprivate lazy var monitorButton = RightIconButton(title: R.string.localizable.monitor().localizedUppercase,
-                                                         icon: R.image.plusCircle())
+    fileprivate lazy var monitorButton = makeMonitorButton()
     fileprivate lazy var groupsButton: UIView = {
         let groupView = ButtonGroupView(button1: backButton, button2: monitorButton, hasGradient: false)
         groupView.apply(backgroundStyle: .codGrayBackground)
@@ -66,7 +65,8 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         }.disposed(by: disposeBag)
 
         monitorButton.rx.tap.bind { [weak self] in
-            self?.thisViewModel.monitor()
+            guard let self = self, !self.monitorButton.isSelected else { return }
+            self.thisViewModel.monitor()
         }.disposed(by: disposeBag)
     }
 
@@ -74,7 +74,9 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         nameLabel.setText(autonomyProfile.alias.localizedUppercase)
         healthTriangleView.updateLayout(score: autonomyProfile.autonomyScore, animate: false)
         healthTriangleView.set(delta: autonomyProfile.autonomyScoreDelta)
-        monitorButton.isHidden = autonomyProfile.owned
+
+        monitorButton.isHidden = false
+        monitorButton.isSelected = autonomyProfile.owned
 
         addressLabel.setText(autonomyProfile.address)
 
@@ -102,7 +104,7 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         resourceListView.removeSubviews()
 
         let newArrangedSubviews = resourceReportItems.map { (resourceReportItem) -> UIView in
-            let healthDataRow = HealthDataRow(info: resourceReportItem.resource.name.localizedUppercase, hasDot: true)
+            let healthDataRow = HealthDataRow(info: resourceReportItem.resource.name.localizedUppercase)
             healthDataRow.setData(resourceReportItem: resourceReportItem)
             healthDataRow.addSeparateLine()
 
@@ -147,7 +149,6 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
 
         // hide presentResourceView at first
         presentResourceView.isHidden = true
-        monitorButton.isHidden = true
     }
 
     fileprivate func makePaddingContentView() -> UIView {
@@ -165,11 +166,11 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
             (HeaderView(header: R.string.localizable.reportCard().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 38),
             (resourceView, 15),
             (makeResourceButtonGroupView(), 17),
-            (HeaderView(header: R.string.localizable.neighborhood().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 45),
-            (scoreView, 15),
-            (activeCasesView, 0),
-            (symptomsView, 0),
-            (behaviorsView, 0)
+//            (HeaderView(header: R.string.localizable.neighborhood().localizedUppercase, lineWidth: Constant.lineHealthDataWidth), 45),
+//            (scoreView, 15),
+//            (activeCasesView, 0),
+//            (symptomsView, 0),
+//            (behaviorsView, 0)
         ], bottomConstraint: true)
 
         return view
@@ -447,5 +448,14 @@ extension PlaceHealthDetailsViewController {
 
         dataRow.addGestureRecognizer(tapGestureRecognizer)
         return dataRow
+    }
+
+    fileprivate func makeMonitorButton() -> UIButton {
+        let button = RightIconButton(
+            title: R.string.localizable.monitor().localizedUppercase,
+            icon: R.image.plusCircle())
+        button.isHidden = true
+        button.setImage(R.image.tickCircleArrow(), for: .selected)
+        return button
     }
 }

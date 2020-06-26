@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftDate
 
 class GraphDataConverter {
 
@@ -18,7 +17,9 @@ class GraphDataConverter {
     typealias ChartInfo = (timeUnit: TimeUnit, datePeriod: DatePeriod)
 
     // MARK: - Handlers
-    static func getDataGroupByDay(with reportItems: [ReportItem], chartInfo: ChartInfo) -> (data: [Date: [Double]], base: Int) {
+    static func getDataGroupByDay(with reportItems: [ReportItem], chartInfo: ChartInfo)
+        -> (data: [Date: [Double]], base: Int) {
+
         let (timeUnit, datePeriod) = (chartInfo.timeUnit, chartInfo.datePeriod)
 
         let dates: [Date] = getDates(datePeriod: datePeriod, with: timeUnit)
@@ -85,8 +86,8 @@ class GraphDataConverter {
 
         repeat {
             dates.append(indexDate)
-            indexDate = indexDate.inDefaultRegion().dateByAdding(1, indexDateComponent).date
-        } while indexDate < datePeriod.endDate.beginning(of: indexDateComponent)!
+            indexDate = indexDate.adding(indexDateComponent, value: 1)
+        } while indexDate <= datePeriod.endDate.beginning(of: indexDateComponent)!
 
         return dates
     }

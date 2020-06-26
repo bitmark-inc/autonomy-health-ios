@@ -142,7 +142,8 @@ class LocationSearchViewController: ViewController {
         paddingContentView.addSubview(resultTableView)
 
         searchBar.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
+            make.leading.trailing.equalToSuperview()
         }
 
         noPlacesMessageLabel.snp.makeConstraints { (make) in
@@ -276,7 +277,7 @@ extension LocationSearchViewController {
     fileprivate func makeScrollView() -> UIScrollView {
         let scrollView = UIScrollView()
         scrollView.isUserInteractionEnabled = true
-        scrollView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0)
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }
@@ -346,6 +347,7 @@ extension LocationSearchViewController {
         button.rx.tap.bind { [weak self] in
             guard let self = self else { return }
             self.searchTextField.text = nil
+            self.searchTextField.becomeFirstResponder()
             self.thisViewModel.placesResultRelay.accept(nil)
             self.thisViewModel.locationsResultRelay.accept(nil)
             self.autoCompleteLocations = nil
@@ -393,6 +395,7 @@ extension LocationSearchViewController {
                 let selectedTagView = event.view as? TagView else { return }
 
             self.searchTextField.text = selectedTagView.title
+            self.searchTextField.resignFirstResponder()
             self.clearButton.isHidden = false
             self.thisViewModel.fetchPlacesBy(resourceID: selectedTagView.id)
         }.disposed(by: disposeBag)

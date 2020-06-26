@@ -57,6 +57,7 @@ public struct Constant {
         static let day = "d"
         static let year = "yyyy"
         static let monthYear = "yyyy MMM"
+        static let oneLetterMonth = "MMMMM"
     }
 
     static let fieldPlaceholder = "---"

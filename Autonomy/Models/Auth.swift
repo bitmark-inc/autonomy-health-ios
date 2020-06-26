@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftDate
 
 struct Auth: Decodable {
     let expireIn: Int
@@ -20,6 +19,6 @@ struct Auth: Decodable {
     }
 
     var isValid: Bool {
-        return refreshDate.adding(.second, value: expireIn) - 5.minutes >= Date()
+        return refreshDate.adding(.second, value: expireIn).adding(.minute, value: -5) >= Date()
     }
 }

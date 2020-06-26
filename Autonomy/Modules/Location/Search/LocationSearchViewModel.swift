@@ -80,7 +80,8 @@ class LocationSearchViewModel: ViewModel {
     func fetchPlacesBy(resourceID: String) {
         PlaceService.get(resourceID: resourceID)
             .subscribe(onSuccess: { [weak self] in
-                self?.placesResultRelay.accept($0)
+                let filteredEmptyPlaces = $0.filter { $0.alias.isNotEmpty && $0.address.isNotEmpty }
+                self?.placesResultRelay.accept(filteredEmptyPlaces)
             }, onError: { (error) in
                 Global.backgroundErrorSubject.onError(error)
             })
