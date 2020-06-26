@@ -14,7 +14,10 @@ protocol BackNavigator {
 }
 
 extension BackNavigator where Self: ViewController {
-    func makeLightBackItem(withHandler: Bool = true, animationType: HeroDefaultAnimationType? = nil) -> LeftIconButton {
+    func makeLightBackItem(withHandler: Bool = true,
+                           animationType: HeroDefaultAnimationType? = .slide(direction: .right)
+    ) -> LeftIconButton {
+
         let backItem = LeftIconButton(
             title: R.string.localizable.back().localizedUppercase,
             icon: R.image.backCircleArrow()!)

@@ -672,9 +672,9 @@
 		5BE08D54247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
 		5BE08D55247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
 		5BE08D56247261D4006A3034 /* Error+Supporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE08D53247261D4006A3034 /* Error+Supporter.swift */; };
-		5BE0DAFE24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */; };
-		5BE0DAFF24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */; };
-		5BE0DB0024A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */; };
+		5BE0DAFE24A479BE00A23C8B /* TrendingAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0DAFD24A479BE00A23C8B /* TrendingAxisValueFormatter.swift */; };
+		5BE0DAFF24A479BE00A23C8B /* TrendingAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0DAFD24A479BE00A23C8B /* TrendingAxisValueFormatter.swift */; };
+		5BE0DB0024A479BE00A23C8B /* TrendingAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE0DAFD24A479BE00A23C8B /* TrendingAxisValueFormatter.swift */; };
 		5BF2E9812499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */; };
 		5BF2E9822499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */; };
 		5BF2E9832499D40F00CCD7E9 /* WarningSignOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */; };
@@ -1063,7 +1063,7 @@
 		5BD0D2BD246CE73000022AE1 /* TimezoneDataEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneDataEngine.swift; sourceTree = "<group>"; };
 		5BDB6554246A8489003CD084 /* OneSignalNotificationServiceInhouseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceInhouseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BE08D53247261D4006A3034 /* Error+Supporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Supporter.swift"; sourceTree = "<group>"; };
-		5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenZeroAxisValueFormatter.swift; sourceTree = "<group>"; };
+		5BE0DAFD24A479BE00A23C8B /* TrendingAxisValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingAxisValueFormatter.swift; sourceTree = "<group>"; };
 		5BF2E9802499D40F00CCD7E9 /* WarningSignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningSignOutViewController.swift; sourceTree = "<group>"; };
 		5BF2E9842499DBA100CCD7E9 /* SignOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewModel.swift; sourceTree = "<group>"; };
 		5BF2E9882499DBAB00CCD7E9 /* SignOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewController.swift; sourceTree = "<group>"; };
@@ -2027,7 +2027,7 @@
 		5BE0DAFC24A479AB00A23C8B /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				5BE0DAFD24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift */,
+				5BE0DAFD24A479BE00A23C8B /* TrendingAxisValueFormatter.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -2996,7 +2996,7 @@
 				5BFC8DC12433081400815828 /* HealthService.swift in Sources */,
 				5B219BD02468F2F3004FACEA /* TagListView.swift in Sources */,
 				5B82FD0E245BE06400C81856 /* FormulaView.swift in Sources */,
-				5BE0DAFF24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */,
+				5BE0DAFF24A479BE00A23C8B /* TrendingAxisValueFormatter.swift in Sources */,
 				5B577871242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577875242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791D242B4E290028D3E3 /* Label.swift in Sources */,
@@ -3189,7 +3189,7 @@
 				5BFC8DC02433081400815828 /* HealthService.swift in Sources */,
 				5B219BCF2468F2F3004FACEA /* TagListView.swift in Sources */,
 				5B82FD0D245BE06400C81856 /* FormulaView.swift in Sources */,
-				5BE0DAFE24A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */,
+				5BE0DAFE24A479BE00A23C8B /* TrendingAxisValueFormatter.swift in Sources */,
 				5B577870242B431A0028D3E3 /* BitmarkSDKService.swift in Sources */,
 				5B577874242B439D0028D3E3 /* MoyaAuthPlugin.swift in Sources */,
 				5B57791C242B4E290028D3E3 /* Label.swift in Sources */,
@@ -3382,7 +3382,7 @@
 				5BAE8466246A7985006E118D /* FormulaView.swift in Sources */,
 				5BAE8467246A7985006E118D /* BitmarkSDKService.swift in Sources */,
 				5BAE8468246A7985006E118D /* MoyaAuthPlugin.swift in Sources */,
-				5BE0DB0024A479BE00A23C8B /* HiddenZeroAxisValueFormatter.swift in Sources */,
+				5BE0DB0024A479BE00A23C8B /* TrendingAxisValueFormatter.swift in Sources */,
 				5BAE846C246A7985006E118D /* Label.swift in Sources */,
 				5BAE846D246A7985006E118D /* SymptomAPI.swift in Sources */,
 				5BAE846E246A7985006E118D /* ServerAssetsAPI.swift in Sources */,

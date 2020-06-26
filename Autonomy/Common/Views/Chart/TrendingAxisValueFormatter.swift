@@ -1,5 +1,5 @@
 //
-//  HiddenZeroAxisValueFormatter.swift
+//  TrendingAxisValueFormatter.swift
 //  Autonomy
 //
 //  Created by Thuyen Truong on 6/10/20.
@@ -8,12 +8,20 @@
 
 import Charts
 
-final class HiddenZeroAxisValueFormatter: IAxisValueFormatter {
+final class TrendingAxisValueFormatter: IAxisValueFormatter {
+
+    // MARK: - Properties
+    fileprivate let base: Int!
+
+    init(base: Int) {
+        self.base = base
+    }
+
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         if value <= 0 {
             return ""
         }
 
-        return "\(Int(value))"
+        return "\(Int(value * Double(base)))"
     }
 }

@@ -57,6 +57,11 @@ extension ReportedSurveyLayout where Self: ViewController {
             return
         }
 
+        if let target = viewControllers.first(where: { type(of: $0) == ItemTrendingViewController.self }) {
+            navigator.popToViewController(target: target, animationType: .slide(direction: .up))
+            return
+        }
+
         let viewModel = MainViewModel()
         navigator.show(segue: .main(viewModel: viewModel), sender: self,
                        transition: .replace(type: .slide(direction: .up)))

@@ -22,6 +22,7 @@ class ItemTrendingViewController: ViewController, BackNavigator {
     fileprivate lazy var timelineView = TimeFilterView()
     fileprivate lazy var chart = makeChart()
     fileprivate lazy var chartView = makeChartView()
+    fileprivate lazy var chartBaseLabel = makeChartBaseLabel()
     fileprivate lazy var chartBaseView = makeChartBaseView()
     fileprivate lazy var dataView = makeDataView()
     fileprivate lazy var dataStackView = makeDataStackView()
@@ -64,6 +65,13 @@ class ItemTrendingViewController: ViewController, BackNavigator {
             UIColor(hexString: "#ED9A73"),
             UIColor(hexString: "#E29AF4")
         ]
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // refresh trending view after user reports symptoms/behaviors
+        timelineView.timeInfoRelay.accept(timelineView.timeInfoRelay.value)
+    }
 
     override func bindViewModel() {
         super.bindViewModel()
@@ -338,39 +346,36 @@ extension ItemTrendingViewController {
         return swipeGesture
     }
 
+    fileprivate func makeChartBaseLabel() -> Label {
+        let label = Label()
+        label.apply(font: R.font.atlasGroteskLight(size: 12),
+                    themeStyle: .silverColor)
+        return label
+    }
+
     fileprivate func makeChartBaseView() -> UIView {
-        switch thisViewModel.reportItemObject {
-        case .behaviors:
-            let label = Label()
-            label.apply(text: " = 10 \(R.string.localizable.behaviors())".localizedUppercase,
-                        font: R.font.atlasGroteskLight(size: 12),
-                        themeStyle: .silverColor)
+        let base = UIView()
+        themeService.rx
+            .bind({ $0.silverColor }, to: base.rx.backgroundColor)
+            .disposed(by: disposeBag)
 
-            let base = UIView()
-            themeService.rx
-                .bind({ $0.silverColor }, to: base.rx.backgroundColor)
-                .disposed(by: disposeBag)
+        let view = UIView()
+        view.addSubview(base)
+        view.addSubview(chartBaseLabel)
+        view.isHidden = true
 
-            let view = UIView()
-            view.addSubview(base)
-            view.addSubview(label)
-            view.isHidden = true
-
-            base.snp.makeConstraints { (make) in
-                make.leading.centerY.equalToSuperview()
-                make.height.equalTo(2)
-                make.width.equalTo(25)
-            }
-
-            label.snp.makeConstraints { (make) in
-                make.leading.equalTo(base.snp.trailing)
-                make.top.trailing.bottom.equalToSuperview()
-            }
-
-            return view
-        default:
-            return UIView()
+        base.snp.makeConstraints { (make) in
+            make.leading.centerY.equalToSuperview()
+            make.height.equalTo(2)
+            make.width.equalTo(25)
         }
+
+        chartBaseLabel.snp.makeConstraints { (make) in
+            make.leading.equalTo(base.snp.trailing)
+            make.top.trailing.bottom.equalToSuperview()
+        }
+
+        return view
     }
 
     fileprivate func makeChartView() -> UIView {
@@ -400,7 +405,7 @@ extension ItemTrendingViewController {
         }
 
         chart.snp.makeConstraints { (make) in
-            make.top.equalTo(label.snp.bottom).offset(-15)
+            make.top.equalTo(label.snp.bottom).offset(-5)
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(233)
         }
@@ -439,7 +444,6 @@ extension ItemTrendingViewController {
         leftAxis.labelTextColor = graphLabelTextColor
         leftAxis.granularity = 1
         leftAxis.spaceBottom = 0
-        leftAxis.valueFormatter = HiddenZeroAxisValueFormatter()
 
         chartView.legend.enabled = false
         chartView.rightAxis.enabled = false
@@ -460,13 +464,14 @@ extension ItemTrendingViewController {
                 let timeUnit = timeInfo.unit
 
                 let chartInfo = (
-                    object: self.thisViewModel.reportItemObject!,
                     timeUnit: timeUnit,
                     datePeriod: datePeriod
                 )
-
                 let dataGroupByDay = GraphDataConverter.getDataGroupByDay(with: reportItems, chartInfo: chartInfo)
-                let sortedDataGroupByDay = dataGroupByDay.sorted(by: { $0.0 < $1.0 })
+
+                self.buildBaseLabel(base: dataGroupByDay.base)
+
+                let sortedDataGroupByDay = dataGroupByDay.data.sorted(by: { $0.0 < $1.0 })
 
                 let newData = self.buildChartData(data: sortedDataGroupByDay.map { $0.value.map { Int($0) } })
                 let maxValue: Int = Int(newData.map { $0.sum() }.max() ?? 0)
@@ -499,10 +504,30 @@ extension ItemTrendingViewController {
                 self.chart.xAxis.labelCount = labels.count
 
                 self.setChartData(entries: barChartDataEntries)
-                self.chartBaseView.isHidden = timeUnit != .year
-
             })
             .disposed(by: disposeBag)
+    }
+
+    fileprivate func buildBaseLabel(base: Int) {
+        chart.leftAxis.valueFormatter = TrendingAxisValueFormatter(base: base)
+        if base > 1 {
+            chartBaseView.isHidden = false
+
+            switch thisViewModel.reportItemObject {
+            case .symptoms:
+                chartBaseLabel.setText(" = \(base) \(R.string.localizable.symptoms())".localizedUppercase)
+
+            case .behaviors:
+                chartBaseLabel.setText(" = \(base) \(R.string.localizable.behaviors())".localizedUppercase)
+
+            default:
+                chartBaseLabel.setText("")
+                chartBaseView.isHidden = true
+            }
+        } else {
+            chartBaseLabel.setText(nil)
+            chartBaseView.isHidden = true
+        }
     }
 
     fileprivate func buildChartData(data: [[Int]]) -> [[Double]] {
@@ -599,8 +624,8 @@ extension ItemTrendingViewController {
 
     fileprivate func makeTapItemGesture() -> UITapGestureRecognizer {
         let tapGesture = UITapGestureRecognizer()
-        tapGesture.rx.event.bind { (event) in
-            guard let dataRow = event.view as? HealthDataRow else { return }
+        tapGesture.rx.event.bind { [weak self] (event) in
+            guard let self = self, let dataRow = event.view as? HealthDataRow else { return }
             self.tapRow(dataRow: dataRow)
 
         }.disposed(by: disposeBag)

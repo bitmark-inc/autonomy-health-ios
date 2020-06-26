@@ -15,19 +15,18 @@ class GraphDataConverter {
     static let formatInDay = "yyyy-MM-dd"
     static let formatInMonth = "yyyy-MM"
 
-    typealias ChartInfo = (object: ReportItemObject, timeUnit: TimeUnit, datePeriod: DatePeriod)
+    typealias ChartInfo = (timeUnit: TimeUnit, datePeriod: DatePeriod)
 
     // MARK: - Handlers
-    static func getDataGroupByDay(with reportItems: [ReportItem], chartInfo: ChartInfo) -> [Date: [Double]] {
-        let (reportItemObject, timeUnit, datePeriod) = (chartInfo.object, chartInfo.timeUnit, chartInfo.datePeriod)
-        let base: Double = 1
+    static func getDataGroupByDay(with reportItems: [ReportItem], chartInfo: ChartInfo) -> (data: [Date: [Double]], base: Int) {
+        let (timeUnit, datePeriod) = (chartInfo.timeUnit, chartInfo.datePeriod)
 
         let dates: [Date] = getDates(datePeriod: datePeriod, with: timeUnit)
         var graphData = [Date: [Double]]()
 
         if reportItems.count == 0 {
             dates.forEach { graphData[$0] = [0.0] }
-            return graphData
+            return (data: graphData, base: 1)
         }
 
         // init graph
@@ -46,14 +45,31 @@ class GraphDataConverter {
                 var dataInIndex = graphData[date] ?? []
 
                 let dateIndex = date.toFormat(format)
-                let baseDistribution = ((distribution[dateIndex] ?? 0) / base).rounded(.down)
-                dataInIndex.append(baseDistribution)
+                dataInIndex.append(distribution[dateIndex] ?? 0)
 
                 graphData[date] = dataInIndex
             }
         }
 
-        return graphData
+        // adjusts with base
+        let base: Double!
+
+        let maxValue = graphData.values.map { $0.sum() }.max() ?? 0
+        switch maxValue {
+        case 0...75:        base = 1
+        case 76...375:      base = 5
+        default:
+            base = 10
+        }
+
+        if base > 1 {
+            for (date, dataInDate) in graphData {
+                let baseDataInDate = dataInDate.map { ($0 / base).rounded(.down) }
+                graphData[date] = baseDataInDate
+            }
+        }
+
+        return (data: graphData, base: Int(base))
     }
 
     fileprivate static func getDates(datePeriod: DatePeriod, with timeUnit: TimeUnit) -> [Date] {
