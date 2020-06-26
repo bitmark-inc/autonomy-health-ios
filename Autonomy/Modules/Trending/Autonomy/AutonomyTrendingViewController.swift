@@ -17,10 +17,8 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
     fileprivate lazy var scrollView = makeScrollView()
     fileprivate lazy var headerScreen: UIView = { HeaderView(header: "AUTONOMY") }()
     fileprivate lazy var timelineView = TimeFilterView()
+    fileprivate lazy var dataView = makeDataView()
     fileprivate lazy var dataStackView = makeDataStackView()
-    fileprivate lazy var casesScoreDataView = HealthDataRow(info: R.string.localizable.casesScore().localizedUppercase, hasDot: true)
-    fileprivate lazy var symptomsScoreDataView = HealthDataRow(info: R.string.localizable.symptomsScore().localizedUppercase, hasDot: true)
-    fileprivate lazy var behaviorsScoreDataView = HealthDataRow(info: R.string.localizable.behaviorsScore().localizedUppercase, hasDot: true)
 
     fileprivate lazy var backButton = makeLightBackItem()
     fileprivate lazy var jupyterButton = makeViewOnJupyterButton()
@@ -63,8 +61,8 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
                 (timelineView, 10),
                 (makeGraphsComingSoonView(), 0),
                 (SeparateLine(height: 1), 0),
-                (dataStackView, Size.dh(74)),
-                (SeparateLine(height: 1), Size.dh(45)),
+                (dataView, 30),
+                (SeparateLine(height: 1), Size.dh(29)),
                 (makeSourceInfoView(), Size.dh(44))
             ], bottomConstraint: true)
 
@@ -103,6 +101,7 @@ class AutonomyTrendingViewController: ViewController, BackNavigator {
         guard let reportItem = reportItems.first else { return }
 
         let healthDataRow = HealthDataRow(info: reportItem.name.localizedUppercase, hasDot: true)
+        healthDataRow.toggleSelected(color: .clear)
         healthDataRow.setData(autonomyReportItem: reportItem)
 
         dataStackView.addArrangedSubview(healthDataRow)
@@ -150,6 +149,19 @@ extension AutonomyTrendingViewController {
 
     fileprivate func makeDataStackView() -> UIStackView {
         return UIStackView(arrangedSubviews: [], axis: .vertical, spacing: 15)
+    }
+
+    fileprivate func makeDataView() -> UIView {
+        return LinearView(
+            items: [(makeDataStackHeader(), 0), (dataStackView, 0)], bottomConstraint: true)
+    }
+
+    fileprivate func makeDataStackHeader() -> UIView {
+        return HealthDataHeaderView(
+            "",
+            R.string.localizable.average().localizedUppercase,
+            R.string.localizable.change().localizedUppercase,
+            hasDot: true)
     }
 
     fileprivate func makeSourceInfoView() -> UIView {

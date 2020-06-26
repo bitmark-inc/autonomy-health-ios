@@ -511,7 +511,6 @@
 		5BAE845E246A7985006E118D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B577887242B45820028D3E3 /* Auth.swift */; };
 		5BAE845F246A7985006E118D /* AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2C8588242DDDE1002CC53B /* AppVersion.swift */; };
 		5BAE8463246A7985006E118D /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DD224333E5700815828 /* Symptom.swift */; };
-		5BAE8464246A7985006E118D /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCF243327E000815828 /* Date+Formatter.swift */; };
 		5BAE8465246A7985006E118D /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BAE8466246A7985006E118D /* FormulaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B82FD0C245BE06400C81856 /* FormulaView.swift */; };
 		5BAE8467246A7985006E118D /* BitmarkSDKService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57786F242B431A0028D3E3 /* BitmarkSDKService.swift */; };
@@ -745,8 +744,6 @@
 		5BFC8DC12433081400815828 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBE2433081400815828 /* HealthService.swift */; };
 		5BFC8DC22433081400815828 /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
 		5BFC8DC32433081400815828 /* HealthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DBF2433081400815828 /* HealthAPI.swift */; };
-		5BFC8DD0243327E000815828 /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCF243327E000815828 /* Date+Formatter.swift */; };
-		5BFC8DD1243327E000815828 /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DCF243327E000815828 /* Date+Formatter.swift */; };
 		5BFC8DD324333E5700815828 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DD224333E5700815828 /* Symptom.swift */; };
 		5BFC8DD424333E5700815828 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC8DD224333E5700815828 /* Symptom.swift */; };
 		6360CAD4A63EF1AA146333BA /* Pods_Autonomy_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76753B32A5FC5C7DD8ADDFD6 /* Pods_Autonomy_Dev.framework */; };
@@ -1088,7 +1085,6 @@
 		5BFC53C02490DA8F0096B14E /* place-autonomy-profile.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "place-autonomy-profile.json"; sourceTree = "<group>"; };
 		5BFC8DBE2433081400815828 /* HealthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		5BFC8DBF2433081400815828 /* HealthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAPI.swift; sourceTree = "<group>"; };
-		5BFC8DCF243327E000815828 /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
 		5BFC8DD224333E5700815828 /* Symptom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		6C8A4CB005CE65E66132FA92 /* Pods-OneSignalNotificationServiceDevExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceDevExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceDevExtension/Pods-OneSignalNotificationServiceDevExtension.release.xcconfig"; sourceTree = "<group>"; };
 		75C6C82D9EF984757673FC1A /* Pods-Autonomy Inhouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Autonomy Inhouse.debug.xcconfig"; path = "Target Support Files/Pods-Autonomy Inhouse/Pods-Autonomy Inhouse.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2090,7 +2086,6 @@
 		5BFC8DCE243327AF00815828 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				5BFC8DCF243327E000815828 /* Date+Formatter.swift */,
 				5B4B60B0245FC2F000432151 /* Float+Formatter.swift */,
 				5BE08D53247261D4006A3034 /* Error+Supporter.swift */,
 				5BFC537A24907D6B0096B14E /* Date+Extension.swift */,
@@ -2992,7 +2987,6 @@
 				5B2C858A242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B4B31A9248A3DF200B9D4AC /* PlaceHealthDetailsViewController.swift in Sources */,
 				5BFC8DD424333E5700815828 /* Symptom.swift in Sources */,
-				5BFC8DD1243327E000815828 /* Date+Formatter.swift in Sources */,
 				5BFC8DC12433081400815828 /* HealthService.swift in Sources */,
 				5B219BD02468F2F3004FACEA /* TagListView.swift in Sources */,
 				5B82FD0E245BE06400C81856 /* FormulaView.swift in Sources */,
@@ -3185,7 +3179,6 @@
 				5B2C8589242DDDE1002CC53B /* AppVersion.swift in Sources */,
 				5B4B31A8248A3DF200B9D4AC /* PlaceHealthDetailsViewController.swift in Sources */,
 				5BFC8DD324333E5700815828 /* Symptom.swift in Sources */,
-				5BFC8DD0243327E000815828 /* Date+Formatter.swift in Sources */,
 				5BFC8DC02433081400815828 /* HealthService.swift in Sources */,
 				5B219BCF2468F2F3004FACEA /* TagListView.swift in Sources */,
 				5B82FD0D245BE06400C81856 /* FormulaView.swift in Sources */,
@@ -3377,7 +3370,6 @@
 				5BBBE561246AC8AF003B6EE7 /* SearchSurveyTableCell.swift in Sources */,
 				5B4B31AA248A3DF200B9D4AC /* PlaceHealthDetailsViewController.swift in Sources */,
 				5BAE8463246A7985006E118D /* Symptom.swift in Sources */,
-				5BAE8464246A7985006E118D /* Date+Formatter.swift in Sources */,
 				5BAE8465246A7985006E118D /* HealthService.swift in Sources */,
 				5BAE8466246A7985006E118D /* FormulaView.swift in Sources */,
 				5BAE8467246A7985006E118D /* BitmarkSDKService.swift in Sources */,
@@ -3562,7 +3554,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3588,7 +3580,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneSignalNotificationServiceExtension/OneSignalNotificationServiceDevExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -3616,7 +3608,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3642,7 +3634,7 @@
 				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/Autonomy/Entitlements/Autonomy Dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = Z5CE7A3A7N;
 				INFOPLIST_FILE = "$(SRCROOT)/Autonomy/InfoPlist/Dev-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -12,7 +12,6 @@ import Moya
 import RxSwift
 import RxCocoa
 import CoreLocation
-import SwiftDate
 import Intercom
 import OneSignal
 import Alamofire
@@ -76,20 +75,6 @@ class Global {
         MoyaVersionPlugin(),
         MoyaLocationPlugin()
     ]
-
-    static let customDayGradation: RelativeFormatter.Style = {
-        let customGradation = RelativeFormatter.Gradation([
-            .init(.day, threshold: .value(0)),
-            .init(.week, threshold: .value(6.5 * RelativeFormatter.Unit.day.factor)),
-            .init(.month, threshold: .value(3.5 * 7 * RelativeFormatter.Unit.day.factor)),
-            .init(.year, threshold: .value(1.5 * RelativeFormatter.Unit.month.factor))
-        ])
-
-        return RelativeFormatter.Style(
-                flavours: [.long],
-                gradation: customGradation,
-                allowedUnits: [.day, .week, .month, .year])
-    }()
 
     func setupCurrentAccount() throws {
         guard let currentAccount = self.account else {

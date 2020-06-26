@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import SwiftDate
 import BetterSegmentedControl
 
 class TimeFilterView: UIView {
@@ -25,7 +24,6 @@ class TimeFilterView: UIView {
     var segmentDistances: [TimeUnit: Int] = [
         .week: 0, .month: 0, .year: 0
     ]
-    lazy var startDate = defaultStartDate
     let timeInfoRelay = BehaviorRelay<(period: DatePeriod, unit: TimeUnit)?>(value: nil)
 
     // MARK: - Init
@@ -65,11 +63,17 @@ class TimeFilterView: UIView {
 
         nextPeriodButton.isEnabled = distance < 0 // disable next period to the future
 
-        startDate = defaultStartDate.beginning(of: timeUnit.dateComponent)?
-                                    .dateByAdding(distance, timeUnit.dateComponent)
-                                    .date ?? Date()
+        var startDate = defaultStartDate.beginning(of: timeUnit.dateComponent)?
+                                        .adding(timeUnit.dateComponent, value: distance) ?? Date()
+
 
         let endDate = startDate.end(of: timeUnit.dateComponent) ?? Date()
+
+        // adjusts to make startDate is the first full week of the month
+        if timeUnit == .month {
+            startDate = startDate.beginning(of: .weekOfYear) ?? startDate
+        }
+
         let datePeriod = DatePeriod(startDate: startDate, endDate: endDate)
         timeInfoRelay.accept((datePeriod, timeUnit))
         periodLabel.setText(datePeriod.humanize(in: timeUnit).localizedUppercase)

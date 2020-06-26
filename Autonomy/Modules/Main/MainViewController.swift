@@ -12,7 +12,6 @@ import RxCocoa
 import SnapKit
 import MediaPlayer
 import RxAppState
-import SwiftDate
 
 protocol LocationDelegate: class {
     func updatePOI(poiID: String, alias: String)
