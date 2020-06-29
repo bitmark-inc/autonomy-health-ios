@@ -32,7 +32,7 @@
 "location.placeholder" = "輸入地名或地址...";
 "location.editGuidance" = "填寫別名，刪除，或是點擊「完成」來儲存";
 "location.search.resource" = "或點擊來尋找特定資源：";
-"location.search.noPlacesMessage" = "Sorry, there aren’t currently any places in our system offering that resource. Be the first to add it for places you know!";
+"location.search.noPlacesMessage" = "抱歉，系統中沒有任何位置有提供該資源。成為第一位把該資源加入您已知位置的人！";
 
 "symptoms.report.title" = "您的症狀將會與周圍社群的其他人一起匿名加入資料池中。\n\n請點擊以下任何您有的症狀，或新增症狀項目：";
 "symptoms.report.common" = "常見症狀";
@@ -64,8 +64,8 @@
 "resources.suggest.add.placeholder" = "建議其他資源...";
 
 "trending.noData" = "抱歉，我們目前沒有此位置的在院病例數。我們正在努力擴大支援更多地區。";
-"trending.noReport.symptoms" = "You didn’t report any symptoms for this period or for the previous period.";
-"trending.noReport.behaviors" = "You didn’t report any healthy behaviors for this period or for the previous period.";
+"trending.noReport.symptoms" = "您未回報此段時間或前段時間的任何症狀";
+"trending.noReport.behaviors" = "您未回報此段時間或前段時間的健康行為。";
 
 "donate.header" = "捐款";
 "donate.title" = "如果您認同Autonomy的理念，請考慮捐款：";
