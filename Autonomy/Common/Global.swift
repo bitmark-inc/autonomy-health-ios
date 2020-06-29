@@ -37,6 +37,8 @@ class Global {
     }
 
     static let backgroundErrorSubject = PublishSubject<Error>()
+    static let generalErrorSubject = PublishSubject<Error>()
+
     lazy var locationManager: CLLocationManager = {
         return CLLocationManager()
     }()

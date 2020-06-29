@@ -55,7 +55,9 @@ class LocationSearchViewController: ViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        searchTextField.becomeFirstResponder()
+        if autoCompletePlaces == nil {
+            searchTextField.becomeFirstResponder()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -299,7 +301,7 @@ extension LocationSearchViewController {
         searchTextField.snp.makeConstraints { (make) in
             make.leading.equalTo(searchImageView.snp.trailing).offset(17)
             make.top.bottom.equalToSuperview()
-            make.width.equalToSuperview().offset(-90)
+            make.width.equalToSuperview().offset(-80)
         }
 
         clearButton.snp.makeConstraints { (make) in

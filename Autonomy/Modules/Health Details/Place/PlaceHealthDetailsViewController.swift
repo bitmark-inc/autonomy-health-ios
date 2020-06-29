@@ -18,7 +18,7 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
     fileprivate lazy var backButton = makeLightBackItem(animationType: thisViewModel.backAnimationType)
     fileprivate lazy var monitorButton = makeMonitorButton()
     fileprivate lazy var groupsButton: UIView = {
-        let groupView = ButtonGroupView(button1: backButton, button2: monitorButton, hasGradient: false)
+        let groupView = ButtonGroupView(button1: backButton, button2: monitorButton, hasGradient: false, button1SpacePercent: 0.35)
         groupView.apply(backgroundStyle: .codGrayBackground)
         return groupView
     }()
@@ -65,8 +65,10 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
         }.disposed(by: disposeBag)
 
         monitorButton.rx.tap.bind { [weak self] in
-            guard let self = self, !self.monitorButton.isSelected else { return }
-            self.thisViewModel.monitor()
+            guard let self = self else { return }
+            self.monitorButton.isSelected ?
+                self.thisViewModel.removeMonitoring() :
+                self.thisViewModel.monitor()
         }.disposed(by: disposeBag)
     }
 
@@ -77,6 +79,7 @@ class PlaceHealthDetailsViewController: ViewController, BackNavigator {
 
         monitorButton.isHidden = false
         monitorButton.isSelected = autonomyProfile.owned
+        adjustMonitorButton(isSelected: monitorButton.isSelected)
 
         addressLabel.setText(autonomyProfile.address)
 
@@ -452,10 +455,22 @@ extension PlaceHealthDetailsViewController {
 
     fileprivate func makeMonitorButton() -> UIButton {
         let button = RightIconButton(
-            title: R.string.localizable.monitor().localizedUppercase,
+            title: nil,
             icon: R.image.plusCircle())
+
         button.isHidden = true
-        button.setImage(R.image.tickCircleArrow(), for: .selected)
         return button
+    }
+
+    fileprivate func adjustMonitorButton(isSelected: Bool) {
+        if isSelected {
+            monitorButton.setTitle(R.string.localizable.monitoring().localizedUppercase, for: .normal)
+            monitorButton.setImage(R.image.tickCircleArrow(), for: .normal)
+            monitorButton.titleLabel?.font = R.font.domaineSansTextLight(size: Size.ds(18))
+        } else {
+            monitorButton.setTitle(R.string.localizable.monitor().localizedUppercase, for: .normal)
+            monitorButton.setImage(R.image.plusCircle(), for: .normal)
+            monitorButton.titleLabel?.font = R.font.domaineSansTextLight(size: Size.ds(24))
+        }
     }
 }

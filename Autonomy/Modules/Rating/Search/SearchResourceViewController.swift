@@ -57,8 +57,8 @@ extension SearchResourceViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withClass: SearchSurveyTableCell.self)
 
-        let autoCompleteName = filteredRecords[indexPath.row].name.lowercased()
-        let searchText = thisViewModel.searchNameTextRelay.value.lowercased()
+        let autoCompleteName = filteredRecords[indexPath.row].name
+        let searchText = thisViewModel.searchNameTextRelay.value
 
         cell.setData(attributedText: makeAttributedText(searchText, in: autoCompleteName))
         return cell

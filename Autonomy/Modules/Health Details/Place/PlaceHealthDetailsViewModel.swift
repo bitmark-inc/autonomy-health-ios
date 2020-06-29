@@ -17,9 +17,6 @@ class PlaceHealthDetailsViewModel: ViewModel {
     let poiAutonomyProfileRelay = BehaviorRelay<PlaceAutonomyProfile?>(value: nil)
     var backAnimationType: HeroDefaultAnimationType = .slide(direction: .down)
 
-    // MARK: - Outputs
-    let monitorResultSubject = PublishSubject<Event<Void>>()
-
     init(poiID: String) {
         self.poiID = poiID
         super.init()
@@ -31,7 +28,7 @@ class PlaceHealthDetailsViewModel: ViewModel {
                 guard let self = self else { return }
                 self.poiAutonomyProfileRelay.accept($0)
             }, onError: { (error) in
-                Global.backgroundErrorSubject.onNext(error)
+                Global.generalErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }
@@ -48,11 +45,27 @@ class PlaceHealthDetailsViewModel: ViewModel {
                 var ownedAutonomyProfile = currentAutonomyProfile
                 ownedAutonomyProfile.owned = true
                 self.poiAutonomyProfileRelay.accept(ownedAutonomyProfile)
-                self.monitorResultSubject.onCompleted()
 
-            }, onError: { [weak self] (error) in
-                self?.monitorResultSubject.onNext(Event.error(error))
-                Global.backgroundErrorSubject.onNext(error)
+            }, onError: { (error) in
+                Global.generalErrorSubject.onNext(error)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func removeMonitoring() {
+        guard let poiID = poiAutonomyProfileRelay.value?.id else { return }
+        PointOfInterestService.delete(poiID: poiID)
+            .subscribe(onCompleted: { [weak self] in
+                guard let self = self,
+                    let currentAutonomyProfile = self.poiAutonomyProfileRelay.value else {
+                        return
+                }
+
+                var ownedAutonomyProfile = currentAutonomyProfile
+                ownedAutonomyProfile.owned = false
+                self.poiAutonomyProfileRelay.accept(ownedAutonomyProfile)
+            }, onError: { (error) in
+                Global.generalErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }

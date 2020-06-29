@@ -49,30 +49,22 @@ class TimeFilterView: UIView {
             make.top.equalTo(segmentView.snp.bottom).offset(15)
             make.leading.trailing.bottom.equalToSuperview()
         }
-
-        computeDatePeriod()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
-    fileprivate func computeDatePeriod() {
+    func computeDatePeriod() {
         guard let timeUnit = TimeUnit(index: segmentView.index),
             let distance = segmentDistances[timeUnit] else { return }
 
         nextPeriodButton.isEnabled = distance < 0 // disable next period to the future
 
-        var startDate = defaultStartDate.beginning(of: timeUnit.dateComponent)?
+        let startDate = defaultStartDate.beginning(of: timeUnit.dateComponent)?
                                         .adding(timeUnit.dateComponent, value: distance) ?? Date()
 
-
         let endDate = startDate.end(of: timeUnit.dateComponent) ?? Date()
-
-        // adjusts to make startDate is the first full week of the month
-        if timeUnit == .month {
-            startDate = startDate.beginning(of: .weekOfYear) ?? startDate
-        }
 
         let datePeriod = DatePeriod(startDate: startDate, endDate: endDate)
         timeInfoRelay.accept((datePeriod, timeUnit))

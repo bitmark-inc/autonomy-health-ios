@@ -58,7 +58,7 @@ class HealthDataRow: UIView {
         }
 
         infoLabel.snp.makeConstraints { (make) in
-            make.top.bottom.equalToSuperview()
+            make.top.bottom.centerY.equalToSuperview()
             make.trailing.equalTo(numberLabel.snp.leading)
         }
 
@@ -75,8 +75,9 @@ class HealthDataRow: UIView {
 
         addSubview(contentView)
         contentView.snp.makeConstraints { (make) in
+            make.height.equalTo(39)
             make.edges.equalToSuperview()
-                .inset(UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0))
+                .inset(UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 0))
         }
     }
 

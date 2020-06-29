@@ -14,7 +14,7 @@ class AddResourceViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
     fileprivate lazy var headerScreen: UIView = {
-        HeaderView(header: R.string.localizable.addResource().localizedUppercase)
+        HeaderView(header: R.string.localizable.addResource().localizedUppercase, lineWidth: Size.dw(105))
     }()
     fileprivate lazy var scrollView = makeScrollView()
     fileprivate lazy var titleScreen = makeTitleScreen()
@@ -92,7 +92,7 @@ class AddResourceViewController: ViewController, BackNavigator {
         importantTagViews.reset()
 
         for resource in resources {
-            let tagView = importantTagViews.addTag((resource.id, resource.name.lowercased()))
+            let tagView = importantTagViews.addTag((resource.id, resource.name))
             tagView.isSelectedRelay
                 .subscribe(onNext: { [weak self] (_) in
                     self?.checkSelectedState()
@@ -184,9 +184,14 @@ extension AddResourceViewController {
                 tagView.isSelected = true
                 return
             }
+
+            if tagView.id.isEmpty && tagView.title.lowercased() == resource.name.lowercased() {
+                tagView.isSelected = true
+                return
+            }
         }
 
-        let newTagView = importantTagViews.addTag((id: resource.id, value: resource.name.lowercased()))
+        let newTagView = importantTagViews.addTag((id: resource.id, value: resource.name))
         newTagView.isSelected = true
         submitButton.isEnabled = true
         importantTagViews.rearrangeViews()

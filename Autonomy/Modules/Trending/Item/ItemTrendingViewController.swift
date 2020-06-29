@@ -69,8 +69,8 @@ class ItemTrendingViewController: ViewController, BackNavigator {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        // refresh trending view after user reports symptoms/behaviors
-        timelineView.timeInfoRelay.accept(timelineView.timeInfoRelay.value)
+        // do here because we want to refresh trending view after user reports symptoms/behaviors
+        timelineView.computeDatePeriod()
     }
 
     override func bindViewModel() {
@@ -115,6 +115,7 @@ class ItemTrendingViewController: ViewController, BackNavigator {
         emptyDataLabel.snp.makeConstraints { (make) in
             make.top.equalTo(chartView.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
         }
 
         scrollView.addSubview(paddingContentView)
@@ -576,7 +577,7 @@ extension ItemTrendingViewController {
             var i = 0
             repeat {
                 labels[i] = dates[i].toFormat(Constant.TimeFormat.day)
-                i += 7
+                i += 5
             } while i < dates.count
 
         case .year:
@@ -600,6 +601,7 @@ extension ItemTrendingViewController {
 
         chart.fitBars = true
         chart.data = data
+        chart.animate(yAxisDuration: 0.5)
     }
 
     fileprivate func refreshGraphColor() {

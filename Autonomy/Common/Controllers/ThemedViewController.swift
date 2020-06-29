@@ -69,6 +69,19 @@ class ThemedViewController: UIViewController {
                 return // already show alert if needed when calling handleIfGeneralError
             })
             .disposed(by: disposeBag)
+
+        Global.generalErrorSubject
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] (error) in
+                guard let self = self, self == Navigator.getRootViewController()?.viewControllers.last else { return }
+                if !self.handleIfGeneralError(error: error) {
+                    Global.log.error(error)
+                    self.showErrorAlertWithSupport(message: R.string.error.system())
+                }
+
+                return // already show alert if needed when calling handleIfGeneralError
+            })
+            .disposed(by: disposeBag)
     }
 
     func handleIfGeneralError(error: Error) -> Bool {

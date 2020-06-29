@@ -122,7 +122,7 @@ class LocationSearchViewModel: ViewModel {
                     self.selectedPlaceIDSubject.onNext(newPlace.id)
 
                 }, onError: { (error) in
-                    Global.backgroundErrorSubject.onNext(error)
+                    Global.generalErrorSubject.onNext(error)
                 })
                 .disposed(by: self.disposeBag)
         }

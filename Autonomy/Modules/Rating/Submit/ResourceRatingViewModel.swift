@@ -32,7 +32,7 @@ class ResourceRatingViewModel: ViewModel {
             .subscribe(onSuccess: { [weak self] in
                 self?.resourceRatingsRelay.accept($0)
             }, onError: { (error) in
-                Global.backgroundErrorSubject.onNext(error)
+                Global.generalErrorSubject.onNext(error)
             })
             .disposed(by: disposeBag)
     }

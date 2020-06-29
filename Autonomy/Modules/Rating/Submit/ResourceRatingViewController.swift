@@ -14,7 +14,7 @@ class ResourceRatingViewController: ViewController, BackNavigator {
 
     // MARK: - Properties
     fileprivate lazy var headerScreen: UIView = {
-        HeaderView(header: R.string.localizable.ratings().localizedUppercase)
+        HeaderView(header: R.string.localizable.ratings().localizedUppercase, lineWidth: Size.dw(105))
     }()
     fileprivate lazy var scrollView = makeScrollView()
     fileprivate lazy var titleScreen = makeTitleScreen()
