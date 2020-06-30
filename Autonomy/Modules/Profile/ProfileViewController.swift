@@ -218,9 +218,10 @@ extension ProfileViewController {
     fileprivate func makeDoneButton() -> UIButton {
         let button = UIButton()
         button.setImage(R.image.profileCloseIcon(), for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 14, bottom: 14, right: 0)
 
         button.snp.makeConstraints { (make) in
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(45)
         }
 
         return button

@@ -229,7 +229,7 @@ extension LocationSearchViewController: UITableViewDataSource, UITableViewDelega
         resourceTagsView.reset()
 
         for resource in resources {
-            let tagView = resourceTagsView.addTag((resource.id, resource.name.lowercased()))
+            let tagView = resourceTagsView.addTag((resource.id, resource.name))
             tagView.backgroundColor = .black
             tagView.addGestureRecognizer(makeTapGestureRecognizer())
         }

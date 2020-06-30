@@ -61,6 +61,7 @@ extension DashboardHeaderCollectionCell {
     fileprivate func makeProfileButton() -> UIButton {
         let button = UIButton()
         button.setImage(R.image.profileButton(), for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 19, bottom: 19, right: 0)
 
         button.rx.tap.bind { [weak self] in
             self?.delegate?.gotoProfileScreen()

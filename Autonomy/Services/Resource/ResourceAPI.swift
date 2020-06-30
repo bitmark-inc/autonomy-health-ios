@@ -92,6 +92,7 @@ extension ResourceAPI: AuthorizedTargetType, VersionTargetType, LocationTargetTy
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
 
         case .fullList:
+            params["include_added"] = true
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
 
         case .add(_, let resources):

@@ -177,8 +177,6 @@ extension HealthDataRow {
     fileprivate func makeInfoLabel() -> Label {
         let label = Label()
         label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
-        label.lineBreakMode = .byWordWrapping
         label.apply(text: info, font: R.font.atlasGroteskLight(size: 14),
                     themeStyle: .lightTextColor)
         return label

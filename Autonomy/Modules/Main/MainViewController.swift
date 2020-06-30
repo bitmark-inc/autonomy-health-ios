@@ -31,7 +31,6 @@ class MainViewController: ViewController {
     fileprivate lazy var addLocationBar = makeAddLocationBar()
 
     fileprivate var pois = [PointOfInterest]()
-    fileprivate let poiLimitation = 10
     fileprivate let poiSection = 2
 
     fileprivate let columns: CGFloat = 3
@@ -154,11 +153,6 @@ class MainViewController: ViewController {
                 guard let self = self else { return }
                 let oldPOIs = self.pois
                 self.pois = poisValue.pois
-
-                // limit number of pois
-                let reachLimit = self.pois.count >= self.poiLimitation
-                self.addLocationBar.isHidden = reachLimit
-                self.addLocationBarHeightConstraint?.update(offset: reachLimit ? 0 : 60)
 
                 guard poisValue.source == .remote else {
                     return

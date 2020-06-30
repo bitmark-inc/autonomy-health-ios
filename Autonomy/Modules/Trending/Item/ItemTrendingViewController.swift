@@ -407,8 +407,7 @@ extension ItemTrendingViewController {
 
         chart.snp.makeConstraints { (make) in
             make.top.equalTo(label.snp.bottom).offset(-5)
-            make.leading.equalToSuperview().offset(-10)
-            make.trailing.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(233)
         }
 
@@ -435,8 +434,8 @@ extension ItemTrendingViewController {
         xAxis.axisLineWidth = 1
         xAxis.labelPosition = .bottom
         xAxis.granularity = 1
-        xAxis.spaceMin = 0.3
-        xAxis.centerAxisLabelsEnabled = false
+        xAxis.spaceMax = 0
+        xAxis.spaceMin = 0
 
         let leftAxis = chartView.leftAxis
         leftAxis.labelFont = R.font.ibmPlexMonoLight(size: 14)!
@@ -447,7 +446,6 @@ extension ItemTrendingViewController {
         leftAxis.labelTextColor = graphLabelTextColor
         leftAxis.granularity = 1
         leftAxis.spaceBottom = 0
-        leftAxis.labelXOffset = 5
 
         chartView.legend.enabled = false
         chartView.rightAxis.enabled = false
@@ -574,7 +572,9 @@ extension ItemTrendingViewController {
 
         case .month:
             labels = Array(repeating: " ", count: dates.count)
-            var i = 0
+            labels[0] = dates[0].toFormat(Constant.TimeFormat.day)
+
+            var i = 4
             repeat {
                 labels[i] = dates[i].toFormat(Constant.TimeFormat.day)
                 i += 5
